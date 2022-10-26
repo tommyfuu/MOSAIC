@@ -1,0 +1,18 @@
+DATASET_ID	cdi_youngster
+
+#16S_start
+TRIM_LENGTH	200
+RAW_FASTQ_FILES	fq2sid_amplicon_fmt.txt
+BARCODES_MAP	None
+OTU_TABLE_RDP	cdi_youngster.otu_table.100.denovo.rdp_assigned
+OTU_SEQUENCES_FASTA	cdi_youngster.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+OTU_TABLE_DENOVO	cdi_youngster.otu_table.100.denovo
+PROCESSED	True
+OLIGOTYPE_TABLE	cdi_youngster.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	None
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

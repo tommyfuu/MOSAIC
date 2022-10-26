@@ -1,0 +1,21 @@
+DATASET_ID	crc_zhao
+
+#16S_start
+TRIM_LENGTH	150
+OTU_TABLE_DENOVO	crc_zhao.otu_table.100.denovo
+BARCODES_MAP	barcode_map.txt
+AMPLICON	V3
+BARCODES_MODE	2
+OTU_SEQUENCES_FASTA	crc_zhao.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+PROCESSED	True
+OLIGOTYPE_TABLE	crc_zhao.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	primers.txt
+RAW_FASTQ_FILE	SRR526973.fastq
+ASCII_ENCODING	ASCII_BASE_33
+OTU_TABLE_RDP	crc_zhao.otu_table.100.denovo.rdp_assigned
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

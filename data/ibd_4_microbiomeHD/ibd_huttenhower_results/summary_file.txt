@@ -1,0 +1,21 @@
+DATASET_ID	ibd_huttenhower
+
+#16S_start
+TRIM_LENGTH	200
+RAW_FASTQ_FILES	fastq2sid.txt
+BARCODES_MAP	None
+AMPLICON	V3-V5
+OTU_SEQUENCES_FASTA	ibd_huttenhower.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+OTU_TABLE_DENOVO	ibd_huttenhower.otu_table.100.denovo
+PROCESSED	True
+OLIGOTYPE_TABLE	ibd_huttenhower.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	primers.txt
+ASCII_ENCODING	ASCII_BASE_33
+OTU_TABLE_RDP	ibd_huttenhower.otu_table.100.denovo.rdp_assigned
+METADATA_FILE	metadata.txt
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

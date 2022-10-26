@@ -1,0 +1,129 @@
+#SampleID	Barcode	Organism	SampleType	Amplicon	DiseaseState	DetailedDiagnosis	TissueSource	SeqCenter	Gender	BirthYear	Age	PatientGeo	MayoScore	Comment
+CCD-p13-a24	AACAGCTGA	human	NA		CD	CCD	NA	RIT	F	1943	63	Sweden		
+CCD-p14-b28	AAGACCGTA	human	NA		CD	CCD	NA	RIT	M	1936	70	Sweden		
+CCD-p11-f19	AATCTCTGA	human	stool	v5-v6	CD	CCD	NA	RIT	F	1986	20	Sweden		
+CCD-p12-f23	AACACCTGA	human	stool	v5-v6	CD	CCD	NA	RIT	M	1953	53	Sweden		
+CCD-p13-f24	AACTTCGTA	human	stool	v5-v6	CD	CCD	NA	RIT	F	1943	63	Sweden		
+CCD-p14-f28	AAGTACGTA	human	stool	v5-v6	CD	CCD	NA	RIT	M	1936	70	Sweden		
+CCD-p17-f34	ATATCCATG	human	stool	v5-v6	CD	CCD	NA	RIT	M	1976	30	Sweden		
+CCD-p31-f41	ATTATCTGA	human	stool	v5-v6	CD	CCD	NA	RIT	F	1962	44	Sweden		
+CCD-p34-f67	ATCATCGAT	human	stool	v5-v6	CD	CCD	NA	RIT	F	1948	58	Sweden		
+CCD-p35-f72	ATCTCCTGA	human	stool	v5-v6	CD	CCD	NA	RIT	F	1957	49	Sweden		
+CCD-p36-f114	ACAAGCATG	human	stool	v5-v6	CD	CCD	NA	RIT	F	1977	29	Sweden		
+CCD-p9-f17	AAATACGAT	human	stool	v5-v6	CD	CCD	NA	RIT	M	1947	59	Sweden		
+CCD-p9-f20	AATCGCGTA	human	stool	v5-v6	CD	CCD	NA	RIT	M	1947	59	Sweden		
+CCD-p11-dc19	AATCACGTA	human	tissue		CD	CCD	decending_colon	RIT	F	1986	20	Sweden		
+CCD-p11-i19	AATCCCATG	human	tissue		CD	CCD	ileum	RIT	F	1986	20	Sweden		
+CCD-p12-dc23	AACATCTGA	human	tissue		CD	CCD	decending_colon	RIT	M	1953	53	Sweden		
+CCD-p13-dc24	AACTACGTA	human	tissue		CD	CCD	decending_colon	RIT	F	1943	63	Sweden		
+CCD-p14-dc28	AAGAGCGTA	human	tissue		CD	CCD	decending_colon	RIT	M	1936	70	Sweden		0 reads
+CCD-p14-i28	AAGTTCATG	human	tissue		CD	CCD	ileum	RIT	M	1936	70	Sweden		
+CCD-p17-dc34	ATATTCATG	human	tissue		CD	CCD	decending_colon	RIT	M	1976	30	Sweden		
+CCD-p17-i34	ATATGCGTA	human	tissue		CD	CCD	ileum	RIT	M	1976	30	Sweden		
+H-p11-b26	AACCCCATG	human	NA		H	H	NA	RIT	F	1986	20	Sweden		
+H-p13-a25	AACTCCGTA	human	NA		H	H	NA	RIT	F	1943	63	Sweden		
+H-p13-b25	AACTGCGAT	human	NA		H	H	NA	RIT	F	1943	63	Sweden		
+H-p14-b27	AACGCCTGA	human	NA		H	H	NA	RIT	M	1936	70	Sweden		
+H-p11-f26	AACGACATG	human	stool	v5-v6	H	H	NA	RIT	F	1986	20	Sweden		
+H-p12-f22	AACAACATG	human	stool	v5-v6	H	H	NA	RIT	M	1953	53	Sweden		
+H-p13-f25	AACCTCGAT	human	stool	v5-v6	H	H	NA	RIT	F	1943	63	Sweden		
+H-p14-f27	AAGAACTGA	human	stool	v5-v6	H	H	NA	RIT	M	1936	70	Sweden		
+H-p16-f35	ATACTCTGA	human	stool	v5-v6	H	H	NA	RIT	F	1954	52	Sweden		
+H-p18-f36	ATAGACGTA	human	stool	v5-v6	H	H	NA	RIT	M	1953	53	Sweden		
+H-p19-f70	ATCTACTGA	human	stool	v5-v6	H	H	NA	RIT	M	1937	69	Sweden		
+H-p1-f1	AAAAACGAT	human	stool	v5-v6	H	H	NA	RIT	F	1961	45	Sweden		
+H-p1-f8	AAAATCATG	human	stool	v5-v6	H	H	NA	RIT	F	1961	45	Sweden		
+H-p21-f101	ATGCGCATG	human	stool	v5-v6	H	H	NA	RIT	F	1939	67	Sweden		
+H-p24-f68	ATCACCTGA	human	stool	v5-v6	H	H	NA	RIT	M	1948	58	Sweden		
+H-p25-f58	ATTGACGAT	human	stool	v5-v6	H	H	NA	RIT	F	1941	65	Sweden		
+H-p26-f94	ATGCACGTA	human	stool	v5-v6	H	H	NA	RIT	M	1954	52	Sweden		
+H-p27-f103	ATGGTCGTA	human	stool	v5-v6	H	H	NA	RIT	F	1953	53	Sweden		
+H-p28-f55	ATTCCCATG	human	stool	v5-v6	H	H	NA	RIT	M	1947	59	Sweden		
+H-p29-f48	ATTTTCTGA	human	stool	v5-v6	H	H	NA	RIT	F	1955	51	Sweden		
+H-p30-f85	ATGATCATG	human	stool	v5-v6	H	H	NA	RIT	F	1958	48	Sweden		
+H-p31-f61	ATTGTCGTA	human	stool	v5-v6	H	H	NA	RIT	F	1962	44	Sweden		
+H-p32-f98	ATGCTCATG	human	stool	v5-v6	H	H	NA	RIT	F	1965	41	Sweden		
+H-p33-f93	ATGTGCGTA	human	stool	v5-v6	H	H	NA	RIT	M	1946	60	Sweden		
+H-p34-f75	ATCCACATG	human	stool	v5-v6	H	H	NA	RIT	F	1948	58	Sweden		
+H-p35-f78	ATCCGCGTA	human	stool	v5-v6	H	H	NA	RIT	F	1957	49	Sweden		
+H-p36-f89	ATGTTCGAT	human	stool	v5-v6	H	H	NA	RIT	F	1977	29	Sweden		
+H-p37-f113	ACAACCATG	human	stool	v5-v6	H	H	NA	RIT	F	1943	63	Sweden		
+H-p38-f63	ATTGCCGTA	human	stool	v5-v6	H	H	NA	RIT	F	1964	42	Sweden		
+H-p39-f105	ATGGGCATG	human	stool	v5-v6	H	H	NA	RIT	F	1977	29	Sweden		
+H-p40-f81	ATCGCCGTA	human	stool	v5-v6	H	H	NA	RIT	M	1946	60	Sweden		
+H-p41-f87	ATGAGCGAT	human	stool	v5-v6	H	H	NA	RIT	M	1947	59	Sweden		
+H-p42-f79	ATCGACGTA	human	stool	v5-v6	H	H	NA	RIT	F	1951	55	Sweden		
+H-p43-f42	ATTACCGAT	human	stool	v5-v6	H	H	NA	RIT	F	1953	53	Sweden		
+H-p44-f86	ATGACCGTA	human	stool	v5-v6	H	H	NA	RIT	F	1969	37	Sweden		
+H-p45-f80	ATCGTCATG	human	stool	v5-v6	H	H	NA	RIT	F	1970	36	Sweden		
+H-p46-f69	ATCAGCTGA	human	stool	v5-v6	H	H	NA	RIT	F	1956	50	Sweden		
+H-p6-f11	AAAACCTGA	human	stool	v5-v6	H	H	NA	RIT	F	1951	55	Sweden		
+H-p6-f12	AAAAGCGTA	human	stool	v5-v6	H	H	NA	RIT	F	1951	55	Sweden		
+H-p11-dc26	AACCGCATG	human	tissue		H	H	decending_colon	RIT	F	1986	20	Sweden		0 reads
+H-p11-i26	AACGTCGTA	human	tissue		H	H	ileum	RIT	F	1986	20	Sweden		
+H-p12-dc22	AATGGCATG	human	tissue		H	H	decending_colon	RIT	M	1953	53	Sweden		
+H-p13-dc25	AACCACGAT	human	tissue		H	H	decending_colon	RIT	F	1943	63	Sweden		0 reads
+H-p14-dc27	AACGGCTGA	human	tissue		H	H	decending_colon	RIT	M	1936	70	Sweden		0 reads
+H-p14-i27	AAGATCGAT	human	tissue		H	H	ileum	RIT	M	1936	70	Sweden		
+H-p16-dc35	ATACACTGA	human	tissue		H	H	decending_colon	RIT	F	1954	52	Sweden		
+H-p16-i35	ATACCCGAT	human	tissue		H	H	ileum	RIT	F	1954	52	Sweden		
+H-p18-dc36	ATACGCGTA	human	tissue		H	H	decending_colon	RIT	M	1953	53	Sweden		
+H-p18-i36	ATAGTCATG	human	tissue		H	H	ileum	RIT	M	1953	53	Sweden		
+ICCD-p30-f57	ATTCGCGAT	human	stool	v5-v6	CD	ICCD	NA	RIT	F	1958	48	Sweden		
+CCD-p17-f32	ATAAACGTA	human	stool	v5-v6	CD	ICCD+U	NA	RIT	M	1976	30	Sweden		reclasssified: was uiCD-p17-f32
+CCD-p17-dc32	AAGGGCGTA	human	tissue		CD	ICCD+U	decending_colon	RIT	M	1976	30	Sweden		reclasssified: was uiCD-p17-dc32
+CCD-p17-i32	ATAATCATG	human	tissue		CD	ICCD+U	ileum	RIT	M	1976	30	Sweden		reclasssified: was uiCD-p17-i32
+ICD-p10-f18	AAATCCATG	human	stool	v5-v6	CD	ICD	NA	RIT	F	1962	44	Sweden		
+ICD-p10-f21	AATGTCGAT	human	stool	v5-v6	CD	ICD	NA	RIT	F	1962	44	Sweden		
+ICD-p15-f29	AAGTGCGAT	human	stool	v5-v6	CD	ICD	NA	RIT	M	1953	53	Sweden		
+ICD-p15-f30	AAGCCCATG	human	stool	v5-v6	CD	ICD	NA	RIT	M	1953	53	Sweden		
+ICD-p16-f31	AAGGTCTGA	human	stool	v5-v6	CD	ICD	NA	RIT	F	1954	52	Sweden		
+ICD-p18-f33	ATAAGCGAT	human	stool	v5-v6	CD	ICD	NA	RIT	M	1953	53	Sweden		
+ICD-p21-f88	ATGTACGAT	human	stool	v5-v6	CD	ICD	NA	RIT	F	1939	67	Sweden		
+ICD-p22-f116	ACATTCGTA	human	stool	v5-v6	CD	ICD	NA	RIT	M	1940	66	Sweden		reclassified: was ICCD-p22-f116
+ICD-p22-f39	ATAGTCTGA	human	stool	v5-v6	CD	ICD	NA	RIT	M	1940	66	Sweden		
+ICD-p23-f100	ATGCCCGAT	human	stool	v5-v6	CD	ICD	NA	RIT	F	1947	59	Sweden		
+ICD-p23-f112	ACAATCATG	human	stool	v5-v6	CD	ICD	NA	RIT	F	1947	59	Sweden		
+ICD-p28-f53	ATTCACGAT	human	stool	v5-v6	CD	ICD	NA	RIT	M	1947	59	Sweden		
+ICD-p29-f110	ACAAACGTA	human	stool	v5-v6	CD	ICD	NA	RIT	F	1955	51	Sweden		
+ICD-p33-f83	ATGAACTGA	human	stool	v5-v6	CD	ICD	NA	RIT	M	1946	60	Sweden		
+ICD-p10-dc18	AAATTCTGA	human	tissue		CD	ICD	decending_colon	RIT	F	1962	44	Sweden		
+ICD-p10-dc21	AATGACGAT	human	tissue		CD	ICD	decending_colon	RIT	F	1962	44	Sweden		
+ICD-p10-i18	AAATGCGAT	human	tissue		CD	ICD	ileum	RIT	F	1962	44	Sweden		
+ICD-p10-i21	AATGCCTGA	human	tissue		CD	ICD	ileum	RIT	F	1962	44	Sweden		
+ICD-p15-dc29	AAGTCCGAT	human	tissue		CD	ICD	decending_colon	RIT	M	1953	53	Sweden		
+ICD-p15-dc30	AAGCTCATG	human	tissue		CD	ICD	decending_colon	RIT	M	1953	53	Sweden		
+ICD-p15-i29	AAGCACTGA	human	tissue		CD	ICD	ileum	RIT	M	1953	53	Sweden		
+ICD-p15-i30	AAGCGCGTA	human	tissue		CD	ICD	ileum	RIT	M	1953	53	Sweden		
+ICD-p16-dc31	AAGGACTGA	human	tissue		CD	ICD	decending_colon	RIT	F	1954	52	Sweden		
+ICD-p16-i31	AAGGCCGAT	human	tissue		CD	ICD	ileum	RIT	F	1954	52	Sweden		
+ICD-p18-dc33	ATAACCGAT	human	tissue		CD	ICD	decending_colon	RIT	M	1953	53	Sweden		
+ICD-p18-i33	ATATACTGA	human	tissue		CD	ICD	ileum	RIT	M	1953	53	Sweden		
+ICD-p27-f64	ATTGGCTGA	human	stool	v5-v6	CD	ICD+U	NA	RIT	F	1953	53	Sweden		reclassified: was uiCD-p27-f64
+LE1	ACATCCGAT	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE10	ACATGCATG	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE2	ACACACATG	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE3	ACACTCTGA	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE4	ACACCCGTA	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE5	ACACGCGAT	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE6	ACAGACATG	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE7	ACAGTCTGA	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE8	ACAGCCGTA	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+LE9	ACAGGCGAT	human	NA		NA	NA	mouth	RIT	NA			Sweden		Mouth sample
+uiCD-p32-f91	ATGTCCGAT	human	stool	v5-v6	CD	ICCD	NA	RIT	F	1965	41	Sweden		
+UC-p25-f115	ACATACATG	human	stool	v5-v6	UC	UC-EXT	NA	RIT	F	1941	65	Sweden	0	
+UC-p26-f44	ATTTACTGA	human	stool	v5-v6	UC	UC-EXT	NA	RIT	M	1954	52	Sweden	1	
+UC-p37-f52	ATTTGCGAT	human	stool	v5-v6	UC	UC-EXT	NA	RIT	F	1943	63	Sweden	in_remission	
+UC-p39-f104	ATGGCCGAT	human	stool	v5-v6	UC	UC-EXT	NA	RIT	F	1977	29	Sweden	1	
+UC-p20-f40	ATTAACGAT	human	stool	v5-v6	UC	UC-LS	NA	RIT	M	1938	68	Sweden	0	
+UC-p20-f43	ATTAGCATG	human	stool	v5-v6	UC	UC-LS	NA	RIT	M	1938	68	Sweden	0	
+UC-p24-f77	ATCCCCGTA	human	stool	v5-v6	UC	UC-LS	NA	RIT	M	1948	58	Sweden	0	
+UC-p40-f73	ATCTGCTGA	human	stool	v5-v6	UC	UC-LS	NA	RIT	M	1946	60	Sweden	2	
+UC-p43-f51	ATTTCCATG	human	stool	v5-v6	UC	UC-LS	NA	RIT	F	1953	53	Sweden	0	
+UC-p44-f54	ATTCTCTGA	human	stool	v5-v6	UC	UC-LS	NA	RIT	F	1969	37	Sweden	moderate	
+UC-p46-f71	ATCTTCGTA	human	stool	v5-v6	UC	UC-LS	NA	RIT	F	1956	50	Sweden	1	
+UC-p19-f82	ATCGGCGTA	human	stool	v5-v6	UC	UC-PROC	NA	RIT	M	1937	69	Sweden	0	
+UC-p38-f38	ATAGCCTGA	human	stool	v5-v6	UC	UC-PROC	NA	RIT	F	1964	42	Sweden	1	
+UC-p41-f102	ATGGACATG	human	stool	v5-v6	UC	UC-PROC	NA	RIT	M	1947	59	Sweden	in_remission	
+UC-p42-f76	ATCCTCTGA	human	stool	v5-v6	UC	UC-PROC	NA	RIT	F	1951	55	Sweden	1	
+UC-p45-f66	ATCAACGAT	human	stool	v5-v6	UC	UC-PROC	NA	RIT	F	1970	36	Sweden	1	

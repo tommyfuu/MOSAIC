@@ -1,0 +1,21 @@
+DATASET_ID	cdi_vincent_v3v5
+
+#16S_start
+TRIM_LENGTH	101
+RAW_FASTQ_FILES	fastq2sid.txt
+BARCODES_MAP	None
+OTU_TABLE_RDP	cdi_vincent_v3v5.otu_table.100.denovo.rdp_assigned
+OTU_SEQUENCES_FASTA	cdi_vincent_v3v5.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+QUALITY_TRIM	20
+OTU_TABLE_DENOVO	cdi_vincent_v3v5.otu_table.100.denovo
+PROCESSED	True
+OLIGOTYPE_TABLE	cdi_vincent_v3v5.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	primer_v3v5.txt
+ASCII_ENCODING	ASCII_BASE_33
+METADATA_FILE	metadata.txt
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

@@ -1,0 +1,101 @@
+#Sample_id	subject	sample_date	type	donor_subject	donor_sample	preservative	date_fmt	days_since_fmt	Unnamed: 9	route	abx	abx_days	ssx_resolved	recurrence	Date_of_C.diff_recurrence	Repeat_FMT	Date_2ndFMT	Health_Scale	Stool_freq	Immunosuppression	Other	DiseaseState	sample_date_converted	n_sample
+FMT01	MGH01D	41208	donor			glycerol																H	10/26/12	0.0
+FMT1A	MGH01D	41208	donor			glycerol																H	10/26/12	1.0
+FMT2A	MGH03D	41247	donor			glycerol																H	12/4/12	0.0
+FMT02	MGH03D	41247	donor			glycerol																H	12/4/12	1.0
+FMT04	MGH03D	41253	donor			RNAlater																H	12/10/12	2.0
+FMT4A	MGH03D	41253	donor			RNAlater																H	12/10/12	3.0
+FMT03	MGH03D	41253	donor			none																H	12/10/12	4.0
+FMT3A	MGH03D	41253	donor			none																H	12/10/12	5.0
+FMT35	MGH01R	41260	pre	MGH01D	FMT1	none	41262.0	-2.0	0.0	ngt	vanco	7.0	Y	N				1.0	6.0	Y		CDI	12/17/12	0.0
+FMT05	MGH02R	41278	pre	MGH01D	FMT1	none	41278.0	0.0	0.0	colo	vanco	2.0	N	Y	41280.0	Y	41281.0	5.0	7.0	N		CDI	1/4/13	0.0
+FMT5A	MGH02R	41278	pre	MGH01D	FMT1	none	41278.0	0.0	0.0	colo	vanco	2.0	N	Y	41280.0	Y	41281.0	5.0	7.0	N		CDI	1/4/13	1.0
+FMT06	MGH02R	41284	post	MGH01D	FMT1	none	41281.0	3.0	1.0	ngt	vanco	2.0	Y	Y				7.0	3.0	N		postFMT_CDI	1/10/13	0.0
+FMT6A	MGH02R	41284	post	MGH01D	FMT1	none	41281.0	3.0	1.0	ngt	vanco	2.0	Y	Y				7.0	3.0	N		postFMT_CDI	1/10/13	1.0
+FMT10A	MGH05R	41319	pre	MGH03D	FMT2	none	41319.0	0.0	0.0	colo	unknown	2.0	N					5.0	5.0	N		CDI	2/14/13	0.0
+FMT10	MGH05R	41319	pre	MGH03D	FMT2	none	41319.0	0.0	0.0	colo	unknown	2.0	N					5.0	5.0	N		CDI	2/14/13	1.0
+FMT15B	MGH06R	41326	pre	MGH03D	FMT2	none	41326.0	0.0	0.0	colo	combo	2.0	N					3.0	9.0	N		CDI	2/21/13	0.0
+FMT15	MGH06R	41326	pre	MGH03D	FMT2	none	41326.0	0.0	0.0	colo	combo	2.0	N					3.0	9.0	N		CDI	2/21/13	1.0
+FMT15A	MGH06R	41326	pre	MGH03D	FMT2	none	41326.0	0.0	0.0	colo	combo	2.0	N					3.0	9.0	N		CDI	2/21/13	2.0
+FMT20A	MGH07R	41327	pre	MGH03D	FMT2	none	41328.0	-1.0	0.0	ngt	combo	2.0	N	N				2.0	13.0	Y		CDI	2/22/13	0.0
+FMT20	MGH07R	41327	pre	MGH03D	FMT2	none	41328.0	-1.0	0.0	ngt	combo	2.0	N	N				2.0	13.0	Y		CDI	2/22/13	1.0
+FMT17A	MGH06R	41330	post	MGH03D	FMT2	RNAlater	41326.0	4.0	1.0	colo	combo	2.0	Y					10.0	2.0	N		postFMT_CDI	2/25/13	0.0
+FMT12A	MGH05R	41330	post	MGH03D	FMT2	RNAlater	41319.0	11.0	2.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	2/25/13	0.0
+FMT16	MGH06R	41330	post	MGH03D	FMT2	none	41326.0	4.0	1.0	colo	combo	2.0	Y					10.0	2.0	N		postFMT_CDI	2/25/13	1.0
+FMT11	MGH05R	41330	post	MGH03D	FMT2	none	41319.0	11.0	2.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	2/25/13	1.0
+FMT21A	MGH07R	41330	post	MGH03D	FMT2	none	41328.0	2.0	1.0	ngt	combo	2.0	N	Y	41332.0	Y	41332.0	7.0	3.0	Y		postFMT_CDI	2/25/13	0.0
+FMT11A	MGH05R	41330	post	MGH03D	FMT2	none	41319.0	11.0	2.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	2/25/13	2.0
+FMT16A	MGH06R	41330	post	MGH03D	FMT2	none	41326.0	4.0	1.0	colo	combo	2.0	Y					10.0	2.0	N		postFMT_CDI	2/25/13	2.0
+FMT17	MGH06R	41330	post	MGH03D	FMT2	RNAlater	41326.0	4.0	1.0	colo	combo	2.0	Y					10.0	2.0	N		postFMT_CDI	2/25/13	3.0
+FMT12	MGH05R	41330	post	MGH03D	FMT2	RNAlater	41319.0	11.0	2.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	2/25/13	3.0
+FMT21	MGH07R	41330	post	MGH03D	FMT2	none	41328.0	2.0	1.0	ngt	combo	2.0	N	Y	41332.0	Y	41332.0	7.0	3.0	Y		postFMT_CDI	2/25/13	1.0
+FMT18	MGH06R	41333	post	MGH03D	FMT2	none	41326.0	7.0	1.0	colo	combo	2.0	Y					10.0	0.0	N		postFMT_CDI	2/28/13	4.0
+FMT19	MGH06R	41333	post	MGH03D	FMT2	RNAlater	41326.0	7.0	1.0	colo	combo	2.0	Y					10.0	1.0	N		postFMT_CDI	2/28/13	5.0
+FMT19A	MGH06R	41333	post	MGH03D	FMT2	RNAlater	41326.0	7.0	1.0	colo	combo	2.0	Y					10.0	1.0	N		postFMT_CDI	2/28/13	6.0
+FMT22	MGH07R	41334	post	MGH03D	FMT2	none 	41332.0	2.0	1.0	ngt	combo	2.0	N	N				10.0	3.0	Y		postFMT_CDI	3/1/13	2.0
+FMT23	MGH08R	41334	pre	MGH03D	FMT2	none	41334.0	0.0	0.0	colo	vanco	2.0	N					4.0	12.0	Y		CDI	3/1/13	0.0
+FMT23A	MGH08R	41334	pre	MGH03D	FMT2	none	41334.0	0.0	0.0	colo	vanco	2.0	N					4.0	12.0	Y		CDI	3/1/13	1.0
+FMT28	MGH06D	41334	donor			none																H	3/1/13	0.0
+FMT24	MGH08R	41338	post	MGH03D	FMT2	none 	41334.0	4.0	1.0	colo	vanco	2.0	Y					6.0		Y	 	postFMT_CDI	3/5/13	0.0
+FMT25A	MGH08R	41338	post	MGH03D	FMT2	RNAlater	41334.0	4.0	1.0	colo	vanco	2.0	Y					6.0		Y		postFMT_CDI	3/5/13	1.0
+FMT14A	MGH05R	41338	post	MGH03D	FMT2	RNAlater	41319.0	19.0	3.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	3/5/13	4.0
+FMT25	MGH08R	41338	post	MGH03D	FMT2	RNAlater	41334.0	4.0	1.0	colo	vanco	2.0	Y					6.0		Y		postFMT_CDI	3/5/13	2.0
+FMT13A	MGH05R	41338	post	MGH03D	FMT2	none	41319.0	19.0	3.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	3/5/13	5.0
+FMT13	MGH05R	41338	post	MGH03D	FMT2	none	41319.0	19.0	3.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	3/5/13	6.0
+FMT14	MGH05R	41338	post	MGH03D	FMT2	RNAlater	41319.0	19.0	3.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	3/5/13	7.0
+FMT51	MGH09R	41340	pre	MGH03D	FMT2	none	41340.0	0.0	0.0	ngt			N					3.0	9.0	N		CDI	3/7/13	0.0
+FMT47	MGH07R	41345	post	MGH03D	FMT2	RNAlater	41332.0	13.0	2.0	ngt	combo	2.0	Y					9.0	3.0	Y		postFMT_CDI	3/12/13	3.0
+FMT53	MGH09R	41345	post	MGH03D	FMT2	RNAlater	41340.0	5.0	1.0	ngt			Y					8.0	5.0	N		postFMT_CDI	3/12/13	0.0
+FMT39	MGH02R	41346	post	MGH01D	FMT1	RNAlater	41281.0	65.0	4.0	ngt	vanco	2.0	Y	N				9.0	2.0	N		postFMT_CDI	3/13/13	2.0
+FMT37	MGH01R	41347	post	MGH01D	FMT1	RNAlater	41262.0	85.0	4.0	ngt	vanco	7.0	Y	N				8.0	1.0	Y		postFMT_CDI	3/14/13	0.0
+FMT55	MGH09R	41351	post	MGH03D	FMT2	RNAlater	41348.0	13.0	1.0	ngt	fidaxomycin	2.0	Y					8.0	2.0	N		postFMT_CDI	3/18/13	1.0
+FMT56	MGH10R	41352	pre	MGH03D	FMT2	none	41353.0	-1.0	0.0	ngt	vanco	1.0	N	N		Y	41354.0	4.0	10.0	Y		CDI	3/19/13	0.0
+FMT59	MGH11R	41362	pre	MGH03D	FMT2	none	41362.0	0.0	0.0	colo	fidaxomycin	2.0	Y	N				5.0	6.0	Y		CDI	3/29/13	0.0
+FMT62	MGH11R	41365	post	MGH03D	FMT2	RNAlater	41362.0	3.0	1.0	colo	fidaxomycin	2.0	Y	N				10.0	1.0	Y		postFMT_CDI	4/1/13	0.0
+FMT32	MGH07D	41367	donor			none																H	4/3/13	0.0
+FMT26	MGH03D	41367	donor			none																H	4/3/13	6.0
+FMT27	MGH03D	41368	donor			saline																H	4/4/13	7.0
+FMT33	MGH07D	41373	donor			none																H	4/9/13	1.0
+FMT64	MGH11R	41374	post	MGH03D	FMT2	RNAlater	41362.0	12.0	2.0	colo	fidaxomycin	2.0	Y	N				8.0	0.0	Y		postFMT_CDI	4/10/13	1.0
+FMT34	MGH07D	41380	donor			saline 																H	4/16/13	2.0
+FMT29	MGH06D	41382	donor			none																H	4/18/13	1.0
+FMT30	MGH06D	41393	donor			saline																H	4/29/13	2.0
+FMT31	MGH06D	41395	donor			saline																H	5/1/13	3.0
+FMT66	MGH11R	41399	post	MGH03D	FMT2	RNAlater	41362.0	37.0	4.0	colo	fidaxomycin	2.0	Y	N				9.0		Y		postFMT_CDI	5/5/13	2.0
+FMT58	MGH10R	41402	post	MGH03D	FMT2	RNAlater	41354.0	48.0	4.0	ngt	vanco	1.0	Y					8.0	1.0	Y		postFMT_CDI	5/8/13	0.0
+FMT78	MGH14R	41403	pre	MGH03D	FMT4	none	41403.0	0.0	0.0	colo	combo	2.0	Y					7.0	7.0	N		CDI	5/9/13	0.0
+FMT69	MGH12R	41403	pre	MGH03D	FMT27		41403.0	0.0	0.0	ngt	combo	2.0	N					4.0	10.0	Y		CDI	5/9/13	0.0
+FMT43	MGH05R	41403	post	MGH03D	FMT2	RNAlater	41319.0	84.0	4.0	colo	unknown	2.0	Y					9.0	1.0	N		postFMT_CDI	5/9/13	8.0
+FMT82	MGH16R	41404	pre	MGH03D	FMT27	none	41404.0	0.0	0.0	ngt	vanco	2.0	N	N				5.0	5.0	N		CDI	5/10/13	0.0
+FMT71	MGH12R	41407	post	MGH03D	FMT27	RNAlater	41403.0	4.0	1.0	ngt	combo	2.0	N					8.0	2.0	Y		postFMT_CDI	5/13/13	0.0
+FMT88	MGH17R	41407	pre	MGH03D	FMT27	none	41407.0	0.0	0.0	ngt	fidaxomycin	2.0	N					2.0	7.0	N		CDI	5/13/13	0.0
+FMT84	MGH16R	41407	post	MGH03D	FMT27	RNAlater	41404.0	3.0	1.0	ngt	vanco	2.0	N	N				9.0	1.0	N		postFMT_CDI	5/13/13	0.0
+FMT80	MGH14R	41408	post	MGH03D	FMT4	RNAlater	41403.0	5.0	1.0	colo	combo	2.0	Y					10.0	2.0	N		postFMT_CDI	5/14/13	0.0
+FMT50	MGH08R	41410	post	MGH03D	FMT2	none	41334.0	76.0	4.0	colo	vanco	2.0	Y					8.0	5.0	Y		postFMT_CDI	5/16/13	3.0
+FMT67	MGH11R	41410	post	MGH03D	FMT4	none	41409.0	1.0	1.0	ngt	fidaxomycin	2.0	Y	N				9.0	2.0	Y		postFMT_CDI	5/16/13	3.0
+FMT75	MGH13R	41411	pre	MGH03D	FMT27	RNAlater	41411.0	0.0	0.0	colo	flagyl	2.0	N					7.0	6.0	N		CDI	5/17/13	0.0
+FMT85	MGH16R	41411	post	MGH03D	FMT27	none	41404.0	7.0	1.0	ngt	vanco	2.0	N	N				5.0	1.0	N		postFMT_CDI	5/17/13	1.0
+FMT81	MGH14R	41414	pre	MGH03D	FMT27	none	41415.0	-1.0	0.0	ngt	combo	2.0	N	Y	41413.0	Y	41414.0			N	c.diff (+) on 5/29/2013 but ssx improved	CDI	5/20/13	1.0
+FMT49	MGH07R	41414	post	MGH03D	FMT2	RNAlater	41332.0	82.0	4.0	ngt	combo	2.0	Y					10.0	2.0	Y		postFMT_CDI	5/20/13	4.0
+FMT77	MGH13R	41415	post	MGH03D	FMT27	RNAlater	41411.0	4.0	1.0	colo	flagyl	2.0	Y					10.0	1.0	N		postFMT_CDI	5/21/13	0.0
+FMT41	MGH02R	41417	post	MGH01D	FMT1	RNAlater	41281.0	136.0	4.0	ngt	vanco	2.0	Y	N					1.0	N		postFMT_CDI	5/23/13	3.0
+FMT44	MGH06R	41417	post	MGH03D	FMT2	none	41326.0	91.0	4.0	colo	combo	2.0	Y					10.0	1.0	N		postFMT_CDI	5/23/13	7.0
+FMT96	MGH19R	41418	pre	MGH07D	FMT33	none	41418.0	0.0	0.0	colo	vanco	4.0	N					2.0	13.0	N		CDI	5/24/13	0.0
+FMT92A	MGH17R	41421	post	MGH03D	FMT27	RNAlater	41407.0	14.0	2.0	ngt	fidaxomycin	2.0	Y					10.0	2.0	N		postFMT_CDI	5/27/13	0.0
+FMT92B	MGH17R	41421	post	MGH03D	FMT27	RNAlater	41407.0	14.0	2.0	ngt	fidaxomycin	2.0	Y					10.0	2.0	N		postFMT_CDI	5/27/13	1.0
+FMT93	MGH18R	41422	pre	MGH07D	FMT34	none	41422.0	0.0	0.0	ngt	vanco	2.0	Y					7.0	5.0	N		CDI	5/28/13	0.0
+FMT97	MGH19R	41422	post	MGH07D	FMT33	none	41418.0	4.0	1.0	colo	vanco	4.0	N					5.0	5.0	N		postFMT_CDI	5/28/13	0.0
+FMT98	MGH19R	41422	post	MGH07D	FMT33	RNAlater	41418.0	4.0	1.0	colo	vanco	4.0	N					5.0	5.0	N		postFMT_CDI	5/28/13	1.0
+FMT72	MGH12R	41424	pre	MGH06D		none	41424.0	0.0	0.0	ngt	combo	2.0	N			Y	41424.0	8.0		Y		CDI	5/30/13	1.0
+FMT95	MGH18R	41427	post	MGH07D	FMT34	RNAlater	41422.0	5.0	1.0	ngt	vanco	2.0	Y					10.0	2.0	N		postFMT_CDI	6/2/13	0.0
+FMT74	MGH12R	41430	post	MGH06D		RNAlater	41424.0	6.0	1.0	ngt	combo	2.0	N					8.0	2.0	Y		postFMT_CDI	6/5/13	1.0
+FMT99	MGH04E	41431	pre	MGH07D	 	none	41431.0	0.0	0.0	ngt	vanco	2.0	N					9.0		Y		CDI	6/6/13	0.0
+FMT106	MGH19R	41435	post	MGH07D	FMT33	RNAlater	41418.0	17.0	3.0	colo	vanco	4.0	Y					9.0	2.0	N		postFMT_CDI	6/10/13	2.0
+FMT103	MGH06E	41436	pre	MGH06D	FMT30	none	41436.0	0.0	0.0	ngt	combo	2.0	N							N		CDI	6/11/13	0.0
+FMT101	MGH05E	41436	pre	MGH07D	FMT34	none	41436.0	0.0	0.0	ngt	vanco	2.0	N							N		CDI	6/11/13	0.0
+FMT102	MGH05E	41438	post	MGH07D	FMT34	RNAlater	41436.0	2.0	1.0	ngt	vanco	2.0	N					8.0		N		postFMT_CDI	6/13/13	0.0
+FMT100	MGH04E	41438	post	MGH07D	FMT34	RNAlater	41431.0	7.0	1.0	ngt	vanco	2.0	Y					10.0		Y		postFMT_CDI	6/13/13	0.0
+FMT109	MGH06E	41438	post	MGH06D	FMT30	RNAlater	41436.0	2.0	1.0	ngt	combo	2.0	Y					8.0		N		postFMT_CDI	6/13/13	0.0
+FMT105	MGH18R	41438	post	MGH07D	FMT34	RNAlater	41422.0	16.0	2.0	ngt	vanco	2.0	Y					10.0	1.0	N		postFMT_CDI	6/13/13	1.0
+FMT110	MGH05E	41456	post	MGH07D	FMT34	RNAlater	41436.0	20.0	3.0	ngt	vanco	2.0	Y					8.0		N		postFMT_CDI	7/1/13	1.0
+FMT108	MGH06D	41457	donor			none																H	7/2/13	4.0

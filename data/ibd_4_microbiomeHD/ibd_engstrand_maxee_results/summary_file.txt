@@ -1,0 +1,19 @@
+DATASET_ID	ibd_engstrand_maxee
+
+#16S_start
+TRIM_LENGTH	200
+OTU_TABLE_DENOVO	ibd_engstrand_maxee.otu_table.100.denovo
+BARCODES_MAP	None
+OTU_TABLE_RDP	ibd_engstrand_maxee.otu_table.100.denovo.rdp_assigned
+OTU_SEQUENCES_FASTA	ibd_engstrand_maxee.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+MAX_ERRORS	2
+PROCESSED	True
+OLIGOTYPE_TABLE	ibd_engstrand_maxee.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	primers.txt
+RAW_FASTQ_FILE	all_fastqs_split.fastq
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

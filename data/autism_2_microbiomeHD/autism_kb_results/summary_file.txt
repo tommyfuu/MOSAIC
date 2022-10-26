@@ -1,0 +1,19 @@
+DATASET_ID	autism_kb
+
+#16S_start
+TRIM_LENGTH	200
+RAW_FASTQ_FILES	aut_fq2sid.txt
+BARCODES_MAP	None
+OTU_TABLE_RDP	autism_kb.otu_table.100.denovo.rdp_assigned
+OTU_SEQUENCES_FASTA	autism_kb.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+OTU_TABLE_DENOVO	autism_kb.otu_table.100.denovo
+PROCESSED	True
+OLIGOTYPE_TABLE	autism_kb.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	aut_primers.txt
+ASCII_ENCODING	ASCII_BASE_33
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

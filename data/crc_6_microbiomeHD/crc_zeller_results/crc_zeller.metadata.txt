@@ -1,0 +1,157 @@
+Subject ID	Sample ID	Age (years)	Gender	BMI (kg/m²)	Country of Residence	Diagnosis	TNM Stage	AJCC Stage	Localization	FOBT	WIF-1 Gene Methylation Test	Group	DiseaseState
+FR-001	CCIS27304052ST-3-0	52	F	20.0	France	Normal				Negative	Negative	Control	H
+FR-003	CCIS13047523ST-4-0	70	M	22.0	France	Normal				Negative	Negative	Control	H
+FR-024	CCIS15794887ST-4-0	37	F	18.0	France	Normal				Negative	Negative	Control	H
+FR-025	CCIS94603952ST-4-0	80	F	21.0	France	Normal				Negative	Negative	Control	H
+FR-026	CCIS74726977ST-3-0	66	M	24.0	France	Small adenoma			LC/RC	Negative		Control	H
+FR-027	CCIS02856720ST-4-0	74	M	27.0	France	Normal				Positive	Negative	Control	H
+FR-030	CCIS16561622ST-4-0	54	M	26.0	France	Normal				Negative	Negative	Control	H
+FR-039	CCIS79210440ST-3-0	65	M	30.0	France	Normal				Positive	Negative	Control	H
+FR-040	CCIS82507866ST-3-0	57	M	24.0	France	Normal				Negative	Negative	Control	H
+FR-051	CCIS19142497ST-3-0	68	M	23.0	France	Large adenoma			LC/RC	Negative	Positive		
+FR-052	CCIS98482370ST-3-0	53	F	30.0	France	Normal				Negative	Negative	Control	H
+FR-053	CCIS07648107ST-4-0	62	F	21.0	France	Normal				Negative	Negative	Control	H
+FR-054	CCIS47745468ST-4-0	63	M	27.0	France	Large adenoma			LC	Negative	Positive		
+FR-060	CCIS00281083ST-3-0	53	M	32.0	France	Normal				Negative	Negative	Control	H
+FR-105	CCIS32452666ST-4-0	68	M	26.0	France	Normal				Negative	Negative	Control	H
+FR-110	CCIS94417875ST-3-0	59	F	25.0	France	Normal				Negative	Negative	Control	H
+FR-113	CCIS51667829ST-4-0	63	M	26.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-115	CCIS27927933ST-4-0	72	M	24.0	France	Normal				Negative	Negative	Control	H
+FR-116	CCIS45571137ST-3-0	55	F	20.0	France	Normal				Negative	Negative	Control	H
+FR-118	CCIS81139242ST-4-0	64	F	20.0	France	Normal				Negative	Negative	Control	H
+FR-121	CCIS21126322ST-4-0	59	M	25.0	France	Normal				Negative	Negative	Control	H
+FR-125	CCIS17669415ST-4-0	72	F	37.0	France	Cancer	T1N0M0	I	LC	Negative	Positive	CRC	CRC
+FR-129	CCIS34604008ST-4-0	63	F	27.0	France	Normal				Negative	Negative	Control	H
+FR-132	CCIS63468405ST-4-0	69	F	25.0	France	Normal				Negative	Negative	Control	H
+FR-139	CCIS16383318ST-4-0	61	F	24.0	France	Normal				Negative	Negative	Control	H
+FR-142	CCIS36699628ST-4-0	68	F	25.0	France	Normal				Negative	Negative	Control	H
+FR-152	CCIS95409808ST-4-0	63	F	21.0	France	Normal				Negative	Negative	Control	H
+FR-156	CCIS74239020ST-4-0	62	M	24.0	France	Normal				Negative	Negative	Control	H
+FR-161	CCIS44676181ST-4-0	48	F	21.0	France	Small adenoma			Rectum	Negative	Negative	Control	H
+FR-162	CCIS56503244ST-3-0	68	M	21.0	France	Large adenoma			RC	Negative	Negative		
+FR-166	CCIS29210128ST-4-0	64	M	27.0	France	Normal				Negative	Negative	Control	H
+FR-169	CCIS05314658ST-4-0	65	F	24.0	France	Normal				Negative	Negative	Control	H
+FR-170	CCIS48725289ST-4-0	62	F	21.0	France	Cancer	T1N0M0	I	Sigma	Positive	Negative	CRC	CRC
+FR-173	CCIS64785924ST-20-0	59	F	25.0	France	Normal				Negative	Negative	Control	H
+FR-187	CCIS71578391ST-4-0	70	M	25.0	France	Normal				Negative	Negative	Control	H
+FR-191	CCIS22275061ST-4-0	62	M	29.0	France	Large adenoma			Rectum	Negative	Negative		
+FR-192	CCIS03473770ST-4-0	29	M	24.0	France	Normal				Negative	Negative	Control	H
+FR-193	CCIS10706551ST-3-0	25	M	24.0	France	Normal				Negative	Negative	Control	H
+FR-194	CCIS50003399ST-4-0	66	F	28.0	France	Normal				Negative	Negative	Control	H
+FR-195	CCIS64773582ST-4-0	63	F	23.0	France	Normal				Negative	Negative	Control	H
+FR-196	CCIS87290971ST-4-0	71	M	29.0	France	Large adenoma			RC	Negative	Negative		
+FR-198	CCIS36797902ST-4-0	63	M	25.0	France	Normal				Negative	Positive	Control	H
+FR-200	CCIS06260551ST-3-0	58	M	24.0	France	Cancer	T3N1M1	IV	LC	Negative	Positive	CRC	CRC
+FR-202	CCIS40244499ST-3-0	87	F	32.0	France	Cancer	T4N0M0	II	RC	Negative	Negative	CRC	CRC
+FR-208	CCIS85214191ST-3-0	63	M	22.0	France	Cancer	T3N1M1	IV	RC	Positive	Positive	CRC	CRC
+FR-211	CCIS77100899ST-4-0	73	M	26.0	France	Large adenoma			LC	Negative	Negative		
+FR-212	CCIS11354283ST-4-0	67	M	27.0	France	Normal				Negative	Negative	Control	H
+FR-213	CCIS50471204ST-4-0	61	F	23.0	France	Normal				Negative	Negative	Control	H
+FR-214	CCIS08668806ST-3-0	63	M	26.0	France	Small adenoma			LC	Negative	Negative	Control	H
+FR-215	CCIS50369211ST-20-0	53	F	33.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-218	CCIS90903952ST-3-0	71	F	22.0	France	Large adenoma			LC/RC	Negative	Negative		
+FR-221	CCIS20795251ST-4-0	71	F	23.0	France	Normal				Negative	Negative	Control	H
+FR-223	CCIS87167916ST-4-0	79	M	30.0	France	Cancer	T4N1M1	IV	Rectum	Positive	Negative	CRC	CRC
+FR-229	CCIS94496512ST-4-0	64	M	28.0	France	Small adenoma			Rectum	Negative	Negative	Control	H
+FR-241	CCIS83574003ST-4-0	60	M	24.0	France	Large adenoma			LC	Positive	Positive		
+FR-249	CCIS90443472ST-4-0	63	M	30.0	France	Large adenoma			LC	Negative	Negative		
+FR-268	CCIS58234805ST-4-0	70	F	26.0	France	Cancer	T3N1M0	III	LC	Positive	Positive	CRC	CRC
+FR-275	CCIS91228662ST-4-0	63	M	31.0	France	Cancer	T1N0M0	I	LC	Negative	Positive	CRC	CRC
+FR-276	CCIS07277498ST-4-0	63	M		France	Normal					Negative	Control	H
+FR-281	CCIS71301801ST-4-0	50	F	24.0	France	Cancer	T1N0M0	I	Rectum	Positive	Positive	CRC	CRC
+FR-282	CCIS24898163ST-4-0	59	M	31.0	France	Small adenoma			Rectum	Negative	Negative	Control	H
+FR-293	CCIS53355328ST-4-0	76	M		France	Cancer	T2N0M0	I	LC	Positive	Positive	CRC	CRC
+FR-294	CCIS90164298ST-4-0	84	M	23.0	France	Normal				Negative	Negative	Control	H
+FR-298	CCIS41222843ST-4-0	73	F	24.0	France	Cancer	T3N1M0	III	LC	Negative	Negative	CRC	CRC
+FR-302	CCIS81887263ST-4-0	59	M	27.0	France	Cancer	T2N0M0	I	Rectum	Positive	Positive	CRC	CRC
+FR-305	CCIS29688262ST-20-0	50	M	25.0	France	Normal				Negative	Positive	Control	H
+FR-310	CCIS87116798ST-4-0	85	F	20.0	France	Cancer	T3N1M1	IV	LC	Negative	Negative	CRC	CRC
+FR-312	CCIS81735969ST-20-0	68	M	26.0	France	Large adenoma			RC	Negative	Negative		
+FR-316	CCIS23164343ST-4-0	62	M	23.0	France	Normal				Negative	Negative	Control	H
+FR-328	CCIS87605453ST-4-0	73	F	26.0	France	Cancer	T3N0M0	II	RC	Positive	Negative	CRC	CRC
+FR-344	CCIS83870198ST-4-0	48	F	24.0	France	Cancer	T1N0M0	I	LC	Negative	Negative	CRC	CRC
+FR-349	CCIS03857607ST-4-0	61	M	23.0	France	Normal				Negative	Negative	Control	H
+FR-376	CCIS61287323ST-4-0	76	M	25.0	France	Cancer	T3N0M0	II	Rectum	Positive	Negative	CRC	CRC
+FR-382	CCIS28384594ST-4-0	89	M	24.0	France	Large adenoma			LC	Negative	Negative		
+FR-390	CCIS63448910ST-4-0	61	F	34.0	France	Normal				Negative	Negative	Control	H
+FR-393	CCIS88007743ST-4-0	67	F	23.0	France	Normal				Negative	Negative	Control	H
+FR-398	CCIS11362406ST-4-0	44	F	26.0	France	Normal				Negative	Negative	Control	H
+FR-399	CCIS51595129ST-4-0	63	F	22.0	France	Normal				Negative	Negative	Control	H
+FR-400	CCIS09568613ST-4-0	67	M	21.0	France	Normal				Negative	Negative	Control	H
+FR-404	CCIS14449628ST-4-0	59	F	20.0	France	Cancer	T4N1M0	III	RC	Negative	Positive	CRC	CRC
+FR-414	CCIS21278152ST-4-0	63	M	25.0	France	Cancer	T3N0M0	II	Sigma	Positive	Negative	CRC	CRC
+FR-419	CCIS25399172ST-4-0	60	M	27.0	France	Small adenoma			LC	Negative	Negative	Control	H
+FR-430	CCIS34055159ST-4-0	80	M	29.0	France	Cancer	T2N0M0	I	LC	Positive	Positive	CRC	CRC
+FR-449	CCIS90166425ST-4-0	78	F	23.0	France	Large adenoma			LC	Negative	Negative		
+FR-450	CCIS76845094ST-20-0	44	M	20.0	France	Cancer	T3N1M1	IV	RC	Positive	Negative	CRC	CRC
+FR-451	CCIS41548810ST-4-0	78	M	19.0	France	Cancer	T3N0M1	IV	LC	Positive	Negative	CRC	CRC
+FR-459	CCIS98512455ST-4-0	63	M	29.0	France	Cancer	T4N1M1	IV	RC	Negative	Negative	CRC	CRC
+FR-460	CCIS07539127ST-4-0	77	F	22.0	France	Normal				Negative	Negative	Control	H
+FR-473	CCIS52234160ST-4-0	64	M	28.0	France	Large adenoma			RC	Negative	Negative		
+FR-474	CCIS50561855ST-4-0	60	F	26.0	France	Large adenoma			LC/RC	Negative	Negative		
+FR-495	CCIS83445808ST-4-0	66	M	29.0	France	Small adenoma			Sigma	Negative	Negative	Control	H
+FR-496	CCIS37250421ST-4-0	59	F	21.0	France	Small adenoma			Rectum	Positive	Negative	Control	H
+FR-500	CCIS35092938ST-4-0	62	F	21.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-503	CCIS50148151ST-4-0	87	F	15.0	France	Cancer	T2N1M0	III	RC	Negative	Negative	CRC	CRC
+FR-504	CCIS62605362ST-3-0	56	F	23.0	France	Cancer	T3N0M0	II	RC	Positive	Negative	CRC	CRC
+FR-505	CCIS87252800ST-4-0	73	M	17.0	France	Cancer	T2N0M0	I	Sigma	Negative	Positive	CRC	CRC
+FR-506	CCIS22958137ST-20-0	60	M	26.0	France	Cancer	T4N1M1	IV	RC	Positive	Negative	CRC	CRC
+FR-507	CCIS48507077ST-4-0	72	F	32.0	France	Small adenoma			Sigma	Negative	Negative	Control	H
+FR-510	CCIS32105356ST-4-0	53	M	30.0	France	Small adenoma			LC/RC	Negative	Negative	Control	H
+FR-539	CCIS81710917ST-20-0	49	M	20.0	France	Small adenoma			Rectum	Negative	Negative	Control	H
+FR-542	CCIS16326685ST-4-0	46	F	29.0	France	Normal				Negative	Negative	Control	H
+FR-548	CCIS11019776ST-4-0	58	M	22.0	France	Large adenoma			LC/RC	Negative	Negative		
+FR-551	CCIS53043478ST-4-0	72	M	22.0	France	Cancer	T3N1M1	IV	LC	Positive	Positive	CRC	CRC
+FR-552	CCIS98832363ST-4-0	55	F	25.0	France	Cancer	T3N1M0	III	LC	Positive	Negative	CRC	CRC
+FR-558	CCIS41692898ST-4-0	67	F	28.0	France	Normal				Negative	Negative	Control	H
+FR-568	CCIS02124300ST-4-0	35	M	23.0	France	Normal				Negative	Negative	Control	H
+FR-596	CCIS44743950ST-4-0	66	M	22.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-606	CCIS10793554ST-4-0	64	M	26.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-617	CCIS59132091ST-4-0	80	F	23.0	France	Cancer	T1N0M0	I	LC	Negative	Negative	CRC	CRC
+FR-626	CCIS96387239ST-4-0	66	M	20.0	France	Small adenoma			LC	Negative	Negative	Control	H
+FR-628	CCIS82146115ST-4-0	51	M	24.0	France	Cancer	T3N1M1	IV	RC	Negative	Negative	CRC	CRC
+FR-643	CCIS31434951ST-20-0	66	M	24.0	France	Small adenoma			LC	Negative	Negative	Control	H
+FR-652	CCIS33816588ST-4-0	64	M	21.0	France	Cancer	T3N1M0	III	LC	Positive	Positive	CRC	CRC
+FR-654	CCIS12656533ST-4-0	51	M	30.0	France	Cancer	T2N1M1	IV	Rectum	Negative	Negative	CRC	CRC
+FR-664	CCIS41806458ST-4-0	59	F		France	Small adenoma			LC	Positive	Negative	Control	H
+FR-666	CCIS53557295ST-4-0	45	M	24.0	France	Small adenoma			Sigma	Negative	Negative	Control	H
+FR-667	CCIS47284573ST-4-0	67	M	25.0	France	Cancer	T4N1M0	III	Rectum	Positive	Negative	CRC	CRC
+FR-672	CCIS76563044ST-4-0	68	M	36.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-682	CCIS93040568ST-20-0	65	M	30.0	France	Normal				Negative	Negative	Control	H
+FR-684	CCIS45793747ST-4-0	67	M	25.0	France	Normal				Negative	Negative	Control	H
+FR-696	CCIS95097901ST-4-0	52	M	24.0	France	Normal				Negative	Negative	Control	H
+FR-716	CCIS80834637ST-4-0	60	F	28.0	France	Normal				Negative	Negative	Control	H
+FR-719	CCIS63910149ST-4-0	49	F	23.0	France	Normal				Negative	Negative	Control	H
+FR-721	CCIS44093303ST-4-0	62	F	20.0	France	Normal				Positive	Negative	Control	H
+FR-722	CCIS84543192ST-4-0	45	F	28.0	France	Cancer	T2N0M0	I	Rectum	Positive	Negative	CRC	CRC
+FR-723	CCIS38765456ST-20-0	79	F	22.0	France	Cancer	T4N1M1	IV	LC	Positive	Positive	CRC	CRC
+FR-726	CCIS00146684ST-4-0	72	F	25.0	France	Normal				Negative	Negative	Control	H
+FR-728	CCIS78100604ST-4-0	64	F	30.0	France	Normal				Negative	Negative	Control	H
+FR-730	CCIS82944710ST-20-0	38	F	22.0	France	Normal				Negative	Negative	Control	H
+FR-734	CCIS55230578ST-4-0	64	M	30.0	France	Cancer	T3N1M1	IV	RC	Negative	Negative	CRC	CRC
+FR-751	CCIS48174381ST-4-0	66	M	25.0	France	Normal				Negative	Negative	Control	H
+FR-759	CCIS88317640ST-4-0	74	M	27.0	France	Normal				Negative	Negative	Control	H
+FR-767	CCIS24254057ST-4-0	69	F	24.0	France	Cancer	T4N1M1	IV	RC	Negative	Negative	CRC	CRC
+FR-768	CCIS78318719ST-4-0	69	F	30.0	France	Cancer	T3N0M0	II	RC	Negative	Negative	CRC	CRC
+FR-770	CCIS44757994ST-4-0	75	M	37.0	France	Cancer	T3N1M0	III	LC	Negative	Positive	CRC	CRC
+FR-772	CCIS65479369ST-4-0	69	F	25.0	France	Cancer	T3N1M1	IV	RC	Positive	Positive	CRC	CRC
+FR-780	CCIS62794166ST-4-0	68	M	23.0	France	Cancer	T3N1M1	IV	LC	Negative		CRC	CRC
+FR-783	CCIS77252613ST-4-0	65	M	26.0	France	Cancer	T1N0M0	I	LC	Positive	Positive	CRC	CRC
+FR-788	CCIS11015875ST-4-0	62	M	26.0	France	Cancer	T3N1M0	III	Rectum	Positive	Negative	CRC	CRC
+FR-790	CCIS55531770ST-4-0	45	F	24.0	France	Small adenoma			Sigma	Negative	Negative	Control	H
+FR-792	CCIS70398272ST-4-0	55	M	24.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-812	CCIS35100175ST-4-0	73	M	40.0	France	Cancer	T1N0M0	I	LC	Negative	Negative	CRC	CRC
+FR-815	CCIS22416007ST-4-0	82	M	24.0	France	Cancer	T4N1M1	IV	LC	Negative	Negative	CRC	CRC
+FR-817	CCIS41288781ST-4-0	74	F	19.0	France	Cancer	T3N0M0	II	RC	Negative	Negative	CRC	CRC
+FR-820	CCIS59903910ST-4-0	76	F	34.0	France	Small adenoma			RC	Negative	Negative	Control	H
+FR-823	CCIS12370844ST-4-0	81	F	39.0	France	Cancer	T2N0M0	I	Rectum	Positive	Positive	CRC	CRC
+FR-824	CCIS72607085ST-4-0	74	F	26.0	France	Cancer	T3NxM1	IV	LC	Negative	Negative	CRC	CRC
+FR-825	CCIS46047672ST-4-0	65	M	24.0	France	Cancer	T4N0M1	IV	LC	Negative	Positive	CRC	CRC
+FR-826	CCIS22906510ST-20-0	77	M	23.0	France	Small adenoma			Sigma	Positive	Negative	Control	H
+FR-827	CCIS52370277ST-4-0	53	M	25.0	France	Cancer	T4N1M1	IV	LC	Negative	Positive	CRC	CRC
+FR-828	CCIS02379307ST-4-0	67	M	28.0	France	Cancer	T1N0M0	I	RC	Positive	Positive	CRC	CRC
+FR-829	CCIS48579360ST-4-0	52	F	23.0	France	Small adenoma			Rectum	Negative	Negative	Control	H
+FR-830	CCIS46467422ST-4-0	54	F	22.0	France	Cancer	T3N1M0	III	RC	Negative	Positive	CRC	CRC
+FR-835	CCIS54027808ST-4-0	52	M	33.0	France	Small adenoma			LC	Positive	Negative	Control	H
+FR-901	CCIS15704761ST-4-0	56	F		France	Cancer	T4N1M1	IV	Sigma	Negative		CRC	CRC
+FR-902	CCIS11558985ST-4-0	56	F		France	Normal				Negative		Control	H

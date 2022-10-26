@@ -1,0 +1,784 @@
+dbotu978		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu1355		Root	rootrank	1.0	Bacteria	domain	1.0	"Verrucomicrobia"	phylum	1.0	Verrucomicrobiae	class	1.0	Verrucomicrobiales	order	1.0	Verrucomicrobiaceae	family	1.0	Akkermansia	genus	1.0
+dbotu1582		Root	rootrank	1.0	Bacteria	domain	1.0	"Verrucomicrobia"	phylum	1.0	Verrucomicrobiae	class	1.0	Verrucomicrobiales	order	1.0	Verrucomicrobiaceae	family	1.0	Akkermansia	genus	1.0
+dbotu1855		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu2455		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.85
+dbotu1377		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.94
+dbotu633		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu494		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.84
+dbotu2661		Root	rootrank	1.0	Bacteria	domain	1.0	"Verrucomicrobia"	phylum	1.0	Verrucomicrobiae	class	1.0	Verrucomicrobiales	order	1.0	Verrucomicrobiaceae	family	1.0	Akkermansia	genus	1.0
+dbotu162		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.9
+dbotu2190		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.6	Bacilli	class	0.29	Lactobacillales	order	0.29	Carnobacteriaceae	family	0.29	Pisciglobus	genus	0.11
+dbotu2325		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1481		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Acidaminococcaceae	family	1.0	Phascolarctobacterium	genus	1.0
+dbotu1324		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu809		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.91
+dbotu2335		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1322		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu592		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu703		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1932		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2666		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.97	Butyricicoccus	genus	0.39
+dbotu640		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.86
+dbotu2500		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.94
+dbotu910		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.99
+dbotu1589		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.97	Clostridiales	order	0.97	Lachnospiraceae	family	0.97	Syntrophococcus	genus	0.38
+dbotu708		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1198		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.83
+dbotu236		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu670		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.96	Anaerostipes	genus	0.44
+dbotu2647		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.96	Anaerofilum	genus	0.49
+dbotu2698		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.98
+dbotu1619		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Sutterellaceae	family	1.0	Parasutterella	genus	1.0
+dbotu1105		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1357		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.89	Clostridiales	order	0.89	Ruminococcaceae	family	0.87	Clostridium IV	genus	0.23
+dbotu2266		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Acidaminococcaceae	family	1.0	Phascolarctobacterium	genus	1.0
+dbotu1949		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.87
+dbotu2469		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu748		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Acidaminococcaceae	family	1.0	Phascolarctobacterium	genus	1.0
+dbotu954		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.99
+dbotu2567		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2376		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.96	Butyricicoccus	genus	0.43
+dbotu2681		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.3
+dbotu2112		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2095		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu2572		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.97	Oscillibacter	genus	0.48
+dbotu104		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Sutterellaceae	family	0.99	Sutterella	genus	0.99
+dbotu912		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.94	Butyricicoccus	genus	0.18
+dbotu1829		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu996		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.82	Clostridia	class	0.69	Clostridiales	order	0.69	Clostridiaceae 4	family	0.3	Geosporobacter	genus	0.14
+dbotu440		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	1.0
+dbotu1068		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.92	Clostridia	class	0.9	Clostridiales	order	0.9	Ruminococcaceae	family	0.79	Ethanoligenens	genus	0.25
+dbotu797		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.85
+dbotu1229		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.81
+dbotu2641		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.82
+dbotu1537		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Clostridium XVIII	genus	1.0
+dbotu792		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.98	Clostridiales	order	0.98	Lachnospiraceae	family	0.98	Lachnospiracea_incertae_sedis	genus	0.89
+dbotu108		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1616		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.98
+dbotu2071		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Parabacteroides	genus	1.0
+dbotu2272		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Erysipelotrichia	class	0.77	Erysipelotrichales	order	0.77	Erysipelotrichaceae	family	0.77	Coprobacillus	genus	0.39
+dbotu1912		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.85
+dbotu1338		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2041		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.97
+dbotu196		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.7	Clostridia	class	0.65	Clostridiales	order	0.65	Ruminococcaceae	family	0.22	Acetanaerobacterium	genus	0.04
+dbotu1607		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1759		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu884		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Collinsella	genus	1.0
+dbotu2123		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.98	Clostridium IV	genus	0.53
+dbotu787		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1910		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu272		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1763		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.93	Lachnospiracea_incertae_sedis	genus	0.56
+dbotu2453		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Clostridiales_Incertae Sedis XIII	family	0.93	Anaerovorax	genus	0.87
+dbotu408		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2161		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.86	Butyrivibrio	genus	0.23
+dbotu1429		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.98
+dbotu599		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.98	Clostridium IV	genus	0.35
+dbotu1088		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	1.0
+dbotu1426		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Clostridium XVIII	genus	1.0
+dbotu1638		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.87
+dbotu1605		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.96	Anaerotruncus	genus	0.37
+dbotu338		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.83
+dbotu2568		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Flavonifractor	genus	0.58
+dbotu249		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Peptostreptococcaceae	family	0.95	Clostridium XI	genus	0.78
+dbotu1660		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.81
+dbotu1947		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu790		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1089		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu242		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2704		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.97
+dbotu422		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Clostridia	class	0.83	Clostridiales	order	0.83	Ruminococcaceae	family	0.78	Anaerotruncus	genus	0.14
+dbotu4		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.95	Butyricicoccus	genus	0.19
+dbotu988		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Anaerotruncus	genus	0.63
+dbotu1345		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1972		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.97	Anaerotruncus	genus	0.29
+dbotu2338		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.88
+dbotu1041		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu2270		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.73	Clostridia	class	0.69	Clostridiales	order	0.69	Ruminococcaceae	family	0.22	Acetanaerobacterium	genus	0.06
+dbotu386		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.99
+dbotu2219		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Acidaminococcaceae	family	1.0	Phascolarctobacterium	genus	1.0
+dbotu2605		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.96	Anaerotruncus	genus	0.38
+dbotu2149		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1382		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.87
+dbotu1035		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVb	genus	1.0
+dbotu2694		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.87
+dbotu1203		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.94	Oscillibacter	genus	0.79
+dbotu1245		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Erysipelotrichia	class	0.82	Erysipelotrichales	order	0.82	Erysipelotrichaceae	family	0.82	Clostridium XVIII	genus	0.43
+dbotu967		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Prevotellaceae"	family	1.0	Prevotella	genus	1.0
+dbotu2354		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu726		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu811		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Acidaminococcaceae	family	1.0	Phascolarctobacterium	genus	1.0
+dbotu2656		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.84
+dbotu743		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.96	Clostridiales	order	0.96	Ruminococcaceae	family	0.91	Sporobacter	genus	0.46
+dbotu847		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.45
+dbotu2160		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Dialister	genus	1.0
+dbotu1978		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.96	Oscillibacter	genus	0.77
+dbotu2460		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu665		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.96
+dbotu370		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.98
+dbotu462		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1237		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Blautia	genus	1.0
+dbotu2412		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Peptostreptococcaceae	family	1.0	Clostridium XI	genus	1.0
+dbotu2688		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.96	Clostridiales	order	0.96	Ruminococcaceae	family	0.93	Anaerotruncus	genus	0.26
+dbotu777		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu855		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.86
+dbotu2172		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.54
+dbotu2723		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.98	Anaerofilum	genus	0.5
+dbotu419		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.59	Clostridia	class	0.57	Clostridiales	order	0.56	Clostridiaceae 1	family	0.13	Fervidicella	genus	0.11
+dbotu679		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Peptostreptococcaceae	family	0.96	Clostridium XI	genus	0.88
+dbotu1290		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.98
+dbotu1125		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2370		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Pseudoflavonifractor	genus	0.83
+dbotu1552		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu201		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.75	Clostridia	class	0.7	Clostridiales	order	0.7	Ruminococcaceae	family	0.24	Acetanaerobacterium	genus	0.05
+dbotu307		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu940		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Flavonifractor	genus	0.58
+dbotu1048		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.97	Anaerostipes	genus	0.46
+dbotu2122		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.98	Ruminococcus	genus	0.75
+dbotu784		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.98
+dbotu1253		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.9
+dbotu1850		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.99	Anaerostipes	genus	0.52
+dbotu1979		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.86	Butyrivibrio	genus	0.23
+dbotu681		Root	rootrank	1.0	Bacteria	domain	0.99	"Actinobacteria"	phylum	0.99	Actinobacteria	class	0.99	Coriobacteridae	subclass	0.99	Coriobacteriales	order	0.99	"Coriobacterineae"	suborder	0.99	Coriobacteriaceae	family	0.99	Coriobacterium	genus	0.89
+dbotu2074		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.93	Clostridia	class	0.92	Clostridiales	order	0.9	Lachnospiraceae	family	0.42	Lachnoanaerobaculum	genus	0.36
+dbotu160		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.89
+dbotu1217		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2732		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Parabacteroides	genus	1.0
+dbotu2052		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVb	genus	1.0
+dbotu82		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.95	Clostridiales	order	0.95	Lachnospiraceae	family	0.78	Oribacterium	genus	0.32
+dbotu270		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1228		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.84
+dbotu1523		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu349		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu431		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu903		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1630		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	0.99	"Bacteroidales"	order	0.99	Bacteroidaceae	family	0.99	Bacteroides	genus	0.99
+dbotu1955		Root	rootrank	1.0	Bacteria	domain	0.96	Firmicutes	phylum	0.4	Clostridia	class	0.36	Clostridiales	order	0.33	Clostridiales_Incertae Sedis IV	family	0.1	Mahella	genus	0.1
+dbotu2644		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.98
+dbotu1768		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.79
+dbotu1849		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.6
+dbotu137		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1258		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Roseburia	genus	1.0
+dbotu2693		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.79	Clostridiales	order	0.79	Clostridiaceae 4	family	0.23	Thermotalea	genus	0.13
+dbotu1455		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.53	Clostridia	class	0.47	Clostridiales	order	0.46	Ruminococcaceae	family	0.16	Saccharofermentans	genus	0.11
+dbotu1709		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1860		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.6	Bacilli	class	0.29	Lactobacillales	order	0.29	Carnobacteriaceae	family	0.29	Pisciglobus	genus	0.11
+dbotu2411		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1135		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2139		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2146		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2321		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Streptococcaceae	family	1.0	Streptococcus	genus	1.0
+dbotu832		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Faecalibacterium	genus	0.99
+dbotu853		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2659		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1420		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.4
+dbotu208		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.98	Lachnospiracea_incertae_sedis	genus	0.77
+dbotu2069		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	0.44
+dbotu318		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu819		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2333		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.82	Clostridiales	order	0.82	Ruminococcaceae	family	0.72	Cellulosibacter	genus	0.24
+dbotu399		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Sutterellaceae	family	1.0	Parasutterella	genus	1.0
+dbotu2296		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Erysipelotrichia	class	0.76	Erysipelotrichales	order	0.76	Erysipelotrichaceae	family	0.76	Coprobacillus	genus	0.38
+dbotu818		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1100		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.94	Clostridium XlVb	genus	0.93
+dbotu1306		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.82	Clostridiales	order	0.8	Eubacteriaceae	family	0.25	Alkalibaculum	genus	0.17
+dbotu2539		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.99
+dbotu2089		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.94	Clostridia	class	0.92	Clostridiales	order	0.92	Ruminococcaceae	family	0.84	Oscillibacter	genus	0.27
+dbotu203		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Clostridia	class	0.88	Clostridiales	order	0.88	Clostridiaceae 4	family	0.22	Thermotalea	genus	0.11
+dbotu1273		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.96	Clostridiales	order	0.96	Ruminococcaceae	family	0.95	Oscillibacter	genus	0.81
+dbotu1822		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Lachnospiraceae	family	0.98	Syntrophococcus	genus	0.41
+dbotu2462		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2640		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu146		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Clostridia	class	0.87	Clostridiales	order	0.87	Ruminococcaceae	family	0.85	Acetivibrio	genus	0.31
+dbotu406		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Sutterellaceae	family	1.0	Parasutterella	genus	1.0
+dbotu1236		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1264		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu1802		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Erysipelotrichia	class	0.97	Erysipelotrichales	order	0.97	Erysipelotrichaceae	family	0.97	Coprobacillus	genus	0.56
+dbotu2140		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Streptococcaceae	family	1.0	Streptococcus	genus	1.0
+dbotu1349		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.91	Clostridiales	order	0.91	Clostridiales_Incertae Sedis XIII	family	0.88	Mogibacterium	genus	0.72
+dbotu1526		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Enterococcaceae	family	1.0	Enterococcus	genus	1.0
+dbotu17		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Lachnospiraceae	family	0.81	Blautia	genus	0.36
+dbotu112		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu531		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Roseburia	genus	0.95
+dbotu892		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Acidaminococcaceae	family	0.96	Succinispira	genus	0.92
+dbotu2363		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.88	Clostridia	class	0.86	Clostridiales	order	0.86	Ruminococcaceae	family	0.81	Anaerotruncus	genus	0.1
+dbotu2454		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Erysipelotrichia	class	0.98	Erysipelotrichales	order	0.98	Erysipelotrichaceae	family	0.98	Erysipelotrichaceae_incertae_sedis	genus	0.98
+dbotu2581		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	1.0
+dbotu2638		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.86
+dbotu2710		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Escherichia/Shigella	genus	0.67
+dbotu454		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu801		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Erysipelotrichia	class	0.86	Erysipelotrichales	order	0.86	Erysipelotrichaceae	family	0.86	Erysipelotrichaceae_incertae_sedis	genus	0.83
+dbotu1693		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Prevotellaceae"	family	1.0	Paraprevotella	genus	1.0
+dbotu181		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1010		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.99
+dbotu1419		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.94	Sporobacter	genus	0.55
+dbotu1564		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	0.99
+dbotu2236		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.44
+dbotu107		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Turicibacter	genus	1.0
+dbotu404		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Peptostreptococcaceae	family	0.99	Clostridium XI	genus	0.83
+dbotu559		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Clostridium IV	genus	0.99
+dbotu688		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.8	Clostridiales	order	0.8	Peptococcaceae 1	family	0.39	Peptococcus	genus	0.38
+dbotu1856		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Lachnospiraceae	family	0.79	Butyrivibrio	genus	0.12
+dbotu12		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Veillonella	genus	1.0
+dbotu178		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Dialister	genus	0.99
+dbotu1126		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.87
+dbotu667		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Erysipelotrichia	class	0.97	Erysipelotrichales	order	0.97	Erysipelotrichaceae	family	0.97	Clostridium XVIII	genus	0.92
+dbotu686		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.84
+dbotu687		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	1.0
+dbotu717		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu883		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.83
+dbotu1578		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Butyricicoccus	genus	0.94
+dbotu2626		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.98	Butyricicoccus	genus	0.79
+dbotu206		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.64	Clostridia	class	0.53	Clostridiales	order	0.53	Clostridiales_Incertae Sedis IV	family	0.17	Mahella	genus	0.17
+dbotu700		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1078		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.91	Ruminococcus	genus	0.8
+dbotu1761		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.99
+dbotu2086		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Peptostreptococcaceae	family	0.99	Clostridium XI	genus	0.91
+dbotu2280		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.61	Bacilli	class	0.28	Lactobacillales	order	0.28	Carnobacteriaceae	family	0.28	Pisciglobus	genus	0.11
+dbotu2431		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.98	Butyricicoccus	genus	0.97
+dbotu182		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.79
+dbotu380		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Clostridiales_Incertae Sedis XII	family	0.71	Fusibacter	genus	0.65
+dbotu403		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Slackia	genus	1.0
+dbotu909		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1665		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.42
+dbotu2120		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.96
+dbotu2304		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.96
+dbotu2582		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.84
+dbotu524		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu1673		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Prevotellaceae"	family	1.0	Paraprevotella	genus	1.0
+dbotu1732		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Eubacteriaceae	family	1.0	Eubacterium	genus	0.67
+dbotu48		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.63	Ruminococcus	genus	0.63
+dbotu56		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.82	Blautia	genus	0.37
+dbotu593		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.99	Syntrophococcus	genus	0.48
+dbotu1611		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Pseudoflavonifractor	genus	0.45
+dbotu77		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.52
+dbotu463		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu930		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Clostridia	class	0.84	Clostridiales	order	0.84	Ruminococcaceae	family	0.78	Anaerotruncus	genus	0.17
+dbotu1230		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Roseburia	genus	0.99
+dbotu1313		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Streptococcaceae	family	1.0	Streptococcus	genus	1.0
+dbotu1502		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Roseburia	genus	0.99
+dbotu1840		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Anaerotruncus	genus	0.52
+dbotu2468		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.83	Clostridiales	order	0.81	Eubacteriaceae	family	0.19	Alkalibaculum	genus	0.08
+dbotu2600		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.98	Clostridiales	order	0.98	Clostridiales_Incertae Sedis XIII	family	0.91	Anaerovorax	genus	0.85
+dbotu2714		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.63	Clostridium IV	genus	0.56
+dbotu822		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.82	Blautia	genus	0.38
+dbotu861		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.92
+dbotu1067		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Lachnospiraceae	family	0.95	Clostridium XlVa	genus	0.88
+dbotu1076		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	0.99
+dbotu1287		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Prevotellaceae"	family	1.0	Paraprevotella	genus	1.0
+dbotu2434		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu54		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.87
+dbotu58		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.95	Clostridiales	order	0.95	Clostridiales_Incertae Sedis XIII	family	0.9	Anaerovorax	genus	0.86
+dbotu59		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Parabacteroides	genus	1.0
+dbotu346		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Dialister	genus	1.0
+dbotu901		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Clostridium IV	genus	1.0
+dbotu926		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Collinsella	genus	1.0
+dbotu957		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.75
+dbotu1348		Root	rootrank	1.0	Bacteria	domain	0.94	"Proteobacteria"	phylum	0.54	Gammaproteobacteria	class	0.25	Thiotrichales	order	0.12	Piscirickettsiaceae	family	0.11	Galenea	genus	0.09
+dbotu1600		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.82	Clostridia	class	0.8	Clostridiales	order	0.8	Clostridiales_Incertae Sedis XI	family	0.26	Parvimonas	genus	0.26
+dbotu1813		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Pseudoflavonifractor	genus	0.62
+dbotu1952		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Butyricicoccus	genus	0.95
+dbotu2356		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2404		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.85	Clostridiales	order	0.85	Ruminococcaceae	family	0.78	Oscillibacter	genus	0.64
+dbotu2524		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Sutterellaceae	family	1.0	Sutterella	genus	1.0
+dbotu19		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu390		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Erysipelotrichia	class	0.98	Erysipelotrichales	order	0.98	Erysipelotrichaceae	family	0.98	Clostridium XVIII	genus	0.98
+dbotu1551		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Prevotellaceae"	family	1.0	Paraprevotella	genus	1.0
+dbotu1642		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Collinsella	genus	1.0
+dbotu2091		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.99
+dbotu1384		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.86
+dbotu1612		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.65	Bacilli	class	0.29	Lactobacillales	order	0.29	Carnobacteriaceae	family	0.29	Pisciglobus	genus	0.11
+dbotu1842		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.89	Clostridiales	order	0.89	Ruminococcaceae	family	0.88	Oscillibacter	genus	0.56
+dbotu2238		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Parabacteroides	genus	1.0
+dbotu126		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Enterobacter	genus	0.55
+dbotu205		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu275		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Erysipelotrichia	class	0.96	Erysipelotrichales	order	0.96	Erysipelotrichaceae	family	0.96	Clostridium XVIII	genus	0.91
+dbotu515		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.97	Butyricicoccus	genus	0.42
+dbotu1121		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Pseudoflavonifractor	genus	0.83
+dbotu1422		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.83	Clostridia	class	0.82	Clostridiales	order	0.8	Eubacteriaceae	family	0.19	Alkalibaculum	genus	0.09
+dbotu1562		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.98	Oscillibacter	genus	0.76
+dbotu1697		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Coprobacillus	genus	1.0
+dbotu1754		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.82
+dbotu1926		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2093		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Roseburia	genus	0.96
+dbotu2459		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.7	Clostridia	class	0.68	Clostridiales	order	0.65	Eubacteriaceae	family	0.18	Alkalibaculum	genus	0.09
+dbotu371		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.6	Clostridia	class	0.59	Clostridiales	order	0.59	Gracilibacteraceae	family	0.2	Gracilibacter	genus	0.2
+dbotu507		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	1.0
+dbotu933		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.77
+dbotu1075		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.55
+dbotu1469		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	0.86	Actinobacteria	class	0.86	Coriobacteridae	subclass	0.85	Coriobacteriales	order	0.85	"Coriobacterineae"	suborder	0.85	Coriobacteriaceae	family	0.85	Gordonibacter	genus	0.48
+dbotu1998		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.94	Clostridiales	order	0.94	Ruminococcaceae	family	0.86	Sporobacter	genus	0.4
+dbotu2159		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.99	"Bacteroidia"	class	0.84	"Bacteroidales"	order	0.84	"Porphyromonadaceae"	family	0.79	Barnesiella	genus	0.5
+dbotu2701		Root	rootrank	1.0	Bacteria	domain	1.0	Cyanobacteria/Chloroplast	phylum	1.0	Chloroplast	class	1.0	Chloroplast	family	1.0	Streptophyta	genus	1.0
+dbotu100		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.99
+dbotu968		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	1.0
+dbotu1090		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	0.99	Bacteroides	genus	0.99
+dbotu1113		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Dialister	genus	1.0
+dbotu1340		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.97	Clostridiales	order	0.97	Clostridiales_Incertae Sedis XIII	family	0.94	Anaerovorax	genus	0.91
+dbotu1725		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1902		Root	rootrank	1.0	Bacteria	domain	1.0	"Lentisphaerae"	phylum	0.23	"Lentisphaeria"	class	0.23	Victivallales	order	0.23	"Victivallaceae"	family	0.23	Victivallis	genus	0.23
+dbotu2168		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.44
+dbotu2456		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVa	genus	1.0
+dbotu44		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu230		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.84	Clostridia	class	0.76	Clostridiales	order	0.76	Ruminococcaceae	family	0.43	Papillibacter	genus	0.09
+dbotu844		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Roseburia	genus	0.99
+dbotu1069		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1278		Root	rootrank	1.0	Bacteria	domain	0.95	Firmicutes	phylum	0.34	Clostridia	class	0.3	Clostridiales	order	0.26	Clostridiales_Incertae Sedis IV	family	0.1	Mahella	genus	0.1
+dbotu1328		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Clostridium IV	genus	0.65
+dbotu1376		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu1730		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1982		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	1.0
+dbotu2048		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.98	Clostridium XlVa	genus	0.96
+dbotu2308		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.82	Clostridia	class	0.82	Clostridiales	order	0.82	Ruminococcaceae	family	0.82	Ethanoligenens	genus	0.29
+dbotu2513		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.82	Clostridiales	order	0.82	Ruminococcaceae	family	0.79	Anaerotruncus	genus	0.14
+dbotu2715		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Anaerotruncus	genus	0.52
+dbotu543		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.95	Oscillibacter	genus	0.69
+dbotu1305		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.94	Blautia	genus	0.72
+dbotu1390		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.7	Clostridia	class	0.65	Clostridiales	order	0.65	Ruminococcaceae	family	0.24	Acetanaerobacterium	genus	0.05
+dbotu1717		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.99	Lachnospiracea_incertae_sedis	genus	0.92
+dbotu1945		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.98	Deltaproteobacteria	class	0.96	Desulfovibrionales	order	0.91	Desulfovibrionaceae	family	0.91	Desulfovibrio	genus	0.84
+dbotu2337		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVa	genus	0.96
+dbotu2342		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu2588		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.55
+dbotu2629		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.87	Ethanoligenens	genus	0.13
+dbotu2711		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Clostridiales_Incertae Sedis XIII	family	0.92	Anaerovorax	genus	0.88
+dbotu191		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Oscillibacter	genus	0.78
+dbotu232		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.98	Blautia	genus	0.86
+dbotu568		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.81	Clostridia	class	0.71	Clostridiales	order	0.67	Peptostreptococcaceae	family	0.21	Sporacetigenium	genus	0.2
+dbotu800		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Erysipelotrichia	class	0.97	Erysipelotrichales	order	0.97	Erysipelotrichaceae	family	0.97	Clostridium XVIII	genus	0.97
+dbotu1153		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.92
+dbotu1164		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.88	Clostridia	class	0.83	Clostridiales	order	0.83	Ruminococcaceae	family	0.7	Anaerotruncus	genus	0.4
+dbotu1281		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Peptostreptococcaceae	family	1.0	Clostridium XI	genus	1.0
+dbotu1381		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Oscillibacter	genus	0.47
+dbotu1414		Root	rootrank	1.0	Bacteria	domain	1.0	Cyanobacteria/Chloroplast	phylum	1.0	Chloroplast	class	1.0	Chloroplast	family	1.0	Streptophyta	genus	1.0
+dbotu1454		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu1463		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.8	Butyrivibrio	genus	0.24
+dbotu1567		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Butyricicoccus	genus	0.81
+dbotu1721		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.97	Lachnospiracea_incertae_sedis	genus	0.77
+dbotu2221		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.98	Blautia	genus	0.82
+dbotu2293		Root	rootrank	1.0	Bacteria	domain	0.95	"Aquificae"	phylum	0.11	Aquificae	class	0.11	Aquificales	order	0.1	Aquificaceae	family	0.1	Hydrogenobaculum	genus	0.1
+dbotu2730		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.96	Clostridiales	order	0.96	Lachnospiraceae	family	0.95	Lachnospiracea_incertae_sedis	genus	0.72
+dbotu93		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.98	Blautia	genus	0.77
+dbotu213		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.65	Clostridia	class	0.63	Clostridiales	order	0.62	Clostridiales_Incertae Sedis IV	family	0.18	Mahella	genus	0.18
+dbotu266		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.83	Clostridia	class	0.77	Clostridiales	order	0.77	Peptococcaceae 1	family	0.43	Peptococcus	genus	0.43
+dbotu421		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu785		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.97	Clostridium IV	genus	0.56
+dbotu889		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.98	Anaerostipes	genus	0.41
+dbotu1042		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Negativicutes	class	0.42	Selenomonadales	order	0.42	Veillonellaceae	family	0.41	Anaeroglobus	genus	0.28
+dbotu1594		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.92	Clostridia	class	0.87	Clostridiales	order	0.87	Ruminococcaceae	family	0.85	Acetivibrio	genus	0.33
+dbotu1662		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Catenibacterium	genus	1.0
+dbotu1781		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.96	Howardella	genus	0.96
+dbotu2226		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.84
+dbotu2442		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVa	genus	0.36
+dbotu2622		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.98	Butyricicoccus	genus	0.82
+dbotu480		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.98
+dbotu537		Root	rootrank	1.0	Bacteria	domain	0.93	Firmicutes	phylum	0.36	Clostridia	class	0.23	Clostridiales	order	0.22	Lachnospiraceae	family	0.19	Lactonifactor	genus	0.13
+dbotu764		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.86	Clostridiales	order	0.84	Eubacteriaceae	family	0.25	Alkalibaculum	genus	0.18
+dbotu2592		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.98	Ruminococcus	genus	0.85
+dbotu2627		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Subdoligranulum	genus	0.73
+dbotu2728		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.86	Clostridia	class	0.83	Clostridiales	order	0.83	Clostridiales_Incertae Sedis XI	family	0.24	Parvimonas	genus	0.23
+dbotu993		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.89	Clostridia	class	0.89	Clostridiales	order	0.89	Ruminococcaceae	family	0.71	Acetivibrio	genus	0.41
+dbotu1014		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu1177		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Faecalibacterium	genus	0.39
+dbotu1247		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.78	Clostridia	class	0.73	Clostridiales	order	0.7	Ruminococcaceae	family	0.48	Acetivibrio	genus	0.31
+dbotu1439		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVa	genus	0.42
+dbotu1837		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.83	Clostridia	class	0.8	Clostridiales	order	0.8	Ruminococcaceae	family	0.72	Cellulosibacter	genus	0.24
+dbotu2143		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.92	Clostridiales	order	0.92	Ruminococcaceae	family	0.85	Sporobacter	genus	0.33
+dbotu2173		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.99	Coprococcus	genus	0.32
+dbotu2220		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Negativicutes	class	0.42	Selenomonadales	order	0.42	Veillonellaceae	family	0.41	Anaeroglobus	genus	0.28
+dbotu2541		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Barnesiella	genus	1.0
+dbotu2564		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Flavonifractor	genus	0.46
+dbotu51		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.93	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.82	Sporobacter	genus	0.25
+dbotu159		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu417		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu432		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu439		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu567		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Clostridium IV	genus	1.0
+dbotu612		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.8
+dbotu655		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu720		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.81	Clostridia	class	0.79	Clostridiales	order	0.79	Clostridiales_Incertae Sedis XI	family	0.23	Parvimonas	genus	0.23
+dbotu1342		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Prevotellaceae"	family	1.0	Prevotella	genus	1.0
+dbotu1579		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Lachnospiraceae	family	0.96	Blautia	genus	0.89
+dbotu1731		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Blautia	genus	1.0
+dbotu1958		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.99	"Bacteroidia"	class	0.84	"Bacteroidales"	order	0.84	"Porphyromonadaceae"	family	0.79	Barnesiella	genus	0.5
+dbotu2284		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Anaerotruncus	genus	0.68
+dbotu2348		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Adlercreutzia	genus	0.48
+dbotu2446		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.77	Clostridia	class	0.7	Clostridiales	order	0.7	Clostridiales_Incertae Sedis IV	family	0.4	Mahella	genus	0.4
+dbotu300		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.98	Clostridium XlVa	genus	0.97
+dbotu585		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu741		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.81	Clostridia	class	0.8	Clostridiales	order	0.8	Ruminococcaceae	family	0.62	Ethanoligenens	genus	0.07
+dbotu985		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.81	Clostridiales	order	0.81	Lachnospiraceae	family	0.43	Lachnobacterium	genus	0.01
+dbotu1423		Root	rootrank	1.0	Bacteria	domain	1.0	"Lentisphaerae"	phylum	0.13	"Lentisphaeria"	class	0.13	Victivallales	order	0.13	"Victivallaceae"	family	0.13	Victivallis	genus	0.13
+dbotu1431		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.88	Clostridia	class	0.87	Clostridiales	order	0.87	Ruminococcaceae	family	0.62	Cellulosibacter	genus	0.18
+dbotu1433		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Sutterellaceae	family	1.0	Parasutterella	genus	1.0
+dbotu1666		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.82	Clostridiales	order	0.82	Clostridiales_Incertae Sedis XIII	family	0.73	Mogibacterium	genus	0.57
+dbotu1807		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.94	Clostridiales	order	0.94	Peptococcaceae 1	family	0.45	Peptococcus	genus	0.45
+dbotu2213		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.94	Clostridiales	order	0.94	Ruminococcaceae	family	0.92	Ruminococcus	genus	0.72
+dbotu173		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.95	Gemmiger	genus	0.31
+dbotu514		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.72	Clostridia	class	0.69	Clostridiales	order	0.69	Ruminococcaceae	family	0.67	Anaerotruncus	genus	0.23
+dbotu735		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.71	Clostridia	class	0.68	Clostridiales	order	0.68	Ruminococcaceae	family	0.68	Anaerotruncus	genus	0.25
+dbotu956		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.73	Clostridia	class	0.71	Clostridiales	order	0.7	Clostridiales_Incertae Sedis IV	family	0.18	Mahella	genus	0.18
+dbotu1029		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Odoribacter	genus	1.0
+dbotu1388		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.79	Clostridiales	order	0.79	Ruminococcaceae	family	0.76	Acetivibrio	genus	0.09
+dbotu1392		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.5	Clostridia	class	0.46	Clostridiales	order	0.46	Peptococcaceae 1	family	0.2	Peptococcus	genus	0.2
+dbotu1565		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.98	Flavobacteriia	class	0.32	"Flavobacteriales"	order	0.32	Cryomorphaceae	family	0.27	Wandonia	genus	0.27
+dbotu1773		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Eubacteriaceae	family	0.99	Acetobacterium	genus	0.68
+dbotu1819		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1877		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Lactobacillaceae	family	1.0	Lactobacillus	genus	1.0
+dbotu1919		Root	rootrank	1.0	Bacteria	domain	1.0	"Lentisphaerae"	phylum	0.27	"Lentisphaeria"	class	0.27	Victivallales	order	0.27	"Victivallaceae"	family	0.27	Victivallis	genus	0.27
+dbotu2005		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Barnesiella	genus	1.0
+dbotu2010		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.93	Clostridiales	order	0.93	Ruminococcaceae	family	0.86	Sporobacter	genus	0.4
+dbotu2037		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu2264		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu2336		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.63	Bacilli	class	0.26	Lactobacillales	order	0.26	Carnobacteriaceae	family	0.26	Pisciglobus	genus	0.09
+dbotu2345		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.72	Clostridia	class	0.63	Clostridiales	order	0.63	Ruminococcaceae	family	0.5	Subdoligranulum	genus	0.31
+dbotu2475		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XI	family	1.0	Peptoniphilus	genus	1.0
+dbotu2562		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Roseburia	genus	1.0
+dbotu3		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.91	Clostridiales	order	0.91	Clostridiales_Incertae Sedis XIII	family	0.82	Mogibacterium	genus	0.6
+dbotu67		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Streptococcaceae	family	1.0	Streptococcus	genus	1.0
+dbotu97		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.94	Clostridiales	order	0.94	Lachnospiraceae	family	0.94	Marvinbryantia	genus	0.37
+dbotu202		Root	rootrank	1.0	Bacteria	domain	0.97	"Bacteroidetes"	phylum	0.27	Cytophagia	class	0.11	Cytophagales	order	0.11	Cytophagaceae	family	0.11	Sporocytophaga	genus	0.09
+dbotu326		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Enterobacter	genus	0.49
+dbotu582		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Blautia	genus	0.97
+dbotu768		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Erysipelotrichia	class	0.97	Erysipelotrichales	order	0.97	Erysipelotrichaceae	family	0.97	Clostridium XVIII	genus	0.97
+dbotu873		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Holdemania	genus	1.0
+dbotu1427		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XI	family	1.0	Parvimonas	genus	1.0
+dbotu1555		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.88	Ethanoligenens	genus	0.46
+dbotu1632		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.92	Clostridiales	order	0.92	Ruminococcaceae	family	0.91	Faecalibacterium	genus	0.31
+dbotu1878		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Clostridiales_Incertae Sedis XIII	family	0.93	Anaerovorax	genus	0.66
+dbotu1946		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.88	Ethanoligenens	genus	0.51
+dbotu2197		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVb	genus	1.0
+dbotu2274		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.84	Clostridia	class	0.77	Clostridiales	order	0.77	Ruminococcaceae	family	0.43	Papillibacter	genus	0.09
+dbotu216		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Prevotellaceae"	family	1.0	Paraprevotella	genus	1.0
+dbotu504		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Blautia	genus	1.0
+dbotu611		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Escherichia/Shigella	genus	0.57
+dbotu938		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Veillonella	genus	1.0
+dbotu994		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.78	Clostridia	class	0.76	Clostridiales	order	0.73	Eubacteriaceae	family	0.16	Alkalibaculum	genus	0.09
+dbotu1070		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Adlercreutzia	genus	0.21
+dbotu1216		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu1227		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Adlercreutzia	genus	0.45
+dbotu1636		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu1716		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.97	Clostridiales	order	0.97	Clostridiales_Incertae Sedis XIII	family	0.86	Anaerovorax	genus	0.85
+dbotu1780		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.83	Clostridia	class	0.78	Clostridiales	order	0.78	Ruminococcaceae	family	0.5	Faecalibacterium	genus	0.09
+dbotu2003		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.94	Clostridiales	order	0.94	Peptococcaceae 1	family	0.51	Peptococcus	genus	0.49
+dbotu2021		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Enterococcaceae	family	1.0	Enterococcus	genus	1.0
+dbotu2094		Root	rootrank	1.0	Bacteria	domain	0.95	Firmicutes	phylum	0.42	Clostridia	class	0.26	Thermoanaerobacterales	order	0.12	Thermoanaerobacteraceae	family	0.12	Caloribacterium	genus	0.12
+dbotu2102		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.56	Erysipelotrichia	class	0.27	Erysipelotrichales	order	0.27	Erysipelotrichaceae	family	0.27	Turicibacter	genus	0.24
+dbotu2103		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.92	Clostridia	class	0.9	Clostridiales	order	0.9	Ruminococcaceae	family	0.75	Acetivibrio	genus	0.31
+dbotu2491		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Gordonibacter	genus	1.0
+dbotu2591		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.92	Clostridiales	order	0.92	Lachnospiraceae	family	0.79	Oribacterium	genus	0.37
+dbotu2721		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Slackia	genus	1.0
+dbotu302		Root	rootrank	1.0	Bacteria	domain	1.0	"Verrucomicrobia"	phylum	1.0	Verrucomicrobiae	class	1.0	Verrucomicrobiales	order	1.0	Verrucomicrobiaceae	family	1.0	Akkermansia	genus	1.0
+dbotu368		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.88	Clostridiales	order	0.85	Incertae Sedis IV	family	0.07	Caldicoprobacter	genus	0.07
+dbotu511		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.52	Bacilli	class	0.27	Lactobacillales	order	0.15	Carnobacteriaceae	family	0.11	Isobaculum	genus	0.08
+dbotu605		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Howardella	genus	1.0
+dbotu837		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.82	Clostridia	class	0.79	Clostridiales	order	0.71	Ruminococcaceae	family	0.24	Anaerotruncus	genus	0.18
+dbotu895		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.89	Clostridiales	order	0.89	Lachnospiraceae	family	0.76	Oribacterium	genus	0.47
+dbotu946		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.7	Clostridiales	order	0.7	Peptococcaceae 1	family	0.31	Dehalobacter	genus	0.22
+dbotu986		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Erysipelotrichia	class	0.97	Erysipelotrichales	order	0.97	Erysipelotrichaceae	family	0.97	Clostridium XVIII	genus	0.91
+dbotu1045		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.98	"Bacteroidia"	class	0.84	"Bacteroidales"	order	0.84	"Porphyromonadaceae"	family	0.79	Barnesiella	genus	0.25
+dbotu1047		Root	rootrank	1.0	Bacteria	domain	1.0	"Verrucomicrobia"	phylum	1.0	Verrucomicrobiae	class	1.0	Verrucomicrobiales	order	1.0	Verrucomicrobiaceae	family	1.0	Akkermansia	genus	1.0
+dbotu1302		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Eubacteriaceae	family	1.0	Eubacterium	genus	0.58
+dbotu1354		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Enterococcaceae	family	1.0	Enterococcus	genus	1.0
+dbotu1620		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.83	Clostridia	class	0.82	Clostridiales	order	0.82	Ruminococcaceae	family	0.77	Acetanaerobacterium	genus	0.21
+dbotu1757		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.86	Gammaproteobacteria	class	0.29	Gammaproteobacteria_incertae_sedis	order	0.09	Eionea	genus	0.08
+dbotu1826		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.51	Erysipelotrichia	class	0.24	Erysipelotrichales	order	0.24	Erysipelotrichaceae	family	0.24	Turicibacter	genus	0.2
+dbotu1883		Root	rootrank	1.0	Bacteria	domain	1.0	"Fusobacteria"	phylum	1.0	Fusobacteriia	class	1.0	"Fusobacteriales"	order	1.0	"Fusobacteriaceae"	family	1.0	Clostridium XIX	genus	0.56
+dbotu2174		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XI	family	1.0	Peptoniphilus	genus	1.0
+dbotu2211		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.98	Oscillibacter	genus	0.48
+dbotu2251		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Streptococcaceae	family	1.0	Streptococcus	genus	1.0
+dbotu2310		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Clostridium IV	genus	0.6
+dbotu2367		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.69	Clostridia	class	0.68	Clostridiales	order	0.64	Eubacteriaceae	family	0.18	Alkalibaculum	genus	0.08
+dbotu2416		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.87	Clostridiales	order	0.87	Ruminococcaceae	family	0.76	Acetanaerobacterium	genus	0.22
+dbotu2437		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.7	Clostridia	class	0.67	Clostridiales	order	0.67	Ruminococcaceae	family	0.65	Acetivibrio	genus	0.23
+dbotu2729		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Lachnospiracea_incertae_sedis	genus	0.53
+dbotu25		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu62		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Streptococcaceae	family	1.0	Streptococcus	genus	1.0
+dbotu280		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu334		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.87	Clostridia	class	0.84	Clostridiales	order	0.84	Ruminococcaceae	family	0.77	Oscillibacter	genus	0.19
+dbotu387		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.97	Clostridiales	order	0.97	Lachnospiraceae	family	0.58	Lachnoanaerobaculum	genus	0.57
+dbotu475		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Erysipelotrichia	class	0.97	Erysipelotrichales	order	0.97	Erysipelotrichaceae	family	0.97	Clostridium XVIII	genus	0.91
+dbotu560		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.96	Clostridiales	order	0.96	Clostridiales_Incertae Sedis XIII	family	0.83	Anaerovorax	genus	0.48
+dbotu572		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Carnobacteriaceae	family	1.0	Granulicatella	genus	1.0
+dbotu574		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.81	Clostridia	class	0.8	Clostridiales	order	0.8	Ruminococcaceae	family	0.62	Oscillibacter	genus	0.19
+dbotu610		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Veillonella	genus	1.0
+dbotu723		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu745		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Negativicutes	class	0.43	Selenomonadales	order	0.43	Veillonellaceae	family	0.42	Anaeroglobus	genus	0.3
+dbotu769		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.8	Erysipelotrichia	class	0.57	Erysipelotrichales	order	0.57	Erysipelotrichaceae	family	0.57	Coprobacillus	genus	0.35
+dbotu779		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Clostridium IV	genus	0.99
+dbotu817		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.99	"Bacteroidia"	class	0.99	"Bacteroidales"	order	0.99	Bacteroidaceae	family	0.99	Bacteroides	genus	0.99
+dbotu894		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Barnesiella	genus	1.0
+dbotu1025		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Veillonella	genus	1.0
+dbotu1109		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Negativicoccus	genus	1.0
+dbotu1415		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Clostridium XlVa	genus	0.88
+dbotu1478		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.39	Clostridia	class	0.36	Clostridiales	order	0.36	Syntrophomonadaceae	family	0.32	Pelospora	genus	0.32
+dbotu1646		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Enterococcaceae	family	1.0	Enterococcus	genus	1.0
+dbotu1708		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XIII	family	1.0	Mogibacterium	genus	1.0
+dbotu1885		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Leuconostocaceae	family	1.0	Weissella	genus	1.0
+dbotu1892		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.82	Clostridia	class	0.78	Clostridiales	order	0.71	Ruminococcaceae	family	0.23	Anaerotruncus	genus	0.16
+dbotu1903		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Butyricicoccus	genus	0.96
+dbotu2014		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu2056		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Escherichia/Shigella	genus	0.3
+dbotu2152		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Deltaproteobacteria	class	0.99	Desulfovibrionales	order	0.99	Desulfovibrionaceae	family	0.99	Desulfovibrio	genus	0.98
+dbotu2318		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Enterococcaceae	family	1.0	Enterococcus	genus	1.0
+dbotu2394		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Veillonella	genus	1.0
+dbotu2557		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Clostridia	class	0.89	Clostridiales	order	0.89	Ruminococcaceae	family	0.87	Acetivibrio	genus	0.35
+dbotu2660		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.82	Clostridiales	order	0.82	Ruminococcaceae	family	0.49	Acetivibrio	genus	0.29
+dbotu2663		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.78	Clostridia	class	0.73	Clostridiales	order	0.73	Lachnospiraceae	family	0.19	Parasporobacterium	genus	0.04
+dbotu2725		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Citrobacter	genus	0.81
+dbotu22		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.95	Clostridiales	order	0.95	Peptococcaceae 1	family	0.5	Peptococcus	genus	0.5
+dbotu28		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	1.0	Bacillales_Incertae Sedis XI	family	1.0	Gemella	genus	1.0
+dbotu34		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.84	Clostridia	class	0.82	Clostridiales	order	0.82	Ruminococcaceae	family	0.54	Oscillibacter	genus	0.19
+dbotu37		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.9	Clostridiales	order	0.9	Ruminococcaceae	family	0.79	Ethanoligenens	genus	0.18
+dbotu96		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.99	Butyricicoccus	genus	0.94
+dbotu120		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.83	Clostridiales	order	0.81	Eubacteriaceae	family	0.17	Alkalibaculum	genus	0.05
+dbotu152		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.83	Clostridiales	order	0.83	Ruminococcaceae	family	0.69	Acetivibrio	genus	0.22
+dbotu195		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu294		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.95	Peptococcaceae 1	family	0.43	Peptococcus	genus	0.43
+dbotu625		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.85	Clostridia	class	0.83	Clostridiales	order	0.83	Incertae Sedis XI	family	0.28	Anaerosphaera	genus	0.21
+dbotu644		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.9	Clostridiales	order	0.89	Ruminococcaceae	family	0.75	Oscillibacter	genus	0.19
+dbotu672		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.94	Erysipelotrichia	class	0.73	Erysipelotrichales	order	0.73	Erysipelotrichaceae	family	0.73	Allobaculum	genus	0.52
+dbotu786		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.41	Lachnoanaerobaculum	genus	0.17
+dbotu829		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.78	Clostridia	class	0.68	Clostridiales	order	0.64	Ruminococcaceae	family	0.35	Acetivibrio	genus	0.1
+dbotu976		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Enterobacter	genus	0.96
+dbotu1142		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.74	Clostridiales	order	0.74	Clostridiales_Incertae Sedis XI	family	0.24	Soehngenia	genus	0.24
+dbotu1288		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.81	Erysipelotrichia	class	0.8	Erysipelotrichales	order	0.8	Erysipelotrichaceae	family	0.8	Erysipelotrichaceae_incertae_sedis	genus	0.75
+dbotu1521		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.16	Oscillibacter	genus	0.1
+dbotu1541		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.75	Clostridia	class	0.66	Clostridiales	order	0.65	Ruminococcaceae	family	0.5	Subdoligranulum	genus	0.33
+dbotu1718		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.95	"Bacteroidia"	class	0.81	"Bacteroidales"	order	0.81	"Porphyromonadaceae"	family	0.75	Barnesiella	genus	0.43
+dbotu1776		Root	rootrank	1.0	Bacteria	domain	0.96	Firmicutes	phylum	0.36	Clostridia	class	0.36	Clostridiales	order	0.33	Clostridiaceae 1	family	0.17	Fervidicella	genus	0.13
+dbotu1825		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.85	Clostridiales	order	0.84	Clostridiales_Incertae Sedis XI	family	0.24	Parvimonas	genus	0.24
+dbotu1841		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.68	Clostridia	class	0.49	Clostridiales	order	0.49	Syntrophomonadaceae	family	0.18	Pelospora	genus	0.14
+dbotu1866		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	1.0	Planococcaceae	family	1.0	Rummeliibacillus	genus	1.0
+dbotu1944		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Barnesiella	genus	1.0
+dbotu2067		Root	rootrank	1.0	Bacteria	domain	0.98	"Bacteroidetes"	phylum	0.77	"Bacteroidia"	class	0.68	"Bacteroidales"	order	0.68	"Prevotellaceae"	family	0.63	Hallella	genus	0.23
+dbotu2088		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.52	Clostridia	class	0.49	Clostridiales	order	0.49	Peptococcaceae 1	family	0.16	Peptococcus	genus	0.16
+dbotu2326		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Clostridia	class	0.82	Clostridiales	order	0.68	Ruminococcaceae	family	0.16	Hydrogenoanaerobacterium	genus	0.04
+dbotu2427		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Carnobacteriaceae	family	1.0	Granulicatella	genus	1.0
+dbotu2430		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.81	Clostridiales	order	0.75	Ruminococcaceae	family	0.35	Saccharofermentans	genus	0.17
+dbotu2530		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.93	Clostridium IV	genus	0.52
+dbotu2687		Root	rootrank	1.0	Bacteria	domain	1.0	"Verrucomicrobia"	phylum	1.0	Verrucomicrobiae	class	1.0	Verrucomicrobiales	order	1.0	Verrucomicrobiaceae	family	1.0	Akkermansia	genus	1.0
+dbotu31		Root	rootrank	1.0	Bacteria	domain	1.0	"Fusobacteria"	phylum	1.0	Fusobacteriia	class	1.0	"Fusobacteriales"	order	1.0	"Fusobacteriaceae"	family	1.0	Clostridium XIX	genus	0.84
+dbotu35		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.69	Clostridia	class	0.68	Clostridiales	order	0.68	Ruminococcaceae	family	0.66	Faecalibacterium	genus	0.22
+dbotu290		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Clostridia	class	0.8	Clostridiales	order	0.8	Ruminococcaceae	family	0.67	Ruminococcus	genus	0.31
+dbotu353		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Clostridia	class	0.73	Clostridiales	order	0.72	Clostridiales_Incertae Sedis XI	family	0.08	Parvimonas	genus	0.07
+dbotu354		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.83	Clostridia	class	0.74	Clostridiales	order	0.74	Ruminococcaceae	family	0.43	Acetivibrio	genus	0.18
+dbotu509		Root	rootrank	1.0	Bacteria	domain	0.96	Firmicutes	phylum	0.6	Clostridia	class	0.56	Clostridiales	order	0.53	Clostridiales_Incertae Sedis IV	family	0.21	Mahella	genus	0.21
+dbotu734		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Negativicutes	class	0.43	Selenomonadales	order	0.43	Veillonellaceae	family	0.42	Anaeroglobus	genus	0.29
+dbotu766		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu805		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Clostridia	class	0.87	Clostridiales	order	0.87	Ruminococcaceae	family	0.74	Anaerotruncus	genus	0.31
+dbotu816		Root	rootrank	1.0	Bacteria	domain	0.89	Firmicutes	phylum	0.59	Clostridia	class	0.55	Clostridiales	order	0.55	Defluviitaleaceae	family	0.28	Defluviitalea	genus	0.28
+dbotu835		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.91	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.9	Subdoligranulum	genus	0.33
+dbotu900		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.83	Clostridiales	order	0.81	Ruminococcaceae	family	0.56	Clostridium IV	genus	0.15
+dbotu904		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.98	"Bacteroidia"	class	0.94	"Bacteroidales"	order	0.94	"Porphyromonadaceae"	family	0.82	Barnesiella	genus	0.47
+dbotu937		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1037		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.92	Clostridia	class	0.86	Clostridiales	order	0.86	Lachnospiraceae	family	0.43	Lachnobacterium	genus	0.03
+dbotu1167		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.5	Clostridia	class	0.31	Clostridiales	order	0.29	Ruminococcaceae	family	0.25	Acetivibrio	genus	0.17
+dbotu1248		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	1.0	Veillonella	genus	1.0
+dbotu1291		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.96	Clostridiales	order	0.96	Clostridiales_Incertae Sedis XIII	family	0.79	Mogibacterium	genus	0.66
+dbotu1372		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Lactobacillaceae	family	1.0	Lactobacillus	genus	1.0
+dbotu1397		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1436		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.84	Clostridia	class	0.8	Clostridiales	order	0.79	Ruminococcaceae	family	0.67	Sporobacter	genus	0.13
+dbotu1530		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Actinomycetales	order	1.0	Actinomycineae	suborder	1.0	Actinomycetaceae	family	1.0	Varibaculum	genus	0.96
+dbotu1534		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.9	Clostridiales	order	0.9	Ruminococcaceae	family	0.86	Oscillibacter	genus	0.48
+dbotu1539		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.84	Clostridia	class	0.83	Clostridiales	order	0.76	Ruminococcaceae	family	0.27	Anaerotruncus	genus	0.21
+dbotu1593		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.95	Clostridiales	order	0.95	Clostridiales_Incertae Sedis XII	family	0.76	Fusibacter	genus	0.71
+dbotu1650		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu1738		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Dickeya	genus	0.37
+dbotu1747		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Bifidobacterium	genus	1.0
+dbotu1762		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.93	Clostridia	class	0.9	Clostridiales	order	0.9	Ruminococcaceae	family	0.88	Faecalibacterium	genus	0.32
+dbotu1787		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.9	Clostridiales	order	0.9	Ruminococcaceae	family	0.87	Clostridium IV	genus	0.37
+dbotu1810		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.67	Clostridia	class	0.65	Clostridiales	order	0.64	Ruminococcaceae	family	0.61	Ethanoligenens	genus	0.1
+dbotu1834		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.72	Clostridia	class	0.69	Clostridiales	order	0.69	Clostridiales_Incertae Sedis IV	family	0.28	Mahella	genus	0.28
+dbotu2130		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Alphaproteobacteria	class	1.0	Rhodospirillales	order	1.0	Rhodospirillaceae	family	1.0	Skermanella	genus	1.0
+dbotu2132		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.95	Clostridia	class	0.66	Clostridiales	order	0.66	Ruminococcaceae	family	0.41	Butyricicoccus	genus	0.05
+dbotu2249		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.78	Clostridia	class	0.57	Clostridiales	order	0.46	Clostridiales_Incertae Sedis IV	family	0.14	Mahella	genus	0.14
+dbotu2260		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	0.95	Ruminococcus	genus	0.91
+dbotu2327		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.83	Erysipelotrichia	class	0.82	Erysipelotrichales	order	0.82	Erysipelotrichaceae	family	0.82	Erysipelotrichaceae_incertae_sedis	genus	0.8
+dbotu2390		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Turicibacter	genus	1.0
+dbotu2421		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.88	Clostridiales	order	0.88	Ruminococcaceae	family	0.78	Sporobacter	genus	0.35
+dbotu2447		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Erysipelotrichia	class	0.87	Erysipelotrichales	order	0.87	Erysipelotrichaceae	family	0.87	Erysipelotrichaceae_incertae_sedis	genus	0.82
+dbotu2451		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Erysipelotrichia	class	0.93	Erysipelotrichales	order	0.93	Erysipelotrichaceae	family	0.93	Coprobacillus	genus	0.68
+dbotu2452		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.97	Oscillibacter	genus	0.48
+dbotu2479		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.89	Clostridiales	order	0.89	Ruminococcaceae	family	0.78	Butyricicoccus	genus	0.41
+dbotu2565		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.96	Clostridia	class	0.69	Clostridiales	order	0.69	Ruminococcaceae	family	0.44	Butyricicoccus	genus	0.06
+dbotu2574		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.82	Clostridia	class	0.76	Clostridiales	order	0.73	Ruminococcaceae	family	0.48	Acetivibrio	genus	0.32
+dbotu2578		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu49		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Barnesiella	genus	1.0
+dbotu92		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.92	Clostridia	class	0.72	Clostridiales	order	0.71	Peptococcaceae 1	family	0.32	Dehalobacter	genus	0.29
+dbotu153		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.81	Clostridia	class	0.63	Clostridiales	order	0.63	Lachnospiraceae	family	0.25	Lachnoanaerobaculum	genus	0.24
+dbotu158		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.99	Lachnospiracea_incertae_sedis	genus	0.88
+dbotu264		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Clostridium IV	genus	1.0
+dbotu321		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.69	Bacilli	class	0.48	Bacillales	order	0.42	Bacillaceae 2	family	0.28	Allobacillus	genus	0.14
+dbotu564		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.97	Alphaproteobacteria	class	0.89	Rhodospirillales	order	0.54	Rhodospirillaceae	family	0.48	Oceanibaculum	genus	0.22
+dbotu713		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	Pasteurellales	order	1.0	Pasteurellaceae	family	1.0	Pasteurella	genus	0.58
+dbotu772		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.94	Ruminococcaceae	family	0.81	Clostridium IV	genus	0.46
+dbotu781		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.93	Clostridia	class	0.92	Clostridiales	order	0.92	Ruminococcaceae	family	0.84	Papillibacter	genus	0.26
+dbotu808		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.92	Clostridia	class	0.8	Clostridiales	order	0.8	Lachnospiraceae	family	0.49	Lachnobacterium	genus	0.04
+dbotu859		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.97	Clostridiales	order	0.97	Lachnospiraceae	family	0.81	Clostridium XlVb	genus	0.81
+dbotu925		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.9	Clostridia	class	0.9	Clostridiales	order	0.9	Lachnospiraceae	family	0.32	Cellulosilyticum	genus	0.28
+dbotu928		Root	rootrank	1.0	Bacteria	domain	0.97	"Bacteroidetes"	phylum	0.81	"Bacteroidia"	class	0.72	"Bacteroidales"	order	0.72	"Prevotellaceae"	family	0.69	Hallella	genus	0.2
+dbotu999		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.88	Clostridia	class	0.8	Clostridiales	order	0.8	Ruminococcaceae	family	0.62	Oscillibacter	genus	0.32
+dbotu1022		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.94	Clostridiales	order	0.94	Ruminococcaceae	family	0.9	Butyricicoccus	genus	0.59
+dbotu1026		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiaceae 1	family	1.0	Clostridium sensu stricto	genus	0.99
+dbotu1102		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.81	Clostridia	class	0.71	Clostridiales	order	0.7	Ruminococcaceae	family	0.54	Subdoligranulum	genus	0.35
+dbotu1112		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Lactobacillaceae	family	1.0	Lactobacillus	genus	1.0
+dbotu1151		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.55	Clostridia	class	0.53	Clostridiales	order	0.49	Clostridiales_Incertae Sedis XI	family	0.08	Finegoldia	genus	0.06
+dbotu1160		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Negativicutes	class	0.47	Selenomonadales	order	0.47	Veillonellaceae	family	0.46	Anaeroarcus	genus	0.16
+dbotu1192		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.85	Clostridiales	order	0.85	Ruminococcaceae	family	0.5	Acetivibrio	genus	0.3
+dbotu1199		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.92	Clostridia	class	0.77	Clostridiales	order	0.68	Incertae Sedis IV	family	0.23	Caldicoprobacter	genus	0.23
+dbotu1332		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.88	Faecalibacterium	genus	0.27
+dbotu1404		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Deltaproteobacteria	class	0.98	Desulfovibrionales	order	0.94	Desulfovibrionaceae	family	0.94	Desulfovibrio	genus	0.85
+dbotu1407		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.95	Peptococcaceae 1	family	0.48	Peptococcus	genus	0.48
+dbotu1460		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.75	Clostridia	class	0.7	Clostridiales	order	0.67	Ruminococcaceae	family	0.52	Acetivibrio	genus	0.43
+dbotu1472		Root	rootrank	1.0	Bacteria	domain	0.98	"Bacteroidetes"	phylum	0.92	"Bacteroidia"	class	0.9	"Bacteroidales"	order	0.9	"Prevotellaceae"	family	0.88	Prevotella	genus	0.51
+dbotu1540		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.76	Clostridia	class	0.56	Clostridiales	order	0.46	Clostridiales_Incertae Sedis IV	family	0.12	Mahella	genus	0.12
+dbotu1542		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.99	Lachnospiracea_incertae_sedis	genus	0.71
+dbotu1544		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.97	Ruminococcaceae	family	0.96	Oscillibacter	genus	0.71
+dbotu1633		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	0.99	Actinobacteria	class	0.99	Actinobacteridae	subclass	0.99	Actinomycetales	order	0.99	Micrococcineae	suborder	0.93	Microbacteriaceae	family	0.86	Microbacterium	genus	0.84
+dbotu1644		Root	rootrank	1.0	Bacteria	domain	0.93	"Bacteroidetes"	phylum	0.2	Cytophagia	class	0.08	Cytophagales	order	0.08	Cytophagaceae	family	0.08	Sporocytophaga	genus	0.07
+dbotu1689		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.88	Clostridia	class	0.84	Clostridiales	order	0.77	Clostridiaceae 4	family	0.11	Geosporobacter	genus	0.1
+dbotu1700		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Odoribacter	genus	1.0
+dbotu1723		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.76	Clostridia	class	0.76	Clostridiales	order	0.76	Clostridiales_Incertae Sedis XI	family	0.43	Soehngenia	genus	0.23
+dbotu1750		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Enterococcaceae	family	1.0	Enterococcus	genus	1.0
+dbotu1752		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.56	Clostridia	class	0.48	Clostridiales	order	0.43	Eubacteriaceae	family	0.25	Anaerofustis	genus	0.2
+dbotu1772		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	Pasteurellales	order	1.0	Pasteurellaceae	family	1.0	Haemophilus	genus	0.67
+dbotu1817		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.38	Clostridia	class	0.36	Clostridiales	order	0.36	Syntrophomonadaceae	family	0.32	Pelospora	genus	0.32
+dbotu1893		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Bacilli	class	0.88	Lactobacillales	order	0.84	Lactobacillaceae	family	0.74	Lactobacillus	genus	0.69
+dbotu1977		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.96	Oscillibacter	genus	0.5
+dbotu2011		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.97	Clostridiales	order	0.97	Clostridiales_Incertae Sedis XII	family	0.74	Fusibacter	genus	0.68
+dbotu2073		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.85	Clostridiales	order	0.85	Ruminococcaceae	family	0.85	Ethanoligenens	genus	0.33
+dbotu2151		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Odoribacter	genus	1.0
+dbotu2179		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.51	Clostridia	class	0.31	Clostridiales	order	0.31	Eubacteriaceae	family	0.03	Anaerofustis	genus	0.03
+dbotu2198		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Erysipelotrichia	class	0.91	Erysipelotrichales	order	0.91	Erysipelotrichaceae	family	0.91	Erysipelotrichaceae_incertae_sedis	genus	0.87
+dbotu2240		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.56	Clostridia	class	0.47	Clostridiales	order	0.45	Eubacteriaceae	family	0.28	Anaerofustis	genus	0.25
+dbotu2246		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Adlercreutzia	genus	0.49
+dbotu2307		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Ruminococcus	genus	1.0
+dbotu2323		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.7	Clostridia	class	0.66	Clostridiales	order	0.66	Lachnospiraceae	family	0.35	Lachnoanaerobaculum	genus	0.24
+dbotu2349		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.83	Clostridia	class	0.78	Clostridiales	order	0.78	Ruminococcaceae	family	0.71	Gemmiger	genus	0.16
+dbotu2360		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.94	Oscillibacter	genus	0.36
+dbotu2379		Root	rootrank	1.0	Bacteria	domain	0.99	Candidatus Saccharibacteria	phylum	0.35	Saccharibacteria_genera_incertae_sedis	genus	0.35
+dbotu2418		Root	rootrank	1.0	Bacteria	domain	0.94	Firmicutes	phylum	0.54	Bacilli	class	0.35	Lactobacillales	order	0.18	Enterococcaceae	family	0.15	Bavariicoccus	genus	0.15
+dbotu2523		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Barnesiella	genus	1.0
+dbotu2559		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XI	family	1.0	Finegoldia	genus	1.0
+dbotu2690		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Collinsella	genus	1.0
+dbotu5		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.94	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.89	Faecalibacterium	genus	0.35
+dbotu9		Root	rootrank	1.0	Bacteria	domain	0.99	"Bacteroidetes"	phylum	0.2	Sphingobacteriia	class	0.07	"Sphingobacteriales"	order	0.07	Sphingobacteriaceae	family	0.06	Nubsella	genus	0.06
+dbotu20		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Barnesiella	genus	1.0
+dbotu75		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.9	Clostridia	class	0.7	Clostridiales	order	0.7	Syntrophomonadaceae	family	0.15	Thermosyntropha	genus	0.07
+dbotu78		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.82	Clostridia	class	0.78	Clostridiales	order	0.7	Ruminococcaceae	family	0.24	Anaerotruncus	genus	0.18
+dbotu99		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Clostridia	class	0.84	Clostridiales	order	0.84	Ruminococcaceae	family	0.83	Clostridium IV	genus	0.3
+dbotu111		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Anaerotruncus	genus	0.98
+dbotu124		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.89	Clostridia	class	0.89	Clostridiales	order	0.89	Ruminococcaceae	family	0.75	Oscillibacter	genus	0.2
+dbotu133		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Adlercreutzia	genus	0.53
+dbotu141		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XI	family	0.94	Anaerococcus	genus	0.94
+dbotu157		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	1.0	Bacillales_Incertae Sedis XI	family	1.0	Gemella	genus	1.0
+dbotu172		Root	rootrank	1.0	Bacteria	domain	1.0	"Lentisphaerae"	phylum	0.15	"Lentisphaeria"	class	0.15	Victivallales	order	0.15	"Victivallaceae"	family	0.15	Victivallis	genus	0.15
+dbotu179		Root	rootrank	1.0	Bacteria	domain	1.0	Cyanobacteria/Chloroplast	phylum	1.0	Chloroplast	class	1.0	Chloroplast	family	1.0	Streptophyta	genus	1.0
+dbotu197		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu219		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Butyricimonas	genus	1.0
+dbotu240		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.93	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.69	Acetivibrio	genus	0.23
+dbotu276		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.64	Erysipelotrichia	class	0.14	Erysipelotrichales	order	0.14	Erysipelotrichaceae	family	0.14	Holdemania	genus	0.09
+dbotu281		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Lactobacillaceae	family	1.0	Lactobacillus	genus	1.0
+dbotu298		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.97	Deltaproteobacteria	class	0.96	Desulfovibrionales	order	0.95	Desulfovibrionaceae	family	0.95	Desulfovibrio	genus	0.82
+dbotu411		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.72	Bacilli	class	0.29	Lactobacillales	order	0.24	Enterococcaceae	family	0.09	Melissococcus	genus	0.08
+dbotu446		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Eubacteriaceae	family	1.0	Eubacterium	genus	1.0
+dbotu481		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.97	Clostridiales	order	0.97	Ruminococcaceae	family	0.92	Clostridium IV	genus	0.53
+dbotu490		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Erysipelotrichia	class	1.0	Erysipelotrichales	order	1.0	Erysipelotrichaceae	family	1.0	Catenibacterium	genus	1.0
+dbotu493		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.89	Alphaproteobacteria	class	0.85	Magnetococcales	order	0.16	Magnetococcaceae	family	0.16	Magnetococcus	genus	0.16
+dbotu497		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Comamonadaceae	family	1.0	Acidovorax	genus	1.0
+dbotu501		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.92	Clostridia	class	0.9	Clostridiales	order	0.82	Ruminococcaceae	family	0.37	Acetanaerobacterium	genus	0.17
+dbotu520		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Epsilonproteobacteria	class	1.0	Campylobacterales	order	1.0	Campylobacteraceae	family	1.0	Campylobacter	genus	1.0
+dbotu535		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.97	Anaerotruncus	genus	0.37
+dbotu548		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.88	Negativicutes	class	0.43	Selenomonadales	order	0.43	Veillonellaceae	family	0.4	Anaeroglobus	genus	0.3
+dbotu552		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.84	Clostridia	class	0.78	Clostridiales	order	0.78	Heliobacteriaceae	family	0.15	Heliobacillus	genus	0.14
+dbotu555		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.96	Clostridium IV	genus	0.64
+dbotu604		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Gordonibacter	genus	1.0
+dbotu614		Root	rootrank	1.0	Bacteria	domain	1.0	Candidatus Saccharibacteria	phylum	1.0	Saccharibacteria_genera_incertae_sedis	genus	1.0
+dbotu627		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.68	Clostridia	class	0.62	Clostridiales	order	0.62	Ruminococcaceae	family	0.5	Subdoligranulum	genus	0.31
+dbotu648		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.75	Parasporobacterium	genus	0.16
+dbotu657		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.89	Clostridia	class	0.89	Clostridiales	order	0.89	Ruminococcaceae	family	0.89	Subdoligranulum	genus	0.25
+dbotu664		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	Pasteurellales	order	1.0	Pasteurellaceae	family	1.0	Pasteurella	genus	0.71
+dbotu761		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Actinomycetales	order	1.0	Corynebacterineae	suborder	1.0	Nocardiaceae	family	1.0	Williamsia	genus	1.0
+dbotu763		Root	rootrank	1.0	Bacteria	domain	0.99	"Bacteroidetes"	phylum	0.11	Sphingobacteriia	class	0.05	"Sphingobacteriales"	order	0.05	Sphingobacteriaceae	family	0.04	Nubsella	genus	0.03
+dbotu778		Root	rootrank	1.0	Bacteria	domain	0.95	"Bacteroidetes"	phylum	0.24	Cytophagia	class	0.08	Cytophagales	order	0.08	Cytophagaceae	family	0.08	Sporocytophaga	genus	0.06
+dbotu794		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.68	Clostridia	class	0.65	Clostridiales	order	0.63	Clostridiales_Incertae Sedis IV	family	0.16	Mahella	genus	0.16
+dbotu869		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.81	Clostridia	class	0.77	Clostridiales	order	0.64	Clostridiales_Incertae Sedis III	family	0.23	Tepidanaerobacter	genus	0.23
+dbotu878		Root	rootrank	1.0	Bacteria	domain	0.95	"Bacteroidetes"	phylum	0.59	"Bacteroidia"	class	0.47	"Bacteroidales"	order	0.47	Bacteroidaceae	family	0.25	Bacteroides	genus	0.25
+dbotu881		Root	rootrank	1.0	Bacteria	domain	0.94	"Bacteroidetes"	phylum	0.8	Sphingobacteriia	class	0.14	"Sphingobacteriales"	order	0.14	"Cyclobacteriaceae"	family	0.1	Aquiflexum	genus	0.09
+dbotu896		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.8	Clostridia	class	0.8	Clostridiales	order	0.8	Ruminococcaceae	family	0.62	Oscillibacter	genus	0.27
+dbotu929		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.81	Clostridiales	order	0.81	Clostridiaceae 4	family	0.16	Caminicella	genus	0.14
+dbotu936		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	1.0	Planococcaceae	family	1.0	Rummeliibacillus	genus	1.0
+dbotu942		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Lactobacillaceae	family	1.0	Lactobacillus	genus	1.0
+dbotu1039		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu1097		Root	rootrank	1.0	Bacteria	domain	1.0	"Fusobacteria"	phylum	1.0	Fusobacteriia	class	1.0	"Fusobacteriales"	order	1.0	"Fusobacteriaceae"	family	1.0	Fusobacterium	genus	1.0
+dbotu1099		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Proteus	genus	1.0
+dbotu1119		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Clostridia	class	0.87	Clostridiales	order	0.85	Clostridiales_Incertae Sedis IV	family	0.44	Mahella	genus	0.44
+dbotu1129		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Erysipelotrichia	class	0.93	Erysipelotrichales	order	0.93	Erysipelotrichaceae	family	0.93	Coprobacillus	genus	0.72
+dbotu1157		Root	rootrank	1.0	Bacteria	domain	1.0	Candidatus Saccharibacteria	phylum	0.94	Saccharibacteria_genera_incertae_sedis	genus	0.94
+dbotu1184		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Eubacteriaceae	family	0.98	Anaerofustis	genus	0.98
+dbotu1200		Root	rootrank	1.0	Bacteria	domain	0.98	Firmicutes	phylum	0.81	Bacilli	class	0.76	Lactobacillales	order	0.75	Streptococcaceae	family	0.71	Lactococcus	genus	0.68
+dbotu1209		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.72	Clostridia	class	0.66	Clostridiales	order	0.66	Ruminococcaceae	family	0.49	Anaerotruncus	genus	0.14
+dbotu1316		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Alphaproteobacteria	class	1.0	Rhizobiales	order	1.0	Methylobacteriaceae	family	0.99	Microvirga	genus	0.99
+dbotu1318		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.79	Clostridia	class	0.75	Clostridiales	order	0.74	Clostridiales_Incertae Sedis IV	family	0.47	Mahella	genus	0.47
+dbotu1374		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Anaerotruncus	genus	0.97
+dbotu1476		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XI	family	1.0	Finegoldia	genus	1.0
+dbotu1486		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.98	Clostridia	class	0.97	Clostridiales	order	0.96	Ruminococcaceae	family	0.9	Clostridium IV	genus	0.24
+dbotu1492		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.88	Clostridia	class	0.86	Clostridiales	order	0.86	Ruminococcaceae	family	0.61	Oscillibacter	genus	0.29
+dbotu1512		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Hydrogenoanaerobacterium	genus	0.37
+dbotu1556		Root	rootrank	1.0	Bacteria	domain	1.0	Cyanobacteria/Chloroplast	phylum	0.95	Chloroplast	class	0.95	Chloroplast	family	0.95	Streptophyta	genus	0.95
+dbotu1571		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.92	Clostridia	class	0.92	Clostridiales	order	0.92	Ruminococcaceae	family	0.92	Ethanoligenens	genus	0.48
+dbotu1580		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.84	Clostridiales	order	0.83	Ruminococcaceae	family	0.81	Anaerotruncus	genus	0.18
+dbotu1601		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.68	Clostridia	class	0.67	Clostridiales	order	0.64	Ruminococcaceae	family	0.57	Ethanoligenens	genus	0.24
+dbotu1613		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.98	Clostridiales	order	0.98	Ruminococcaceae	family	0.93	Subdoligranulum	genus	0.23
+dbotu1614		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.72	Clostridia	class	0.7	Clostridiales	order	0.63	Ruminococcaceae	family	0.15	Anaerotruncus	genus	0.13
+dbotu1624		Root	rootrank	1.0	Bacteria	domain	0.99	"Bacteroidetes"	phylum	0.97	"Bacteroidia"	class	0.93	"Bacteroidales"	order	0.93	Bacteroidaceae	family	0.9	Bacteroides	genus	0.9
+dbotu1664		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.98	Clostridiales	order	0.98	Eubacteriaceae	family	0.86	Eubacterium	genus	0.86
+dbotu1676		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.92	Anaerotruncus	genus	0.31
+dbotu1679		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.97	Erysipelotrichia	class	0.93	Erysipelotrichales	order	0.93	Erysipelotrichaceae	family	0.93	Coprobacillus	genus	0.72
+dbotu1713		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	0.99	Selenomonadales	order	0.99	Acidaminococcaceae	family	0.99	Phascolarctobacterium	genus	0.99
+dbotu1720		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.78	Clostridia	class	0.77	Clostridiales	order	0.77	Ruminococcaceae	family	0.58	Papillibacter	genus	0.09
+dbotu1728		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.81	Clostridia	class	0.74	Clostridiales	order	0.74	Lachnospiraceae	family	0.15	Shuttleworthia	genus	0.14
+dbotu1729		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.85	Clostridia	class	0.85	Clostridiales	order	0.85	Ruminococcaceae	family	0.85	Ethanoligenens	genus	0.48
+dbotu1782		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	0.99	Clostridiales	order	0.99	Lachnospiraceae	family	0.98	Lachnospiracea_incertae_sedis	genus	0.86
+dbotu1808		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.88	Clostridia	class	0.82	Clostridiales	order	0.82	Ruminococcaceae	family	0.28	Oscillibacter	genus	0.21
+dbotu1881		Root	rootrank	1.0	Bacteria	domain	0.99	"Chrysiogenetes"	phylum	0.37	Chrysiogenetes	class	0.37	Chrysiogenales	order	0.37	Chrysiogenaceae	family	0.37	Chrysiogenes	genus	0.37
+dbotu1888	-	Root	rootrank	1.0	Archaea	domain	0.23	"Crenarchaeota"	phylum	0.12	Thermoprotei	class	0.12	Desulfurococcales	order	0.07	Desulfurococcaceae	family	0.04	Thermodiscus	genus	0.03
+dbotu1899		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Clostridiales_Incertae Sedis XI	family	1.0	Parvimonas	genus	1.0
+dbotu1911		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Acetanaerobacterium	genus	0.39
+dbotu1928		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.85	Clostridiales	order	0.85	Lachnospiraceae	family	0.46	Lachnobacterium	genus	0.03
+dbotu1973		Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Deltaproteobacteria	class	1.0	Desulfovibrionales	order	1.0	Desulfovibrionaceae	family	1.0	Desulfovibrio	genus	0.98
+dbotu1974		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.94	Clostridia	class	0.94	Clostridiales	order	0.94	Ruminococcaceae	family	0.92	Anaerotruncus	genus	0.76
+dbotu1986		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.7	Bacilli	class	0.19	Bacillales	order	0.17	Bacillales_Incertae Sedis X	family	0.1	Thermicanus	genus	0.1
+dbotu2004		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.75	Clostridia	class	0.71	Clostridiales	order	0.71	Ruminococcaceae	family	0.49	Acetivibrio	genus	0.32
+dbotu2008		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Clostridia	class	0.99	Clostridiales	order	0.99	Ruminococcaceae	family	0.99	Butyricicoccus	genus	0.63
+dbotu2042		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	1.0	Planococcaceae	family	0.98	Rummeliibacillus	genus	0.98
+dbotu2064		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.91	Clostridia	class	0.91	Clostridiales	order	0.91	Ruminococcaceae	family	0.71	Hydrogenoanaerobacterium	genus	0.57
+dbotu2076		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Atopobium	genus	1.0
+dbotu2170		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.82	Clostridiales	order	0.82	Syntrophomonadaceae	family	0.27	Thermosyntropha	genus	0.16
+dbotu2191		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.87	Clostridia	class	0.73	Clostridiales	order	0.67	Lachnospiraceae	family	0.21	Moryella	genus	0.2
+dbotu2224		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.71	Clostridia	class	0.69	Clostridiales	order	0.69	Ruminococcaceae	family	0.67	Anaerotruncus	genus	0.19
+dbotu2231		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.95	Clostridiales	order	0.95	Ruminococcaceae	family	0.73	Clostridium IV	genus	0.32
+dbotu2248		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.89	Clostridia	class	0.86	Clostridiales	order	0.86	Ruminococcaceae	family	0.62	Butyricicoccus	genus	0.1
+dbotu2366		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Coriobacteridae	subclass	1.0	Coriobacteriales	order	1.0	"Coriobacterineae"	suborder	1.0	Coriobacteriaceae	family	1.0	Gordonibacter	genus	1.0
+dbotu2369		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.73	Clostridia	class	0.63	Clostridiales	order	0.59	Ruminococcaceae	family	0.28	Acetivibrio	genus	0.1
+dbotu2373		Root	rootrank	1.0	Bacteria	domain	0.97	Firmicutes	phylum	0.65	Clostridia	class	0.63	Clostridiales	order	0.58	Clostridiales_Incertae Sedis IV	family	0.11	Mahella	genus	0.11
+dbotu2403		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.91	Clostridia	class	0.9	Clostridiales	order	0.9	Ruminococcaceae	family	0.62	Butyricicoccus	genus	0.16
+dbotu2440		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Butyricimonas	genus	1.0
+dbotu2481		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Acidaminococcaceae	family	1.0	Acidaminococcus	genus	1.0
+dbotu2493		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.98	"Bacteroidia"	class	0.98	"Bacteroidales"	order	0.98	Bacteroidaceae	family	0.98	Bacteroides	genus	0.98
+dbotu2495		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Negativicutes	class	1.0	Selenomonadales	order	1.0	Veillonellaceae	family	0.97	Dialister	genus	0.91
+dbotu2519		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Ruminococcaceae	family	1.0	Anaerotruncus	genus	0.96
+dbotu2555		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Clostridia	class	0.98	Clostridiales	order	0.97	Ruminococcaceae	family	0.89	Oscillibacter	genus	0.24
+dbotu2573		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.83	Clostridia	class	0.83	Clostridiales	order	0.83	Ruminococcaceae	family	0.82	Ethanoligenens	genus	0.46
+dbotu2607		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	0.98	"Bacteroidia"	class	0.93	"Bacteroidales"	order	0.93	"Porphyromonadaceae"	family	0.82	Barnesiella	genus	0.47
+dbotu2618		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.97	Clostridia	class	0.97	Clostridiales	order	0.96	Ruminococcaceae	family	0.94	Anaerotruncus	genus	0.25
+dbotu2619		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Streptococcaceae	family	1.0	Streptococcus	genus	1.0
+dbotu2624		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.8	Clostridia	class	0.72	Clostridiales	order	0.71	Lachnospiraceae	family	0.26	Lachnoanaerobaculum	genus	0.16
+dbotu2664		Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Actinomycetales	order	1.0	Streptomycineae	suborder	0.95	Streptomycetaceae	family	0.95	Streptomyces	genus	0.95
+dbotu2678		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.86	Clostridia	class	0.85	Clostridiales	order	0.85	Ruminococcaceae	family	0.85	Ethanoligenens	genus	0.31
+dbotu2692		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.58	Clostridia	class	0.28	Clostridiales	order	0.17	Ruminococcaceae	family	0.1	Cellulosibacter	genus	0.09
+dbotu2695		Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.95	Clostridia	class	0.95	Clostridiales	order	0.94	Ruminococcaceae	family	0.89	Acetivibrio	genus	0.27
+dbotu2702		Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	"Porphyromonadaceae"	family	1.0	Odoribacter	genus	1.0
+dbotu2719		Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.86	Clostridia	class	0.85	Clostridiales	order	0.85	Incertae Sedis XI	family	0.4	Anaerosphaera	genus	0.38

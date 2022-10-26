@@ -1,0 +1,18 @@
+DATASET_ID	asd_son
+
+#16S_start
+TRIM_LENGTH	200
+RAW_FASTQ_FILES	fq2sid.txt
+BARCODES_MAP	None
+OTU_TABLE_RDP	asd_son.otu_table.100.denovo.rdp_assigned
+OTU_SEQUENCES_FASTA	asd_son.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+OTU_TABLE_DENOVO	asd_son.otu_table.100.denovo
+PROCESSED	True
+OLIGOTYPE_TABLE	asd_son.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	primers.txt
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

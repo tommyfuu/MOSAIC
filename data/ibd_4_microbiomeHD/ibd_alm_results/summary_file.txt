@@ -1,0 +1,18 @@
+DATASET_ID	ibd_alm
+
+#16S_start
+TRIM_LENGTH	200
+OTU_TABLE_DENOVO	ibd_alm.otu_table.100.denovo
+BARCODES_MAP	None
+OTU_TABLE_RDP	ibd_alm.otu_table.100.denovo.rdp_assigned
+RAW_FASTA_FILE	chimp.Qsorted.clean_file.fasta
+OTU_SEQUENCES_FASTA	ibd_alm.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+PROCESSED	True
+OLIGOTYPE_TABLE	ibd_alm.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	None
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

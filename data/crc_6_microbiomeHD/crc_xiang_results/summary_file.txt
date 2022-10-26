@@ -1,0 +1,21 @@
+DATASET_ID	crc_xiang
+
+#16S_start
+TRIM_LENGTH	200
+OTU_TABLE_DENOVO	crc_xiang.otu_table.100.denovo
+BARCODES_MAP	CRC_Xiang_barcodes.txt
+AMPLICON	V1?
+BARCODES_MODE	2
+OTU_SEQUENCES_FASTA	crc_xiang.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+PROCESSED	True
+OLIGOTYPE_TABLE	crc_xiang.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	CRC_Xiang_primers.txt
+RAW_FASTQ_FILE	SRR389090.fastq
+ASCII_ENCODING	ASCII_BASE_33
+OTU_TABLE_RDP	crc_xiang.otu_table.100.denovo.rdp_assigned
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

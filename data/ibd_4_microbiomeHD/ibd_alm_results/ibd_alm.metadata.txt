@@ -1,0 +1,92 @@
+	sample	gender	age	DiseaseState	steroids	imsp	abx	mesalamine	ibd	activity	active	race	fhx	imspLEVEL	SampleType
+003A	003-AX	male	7	UC	steroids	imsp	abx	nomes	ibd	severe	active	White	fhx	level4	stool
+004A	004-AX	male	18	UC	steroids	imsp	noabx	nomes	ibd	severe	active	White	fhx	level2	stool
+005A	005-AX	male	17	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+008A	008-AX	female	12	CD	steroids	imsp	abx	nomes	ibd	moderate	active	White	nofhx	level2	stool
+009A	009-AX	female	15	UC	steroids	noimsp	noabx	nomes	ibd	severe	active		nofhx	level1	stool
+012A	012-AX	male	15	UC	nosteroids	noimsp	noabx	nomes	ibd	inactive	inactive	White	fhx	none	stool
+016A	016-AX	male	10	CD	steroids	imsp	noabx	nomes	ibd	inactive	inactive		fhx	level2	stool
+018A	018-AX	male	19	CD	steroids	imsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level3	stool
+024A	024-AX	female	11	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+025A	025-AX	female	20	CD	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level2	stool
+026A	026-AX	male	10	UC	steroids	imsp	abx	nomes	ibd	mild	active	White	nofhx	level4	stool
+027A	027-AX	female	11	UC	steroids	imsp	noabx	nomes	ibd	moderate	active	White	nofhx	level3	stool
+030A	030-AX	male	8	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	fhx	none	stool
+031A	031-AX	female	8	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+034B	034-BX	female	13	UC	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level2	stool
+035A	035-AX	male	12	UC	steroids	noimsp	noabx	nomes	ibd	severe	active	White	nofhx	level1	stool
+038A	038-AX	female	19	UC	steroids	noimsp	noabx	nomes	ibd	mild	active	Black	nofhx	level1	stool
+041A	041-AX	male	7	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+046A	046-AY	male	5	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	Black	nofhx	none	stool
+048A	048-AX	male	12	UC	nosteroids	noimsp	noabx	mes	ibd	inactive	inactive	White	fhx	level0	stool
+051A	051-AX	male	9	CD	nosteroids	imsp	noabx	nomes	ibd	mild	active	White	fhx	level2	stool
+062B	062-BZ	male	16	CD	steroids	imsp	noabx	nomes	ibd	mild	mild	White	nofhx	level3	stool
+074A	074-AX	male	15	CD	nosteroids	imsp	abx	nomes	ibd	inactive	inactive	White	nofhx	level3	stool
+079A	079-AX	male	11	UC	steroids	imsp	abx	nomes	ibd	mild	active	White	fhx	level4	stool
+080A	080-AX	male	14	CD	steroids	noimsp	noabx	nomes	ibd	severe	active	Other	fhx	level1	stool
+086A	086-AY	male	15	UC	nosteroids	noimsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	none	stool
+099A	099-AX	female	17	UC	steroids	imsp	noabx	nomes	ibd	severe	active	White	nofhx	level3	stool
+102A	102-AZ	male	3	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	fhx	none	stool
+103A	103-AX	male	14	CD	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	fhx	level2	stool
+106A	106-AZ	female	8	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+114C	114-CX	female	19	UC	nosteroids	imsp	noabx	nomes	ibd	mild	active	White	nofhx	level2	stool
+118B	118-BX	male	13	UC	nosteroids	imsp	noabx	nomes	ibd	mild	active	White	nofhx	level2	stool
+119A	119-AX	female	10	UC	nosteroids	noimsp	noabx	mes	ibd	inactive	inactive	White	fhx	level0	stool
+120D	120-DX	female	14	UC	nosteroids	noimsp	noabx	mes	ibd	mild	active	White	fhx	level0	stool
+124A	124-AX	female	9	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	fhx	none	stool
+127A	127-AX	female	12	UC	steroids	imsp	abx	nomes	ibd	moderate	active	White	nofhx	level4	stool
+130A	130-AX	male	17	UC	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	fhx	level2	stool
+131A	131-AX	male	9	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+132A	132-AX	female	12	CD	steroids	imsp	noabx	nomes	ibd	mild	active	White	nofhx	level2	stool
+136A	136-AX	male	4	UC	steroids	noimsp	noabx	nomes	ibd	mild	active	Other	fhx	level1	stool
+139A	139-AX	male	16	UC	steroids	imsp	abx	nomes	ibd	mild	active	White	nofhx	level4	stool
+140A	140-AX	female	5	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+142A	142-AX	female	14	UC	steroids	imsp	abx	nomes	ibd	moderate	active	White	nofhx	level4	stool
+146A	146-AX	male	5	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+148A	148-AX	female	15	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White		none	stool
+150A	150-AX	female	3	CD	steroids	noimsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level1	stool
+151A	151-AX	female	16	CD	steroids	noimsp	abx	nomes	ibd	inactive	inactive	White	fhx	level1	stool
+153A	153-AX	male	4	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+155A	155-AX	male	4	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+156A	156-AX	male	13	CD	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	Black	nofhx	level3	stool
+160A	160-AX	male	11	UC	steroids	imsp	noabx	nomes	ibd	mild	active	White	nofhx	level2	stool
+162A	162-AX	female	10	UC	steroids	noimsp	noabx	nomes	ibd	mild	active	Other	nofhx	level1	stool
+164A	164-AX	female	21	UC	steroids	noimsp	abx	nomes	ibd	severe	active	White	fhx	level1	stool
+165A	165-AX	female	8	UC	steroids	imsp	abx	nomes	ibd	mild	active		nofhx	level4	stool
+166A	166-AX	female	20	UC	nosteroids	noimsp	abx	nomes	ibd	severe	active	Black		none	stool
+171A	171-AX	male	24	UC	steroids	imsp	noabx	nomes	ibd	moderate	active	White		level2	stool
+172A	172-AX	male	20	UC	nosteroids	imsp	abx	nomes	ibd	moderate	active	White	fhx	level4	stool
+177A	177-AX	male	9	UC	nosteroids	noimsp	noabx	nomes	ibd	mild	active	White	fhx	none	stool
+178A	178-AX	male	15	UC	steroids	noimsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level1	stool
+179A	179-AX	male	19	CD	steroids	imsp	abx	nomes	ibd	inactive	inactive	White		level2	stool
+180A	180-AX	male	18	CD	nosteroids	imsp	noabx	nomes	ibd	mild	active	White	nofhx	level2	stool
+182A	182-AX	female	16	UC	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level2	stool
+184A	184-AX	female	16	CD	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level3	stool
+185A	185-AX	female	14	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+186A	186-AX	female	14	UC	steroids	noimsp	abx	nomes	ibd	severe	active	White	nofhx	level1	stool
+187A	187-AX	female	12	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White		none	stool
+191C	191-CX	female	9	UC	steroids	imsp	abx	nomes	ibd	mild	active	White	nofhx	level4	stool
+192A	192-AX	female	12	UC	nosteroids	noimsp	noabx	mes	ibd	moderate	active	White	nofhx	level0	stool
+193A	193-AX	male	16	CD	steroids	imsp	noabx	nomes	ibd	inactive	inactive	White	fhx	level3	stool
+194A	194-AZ	male	15	UC	steroids	noimsp	noabx	nomes	ibd	mild	active	White	nofhx	level1	stool
+195A	195-AZ	female	13	CD	steroids	noimsp	noabx	nomes	ibd	mild	active	White		level1	stool
+198A	198-AX	female	19	CD	steroids	noimsp	abx	nomes	ibd	moderate	active	White		level1	stool
+199A	199-AX	female	5	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	Other		none	stool
+200A	200-AZ	male	8	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	fhx	none	stool
+202A	202-AX	male	11	UC	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	fhx	level3	stool
+206A	206-AZ	female	14	CD	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	Other	nofhx	level3	stool
+207A	207-AZ	female	16	UC	steroids	imsp	noabx	nomes	ibd	moderate	active	White	nofhx	level2	stool
+209A	209-AZ	female	5	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White		none	stool
+210A	210-AX	female	13	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	Asian		none	stool
+211A	211-AX	male	13	CD	nosteroids	imsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level2	stool
+213B	213-BY	female	12	CD	steroids	noimsp	noabx	nomes	ibd	moderate	active	White	fhx	level1	stool
+214A	214-AZ	male	14	IBDundef	steroids	noimsp	abx	nomes	ibd	mild	active	Other	nofhx	level1	stool
+215A	215-AX	female	6	UC	nosteroids	noimsp	noabx	mes	ibd	mild	active	Black	nofhx	level0	stool
+216A	216-AY	male	18	UC	nosteroids	noimsp	noabx	mes	ibd	moderate	active	White	nofhx	level0	stool
+218A	218-AX	female	14	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	White	nofhx	none	stool
+219A	219-AX	female	18	UC	nosteroids	imsp	abx	nomes	ibd	inactive	inactive		nofhx	level3	stool
+222A	222-AZ	male	11	UC	steroids	noimsp	noabx	nomes	ibd	inactive	inactive	White	nofhx	level1	stool
+226A	226-AX	female	12	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	Other		none	stool
+228A	228-AY	female	14	UC	steroids	imsp	abx	nomes	ibd	moderate	active	White	nofhx	level4	stool
+233A	233-AX	male	12	CD	nosteroids	noimsp	noabx	mes	ibd	inactive	inactive	White	fhx	level0	stool
+234A	234-AX	female	17	nonIBD	nosteroids	noimsp	noabx	nomes	nonibd	control	control	Asian	nofhx	none	stool

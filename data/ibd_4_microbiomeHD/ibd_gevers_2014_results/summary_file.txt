@@ -1,0 +1,20 @@
+DATASET_ID	ibd_gevers_2014
+
+#16S_start
+TRIM_LENGTH	200
+RAW_FASTQ_FILES	fq2sid.txt
+BARCODES_MAP	None
+OTU_TABLE_RDP	ibd_gevers_2014.otu_table.100.denovo.rdp_assigned
+OTU_SEQUENCES_FASTA	ibd_gevers_2014.otu_seqs.100.fasta
+OTU_SIMILARITY	100
+OTU_TABLE_DENOVO	ibd_gevers_2014.otu_table.100.denovo
+PROCESSED	True
+OLIGOTYPE_TABLE	ibd_gevers_2014.otu_table.100.denovo_oligotypes
+MIN_COUNT	2
+PRIMERS_FILE	None
+ASCII_ENCODING	ASCII_BASE_33
+METADATA_FILE	None
+#16S_end
+#ITS_start
+PROCESSED	N/A
+#ITS_end

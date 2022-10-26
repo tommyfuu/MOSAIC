@@ -1,0 +1,60 @@
+dbotu3	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	0.99	Enterobacteriaceae	family	0.99	Proteus	genus	0.98
+dbotu11	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Cronobacter	genus	0.29
+dbotu10	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	Pseudomonadales	order	0.95	Pseudomonadaceae	family	0.95	Pseudomonas	genus	0.95
+dbotu23	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	0.93	Enterococcaceae	family	0.91	Enterococcus	genus	0.91
+dbotu47	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	0.99	Streptococcaceae	family	0.99	Streptococcus	genus	0.99
+dbotu37	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Yersinia	genus	0.99
+dbotu39	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Betaproteobacteria	class	0.99	Burkholderiales	order	0.97	Sutterellaceae	family	0.97	Parasutterella	genus	0.97
+dbotu32	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu24	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	0.97	Lactobacillales	order	0.95	Streptococcaceae	family	0.94	Streptococcus	genus	0.94
+dbotu12	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Raoultella	genus	0.31
+dbotu43	-	Root	rootrank	1.0	Bacteria	domain	0.99	Firmicutes	phylum	0.91	Bacilli	class	0.82	Bacillales	order	0.82	Paenibacillaceae 1	family	0.82	Paenibacillus	genus	0.82
+dbotu48	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	0.98	Enterococcaceae	family	0.98	Tetragenococcus	genus	0.54
+dbotu29	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	0.91	Bacillaceae 1	family	0.7	Bacillus	genus	0.56
+dbotu28	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	0.97	Enterococcaceae	family	0.97	Enterococcus	genus	0.97
+dbotu2	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	0.92	Enterobacteriaceae	family	0.92	Serratia	genus	0.33
+dbotu49	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	1.0	Staphylococcaceae	family	0.63	Staphylococcus	genus	0.63
+dbotu57	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	Pasteurellales	order	1.0	Pasteurellaceae	family	1.0	Haemophilus	genus	0.75
+dbotu16	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Comamonadaceae	family	0.99	Acidovorax	genus	0.9
+dbotu7	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Aeriscardovia	genus	0.35
+dbotu46	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Bacilli	class	0.99	Bacillales	order	0.93	Bacillales_Incertae Sedis XI	family	0.9	Gemella	genus	0.9
+dbotu1	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	1.0	Blautia	genus	0.91
+dbotu41	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Betaproteobacteria	class	1.0	Burkholderiales	order	1.0	Oxalobacteraceae	family	1.0	Herminiimonas	genus	0.9
+dbotu33	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	1.0	Bifidobacteriaceae	family	1.0	Metascardovia	genus	0.27
+dbotu36	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	0.99	"Bacteroidales"	order	0.99	Bacteroidaceae	family	0.94	Bacteroides	genus	0.94
+dbotu38	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu44	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Gammaproteobacteria	class	0.99	"Enterobacteriales"	order	0.98	Enterobacteriaceae	family	0.98	Proteus	genus	0.94
+dbotu52	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	0.98	"Enterobacteriales"	order	0.97	Enterobacteriaceae	family	0.97	Escherichia/Shigella	genus	0.26
+dbotu6	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.72	Deltaproteobacteria	class	0.56	Syntrophobacterales	order	0.28	Syntrophobacteraceae	family	0.24	Desulfovirga	genus	0.22
+dbotu18	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Bacteroidetes"	phylum	1.0	"Bacteroidia"	class	1.0	"Bacteroidales"	order	1.0	Bacteroidaceae	family	1.0	Bacteroides	genus	1.0
+dbotu19	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	0.96	Enterococcaceae	family	0.51	Enterococcus	genus	0.41
+dbotu27	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.98	Gammaproteobacteria	class	0.98	"Enterobacteriales"	order	0.98	Enterobacteriaceae	family	0.98	Escherichia/Shigella	genus	0.28
+dbotu31	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Proteus	genus	0.83
+dbotu34	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Gammaproteobacteria	class	0.98	Pseudomonadales	order	0.55	Pseudomonadaceae	family	0.55	Pseudomonas	genus	0.55
+dbotu51	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Gammaproteobacteria	class	0.99	"Enterobacteriales"	order	0.98	Enterobacteriaceae	family	0.98	Proteus	genus	0.96
+dbotu4	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	Pasteurellales	order	0.94	Pasteurellaceae	family	0.94	Pasteurella	genus	0.35
+dbotu5	-	Root	rootrank	1.0	Bacteria	domain	0.88	"Thermotogae"	phylum	0.06	Thermotogae	class	0.06	Thermotogales	order	0.06	Thermotogales_incertae_sedis	family	0.06	Oceanotoga	genus	0.06
+dbotu8	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Betaproteobacteria	class	0.98	Burkholderiales	order	0.95	Sutterellaceae	family	0.95	Parasutterella	genus	0.95
+dbotu9	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.98	Bacilli	class	0.98	Lactobacillales	order	0.85	Enterococcaceae	family	0.73	Enterococcus	genus	0.36
+dbotu13	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.98	Gammaproteobacteria	class	0.93	Pseudomonadales	order	0.42	Pseudomonadaceae	family	0.42	Pseudomonas	genus	0.41
+dbotu14	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Bifidobacteriales	order	0.99	Bifidobacteriaceae	family	0.99	Aeriscardovia	genus	0.43
+dbotu15	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.96	Bacilli	class	0.94	Lactobacillales	order	0.78	Streptococcaceae	family	0.75	Streptococcus	genus	0.75
+dbotu17	-	Root	rootrank	1.0	Bacteria	domain	0.99	"Proteobacteria"	phylum	0.99	Gammaproteobacteria	class	0.99	"Enterobacteriales"	order	0.99	Enterobacteriaceae	family	0.99	Proteus	genus	0.94
+dbotu20	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Gammaproteobacteria	class	0.99	"Enterobacteriales"	order	0.99	Enterobacteriaceae	family	0.99	Yersinia	genus	0.55
+dbotu21	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	0.99	"Enterobacteriales"	order	0.98	Enterobacteriaceae	family	0.98	Proteus	genus	0.96
+dbotu22	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	0.97	Enterobacteriaceae	family	0.97	Proteus	genus	0.87
+dbotu25	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Escherichia/Shigella	genus	0.26
+dbotu26	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.99	Gammaproteobacteria	class	0.99	"Enterobacteriales"	order	0.99	Enterobacteriaceae	family	0.99	Escherichia/Shigella	genus	0.27
+dbotu30	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Clostridia	class	1.0	Clostridiales	order	1.0	Lachnospiraceae	family	0.99	Coprococcus	genus	0.47
+dbotu35	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	Pseudomonadales	order	0.94	Pseudomonadaceae	family	0.94	Pseudomonas	genus	0.92
+dbotu40	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	0.99	Bacilli	class	0.97	Lactobacillales	order	0.75	Enterococcaceae	family	0.45	Enterococcus	genus	0.34
+dbotu42	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	0.96	Enterococcaceae	family	0.88	Enterococcus	genus	0.77
+dbotu45	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Enterobacter	genus	0.25
+dbotu50	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Actinobacteria"	phylum	1.0	Actinobacteria	class	1.0	Actinobacteridae	subclass	1.0	Actinomycetales	order	1.0	Corynebacterineae	suborder	1.0	Corynebacteriaceae	family	0.98	Corynebacterium	genus	0.98
+dbotu53	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Proteus	genus	0.98
+dbotu54	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	0.97	Gammaproteobacteria	class	0.95	Pseudomonadales	order	0.69	Pseudomonadaceae	family	0.65	Pseudomonas	genus	0.65
+dbotu55	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	0.58	Carnobacteriaceae	family	0.25	Carnobacterium	genus	0.25
+dbotu56	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Lactobacillales	order	1.0	Carnobacteriaceae	family	0.68	Carnobacterium	genus	0.65
+dbotu58	-	Root	rootrank	1.0	Bacteria	domain	1.0	Firmicutes	phylum	1.0	Bacilli	class	1.0	Bacillales	order	0.97	Bacillales_Incertae Sedis XI	family	0.94	Gemella	genus	0.94
+dbotu59	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	0.99	Enterobacteriaceae	family	0.99	Proteus	genus	0.94
+dbotu60	-	Root	rootrank	1.0	Bacteria	domain	1.0	"Proteobacteria"	phylum	1.0	Gammaproteobacteria	class	1.0	"Enterobacteriales"	order	1.0	Enterobacteriaceae	family	1.0	Citrobacter	genus	0.62
