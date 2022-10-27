@@ -28,5 +28,10 @@ _Affiliations_: Memorial Sloan Kettering Cancer Center, Weill Cornell Medicine
 
 Codes for replicating the results can be found in the results directory.
 
+
+## 3. Additional notes
+
+The name of this method, harmonicMic, is a combination of [harmony](https://www.nature.com/articles/s41592-019-0619-0), the tried-and-true single-cell batch correction method I revise from, and [microbiome data](https://www.niehs.nih.gov/health/topics/science/microbiome/index.cfm); as well as inspired by the time I spent at the [One Night Stanza a cappella group](https://www.instagram.com/stanza.gram/?hl=en).
+
 Cheers,\
 Tom Fu
