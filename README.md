@@ -6,6 +6,20 @@ _Advised by_: Dr. Wesley Tansey, Dr. Quaid Morris\
 _Collaborators (TB data source)_: Dr. Michael Glickman\
 _Affiliations_: Memorial Sloan Kettering Cancer Center, Weill Cornell Medicine
 
+## 0. TODO
+
+(1) Write pipeline to combine data in microbiomeHD format to the curatedMetagenomicData format
+ - find overlapping species in the RDP/datasetID.otu_table.100.denovo.rdp_assigned files across all data, concatenate
+ - combine metadata and label useful information (Dataset, Sex, + biological information labelled)
+ - preprocessing (standard scaler normalization)
+ - pre-batch-correction evaluation
+    - PCA visualization, with the most important biological information colored, and batches styled
+    - statistically evaluate batch effect with the kw
+    - Evaluate sex bias and bias induced by other covariates
+
+(2) Code harmonicMicPy
+
+
 ## 1. Usage
 
 ### 1a. HarmonicMic usage
