@@ -1,7 +1,19 @@
+## set r cran mirror
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
+
+## install the required libraries
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("ExperimentHub")
+BiocManager::install("mia", force=TRUE)
 BiocManager::install("curatedMetagenomicData", force=TRUE)
+BiocManager::install("phyloseq", force=TRUE)
 
 library(dplyr)
 library(DT)
+library(curatedMetagenomicData)
 
 ## to access a single study and convert to phyloseq
 brooksB2017_metaObj = sampleMetadata |>
@@ -22,4 +34,4 @@ IBD_3sets_metaObj = sampleMetadata |>
 
 IBD_3sets_Phyloseq <- IBD_3sets_metaObj|> 
   mia::makePhyloseqFromTreeSummarizedExperiment(abund_values="relative_abundance")
-IBD_3sets_Phyloseq   <- prune_taxa(taxa_sums(IBD_3sets_Phyloseq ) >0, IBD_3sets_Phyloseq )
+IBD_3sets_Phyloseq   <- prune_taxa(taxa_sums(IBD_3sets_Phyloseq ) >0, IBD_3sets_Phyloseq)
