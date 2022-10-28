@@ -2,23 +2,28 @@ library(dplyr)
 library(DT)
 library(mia)
 library(curatedMetagenomicData)
+library(phyloseq)
 
-
-fetch_studies_from_CMG <- function (list_of_studies, abund_values, save = FALSE, save_to = NULL) {
+fetch_studies_from_CMG <- function (list_of_studies, abund_values, counts = FALSE, save = FALSE, save_to = NULL) {
 
     study_l_str <- paste(list_of_studies,collapse="|")
     study_l_abund_str <- paste("(", study_l_str, ").", abund_values, sep="")
 
     current_phylo_obj <-
-    curatedMetagenomicData(study_l_abund_str, dryrun = FALSE) |>
+    curatedMetagenomicData(study_l_abund_str, dryrun = FALSE, counts) |>
     mergeData() |>
     makePhyloseqFromTreeSummarizedExperiment(abund_values = abund_values)
 
     if(save){
         # currently can only save otu table, metadata, and taxonomy info
-        write.csv(otu_table(save_to), paste(save_to, "/otu_table_", study_l_str, '.csv'), row.names = TRUE)
-        write.csv(sample_table(save_to), paste(save_to, "/sample_table_", study_l_str, '.csv'), row.names = TRUE)
-        write.csv(tax_table(save_to), paste(save_to, "/tax_table_", study_l_str, '.csv'), row.names = TRUE)
+        write.csv(otu_table(current_phylo_obj), paste(save_to, "/otu_table_", study_l_str, '.csv', sep=""), row.names = TRUE)
+        write.csv(sample_data(current_phylo_obj), paste(save_to, "/sample_table_", study_l_str, '.csv', sep=""), row.names = TRUE)
+        write.csv(tax_table(current_phylo_obj), paste(save_to, "/tax_table_", study_l_str, '.csv', sep=""), row.names = TRUE)
     }
     return(current_phylo_obj)
 }
+
+# want to save real counts data
+# a = fetch_studies_from_CMG(c("HMP_2019_ibdmdb", "IjazUZ_2017", "LiJ_2014"), "relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/ibd_3_CMD')
+# b = fetch_studies_from_CMG(c("FrankelAE_2017", "GopalakrishnanV_2018", "LeeKA_2022", "MatsonV_2018", "WindTT_2020"), "relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/melanoma_5_CMD')
+b = fetch_studies_from_CMG(c("LeeKA_2022"), "relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/just leeKA')
