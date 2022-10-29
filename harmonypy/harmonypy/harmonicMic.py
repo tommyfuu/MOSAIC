@@ -333,6 +333,11 @@ def moe_correct_ridge(Z_orig, Z_cos, Z_corr, R, W, K, Phi_Rk, Phi_moe, lamb):
         x = np.dot(Phi_Rk, Phi_moe.T) + lamb
         W = np.dot(np.dot(np.linalg.inv(x), Phi_Rk), Z_orig.T)
         W[0,:] = 0 # do not remove the intercept
+        print(W.T)
+        print(Phi_Rk)
+        W = W.astype("float64")
+        Phi_Rk = Phi_Rk.astype("float64")
+        Z_corr = Z_corr.astype("float64")
         Z_corr -= np.dot(W.T, Phi_Rk)
     Z_cos = Z_corr / np.linalg.norm(Z_corr, ord=2, axis=0)
     return Z_cos, Z_corr, W, Phi_Rk

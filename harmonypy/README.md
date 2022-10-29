@@ -92,3 +92,29 @@ res.to_csv("data/adj.tsv.gz", sep = "\t", index = False)
 [Ilya Korsunsky]: https://github.com/ilyakorsunsky
 [pip]: https://pip.readthedocs.io/
 
+import numpy as np
+import pandas as pd
+data_mat = pd.read_csv("/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv", index_col="Unnamed: 0")
+data_mat = np.array(data_mat)
+meta_data = pd.read_csv("/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv")
+vars_use = ["Dataset", "Sex"]
+from harmony import run_harmony
+ho = run_harmony(data_mat, meta_data, vars_use)
+
+
+# the gist of new ideas
+
+1. in preprocessing, get rid of features and samples that does not satisfy at least one of the following conditions
+  - features with all zeroes
+  - features where the sum of counts are below 0.01% compared to the total sum of all counts (include those features with all zeroes)
+  - samples with all zeroes
+
+2. instead of using PCA, we maintain the structure of the data and use the original representation of the data instead and do harmony on that
+
+In the objective function, multiply the maximum diversity clustering term with a coefficient mu which represents the ratio of that sample/feature's count value to the whole. 
+  - This might come out to be an extremely small value or even zero. So we standardize the ratio by the maximum count for any feature in that sample
+     which is to say, the more abundant the feature, the more we want to maximize the diversity of that feature in the particular sample
+
+3. In the objective function, multiply everything by an indicator function which gives zero for a feature/cell when the corresponding feature is one of
+  - features where the sum of counts are below 0.01% compared to the total sum of all counts in at least one of all batches (include all zeroes)
+  - features where the sum of counts are below 0.01% compared to the total sum of all counts in at least one of all covariates (include all zeroes)
