@@ -1,5 +1,5 @@
-# harmonicMic - A data alignment algorithm dedicated to microbiome data.
-# Copyright (C) 2022  Chenlian (Tom) Fu <chf4012@med.cornell.edu; tfu@g.hmc.edu>
+# harmonypy - A data alignment algorithm.
+# Copyright (C) 2018  Ilya Korsunsky
 #               2019  Kamil Slowikowski <kslowikowski@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,6 @@ import numpy as np
 # kmeans does not always return k centroids, but kmeans2 does
 from scipy.cluster.vq import kmeans2
 import logging
-from preprocessing import *
 
 # create logger
 logger = logging.getLogger('harmonypy')
@@ -33,7 +32,7 @@ logger.addHandler(ch)
 
 # from IPython.core.debugger import set_trace
 
-def run_harmonicMic(
+def run_harmony(
     data_mat: np.ndarray,
     meta_data: pd.DataFrame,
     vars_use,
@@ -123,21 +122,21 @@ def run_harmonicMic(
 
     np.random.seed(random_state)
 
-    ho = HarmonicMic(
+    ho = Harmony(
         data_mat, phi, phi_moe, Pr_b, sigma, theta, max_iter_harmony, max_iter_kmeans,
         epsilon_cluster, epsilon_harmony, nclust, block_size, lamb_mat, verbose
     )
 
     return ho
 
-class HarmonicMic(object):
+class Harmony(object):
     def __init__(
             self, Z, Phi, Phi_moe, Pr_b, sigma,
             theta, max_iter_harmony, max_iter_kmeans, 
             epsilon_kmeans, epsilon_harmony, K, block_size,
             lamb, verbose
     ):
-        self.Z_corr = np.array(Z) # this is the corrected matrix
+        self.Z_corr = np.array(Z)
         self.Z_orig = np.array(Z)
 
         self.Z_cos = self.Z_orig / self.Z_orig.max(axis=0)
@@ -212,10 +211,7 @@ class HarmonicMic(object):
         # Cross Entropy
         x = (self.R * self.sigma[:,np.newaxis])
         y = np.tile(self.theta[:,np.newaxis], self.K).T
-        ### NOTE: harmonicMic edit: this term is weighted now
         z = np.log((self.O + 1) / (self.E + 1))
-        ## ratio also needs to be a 6*5 matrix to do element-wise operation
-        ratio = 
         w = np.dot(y * z, self.Phi)
         _cross_entropy = np.sum(x * w)
         # Save results
@@ -336,15 +332,11 @@ def moe_correct_ridge(Z_orig, Z_cos, Z_corr, R, W, K, Phi_Rk, Phi_moe, lamb):
         Phi_Rk = np.multiply(Phi_moe, R[i,:])
         x = np.dot(Phi_Rk, Phi_moe.T) + lamb
         W = np.dot(np.dot(np.linalg.inv(x), Phi_Rk), Z_orig.T)
-        W[0,:] = 0 # do not remove the intercept
-        print(W.T)
-        print(Phi_Rk)
         W = W.astype("float64")
         Phi_Rk = Phi_Rk.astype("float64")
         Z_corr = Z_corr.astype("float64")
+        W[0,:] = 0 # do not remove the intercept
         Z_corr -= np.dot(W.T, Phi_Rk)
     Z_cos = Z_corr / np.linalg.norm(Z_corr, ord=2, axis=0)
     return Z_cos, Z_corr, W, Phi_Rk
 
-
-def harmo
