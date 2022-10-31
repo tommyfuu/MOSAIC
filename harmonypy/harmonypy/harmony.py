@@ -87,7 +87,7 @@ def run_harmony(
 
     phi = pd.get_dummies(meta_data[vars_use]).to_numpy().T
     phi_n = meta_data[vars_use].describe().loc['unique'].to_numpy().astype(int)
-    print("phi_n", phi_n)
+
     if theta is None:
         theta = np.repeat([1] * len(phi_n), phi_n)
     elif isinstance(theta, float) or isinstance(theta, int):
@@ -121,7 +121,7 @@ def run_harmony(
     phi_moe = np.vstack((np.repeat(1, N), phi))
 
     np.random.seed(random_state)
-    print(data_mat.shape)
+
     ho = Harmony(
         data_mat, phi, phi_moe, Pr_b, sigma, theta, max_iter_harmony, max_iter_kmeans,
         epsilon_cluster, epsilon_harmony, nclust, block_size, lamb_mat, verbose
@@ -141,7 +141,7 @@ class Harmony(object):
 
         self.Z_cos = self.Z_orig / self.Z_orig.max(axis=0)
         self.Z_cos = self.Z_cos / np.linalg.norm(self.Z_cos, ord=2, axis=0)
-        print("self.Z_cos.shape", self.Z_cos.shape)
+
         self.Phi             = Phi
         self.Phi_moe         = Phi_moe
         self.N               = self.Z_corr.shape[1]
@@ -188,7 +188,6 @@ class Harmony(object):
         # Start with cluster centroids
         km_centroids, km_labels = kmeans2(self.Z_cos.T, self.K, minit='++')
         self.Y = km_centroids.T
-        print("km_centroids.shape", km_centroids.shape, km_labels)
         # (1) Normalize
         self.Y = self.Y / np.linalg.norm(self.Y, ord=2, axis=0)
         # (2) Assign cluster probabilities
@@ -198,9 +197,6 @@ class Harmony(object):
         self.R -= np.max(self.R, axis = 0)
         self.R = np.exp(self.R)
         self.R = self.R / np.sum(self.R, axis = 0)
-        print("self.R.shape", self.R.shape)
-        print("self.theta[:,np.newaxis]", self.theta[:,np.newaxis].shape, self.theta[:,np.newaxis])
-        print("self.Phi", self.Phi.shape, self.Phi)
         # (3) Batch diversity statistics
         self.E = np.outer(np.sum(self.R, axis=1), self.Pr_b)
         self.O = np.inner(self.R , self.Phi)
@@ -216,19 +212,14 @@ class Harmony(object):
         x = (self.R * self.sigma[:,np.newaxis])
         y = np.tile(self.theta[:,np.newaxis], self.K).T
         z = np.log((self.O + 1) / (self.E + 1))
-        # in the toy example, 6 is the cluster size, 175 is the sample size, 5 is the number of one-hot encoded covariate options
         w = np.dot(y * z, self.Phi)
-        # the variable blocks
-        _cross_entropy = np.sum(x * w) # element-wise multiplicationa and sum
-        print("x, y, z, w, O, E, K, _cross_entropy shape", x.shape, y.shape, z.shape, w.shape, self.O.shape, self.E.shape, self.K, _cross_entropy)
-        print("self.theta", self.theta, self.theta.shape)
+        _cross_entropy = np.sum(x * w)
         # Save results
         self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy)
         self.objective_kmeans_dist.append(kmeans_error)
         self.objective_kmeans_entropy.append(_entropy)
         self.objective_kmeans_cross.append(_cross_entropy)
-        print("self.objective_kmeans", len(self.objective_kmeans))
-    
+
     def harmonize(self, iter_harmony=10, verbose=True):
         converged = False
         for i in range(1, iter_harmony + 1):
@@ -260,18 +251,15 @@ class Harmony(object):
         # R is assumed to not have changed
         # Update Y to match new integrated data
         self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
-        print("self.dist_mat.shape", self.dist_mat.shape)
         for i in range(self.max_iter_kmeans):
             # print("kmeans {}".format(i))
             # STEP 1: Update Y
             self.Y = np.dot(self.Z_cos, self.R.T)
             self.Y = self.Y / np.linalg.norm(self.Y, ord=2, axis=0)
-            # STEP 2: Update dist_mat -> cosine distance
+            # STEP 2: Update dist_mat
             self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
-            print("self.dist_mat.shape", self.dist_mat.shape)
             # STEP 3: Update R
             self.update_R()
-            # maybe do stuff here instead
             # STEP 4: Check for convergence
             self.compute_objective()
             if i > self.window_size:
@@ -292,9 +280,6 @@ class Harmony(object):
         np.random.shuffle(update_order)
         n_blocks = np.ceil(1 / self.block_size).astype(int)
         blocks = np.array_split(update_order, n_blocks)
-        print("blocks", len(blocks))
-        print("R.shape", self.R.shape)
-        print("Z_corr.shape", self.Z_corr.shape)
         for b in blocks:
             # STEP 1: Remove cells
             self.E -= np.outer(np.sum(self.R[:,b], axis=1), self.Pr_b)
@@ -347,10 +332,10 @@ def moe_correct_ridge(Z_orig, Z_cos, Z_corr, R, W, K, Phi_Rk, Phi_moe, lamb):
         Phi_Rk = np.multiply(Phi_moe, R[i,:])
         x = np.dot(Phi_Rk, Phi_moe.T) + lamb
         W = np.dot(np.dot(np.linalg.inv(x), Phi_Rk), Z_orig.T)
-        W[0,:] = 0 # do not remove the intercept
         W = W.astype("float64")
         Phi_Rk = Phi_Rk.astype("float64")
         Z_corr = Z_corr.astype("float64")
+        W[0,:] = 0 # do not remove the intercept
         Z_corr -= np.dot(W.T, Phi_Rk)
     Z_cos = Z_corr / np.linalg.norm(Z_corr, ord=2, axis=0)
     return Z_cos, Z_corr, W, Phi_Rk

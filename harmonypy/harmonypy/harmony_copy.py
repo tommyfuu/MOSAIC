@@ -32,7 +32,7 @@ logger.addHandler(ch)
 
 # from IPython.core.debugger import set_trace
 
-def run_harmony(
+def run_harmonicMic(
     data_mat: np.ndarray,
     meta_data: pd.DataFrame,
     vars_use,
@@ -122,14 +122,14 @@ def run_harmony(
 
     np.random.seed(random_state)
     print(data_mat.shape)
-    ho = Harmony(
+    ho = HarmonicMic(
         data_mat, phi, phi_moe, Pr_b, sigma, theta, max_iter_harmony, max_iter_kmeans,
         epsilon_cluster, epsilon_harmony, nclust, block_size, lamb_mat, verbose
     )
 
     return ho
 
-class Harmony(object):
+class HarmonicMic(object):
     def __init__(
             self, Z, Phi, Phi_moe, Pr_b, sigma,
             theta, max_iter_harmony, max_iter_kmeans, 
@@ -227,6 +227,7 @@ class Harmony(object):
         w = np.dot(y * z, self.Phi)
         # the variable blocks
         _cross_entropy = np.sum(x * w) # element-wise multiplicationa and sum
+        print(kmeans_error)
         print("x, y, z, w, O, E, K, _cross_entropy shape", x.shape, y.shape, z.shape, w.shape, self.O.shape, self.E.shape, self.K, _cross_entropy)
         print("self.theta", self.theta.shape)
         # Save results
@@ -234,7 +235,6 @@ class Harmony(object):
         self.objective_kmeans_dist.append(kmeans_error)
         self.objective_kmeans_entropy.append(_entropy)
         self.objective_kmeans_cross.append(_cross_entropy)
-        print("self.objective_kmeans", len(self.objective_kmeans))
     
     def harmonize(self, iter_harmony=10, verbose=True):
         converged = False
