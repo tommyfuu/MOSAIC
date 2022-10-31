@@ -23,6 +23,7 @@ import logging
 import itertools
 from skbio.diversity import beta_diversity
 from skbio.stats.ordination import pcoa
+from scipy import stats
 
 # create logger
 logger = logging.getLogger('harmonypy')
@@ -249,34 +250,45 @@ class HarmonicMic(object):
         ### NOTE: added bray-curtis between sample similarity to objective function to minimize
         bray_curtis_sum = 0
         ## compute beta diversity using skbio
-        data = self.Z_corr.T
+        data = self.Z_corr.T+abs(np.min(self.Z_corr.T)) # to avoid negative values
         ids = list(range(self.Z_corr.T.shape[0]))
         bc_dm = beta_diversity("braycurtis", data, ids)
         bc_pc = pcoa(bc_dm)
-        print(bc_pc.samples['PC1'])
         ## use the first 3 PCs individually to calculate kruskal-wallis values
 
-        for var in self.phi_dict.keys():
-            Z_corr_sublist_l = []
-            current_phi = self.phi_dict[var]
-            for phi_one_condition in list(current_phi):
-                # phi_one_condition will have dimension (#ofsamples,)
-                # Z_corr has dimension (#offeatures, #ofsamples)
-                removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
-                # current_Z_corr_sublist = self.Z_corr*phi_one_condition
-                current_Z_corr_sublist = np.delete(self.Z_corr, removed_indices, axis=1)
-                # remove all zero features to avoid that's an impact on bray curtis
-                current_Z_corr_sublist = current_Z_corr_sublist[~np.all(current_Z_corr_sublist == 0, axis=1)]
-                print("current_Z_corr_sublist", current_Z_corr_sublist.shape)
-                Z_corr_sublist_l.append(current_Z_corr_sublist)
-            print(var, Z_corr_sublist_l[0])
-            # sum up bray-curtis diversity currently
-            pairwise_combos = itertools.permutations(Z_corr_sublist_l,2)
-            for pair in pairwise_combos:
-                bray_curtis += braycurtis(pair[0], pair[1])
+        for pc in ['PC1', 'PC2', 'PC3']:
+            for var in self.phi_dict.keys():
+                current_phi = self.phi_dict[var]
+                current_data = bc_pc.samples[pc]
+                kruskal_data = []
+                for phi_one_condition in list(current_phi):
+                    removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
+                    current_data_condition = list(current_data.drop(index = removed_indices))
+                    kruskal_data.append(current_data_condition)
+                bray_curtis_sum += 1-stats.kruskal(*kruskal_data)[1] # the higher this value, the more influence beta diversity has on objective value
+                print(bray_curtis_sum)
+
+        # normalize
+        bray_curtis_sum = bray_curtis_sum/len(self.phi_dict.keys())
+                    # # phi_one_condition will have dimension (#ofsamples,)
+                    # # Z_corr has dimension (#offeatures, #ofsamples)
+                    # removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
+                    # df.drop(index=('falcon', 'weight'))
+                    # # current_Z_corr_sublist = self.Z_corr*phi_one_condition
+                    # current_Z_corr_sublist = np.delete(self.Z_corr, removed_indices, axis=1)
+                    # # remove all zero features to avoid that's an impact on bray curtis
+                    # current_Z_corr_sublist = current_Z_corr_sublist[~np.all(current_Z_corr_sublist == 0, axis=1)]
+                    # print("current_Z_corr_sublist", current_Z_corr_sublist.shape)
+                    # Z_corr_sublist_l.append(current_Z_corr_sublist)
+            # print(var, Z_corr_sublist_l[0])
+            # # sum up bray-curtis diversity currently
+            # pairwise_combos = itertools.permutations(Z_corr_sublist_l,2)
+            # for pair in pairwise_combos:
+            #     bray_curtis += braycurtis(pair[0], pair[1])
 
         # Save results
-        self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy)
+        # self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy)
+        self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy + bray_curtis_sum)
         self.objective_kmeans_dist.append(kmeans_error)
         self.objective_kmeans_entropy.append(_entropy)
         self.objective_kmeans_cross.append(_cross_entropy)
