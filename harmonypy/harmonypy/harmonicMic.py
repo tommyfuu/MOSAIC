@@ -1,5 +1,5 @@
-# harmonicMic - A data alignment algorithm dedicated to microbiome data.
-# Copyright (C) 2022  Chenlian (Tom) Fu <chf4012@med.cornell.edu; tfu@g.hmc.edu>
+# harmonypy - A data alignment algorithm.
+# Copyright (C) 2018  Ilya Korsunsky
 #               2019  Kamil Slowikowski <kslowikowski@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,9 @@ import numpy as np
 # kmeans does not always return k centroids, but kmeans2 does
 from scipy.cluster.vq import kmeans2
 import logging
-from preprocessing import *
+import itertools
+from skbio.diversity import beta_diversity
+from skbio.stats.ordination import pcoa
 
 # create logger
 logger = logging.getLogger('harmonypy')
@@ -89,6 +91,13 @@ def run_harmonicMic(
     phi = pd.get_dummies(meta_data[vars_use]).to_numpy().T
     phi_n = meta_data[vars_use].describe().loc['unique'].to_numpy().astype(int)
 
+    ### NOTE: ADDED phi_dict
+    phi_dict = {}
+    for var in vars_use:
+        print(var, np.unique(list(meta_data[var])))
+        print(pd.get_dummies(meta_data[var]).to_numpy().T)
+        phi_dict.update({var: pd.get_dummies(meta_data[var]).to_numpy().T})
+    print("phi_n", phi_n)
     if theta is None:
         theta = np.repeat([1] * len(phi_n), phi_n)
     elif isinstance(theta, float) or isinstance(theta, int):
@@ -122,10 +131,10 @@ def run_harmonicMic(
     phi_moe = np.vstack((np.repeat(1, N), phi))
 
     np.random.seed(random_state)
-
+    print(data_mat.shape)
     ho = HarmonicMic(
         data_mat, phi, phi_moe, Pr_b, sigma, theta, max_iter_harmony, max_iter_kmeans,
-        epsilon_cluster, epsilon_harmony, nclust, block_size, lamb_mat, verbose
+        epsilon_cluster, epsilon_harmony, nclust, block_size, lamb_mat, verbose, vars_use, phi_dict
     )
 
     return ho
@@ -135,9 +144,9 @@ class HarmonicMic(object):
             self, Z, Phi, Phi_moe, Pr_b, sigma,
             theta, max_iter_harmony, max_iter_kmeans, 
             epsilon_kmeans, epsilon_harmony, K, block_size,
-            lamb, verbose
+            lamb, verbose, vars_use, phi_dict
     ):
-        self.Z_corr = np.array(Z) # this is the corrected matrix
+        self.Z_corr = np.array(Z)
         self.Z_orig = np.array(Z)
 
         self.Z_cos = self.Z_orig / self.Z_orig.max(axis=0)
@@ -145,6 +154,10 @@ class HarmonicMic(object):
 
         self.Phi             = Phi
         self.Phi_moe         = Phi_moe
+
+        # NOTE: added vars_use and phi_dict
+        self.vars_use        = vars_use
+        self.phi_dict        = phi_dict
         self.N               = self.Z_corr.shape[1]
         self.Pr_b            = Pr_b
         self.B               = self.Phi.shape[0] # number of batch variables
@@ -162,6 +175,8 @@ class HarmonicMic(object):
         self.max_iter_kmeans = max_iter_kmeans
         self.verbose         = verbose
         self.theta           = theta
+        # NOTE: added variable - ratio, has the shape of #ofclusters*#ofsamples
+        self.ratio           = None
 
         self.objective_harmony        = []
         self.objective_kmeans         = []
@@ -184,10 +199,13 @@ class HarmonicMic(object):
         self.E           = np.zeros((self.K, self.B))
         self.W           = np.zeros((self.B + 1, self.d))
         self.Phi_Rk      = np.zeros((self.B + 1, self.N))
+        # NOTE: added ratio variable
+        self.ratio       = np.zeros((self.K, self.Z_corr.shape[1]))
 
     def init_cluster(self):
         # Start with cluster centroids
         km_centroids, km_labels = kmeans2(self.Z_cos.T, self.K, minit='++')
+        print("self.Z_cos.shape", self.Z_cos.shape)
         self.Y = km_centroids.T
         # (1) Normalize
         self.Y = self.Y / np.linalg.norm(self.Y, ord=2, axis=0)
@@ -212,18 +230,57 @@ class HarmonicMic(object):
         # Cross Entropy
         x = (self.R * self.sigma[:,np.newaxis])
         y = np.tile(self.theta[:,np.newaxis], self.K).T
-        ### NOTE: harmonicMic edit: this term is weighted now
         z = np.log((self.O + 1) / (self.E + 1))
-        ## ratio also needs to be a 6*5 matrix to do element-wise operation
-        ratio = 
+        ### NOTE: added ratio, remember that we are harmonizing for one PC/one feature at a time, so all we worry about is samples
+        cluster_by_covar_prob = np.dot(self.R, self.Phi.T)
+        cluster_sum = np.sum(cluster_by_covar_prob, axis=1)
+        self.ratio = cluster_by_covar_prob/cluster_sum[:, np.newaxis] 
+        self.ratio[self.ratio < 0.001*self.K*self.B] = 0.0
+        # z = 1.01**(self.ratio) * z # element-wise operation
+        z = np.exp(self.ratio) * z # element-wise operation
+        # in the toy example, 6 is the cluster size, 175 is the sample size, 5 is the number of one-hot encoded covariate options
         w = np.dot(y * z, self.Phi)
-        _cross_entropy = np.sum(x * w)
+        # the variable blocks
+        _cross_entropy = np.sum(x * w) # element-wise multiplicationa and sum
+        print(kmeans_error)
+        print("x, y, z, w, O, E, K, _cross_entropy shape", x.shape, y.shape, z.shape, w.shape, self.O.shape, self.E.shape, self.K, _cross_entropy)
+        print("self.theta", self.theta.shape)
+
+        ### NOTE: added bray-curtis between sample similarity to objective function to minimize
+        bray_curtis_sum = 0
+        ## compute beta diversity using skbio
+        data = self.Z_corr.T
+        ids = list(range(self.Z_corr.T.shape[0]))
+        bc_dm = beta_diversity("braycurtis", data, ids)
+        bc_pc = pcoa(bc_dm)
+        print(bc_pc.samples['PC1'])
+        ## use the first 3 PCs individually to calculate kruskal-wallis values
+
+        for var in self.phi_dict.keys():
+            Z_corr_sublist_l = []
+            current_phi = self.phi_dict[var]
+            for phi_one_condition in list(current_phi):
+                # phi_one_condition will have dimension (#ofsamples,)
+                # Z_corr has dimension (#offeatures, #ofsamples)
+                removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
+                # current_Z_corr_sublist = self.Z_corr*phi_one_condition
+                current_Z_corr_sublist = np.delete(self.Z_corr, removed_indices, axis=1)
+                # remove all zero features to avoid that's an impact on bray curtis
+                current_Z_corr_sublist = current_Z_corr_sublist[~np.all(current_Z_corr_sublist == 0, axis=1)]
+                print("current_Z_corr_sublist", current_Z_corr_sublist.shape)
+                Z_corr_sublist_l.append(current_Z_corr_sublist)
+            print(var, Z_corr_sublist_l[0])
+            # sum up bray-curtis diversity currently
+            pairwise_combos = itertools.permutations(Z_corr_sublist_l,2)
+            for pair in pairwise_combos:
+                bray_curtis += braycurtis(pair[0], pair[1])
+
         # Save results
         self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy)
         self.objective_kmeans_dist.append(kmeans_error)
         self.objective_kmeans_entropy.append(_entropy)
         self.objective_kmeans_cross.append(_cross_entropy)
-
+    
     def harmonize(self, iter_harmony=10, verbose=True):
         converged = False
         for i in range(1, iter_harmony + 1):
@@ -255,15 +312,27 @@ class HarmonicMic(object):
         # R is assumed to not have changed
         # Update Y to match new integrated data
         self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
+        print("self.dist_mat.shape", self.dist_mat.shape)
         for i in range(self.max_iter_kmeans):
             # print("kmeans {}".format(i))
             # STEP 1: Update Y
-            self.Y = np.dot(self.Z_cos, self.R.T)
+            ### NOTE: ANOTHER CHANGE: weight the Rs by feature count weights
+            #### 1.1 compute normalized sample sums
+            norm_sample_sums = np.sum(self.Z_cos, axis=0)
+            #### 1.2 set 75% as the reference
+            ref_sample_sum = np.percentile(norm_sample_sums, 75)
+            ### 1.3 set R weights as the ratio between feature sum and the reference level
+            R_weights = norm_sample_sums/ref_sample_sum
+            print("R_weights.shape", R_weights.shape)
+
+            self.Y = np.dot(self.Z_cos, (self.R*R_weights).T)
             self.Y = self.Y / np.linalg.norm(self.Y, ord=2, axis=0)
-            # STEP 2: Update dist_mat
+            # STEP 2: Update dist_mat -> cosine distance
             self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
+            print("self.dist_mat.shape", self.dist_mat.shape)
             # STEP 3: Update R
             self.update_R()
+            # maybe do stuff here instead
             # STEP 4: Check for convergence
             self.compute_objective()
             if i > self.window_size:
@@ -284,6 +353,9 @@ class HarmonicMic(object):
         np.random.shuffle(update_order)
         n_blocks = np.ceil(1 / self.block_size).astype(int)
         blocks = np.array_split(update_order, n_blocks)
+        print("blocks", len(blocks))
+        print("R.shape", self.R.shape)
+        print("Z_corr.shape", self.Z_corr.shape)
         for b in blocks:
             # STEP 1: Remove cells
             self.E -= np.outer(np.sum(self.R[:,b], axis=1), self.Pr_b)
@@ -337,8 +409,6 @@ def moe_correct_ridge(Z_orig, Z_cos, Z_corr, R, W, K, Phi_Rk, Phi_moe, lamb):
         x = np.dot(Phi_Rk, Phi_moe.T) + lamb
         W = np.dot(np.dot(np.linalg.inv(x), Phi_Rk), Z_orig.T)
         W[0,:] = 0 # do not remove the intercept
-        print(W.T)
-        print(Phi_Rk)
         W = W.astype("float64")
         Phi_Rk = Phi_Rk.astype("float64")
         Z_corr = Z_corr.astype("float64")
@@ -346,5 +416,3 @@ def moe_correct_ridge(Z_orig, Z_cos, Z_corr, R, W, K, Phi_Rk, Phi_moe, lamb):
     Z_cos = Z_corr / np.linalg.norm(Z_corr, ord=2, axis=0)
     return Z_cos, Z_corr, W, Phi_Rk
 
-
-def harmo
