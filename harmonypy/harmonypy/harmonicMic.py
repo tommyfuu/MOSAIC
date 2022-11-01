@@ -1,6 +1,5 @@
-# harmonypy - A data alignment algorithm.
-# Copyright (C) 2018  Ilya Korsunsky
-#               2019  Kamil Slowikowski <kslowikowski@gmail.com>
+# harmonicMic - A data alignment algorithm dedicated to microbiome data.
+# Copyright (C) 2022  Chenlian (Tom) Fu <chf4012@med.cornell.edu; tfu@g.hmc.edu>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -270,21 +269,6 @@ class HarmonicMic(object):
 
         # normalize
         bray_curtis_sum = bray_curtis_sum/len(self.phi_dict.keys())
-                    # # phi_one_condition will have dimension (#ofsamples,)
-                    # # Z_corr has dimension (#offeatures, #ofsamples)
-                    # removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
-                    # df.drop(index=('falcon', 'weight'))
-                    # # current_Z_corr_sublist = self.Z_corr*phi_one_condition
-                    # current_Z_corr_sublist = np.delete(self.Z_corr, removed_indices, axis=1)
-                    # # remove all zero features to avoid that's an impact on bray curtis
-                    # current_Z_corr_sublist = current_Z_corr_sublist[~np.all(current_Z_corr_sublist == 0, axis=1)]
-                    # print("current_Z_corr_sublist", current_Z_corr_sublist.shape)
-                    # Z_corr_sublist_l.append(current_Z_corr_sublist)
-            # print(var, Z_corr_sublist_l[0])
-            # # sum up bray-curtis diversity currently
-            # pairwise_combos = itertools.permutations(Z_corr_sublist_l,2)
-            # for pair in pairwise_combos:
-            #     bray_curtis += braycurtis(pair[0], pair[1])
 
         # Save results
         # self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy)

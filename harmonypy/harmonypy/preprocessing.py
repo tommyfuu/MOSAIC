@@ -1,6 +1,5 @@
 # harmonicMic - A data alignment algorithm dedicated to microbiome data.
 # Copyright (C) 2022  Chenlian (Tom) Fu <chf4012@med.cornell.edu; tfu@g.hmc.edu>
-#               2019  Kamil Slowikowski <kslowikowski@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,30 +23,33 @@ def load_data(address_X, address_Y, IDCol, index_col = False):
     else:
         data_mat = pd.read_csv(address_X)
     meta_data = pd.read_csv(address_Y)
-    data_mat = preprocess(data_mat, meta_data, IDCol)
-    data_mat = np.array(data_mat)
+    data_mat, meta_data = preprocess(data_mat, meta_data, IDCol)
 
-    return data_mat
+    return data_mat, meta_data
 
 def preprocess(data_mat, meta_data, IDCol):
-    print(data_mat.shape)
-    print(data_mat)
     # remove samples with all zeros
     data_mat = data_mat.loc[~(data_mat==0).all(axis=1)]
     kept_samples = data_mat.index
     meta_data = meta_data[meta_data[IDCol].isin(kept_samples)]
-
-    print(data_mat.shape)
-    # remove features where the sum of counts are below 0.01% compared to the total sum of all counts (include those features with all zeroes)
-    # Arumugam, Manimozhiyan, Jeroen Raes, Eric Pelletier, Denis Le Paslier, Takuji Yamada, Daniel R Mende, Gabriel R Fernandes, et al. 2011. “Enterotypes of the Human Gut Microbiome.” Nature 473 (7346). Nature Publishing Group: 174.
+    print(data_mat.shape, meta_data.shape)
+    # remove features with all zeros
     col_names = list(data_mat.columns)
-    col_sums = data_mat.sum(axis = 0)
-    total = data_mat.to_numpy().sum()
-    col_sums_ratios = [col_sum/total for col_sum in col_sums]
-    removable_feature_names = [col_names[index] for index, ratio in enumerate(col_sums_ratios) if ratio<0.0001]
-    print(removable_feature_names)
+    col_sums = data_mat.sum(axis = 1)
+    print(len(col_sums))
+    removable_feature_names = [col_names[index] for index, col_sum in enumerate(col_sums) if col_sum==0]
     data_mat.drop(removable_feature_names, axis=1, inplace=True)
-    print(data_mat.shape)
+    print(data_mat.shape, meta_data.shape)
+
+    # print(data_mat.shape)
+    # # remove features where the sum of counts are below 0.01% compared to the total sum of all counts (include those features with all zeroes)
+    # # Arumugam, Manimozhiyan, Jeroen Raes, Eric Pelletier, Denis Le Paslier, Takuji Yamada, Daniel R Mende, Gabriel R Fernandes, et al. 2011. “Enterotypes of the Human Gut Microbiome.” Nature 473 (7346). Nature Publishing Group: 174.
+    # col_names = list(data_mat.columns)
+    # col_sums = data_mat.sum(axis = 0)
+    # total = data_mat.to_numpy().sum()
+    # col_sums_ratios = [col_sum/total for col_sum in col_sums]
+    # removable_feature_names = [col_names[index] for index, ratio in enumerate(col_sums_ratios) if ratio<0.0001]
+    # data_mat.drop(removable_feature_names, axis=1, inplace=True)
     return data_mat, meta_data
 
 
