@@ -113,11 +113,11 @@ def run_eval(batch_corrected_df, meta_data, batch_var, n_pc, output_root, verbos
     a = Evaluate(batch_corrected_df, meta_data, batch_var, n_pc, output_root, verbose, bio_var)
     return
 
-# Evaluate(res, meta_data, 'Dataset', 30, 'Glickman_harmonicMic', None, "Visit")
-Evaluate(res_h, meta_data, 'Dataset', 30, 'Glickman_harmony', None, "Visit")
+# Evaluate(res, meta_data, 'Dataset', 'Glickman_harmonicMic', None, "Visit", 30)
+Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony', None, "Visit", 30)
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, n_pc, output_root, verbose, bio_var = False
+            self, batch_corrected_df, meta_data, batch_var, output_root, verbose, bio_var = False, n_pc=30, covar = False
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -126,10 +126,14 @@ class Evaluate(object):
         self.bio_var = bio_var # var retaining the biological info
         print("bio_var", bio_var)
         self.n_pc = n_pc
+        self.covar = covar
         self.rng = np.random.RandomState(88)
         # functions executed
         self.standard_scaler()
-        self.PCA_vis()
+        df = self.PCA_vis()
+        self.PC01_kw_tests(df)
+        if covar != False:
+            self.allPCs_covar_kw_test(df)
 
     def standard_scaler(self):
         source_df = self.batch_corrected_df
@@ -189,4 +193,60 @@ class Evaluate(object):
         plt.savefig(self.output_root+"_PCA_batches.png")
         return df
 
+    def PC01_kw_tests(self, df):
+        # TO DEBUG
+        bio_var_l = list(df[self.bio_var])
+        dim = np.unique(bio_var_l)
+        kw_heatmap_array = np.full((dim, dim), 1, dtype=float)
+        for pair in itertools.combinations(bio_var_l, 2):
+            data1 = df.loc[df['Day'] == pair[0]]
+            data2 = df.loc[df['Day'] == pair[1]]
+            PC0_p = stats.kruskal(data1["PC0"].values,data2["PC0"].values)[1]
+            PC1_p = stats.kruskal(data1["PC1"].values,data2["PC1"].values)[1]
+            print("PC0", pair[0], pair[1], PC0_p)
+            print("PC1", pair[0], pair[1], PC1_p)
+            print([bio_var_l.index(pair[0]), bio_var_l.index(pair[1])], kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])])
+            kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])]=PC1_p
+            kw_heatmap_array[bio_var_l.index(pair[1]), bio_var_l.index(pair[0])]=PC0_p
+        fig, ax = plt.subplots()
+        ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
+        im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
+        # Show all ticks and label them with the respective list entries
+        ax.set_xticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+        ax.set_xlabel("PC0 (lower diagonal)")
+        ax.set_yticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+        ax.set_ylabel("PC1 (upper diagonal)")
+        # Rotate the tidata["PC0"].valuesck labels and set their alignment.
+        plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+                rotation_mode="anchor")
 
+        # Loop over data dimensionsif i!=j: and create text annotations.
+        for i in range(len(bio_var_l)):
+            for j in range(len(bio_var_l)):
+                if i!=j:
+                    text = ax.text(i, j, round(-np.log2(kw_heatmap_array)[i, j], 5),
+                                ha="center", va="center", color="black", fontsize=8)
+
+        ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
+        fig.tight_layout()
+        plt.show()
+
+    def allPCs_covar_kw_test(self, df):
+        # to debug
+        # lets do 30PCs for now
+        fig, axes = plt.subplots(5, 6, sharex=True, sharey=True, figsize=(35, 35))
+        current_ax_index = [0, 0]
+        covar_unique = np.unique(df[self.covar]).tolist()
+        for i in range(30):
+            print(current_ax_index)
+            a = sns.scatterplot(df["PC0"],df["PC"+str(i)], hue = df[self.covar], style = df["batches"], s = 100,ax = axes[current_ax_index[0], current_ax_index[1]], cmap = "tab10", x_jitter = True)
+            a.set_title("PC"+str(i))
+            data_for_kw = [df.loc[df[self.covar]==var]["PC"+str(i)].values for var in covar_unique]
+            # data_m = df.loc[df[self.covar]=="Male"]
+            # data_f = df.loc[df['Sex']=="Female"]
+            PC1_p = stats.kruskal(*data_for_kw)[1]
+            if current_ax_index[1] == 5:
+                current_ax_index = [current_ax_index[0]+1, 0]
+            else:
+                current_ax_index[1] +=1
+            print("PC"+str(i), PC1_p)

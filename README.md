@@ -13,9 +13,10 @@ _Affiliations_: Memorial Sloan Kettering Cancer Center, Weill Cornell Medicine
  - combine metadata and label useful information (Dataset, Sex, + biological information labelled)
  - preprocessing (standard scaler normalization)
  - pre-batch-correction evaluation
-    - PCA visualization, with the most important biological information colored, and batches styled
-    - statistically evaluate batch effect with the kw
-    - Evaluate sex bias and bias induced by other covariates
+    - PCA visualization, with the most important biological information colored, and batches styled # DONE
+    - statistically evaluate batch effect with the kw # DONE
+    - Evaluate sex bias and bias induced by other covariates # DONE
+    - Evaluate alpha and beta diversity
 
 (2) Code harmonicMicPy
 
