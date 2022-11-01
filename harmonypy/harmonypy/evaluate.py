@@ -23,6 +23,8 @@ from sklearn.decomposition import PCA
 import seaborn as sns
 import random
 from sklearn.preprocessing import StandardScaler
+import itertools
+from scipy import stats
 
 def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col = False):
     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
@@ -54,7 +56,7 @@ def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = 
 # vars_use = ["Dataset", "Sex"]
 # res, meta_data = generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col)
 
-res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col)
+# res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col)
 def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
     """
     Create a plot of the covariance confidence ellipse of *x* and *y*.
@@ -109,15 +111,15 @@ def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
     return ax.add_patch(ellipse)
 
 
-def run_eval(batch_corrected_df, meta_data, batch_var, n_pc, output_root, verbose, bio_var = False):
-    a = Evaluate(batch_corrected_df, meta_data, batch_var, n_pc, output_root, verbose, bio_var)
+def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False):
+    a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar)
     return
 
-# Evaluate(res, meta_data, 'Dataset', 'Glickman_harmonicMic', None, "Visit", 30)
-Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony', None, "Visit", 30)
+# Evaluate(res, meta_data, 'Dataset', 'Glickman_harmonicMic', "Visit", 30, 'Sex')
+# Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony', "Visit", 30, 'Sex')
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, verbose, bio_var = False, n_pc=30, covar = False
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -132,7 +134,9 @@ class Evaluate(object):
         self.standard_scaler()
         df = self.PCA_vis()
         self.PC01_kw_tests(df)
+        self.covar == covar
         if covar != False:
+            self.covar == covar
             self.allPCs_covar_kw_test(df)
 
     def standard_scaler(self):
@@ -191,18 +195,25 @@ class Evaluate(object):
             currentDF = df.loc[df["batches"] == current_batch]
             confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor="grey")
         plt.savefig(self.output_root+"_PCA_batches.png")
+        
+        if self.covar != False:
+            df[self.covar] = self.meta_data[self.covar]
         return df
 
     def PC01_kw_tests(self, df):
         # TO DEBUG
         bio_var_l = list(df[self.bio_var])
-        dim = np.unique(bio_var_l)
+        bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
+        bio_var_l = list(np.unique(bio_var_l))
+        dim = len(np.unique(bio_var_l))
         kw_heatmap_array = np.full((dim, dim), 1, dtype=float)
         for pair in itertools.combinations(bio_var_l, 2):
-            data1 = df.loc[df['Day'] == pair[0]]
-            data2 = df.loc[df['Day'] == pair[1]]
-            PC0_p = stats.kruskal(data1["PC0"].values,data2["PC0"].values)[1]
-            PC1_p = stats.kruskal(data1["PC1"].values,data2["PC1"].values)[1]
+            data_for_kw_PC0 = [df.loc[df[self.bio_var]==var]["PC0"].values for var in pair]
+            data_for_kw_PC1 = [df.loc[df[self.bio_var]==var]["PC1"].values for var in pair]
+            # data1 = df.loc[df['Day'] == pair[0]]
+            # data2 = df.loc[df['Day'] == pair[1]]
+            PC0_p = stats.kruskal(*data_for_kw_PC0)[1]
+            PC1_p = stats.kruskal(*data_for_kw_PC1)[1]
             print("PC0", pair[0], pair[1], PC0_p)
             print("PC1", pair[0], pair[1], PC1_p)
             print([bio_var_l.index(pair[0]), bio_var_l.index(pair[1])], kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])])
@@ -229,14 +240,16 @@ class Evaluate(object):
 
         ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
         fig.tight_layout()
-        plt.show()
+        plt.savefig(self.output_root+"_OC01_kw_tests.png")
 
     def allPCs_covar_kw_test(self, df):
         # to debug
         # lets do 30PCs for now
         fig, axes = plt.subplots(5, 6, sharex=True, sharey=True, figsize=(35, 35))
         current_ax_index = [0, 0]
-        covar_unique = np.unique(df[self.covar]).tolist()
+        covar_unique = list(df[self.covar].values)
+        covar_unique = [x for x in covar_unique if str(x) != 'nan']
+        covar_unique = np.unique(covar_unique).tolist()
         for i in range(30):
             print(current_ax_index)
             a = sns.scatterplot(df["PC0"],df["PC"+str(i)], hue = df[self.covar], style = df["batches"], s = 100,ax = axes[current_ax_index[0], current_ax_index[1]], cmap = "tab10", x_jitter = True)
@@ -250,3 +263,5 @@ class Evaluate(object):
             else:
                 current_ax_index[1] +=1
             print("PC"+str(i), PC1_p)
+        
+        plt.savefig(self.output_root+"_allPCs_covar_kw_tests.png")
