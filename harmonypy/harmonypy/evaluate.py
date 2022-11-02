@@ -16,6 +16,7 @@
 
 from preprocessing import *
 from harmonicMic import run_harmonicMic
+from harmony import run_harmony
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
 import matplotlib.transforms as transforms
@@ -38,8 +39,13 @@ def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_co
     res.columns = list(meta_data[IDCol])
     return res.T, meta_data
 
-def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = False):
+def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = False, PCA_first = False):
     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
+    if PCA_first:
+        pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
+        pca_results.fit(data_mat)
+        data_mat_1 = pca_results.transform(data_mat)
+        data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
     ho = run_harmony(data_mat, meta_data, vars_use)
     res = pd.DataFrame(ho.Z_corr)
 
@@ -47,6 +53,8 @@ def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = 
     res.index = data_mat.columns
     res.columns = list(meta_data[IDCol])
     return res, meta_data
+
+
 # address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
 # address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
 # IDCol = 'Sam_id'
@@ -55,6 +63,7 @@ def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = 
 # res, meta_data = generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col)
 
 # res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col)
+# res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col, True)
 def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
     """
     Create a plot of the covariance confidence ellipse of *x* and *y*.
@@ -115,6 +124,7 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
 
 # Evaluate(res, meta_data, 'Dataset', 'Glickman_harmonicMic', "Visit", 30, 'Sex', 'Sam_id')
 # Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
 class Evaluate(object):
     def __init__(
             self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None
@@ -288,7 +298,7 @@ class Evaluate(object):
         shannon_fig = shannon_df.boxplot(column='shannon', by=test_var)
         shannon_fig.figure.savefig(self.output_root+"_alpha_shannon_pcoa.png")
         bc_metadata = self.meta_data
-        bc_metadata.index = bc_metadata[IDCol]
+        bc_metadata.index = bc_metadata[self.IDCol]
         bc_metadata[test_var] = bc_metadata[test_var].fillna("unknown")
         bc_fig = bc_pc.plot(bc_metadata, test_var,
                  axis_labels=('PC 1', 'PC 2', 'PC 3'),
