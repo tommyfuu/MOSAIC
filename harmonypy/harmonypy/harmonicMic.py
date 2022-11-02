@@ -235,7 +235,7 @@ class HarmonicMic(object):
         cluster_by_covar_prob = np.dot(self.R, self.Phi.T)
         cluster_sum = np.sum(cluster_by_covar_prob, axis=1)
         self.ratio = cluster_by_covar_prob/cluster_sum[:, np.newaxis] 
-        self.ratio[self.ratio < 0.001*self.K*self.B] = 0.0
+        self.ratio[self.ratio < 0.001*self.K*self.B] = 0.0 # note that e^0=1 so this would make the ratio be 1 and have no impact on the z
         # z = 1.01**(self.ratio) * z # element-wise operation
         z = np.exp(self.ratio) * z # element-wise operation
         # in the toy example, 6 is the cluster size, 175 is the sample size, 5 is the number of one-hot encoded covariate options

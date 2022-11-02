@@ -26,25 +26,20 @@ from sklearn.preprocessing import StandardScaler
 import itertools
 from scipy import stats
 from skbio.diversity import alpha_diversity, beta_diversity
+from skbio.stats.ordination import pcoa
 
 def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col = False):
     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
-    print("aa")
-    print(data_mat.shape)
-    print(meta_data.shape)
     ho = run_harmonicMic(data_mat, meta_data, vars_use)
     res = pd.DataFrame(ho.Z_corr)
 
     # give the index back
     res.index = data_mat.columns
     res.columns = list(meta_data[IDCol])
-    return res, meta_data
+    return res.T, meta_data
 
 def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = False):
     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
-    print("aa")
-    print(data_mat.shape)
-    print(meta_data.shape)
     ho = run_harmony(data_mat, meta_data, vars_use)
     res = pd.DataFrame(ho.Z_corr)
 
@@ -124,12 +119,11 @@ class Evaluate(object):
     def __init__(
             self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None
     ):
-        self.batch_corrected_df = batch_corrected_df
+        self.batch_corrected_df = batch_corrected_df.T
         self.meta_data = meta_data
         self.batch_var = batch_var
         self.output_root = output_root
         self.bio_var = bio_var # var retaining the biological info
-        print("bio_var", bio_var)
         self.n_pc = n_pc
         self.covar = covar
         self.rng = np.random.RandomState(88)
@@ -137,13 +131,12 @@ class Evaluate(object):
         # functions executed
         self.alpha_beta_diversity_and_tests(self.bio_var)
         self.standard_scaler()
-        print(self.batch_corrected_df)
-        # df = self.PCA_vis()
-        # self.PC01_kw_tests(df)
-        # self.covar == covar
-        # if covar != False:
-        #     self.covar == covar
-        #     self.allPCs_covar_kw_test(df)
+        df = self.PCA_vis()
+        if covar != False:
+            self.covar == covar
+            print("AAAAH the df", df)
+            self.allPCs_covar_kw_test(df)
+        self.PC01_kw_tests(df)
 
     def standard_scaler(self):
         source_df = self.batch_corrected_df
@@ -152,7 +145,7 @@ class Evaluate(object):
         scaler.fit(data)
         ss_scaled = scaler.transform(data).T
         self.batch_corrected_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
-    
+        
     def PCA_vis(self):
         source_df = self.batch_corrected_df
 
@@ -177,9 +170,8 @@ class Evaluate(object):
         df = pd.DataFrame()
         for i in range(self.n_pc):
             df[f"PC{i}"] = transformed[:, i] 
-        df['batches'] = self.meta_data[self.batch_var]
-        df[self.bio_var] = self.meta_data[self.bio_var]
-
+        df['batches'] = list(self.meta_data[self.batch_var])
+        df[self.bio_var] = list(self.meta_data[self.bio_var])
         ## pca visualization for bio_vars
         ### fetch info for bio_va
         all_colors_used = self.rng.uniform(0, 1, 3*len(np.unique(list(df[self.bio_var])))).tolist()
@@ -203,7 +195,7 @@ class Evaluate(object):
         plt.savefig(self.output_root+"_PCA_batches.png")
         
         if self.covar != False:
-            df[self.covar] = self.meta_data[self.covar]
+            df[self.covar] = list(self.meta_data[self.covar])
         return df
 
     def PC01_kw_tests(self, df):
@@ -257,12 +249,14 @@ class Evaluate(object):
         covar_unique = [x for x in covar_unique if str(x) != 'nan']
         covar_unique = np.unique(covar_unique).tolist()
         for i in range(30):
-            print(current_ax_index)
             a = sns.scatterplot(df["PC0"],df["PC"+str(i)], hue = df[self.covar], style = df["batches"], s = 100,ax = axes[current_ax_index[0], current_ax_index[1]], cmap = "tab10", x_jitter = True)
             a.set_title("PC"+str(i))
+            print("Covars_unique", covar_unique)
+            print(df.loc[df[self.covar]==covar_unique[0]]["PC"+str(i)].values)
             data_for_kw = [df.loc[df[self.covar]==var]["PC"+str(i)].values for var in covar_unique]
             # data_m = df.loc[df[self.covar]=="Male"]
             # data_f = df.loc[df['Sex']=="Female"]
+            print("SAXCCSAV", data_for_kw)
             PC1_p = stats.kruskal(*data_for_kw)[1]
             if current_ax_index[1] == 5:
                 current_ax_index = [current_ax_index[0]+1, 0]
@@ -273,10 +267,10 @@ class Evaluate(object):
         plt.savefig(self.output_root+"_allPCs_covar_kw_tests.png")
 
     def alpha_beta_diversity_and_tests(self, test_var):
-        data = np.array(self.batch_corrected_df).T
+        data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
-        ids = self.meta_data[IDCol]
+        ids = self.meta_data[self.IDCol]
 
         shannon_div = alpha_diversity('shannon', data, ids)
         bc_div = beta_diversity("braycurtis", data, ids)
