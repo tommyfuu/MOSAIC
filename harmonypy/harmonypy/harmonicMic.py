@@ -249,7 +249,10 @@ class HarmonicMic(object):
         ### NOTE: added bray-curtis between sample similarity to objective function to minimize
         bray_curtis_sum = 0
         ## compute beta diversity using skbio
-        data = self.Z_corr.T+abs(np.min(self.Z_corr.T)) # to avoid negative values
+        # data = self.Z_corr.T+abs(np.min(self.Z_corr.T)) # to avoid negative values
+        # 11/1 change: more scientific way of avoiding negative values
+        data = np.where(self.Z_corr.T<np.percentile(self.Z_corr.flatten(), 0.01), 0, self.Z_corr.T)
+        data = data+np.abs(np.min(data))
         ids = list(range(self.Z_corr.T.shape[0]))
         bc_dm = beta_diversity("braycurtis", data, ids)
         bc_pc = pcoa(bc_dm)

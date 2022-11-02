@@ -25,6 +25,7 @@ import random
 from sklearn.preprocessing import StandardScaler
 import itertools
 from scipy import stats
+from skbio.diversity import alpha_diversity, beta_diversity
 
 def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col = False):
     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
@@ -36,6 +37,7 @@ def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_co
 
     # give the index back
     res.index = data_mat.columns
+    res.columns = list(meta_data[IDCol])
     return res, meta_data
 
 def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = False):
@@ -48,6 +50,7 @@ def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = 
 
     # give the index back
     res.index = data_mat.columns
+    res.columns = list(meta_data[IDCol])
     return res, meta_data
 # address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
 # address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
@@ -111,15 +114,15 @@ def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
     return ax.add_patch(ellipse)
 
 
-def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False):
-    a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar)
+def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None):
+    a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar, IDCol = None)
     return
 
-# Evaluate(res, meta_data, 'Dataset', 'Glickman_harmonicMic', "Visit", 30, 'Sex')
-# Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony', "Visit", 30, 'Sex')
+# Evaluate(res, meta_data, 'Dataset', 'Glickman_harmonicMic', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -130,14 +133,17 @@ class Evaluate(object):
         self.n_pc = n_pc
         self.covar = covar
         self.rng = np.random.RandomState(88)
+        self.IDCol = IDCol
         # functions executed
+        self.alpha_beta_diversity_and_tests(self.bio_var)
         self.standard_scaler()
-        df = self.PCA_vis()
-        self.PC01_kw_tests(df)
-        self.covar == covar
-        if covar != False:
-            self.covar == covar
-            self.allPCs_covar_kw_test(df)
+        print(self.batch_corrected_df)
+        # df = self.PCA_vis()
+        # self.PC01_kw_tests(df)
+        # self.covar == covar
+        # if covar != False:
+        #     self.covar == covar
+        #     self.allPCs_covar_kw_test(df)
 
     def standard_scaler(self):
         source_df = self.batch_corrected_df
@@ -265,3 +271,62 @@ class Evaluate(object):
             print("PC"+str(i), PC1_p)
         
         plt.savefig(self.output_root+"_allPCs_covar_kw_tests.png")
+
+    def alpha_beta_diversity_and_tests(self, test_var):
+        data = np.array(self.batch_corrected_df).T
+        data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+        data = data+np.abs(np.min(data))
+        ids = self.meta_data[IDCol]
+
+        shannon_div = alpha_diversity('shannon', data, ids)
+        bc_div = beta_diversity("braycurtis", data, ids)
+        bc_pc = pcoa(bc_div)
+
+        # test_var_l = np.array(self.meta_data[test_var])
+        # test_var_l = list(np.unique(test_var_l[~np.isnan(test_var_l)]))
+
+        # visualize and save
+        import matplotlib.pyplot as plt
+        shannon_df = shannon_div.to_frame()
+        shannon_df.columns = ["shannon"]
+        shannon_df[test_var] = list(self.meta_data[test_var])
+        print(shannon_df)
+        shannon_fig = shannon_df.boxplot(column='shannon', by=test_var)
+        shannon_fig.figure.savefig(self.output_root+"_alpha_shannon_pcoa.png")
+        bc_metadata = self.meta_data
+        bc_metadata.index = bc_metadata[IDCol]
+        bc_metadata[test_var] = bc_metadata[test_var].fillna("unknown")
+        bc_fig = bc_pc.plot(bc_metadata, test_var,
+                 axis_labels=('PC 1', 'PC 2', 'PC 3'),
+                 title='Samples colored by '+test_var, cmap='jet', s=50)
+        bc_fig.figure.savefig(self.output_root+"_beta_bc_pcoa.png")
+
+        # get list of unique test_var options
+        test_var_col_l = list(self.meta_data[test_var])
+        test_var_l = list(np.unique(self.meta_data[test_var].dropna()))
+
+        # conduct statistical tests
+        ## 1. alpha diversity
+        alpha_kruskal_data = []
+        for var in test_var_l:
+            removed_indices = [i for i, e in enumerate(test_var_col_l) if e != var]
+            removed_indices = [var for i, var in enumerate(list(self.meta_data[IDCol])) if i in removed_indices]
+            current_data_condition = list(shannon_div.drop(index = removed_indices))
+            alpha_kruskal_data.append(current_data_condition)
+        shannon_pval = stats.kruskal(*alpha_kruskal_data)[1]
+        print("shannon_pval", shannon_pval)
+
+        ## 2. beta diversity
+        bc_pval_l = []
+        for pc in ['PC1', 'PC2', 'PC3']:
+            beta_kruskal_data = []
+            current_data = bc_pc.samples[pc]
+            for var in test_var_l:
+                removed_indices = [i for i, e in enumerate(test_var_col_l) if e != var]
+                removed_indices = [var for i, var in enumerate(list(self.meta_data[IDCol])) if i in removed_indices]
+                current_data_condition = list(current_data.drop(index = removed_indices))
+                beta_kruskal_data.append(current_data_condition)
+            bc_pval_l.append(stats.kruskal(*beta_kruskal_data)[1])
+        print("bray_curtis_pval, by PCs", bc_pval_l)
+        return
+        
