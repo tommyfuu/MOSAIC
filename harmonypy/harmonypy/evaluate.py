@@ -208,7 +208,7 @@ class Evaluate(object):
         return df
 
     def PC01_kw_tests(self, df):
-        # TO DEBUG
+        # to investigate whether the bio_var info is retained
         bio_var_l = list(df[self.bio_var])
         bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
         bio_var_l = list(np.unique(bio_var_l))
@@ -217,8 +217,6 @@ class Evaluate(object):
         for pair in itertools.combinations(bio_var_l, 2):
             data_for_kw_PC0 = [df.loc[df[self.bio_var]==var]["PC0"].values for var in pair]
             data_for_kw_PC1 = [df.loc[df[self.bio_var]==var]["PC1"].values for var in pair]
-            # data1 = df.loc[df['Day'] == pair[0]]
-            # data2 = df.loc[df['Day'] == pair[1]]
             PC0_p = stats.kruskal(*data_for_kw_PC0)[1]
             PC1_p = stats.kruskal(*data_for_kw_PC1)[1]
             print("PC0", pair[0], pair[1], PC0_p)
@@ -248,6 +246,40 @@ class Evaluate(object):
         ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
         fig.tight_layout()
         plt.savefig(self.output_root+"_PC01_kw_tests.png")
+
+
+        # to investigate whether batch effect is eliminated thouroughly
+        batches_l = list(df["batches"])
+        batches_l = [x for x in batches_l if str(x) != 'nan']
+        batches_l = list(np.unique(batches_l))
+        with open(self.output_root+"_batches_kw_pvals.txt", "w") as text_file:
+            print("global batch kw p-vals \n", file=text_file)
+            for pair_batch in itertools.combinations(batches_l, 2):
+                print("current batch pair", str(pair_batch), '\n', file=text_file)
+                current_df = df.loc[df["batches"].isin(pair_batch)]
+                data_batch1 = current_df.loc[current_df["batches"]==pair_batch[0]]
+                data_batch2 = current_df.loc[current_df["batches"]==pair_batch[1]]
+
+                PC0_p = stats.kruskal(data_batch1["PC0"].values,data_batch2["PC0"].values)[1]
+                PC1_p = stats.kruskal(data_batch1["PC1"].values,data_batch2["PC1"].values)[1]
+
+                print(". PC0", str(pair_batch), PC0_p, "# new samples:", len(data_batch1["PC0"].values), "# old samples:", len(data_batch2["PC0"].values), file=text_file)
+                print(". PC1", str(pair_batch), PC1_p, "# new samples:", len(data_batch1["PC1"].values), "# old samples:", len(data_batch2["PC1"].values), file=text_file)
+
+            print("batch kw p-vals by bio_var \n", file=text_file)
+            for var in bio_var_l:
+                print(". bio_var == "+var, file=text_file)
+                current_df_biovar = df.loc[df[self.bio_var] == var]
+                for pair_batch in itertools.combinations(batches_l, 2):
+                    current_df = current_df_biovar.loc[current_df_biovar["batches"].isin(pair_batch)]
+                    data_batch1 = current_df.loc[current_df["batches"]==pair_batch[0]]
+                    data_batch2 = current_df.loc[current_df["batches"]==pair_batch[1]]
+
+                    PC0_p = stats.kruskal(data_batch1["PC0"].values,data_batch2["PC0"].values)[1]
+                    PC1_p = stats.kruskal(data_batch1["PC1"].values,data_batch2["PC1"].values)[1]
+
+                    print(".   PC0", str(pair_batch), PC0_p, "# new samples:", len(data_batch1["PC0"].values), "# old samples:", len(data_batch2["PC0"].values), file=text_file)
+                    print(".   PC1", str(pair_batch), PC1_p, "# new samples:", len(data_batch1["PC1"].values), "# old samples:", len(data_batch2["PC1"].values), file=text_file)
 
     def allPCs_covar_kw_test(self, df):
         # to debug
