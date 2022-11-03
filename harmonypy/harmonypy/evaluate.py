@@ -52,7 +52,7 @@ def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = 
     # give the index back
     res.index = data_mat.columns
     res.columns = list(meta_data[IDCol])
-    return res, meta_data
+    return res.T, meta_data
 
 
 # address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
@@ -122,14 +122,14 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
     a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar, IDCol = None)
     return
 
-# Evaluate(res, meta_data, 'Dataset', 'Glickman_harmonicMic', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', 'Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
 class Evaluate(object):
     def __init__(
             self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None
     ):
-        self.batch_corrected_df = batch_corrected_df.T
+        self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
         self.batch_var = batch_var
         self.output_root = output_root
@@ -144,7 +144,6 @@ class Evaluate(object):
         df = self.PCA_vis()
         if covar != False:
             self.covar == covar
-            print("AAAAH the df", df)
             self.allPCs_covar_kw_test(df)
         self.PC01_kw_tests(df)
 
@@ -248,7 +247,7 @@ class Evaluate(object):
 
         ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
         fig.tight_layout()
-        plt.savefig(self.output_root+"_OC01_kw_tests.png")
+        plt.savefig(self.output_root+"_PC01_kw_tests.png")
 
     def allPCs_covar_kw_test(self, df):
         # to debug
@@ -260,14 +259,9 @@ class Evaluate(object):
         covar_unique = np.unique(covar_unique).tolist()
         for i in range(30):
             a = sns.scatterplot(df["PC0"],df["PC"+str(i)], hue = df[self.covar], style = df["batches"], s = 100,ax = axes[current_ax_index[0], current_ax_index[1]], cmap = "tab10", x_jitter = True)
-            a.set_title("PC"+str(i))
-            print("Covars_unique", covar_unique)
-            print(df.loc[df[self.covar]==covar_unique[0]]["PC"+str(i)].values)
             data_for_kw = [df.loc[df[self.covar]==var]["PC"+str(i)].values for var in covar_unique]
-            # data_m = df.loc[df[self.covar]=="Male"]
-            # data_f = df.loc[df['Sex']=="Female"]
-            print("SAXCCSAV", data_for_kw)
             PC1_p = stats.kruskal(*data_for_kw)[1]
+            a.set_title("PC"+str(i)+" kw_pval="+str(round(PC1_p, 5)))
             if current_ax_index[1] == 5:
                 current_ax_index = [current_ax_index[0]+1, 0]
             else:
@@ -280,21 +274,19 @@ class Evaluate(object):
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
-        ids = self.meta_data[self.IDCol]
-
+        ids = list(self.meta_data[self.IDCol])
+        print(data.shape)
+        print("ids", len(ids))
         shannon_div = alpha_diversity('shannon', data, ids)
         bc_div = beta_diversity("braycurtis", data, ids)
+        bc_df = pd.DataFrame(bc_div.data, index=list(self.meta_data[self.IDCol]), columns=list(self.meta_data[self.IDCol]))
         bc_pc = pcoa(bc_div)
-
-        # test_var_l = np.array(self.meta_data[test_var])
-        # test_var_l = list(np.unique(test_var_l[~np.isnan(test_var_l)]))
 
         # visualize and save
         import matplotlib.pyplot as plt
         shannon_df = shannon_div.to_frame()
         shannon_df.columns = ["shannon"]
         shannon_df[test_var] = list(self.meta_data[test_var])
-        print(shannon_df)
         shannon_fig = shannon_df.boxplot(column='shannon', by=test_var)
         shannon_fig.figure.savefig(self.output_root+"_alpha_shannon_pcoa.png")
         bc_metadata = self.meta_data
@@ -312,25 +304,58 @@ class Evaluate(object):
         # conduct statistical tests
         ## 1. alpha diversity
         alpha_kruskal_data = []
+        alpha_pairwise_pval_dict = {}
         for var in test_var_l:
             removed_indices = [i for i, e in enumerate(test_var_col_l) if e != var]
-            removed_indices = [var for i, var in enumerate(list(self.meta_data[IDCol])) if i in removed_indices]
+            removed_indices = [var for i, var in enumerate(list(self.meta_data[self.IDCol])) if i in removed_indices]
             current_data_condition = list(shannon_div.drop(index = removed_indices))
             alpha_kruskal_data.append(current_data_condition)
-        shannon_pval = stats.kruskal(*alpha_kruskal_data)[1]
-        print("shannon_pval", shannon_pval)
+        # calculate global kw p_val
+        shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
+        print("shannon_global_pval", shannon_global_pval)
+        # calculate pairwise kw p_val
+        kw_data_pair_l = list(itertools.combinations(alpha_kruskal_data, 2))
+        for index, pair in enumerate(itertools.combinations(test_var_l, 2)):
+            alpha_pairwise_pval_dict[pair] = stats.kruskal(*kw_data_pair_l[index])[1]
+        print("shannon_pairwise_pval", alpha_pairwise_pval_dict)
 
         ## 2. beta diversity
-        bc_pval_l = []
+        bc_global_pval_l = []
+        bc_pairwise_pval_l = []
         for pc in ['PC1', 'PC2', 'PC3']:
             beta_kruskal_data = []
+            bc_pairwise_pval_dict = {}
             current_data = bc_pc.samples[pc]
             for var in test_var_l:
                 removed_indices = [i for i, e in enumerate(test_var_col_l) if e != var]
-                removed_indices = [var for i, var in enumerate(list(self.meta_data[IDCol])) if i in removed_indices]
+                removed_indices = [var for i, var in enumerate(list(self.meta_data[self.IDCol])) if i in removed_indices]
                 current_data_condition = list(current_data.drop(index = removed_indices))
                 beta_kruskal_data.append(current_data_condition)
-            bc_pval_l.append(stats.kruskal(*beta_kruskal_data)[1])
-        print("bray_curtis_pval, by PCs", bc_pval_l)
-        return
+            # calculate global kw p_val
+            bc_global_pval_l.append(stats.kruskal(*beta_kruskal_data)[1])
+            # calculate pairwise kw p_val
+            kw_data_pair_l = list(itertools.combinations(beta_kruskal_data, 2))
+            for index, pair in enumerate(itertools.combinations(test_var_l, 2)):
+                bc_pairwise_pval_dict[pair] = stats.kruskal(*kw_data_pair_l[index])[1]
+            bc_pairwise_pval_l.append(bc_pairwise_pval_dict)
+        print("bray_curtis_global_pval, by PCs", bc_global_pval_l)
+        print("bray_curtis_pairwise_pval, by PCs", bc_pairwise_pval_l)
+        
+        # return dataframes to csv for self checks
+        ## alpha and beta diversity data themselves
+        shannon_df.to_csv(self.output_root+"_shannon_df.csv")
+        bc_df.to_csv(self.output_root+"_bray_curtis_dissimilaritymatrix.csv")
+        ## kw significance testing to txt file
+        with open(self.output_root+"_shannon_kw_pvals.txt", "w") as text_file:
+            print("shannon_global_pval", shannon_global_pval, "\n", file=text_file)
+            print("shannon_pairwise_pval \n", file=text_file)
+            print(alpha_pairwise_pval_dict, file=text_file)
+        with open(self.output_root+"_bray_curtis_kw_pvals.txt", "w") as text_file:
+            print("bray_curtis_global_pvals, by PCs", bc_global_pval_l, "\n", file=text_file)
+            print("bray_curtis_pairwise_pval \n", file=text_file)
+            for index, pval_dict in enumerate(bc_pairwise_pval_l):
+                print("PC"+str(index+1)+"\n", file=text_file)
+                print(pval_dict, file=text_file)
+                print("\n", file=text_file)
+        return 
         
