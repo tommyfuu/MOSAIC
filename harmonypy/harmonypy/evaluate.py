@@ -125,6 +125,7 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
 # Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic', "Visit", 30, 'Sex', 'Sam_id')
 # Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
 # Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc', "Visit", 30, 'Sex', 'Sam_id')
 class Evaluate(object):
     def __init__(
             self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None
@@ -139,7 +140,8 @@ class Evaluate(object):
         self.rng = np.random.RandomState(88)
         self.IDCol = IDCol
         # functions executed
-        self.alpha_beta_diversity_and_tests(self.bio_var)
+        # self.alpha_beta_diversity_and_tests(self.bio_var)
+        self.alpha_beta_diversity_and_tests(self.batch_var)
         self.standard_scaler()
         df = self.PCA_vis()
         if covar != False:
@@ -320,14 +322,14 @@ class Evaluate(object):
         shannon_df.columns = ["shannon"]
         shannon_df[test_var] = list(self.meta_data[test_var])
         shannon_fig = shannon_df.boxplot(column='shannon', by=test_var)
-        shannon_fig.figure.savefig(self.output_root+"_alpha_shannon_pcoa.png")
+        shannon_fig.figure.savefig(self.output_root+"_"+test_var+"_alpha_shannon_pcoa.png")
         bc_metadata = self.meta_data
         bc_metadata.index = bc_metadata[self.IDCol]
         bc_metadata[test_var] = bc_metadata[test_var].fillna("unknown")
         bc_fig = bc_pc.plot(bc_metadata, test_var,
                  axis_labels=('PC 1', 'PC 2', 'PC 3'),
                  title='Samples colored by '+test_var, cmap='jet', s=50)
-        bc_fig.figure.savefig(self.output_root+"_beta_bc_pcoa.png")
+        bc_fig.figure.savefig(self.output_root+"_"+test_var+"_beta_bc_pcoa.png")
 
         # get list of unique test_var options
         test_var_col_l = list(self.meta_data[test_var])
@@ -376,13 +378,13 @@ class Evaluate(object):
         # return dataframes to csv for self checks
         ## alpha and beta diversity data themselves
         shannon_df.to_csv(self.output_root+"_shannon_df.csv")
-        bc_df.to_csv(self.output_root+"_bray_curtis_dissimilaritymatrix.csv")
+        bc_df.to_csv(self.output_root+"_"+test_var+"_bray_curtis_dissimilaritymatrix.csv")
         ## kw significance testing to txt file
-        with open(self.output_root+"_shannon_kw_pvals.txt", "w") as text_file:
+        with open(self.output_root+"_"+test_var+"_shannon_kw_pvals.txt", "w") as text_file:
             print("shannon_global_pval", shannon_global_pval, "\n", file=text_file)
             print("shannon_pairwise_pval \n", file=text_file)
             print(alpha_pairwise_pval_dict, file=text_file)
-        with open(self.output_root+"_bray_curtis_kw_pvals.txt", "w") as text_file:
+        with open(self.output_root+"_"+test_var+"_bray_curtis_kw_pvals.txt", "w") as text_file:
             print("bray_curtis_global_pvals, by PCs", bc_global_pval_l, "\n", file=text_file)
             print("bray_curtis_pairwise_pval \n", file=text_file)
             for index, pval_dict in enumerate(bc_pairwise_pval_l):
