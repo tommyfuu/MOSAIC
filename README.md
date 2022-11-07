@@ -50,3 +50,9 @@ The name of this method, harmonicMic, is a combination of [harmony](https://www.
 
 Cheers,\
 Tom Fu
+
+
+To save the environment to an yml file, we can do
+```
+conda env export -p /home/fuc/anaconda3/envs/harmonicMic_env > environment.yml
+```
