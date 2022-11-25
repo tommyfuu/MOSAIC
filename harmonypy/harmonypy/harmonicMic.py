@@ -234,7 +234,7 @@ class HarmonicMic(object):
         ### NOTE: added ratio, remember that we are harmonizing for one PC/one feature at a time, so all we worry about is samples
         cluster_by_covar_prob = np.dot(self.R, self.Phi.T)
         cluster_sum = np.sum(cluster_by_covar_prob, axis=1)
-        self.ratio = cluster_by_covar_prob/cluster_sum[:, np.newaxis] 
+        self.ratio = cluster_by_covar_prob/cluster_sum[:, np.newaxis]
         # self.ratio[self.ratio < 0.001*self.K*self.B] = 0.0 # note that e^0=1 so this would make the ratio be 1 and have no impact on the z
         # z = 1.01**(self.ratio) * z # element-wise operation
         z = np.exp(self.ratio) * z # element-wise operation
@@ -273,9 +273,23 @@ class HarmonicMic(object):
         # normalize
         bray_curtis_sum = bray_curtis_sum/len(self.phi_dict.keys())
 
+        ### NOTE 1125 change, added shannon index within-sample diversity to objective function to minimize
+        shannon_sum = 0
+        for var in self.phi_dict.keys():
+            current_phi = self.phi_dict[var]
+            current_data = bc_pc.samples[pc]
+            kruskal_data = []
+            for phi_one_condition in list(current_phi):
+                removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
+                current_data_condition = list(current_data.drop(index = removed_indices))
+                kruskal_data.append(current_data_condition)
+            shannon_sum += 1-stats.kruskal(*kruskal_data)[1]
+         # normalize
+        shannon_sum = shannon_sum/len(self.phi_dict.keys())
+
         # Save results
         # self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy)
-        self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy + bray_curtis_sum)
+        self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy + bray_curtis_sum + shannon_sum)
         self.objective_kmeans_dist.append(kmeans_error)
         self.objective_kmeans_entropy.append(_entropy)
         self.objective_kmeans_cross.append(_cross_entropy)
