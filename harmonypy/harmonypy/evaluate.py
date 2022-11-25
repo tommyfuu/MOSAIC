@@ -55,12 +55,12 @@ def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = 
     return res.T, meta_data
 
 
-# address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
-# address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
-# IDCol = 'Sam_id'
-# index_col = "Unnamed: 0"
-# vars_use = ["Dataset", "Sex"]
-# res, meta_data = generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col)
+address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
+address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+IDCol = 'Sam_id'
+index_col = "Unnamed: 0"
+vars_use = ["Dataset", "Sex"]
+res, meta_data = generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col)
 
 # res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col)
 # res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col, True)
@@ -122,10 +122,6 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
     a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar, IDCol = None)
     return
 
-# Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc', "Visit", 30, 'Sex', 'Sam_id')
 class Evaluate(object):
     def __init__(
             self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None
@@ -393,3 +389,8 @@ class Evaluate(object):
                 print("\n", file=text_file)
         return 
         
+
+Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic_1125', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc', "Visit", 30, 'Sex', 'Sam_id')
