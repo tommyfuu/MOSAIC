@@ -66,7 +66,17 @@ def load_data_microbiomeHD(address_directory):
     combined_countdf = pd.concat(intersect_count_data_l, axis=1)
     combined_metadata = pd.concat(metadata_l)
     combined_metadata['Sam_id'] = list(combined_metadata.index) # the default IDCol for microbiomeHD will be Sam_id
-    return combined_countdf.dropna().T, combined_metadata
+    data_mat, meta_data = preprocess(combined_countdf.dropna().T, combined_metadata, 'Sam_id')
+    # return combined_countdf.dropna().T, combined_metadata
+    return data_mat, meta_data
+
+def load_data_CMD(address_directory):
+    ### CuratedMetagenomicsDataset provides way more metadata in a congestible manner
+    data_mat = pd.read_csv(address_X, index_col=0)
+    meta_data = pd.read_csv(address_Y, index_col=0)
+    meta_data['Sam_id'] = list(meta_data.index)
+    data_mat, meta_data = preprocess(data_mat, meta_data, 'Sam_id')
+    return data_mat, meta_data
 
 def load_data(address_X, address_Y, IDCol, index_col = False):
     if index_col != False:
