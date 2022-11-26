@@ -16,10 +16,49 @@
 
 import pandas as pd
 import numpy as np
+import os
 
-def load_data(address_X, address_Y, IDCol, index_col = False):
+def load_data_microbiomeHD(address_directory):
+    subdir_names = os.listdir(address_directory)
+    subdir_names = [result for result in subdir_names if "results" in result]
+    count_data_l = []
+    intersect_taxa = []
+    for subdir in subdir_names:
+        # get the otu file
+        subdir_path = address_directory + '/' + subdir
+        current_RDP_names = os.listdir(subdir_path + '/RDP')
+        current_dbotu_count_data_path = [result for result in current_RDP_names if "100.denovo.rdp_assigned" in result][0]
+        current_dbotu_count_data = pd.read_csv(subdir_path+'/RDP/'+current_dbotu_count_data_path, delimiter='\t', index_col=0)
+        current_taxa = list(current_dbotu_count_data.index)
+        # set index with genus level
+        current_taxa = [";".join(taxa.split(';')[:-2]) for taxa in current_taxa]
+        print(current_dbotu_count_data.shape)
+        current_dbotu_count_data.index = current_taxa
+        print(current_dbotu_count_data.shape)
+        # remove duplicate indexes by summing up rows with the same index
+        current_dbotu_count_data = current_dbotu_count_data.groupby(level=0).sum()
+        
+        # save dataframe and feature list
+        count_data_l.append(current_dbotu_count_data)
+        
+        if intersect_taxa == []:
+            intersect_taxa = current_taxa
+        else:
+            intersect_taxa = list(set(intersect_taxa).intersection(current_taxa))
+
+    # intersect count data list
+    intersect_count_data_l = [count_data[count_data.index.isin(intersect_taxa)] for count_data in count_data_l]
+    print(intersect_count_data_l)
+    combined = pd.concat(intersect_count_data_l, axis=1)
+    return combined.dropna()
+
+def load_data(address_X, address_Y, IDCol, index_col = False, format = "default"):
     if index_col != False:
-        data_mat = pd.read_csv(address_X, index_col=index_col)
+        if format == "default":
+            data_mat = pd.read_csv(address_X, index_col=index_col)
+        elif format in ["microbiomeHD", "CMD"]:
+            # the correct filename should contain ".otu_table.dbOTU.rdp_assigned"
+            data_mat = pd.read_csv(address_X, delimiter = "\t", index_col=0).T
     else:
         data_mat = pd.read_csv(address_X)
     meta_data = pd.read_csv(address_Y)
