@@ -19,11 +19,16 @@ import numpy as np
 import os
 
 def load_data_microbiomeHD(address_directory):
+    ### note that due to the complexity of metadata, the current microbiomeHD loading does 
+    ### not take into account the covariates other than batches and diseaseStates
+    ### so default vars_use will just be Dataset
     subdir_names = os.listdir(address_directory)
     subdir_names = [result for result in subdir_names if "results" in result]
     count_data_l = []
     intersect_taxa = []
+    metadata_l = []
     for subdir in subdir_names:
+        ## 1. get the otu table part
         # get the otu file
         subdir_path = address_directory + '/' + subdir
         current_RDP_names = os.listdir(subdir_path + '/RDP')
@@ -46,19 +51,26 @@ def load_data_microbiomeHD(address_directory):
         else:
             intersect_taxa = list(set(intersect_taxa).intersection(current_taxa))
 
+        ## 2. get the metadata
+        # get the metadata file
+        current_files_names = os.listdir(subdir_path)
+        current_metadata_path = subdir_path + '/' + [result for result in current_files_names if "metadata" in result][0]
+        current_metadata = pd.read_csv(current_metadata_path, delimiter='\t', index_col=0)['DiseaseState'].to_frame()
+        current_metadata['Dataset'] = ["_".join(subdir.split("_")[:-1])]*current_metadata.shape[0]
+        metadata_l.append(current_metadata)
+
     # intersect count data list
     intersect_count_data_l = [count_data[count_data.index.isin(intersect_taxa)] for count_data in count_data_l]
-    print(intersect_count_data_l)
-    combined = pd.concat(intersect_count_data_l, axis=1)
-    return combined.dropna()
 
-def load_data(address_X, address_Y, IDCol, index_col = False, format = "default"):
+    # generate results
+    combined_countdf = pd.concat(intersect_count_data_l, axis=1)
+    combined_metadata = pd.concat(metadata_l)
+    combined_metadata['Sam_id'] = list(combined_metadata.index) # the default IDCol for microbiomeHD will be Sam_id
+    return combined_countdf.dropna().T, combined_metadata
+
+def load_data(address_X, address_Y, IDCol, index_col = False):
     if index_col != False:
-        if format == "default":
-            data_mat = pd.read_csv(address_X, index_col=index_col)
-        elif format in ["microbiomeHD", "CMD"]:
-            # the correct filename should contain ".otu_table.dbOTU.rdp_assigned"
-            data_mat = pd.read_csv(address_X, delimiter = "\t", index_col=0).T
+        data_mat = pd.read_csv(address_X, index_col=index_col)
     else:
         data_mat = pd.read_csv(address_X)
     meta_data = pd.read_csv(address_Y)
