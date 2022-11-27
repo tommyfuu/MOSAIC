@@ -29,9 +29,29 @@ from scipy import stats
 from skbio.diversity import alpha_diversity, beta_diversity
 from skbio.stats.ordination import pcoa
 
-def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col = False):
-    data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
-    ho = run_harmonicMic(data_mat, meta_data, vars_use)
+# def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col = False):
+#     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
+#     ho = run_harmonicMic(data_mat, meta_data, vars_use)
+#     res = pd.DataFrame(ho.Z_corr)
+
+#     # give the index back
+#     res.index = data_mat.columns
+#     res.columns = list(meta_data[IDCol])
+#     return res.T, meta_data
+
+# data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
+def generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic", PCA_first = False):
+    if option == "harmonicMic":
+        ho = run_harmonicMic(data_mat, meta_data, vars_use)
+    elif option == 'harmony':
+        if PCA_first:
+            pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
+            pca_results.fit(data_mat)
+            data_mat_1 = pca_results.transform(data_mat)
+            data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
+        ho = run_harmony(data_mat, meta_data, vars_use)
+    else:
+        raise ValueError('Currently only support harmonicMic and harmony.')
     res = pd.DataFrame(ho.Z_corr)
 
     # give the index back
@@ -39,31 +59,35 @@ def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_co
     res.columns = list(meta_data[IDCol])
     return res.T, meta_data
 
-def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = False, PCA_first = False):
-    data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
-    if PCA_first:
-        pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
-        pca_results.fit(data_mat)
-        data_mat_1 = pca_results.transform(data_mat)
-        data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
-    ho = run_harmony(data_mat, meta_data, vars_use)
-    res = pd.DataFrame(ho.Z_corr)
+# def generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col = False, PCA_first = False):
+#     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
+#     if PCA_first:
+#         pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
+#         pca_results.fit(data_mat)
+#         data_mat_1 = pca_results.transform(data_mat)
+#         data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
+#     ho = run_harmony(data_mat, meta_data, vars_use)
+#     res = pd.DataFrame(ho.Z_corr)
 
-    # give the index back
-    res.index = data_mat.columns
-    res.columns = list(meta_data[IDCol])
-    return res.T, meta_data
+#     # give the index back
+#     res.index = data_mat.columns
+#     res.columns = list(meta_data[IDCol])
+#     return res.T, meta_data
 
+# def generate_harmony_results(data_mat, meta_data, vars_use, PCA_first = False):
+#     if PCA_first:
+#         pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
+#         pca_results.fit(data_mat)
+#         data_mat_1 = pca_results.transform(data_mat)
+#         data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
+#     ho = run_harmony(data_mat, meta_data, vars_use)
+#     res = pd.DataFrame(ho.Z_corr)
 
-address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
-address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
-IDCol = 'Sam_id'
-index_col = "Unnamed: 0"
-vars_use = ["Dataset", "Sex"]
-res, meta_data = generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col)
+#     # give the index back
+#     res.index = data_mat.columns
+#     res.columns = list(meta_data[IDCol])
+#     return res.T, meta_data
 
-# res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col)
-# res_h, meta_data = generate_harmony_results(address_X, address_Y, IDCol, vars_use, index_col, True)
 def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
     """
     Create a plot of the covariance confidence ellipse of *x* and *y*.
@@ -388,9 +412,31 @@ class Evaluate(object):
                 print(pval_dict, file=text_file)
                 print("\n", file=text_file)
         return 
-        
 
-Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic_1125', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc', "Visit", 30, 'Sex', 'Sam_id')
+# # Glickman dataset 
+# address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
+# address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+# IDCol = 'Sam_id'
+# index_col = "Unnamed: 0"
+# vars_use = ["Dataset", "Sex"]
+# data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+# # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic", PCA_first=True)
+
+# Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic_1127', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony_1127', "Visit", 30, 'Sex', 'Sam_id')
+# # Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc_1127', "Visit", 30, 'Sex', 'Sam_id')
+
+# autism 2 microbiomeHD
+address_directory = '/home/fuc/harmonicMic/data/autism_2_microbiomeHD'
+data_mat, meta_data = load_data_microbiomeHD(address_directory)
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+Evaluate(res, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmonicMic/autism_2_microbiomeHD_harmonicMic_1127', "DiseaseState", 30, False, 'Sam_id')
+Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony_1127', "DiseaseState", 30, False, 'Sam_id')
+Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmonicy_PCs/autism_2_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
