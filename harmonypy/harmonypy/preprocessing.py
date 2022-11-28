@@ -89,10 +89,13 @@ def load_data_microbiomeHD(address_directory):
 
 def load_data_CMD(address_directory):
     ### CuratedMetagenomicsDataset provides way more metadata in a congestible manner
+    cur_dir_names = os.listdir(address_directory)
+    address_X = address_directory + '/'+ [result for result in cur_dir_names if "otu_table_" in result][0]
+    address_Y = address_directory + '/'+ [result for result in cur_dir_names if "sample_table_" in result][0]
     data_mat = pd.read_csv(address_X, index_col=0)
     meta_data = pd.read_csv(address_Y, index_col=0)
     meta_data['Sam_id'] = list(meta_data.index)
-    data_mat, meta_data = preprocess(data_mat, meta_data, 'Sam_id')
+    data_mat, meta_data = preprocess(data_mat.T, meta_data, 'Sam_id')
     return data_mat, meta_data
 
 def load_data(address_X, address_Y, IDCol, index_col = False):
