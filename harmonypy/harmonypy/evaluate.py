@@ -454,3 +454,16 @@ class Evaluate(object):
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony", PCA_first=True)
 # Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony_PCs/cdi_3_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
+
+# ibd 3 CMD
+address_directory = '/home/fuc/harmonicMic/data/ibd_3_CMD'
+data_mat, meta_data = load_data_CMD(address_directory)
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony")
+Evaluate(res, meta_data, "study_name", './output_ibd_3_CMD_harmonicMic/ibd_3_CMD_harmonicMic_1127', "disease", 30, False, 'Sam_id')
+# Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony/ibd_3_CMD_harmony_1127', "disease", 30, False, 'Sam_id')
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony", PCA_first=True)
+# Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony_PCs/ibd_3_CMD_harmony_PCs', "disease", 30, False, 'Sam_id')
+Evaluate(data_mat, meta_data, "study_name", './output_ibd_3_CMD_nobc/ibd_3_CMD_nobc_1127', "disease", 30, False, 'Sam_id')
