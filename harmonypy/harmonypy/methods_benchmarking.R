@@ -9,18 +9,19 @@ library(doParallel)
 library(dplyr)
 library(readr)
 library(tibble)
+library(mixOmics)
 
-run_methods <- function(data_mat_path, meta_data_path, output_root, covar = NULL) {
+run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, covar = NULL) {
     # data loading <- load data_mat and meta_data, output of the preprocessing.py file
     count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
-    metadata = read_csv(meta_data_path)
-    count_data <- count_data %>%
-        column_to_rownames('...1')
+    metadata = as.data.frame(read_csv(meta_data_path))
+    # count_data <- count_data %>%
+    #     column_to_rownames('...1')
 
 
     ## TODO:  potentially need preprocessing such as log and +1
     # count_data <- count_data + 1
-    count_data.clr <- logratio.transfo(count_data+1, logratio = 'clr')
+    count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
 
     ## combat
     batch_info <- as.factor(setNames(as.character(metadata$batch), metadata$Sam_id))
@@ -31,25 +32,11 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, covar = NULL
     count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
     write.csv(count_data.limma,paste(output_root, "_limma.csv", sep=""), row.names = TRUE)
 
-    ## ConquR
-    ## need to put batchid and covar into countdata dataframe
-    count_data.conqur_pre <- count_data
-    batchid <- meta_data$Dataset
-    if (covar == NULL) {
-        a <- rep(list("1"), dim(taxa)[1])
-        covar_df <- factor(a)
-    }
-    else {
-        covar_df = Sample_Data[, covar]
-    }
-    count_data.conqur = ConQuR(tax_tab=taxa, batchid=batchid, covariates=covar_df, batch_ref="0",
-                         logistic_lasso=T, quantile_type="lasso", interplt=T)
-    write.csv(count_data.conqur,paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
-    
     ## MMUPHin
     count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
-    metadata_mupphin <- metadata %>% column_to_rownames('Sam_id')
-    if(covar == NULL) {
+    metadata_mupphin <- metadata
+    row.names(metadata_mupphin) <- metadata$Sam_id
+    if(is.null(covar)) {
         fit_adjust_batch <- adjust_batch(feature_abd = t(count_data_t_relab ),
                                     batch = "Dataset",
                                     data = metadata_mupphin,
@@ -64,11 +51,30 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, covar = NULL
     }
     count_data.MMUPHin <- fit_adjust_batch$feature_abd_adj
     write.csv(count_data.MMUPHin,paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
+
+    ## ConquR
+    ## need to put batchid and covar into countdata dataframe
+    # count_data.conqur_pre <- count_data
+    batchid <- factor(metadata$Dataset)
+    print("HAHAHAHAHA")
+    if (is.null(covar)){
+        a <- rep(list("1"), dim(taxa)[1])
+        covar_df <- factor(a)
+    }
+    else {
+        covar_df = factor(metadata[, covar])
+    }
+    print(covar_df)
+    count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=T)
+    write.csv(count_data.conqur,paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
+    
 }
 
 run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv',
 '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv',
 '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman',
+batch_ref = 'Old',
 'Sex'
 )
 ## combat
