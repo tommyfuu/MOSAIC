@@ -18,7 +18,7 @@ import pandas as pd
 import numpy as np
 import os
 
-def load_data_microbiomeHD(address_directory):
+def load_data_microbiomeHD(address_directory, output_root = False):
     ### note that due to the complexity of metadata, the current microbiomeHD loading does 
     ### not take into account the covariates other than batches and diseaseStates
     ### so default vars_use will just be Dataset
@@ -84,10 +84,14 @@ def load_data_microbiomeHD(address_directory):
     meta_data = meta_data.drop(meta_data_non_intersecting)
     data_mat = data_mat.reindex(intersection_ids)
     meta_data = meta_data.reindex(intersection_ids)
-    # return combined_countdf.dropna().T, combined_metadata
+
+    # save stuff if needed
+    if output_root != False:
+        data_mat.to_csv(output_root+"_count_data.csv")
+        meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 
-def load_data_CMD(address_directory):
+def load_data_CMD(address_directory, output_root = False):
     ### CuratedMetagenomicsDataset provides way more metadata in a congestible manner
     cur_dir_names = os.listdir(address_directory)
     address_X = address_directory + '/'+ [result for result in cur_dir_names if "otu_table_" in result][0]
@@ -96,9 +100,15 @@ def load_data_CMD(address_directory):
     meta_data = pd.read_csv(address_Y, index_col=0)
     meta_data['Sam_id'] = list(meta_data.index)
     data_mat, meta_data = preprocess(data_mat.T, meta_data, 'Sam_id')
+
+    # save stuff if needed
+    if output_root != False:
+        print()
+        data_mat.to_csv(output_root+"_count_data.csv")
+        meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 
-def load_data(address_X, address_Y, IDCol, index_col = False):
+def load_data(address_X, address_Y, IDCol, index_col = False, output_root = False):
     if index_col != False:
         data_mat = pd.read_csv(address_X, index_col=index_col)
     else:
@@ -106,6 +116,10 @@ def load_data(address_X, address_Y, IDCol, index_col = False):
     meta_data = pd.read_csv(address_Y)
     data_mat, meta_data = preprocess(data_mat, meta_data, IDCol)
 
+    # save stuff if needed
+    if output_root != False:
+        data_mat.to_csv(output_root+"_count_data.csv")
+        meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 
 def preprocess(data_mat, meta_data, IDCol):
@@ -121,16 +135,6 @@ def preprocess(data_mat, meta_data, IDCol):
     removable_feature_names = [col_names[index] for index, col_sum in enumerate(col_sums) if col_sum==0]
     data_mat.drop(removable_feature_names, axis=1, inplace=True)
     print(data_mat.shape, meta_data.shape)
-
-    # print(data_mat.shape)
-    # # remove features where the sum of counts are below 0.01% compared to the total sum of all counts (include those features with all zeroes)
-    # # Arumugam, Manimozhiyan, Jeroen Raes, Eric Pelletier, Denis Le Paslier, Takuji Yamada, Daniel R Mende, Gabriel R Fernandes, et al. 2011. “Enterotypes of the Human Gut Microbiome.” Nature 473 (7346). Nature Publishing Group: 174.
-    # col_names = list(data_mat.columns)
-    # col_sums = data_mat.sum(axis = 0)
-    # total = data_mat.to_numpy().sum()
-    # col_sums_ratios = [col_sum/total for col_sum in col_sums]
-    # removable_feature_names = [col_names[index] for index, ratio in enumerate(col_sums_ratios) if ratio<0.0001]
-    # data_mat.drop(removable_feature_names, axis=1, inplace=True)
     return data_mat, meta_data
 
 # output_root = '/home/fuc/harmonicMic/harmonypy/harmonypy/percentile_norm_data/ibd_3_CMD'
