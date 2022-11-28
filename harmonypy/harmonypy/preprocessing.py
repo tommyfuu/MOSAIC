@@ -55,8 +55,10 @@ def load_data_microbiomeHD(address_directory):
         # get the metadata file
         current_files_names = os.listdir(subdir_path)
         current_metadata_path = subdir_path + '/' + [result for result in current_files_names if "metadata" in result][0]
-        current_metadata = pd.read_csv(current_metadata_path, delimiter='\t', index_col=0)['DiseaseState'].to_frame()
+        print("metadata path", current_metadata_path)
+        current_metadata = pd.read_csv(current_metadata_path, delimiter='\t', index_col=0, encoding='ISO-8859-1')['DiseaseState'].to_frame()
         current_metadata['Dataset'] = ["_".join(subdir.split("_")[:-1])]*current_metadata.shape[0]
+        print(current_metadata.shape)
         metadata_l.append(current_metadata)
 
     # intersect count data list
@@ -64,9 +66,24 @@ def load_data_microbiomeHD(address_directory):
 
     # generate results
     combined_countdf = pd.concat(intersect_count_data_l, axis=1)
+    combined_countdf = combined_countdf.dropna().T
     combined_metadata = pd.concat(metadata_l)
     combined_metadata['Sam_id'] = list(combined_metadata.index) # the default IDCol for microbiomeHD will be Sam_id
-    data_mat, meta_data = preprocess(combined_countdf.dropna().T, combined_metadata, 'Sam_id')
+
+    data_mat, meta_data = preprocess(combined_countdf, combined_metadata, 'Sam_id')
+
+    # TODO: ensure that the sample ids are correctly aligned in metadata and count_table
+    data_mat_ids = list(data_mat.index)
+    meta_data_ids = list(meta_data.index)
+    intersection_ids = list(set(meta_data_ids).intersection(data_mat_ids))
+
+    # drop rows where indexes are not overlapping
+    data_mat_non_intersecting = [id for id in data_mat_ids if id not in intersection_ids]
+    data_mat = data_mat.drop(data_mat_non_intersecting)
+    meta_data_non_intersecting = [id for id in meta_data_ids if id not in intersection_ids]
+    meta_data = meta_data.drop(meta_data_non_intersecting)
+    data_mat = data_mat.reindex(intersection_ids)
+    meta_data = meta_data.reindex(intersection_ids)
     # return combined_countdf.dropna().T, combined_metadata
     return data_mat, meta_data
 

@@ -157,7 +157,7 @@ class Evaluate(object):
         self.bio_var = bio_var # var retaining the biological info
         self.n_pc = n_pc
         self.covar = covar
-        self.rng = np.random.RandomState(88)
+        self.rng = np.random.RandomState(100)
         self.IDCol = IDCol
         # functions executed
         # self.alpha_beta_diversity_and_tests(self.bio_var)
@@ -429,14 +429,28 @@ class Evaluate(object):
 # # Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
 # Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc_1127', "Visit", 30, 'Sex', 'Sam_id')
 
-# autism 2 microbiomeHD
-address_directory = '/home/fuc/harmonicMic/data/autism_2_microbiomeHD'
-data_mat, meta_data = load_data_microbiomeHD(address_directory)
-vars_use = ["Dataset"]
-IDCol = 'Sam_id'
-res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
-res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
-Evaluate(res, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmonicMic/autism_2_microbiomeHD_harmonicMic_1127', "DiseaseState", 30, False, 'Sam_id')
-Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony_1127', "DiseaseState", 30, False, 'Sam_id')
-Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmonicy_PCs/autism_2_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
-Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
+# # autism 2 microbiomeHD
+# address_directory = '/home/fuc/harmonicMic/data/autism_2_microbiomeHD'
+# data_mat, meta_data = load_data_microbiomeHD(address_directory)
+# vars_use = ["Dataset"]
+# IDCol = 'Sam_id'
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony")
+# Evaluate(res, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmonicMic/autism_2_microbiomeHD_harmonicMic_1127', "DiseaseState", 30, False, 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony_1127', "DiseaseState", 30, False, 'Sam_id')
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony", PCA_first=True)
+# Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmonicy_PCs/autism_2_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
+
+# cdi 3 microbiomeHD
+# address_directory = '/home/fuc/harmonicMic/data/cdi_3_microbiomeHD'
+# data_mat, meta_data = load_data_microbiomeHD(address_directory)
+# vars_use = ["Dataset"]
+# IDCol = 'Sam_id'
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony")
+# Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic/cdi_3_microbiomeHD_harmonicMic_1127', "DiseaseState", 30, False, 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony_1127', "DiseaseState", 30, False, 'Sam_id')
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony", PCA_first=True)
+# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony_PCs/cdi_3_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
