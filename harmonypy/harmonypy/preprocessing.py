@@ -133,4 +133,17 @@ def preprocess(data_mat, meta_data, IDCol):
     # data_mat.drop(removable_feature_names, axis=1, inplace=True)
     return data_mat, meta_data
 
-
+# output_root = '/home/fuc/harmonicMic/harmonypy/harmonypy/percentile_norm_data/ibd_3_CMD'
+def save_data_percentile_norm(data_mat, meta_data, output_root, bio_var, bio_var_disease):
+    data_mat.to_csv(output_root+"_percentile_norm.txt", sep='\t')
+    meta_data_disease = meta_data[meta_data[bio_var] == bio_var_disease]
+    meta_data_control = meta_data[meta_data[bio_var] != bio_var_disease]
+    samples_disease = list(meta_data_disease.index)
+    samples_control = list(meta_data_control.index)
+    with open(output_root+'_case.txt', 'w') as f:
+        for line in samples_disease:
+            f.write(f"{line}\t")
+    with open(output_root+'_control.txt', 'w') as f:
+        for line in samples_control:
+            f.write(f"{line}\t")
+    return
