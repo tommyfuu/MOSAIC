@@ -9,6 +9,7 @@ _Affiliations_: Memorial Sloan Kettering Cancer Center, Weill Cornell Medicine
 ## 0. TODO
 
 (1) Code harmonicMic
+
  - add beta diversity to objective function # DONE -> to be improved, add local
  - add alpha diversity to objective function  # DONE -> to be improved, add local
  - account for the fact that the counts/data might be unevenly distributed between different batches and covariate # DONE
@@ -17,7 +18,9 @@ _Affiliations_: Memorial Sloan Kettering Cancer Center, Weill Cornell Medicine
  - revert back to count state # DONE
 
 (2) evaluate pipeline
+
 SINGLE METHOD EVALUATION:
+
  - Visualizing (PCA) batch-corrected dataset in terms of batches # DONE
  - Visualizing (PCA) batch-corrected dataset in terms of biological variables of interest # DONE
  - Evaluating whether the biological significance is retained in the top 2 principal components # DONE
@@ -25,7 +28,9 @@ SINGLE METHOD EVALUATION:
  - Visualizing alpha diversity (Shannon) in terms of biological variables of interest # DONE
  - Visualizing beta diversity (bray-curtis) in terms of batches # DONE
  - Visualizing beta diversity (bray-curtis) in terms of biological variables of interest # DONE
+
 MULTI-METHOD BENCHMARKING:
+
  - Visualizing distance between batches (bray-curtis and Aitchson) before bc and after using different methods # TODO
     - reference: https://www.nature.com/articles/s41467-022-33071-9#:~:text=Numerically%2C%20although%20ConQuR%20did%20not,from%205.66%25%20to%200.10%25.
 - Visualizing/tablizing p-values among batches before bc and after using different methods # TODO
