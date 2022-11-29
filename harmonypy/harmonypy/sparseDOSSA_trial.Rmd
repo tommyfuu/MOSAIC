@@ -1,0 +1,124 @@
+---
+title: "sparseDOSSA trial"
+output: html_document
+date: "2022-11-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+Indicates how many metadata are created, number_metadata*2 = number con-
+tinuous metadata, number_metadata = number binary metadata, number_metadata
+= number quaternary metadata, A positive integer greater than 0 is expected.
+
+```{r}
+library(sparseDOSSA)
+n.microbes <- 500
+n.samples <- 300
+n.metadata <- 1
+n.dataset <- 2
+seed <- 8
+sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_2.pcl",
+                          strCountFileName = "SyntheticMicrobiome-Counts_2.pcl",
+                          parameter_filename = "SyntheticMicrobiomeParameterFile_2.txt",
+                          number_features = n.microbes, 
+                          number_samples = n.samples, 
+                          number_metadata = n.metadata, 
+                          datasetCount = n.dataset,
+                          max_percent_outliers = 0.05, 
+                          spikeStrength = "0.5",
+                          seed = seed)
+```
+
+```{r}
+library(sparseDOSSA)
+n.microbes <- 500
+n.samples <- 300
+n.metadata <- 1
+n.dataset <- 3
+seed <- 8
+sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_3.pcl",
+                          strCountFileName = "SyntheticMicrobiome-Counts_3.pcl",
+                          parameter_filename = "SyntheticMicrobiomeParameterFile_3.txt",
+                          number_features = n.microbes, 
+                          number_samples = n.samples, 
+                          number_metadata = n.metadata, 
+                          datasetCount = n.dataset,
+                          max_percent_outliers = 0.05, 
+                          spikeStrength = "0.5",
+                          seed = seed)
+```
+```{r}
+library(sparseDOSSA)
+n.microbes <- 500
+n.samples <- 300
+n.metadata <- 1
+n.dataset <- 4
+seed <- 8
+sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_4.pcl",
+                          strCountFileName = "SyntheticMicrobiome-Counts_4.pcl",
+                          parameter_filename = "SyntheticMicrobiomeParameterFile_4.txt",
+                          number_features = n.microbes, 
+                          number_samples = n.samples, 
+                          number_metadata = n.metadata, 
+                          datasetCount = n.dataset,
+                          max_percent_outliers = 0.05, 
+                          spikeStrength = "0.5",
+                          seed = seed)
+```
+```{r}
+library(sparseDOSSA)
+n.microbes <- 500
+n.samples <- 300
+n.metadata <- 1
+n.dataset <- 5
+seed <- 8
+sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_5.pcl",
+                          strCountFileName = "SyntheticMicrobiome-Counts_5.pcl",
+                          parameter_filename = "SyntheticMicrobiomeParameterFile_5.txt",
+                          number_features = n.microbes, 
+                          number_samples = n.samples, 
+                          number_metadata = n.metadata, 
+                          datasetCount = n.dataset,
+                          max_percent_outliers = 0.05, 
+                          spikeStrength = "0.5",
+                          seed = seed)
+```
+```{r}
+library(sparseDOSSA)
+n.microbes <- 500
+n.samples <- 300
+n.metadata <- 1
+n.dataset <- 8
+seed <- 8
+sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_8.pcl",
+                          strCountFileName = "SyntheticMicrobiome-Counts_8.pcl",
+                          parameter_filename = "SyntheticMicrobiomeParameterFile_8.txt",
+                          number_features = n.microbes, 
+                          number_samples = n.samples, 
+                          number_metadata = n.metadata, 
+                          datasetCount = n.dataset,
+                          max_percent_outliers = 0.05, 
+                          spikeStrength = "0.5",
+                          seed = seed)
+```
+```{r}
+library(sparseDOSSA)
+n.microbes <- 500
+n.samples <- 300
+n.metadata <- 1
+n.dataset <- 10
+seed <- 8
+sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_10.pcl",
+                          strCountFileName = "SyntheticMicrobiome-Counts_10.pcl",
+                          parameter_filename = "SyntheticMicrobiomeParameterFile_10.txt",
+                          number_features = n.microbes, 
+                          number_samples = n.samples, 
+                          number_metadata = n.metadata, 
+                          datasetCount = n.dataset,
+                          max_percent_outliers = 0.05, 
+                          spikeStrength = "0.5",
+                          seed = seed)
+```
