@@ -1,0 +1,15 @@
+combat runtime 42.3893773555756 seconds
+limma runtime 0.0531408786773682 seconds
+MMUPHin runtime 0.712228298187256 seconds
+  [1] New Old Old New Old New Old New New New New Old New Old New Old New Old
+ [19] Old New Old New New Old New Old New New New New New Old Old Old Old Old
+ [37] Old New New New New New New Old New New Old Old New Old New New New Old
+ [55] New New New Old Old Old New Old New New New Old Old Old Old New Old Old
+ [73] New Old New New Old New New Old Old New New New Old Old Old New Old New
+ [91] Old New Old Old Old Old Old Old New New New New New New Old New New New
+[109] New New Old New New Old New Old Old New New New Old Old New New New New
+[127] Old New Old New New New New New New New Old New New New Old Old Old Old
+[145] New Old New New New New New Old New New New Old Old New Old Old New Old
+[163] New New New Old New New New Old New New New New Old
+Levels: New Old
+ConquR runtime 1.9831530491511 seconds

@@ -414,13 +414,13 @@ class Evaluate(object):
         return 
 
 # # Glickman dataset 
-address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
-address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
-IDCol = 'Sam_id'
-index_col = "Unnamed: 0"
-vars_use = ["Dataset", "Sex"]
-output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
-data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
+# address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
+# address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+# IDCol = 'Sam_id'
+# index_col = "Unnamed: 0"
+# vars_use = ["Dataset", "Sex"]
+# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
+# data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
 # # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic", PCA_first=True)
@@ -431,8 +431,9 @@ data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_r
 # Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc_1127', "Visit", 30, 'Sex', 'Sam_id')
 
 # # autism 2 microbiomeHD
-# address_directory = '/home/fuc/harmonicMic/data/autism_2_microbiomeHD'
-# data_mat, meta_data = load_data_microbiomeHD(address_directory)
+address_directory = '/home/fuc/harmonicMic/data/autism_2_microbiomeHD'
+output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
 # vars_use = ["Dataset"]
 # IDCol = 'Sam_id'
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
@@ -444,8 +445,9 @@ data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_r
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
 
 # cdi 3 microbiomeHD
-# address_directory = '/home/fuc/harmonicMic/data/cdi_3_microbiomeHD'
-# data_mat, meta_data = load_data_microbiomeHD(address_directory)
+address_directory = '/home/fuc/harmonicMic/data/cdi_3_microbiomeHD'
+output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
 # vars_use = ["Dataset"]
 # IDCol = 'Sam_id'
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
@@ -457,8 +459,9 @@ data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_r
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
 
 # ibd 3 CMD
-# address_directory = '/home/fuc/harmonicMic/data/ibd_3_CMD'
-# data_mat, meta_data = load_data_CMD(address_directory)
+address_directory = '/home/fuc/harmonicMic/data/ibd_3_CMD'
+output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD"
+data_mat, meta_data = load_data_CMD(address_directory, output_root)
 # vars_use = ["study_name"]
 # IDCol = 'Sam_id'
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
