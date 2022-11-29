@@ -17,7 +17,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     metadata = as.data.frame(read_csv(meta_data_path))
     sink(paste(output_root, "_runtime.txt", sep=""))
 
-
     ## TODO:  potentially need preprocessing such as log and +1
     # count_data <- count_data + 1
     count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
@@ -77,33 +76,46 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     start_time <- Sys.time()
     batchid <- factor(metadata[, dataset])
     if (is.null(covar)){
-        # a <- rep(list("1"), dim(count_data)[1])
-        # a <- seq(1, dim(count_data)[1])
-        # covar_df <- factor(a)
-        covar_df <- batchid 
+        count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F)
     }
     else {
         covar_df = factor(metadata[, covar])
+        count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F)
     }
-    # print("ASACAVVC")
-    # print(covar_df)
-    count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=T)
     write.csv(count_data.conqur,paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
     end_time <- Sys.time()
     cat(c("ConquR runtime", toString(end_time - start_time), "seconds"))
     cat('\n')
+
+    ## ConQuR_libsize
+    ## need to put batchid and covar into countdata dataframe
+    start_time <- Sys.time()
+    batchid <- factor(metadata[, dataset])
+    if (is.null(covar)){
+        count_data.conQur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F)
+    }
+    else {
+        covar_df = factor(metadata[, covar])
+        count_data.conqur = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
+    }
+    write.csv(count_data.conqur,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
+    end_time <- Sys.time()
+    cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"))
     
 }
 
 # glickman
-# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman',
-# dataset = "Dataset",
-# batch_ref = 'Old',
-# covar='Sex'
-# )
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman',
+dataset = "Dataset",
+batch_ref = 'Old',
+covar='Sex'
+)
 
 
 # autism 2 microbiomeHD
