@@ -8,17 +8,58 @@ _Affiliations_: Memorial Sloan Kettering Cancer Center, Weill Cornell Medicine
 
 ## 0. TODO
 
-(1) Write pipeline to combine data in microbiomeHD format to the curatedMetagenomicData format
- - find overlapping species in the RDP/datasetID.otu_table.100.denovo.rdp_assigned files across all data, concatenate
- - combine metadata and label useful information (Dataset, Sex, + biological information labelled)
- - preprocessing (standard scaler normalization)
- - pre-batch-correction evaluation
-    - PCA visualization, with the most important biological information colored, and batches styled # DONE
-    - statistically evaluate batch effect with the kw # DONE
-    - Evaluate sex bias and bias induced by other covariates # DONE
-    - Evaluate alpha and beta diversity
+(1) Code harmonicMic
+ - add beta diversity to objective function # DONE -> to be improved, add local
+ - add alpha diversity to objective function  # DONE -> to be improved, add local
+ - account for the fact that the counts/data might be unevenly distributed between different batches and covariate # DONE
+ - added an additional weight to the Y-update to make dominant features be affected more # DONE
+     In HarmonicMic, Yk is not only influenced by the updated cluster membership Rki, but also by the ratio of a respective feature’s count sum to a reference value
+ - revert back to count state # DONE
 
-(2) Code harmonicMicPy
+(2) evaluate pipeline
+SINGLE METHOD EVALUATION:
+ - Visualizing (PCA) batch-corrected dataset in terms of batches # DONE
+ - Visualizing (PCA) batch-corrected dataset in terms of biological variables of interest # DONE
+ - Evaluating whether the biological significance is retained in the top 2 principal components # DONE
+ - Visualizing alpha diversity (Shannon) in terms of batches # DONE
+ - Visualizing alpha diversity (Shannon) in terms of biological variables of interest # DONE
+ - Visualizing beta diversity (bray-curtis) in terms of batches # DONE
+ - Visualizing beta diversity (bray-curtis) in terms of biological variables of interest # DONE
+MULTI-METHOD BENCHMARKING:
+ - Visualizing distance between batches (bray-curtis and Aitchson) before bc and after using different methods # TODO
+    - reference: https://www.nature.com/articles/s41467-022-33071-9#:~:text=Numerically%2C%20although%20ConQuR%20did%20not,from%205.66%25%20to%200.10%25.
+- Visualizing/tablizing p-values among batches before bc and after using different methods # TODO
+- Visualizing/tablizing p-values for alpha diversity among batches before bc and after using different methods # TODO
+- Visualizing/tablizing p-values for beta diversity among batches before bc and after using different methods # TODO
+- OMNIBUS testing for each meta analysis real datasets
+    - Figure 3 of https://genomebiology.biomedcentral.com/articles/10.1186/s13059-022-02753-4
+- Identify biomarkers/consensus biomarkers from each meta analysis real datasets to demonstrate the power of harmonicMic or one of the methods
+- Benchmark runtime 
+    - kind of done for the benchmarked methods r script, to be added for Percentile-Norm and harmony-related methods
+
+(3) Benchmarked methods for running
+- R script for # DONE-ish
+    - MMUPHin
+    - combat
+    - limma
+    - ConQuR
+- Python script for Percentile-Normalization # DONE
+
+(3) Simulation
+- Generate simulation experiments with 2, 3, 4, 5, 8, 10 batches using SparseDOSSA (ongoing)
+- Run batch correction methods (1) and (3) on them and benchmark with (2)
+
+(4) Real datasets
+- code to preprocess microbiomeHD data format # DONE
+- code to preprocess curatedMetagenomics data format # DONE
+- fetch 2/3/4/5/6-sized metadatasets # ongoing
+- run on all methods  # ongoing
+    - individual method benchmark
+    - cross-method benchmark
+
+(5) biological insights/discussion
+ - biological variable info retained in real world data? # todo
+ - biomarker identification # todo
 
 
 ## 1. Usage
