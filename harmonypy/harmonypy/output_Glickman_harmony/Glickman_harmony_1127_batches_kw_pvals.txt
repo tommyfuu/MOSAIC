@@ -1,9 +1,13 @@
 global batch kw p-vals 
 
+
+
+global pair-wise batch kw p-vals 
+
 current batch pair ('New', 'Old') 
 
-. PC0 ('New', 'Old') 0.1558867412163813 # new samples: 103 # old samples: 72
-. PC1 ('New', 'Old') 2.370330152175481e-05 # new samples: 103 # old samples: 72
+. PC0 ('New', 'Old') 0.1558867412163813 # samples in batch New: 103 # samples in batch Old: 72
+. PC1 ('New', 'Old') 2.370330152175481e-05 # samples in batch New: 103 # samples in batch Old: 72
 batch kw p-vals by bio_var 
 
 . bio_var == Day_0

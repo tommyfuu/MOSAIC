@@ -1,0 +1,27 @@
+global batch kw p-vals 
+
+
+
+global pair-wise batch kw p-vals 
+
+current batch pair ('New', 'Old') 
+
+. PC0 ('New', 'Old') 1.1221018527884957e-20 # samples in batch New: 103 # samples in batch Old: 72
+. PC1 ('New', 'Old') 5.879709172379548e-05 # samples in batch New: 103 # samples in batch Old: 72
+batch kw p-vals by bio_var 
+
+. bio_var == Day_0
+.   PC0 ('New', 'Old') 0.0021830447373622553 # new samples: 24 # old samples: 20
+.   PC1 ('New', 'Old') 0.015193512163636074 # new samples: 24 # old samples: 20
+. bio_var == Mo_2
+.   PC0 ('New', 'Old') 2.288342197024767e-06 # new samples: 23 # old samples: 13
+.   PC1 ('New', 'Old') 0.0309881288862093 # new samples: 23 # old samples: 13
+. bio_var == Mo_24
+.   PC0 ('New', 'Old') nan # new samples: 9 # old samples: 0
+.   PC1 ('New', 'Old') nan # new samples: 9 # old samples: 0
+. bio_var == Mo_6
+.   PC0 ('New', 'Old') 3.451682012754667e-05 # new samples: 23 # old samples: 11
+.   PC1 ('New', 'Old') 0.0003316596368792872 # new samples: 23 # old samples: 11
+. bio_var == Wk_2
+.   PC0 ('New', 'Old') 4.020508809874534e-08 # new samples: 24 # old samples: 18
+.   PC1 ('New', 'Old') 0.416031341118152 # new samples: 24 # old samples: 18
