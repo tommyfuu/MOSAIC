@@ -4,6 +4,10 @@ global batch kw p-vals
 
 global pair-wise batch kw p-vals 
 
+. PC0 across all batches, p-val =  0.1558867412163813 
+
+. PC1 across all batches, p-val =  2.370330152175481e-05 
+
 current batch pair ('New', 'Old') 
 
 . PC0 ('New', 'Old') 0.1558867412163813 # samples in batch New: 103 # samples in batch Old: 72
