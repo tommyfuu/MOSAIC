@@ -122,3 +122,10 @@ sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_10.pcl",
                           spikeStrength = "0.5",
                           seed = seed)
 ```
+```
+sparseDOSSA::sparseDOSSA( strNormalizedFileName = "SyntheticMicrobiome_spike.pcl",
+                          strCountFileName = "SyntheticMicrobiome-Counts_spike.pcl",
+                          parameter_filename = "SyntheticMicrobiomeParameterFile_spike.txt",
+                          spikeStrength = "2.0", spikeCount = "2" )
+
+```

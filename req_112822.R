@@ -3,6 +3,8 @@ install.packages("vegan")
 install.packages("doParallel")
 install.packages("dplyr")
 install.packages("DT")
+install.packages("gmp")
+install.packages("Rmpfr")
 
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -14,7 +16,7 @@ BiocManager::install("curatedMetagenomicData")
 BiocManager::install("mia")
 BiocManager::install("phyloseq")
 BiocManager::install("mixOmics")
+BiocManager::install("SparseDOSSA")
 
 install.packages("remotes")
-remote::install_github("wdl2459/ConQuR")
-
+remotes::install_github("wdl2459/ConQuR")

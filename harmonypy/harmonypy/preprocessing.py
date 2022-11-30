@@ -122,6 +122,15 @@ def load_data(address_X, address_Y, IDCol, index_col = False, output_root = Fals
         meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 
+def load_results_from_benchmarked_methods(address_X, address_Y):
+    data_mat = pd.read_csv(address_X, index_col=0)
+    meta_data = pd.read_csv(address_Y)
+    return data_mat, meta_data
+
+def load_data_simulation(address, output_root = False):
+
+    return
+
 def preprocess(data_mat, meta_data, IDCol):
     # remove samples with all zeros
     data_mat = data_mat.loc[~(data_mat==0).all(axis=1)]

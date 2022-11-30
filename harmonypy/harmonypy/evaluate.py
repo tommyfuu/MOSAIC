@@ -28,6 +28,7 @@ import itertools
 from scipy import stats
 from skbio.diversity import alpha_diversity, beta_diversity
 from skbio.stats.ordination import pcoa
+from scipy.spatial import distance
 
 # def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col = False):
 #     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
@@ -276,6 +277,22 @@ class Evaluate(object):
         batches_l = list(np.unique(batches_l))
         with open(self.output_root+"_batches_kw_pvals.txt", "w") as text_file:
             print("global batch kw p-vals \n", file=text_file)
+            print("\n", file=text_file)
+
+            data_PC0 = [df.loc[df["batches" = batch]==var]["PC0"].values for batch in batches_l]
+            data_PC1 = [df.loc[df["batches" = batch]==var]["PC1"].values for batch in batches_l]
+            
+            global_PC0_p = stats.kruskal(*data_PC0)[1]
+            global_PC1_p = stats.kruskal(*data_PC0)[1]
+            print(". PC0", "across all batches, p-val = ", str(global_PC0_p))
+            print(". PC1", "across all batches, p-val = ", str(global_PC1_p))
+            global_PC_0_bc_distance = distance.braycurtis(*data_PC0)
+            global_PC_1_bc_distance = distance.braycurtis(*data_PC1)
+
+            global_df = pd.DataFrame({"PC_0_p": [global_PC0_p], "PC_1_p":[global_PC1_p], "PC_0_bc_distance": [global_PC_0_bc_distance], "PC_1_bc_distance": [global_PC_1_bc_distance]})
+            global_df.to_csv(self.output_root+"_global_batches_eval.csv")
+            print("\n")
+            print("global pair-wise batch kw p-vals \n", file=text_file)
             for pair_batch in itertools.combinations(batches_l, 2):
                 print("current batch pair", str(pair_batch), '\n', file=text_file)
                 current_df = df.loc[df["batches"].isin(pair_batch)]
@@ -285,8 +302,8 @@ class Evaluate(object):
                 PC0_p = stats.kruskal(data_batch1["PC0"].values,data_batch2["PC0"].values)[1]
                 PC1_p = stats.kruskal(data_batch1["PC1"].values,data_batch2["PC1"].values)[1]
 
-                print(". PC0", str(pair_batch), PC0_p, "# new samples:", len(data_batch1["PC0"].values), "# old samples:", len(data_batch2["PC0"].values), file=text_file)
-                print(". PC1", str(pair_batch), PC1_p, "# new samples:", len(data_batch1["PC1"].values), "# old samples:", len(data_batch2["PC1"].values), file=text_file)
+                print(". PC0", str(pair_batch), PC0_p, "# samples in batch "+pair_batch[0]+":", len(data_batch1["PC0"].values), "# samples in batch "+pair_batch[1]+":", len(data_batch2["PC0"].values), file=text_file)
+                print(". PC1", str(pair_batch), PC1_p, "# samples in batch "+pair_batch[0]+":", len(data_batch1["PC1"].values), "# samples in batch "+pair_batch[1]+":", len(data_batch2["PC1"].values), file=text_file)
 
             print("batch kw p-vals by bio_var \n", file=text_file)
             for var in bio_var_l:
@@ -413,22 +430,51 @@ class Evaluate(object):
                 print("\n", file=text_file)
         return 
 
-# # Glickman dataset 
-# address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
-# address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
-# IDCol = 'Sam_id'
-# index_col = "Unnamed: 0"
-# vars_use = ["Dataset", "Sex"]
-# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
-# data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
-# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
-# # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic", PCA_first=True)
+# Glickman dataset 
+IDCol = 'Sam_id'
+index_col = "Unnamed: 0"
+vars_use = ["Dataset", "Sex"]
+output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
 
-# Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic_1127', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony_1127', "Visit", 30, 'Sex', 'Sam_id')
-# # Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
-# Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc_1127', "Visit", 30, 'Sex', 'Sam_id')
+address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
+address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
+res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic", PCA_first=True)
+
+Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic_1127', "Visit", 30, 'Sex', 'Sam_id')
+Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony/Glickman_harmony_1127', "Visit", 30, 'Sex', 'Sam_id')
+Evaluate(res_h, meta_data, 'Dataset', './output_Glickman_harmony_PCs/Glickman_harmony_PCs', "Visit", 30, 'Sex', 'Sam_id')
+Evaluate(data_mat, meta_data, 'Dataset', './output_nobc/Glickman_nobc_1127', "Visit", 30, 'Sex', 'Sam_id')
+
+## benchmarking other methods:
+address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+
+### combat
+address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_combat.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_Glickman_combat/Glickman_combat_1130', "Visit", 30, 'Sex', 'Sam_id')
+
+### ConQuR
+address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_ConQuR.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_Glickman_ConQuR/Glickman_ConQuR_1130', "Visit", 30, 'Sex', 'Sam_id')
+
+### ConQuR_libsize
+address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_ConQuR_libsize.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_Glickman_ConQuR_libsize/Glickman_ConQuR_libsize_1130', "Visit", 30, 'Sex', 'Sam_id')
+
+### limma
+address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_limma.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_Glickman_limma/Glickman_limma_1130', "Visit", 30, 'Sex', 'Sam_id')
+
+### MMUPHin
+address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_MMUPHin.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_Glickman_MMUPHin/Glickman_MMUPHin_1130', "Visit", 30, 'Sex', 'Sam_id')
 
 # # autism 2 microbiomeHD
 # address_directory = '/home/fuc/harmonicMic/data/autism_2_microbiomeHD'
@@ -459,23 +505,23 @@ class Evaluate(object):
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1127', "DiseaseState", 30, False, 'Sam_id')
 
 # ibd 3 CMD
-address_directory = '/home/fuc/harmonicMic/data/ibd_3_CMD'
-output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD"
-data_mat, meta_data = load_data_CMD(address_directory, output_root)
-vars_use = ["study_name"]
-IDCol = 'Sam_id'
-import timeit
-start_time = timeit.default_timer()
-print("hello")
-print(start_time)
-res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
-elapsed = timeit.default_timer() - start_time
-print("time")
-print(elapsed)
-import time
-time.sleep(100)
+# address_directory = '/home/fuc/harmonicMic/data/ibd_3_CMD'
+# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD"
+# data_mat, meta_data = load_data_CMD(address_directory, output_root)
+# vars_use = ["study_name"]
+# IDCol = 'Sam_id'
+# import timeit
+# start_time = timeit.default_timer()
+# print("hello")
+# print(start_time)
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmonicMic")
+# elapsed = timeit.default_timer() - start_time
+# print("time")
+# print(elapsed)
+# import time
+# time.sleep(100)
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony")
-Evaluate(res, meta_data, "study_name", './output_ibd_3_CMD_harmonicMic/ibd_3_CMD_harmonicMic_1127', "disease", 30, False, 'Sam_id')
+# Evaluate(res, meta_data, "study_name", './output_ibd_3_CMD_harmonicMic/ibd_3_CMD_harmonicMic_1127', "disease", 30, False, 'Sam_id')
 # Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony/ibd_3_CMD_harmony_1127', "disease", 30, False, 'Sam_id')
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, option = "harmony", PCA_first=True)
 # Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony_PCs/ibd_3_CMD_harmony_PCs', "disease", 30, False, 'Sam_id')
