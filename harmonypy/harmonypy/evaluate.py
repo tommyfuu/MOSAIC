@@ -279,8 +279,8 @@ class Evaluate(object):
             print("global batch kw p-vals \n", file=text_file)
             print("\n", file=text_file)
 
-            data_PC0 = [df.loc[df["batches" = batch]==var]["PC0"].values for batch in batches_l]
-            data_PC1 = [df.loc[df["batches" = batch]==var]["PC1"].values for batch in batches_l]
+            data_PC0 = [df.loc[df["batches"]== batch[0]]["PC0"].values for batch in batches_l]
+            data_PC1 = [df.loc[df["batches"]== batch[0]]["PC1"].values for batch in batches_l]
             
             global_PC0_p = stats.kruskal(*data_PC0)[1]
             global_PC1_p = stats.kruskal(*data_PC0)[1]
@@ -430,6 +430,7 @@ class Evaluate(object):
                 print("\n", file=text_file)
         return 
 
+def global_eval_dataframe(output_root, methods_list)
 # Glickman dataset 
 IDCol = 'Sam_id'
 index_col = "Unnamed: 0"
