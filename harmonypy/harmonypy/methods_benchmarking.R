@@ -26,7 +26,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     start_time <- Sys.time()
     batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata$Sam_id))
     if(is.null(covar)) {
-        count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mean.only=TRUE))
+        count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=NULL))
     }
     else {
         covar_df = factor(metadata[, covar])
@@ -52,7 +52,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     metadata_mupphin <- metadata
     row.names(metadata_mupphin) <- metadata$Sam_id
     if(is.null(covar)) {
-        fit_adjust_batch <- adjust_batch(feature_abd = t(count_data_t_relab ),
+        fit_adjust_batch <- adjust_batch(feature_abd = t(count_data_t_relab),
                                     batch = dataset,
                                     data = metadata_mupphin,
                                     control = list(verbose = FALSE))
@@ -132,9 +132,30 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # dataset = "Dataset",
 # batch_ref = 'cdi_schubert')
 
-# ibd 3 CMD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
+# # ibd 3 CMD
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
+# dataset = "study_name",
+# batch_ref = 'HMP_2019_ibdmdb')
+
+# # melanoma 5 CMD -> DEPRECATED
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/melanoma_5_CMD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/melanoma_5_CMD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/melanoma_5_CMD',
+# dataset = "study_name",
+# batch_ref = 'FrankelAE_2017')
+
+# adenoma 5 CMD
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD',
 dataset = "study_name",
-batch_ref = 'HMP_2019_ibdmdb')
+batch_ref = 'FrankelAE_2017')
+
+# T2D 10 CMD
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
+dataset = "study_name",
+batch_ref = 'Castro-NallarE_2015')

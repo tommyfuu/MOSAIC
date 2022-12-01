@@ -39,5 +39,6 @@ fetch_studies_from_CMG <- function (list_of_studies, list_of_conditions, abund_v
 
 # want to save real counts data
 # a = fetch_studies_from_CMG(c("HMP_2019_ibdmdb", "IjazUZ_2017", "LiJ_2014"), c("IBD", 'healthy'), "relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/ibd_3_CMD')
-b = fetch_studies_from_CMG(c("FrankelAE_2017", "GopalakrishnanV_2018", "LeeKA_2022", "MatsonV_2018", "WindTT_2020"), c("melanoma", "metastases"), "relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/melanoma_5_CMD')
-c = fetch_studies_from_CMG(c("Castro-NallarE_2015", "FengQ_2015", "GhensiP_2019", "HMP_2019_t2d", "KarlssonFH_2013", "LiJ_2014", "MetaCardis_2020_a", "QinJ_2012", "SankaranarayananK_2015", "YuJ_2015"), c("T2D", 'healthy'),"relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/T2D_10_CMD')
+# # PROBLEMATIC # b = fetch_studies_from_CMG(c("FrankelAE_2017", "GopalakrishnanV_2018", "LeeKA_2022", "MatsonV_2018", "WindTT_2020"), c("melanoma", "metastases"), "relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/melanoma_5_CMD')
+b = fetch_studies_from_CMG(c("FengQ_2015", "HanniganGD_2017", "ThomasAM_2018a", "YachidaS_2019", "ZellerG_2014"), c("adenoma", "healthy"), "relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/adenoma_5_CMD')
+# c = fetch_studies_from_CMG(c("Castro-NallarE_2015", "FengQ_2015", "GhensiP_2019", "HMP_2019_t2d", "KarlssonFH_2013", "LiJ_2014", "MetaCardis_2020_a", "QinJ_2012", "SankaranarayananK_2015", "YuJ_2015"), c("T2D", 'healthy'),"relative_abundance", counts = TRUE, save = TRUE, save_to = '/home/fuc/harmonicMic/data/T2D_10_CMD')

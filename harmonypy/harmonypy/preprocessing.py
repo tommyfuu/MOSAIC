@@ -100,6 +100,19 @@ def load_data_CMD(address_directory, output_root = False):
     meta_data = pd.read_csv(address_Y, index_col=0)
     meta_data['Sam_id'] = list(meta_data.index)
     data_mat, meta_data = preprocess(data_mat.T, meta_data, 'Sam_id')
+    
+    # TODO: ensure that the sample ids are correctly aligned in metadata and count_table
+    data_mat_ids = list(data_mat.index)
+    meta_data_ids = list(meta_data.index)
+    intersection_ids = list(set(meta_data_ids).intersection(data_mat_ids))
+
+    # drop rows where indexes are not overlapping
+    data_mat_non_intersecting = [id for id in data_mat_ids if id not in intersection_ids]
+    data_mat = data_mat.drop(data_mat_non_intersecting)
+    meta_data_non_intersecting = [id for id in meta_data_ids if id not in intersection_ids]
+    meta_data = meta_data.drop(meta_data_non_intersecting)
+    data_mat = data_mat.reindex(intersection_ids)
+    meta_data = meta_data.reindex(intersection_ids)
 
     # save stuff if needed
     if output_root != False:
