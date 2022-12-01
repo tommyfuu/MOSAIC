@@ -3,7 +3,7 @@
 This script converts an input OTU table with cases and controls into
 percentiles of control samples.
 """
-__author__ = "Sean Gibbons and Claire Duvallet"
+__author__ = "Sean Gibbons and Claire Duvallet; edited by Tom Fu to fit our datatypes"
 __copyright__ = "Copyright 2017"
 __credits__ = ["Sean Gibbons; Claire Duvallet; Eric Alm"]
 __reference__ = "PLoS Computational Biology DOI: https://doi.org/10.1371/journal.pcbi.1006102"
@@ -16,16 +16,20 @@ import numpy as np
 import scipy.stats as sp
 import pandas as pd
 import argparse
+import time
 
 ## Input arguments
 parser = argparse.ArgumentParser(description='Script to convert case control '
     + 'OTU tables into percentiles of control samples.')
 parser.add_argument('-i', help='input OTU table text file (rows = samples, '
     + ' columns = OTUs; default format = tab-delimited)', required=True)
-parser.add_argument('-case', help='input case sample list', required=True)
-parser.add_argument('-control', help='input control sample list', required=True)
+# parser.add_argument('-case', help='input case sample list', required=True)
+# parser.add_argument('-control', help='input control sample list', required=True)
+parser.add_argument('-meta', help='input path to metadata file, containing a case-vs-control column', required=True)
+parser.add_argument('-diseaseName', help='name of the column representing the batch in the metadata', required=True)
+parser.add_argument('-case', help='name of the case (disease) scenario ', required=True)
 parser.add_argument('-otu-d', help='OTU table field delimiter [default: '
-    + '%(default)s]', default='tab', choices=['tab', 'newline', 'comma'])
+    + '%(default)s]', default='comma', choices=['tab', 'newline', 'comma'])
 parser.add_argument('-sample-d', help='sample list delimiters [default: '
     + '%(default)s]', default='tab', choices=['tab', 'newline', 'comma'])
 parser.add_argument('-o', help='output file name [default: %(default)s]',
@@ -47,12 +51,20 @@ df[pd.isnull(df)] = df_rand[pd.isnull(df)]
 # Get numpy array
 x = df.values
 
-# Read case and control samples as lists
-with open(args.case, 'r') as f:
-    case_list = f.read().rstrip().split(seps[args.sample_d])
-with open(args.control, 'r') as f:
-    control_list = f.read().rstrip().split(seps[args.sample_d])
-print('Loading data complete.')
+# get case info
+metadata = pd.read_csv(args.meta)
+sample_ids = list(df.index)
+disease_column = list(metadata[args.diseaseName])
+case_list = [sample for idx, sample in enumerate(sample_ids) if disease_column[idx] == args.case]
+control_list = [sample for idx, sample in enumerate(sample_ids) if disease_column[idx] != args.case]
+# # Read case and control samples as lists
+# with open(args.case, 'r') as f:
+#     case_list = f.read().rstrip().split(seps[args.sample_d])
+# with open(args.control, 'r') as f:
+#     control_list = f.read().rstrip().split(seps[args.sample_d])
+# print('Loading data complete.')
+
+
 
 # Get control and case indices
 control_indices = [df.index.get_loc(i) for i in control_list]
@@ -73,6 +85,10 @@ print('Running percentile-normalization complete.')
 
 ## Put back into dataframe and write to file
 norm_df = pd.DataFrame(data=norm_x, columns=df.columns, index=all_samples)
-norm_df.to_csv(args.o, sep='\t')
+norm_df.to_csv(args.o)
 
 print('Percentile-normalized data written to {}'.format(args.o))
+
+# python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv -diseaseName Visit -case Day_0 -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_percentile_norm.csv
+# python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_meta_data.csv -diseaseName DiseaseState -case ASD -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv
+# python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv -diseaseName DiseaseState -case CDI -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv

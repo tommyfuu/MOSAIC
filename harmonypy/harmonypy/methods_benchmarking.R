@@ -58,7 +58,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                                     control = list(verbose = FALSE))
     }
     else {
-        fit_adjust_batch <- adjust_batch(feature_abd = t(count_data_t_relab ),
+        fit_adjust_batch <- adjust_batch(feature_abd = t(count_data_t_relab),
                                     batch = dataset,
                                     covariates = covar,
                                     data = metadata_mupphin,
