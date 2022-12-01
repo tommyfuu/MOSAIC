@@ -108,29 +108,29 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
 }
 
-# glickman
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman',
-dataset = "Dataset",
-batch_ref = 'Old',
-covar='Sex'
-)
+# # glickman
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman',
+# dataset = "Dataset",
+# batch_ref = 'Old',
+# covar='Sex'
+# )
 
 
-# autism 2 microbiomeHD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
-dataset = "Dataset",
-batch_ref = 'asd_son')
+# # autism 2 microbiomeHD
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
+# dataset = "Dataset",
+# batch_ref = 'asd_son')
 
-# cdi 3 microbiomeHD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
-dataset = "Dataset",
-batch_ref = 'cdi_schubert')
+# # cdi 3 microbiomeHD
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
+# dataset = "Dataset",
+# batch_ref = 'cdi_schubert')
 
 # ibd 3 CMD
 run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv',

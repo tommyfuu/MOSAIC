@@ -1,5 +1,6 @@
-combat runtime 7.17374262412389 seconds
-limma runtime 1.68702602386475 seconds
-MMUPHin runtime 5.4091329574585 seconds
-ConquR runtime 25.7335913181305 seconds
-ConquR_libsize runtime 1.8754004518191 seconds
+Using the 'mean only' version of ComBat
+Found 3 batches
+Adjusting for 0 covariate(s) or covariate level(s)
+Standardizing Data across genes
+Fitting L/S model and finding priors
+Finding nonparametric adjustments
