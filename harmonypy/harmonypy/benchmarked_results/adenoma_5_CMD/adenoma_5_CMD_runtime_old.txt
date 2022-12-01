@@ -1,0 +1,10 @@
+Using the 'mean only' version of ComBat
+Found 5 batches
+Adjusting for 1 covariate(s) or covariate level(s)
+Standardizing Data across genes
+Fitting L/S model and finding priors
+Finding nonparametric adjustments
+Adjusting the Data
+combat runtime 12.5831471244494 seconds
+limma runtime 0.79932165145874 seconds
+MMUPHin runtime 4.46366238594055 seconds

@@ -29,6 +29,9 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=NULL))
     }
     else {
+        if(length(covar)>1){
+            covar = covar[1]
+        }
         covar_df = factor(metadata[, covar])
         count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, mod = covar_df, par.prior=FALSE, mean.only=TRUE))
     }
@@ -49,6 +52,10 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     ## MMUPHin
     start_time <- Sys.time()
     count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
+    write.csv(count_data_t_relab, "WTF.csv")
+    if(any(is.na(t(count_data_t_relab)))) {
+        count_data_t_relab = t(t(count_data+0.001)/rowSums(t(count_data+0.001)))
+    }
     metadata_mupphin <- metadata
     row.names(metadata_mupphin) <- metadata$Sam_id
     if(is.null(covar)) {
@@ -70,41 +77,54 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     cat(c("MMUPHin runtime", toString(end_time - start_time), "seconds"))
     cat('\n')
 
+    ## ConQuR_libsize
+    ## need to put batchid and covar into countdata dataframe
+    start_time <- Sys.time()
+    batchid <- factor(metadata[, dataset])
+    print(start_time)
+    if (is.null(covar)){
+        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F)
+    }
+    else {
+        covar_df = metadata[, covar]
+        # print(start_time)
+        # cat(batchid)
+        # print(covar_df)
+        # print(count_data)
+        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
+    }
+    write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
+    end_time <- Sys.time()
+    print(end_time)
+    cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"))
+
     ## ConquR
     ## need to put batchid and covar into countdata dataframe
     # count_data.conqur_pre <- count_data
     start_time <- Sys.time()
+    print(start_time)
     batchid <- factor(metadata[, dataset])
     if (is.null(covar)){
         count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
                          logistic_lasso=T, quantile_type="lasso", interplt=F)
     }
     else {
-        covar_df = factor(metadata[, covar])
+        covar_df = metadata[, covar]
+        print(start_time)
+        cat(batchid)
+        print(covar_df)
         count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
                          logistic_lasso=T, quantile_type="lasso", interplt=F)
     }
     write.csv(count_data.conqur,paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
     end_time <- Sys.time()
+    cat(end_time)
     cat(c("ConquR runtime", toString(end_time - start_time), "seconds"))
     cat('\n')
 
-    ## ConQuR_libsize
-    ## need to put batchid and covar into countdata dataframe
-    start_time <- Sys.time()
-    batchid <- factor(metadata[, dataset])
-    if (is.null(covar)){
-        count_data.conQur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F)
-    }
-    else {
-        covar_df = factor(metadata[, covar])
-        count_data.conqur = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
-    }
-    write.csv(count_data.conqur,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
-    end_time <- Sys.time()
-    cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"))
+   
     
 }
 
@@ -147,15 +167,19 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # batch_ref = 'FrankelAE_2017')
 
 # adenoma 5 CMD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD',
-dataset = "study_name",
-batch_ref = 'FrankelAE_2017')
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
+# dataset = "study_name",
+# batch_ref = 'FengQ_2015',
+# # covar = c("gender")
+# )
 
 # T2D 10 CMD
 run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
 '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
 '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
 dataset = "study_name",
-batch_ref = 'Castro-NallarE_2015')
+batch_ref = 'Castro-NallarE_2015',
+# covar = c("gender")
+)
