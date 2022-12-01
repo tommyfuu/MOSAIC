@@ -614,33 +614,33 @@ class Evaluate(object):
 # Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony_PCs/ibd_3_CMD_harmony_PCs', "disease", 30, False, 'Sam_id')
 # Evaluate(data_mat, meta_data, "study_name", './output_ibd_3_CMD_nobc/ibd_3_CMD_nobc_1127', "disease", 30, False, 'Sam_id')
 
-# benchmarking other methods: 
-address_Y = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv"
+# # benchmarking other methods: # TODO:
+# address_Y = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv"
 
-### combat -> PROBLEMATIC
-# address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_combat.csv"
+# ### combat -> PROBLEMATIC
+# # address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_combat.csv"
+# # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# # Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_combat/ibd_3_CMD_combat_1130', "DiseaseState", 30,  False, 'Sam_id')
+
+# ### ConQuR
+# address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_combat/ibd_3_CMD_combat_1130', "DiseaseState", 30,  False, 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_ConQuR/ibd_3_CMD_ConQuR_1130', "DiseaseState", 30, False, 'Sam_id')
 
-### ConQuR
-address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_ConQuR/ibd_3_CMD_ConQuR_1130', "DiseaseState", 30, False, 'Sam_id')
+# ### ConQuR_libsize
+# address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR_libsize.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_ConQuR_libsize/ibd_3_CMD_ConQuR_libsize_1130', "DiseaseState", 30,  False, 'Sam_id')
 
-### ConQuR_libsize
-address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR_libsize.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_ConQuR_libsize/ibd_3_CMD_ConQuR_libsize_1130', "DiseaseState", 30,  False, 'Sam_id')
+# ### limma
+# address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_limma.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_limma/ibd_3_CMD_limma_1130', "DiseaseState", 30,  False,'Sam_id')
 
-### limma
-address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_limma.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_limma/ibd_3_CMD_limma_1130', "DiseaseState", 30,  False,'Sam_id')
-
-### MMUPHin
-address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_MMUPHin.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin_1130', "DiseaseState" , 30, False,'Sam_id')
+# ### MMUPHin
+# address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_MMUPHin.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin_1130', "DiseaseState" , 30, False,'Sam_id')
 
 
 #################################################################################
@@ -656,7 +656,12 @@ Evaluate(data_mat, meta_data, 'Dataset', './output_ibd_3_CMD_MMUPHin/ibd_3_CMD_M
 # output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD"
 # data_mat, meta_data = load_data_CMD(address_directory, output_root)
 
-# # T2D 10 CMD -> T2D_9_CMD
+# CRC_8_CMD
+address_directory = '/home/fuc/harmonicMic/data/CRC_8_CMD'
+output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD"
+data_mat, meta_data = load_data_CMD(address_directory, output_root)
+
+# # # T2D 10 CMD 
 # address_directory = '/home/fuc/harmonicMic/data/T2D_10_CMD'
 # output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD"
 # data_mat, meta_data = load_data_CMD(address_directory, output_root)

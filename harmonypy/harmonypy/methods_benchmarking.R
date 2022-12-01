@@ -153,11 +153,11 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # batch_ref = 'cdi_schubert')
 
 # ibd 3 CMD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
-dataset = "study_name",
-batch_ref = 'HMP_2019_ibdmdb')
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
+# dataset = "study_name",
+# batch_ref = 'HMP_2019_ibdmdb')
 
 # # melanoma 5 CMD -> DEPRECATED
 # run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/melanoma_5_CMD_count_data.csv',
@@ -174,6 +174,15 @@ batch_ref = 'HMP_2019_ibdmdb')
 # batch_ref = 'FengQ_2015',
 # # covar = c("gender")
 # )
+
+# CRC_8_CMD
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
+dataset = "study_name",
+batch_ref = 'FengQ_2015',
+# covar = c("gender")
+)
 
 # T2D 10 CMD
 # run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',

@@ -97,7 +97,7 @@ def run_harmonicMic(
         print(var, np.unique(list(meta_data[var])))
         print(pd.get_dummies(meta_data[var]).to_numpy().T)
         phi_dict.update({var: pd.get_dummies(meta_data[var]).to_numpy().T})
-    print("phi_n", phi_n)
+    # print("phi_n", phi_n)
     if theta is None:
         theta = np.repeat([1] * len(phi_n), phi_n)
     elif isinstance(theta, float) or isinstance(theta, int):

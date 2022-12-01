@@ -1,0 +1,20 @@
+Total number of reads thrown out during dereplication (falling under minimum total read count across samples of 2):	1131
+
+Number of raw reads = 1390864
+Percent of reads left: 100.0%
+
+Number of demultiplexed reads = 1326068
+Percent of reads left: 95.3413130256%
+
+Number of primer-trimmed reads = 1304496
+Percent of reads left: 93.7903346409%
+
+Number of quality-trimmed reads = 1257288
+Percent of reads left: 90.3961853927%
+
+Number of length-trimmed reads = 84252
+Percent of reads left: 6.05752970815%
+
+Number of FASTA reads left = 84252
+Percent of reads left: 6.05752970815%
+
