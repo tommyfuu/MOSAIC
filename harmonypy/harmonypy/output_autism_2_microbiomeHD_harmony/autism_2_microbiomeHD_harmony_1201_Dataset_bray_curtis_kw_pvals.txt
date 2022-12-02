@@ -1,0 +1,19 @@
+bray_curtis_global_pvals, by PCs [6.075790803061571e-07, 0.6394379004917188, 8.98242542728603e-06] 
+
+bray_curtis_pairwise_pval 
+
+PC1
+
+{('asd_son', 'autism_kb'): 6.075790803061571e-07}
+
+
+PC2
+
+{('asd_son', 'autism_kb'): 0.6394379004917188}
+
+
+PC3
+
+{('asd_son', 'autism_kb'): 8.98242542728603e-06}
+
+
