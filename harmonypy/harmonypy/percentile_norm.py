@@ -75,6 +75,10 @@ all_indices = control_indices + case_indices
 
 ## Normalize control and case samples to percentiles of control distribution
 print('Running percentile-normalization...')
+import time
+
+start = time.time()
+
 norm_x = np.array(
     [
         [sp.percentileofscore(x[control_indices, i], x[j, i], kind='mean')
@@ -82,6 +86,10 @@ norm_x = np.array(
     for i in range(x.shape[1])
     ]).T
 print('Running percentile-normalization complete.')
+
+print("elapsed time:", args.o)
+end = time.time()
+print(end - start)
 
 ## Put back into dataframe and write to file
 norm_df = pd.DataFrame(data=norm_x, columns=df.columns, index=all_samples)
@@ -92,7 +100,7 @@ print('Percentile-normalized data written to {}'.format(args.o))
 # python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv -diseaseName Visit -case Day_0 -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_percentile_norm.csv
 # python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_meta_data.csv -diseaseName DiseaseState -case ASD -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv
 # python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv -diseaseName DiseaseState -case CDI -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv
-# python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv -diseaseName DiseaseState -case adenoma -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD_percentile_norm.csv
+# python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv -diseaseName disease -case adenoma -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD_percentile_norm.csv
 # python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv -diseaseName disease -case IBD -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv
 # python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_meta_data.csv -diseaseName disease -case CRC -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv
 # python percentile_norm.py -i /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv -meta /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv -diseaseName disease -case T2D -o /home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD_percentile_norm.csv

@@ -4,10 +4,11 @@ Standardizing Data across genes
 Fitting L/S model and finding priors
 Finding nonparametric adjustments
 Adjusting the Data
-combat runtime 3.36036186218262 seconds
-limma runtime 2.49139618873596 seconds
-MMUPHin runtime 14.0828115940094 seconds
-[1] "2022-12-01 13:53:31 EST"
-[1] "2022-12-01 13:56:37 EST"
-ConquR_libsize runtime 3.10085428555806 seconds[1] "2022-12-01 13:56:38 EST"
-1669921037ConquR runtime 38.631175994873 seconds
+combat runtime 3.0289183139801 seconds
+limma runtime 2.05650877952576 seconds
+MMUPHin runtime 13.1750779151917 seconds
+[1] "2022-12-01 19:03:01 EST"
+ConquR runtime 34.8494322299957 seconds
+[1] "2022-12-01 19:03:36 EST"
+[1] "2022-12-01 19:06:33 EST"
+ConquR_libsize runtime 2.94891632795334 seconds

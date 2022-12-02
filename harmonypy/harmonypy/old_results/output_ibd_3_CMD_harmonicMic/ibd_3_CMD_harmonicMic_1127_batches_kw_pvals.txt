@@ -1,0 +1,51 @@
+global batch kw p-vals 
+
+current batch pair ('HMP_2019_ibdmdb', 'IjazUZ_2017') 
+
+. PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 3.2781948996510224e-06 # new samples: 1627 # old samples: 94
+. PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 0.0045525946621440255 # new samples: 1627 # old samples: 94
+current batch pair ('HMP_2019_ibdmdb', 'LiJ_2014') 
+
+. PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') 5.890707798614921e-16 # new samples: 1627 # old samples: 260
+. PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.15738353940782773 # new samples: 1627 # old samples: 260
+current batch pair ('IjazUZ_2017', 'LiJ_2014') 
+
+. PC0 ('IjazUZ_2017', 'LiJ_2014') 0.29038879375909693 # new samples: 94 # old samples: 260
+. PC1 ('IjazUZ_2017', 'LiJ_2014') 0.16593413651934077 # new samples: 94 # old samples: 260
+batch kw p-vals by bio_var 
+
+. bio_var == IBD
+.   PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 1.6349354145488872e-07 # new samples: 1201 # old samples: 56
+.   PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 0.9267843674985362 # new samples: 1201 # old samples: 56
+.   PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') 5.904387523108759e-10 # new samples: 1201 # old samples: 103
+.   PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.5440047195077792 # new samples: 1201 # old samples: 103
+.   PC0 ('IjazUZ_2017', 'LiJ_2014') 0.8118874764018692 # new samples: 56 # old samples: 103
+.   PC1 ('IjazUZ_2017', 'LiJ_2014') 0.2809557365577383 # new samples: 56 # old samples: 103
+. bio_var == IBD;perianal_fistula
+.   PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') nan # new samples: 0 # old samples: 0
+.   PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') nan # new samples: 0 # old samples: 0
+.   PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') nan # new samples: 0 # old samples: 37
+.   PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') nan # new samples: 0 # old samples: 37
+.   PC0 ('IjazUZ_2017', 'LiJ_2014') nan # new samples: 0 # old samples: 37
+.   PC1 ('IjazUZ_2017', 'LiJ_2014') nan # new samples: 0 # old samples: 37
+. bio_var == T1D
+.   PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') nan # new samples: 0 # old samples: 0
+.   PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') nan # new samples: 0 # old samples: 0
+.   PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') nan # new samples: 0 # old samples: 31
+.   PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') nan # new samples: 0 # old samples: 31
+.   PC0 ('IjazUZ_2017', 'LiJ_2014') nan # new samples: 0 # old samples: 31
+.   PC1 ('IjazUZ_2017', 'LiJ_2014') nan # new samples: 0 # old samples: 31
+. bio_var == T2D
+.   PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') nan # new samples: 0 # old samples: 0
+.   PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') nan # new samples: 0 # old samples: 0
+.   PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+.   PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+.   PC0 ('IjazUZ_2017', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+.   PC1 ('IjazUZ_2017', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+. bio_var == healthy
+.   PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 0.67692734123109 # new samples: 426 # old samples: 38
+.   PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 8.7120289433624e-06 # new samples: 426 # old samples: 38
+.   PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.08335766315507727 # new samples: 426 # old samples: 10
+.   PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.46465555033820105 # new samples: 426 # old samples: 10
+.   PC0 ('IjazUZ_2017', 'LiJ_2014') 0.06757666152852962 # new samples: 38 # old samples: 10
+.   PC1 ('IjazUZ_2017', 'LiJ_2014') 0.22301645556017144 # new samples: 38 # old samples: 10

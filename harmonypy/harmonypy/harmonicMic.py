@@ -53,7 +53,9 @@ def run_harmonicMic(
     verbose = True,
     reference_values = None,
     cluster_prior = None,
-    random_state = 0
+    random_state = 0,
+    diversity_weight = None, # TODO: just added
+    
 ):
     """Run Harmony.
     """
@@ -94,8 +96,8 @@ def run_harmonicMic(
     ### NOTE: ADDED phi_dict
     phi_dict = {}
     for var in vars_use:
-        print(var, np.unique(list(meta_data[var])))
-        print(pd.get_dummies(meta_data[var]).to_numpy().T)
+        # print(var, np.unique(list(meta_data[var])))
+        # print(pd.get_dummies(meta_data[var]).to_numpy().T)
         phi_dict.update({var: pd.get_dummies(meta_data[var]).to_numpy().T})
     # print("phi_n", phi_n)
     if theta is None:
@@ -131,10 +133,10 @@ def run_harmonicMic(
     phi_moe = np.vstack((np.repeat(1, N), phi))
 
     np.random.seed(random_state)
-    print(data_mat.shape)
+    # print(data_mat.shape)
     ho = HarmonicMic(
         data_mat, phi, phi_moe, Pr_b, sigma, theta, max_iter_harmony, max_iter_kmeans,
-        epsilon_cluster, epsilon_harmony, nclust, block_size, lamb_mat, verbose, vars_use, phi_dict
+        epsilon_cluster, epsilon_harmony, nclust, block_size, lamb_mat, verbose, vars_use, phi_dict, diversity_weight
     )
 
     return ho
@@ -144,7 +146,7 @@ class HarmonicMic(object):
             self, Z, Phi, Phi_moe, Pr_b, sigma,
             theta, max_iter_harmony, max_iter_kmeans, 
             epsilon_kmeans, epsilon_harmony, K, block_size,
-            lamb, verbose, vars_use, phi_dict
+            lamb, verbose, vars_use, phi_dict, diversity_weight
     ):
         self.Z_corr = np.array(Z)
         self.Z_orig = np.array(Z)
@@ -176,7 +178,7 @@ class HarmonicMic(object):
         self.verbose         = verbose
         self.theta           = theta
         # NOTE: added variable - ratio, has the shape of #ofclusters*#ofsamples
-        self.ratio           = None
+        self.diversity_weight= diversity_weight
 
         self.objective_harmony        = []
         self.objective_kmeans         = []
@@ -205,7 +207,7 @@ class HarmonicMic(object):
     def init_cluster(self):
         # Start with cluster centroids
         km_centroids, km_labels = kmeans2(self.Z_cos.T, self.K, minit='++')
-        print("self.Z_cos.shape", self.Z_cos.shape)
+        # print("self.Z_cos.shape", self.Z_cos.shape)
         self.Y = km_centroids.T
         # (1) Normalize
         self.Y = self.Y / np.linalg.norm(self.Y, ord=2, axis=0)
@@ -242,9 +244,9 @@ class HarmonicMic(object):
         w = np.dot(y * z, self.Phi)
         # the variable blocks
         _cross_entropy = np.sum(x * w) # element-wise multiplicationa and sum
-        print(kmeans_error)
-        print("x, y, z, w, O, E, K, _cross_entropy shape", x.shape, y.shape, z.shape, w.shape, self.O.shape, self.E.shape, self.K, _cross_entropy)
-        print("self.theta", self.theta.shape)
+        # print(kmeans_error)
+        # print("x, y, z, w, O, E, K, _cross_entropy shape", x.shape, y.shape, z.shape, w.shape, self.O.shape, self.E.shape, self.K, _cross_entropy)
+        # print("self.theta", self.theta.shape)
 
         ### NOTE: added bray-curtis between sample similarity to objective function to minimize
         bray_curtis_sum = 0
@@ -268,7 +270,7 @@ class HarmonicMic(object):
                     current_data_condition = list(current_data.drop(index = removed_indices))
                     kruskal_data.append(current_data_condition)
                 bray_curtis_sum += 1-stats.kruskal(*kruskal_data)[1] # the higher this value, the more influence beta diversity has on objective value
-                print(bray_curtis_sum)
+                # print(bray_curtis_sum)
 
         # normalize
         bray_curtis_sum = bray_curtis_sum/len(self.phi_dict.keys())
@@ -286,9 +288,17 @@ class HarmonicMic(object):
             shannon_sum += 1-stats.kruskal(*kruskal_data)[1]
          # normalize
         shannon_sum = shannon_sum/len(self.phi_dict.keys())
+        
+        # NOTE take into account the diversity weight
+        if self.diversity_weight is not None:
+            bray_curtis_sum = bray_curtis_sum*(kmeans_error + _entropy + _cross_entropy)*self.diversity_weight
+            shannon_sum = shannon_sum*(kmeans_error + _entropy + _cross_entropy)*self.diversity_weight
 
         # Save results
         # self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy)
+        print("current diversity error = ", bray_curtis_sum + shannon_sum)
+        print("current errors = ", kmeans_error + _entropy + _cross_entropy)
+        print("current total errors =", kmeans_error + _entropy + _cross_entropy + bray_curtis_sum + shannon_sum)
         self.objective_kmeans.append(kmeans_error + _entropy + _cross_entropy + bray_curtis_sum + shannon_sum)
         self.objective_kmeans_dist.append(kmeans_error)
         self.objective_kmeans_entropy.append(_entropy)
@@ -315,6 +325,7 @@ class HarmonicMic(object):
                         "Converged after {} iteration{}"
                         .format(i, 's' if i > 1 else '')
                     )
+                    logger.info("convergence error sum: {}".format(self.objective_kmeans[-1]))
                 break
         if verbose and not converged:
             logger.info("Stopped before convergence")
@@ -325,7 +336,7 @@ class HarmonicMic(object):
         # R is assumed to not have changed
         # Update Y to match new integrated data
         self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
-        print("self.dist_mat.shape", self.dist_mat.shape)
+        # print("self.dist_mat.shape", self.dist_mat.shape)
         for i in range(self.max_iter_kmeans):
             # print("kmeans {}".format(i))
             # STEP 1: Update Y
@@ -336,13 +347,13 @@ class HarmonicMic(object):
             ref_sample_sum = np.percentile(norm_sample_sums, 75)
             ### 1.3 set R weights as the ratio between feature sum and the reference level
             R_weights = norm_sample_sums/ref_sample_sum
-            print("R_weights.shape", R_weights.shape)
+            # print("R_weights.shape", R_weights.shape)
 
             self.Y = np.dot(self.Z_cos, (self.R*R_weights).T)
             self.Y = self.Y / np.linalg.norm(self.Y, ord=2, axis=0)
             # STEP 2: Update dist_mat -> cosine distance
             self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
-            print("self.dist_mat.shape", self.dist_mat.shape)
+            # print("self.dist_mat.shape", self.dist_mat.shape)
             # STEP 3: Update R
             self.update_R()
             # maybe do stuff here instead
@@ -366,9 +377,9 @@ class HarmonicMic(object):
         np.random.shuffle(update_order)
         n_blocks = np.ceil(1 / self.block_size).astype(int)
         blocks = np.array_split(update_order, n_blocks)
-        print("blocks", len(blocks))
-        print("R.shape", self.R.shape)
-        print("Z_corr.shape", self.Z_corr.shape)
+        # print("blocks", len(blocks))
+        # print("R.shape", self.R.shape)
+        # print("Z_corr.shape", self.Z_corr.shape)
         for b in blocks:
             # STEP 1: Remove cells
             self.E -= np.outer(np.sum(self.R[:,b], axis=1), self.Pr_b)
