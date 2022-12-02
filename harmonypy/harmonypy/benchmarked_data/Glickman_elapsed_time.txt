@@ -1,3 +1,3 @@
-harmonicMic  26.471694946289062 seconds
+harmonicMic  24.656747102737427 seconds
 
 
