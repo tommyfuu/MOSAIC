@@ -77,52 +77,41 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     cat(c("MMUPHin runtime", toString(end_time - start_time), "seconds"))
     cat('\n')
 
-    ## ConQuR_libsize
-    ## need to put batchid and covar into countdata dataframe
-    start_time <- Sys.time()
-    batchid <- factor(metadata[, dataset])
-    print(start_time)
-    if (is.null(covar)){
-        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F)
-    }
-    else {
-        covar_df = metadata[, covar]
-        # print(start_time)
-        # cat(batchid)
-        # print(covar_df)
-        # print(count_data)
-        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
-    }
-    write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
-    end_time <- Sys.time()
-    print(end_time)
-    cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"))
-
     ## ConquR
     ## need to put batchid and covar into countdata dataframe
     # count_data.conqur_pre <- count_data
     start_time <- Sys.time()
-    print(start_time)
     batchid <- factor(metadata[, dataset])
     if (is.null(covar)){
         count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
                          logistic_lasso=T, quantile_type="lasso", interplt=F)
     }
     else {
-        covar_df = metadata[, covar]
-        print(start_time)
-        cat(batchid)
-        print(covar_df)
+        covar_df = factor(metadata[, covar])
         count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
                          logistic_lasso=T, quantile_type="lasso", interplt=F)
     }
     write.csv(count_data.conqur,paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
     end_time <- Sys.time()
-    cat(end_time)
     cat(c("ConquR runtime", toString(end_time - start_time), "seconds"))
     cat('\n')
+
+    ## ConQuR_libsize
+    ## need to put batchid and covar into countdata dataframe
+    start_time <- Sys.time()
+    batchid <- factor(metadata[, dataset])
+    if (is.null(covar)){
+        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F)
+    }
+    else {
+        covar_df = factor(metadata[, covar])
+        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+                         logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
+    }
+    write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
+    end_time <- Sys.time()
+    cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"))
 
    
     
@@ -152,28 +141,21 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # dataset = "Dataset",
 # batch_ref = 'cdi_schubert')
 
-# ibd 3 CMD
+# # ibd 3 CMD
 # run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv',
 # '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_meta_data.csv',
 # '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
 # dataset = "study_name",
 # batch_ref = 'HMP_2019_ibdmdb')
 
-# # melanoma 5 CMD -> DEPRECATED
-# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/melanoma_5_CMD_count_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/melanoma_5_CMD_meta_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/melanoma_5_CMD',
-# dataset = "study_name",
-# batch_ref = 'FrankelAE_2017')
-
 # adenoma 5 CMD
-# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
-# dataset = "study_name",
-# batch_ref = 'FengQ_2015',
-# # covar = c("gender")
-# )
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
+dataset = "study_name",
+batch_ref = 'FengQ_2015',
+# covar = c("gender")
+)
 
 # CRC_8_CMD
 run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv',
@@ -185,10 +167,10 @@ batch_ref = 'FengQ_2015',
 )
 
 # T2D 10 CMD
-# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
-# dataset = "study_name",
-# batch_ref = 'Castro-NallarE_2015',
-# # covar = c("gender")
-# )
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
+dataset = "study_name",
+batch_ref = 'Castro-NallarE_2015',
+# covar = c("gender")
+)
