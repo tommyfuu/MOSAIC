@@ -1,0 +1,14 @@
+global biovar kw p-vals 
+
+
+
+current biovar: Visit 
+
+. PC0 across all biovar options, p-val =  0.0007527177827685379 
+
+. PC0 across all biovar options, -log 2 p-val =  10.375603324370655 
+
+. PC1 across all biovar options, p-val =  0.0004360613240312784 
+
+. PC1 across all biovar options, -log 2 p-val =  11.163181341669846 
+

@@ -1,0 +1,38 @@
+global batch kw p-vals 
+
+
+
+. PC0 across all batches, p-val =  1.1128924546922067e-10 
+
+. PC1 across all batches, p-val =  0.4805062619634962 
+
+global pair-wise batch kw p-vals 
+
+current batch pair ('HMP_2019_ibdmdb', 'IjazUZ_2017') 
+
+. PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 2.0533718582205107e-09 # samples in batch HMP_2019_ibdmdb: 1627 # samples in batch IjazUZ_2017: 94
+. PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 0.481172660061147 # samples in batch HMP_2019_ibdmdb: 1627 # samples in batch IjazUZ_2017: 94
+current batch pair ('HMP_2019_ibdmdb', 'LiJ_2014') 
+
+. PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.0005363908650472649 # samples in batch HMP_2019_ibdmdb: 1627 # samples in batch LiJ_2014: 113
+. PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.3208994313875696 # samples in batch HMP_2019_ibdmdb: 1627 # samples in batch LiJ_2014: 113
+current batch pair ('IjazUZ_2017', 'LiJ_2014') 
+
+. PC0 ('IjazUZ_2017', 'LiJ_2014') 0.008685698049924265 # samples in batch IjazUZ_2017: 94 # samples in batch LiJ_2014: 113
+. PC1 ('IjazUZ_2017', 'LiJ_2014') 0.16696930011293248 # samples in batch IjazUZ_2017: 94 # samples in batch LiJ_2014: 113
+batch kw p-vals by bio_var 
+
+. bio_var == IBD
+.   PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 5.020358287841836e-08 # new samples: 1201 # old samples: 56
+.   PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 0.5708576583181999 # new samples: 1201 # old samples: 56
+.   PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.00011713568039514914 # new samples: 1201 # old samples: 103
+.   PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.4652216250127277 # new samples: 1201 # old samples: 103
+.   PC0 ('IjazUZ_2017', 'LiJ_2014') 0.008126773383731328 # new samples: 56 # old samples: 103
+.   PC1 ('IjazUZ_2017', 'LiJ_2014') 0.023321058947189544 # new samples: 56 # old samples: 103
+. bio_var == healthy
+.   PC0 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 0.015774088926917108 # new samples: 426 # old samples: 38
+.   PC1 ('HMP_2019_ibdmdb', 'IjazUZ_2017') 0.13759055057856326 # new samples: 426 # old samples: 38
+.   PC0 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.36607633487489677 # new samples: 426 # old samples: 10
+.   PC1 ('HMP_2019_ibdmdb', 'LiJ_2014') 0.2639452697217493 # new samples: 426 # old samples: 10
+.   PC0 ('IjazUZ_2017', 'LiJ_2014') 0.5423434133808595 # new samples: 38 # old samples: 10
+.   PC1 ('IjazUZ_2017', 'LiJ_2014') 0.23280676292670435 # new samples: 38 # old samples: 10

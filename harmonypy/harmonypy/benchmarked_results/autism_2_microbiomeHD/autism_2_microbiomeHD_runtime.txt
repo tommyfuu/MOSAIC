@@ -1,14 +1,6 @@
-Found 2 batches
-Adjusting for 0 covariate(s) or covariate level(s)
-Standardizing Data across genes
-Fitting L/S model and finding priors
-Finding nonparametric adjustments
-Adjusting the Data
 combat runtime 0.170130252838135 seconds
 limma runtime 0.0235357284545898 seconds
 MMUPHin runtime 0.677642822265625 seconds
-[1] "2022-12-01 18:55:44 EST"
 ConquR runtime 0.578892230987549 seconds
-[1] "2022-12-01 18:55:45 EST"
-[1] "2022-12-01 18:55:47 EST"
 ConquR_libsize runtime 1.85352897644043 seconds
+percentile_normalization runtime 0.9408328533172607 seconds

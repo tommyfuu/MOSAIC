@@ -1,0 +1,19 @@
+bray_curtis_global_pvals, by PCs [0.7348293067035663, 0.28620903211477466, 0.5323026205650279] 
+
+bray_curtis_pairwise_pval 
+
+PC1
+
+{('cdi_schubert', 'cdi_vincent_v3v5'): 0.45657781895312466, ('cdi_schubert', 'cdi_youngster'): 0.7911025080306506, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.5392438239262436}
+
+
+PC2
+
+{('cdi_schubert', 'cdi_vincent_v3v5'): 0.15728369310492693, ('cdi_schubert', 'cdi_youngster'): 0.7108981607657536, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.10989174176992465}
+
+
+PC3
+
+{('cdi_schubert', 'cdi_vincent_v3v5'): 0.3612657655243078, ('cdi_schubert', 'cdi_youngster'): 0.43475704050017927, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.6725917280489428}
+
+

@@ -1,0 +1,14 @@
+global biovar kw p-vals 
+
+
+
+current biovar: DiseaseState 
+
+. PC0 across all biovar options, p-val =  7.863840363931192e-33 
+
+. PC0 across all biovar options, -log 2 p-val =  106.64839309603661 
+
+. PC1 across all biovar options, p-val =  0.006675057594777855 
+
+. PC1 across all biovar options, -log 2 p-val =  7.227003999720784 
+
