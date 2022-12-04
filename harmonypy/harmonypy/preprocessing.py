@@ -138,6 +138,14 @@ def load_data(address_X, address_Y, IDCol, index_col = False, output_root = Fals
 def load_results_from_benchmarked_methods(address_X, address_Y):
     data_mat = pd.read_csv(address_X, index_col=0)
     meta_data = pd.read_csv(address_Y)
+
+    # check for missing values and fill out with mean
+    if data_mat.isnull().values.any():
+        print("fill out nans")
+        data_mat = data_mat.fillna(data_mat.mean())
+        # remove columns (taxa) filled with NAs
+        data_mat = data_mat.dropna(axis=1, how='all')
+
     return data_mat, meta_data
 
 def load_data_simulation(address, output_root = False):

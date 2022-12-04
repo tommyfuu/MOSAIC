@@ -1,0 +1,5 @@
+shannon_global_pval 0.8236049373892633 
+
+shannon_pairwise_pval 
+
+{('FengQ_2015', 'HanniganGD_2017'): 0.5734617845971239, ('FengQ_2015', 'ThomasAM_2018a'): 0.9861113140455539, ('FengQ_2015', 'YachidaS_2019'): 0.8893439610845059, ('FengQ_2015', 'ZellerG_2014'): 0.767536502805581, ('HanniganGD_2017', 'ThomasAM_2018a'): 0.6608394856905697, ('HanniganGD_2017', 'YachidaS_2019'): 0.5784883384642094, ('HanniganGD_2017', 'ZellerG_2014'): 0.24592022211314785, ('ThomasAM_2018a', 'YachidaS_2019'): 0.8957237004732217, ('ThomasAM_2018a', 'ZellerG_2014'): 0.6983069744737115, ('YachidaS_2019', 'ZellerG_2014'): 0.3359185550534304}

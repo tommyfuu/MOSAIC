@@ -1,0 +1,374 @@
+global batch kw p-vals 
+
+
+
+. PC0 across all batches, p-val =  3.0474857151477904e-21 
+
+. PC1 across all batches, p-val =  2.2562724763313277e-39 
+
+global pair-wise batch kw p-vals 
+
+current batch pair ('Castro-NallarE_2015', 'FengQ_2015') 
+
+. PC0 ('Castro-NallarE_2015', 'FengQ_2015') 2.4304960694778855e-05 # samples in batch Castro-NallarE_2015: 16 # samples in batch FengQ_2015: 16
+. PC1 ('Castro-NallarE_2015', 'FengQ_2015') 0.06478236858142154 # samples in batch Castro-NallarE_2015: 16 # samples in batch FengQ_2015: 16
+current batch pair ('Castro-NallarE_2015', 'GhensiP_2019') 
+
+. PC0 ('Castro-NallarE_2015', 'GhensiP_2019') 0.018091003534183914 # samples in batch Castro-NallarE_2015: 16 # samples in batch GhensiP_2019: 70
+. PC1 ('Castro-NallarE_2015', 'GhensiP_2019') 0.005722762703163806 # samples in batch Castro-NallarE_2015: 16 # samples in batch GhensiP_2019: 70
+current batch pair ('Castro-NallarE_2015', 'HMP_2019_t2d') 
+
+. PC0 ('Castro-NallarE_2015', 'HMP_2019_t2d') 3.999627219107005e-09 # samples in batch Castro-NallarE_2015: 16 # samples in batch HMP_2019_t2d: 44
+. PC1 ('Castro-NallarE_2015', 'HMP_2019_t2d') 4.595361684946655e-08 # samples in batch Castro-NallarE_2015: 16 # samples in batch HMP_2019_t2d: 44
+current batch pair ('Castro-NallarE_2015', 'KarlssonFH_2013') 
+
+. PC0 ('Castro-NallarE_2015', 'KarlssonFH_2013') 4.293888151092704e-07 # samples in batch Castro-NallarE_2015: 16 # samples in batch KarlssonFH_2013: 96
+. PC1 ('Castro-NallarE_2015', 'KarlssonFH_2013') 2.523521905194467e-06 # samples in batch Castro-NallarE_2015: 16 # samples in batch KarlssonFH_2013: 96
+current batch pair ('Castro-NallarE_2015', 'LiJ_2014') 
+
+. PC0 ('Castro-NallarE_2015', 'LiJ_2014') 0.0022932894168299664 # samples in batch Castro-NallarE_2015: 16 # samples in batch LiJ_2014: 89
+. PC1 ('Castro-NallarE_2015', 'LiJ_2014') 6.226571827563537e-08 # samples in batch Castro-NallarE_2015: 16 # samples in batch LiJ_2014: 89
+current batch pair ('Castro-NallarE_2015', 'QinJ_2012') 
+
+. PC0 ('Castro-NallarE_2015', 'QinJ_2012') 0.0003667203223402741 # samples in batch Castro-NallarE_2015: 16 # samples in batch QinJ_2012: 363
+. PC1 ('Castro-NallarE_2015', 'QinJ_2012') 1.867072013218871e-09 # samples in batch Castro-NallarE_2015: 16 # samples in batch QinJ_2012: 363
+current batch pair ('Castro-NallarE_2015', 'SankaranarayananK_2015') 
+
+. PC0 ('Castro-NallarE_2015', 'SankaranarayananK_2015') 3.678601497882705e-05 # samples in batch Castro-NallarE_2015: 16 # samples in batch SankaranarayananK_2015: 37
+. PC1 ('Castro-NallarE_2015', 'SankaranarayananK_2015') 6.353124352797001e-06 # samples in batch Castro-NallarE_2015: 16 # samples in batch SankaranarayananK_2015: 37
+current batch pair ('Castro-NallarE_2015', 'ThomasAM_2018a') 
+
+. PC0 ('Castro-NallarE_2015', 'ThomasAM_2018a') 0.0008821452841900069 # samples in batch Castro-NallarE_2015: 16 # samples in batch ThomasAM_2018a: 14
+. PC1 ('Castro-NallarE_2015', 'ThomasAM_2018a') 6.585835703332905e-05 # samples in batch Castro-NallarE_2015: 16 # samples in batch ThomasAM_2018a: 14
+current batch pair ('Castro-NallarE_2015', 'YuJ_2015') 
+
+. PC0 ('Castro-NallarE_2015', 'YuJ_2015') 2.120097520496249e-05 # samples in batch Castro-NallarE_2015: 16 # samples in batch YuJ_2015: 54
+. PC1 ('Castro-NallarE_2015', 'YuJ_2015') 2.851710602910525e-07 # samples in batch Castro-NallarE_2015: 16 # samples in batch YuJ_2015: 54
+current batch pair ('FengQ_2015', 'GhensiP_2019') 
+
+. PC0 ('FengQ_2015', 'GhensiP_2019') 1.5286134503027424e-07 # samples in batch FengQ_2015: 16 # samples in batch GhensiP_2019: 70
+. PC1 ('FengQ_2015', 'GhensiP_2019') 0.9204421578903605 # samples in batch FengQ_2015: 16 # samples in batch GhensiP_2019: 70
+current batch pair ('FengQ_2015', 'HMP_2019_t2d') 
+
+. PC0 ('FengQ_2015', 'HMP_2019_t2d') 1.2484719941099799e-06 # samples in batch FengQ_2015: 16 # samples in batch HMP_2019_t2d: 44
+. PC1 ('FengQ_2015', 'HMP_2019_t2d') 3.7384214386675707e-07 # samples in batch FengQ_2015: 16 # samples in batch HMP_2019_t2d: 44
+current batch pair ('FengQ_2015', 'KarlssonFH_2013') 
+
+. PC0 ('FengQ_2015', 'KarlssonFH_2013') 0.14564065045920682 # samples in batch FengQ_2015: 16 # samples in batch KarlssonFH_2013: 96
+. PC1 ('FengQ_2015', 'KarlssonFH_2013') 0.0014084561560062424 # samples in batch FengQ_2015: 16 # samples in batch KarlssonFH_2013: 96
+current batch pair ('FengQ_2015', 'LiJ_2014') 
+
+. PC0 ('FengQ_2015', 'LiJ_2014') 0.1364833338638278 # samples in batch FengQ_2015: 16 # samples in batch LiJ_2014: 89
+. PC1 ('FengQ_2015', 'LiJ_2014') 4.208918778143024e-06 # samples in batch FengQ_2015: 16 # samples in batch LiJ_2014: 89
+current batch pair ('FengQ_2015', 'QinJ_2012') 
+
+. PC0 ('FengQ_2015', 'QinJ_2012') 0.0936320966012257 # samples in batch FengQ_2015: 16 # samples in batch QinJ_2012: 363
+. PC1 ('FengQ_2015', 'QinJ_2012') 1.3657404895569441e-07 # samples in batch FengQ_2015: 16 # samples in batch QinJ_2012: 363
+current batch pair ('FengQ_2015', 'SankaranarayananK_2015') 
+
+. PC0 ('FengQ_2015', 'SankaranarayananK_2015') 0.6841058685983239 # samples in batch FengQ_2015: 16 # samples in batch SankaranarayananK_2015: 37
+. PC1 ('FengQ_2015', 'SankaranarayananK_2015') 0.001485837567137402 # samples in batch FengQ_2015: 16 # samples in batch SankaranarayananK_2015: 37
+current batch pair ('FengQ_2015', 'ThomasAM_2018a') 
+
+. PC0 ('FengQ_2015', 'ThomasAM_2018a') 0.1456777779079231 # samples in batch FengQ_2015: 16 # samples in batch ThomasAM_2018a: 14
+. PC1 ('FengQ_2015', 'ThomasAM_2018a') 0.00075931596802125 # samples in batch FengQ_2015: 16 # samples in batch ThomasAM_2018a: 14
+current batch pair ('FengQ_2015', 'YuJ_2015') 
+
+. PC0 ('FengQ_2015', 'YuJ_2015') 0.24005317109103452 # samples in batch FengQ_2015: 16 # samples in batch YuJ_2015: 54
+. PC1 ('FengQ_2015', 'YuJ_2015') 3.473643152489046e-05 # samples in batch FengQ_2015: 16 # samples in batch YuJ_2015: 54
+current batch pair ('GhensiP_2019', 'HMP_2019_t2d') 
+
+. PC0 ('GhensiP_2019', 'HMP_2019_t2d') 4.30695571931208e-19 # samples in batch GhensiP_2019: 70 # samples in batch HMP_2019_t2d: 44
+. PC1 ('GhensiP_2019', 'HMP_2019_t2d') 2.03718501053507e-14 # samples in batch GhensiP_2019: 70 # samples in batch HMP_2019_t2d: 44
+current batch pair ('GhensiP_2019', 'KarlssonFH_2013') 
+
+. PC0 ('GhensiP_2019', 'KarlssonFH_2013') 2.0277919827071263e-17 # samples in batch GhensiP_2019: 70 # samples in batch KarlssonFH_2013: 96
+. PC1 ('GhensiP_2019', 'KarlssonFH_2013') 3.270547399522812e-08 # samples in batch GhensiP_2019: 70 # samples in batch KarlssonFH_2013: 96
+current batch pair ('GhensiP_2019', 'LiJ_2014') 
+
+. PC0 ('GhensiP_2019', 'LiJ_2014') 3.9233576337281394e-07 # samples in batch GhensiP_2019: 70 # samples in batch LiJ_2014: 89
+. PC1 ('GhensiP_2019', 'LiJ_2014') 3.284512148397206e-15 # samples in batch GhensiP_2019: 70 # samples in batch LiJ_2014: 89
+current batch pair ('GhensiP_2019', 'QinJ_2012') 
+
+. PC0 ('GhensiP_2019', 'QinJ_2012') 3.5720645605479656e-11 # samples in batch GhensiP_2019: 70 # samples in batch QinJ_2012: 363
+. PC1 ('GhensiP_2019', 'QinJ_2012') 5.7340290717526555e-25 # samples in batch GhensiP_2019: 70 # samples in batch QinJ_2012: 363
+current batch pair ('GhensiP_2019', 'SankaranarayananK_2015') 
+
+. PC0 ('GhensiP_2019', 'SankaranarayananK_2015') 9.600735403323341e-09 # samples in batch GhensiP_2019: 70 # samples in batch SankaranarayananK_2015: 37
+. PC1 ('GhensiP_2019', 'SankaranarayananK_2015') 2.115515552460395e-06 # samples in batch GhensiP_2019: 70 # samples in batch SankaranarayananK_2015: 37
+current batch pair ('GhensiP_2019', 'ThomasAM_2018a') 
+
+. PC0 ('GhensiP_2019', 'ThomasAM_2018a') 2.9559269685147646e-05 # samples in batch GhensiP_2019: 70 # samples in batch ThomasAM_2018a: 14
+. PC1 ('GhensiP_2019', 'ThomasAM_2018a') 2.521767409355338e-05 # samples in batch GhensiP_2019: 70 # samples in batch ThomasAM_2018a: 14
+current batch pair ('GhensiP_2019', 'YuJ_2015') 
+
+. PC0 ('GhensiP_2019', 'YuJ_2015') 2.2276722108810558e-10 # samples in batch GhensiP_2019: 70 # samples in batch YuJ_2015: 54
+. PC1 ('GhensiP_2019', 'YuJ_2015') 5.151068703442289e-11 # samples in batch GhensiP_2019: 70 # samples in batch YuJ_2015: 54
+current batch pair ('HMP_2019_t2d', 'KarlssonFH_2013') 
+
+. PC0 ('HMP_2019_t2d', 'KarlssonFH_2013') 2.395972772216522e-10 # samples in batch HMP_2019_t2d: 44 # samples in batch KarlssonFH_2013: 96
+. PC1 ('HMP_2019_t2d', 'KarlssonFH_2013') 4.973495833472531e-07 # samples in batch HMP_2019_t2d: 44 # samples in batch KarlssonFH_2013: 96
+current batch pair ('HMP_2019_t2d', 'LiJ_2014') 
+
+. PC0 ('HMP_2019_t2d', 'LiJ_2014') 6.072364377595698e-06 # samples in batch HMP_2019_t2d: 44 # samples in batch LiJ_2014: 89
+. PC1 ('HMP_2019_t2d', 'LiJ_2014') 0.14338024843438238 # samples in batch HMP_2019_t2d: 44 # samples in batch LiJ_2014: 89
+current batch pair ('HMP_2019_t2d', 'QinJ_2012') 
+
+. PC0 ('HMP_2019_t2d', 'QinJ_2012') 6.218492338129548e-06 # samples in batch HMP_2019_t2d: 44 # samples in batch QinJ_2012: 363
+. PC1 ('HMP_2019_t2d', 'QinJ_2012') 0.9178580078733255 # samples in batch HMP_2019_t2d: 44 # samples in batch QinJ_2012: 363
+current batch pair ('HMP_2019_t2d', 'SankaranarayananK_2015') 
+
+. PC0 ('HMP_2019_t2d', 'SankaranarayananK_2015') 7.233696756555619e-08 # samples in batch HMP_2019_t2d: 44 # samples in batch SankaranarayananK_2015: 37
+. PC1 ('HMP_2019_t2d', 'SankaranarayananK_2015') 0.0016454540003600223 # samples in batch HMP_2019_t2d: 44 # samples in batch SankaranarayananK_2015: 37
+current batch pair ('HMP_2019_t2d', 'ThomasAM_2018a') 
+
+. PC0 ('HMP_2019_t2d', 'ThomasAM_2018a') 0.003644769784454244 # samples in batch HMP_2019_t2d: 44 # samples in batch ThomasAM_2018a: 14
+. PC1 ('HMP_2019_t2d', 'ThomasAM_2018a') 0.1969995282873808 # samples in batch HMP_2019_t2d: 44 # samples in batch ThomasAM_2018a: 14
+current batch pair ('HMP_2019_t2d', 'YuJ_2015') 
+
+. PC0 ('HMP_2019_t2d', 'YuJ_2015') 2.208916530642284e-05 # samples in batch HMP_2019_t2d: 44 # samples in batch YuJ_2015: 54
+. PC1 ('HMP_2019_t2d', 'YuJ_2015') 0.09895907813094802 # samples in batch HMP_2019_t2d: 44 # samples in batch YuJ_2015: 54
+current batch pair ('KarlssonFH_2013', 'LiJ_2014') 
+
+. PC0 ('KarlssonFH_2013', 'LiJ_2014') 0.2622240483904899 # samples in batch KarlssonFH_2013: 96 # samples in batch LiJ_2014: 89
+. PC1 ('KarlssonFH_2013', 'LiJ_2014') 1.01875526577722e-05 # samples in batch KarlssonFH_2013: 96 # samples in batch LiJ_2014: 89
+current batch pair ('KarlssonFH_2013', 'QinJ_2012') 
+
+. PC0 ('KarlssonFH_2013', 'QinJ_2012') 0.04564722795986938 # samples in batch KarlssonFH_2013: 96 # samples in batch QinJ_2012: 363
+. PC1 ('KarlssonFH_2013', 'QinJ_2012') 4.2332981102040645e-13 # samples in batch KarlssonFH_2013: 96 # samples in batch QinJ_2012: 363
+current batch pair ('KarlssonFH_2013', 'SankaranarayananK_2015') 
+
+. PC0 ('KarlssonFH_2013', 'SankaranarayananK_2015') 0.19343873054507268 # samples in batch KarlssonFH_2013: 96 # samples in batch SankaranarayananK_2015: 37
+. PC1 ('KarlssonFH_2013', 'SankaranarayananK_2015') 0.3176951456133972 # samples in batch KarlssonFH_2013: 96 # samples in batch SankaranarayananK_2015: 37
+current batch pair ('KarlssonFH_2013', 'ThomasAM_2018a') 
+
+. PC0 ('KarlssonFH_2013', 'ThomasAM_2018a') 0.4675539380696677 # samples in batch KarlssonFH_2013: 96 # samples in batch ThomasAM_2018a: 14
+. PC1 ('KarlssonFH_2013', 'ThomasAM_2018a') 0.05494614923373388 # samples in batch KarlssonFH_2013: 96 # samples in batch ThomasAM_2018a: 14
+current batch pair ('KarlssonFH_2013', 'YuJ_2015') 
+
+. PC0 ('KarlssonFH_2013', 'YuJ_2015') 0.7660344600223867 # samples in batch KarlssonFH_2013: 96 # samples in batch YuJ_2015: 54
+. PC1 ('KarlssonFH_2013', 'YuJ_2015') 0.001379845740136908 # samples in batch KarlssonFH_2013: 96 # samples in batch YuJ_2015: 54
+current batch pair ('LiJ_2014', 'QinJ_2012') 
+
+. PC0 ('LiJ_2014', 'QinJ_2012') 0.5048308709131422 # samples in batch LiJ_2014: 89 # samples in batch QinJ_2012: 363
+. PC1 ('LiJ_2014', 'QinJ_2012') 0.042849612652980144 # samples in batch LiJ_2014: 89 # samples in batch QinJ_2012: 363
+current batch pair ('LiJ_2014', 'SankaranarayananK_2015') 
+
+. PC0 ('LiJ_2014', 'SankaranarayananK_2015') 0.12618457404993036 # samples in batch LiJ_2014: 89 # samples in batch SankaranarayananK_2015: 37
+. PC1 ('LiJ_2014', 'SankaranarayananK_2015') 0.02750609390544474 # samples in batch LiJ_2014: 89 # samples in batch SankaranarayananK_2015: 37
+current batch pair ('LiJ_2014', 'ThomasAM_2018a') 
+
+. PC0 ('LiJ_2014', 'ThomasAM_2018a') 0.9233371223472095 # samples in batch LiJ_2014: 89 # samples in batch ThomasAM_2018a: 14
+. PC1 ('LiJ_2014', 'ThomasAM_2018a') 0.6931772052926787 # samples in batch LiJ_2014: 89 # samples in batch ThomasAM_2018a: 14
+current batch pair ('LiJ_2014', 'YuJ_2015') 
+
+. PC0 ('LiJ_2014', 'YuJ_2015') 0.884124848722653 # samples in batch LiJ_2014: 89 # samples in batch YuJ_2015: 54
+. PC1 ('LiJ_2014', 'YuJ_2015') 0.5911540754080054 # samples in batch LiJ_2014: 89 # samples in batch YuJ_2015: 54
+current batch pair ('QinJ_2012', 'SankaranarayananK_2015') 
+
+. PC0 ('QinJ_2012', 'SankaranarayananK_2015') 0.0653723773857015 # samples in batch QinJ_2012: 363 # samples in batch SankaranarayananK_2015: 37
+. PC1 ('QinJ_2012', 'SankaranarayananK_2015') 0.000341410828948079 # samples in batch QinJ_2012: 363 # samples in batch SankaranarayananK_2015: 37
+current batch pair ('QinJ_2012', 'ThomasAM_2018a') 
+
+. PC0 ('QinJ_2012', 'ThomasAM_2018a') 0.7264068018103566 # samples in batch QinJ_2012: 363 # samples in batch ThomasAM_2018a: 14
+. PC1 ('QinJ_2012', 'ThomasAM_2018a') 0.190310762248068 # samples in batch QinJ_2012: 363 # samples in batch ThomasAM_2018a: 14
+current batch pair ('QinJ_2012', 'YuJ_2015') 
+
+. PC0 ('QinJ_2012', 'YuJ_2015') 0.622333489705587 # samples in batch QinJ_2012: 363 # samples in batch YuJ_2015: 54
+. PC1 ('QinJ_2012', 'YuJ_2015') 0.017693744570650132 # samples in batch QinJ_2012: 363 # samples in batch YuJ_2015: 54
+current batch pair ('SankaranarayananK_2015', 'ThomasAM_2018a') 
+
+. PC0 ('SankaranarayananK_2015', 'ThomasAM_2018a') 0.1979131833642628 # samples in batch SankaranarayananK_2015: 37 # samples in batch ThomasAM_2018a: 14
+. PC1 ('SankaranarayananK_2015', 'ThomasAM_2018a') 0.30102529098473985 # samples in batch SankaranarayananK_2015: 37 # samples in batch ThomasAM_2018a: 14
+current batch pair ('SankaranarayananK_2015', 'YuJ_2015') 
+
+. PC0 ('SankaranarayananK_2015', 'YuJ_2015') 0.3048299731467671 # samples in batch SankaranarayananK_2015: 37 # samples in batch YuJ_2015: 54
+. PC1 ('SankaranarayananK_2015', 'YuJ_2015') 0.118902800910151 # samples in batch SankaranarayananK_2015: 37 # samples in batch YuJ_2015: 54
+current batch pair ('ThomasAM_2018a', 'YuJ_2015') 
+
+. PC0 ('ThomasAM_2018a', 'YuJ_2015') 0.7848459489828352 # samples in batch ThomasAM_2018a: 14 # samples in batch YuJ_2015: 54
+. PC1 ('ThomasAM_2018a', 'YuJ_2015') 0.9274900872811361 # samples in batch ThomasAM_2018a: 14 # samples in batch YuJ_2015: 54
+batch kw p-vals by bio_var 
+
+. bio_var == T2D
+.   PC0 ('Castro-NallarE_2015', 'FengQ_2015') nan # new samples: 0 # old samples: 0
+.   PC1 ('Castro-NallarE_2015', 'FengQ_2015') nan # new samples: 0 # old samples: 0
+.   PC0 ('Castro-NallarE_2015', 'GhensiP_2019') nan # new samples: 0 # old samples: 5
+.   PC1 ('Castro-NallarE_2015', 'GhensiP_2019') nan # new samples: 0 # old samples: 5
+.   PC0 ('Castro-NallarE_2015', 'HMP_2019_t2d') nan # new samples: 0 # old samples: 2
+.   PC1 ('Castro-NallarE_2015', 'HMP_2019_t2d') nan # new samples: 0 # old samples: 2
+.   PC0 ('Castro-NallarE_2015', 'KarlssonFH_2013') nan # new samples: 0 # old samples: 53
+.   PC1 ('Castro-NallarE_2015', 'KarlssonFH_2013') nan # new samples: 0 # old samples: 53
+.   PC0 ('Castro-NallarE_2015', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+.   PC1 ('Castro-NallarE_2015', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+.   PC0 ('Castro-NallarE_2015', 'QinJ_2012') nan # new samples: 0 # old samples: 170
+.   PC1 ('Castro-NallarE_2015', 'QinJ_2012') nan # new samples: 0 # old samples: 170
+.   PC0 ('Castro-NallarE_2015', 'SankaranarayananK_2015') nan # new samples: 0 # old samples: 19
+.   PC1 ('Castro-NallarE_2015', 'SankaranarayananK_2015') nan # new samples: 0 # old samples: 19
+.   PC0 ('Castro-NallarE_2015', 'ThomasAM_2018a') nan # new samples: 0 # old samples: 0
+.   PC1 ('Castro-NallarE_2015', 'ThomasAM_2018a') nan # new samples: 0 # old samples: 0
+.   PC0 ('Castro-NallarE_2015', 'YuJ_2015') nan # new samples: 0 # old samples: 16
+.   PC1 ('Castro-NallarE_2015', 'YuJ_2015') nan # new samples: 0 # old samples: 16
+.   PC0 ('FengQ_2015', 'GhensiP_2019') nan # new samples: 0 # old samples: 5
+.   PC1 ('FengQ_2015', 'GhensiP_2019') nan # new samples: 0 # old samples: 5
+.   PC0 ('FengQ_2015', 'HMP_2019_t2d') nan # new samples: 0 # old samples: 2
+.   PC1 ('FengQ_2015', 'HMP_2019_t2d') nan # new samples: 0 # old samples: 2
+.   PC0 ('FengQ_2015', 'KarlssonFH_2013') nan # new samples: 0 # old samples: 53
+.   PC1 ('FengQ_2015', 'KarlssonFH_2013') nan # new samples: 0 # old samples: 53
+.   PC0 ('FengQ_2015', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+.   PC1 ('FengQ_2015', 'LiJ_2014') nan # new samples: 0 # old samples: 79
+.   PC0 ('FengQ_2015', 'QinJ_2012') nan # new samples: 0 # old samples: 170
+.   PC1 ('FengQ_2015', 'QinJ_2012') nan # new samples: 0 # old samples: 170
+.   PC0 ('FengQ_2015', 'SankaranarayananK_2015') nan # new samples: 0 # old samples: 19
+.   PC1 ('FengQ_2015', 'SankaranarayananK_2015') nan # new samples: 0 # old samples: 19
+.   PC0 ('FengQ_2015', 'ThomasAM_2018a') nan # new samples: 0 # old samples: 0
+.   PC1 ('FengQ_2015', 'ThomasAM_2018a') nan # new samples: 0 # old samples: 0
+.   PC0 ('FengQ_2015', 'YuJ_2015') nan # new samples: 0 # old samples: 16
+.   PC1 ('FengQ_2015', 'YuJ_2015') nan # new samples: 0 # old samples: 16
+.   PC0 ('GhensiP_2019', 'HMP_2019_t2d') 0.052807511416113395 # new samples: 5 # old samples: 2
+.   PC1 ('GhensiP_2019', 'HMP_2019_t2d') 0.052807511416113395 # new samples: 5 # old samples: 2
+.   PC0 ('GhensiP_2019', 'KarlssonFH_2013') 0.004924202997929054 # new samples: 5 # old samples: 53
+.   PC1 ('GhensiP_2019', 'KarlssonFH_2013') 0.04761007664746388 # new samples: 5 # old samples: 53
+.   PC0 ('GhensiP_2019', 'LiJ_2014') 0.08366045224116127 # new samples: 5 # old samples: 79
+.   PC1 ('GhensiP_2019', 'LiJ_2014') 0.002410993994511613 # new samples: 5 # old samples: 79
+.   PC0 ('GhensiP_2019', 'QinJ_2012') 0.021349335202318027 # new samples: 5 # old samples: 170
+.   PC1 ('GhensiP_2019', 'QinJ_2012') 0.0025424188558986526 # new samples: 5 # old samples: 170
+.   PC0 ('GhensiP_2019', 'SankaranarayananK_2015') 0.0251507921394317 # new samples: 5 # old samples: 19
+.   PC1 ('GhensiP_2019', 'SankaranarayananK_2015') 0.030158922965684492 # new samples: 5 # old samples: 19
+.   PC0 ('GhensiP_2019', 'ThomasAM_2018a') nan # new samples: 5 # old samples: 0
+.   PC1 ('GhensiP_2019', 'ThomasAM_2018a') nan # new samples: 5 # old samples: 0
+.   PC0 ('GhensiP_2019', 'YuJ_2015') 0.03898861209635851 # new samples: 5 # old samples: 16
+.   PC1 ('GhensiP_2019', 'YuJ_2015') 0.0038520520657847747 # new samples: 5 # old samples: 16
+.   PC0 ('HMP_2019_t2d', 'KarlssonFH_2013') 0.752964696900641 # new samples: 2 # old samples: 53
+.   PC1 ('HMP_2019_t2d', 'KarlssonFH_2013') 0.11556539057305118 # new samples: 2 # old samples: 53
+.   PC0 ('HMP_2019_t2d', 'LiJ_2014') 0.6048955426009436 # new samples: 2 # old samples: 79
+.   PC1 ('HMP_2019_t2d', 'LiJ_2014') 0.48394245410411274 # new samples: 2 # old samples: 79
+.   PC0 ('HMP_2019_t2d', 'QinJ_2012') 0.6682881810938246 # new samples: 2 # old samples: 170
+.   PC1 ('HMP_2019_t2d', 'QinJ_2012') 0.5203877325184207 # new samples: 2 # old samples: 170
+.   PC0 ('HMP_2019_t2d', 'SankaranarayananK_2015') 0.6317722839808345 # new samples: 2 # old samples: 19
+.   PC1 ('HMP_2019_t2d', 'SankaranarayananK_2015') 0.07231547711474272 # new samples: 2 # old samples: 19
+.   PC0 ('HMP_2019_t2d', 'ThomasAM_2018a') nan # new samples: 2 # old samples: 0
+.   PC1 ('HMP_2019_t2d', 'ThomasAM_2018a') nan # new samples: 2 # old samples: 0
+.   PC0 ('HMP_2019_t2d', 'YuJ_2015') 0.3992691431710659 # new samples: 2 # old samples: 16
+.   PC1 ('HMP_2019_t2d', 'YuJ_2015') 0.4824052071662268 # new samples: 2 # old samples: 16
+.   PC0 ('KarlssonFH_2013', 'LiJ_2014') 0.3665863919464277 # new samples: 53 # old samples: 79
+.   PC1 ('KarlssonFH_2013', 'LiJ_2014') 0.0003357727524985554 # new samples: 53 # old samples: 79
+.   PC0 ('KarlssonFH_2013', 'QinJ_2012') 0.08340520886144885 # new samples: 53 # old samples: 170
+.   PC1 ('KarlssonFH_2013', 'QinJ_2012') 1.5891022870354754e-05 # new samples: 53 # old samples: 170
+.   PC0 ('KarlssonFH_2013', 'SankaranarayananK_2015') 0.0686582556641742 # new samples: 53 # old samples: 19
+.   PC1 ('KarlssonFH_2013', 'SankaranarayananK_2015') 0.9135190550060752 # new samples: 53 # old samples: 19
+.   PC0 ('KarlssonFH_2013', 'ThomasAM_2018a') nan # new samples: 53 # old samples: 0
+.   PC1 ('KarlssonFH_2013', 'ThomasAM_2018a') nan # new samples: 53 # old samples: 0
+.   PC0 ('KarlssonFH_2013', 'YuJ_2015') 0.8533575142778587 # new samples: 53 # old samples: 16
+.   PC1 ('KarlssonFH_2013', 'YuJ_2015') 0.016266942965004937 # new samples: 53 # old samples: 16
+.   PC0 ('LiJ_2014', 'QinJ_2012') 0.37323092842620054 # new samples: 79 # old samples: 170
+.   PC1 ('LiJ_2014', 'QinJ_2012') 0.6270627894610455 # new samples: 79 # old samples: 170
+.   PC0 ('LiJ_2014', 'SankaranarayananK_2015') 0.04958641703743548 # new samples: 79 # old samples: 19
+.   PC1 ('LiJ_2014', 'SankaranarayananK_2015') 0.006925737481980086 # new samples: 79 # old samples: 19
+.   PC0 ('LiJ_2014', 'ThomasAM_2018a') nan # new samples: 79 # old samples: 0
+.   PC1 ('LiJ_2014', 'ThomasAM_2018a') nan # new samples: 79 # old samples: 0
+.   PC0 ('LiJ_2014', 'YuJ_2015') 0.6190315905336232 # new samples: 79 # old samples: 16
+.   PC1 ('LiJ_2014', 'YuJ_2015') 0.8501360374917999 # new samples: 79 # old samples: 16
+.   PC0 ('QinJ_2012', 'SankaranarayananK_2015') 0.014830688335076728 # new samples: 170 # old samples: 19
+.   PC1 ('QinJ_2012', 'SankaranarayananK_2015') 0.0038828583308214413 # new samples: 170 # old samples: 19
+.   PC0 ('QinJ_2012', 'ThomasAM_2018a') nan # new samples: 170 # old samples: 0
+.   PC1 ('QinJ_2012', 'ThomasAM_2018a') nan # new samples: 170 # old samples: 0
+.   PC0 ('QinJ_2012', 'YuJ_2015') 0.36116244742757986 # new samples: 170 # old samples: 16
+.   PC1 ('QinJ_2012', 'YuJ_2015') 0.8497553980037211 # new samples: 170 # old samples: 16
+.   PC0 ('SankaranarayananK_2015', 'ThomasAM_2018a') nan # new samples: 19 # old samples: 0
+.   PC1 ('SankaranarayananK_2015', 'ThomasAM_2018a') nan # new samples: 19 # old samples: 0
+.   PC0 ('SankaranarayananK_2015', 'YuJ_2015') 0.33691131482437137 # new samples: 19 # old samples: 16
+.   PC1 ('SankaranarayananK_2015', 'YuJ_2015') 0.02434092004399136 # new samples: 19 # old samples: 16
+.   PC0 ('ThomasAM_2018a', 'YuJ_2015') nan # new samples: 0 # old samples: 16
+.   PC1 ('ThomasAM_2018a', 'YuJ_2015') nan # new samples: 0 # old samples: 16
+. bio_var == healthy
+.   PC0 ('Castro-NallarE_2015', 'FengQ_2015') 2.4304960694778855e-05 # new samples: 16 # old samples: 16
+.   PC1 ('Castro-NallarE_2015', 'FengQ_2015') 0.06478236858142154 # new samples: 16 # old samples: 16
+.   PC0 ('Castro-NallarE_2015', 'GhensiP_2019') 0.010760448578596397 # new samples: 16 # old samples: 65
+.   PC1 ('Castro-NallarE_2015', 'GhensiP_2019') 0.007880583861576503 # new samples: 16 # old samples: 65
+.   PC0 ('Castro-NallarE_2015', 'HMP_2019_t2d') 5.0487446025094715e-09 # new samples: 16 # old samples: 42
+.   PC1 ('Castro-NallarE_2015', 'HMP_2019_t2d') 6.280685027294844e-08 # new samples: 16 # old samples: 42
+.   PC0 ('Castro-NallarE_2015', 'KarlssonFH_2013') 1.399260522008635e-06 # new samples: 16 # old samples: 43
+.   PC1 ('Castro-NallarE_2015', 'KarlssonFH_2013') 2.1386524149734576e-06 # new samples: 16 # old samples: 43
+.   PC0 ('Castro-NallarE_2015', 'LiJ_2014') 0.01141203638600164 # new samples: 16 # old samples: 10
+.   PC1 ('Castro-NallarE_2015', 'LiJ_2014') 7.722679550543344e-05 # new samples: 16 # old samples: 10
+.   PC0 ('Castro-NallarE_2015', 'QinJ_2012') 0.0031238242251579876 # new samples: 16 # old samples: 193
+.   PC1 ('Castro-NallarE_2015', 'QinJ_2012') 1.0060646097451934e-09 # new samples: 16 # old samples: 193
+.   PC0 ('Castro-NallarE_2015', 'SankaranarayananK_2015') 0.00012821417525031743 # new samples: 16 # old samples: 18
+.   PC1 ('Castro-NallarE_2015', 'SankaranarayananK_2015') 0.00014742902884410451 # new samples: 16 # old samples: 18
+.   PC0 ('Castro-NallarE_2015', 'ThomasAM_2018a') 0.0008821452841900069 # new samples: 16 # old samples: 14
+.   PC1 ('Castro-NallarE_2015', 'ThomasAM_2018a') 6.585835703332905e-05 # new samples: 16 # old samples: 14
+.   PC0 ('Castro-NallarE_2015', 'YuJ_2015') 2.2023969593508105e-05 # new samples: 16 # old samples: 38
+.   PC1 ('Castro-NallarE_2015', 'YuJ_2015') 1.0218039242676456e-06 # new samples: 16 # old samples: 38
+.   PC0 ('FengQ_2015', 'GhensiP_2019') 2.039893612164785e-07 # new samples: 16 # old samples: 65
+.   PC1 ('FengQ_2015', 'GhensiP_2019') 0.9243958530140919 # new samples: 16 # old samples: 65
+.   PC0 ('FengQ_2015', 'HMP_2019_t2d') 5.42950425728378e-07 # new samples: 16 # old samples: 42
+.   PC1 ('FengQ_2015', 'HMP_2019_t2d') 5.42950425728378e-07 # new samples: 16 # old samples: 42
+.   PC0 ('FengQ_2015', 'KarlssonFH_2013') 0.085063050363224 # new samples: 16 # old samples: 43
+.   PC1 ('FengQ_2015', 'KarlssonFH_2013') 0.0008324533049177855 # new samples: 16 # old samples: 43
+.   PC0 ('FengQ_2015', 'LiJ_2014') 0.1264047683451192 # new samples: 16 # old samples: 10
+.   PC1 ('FengQ_2015', 'LiJ_2014') 0.0007432798688492007 # new samples: 16 # old samples: 10
+.   PC0 ('FengQ_2015', 'QinJ_2012') 0.14008069105145118 # new samples: 16 # old samples: 193
+.   PC1 ('FengQ_2015', 'QinJ_2012') 5.27809591483862e-08 # new samples: 16 # old samples: 193
+.   PC0 ('FengQ_2015', 'SankaranarayananK_2015') 0.12050736908665434 # new samples: 16 # old samples: 18
+.   PC1 ('FengQ_2015', 'SankaranarayananK_2015') 0.0013328792562361017 # new samples: 16 # old samples: 18
+.   PC0 ('FengQ_2015', 'ThomasAM_2018a') 0.1456777779079231 # new samples: 16 # old samples: 14
+.   PC1 ('FengQ_2015', 'ThomasAM_2018a') 0.00075931596802125 # new samples: 16 # old samples: 14
+.   PC0 ('FengQ_2015', 'YuJ_2015') 0.19118103583236334 # new samples: 16 # old samples: 38
+.   PC1 ('FengQ_2015', 'YuJ_2015') 0.00019008169176049116 # new samples: 16 # old samples: 38
+.   PC0 ('GhensiP_2019', 'HMP_2019_t2d') 3.0858853030376726e-18 # new samples: 65 # old samples: 42
+.   PC1 ('GhensiP_2019', 'HMP_2019_t2d') 1.9912174552837492e-13 # new samples: 65 # old samples: 42
+.   PC0 ('GhensiP_2019', 'KarlssonFH_2013') 8.196038359893976e-13 # new samples: 65 # old samples: 43
+.   PC1 ('GhensiP_2019', 'KarlssonFH_2013') 9.659175341223706e-07 # new samples: 65 # old samples: 43
+.   PC0 ('GhensiP_2019', 'LiJ_2014') 0.0023719365985569387 # new samples: 65 # old samples: 10
+.   PC1 ('GhensiP_2019', 'LiJ_2014') 5.071878566666686e-05 # new samples: 65 # old samples: 10
+.   PC0 ('GhensiP_2019', 'QinJ_2012') 2.1492328172686342e-07 # new samples: 65 # old samples: 193
+.   PC1 ('GhensiP_2019', 'QinJ_2012') 4.2397207846412736e-23 # new samples: 65 # old samples: 193
+.   PC0 ('GhensiP_2019', 'SankaranarayananK_2015') 2.650404963870573e-06 # new samples: 65 # old samples: 18
+.   PC1 ('GhensiP_2019', 'SankaranarayananK_2015') 3.947007433511345e-05 # new samples: 65 # old samples: 18
+.   PC0 ('GhensiP_2019', 'ThomasAM_2018a') 3.369524756244256e-05 # new samples: 65 # old samples: 14
+.   PC1 ('GhensiP_2019', 'ThomasAM_2018a') 3.768066268579824e-05 # new samples: 65 # old samples: 14
+.   PC0 ('GhensiP_2019', 'YuJ_2015') 2.6310041210575093e-09 # new samples: 65 # old samples: 38
+.   PC1 ('GhensiP_2019', 'YuJ_2015') 3.754861450640718e-08 # new samples: 65 # old samples: 38
+.   PC0 ('HMP_2019_t2d', 'KarlssonFH_2013') 1.3605212964050044e-08 # new samples: 42 # old samples: 43
+.   PC1 ('HMP_2019_t2d', 'KarlssonFH_2013') 2.267897571049051e-05 # new samples: 42 # old samples: 43
+.   PC0 ('HMP_2019_t2d', 'LiJ_2014') 0.029068607993307377 # new samples: 42 # old samples: 10
+.   PC1 ('HMP_2019_t2d', 'LiJ_2014') 0.4032268769242924 # new samples: 42 # old samples: 10
+.   PC0 ('HMP_2019_t2d', 'QinJ_2012') 3.667049825464097e-05 # new samples: 42 # old samples: 193
+.   PC1 ('HMP_2019_t2d', 'QinJ_2012') 0.36194783093656624 # new samples: 42 # old samples: 193
+.   PC0 ('HMP_2019_t2d', 'SankaranarayananK_2015') 0.0005904177011021341 # new samples: 42 # old samples: 18
+.   PC1 ('HMP_2019_t2d', 'SankaranarayananK_2015') 0.17032347878863305 # new samples: 42 # old samples: 18
+.   PC0 ('HMP_2019_t2d', 'ThomasAM_2018a') 0.0026242672879008503 # new samples: 42 # old samples: 14
+.   PC1 ('HMP_2019_t2d', 'ThomasAM_2018a') 0.21871810565095282 # new samples: 42 # old samples: 14
+.   PC0 ('HMP_2019_t2d', 'YuJ_2015') 0.00020004463849147318 # new samples: 42 # old samples: 38
+.   PC1 ('HMP_2019_t2d', 'YuJ_2015') 0.10347201946176075 # new samples: 42 # old samples: 38
+.   PC0 ('KarlssonFH_2013', 'LiJ_2014') 0.4809798440267251 # new samples: 43 # old samples: 10
+.   PC1 ('KarlssonFH_2013', 'LiJ_2014') 0.04304739204257082 # new samples: 43 # old samples: 10
+.   PC0 ('KarlssonFH_2013', 'QinJ_2012') 0.24217694983613924 # new samples: 43 # old samples: 193
+.   PC1 ('KarlssonFH_2013', 'QinJ_2012') 7.985084272667753e-09 # new samples: 43 # old samples: 193
+.   PC0 ('KarlssonFH_2013', 'SankaranarayananK_2015') 0.8247910271346023 # new samples: 43 # old samples: 18
+.   PC1 ('KarlssonFH_2013', 'SankaranarayananK_2015') 0.08195209651258827 # new samples: 43 # old samples: 18
+.   PC0 ('KarlssonFH_2013', 'ThomasAM_2018a') 0.6298022483210446 # new samples: 43 # old samples: 14
+.   PC1 ('KarlssonFH_2013', 'ThomasAM_2018a') 0.07820914900878798 # new samples: 43 # old samples: 14
+.   PC0 ('KarlssonFH_2013', 'YuJ_2015') 0.7910236439144148 # new samples: 43 # old samples: 38
+.   PC1 ('KarlssonFH_2013', 'YuJ_2015') 0.052374368834540934 # new samples: 43 # old samples: 38
+.   PC0 ('LiJ_2014', 'QinJ_2012') 0.9911903608920667 # new samples: 10 # old samples: 193
+.   PC1 ('LiJ_2014', 'QinJ_2012') 0.21827654337414198 # new samples: 10 # old samples: 193
+.   PC0 ('LiJ_2014', 'SankaranarayananK_2015') 0.7012967034743492 # new samples: 10 # old samples: 18
+.   PC1 ('LiJ_2014', 'SankaranarayananK_2015') 0.737154188826244 # new samples: 10 # old samples: 18
+.   PC0 ('LiJ_2014', 'ThomasAM_2018a') 0.7696979437812855 # new samples: 10 # old samples: 14
+.   PC1 ('LiJ_2014', 'ThomasAM_2018a') 0.906774463340588 # new samples: 10 # old samples: 14
+.   PC0 ('LiJ_2014', 'YuJ_2015') 0.7996007785239797 # new samples: 10 # old samples: 38
+.   PC1 ('LiJ_2014', 'YuJ_2015') 0.5592965076016092 # new samples: 10 # old samples: 38
+.   PC0 ('QinJ_2012', 'SankaranarayananK_2015') 0.7837128608408358 # new samples: 193 # old samples: 18
+.   PC1 ('QinJ_2012', 'SankaranarayananK_2015') 0.033065597467871764 # new samples: 193 # old samples: 18
+.   PC0 ('QinJ_2012', 'ThomasAM_2018a') 0.742854102367523 # new samples: 193 # old samples: 14
+.   PC1 ('QinJ_2012', 'ThomasAM_2018a') 0.07599972558460422 # new samples: 193 # old samples: 14
+.   PC0 ('QinJ_2012', 'YuJ_2015') 0.9280542154217083 # new samples: 193 # old samples: 38
+.   PC1 ('QinJ_2012', 'YuJ_2015') 0.0030392313390815292 # new samples: 193 # old samples: 38
+.   PC0 ('SankaranarayananK_2015', 'ThomasAM_2018a') 0.8792283946861938 # new samples: 18 # old samples: 14
+.   PC1 ('SankaranarayananK_2015', 'ThomasAM_2018a') 0.9092690452142275 # new samples: 18 # old samples: 14
+.   PC0 ('SankaranarayananK_2015', 'YuJ_2015') 0.9440540232801327 # new samples: 18 # old samples: 38
+.   PC1 ('SankaranarayananK_2015', 'YuJ_2015') 0.958025455470696 # new samples: 18 # old samples: 38
+.   PC0 ('ThomasAM_2018a', 'YuJ_2015') 0.9670887997047819 # new samples: 14 # old samples: 38
+.   PC1 ('ThomasAM_2018a', 'YuJ_2015') 0.9178443664551235 # new samples: 14 # old samples: 38
