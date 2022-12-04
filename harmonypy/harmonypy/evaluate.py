@@ -154,7 +154,7 @@ class Evaluate(object):
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
         # functions executed
-        # self.alpha_beta_diversity_and_tests(self.bio_var)
+        ## version 1, for batch evaluation
         self.alpha_beta_diversity_and_tests(self.batch_var) # has to happen before standard scaler
         self.standard_scaler()
         df = self.PCA_vis()
@@ -537,18 +537,124 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     results_df.to_csv(output_dir_path+"/global_benchmarking_stats_"+dataset_name+".csv")
     return pd.DataFrame.from_dict(method_dict, orient ='index') 
 
+def PC01_kw_tests_perbatch(df, bio_var, batch, output_root):
+    # to investigate whether the bio_var info is retained
+    bio_var_l = list(df[bio_var])
+    bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
+    bio_var_l = list(np.unique(bio_var_l))
+    
+    # generate global metrics
+    with open(output_root+"_"+bio_var+"_kw_pvals.txt", "w") as text_file:
+        print("global batch kw p-vals \n", file=text_file)
+        print("\n", file=text_file)
 
+        data_PC0 = [df.loc[df[bio_var]==var]["PC0"].values for var in bio_var_l]
+        data_PC1 = [df.loc[df[bio_var]==var]["PC1"].values for var in bio_var_l]
+        
+        global_PC0_p = stats.kruskal(*data_PC0)[1]
+        global_PC1_p = stats.kruskal(*data_PC1)[1]
+        print(". PC0", "across all biovar options, p-val = ", str(global_PC0_p), "\n",file=text_file)
+        print(". PC1", "across all biovar options, p-val = ", str(global_PC1_p), "\n",file=text_file)
+        
+    dim = len(np.unique(bio_var_l))
+    kw_heatmap_array = np.full((dim, dim), 1, dtype=float)
+    for pair in itertools.combinations(bio_var_l, 2):
+        data_for_kw_PC0 = [df.loc[df[bio_var]==var]["PC0"].values for var in pair]
+        data_for_kw_PC1 = [df.loc[df[bio_var]==var]["PC1"].values for var in pair]
+        PC0_p = stats.kruskal(*data_for_kw_PC0)[1]
+        PC1_p = stats.kruskal(*data_for_kw_PC1)[1]
+        print("PC0", pair[0], pair[1], PC0_p)
+        print("PC1", pair[0], pair[1], PC1_p)
+        print([bio_var_l.index(pair[0]), bio_var_l.index(pair[1])], kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])])
+        kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])]=PC1_p
+        kw_heatmap_array[bio_var_l.index(pair[1]), bio_var_l.index(pair[0])]=PC0_p
+    fig, ax = plt.subplots()
+    ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
+    im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
+    # Show all ticks and label them with the respective list entries
+    ax.set_xticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+    ax.set_xlabel("PC0 (lower diagonal)")
+    ax.set_yticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+    ax.set_ylabel("PC1 (upper diagonal)")
+    # Rotate the tidata["PC0"].valuesck labels and set their alignment.
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+            rotation_mode="anchor")
+
+    # Loop over data dimensionsif i!=j: and create text annotations.
+    for i in range(len(bio_var_l)):
+        for j in range(len(bio_var_l)):
+            if i!=j:
+                text = ax.text(i, j, round(-np.log2(kw_heatmap_array)[i, j], 5),
+                            ha="center", va="center", color="black", fontsize=8)
+
+    ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
+    fig.tight_layout()
+    plt.savefig(output_root+"_"+batch+"_PC01_kw_tests.png")
+
+def PCA_vis_for_each_batch(source_df, meta_data, output_root, bio_var, n_pc=30):
+    scaler = StandardScaler()
+    data = source_df.T.to_numpy()
+    scaler.fit(data)
+    ss_scaled = scaler.transform(data).T
+    source_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
+    
+    list_batches = list(np.unique(meta_data["batch"]))
+    rng = np.random.RandomState(88)
+    for batch in list_batches:
+        # get current_source_df and current_meta_data
+        current_meta_data = meta_data[meta_data['batch']==batch]
+        current_Sam_ids = list(current_meta_data['Sam_id'])
+        current_source_df = source_df[source_df.index.isin(current_Sam_ids)]
+
+        # zero mean for PCA
+        current_source_df = current_source_df-current_source_df.mean()
+        # fit PCA
+        pca_results  = PCA(n_components = n_pc, random_state=rng)
+        pca_results.fit(current_source_df)
+        variances = pca_results.explained_variance_ratio_
+
+        # ecdf plot
+        ecdf_var = [variances[:i].sum() for i in range(len(variances))]
+        fig, ax1 = plt.subplots(1,1,figsize = (20, 8))
+        ax1.plot(range(len(ecdf_var)),ecdf_var)
+        plt.xticks(range(len(ecdf_var)), range(len(ecdf_var)))
+        plt.yticks([0.1*i for i in range(11)])
+        plt.show()
+        plt.savefig(output_root+"_ecdf.png")
+
+        # pca visualization
+        transformed = pca_results.transform(current_source_df)
+        df = pd.DataFrame()
+        for i in range(n_pc):
+            df[f"PC{i}"] = transformed[:, i] 
+        df[bio_var] = list(current_meta_data[bio_var])
+        ## pca visualization for bio_vars
+        ### fetch info for bio_va
+        all_colors_used = rng.uniform(0, 1, 3*len(np.unique(list(df[bio_var])))).tolist()
+        colors = {var: all_colors_used[idx*3:idx*3+3] for idx,var in enumerate(np.unique(list(df[bio_var])))} # unlikely to get repeated colors
+        fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
+        sns.scatterplot(df["PC0"] , df["PC1"], hue = df[bio_var], hue_order = np.unique(list(df[bio_var])), s = 100,ax = ax, cmap = "tab10", x_jitter = True, palette = colors)
+        ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
+        for index, current_biovar in enumerate(np.unique(list(df[bio_var]))):
+            currentDF = df.loc[df[bio_var] == current_biovar]
+            confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor=list(colors.values())[index])
+        plt.savefig(output_root+"_PCA_"+bio_var+"_"+batch+".png")
+
+        PC01_kw_tests_perbatch(df, bio_var, batch, output_root)
+    return
 
 # # # Glickman dataset 
 # # #################################################################################
-# IDCol = 'Sam_id'
-# index_col = "Unnamed: 0"
-# vars_use = ["Dataset", "Sex"]
-# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
+IDCol = 'Sam_id'
+index_col = "Unnamed: 0"
+vars_use = ["Dataset", "Sex"]
+output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
 
-# address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
-# address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
-# data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
+address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
+address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
+PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
+
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
 # Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic_1201', "Visit", 30, 'Sex', 'Sam_id')
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
