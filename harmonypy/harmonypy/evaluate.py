@@ -476,8 +476,8 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         with open(current_dir_path+'/'+current_biovar_kw_path) as f:
             lines = f.readlines()
         
-        global_biovar_p_val_PC0 = float([line for line in lines if "across all biovar options" in line][0].split(" ")[-2])
-        global_biovar_p_val_PC1 = float([line for line in lines if "across all biovar options" in line][0].split(" ")[-2])
+        global_biovar_p_val_PC0 = float([line for line in lines if "PC0 across all biovar options" in line][0].split(" ")[-2])
+        global_biovar_p_val_PC1 = float([line for line in lines if "PC1 across all biovar options" in line][0].split(" ")[-2])
 
         current_method_dict.update({"global_batch_p_val_PC0": global_batch_p_val_PC0})
         current_method_dict.update({"global_batch_p_val_PC1": global_batch_p_val_PC1})
@@ -490,7 +490,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     # fetch time spent running
     benchmarked_results_dir = output_dir_path + "/benchmarked_results/" + dataset_name
     benchmarked_results_dir = os.listdir(benchmarked_results_dir)
-    current_runtime_kw_path = [result for result in benchmarked_results_dir if "runtime.txt" in result][0]
+    current_runtime_kw_path = [result for result in benchmarked_results_dir if "runtime copy.txt" in result][0]
     print(current_runtime_kw_path)
     with open(output_dir_path + "/benchmarked_results/" + dataset_name+'/'+current_runtime_kw_path) as f:
         lines = f.readlines()
@@ -506,7 +506,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             method_dict["ConQuR"]["runtime"] = float(line.split(" ")[-2])
         if "ConquR_libsize" in line:
             method_dict["ConQuR_libsize"]["runtime"] = float(line.split(" ")[-2])
-        if "percentile_norm" in line:
+        if "percentile_normalization" in line:
             method_dict["Percentile_norm"]["runtime"] = float(line.split(" ")[-2])
     
     benchmarked_data_harmony_dir = output_dir_path + "/benchmarked_data"
@@ -527,14 +527,14 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             with open(time_file) as f:
                 lines = f.readlines()
             method_dict["harmony"]["runtime"] = float(lines[0].split(" ")[-2])
-        if "harmony_PCs_elapsed_time" in time_file:
+        if "harmony_PCA_first_elapsed_time" in time_file:
             with open(time_file) as f:
                 lines = f.readlines()
             method_dict["harmony_PCs"]["runtime"] = float(lines[0].split(" ")[-2])
         
     # print into a pandas df where rows are datasets and columns and different stats
     results_df = pd.DataFrame.from_dict(method_dict, orient ='index') 
-    results_df.to_csv(output_dir_path+"/global_benchmarking_stats_"+dataset_name+".csv")
+    results_df.T.to_csv(output_dir_path+"/global_benchmarking_stats_"+dataset_name+".csv")
     return pd.DataFrame.from_dict(method_dict, orient ='index') 
 
 def PC01_kw_tests_perbatch(df, bio_var, batch, output_root):
@@ -591,18 +591,18 @@ def PC01_kw_tests_perbatch(df, bio_var, batch, output_root):
     fig.tight_layout()
     plt.savefig(output_root+"_"+batch+"_PC01_kw_tests.png")
 
-def PCA_vis_for_each_batch(source_df, meta_data, output_root, bio_var, n_pc=30):
+def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var, n_pc=30):
     scaler = StandardScaler()
     data = source_df.T.to_numpy()
     scaler.fit(data)
     ss_scaled = scaler.transform(data).T
     source_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
     
-    list_batches = list(np.unique(meta_data["batch"]))
+    list_batches = list(np.unique(meta_data[batch_var]))
     rng = np.random.RandomState(88)
     for batch in list_batches:
         # get current_source_df and current_meta_data
-        current_meta_data = meta_data[meta_data['batch']==batch]
+        current_meta_data = meta_data[meta_data[batch_var]==batch]
         current_Sam_ids = list(current_meta_data['Sam_id'])
         current_source_df = source_df[source_df.index.isin(current_Sam_ids)]
 
@@ -645,15 +645,15 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, bio_var, n_pc=30):
 
 # # # Glickman dataset 
 # # #################################################################################
-IDCol = 'Sam_id'
-index_col = "Unnamed: 0"
-vars_use = ["Dataset", "Sex"]
-output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
+# IDCol = 'Sam_id'
+# index_col = "Unnamed: 0"
+# vars_use = ["Dataset", "Sex"]
+# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
 
-address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
-address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
-data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
-PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
+# address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
+# address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+# data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
+# PCA_vis_for_each_batch(data_mat, meta_data, output_root,"batch",  "Visit", n_pc=30)
 
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
 # Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic/Glickman_harmonicMic_1201', "Visit", 30, 'Sex', 'Sam_id')
@@ -693,34 +693,19 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_Glickman_MMUPHin/Glickman_MMUPHin_1201', "Visit", 30, 'Sex', 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv"
-# bio_var = "Visit"
-# dataset_name = "Glickman"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
-
-# #################################################################################
-
-
-# # autism 2 microbiomeHD
-# #################################################################################
-# address_directory = '/home/fuc/harmonicMic/data/autism_2_microbiomeHD'
-# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
 # ### Percentile_normalization
 # address_X = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman_percentile_norm.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_Glickman_Percentile_norm/Glickman_Percentile_norm_1201', "Visit", 30, 'Sex', 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv"
-# bio_var = "Visit"
-# dataset_name = "Glickman"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv"
+bio_var = "Visit"
+dataset_name = "Glickman"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 # #################################################################################
+
 
 
 # # autism 2 microbiomeHD
@@ -773,11 +758,11 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_Percentile_norm/autism_2_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30, False, 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
-# bio_var = "DiseaseState"
-# dataset_name = "autism_2_microbiomeHD"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
+bio_var = "DiseaseState"
+dataset_name = "autism_2_microbiomeHD"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 # #################################################################################
 
@@ -832,11 +817,11 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30, False, 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
-# bio_var = "DiseaseState"
-# dataset_name = "cdi_3_microbiomeHD"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
+bio_var = "DiseaseState"
+dataset_name = "cdi_3_microbiomeHD"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 # #################################################################################
 
@@ -891,11 +876,11 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, "study_name", './output_ibd_3_CMD_Percentile_norm/ibd_3_CMD_Percentile_norm_1201', "disease", 30, False, 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = "ibd_3_CMD"
-# methods_list = ["limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/ibd_3_CMD_count_data.csv"
+bio_var = "disease"
+dataset_name = "ibd_3_CMD"
+methods_list = ["limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 # #################################################################################
 
@@ -951,11 +936,11 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, "study_name", './output_adenoma_5_CMD_Percentile_norm/adenoma_5_CMD_Percentile_norm_1201', "disease", 30, False, 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = "adenoma_5_CMD"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv"
+bio_var = "disease"
+dataset_name = "adenoma_5_CMD"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 #################################################################################
 
@@ -1010,11 +995,11 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_Percentile_norm/CRC_8_CMD_Percentile_norm_1201', "disease", 30, False, 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = "CRC_8_CMD"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv"
+bio_var = "disease"
+dataset_name = "CRC_8_CMD"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
 #################################################################################
@@ -1024,6 +1009,7 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # address_directory = '/home/fuc/harmonicMic/data/T2D_10_CMD'
 # output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD"
 # data_mat, meta_data = load_data_CMD(address_directory, output_root)
+# PCA_vis_for_each_batch(data_mat, meta_data, output_root, "study_name", "disease", n_pc=30)
 # vars_use = ["study_name"]
 # IDCol = 'Sam_id'
 
@@ -1071,9 +1057,9 @@ PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Visit", n_pc=30)
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, "study_name", './output_T2D_10_CMD_Percentile_norm/T2D_10_CMD_Percentile_norm_1201', "disease", 30, False, 'Sam_id')
 
-# input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = "T2D_10_CMD"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+input_frame_path = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv"
+bio_var = "disease"
+dataset_name = "T2D_10_CMD"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 # #################################################################################
