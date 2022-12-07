@@ -23,6 +23,7 @@ import itertools
 from skbio.diversity import beta_diversity
 from skbio.stats.ordination import pcoa
 from scipy import stats
+import time
 
 # create logger
 logger = logging.getLogger('harmonypy')
@@ -40,6 +41,7 @@ def run_harmonicMic(
     meta_data: pd.DataFrame,
     vars_use,
     theta = None,
+    # theta = 0.5,
     lamb = None,
     sigma = 0.1, 
     nclust = None,
@@ -82,7 +84,8 @@ def run_harmonicMic(
        "data_mat and meta_data do not have the same number of cells" 
 
     if nclust is None:
-        nclust = np.min([np.round(N / 30.0), 100]).astype(int)
+        # nclust = np.min([np.round(N / 30.0), 100]).astype(int)
+        nclust = np.min([np.round(N / 50.0), 2]).astype(int)
 
     if type(sigma) is float and nclust > 1:
         sigma = np.repeat(sigma, nclust)
@@ -237,6 +240,8 @@ class HarmonicMic(object):
         cluster_by_covar_prob = np.dot(self.R, self.Phi.T)
         cluster_sum = np.sum(cluster_by_covar_prob, axis=1)
         self.ratio = cluster_by_covar_prob/cluster_sum[:, np.newaxis]
+        print("AAAAAAAAAA self.R.shape", self.R.shape)
+        print("AAAAAAAAAA self.R[0, :].shape", self.R[0, :].shape)
         # self.ratio[self.ratio < 0.001*self.K*self.B] = 0.0 # note that e^0=1 so this would make the ratio be 1 and have no impact on the z
         # z = 1.01**(self.ratio) * z # element-wise operation
         z = np.exp(self.ratio) * z # element-wise operation
@@ -247,20 +252,43 @@ class HarmonicMic(object):
         # print(kmeans_error)
         # print("x, y, z, w, O, E, K, _cross_entropy shape", x.shape, y.shape, z.shape, w.shape, self.O.shape, self.E.shape, self.K, _cross_entropy)
         # print("self.theta", self.theta.shape)
-
         ### NOTE: added bray-curtis between sample similarity to objective function to minimize
         bray_curtis_sum = 0
+        shannon_sum = 0
         ## compute beta diversity using skbio
         # data = self.Z_corr.T+abs(np.min(self.Z_corr.T)) # to avoid negative values
         # 11/1 change: more scientific way of avoiding negative values
         data = np.where(self.Z_corr.T<np.percentile(self.Z_corr.flatten(), 0.01), 0, self.Z_corr.T)
         data = data+np.abs(np.min(data))
+
+        # TODO: for each cluster, cluster bray curtis and alpha, and then divide by the number of clusters
         ids = list(range(self.Z_corr.T.shape[0]))
-        bc_dm = beta_diversity("braycurtis", data, ids)
-        bc_pc = pcoa(bc_dm)
+        print("AAAAAAAA data", data.shape)
+
+        for r_idex in range(self.R.shape[0]):
+            current_bray_curtis_sum = 0
+            current_data = self.R[r_idex, :] @ data
+
+        # time.sleep(100)
+            bc_dm = beta_diversity("braycurtis", data, ids)
+            bc_pc = pcoa(bc_dm)
         ## use the first 3 PCs individually to calculate kruskal-wallis values
 
-        for pc in ['PC1', 'PC2', 'PC3']:
+            for pc in ['PC1', 'PC2', 'PC3']:
+                for var in self.phi_dict.keys():
+                    current_phi = self.phi_dict[var]
+                    current_data = bc_pc.samples[pc]
+                    kruskal_data = []
+                    for phi_one_condition in list(current_phi):
+                        removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
+                        current_data_condition = list(current_data.drop(index = removed_indices))
+                        kruskal_data.append(current_data_condition)
+                    current_bray_curtis_sum += 1-stats.kruskal(*kruskal_data)[1] # the higher this value, the more influence beta diversity has on objective value
+                # print(bray_curtis_sum)
+            bray_curtis_sum += current_bray_curtis_sum/self.R.shape[0]
+
+        ### NOTE 1125 change, added shannon index within-sample diversity to objective function to minimize
+            current_shannon_sum = 0
             for var in self.phi_dict.keys():
                 current_phi = self.phi_dict[var]
                 current_data = bc_pc.samples[pc]
@@ -269,24 +297,11 @@ class HarmonicMic(object):
                     removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
                     current_data_condition = list(current_data.drop(index = removed_indices))
                     kruskal_data.append(current_data_condition)
-                bray_curtis_sum += 1-stats.kruskal(*kruskal_data)[1] # the higher this value, the more influence beta diversity has on objective value
-                # print(bray_curtis_sum)
+                current_shannon_sum += 1-stats.kruskal(*kruskal_data)[1]
 
+            shannon_sum += current_shannon_sum/self.R.shape[0]
         # normalize
         bray_curtis_sum = bray_curtis_sum/len(self.phi_dict.keys())
-
-        ### NOTE 1125 change, added shannon index within-sample diversity to objective function to minimize
-        shannon_sum = 0
-        for var in self.phi_dict.keys():
-            current_phi = self.phi_dict[var]
-            current_data = bc_pc.samples[pc]
-            kruskal_data = []
-            for phi_one_condition in list(current_phi):
-                removed_indices = [i for i, e in enumerate(phi_one_condition) if e == 0]
-                current_data_condition = list(current_data.drop(index = removed_indices))
-                kruskal_data.append(current_data_condition)
-            shannon_sum += 1-stats.kruskal(*kruskal_data)[1]
-         # normalize
         shannon_sum = shannon_sum/len(self.phi_dict.keys())
         
         # NOTE take into account the diversity weight
@@ -348,8 +363,9 @@ class HarmonicMic(object):
             ### 1.3 set R weights as the ratio between feature sum and the reference level
             R_weights = norm_sample_sums/ref_sample_sum
             # print("R_weights.shape", R_weights.shape)
-
+            print("AAAAAAAAAAAA R_weights", R_weights.shape)
             self.Y = np.dot(self.Z_cos, (self.R*R_weights).T)
+            print("AAAAAAAAAAAA Y_shape", self.Y.shape)
             self.Y = self.Y / np.linalg.norm(self.Y, ord=2, axis=0)
             # STEP 2: Update dist_mat -> cosine distance
             self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
