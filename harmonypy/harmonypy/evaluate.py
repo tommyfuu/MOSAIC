@@ -628,35 +628,38 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
         for i in range(n_pc):
             df[f"PC{i}"] = transformed[:, i] 
         df[bio_var] = list(current_meta_data[bio_var])
-        ## pca visualization for bio_vars
-        ### fetch info for bio_va
-        all_colors_used = rng.uniform(0, 1, 3*len(np.unique(list(df[bio_var])))).tolist()
-        colors = {var: all_colors_used[idx*3:idx*3+3] for idx,var in enumerate(np.unique(list(df[bio_var])))} # unlikely to get repeated colors
-        fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
-        sns.scatterplot(df["PC0"] , df["PC1"], hue = df[bio_var], hue_order = np.unique(list(df[bio_var])), s = 100,ax = ax, cmap = "tab10", x_jitter = True, palette = colors)
-        ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
-        for index, current_biovar in enumerate(np.unique(list(df[bio_var]))):
-            currentDF = df.loc[df[bio_var] == current_biovar]
-            confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor=list(colors.values())[index])
-        plt.savefig(output_root+"_PCA_"+bio_var+"_"+batch+".png")
+        if len(np.unique(df[bio_var])) == 1:
+            print(batch, "only has one bio_var option:", np.unique(df[bio_var])[0])
+        else:
+            ## pca visualization for bio_vars
+            ### fetch info for bio_va
+            all_colors_used = rng.uniform(0, 1, 3*len(np.unique(list(df[bio_var])))).tolist()
+            colors = {var: all_colors_used[idx*3:idx*3+3] for idx,var in enumerate(np.unique(list(df[bio_var])))} # unlikely to get repeated colors
+            fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
+            sns.scatterplot(df["PC0"] , df["PC1"], hue = df[bio_var], hue_order = np.unique(list(df[bio_var])), s = 100,ax = ax, cmap = "tab10", x_jitter = True, palette = colors)
+            ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
+            for index, current_biovar in enumerate(np.unique(list(df[bio_var]))):
+                currentDF = df.loc[df[bio_var] == current_biovar]
+                confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor=list(colors.values())[index])
+            plt.savefig(output_root+"_PCA_"+bio_var+"_"+batch+".png")
 
-        PC01_kw_tests_perbatch(df, bio_var, batch, output_root)
+            PC01_kw_tests_perbatch(df, bio_var, batch, output_root)
     return
 
 # Glickman dataset 
 #################################################################################
-IDCol = 'Sam_id'
-index_col = "Unnamed: 0"
-vars_use = ["Dataset", "Sex"]
-output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
+# IDCol = 'Sam_id'
+# index_col = "Unnamed: 0"
+# vars_use = ["Dataset", "Sex"]
+# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman"
 
-address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
-address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
-data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
-# # PCA_vis_for_each_batch(data_mat, meta_data, output_root,"batch",  "Visit", n_pc=30)
+# address_X = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/microbiome_merged_intersect_1023.csv"
+# address_Y = "/home/fuc/HRZE_TB/tom_organized_codes/batch_correction_PCA/1021_microbiome_batchcorrection/intersect_metadata_1023.csv"
+# data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, output_root)
+# # # PCA_vis_for_each_batch(data_mat, meta_data, output_root,"batch",  "Visit", n_pc=30)
 
-res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_theta0.5", option = "harmonicMic")
-Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic_trial2/Glickman_harmonicMic_theta_trial2_1201', "Visit", 30, 'Sex', 'Sam_id')
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_theta0.5", option = "harmonicMic")
+# Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic_trial2/Glickman_harmonicMic_theta_trial2_1201', "Visit", 30, 'Sex', 'Sam_id')
 # Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic_theta0.5/Glickman_harmonicMic_theta0.5_1201', "Visit", 30, 'Sex', 'Sam_id')
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
 # Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic_weighted/Glickman_harmonicMic_weighted_1201', "Visit", 30, 'Sex', 'Sam_id')
@@ -769,9 +772,10 @@ Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic_trial2/Glickm
 
 # # cdi 3 microbiomeHD
 # #################################################################################
-# address_directory = '/home/fuc/harmonicMic/data/cdi_3_microbiomeHD'
-# output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+address_directory = '/home/fuc/harmonicMic/data/cdi_3_microbiomeHD'
+output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Dataset", "DiseaseState", n_pc=10)
 # vars_use = ["Dataset"]
 # IDCol = 'Sam_id'
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
@@ -1010,7 +1014,7 @@ Evaluate(res, meta_data, 'Dataset', './output_Glickman_harmonicMic_trial2/Glickm
 # address_directory = '/home/fuc/harmonicMic/data/T2D_10_CMD'
 # output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD"
 # data_mat, meta_data = load_data_CMD(address_directory, output_root)
-# # PCA_vis_for_each_batch(data_mat, meta_data, output_root, "study_name", "disease", n_pc=30)
+# PCA_vis_for_each_batch(data_mat, meta_data, output_root, "study_name", "disease", n_pc=10)
 # vars_use = ["study_name"]
 # IDCol = 'Sam_id'
 
