@@ -31,16 +31,11 @@ from skbio.stats.ordination import pcoa
 from scipy.spatial import distance
 import os
 import time
-
-# def generate_harmonicMic_results(address_X, address_Y, IDCol, vars_use, index_col = False):
-#     data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col)
-#     ho = run_harmonicMic(data_mat, meta_data, vars_use)
-#     res = pd.DataFrame(ho.Z_corr)
-
-#     # give the index back
-#     res.index = data_mat.columns
-#     res.columns = list(meta_data[IDCol])
-#     return res.T, meta_data
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import roc_auc_score, accuracy_score, f1_score, precision_score, recall_score, roc_curve, auc, confusion_matrix
 
 # data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
 def generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root, option = "harmonicMic", PCA_first = False, diversity_weight = None):
@@ -138,7 +133,7 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
 
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -149,6 +144,7 @@ class Evaluate(object):
         self.covar = covar
         self.rng = np.random.RandomState(100)
         self.IDCol = IDCol
+        self.test_percent = test_percent
         # make directory if not exists
         directory_path = "/".join(output_root.split("/")[:-1])
         if not os.path.exists(directory_path):
@@ -174,7 +170,7 @@ class Evaluate(object):
         self.batch_corrected_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
         
     def PCA_vis(self):
-        source_df = self.batch_corrected_df
+        source_df = self.batch_corrected_df.copy()
 
         # zero mean for PCA
         source_df = source_df-source_df.mean()
@@ -644,6 +640,33 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
             plt.savefig(output_root+"_PCA_"+bio_var+"_"+batch+".png")
 
             PC01_kw_tests_perbatch(df, bio_var, batch, output_root)
+
+    def predict_difference_RF(self):
+        # get the data
+        used_x = self.batch_corrected_df.copy() # note that standard scaler is already conducted
+        used_y = list(self.meta_data[self.bio_var])
+
+        # Creating the Training and Test set from data
+        X_train, X_test, y_train, y_test = train_test_split(used_x, used_y, test_size = self.test_percent, random_state = self.rng)
+        
+        # train random forest classifier and evaluate
+        clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
+        clf.fit(X_train, y_train)
+        y_pred = clf.predict(X_test)
+        average_acc = sum(y_pred==y_test)/len(y_test)
+        macro_precision = precision_score(y_test, y_pred, average = 'macro')
+        weighted_precision = precision_score(y_test, y_pred, average = 'weighted')
+        macro_recall = recall_score(y_test, y_pred, average = 'macro')
+        weighted_recall = recall_score(y_test, y_pred, average = 'weighted')
+        macro_f1 = f1_score(y_test, y_pred, average = 'macro')
+        weighted_f1 = f1_score(y_test, y_pred, average = 'weighted')
+        auc = roc_auc_score(y_test,  y_pred)
+        # find the most common element in y_test
+        most_common_element = max(set(y_test), key = y_test.count)
+        baseline_likelihood = sum(y_test==most_common_element)/len(y_test)
+        eval_df = pd.DataFrame(columns = ["average_acc", "macro_prec", "weighted_prec", "macro_recall", "weighted_recall", "macro_f1", "weighted_f1", "auc",  "baseline_likelihood"])
+        eval_df.loc[0] = [average_acc, macro_precision, weighted_precision, macro_recall, weighted_recall, macro_f1, weighted_f1, auc, baseline_likelihood]
+        eval_df.to_csv(self.output_root+"_"+self.bio_var+"_rf_evaluate.csv")
     return
 
 # Glickman dataset 
