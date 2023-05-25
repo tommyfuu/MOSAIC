@@ -795,8 +795,8 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 
 # # cdi 3 microbiomeHD
 # #################################################################################
-address_directory = '/home/fuc/harmonicMic/data/cdi_3_microbiomeHD'
-output_root = "/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/cdi_3_microbiomeHD"
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
 data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
 PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Dataset", "DiseaseState", n_pc=10)
 # vars_use = ["Dataset"]
