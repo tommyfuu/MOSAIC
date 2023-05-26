@@ -37,7 +37,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, KFold
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_score
+from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_score, RocCurveDisplay
 from skbio.stats.distance import DissimilarityMatrix, permanova
 from sklearn.preprocessing import OneHotEncoder
 import time
@@ -138,7 +138,7 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
 
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2, poslabel = ''
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -150,6 +150,7 @@ class Evaluate(object):
         self.rng = np.random.RandomState(100)
         self.IDCol = IDCol
         self.test_percent = test_percent
+        self.poslabel = poslabel
         # make directory if not exists
         directory_path = "/".join(output_root.split("/")[:-1])
         if not os.path.exists(directory_path):
@@ -526,6 +527,27 @@ class Evaluate(object):
             most_common_element = max(set(y_test), key = y_test.count)
             baseline_likelihood = y_test.count(most_common_element)/len(y_test)
             eval_df.loc[len(eval_df)] = [i+1, average_acc, macro_precision, weighted_precision, macro_recall, weighted_recall, macro_f1, weighted_f1, auc, baseline_likelihood]
+        
+            # for each fold, also plot the roc plot
+            # one hot encode y_test and y_pred
+            # y_test_zeroone = np.where(np.array(y_test) == most_common_element, 1, 0)
+            # y_pred_zeroone = np.where(np.array(y_pred) == most_common_element, 1, 0)
+            # print("y_test_zeroone", y_test_zeroone)
+            if self.poslabel == '':
+                self.poslabel = most_common_element
+            RocCurveDisplay.from_predictions(
+                y_test, y_pred,
+                name=f"{self.bio_var} classification",
+                color="darkorange",
+                pos_label=self.poslabel
+            )
+            plt.plot([0, 1], [0, 1], "k--", label="chance level (AUC = 0.5)")
+            plt.axis("square")
+            plt.xlabel("False Positive Rate")
+            plt.ylabel("True Positive Rate")
+            plt.title(f"{self.bio_var} classification fold {i+1}")
+            plt.legend()
+            plt.savefig(self.output_root+"_"+self.bio_var+"_rf_fold_"+str(i+1)+"_roc.png")
         eval_df.to_csv(self.output_root+"_"+self.bio_var+"_rf_evaluate.csv")
         return
         

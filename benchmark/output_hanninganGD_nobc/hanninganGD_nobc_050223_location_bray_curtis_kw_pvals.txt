@@ -14,6 +14,6 @@ PC2
 
 PC3
 
-{('AnnArbor', 'Boston'): 0.15729920705028105, ('AnnArbor', 'Houston'): 0.5417490574450239, ('AnnArbor', 'Toronto'): 0.770195871456385, ('Boston', 'Houston'): 0.03572884112563275, ('Boston', 'Toronto'): 0.0877050299820238, ('Houston', 'Toronto'): 0.7060603818710635}
+{('AnnArbor', 'Boston'): 0.15729920705028105, ('AnnArbor', 'Houston'): 0.5417490574450239, ('AnnArbor', 'Toronto'): 0.7701958714564036, ('Boston', 'Houston'): 0.03572884112563275, ('Boston', 'Toronto'): 0.0877050299820238, ('Houston', 'Toronto'): 0.7060603818710635}
 
 
