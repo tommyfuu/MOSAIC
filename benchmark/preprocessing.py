@@ -18,7 +18,7 @@ import pandas as pd
 import numpy as np
 import os
 
-def load_data_microbiomeHD(address_directory, output_root = False):
+def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'):
     ### note that due to the complexity of metadata, the current microbiomeHD loading does 
     ### not take into account the covariates other than batches and diseaseStates
     ### so default vars_use will just be Dataset
@@ -68,9 +68,9 @@ def load_data_microbiomeHD(address_directory, output_root = False):
     combined_countdf = pd.concat(intersect_count_data_l, axis=1)
     combined_countdf = combined_countdf.dropna().T
     combined_metadata = pd.concat(metadata_l)
-    combined_metadata['Sam_id'] = list(combined_metadata.index) # the default IDCol for microbiomeHD will be Sam_id
+    combined_metadata[id] = list(combined_metadata.index) # the default IDCol for microbiomeHD will be Sam_id
 
-    data_mat, meta_data = preprocess(combined_countdf, combined_metadata, 'Sam_id')
+    data_mat, meta_data = preprocess(combined_countdf, combined_metadata, id)
 
     # TODO: ensure that the sample ids are correctly aligned in metadata and count_table
     data_mat_ids = list(data_mat.index)
@@ -91,15 +91,15 @@ def load_data_microbiomeHD(address_directory, output_root = False):
         meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 
-def load_data_CMD(address_directory, output_root = False):
+def load_data_CMD(address_directory, output_root = False, id = 'Sam_id'):
     ### CuratedMetagenomicsDataset provides way more metadata in a congestible manner
     cur_dir_names = os.listdir(address_directory)
     address_X = address_directory + '/'+ [result for result in cur_dir_names if "otu_table_" in result][0]
     address_Y = address_directory + '/'+ [result for result in cur_dir_names if "sample_table_" in result][0]
     data_mat = pd.read_csv(address_X, index_col=0)
     meta_data = pd.read_csv(address_Y, index_col=0)
-    meta_data['Sam_id'] = list(meta_data.index)
-    data_mat, meta_data = preprocess(data_mat.T, meta_data, 'Sam_id')
+    meta_data[id] = list(meta_data.index)
+    data_mat, meta_data = preprocess(data_mat.T, meta_data, id)
     
     # TODO: ensure that the sample ids are correctly aligned in metadata and count_table
     data_mat_ids = list(data_mat.index)
@@ -180,4 +180,4 @@ def save_data_percentile_norm(data_mat, meta_data, output_root, bio_var, bio_var
     with open(output_root+'_control.txt', 'w') as f:
         for line in samples_control:
             f.write(f"{line}\t")
-    return
+    return 

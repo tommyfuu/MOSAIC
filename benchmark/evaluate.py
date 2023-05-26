@@ -510,14 +510,19 @@ class Evaluate(object):
             clf.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
             average_acc = sum(y_pred==y_test)/len(y_test)
-            
+
             macro_precision = precision_score(y_test, y_pred, average = 'macro')
             weighted_precision = precision_score(y_test, y_pred, average = 'weighted')
             macro_recall = recall_score(y_test, y_pred, average = 'macro')
             weighted_recall = recall_score(y_test, y_pred, average = 'weighted')
             macro_f1 = f1_score(y_test, y_pred, average = 'macro')
             weighted_f1 = f1_score(y_test, y_pred, average = 'weighted')
-            auc = roc_auc_score(y_test,  y_pred)
+            
+            enc = OneHotEncoder(handle_unknown='ignore')
+            enc.fit(np.array(y_test).reshape(-1, 1))
+            y_test_oh = enc.transform(np.array(y_test).reshape(-1, 1)).toarray()
+            y_pred_oh = enc.transform(np.array(y_pred).reshape(-1, 1)).toarray()
+            auc = roc_auc_score(y_test_oh,  y_pred_oh)
             # find the most common element in y_test
             most_common_element = max(set(y_test), key = y_test.count)
             baseline_likelihood = sum(y_test==most_common_element)/len(y_test)
