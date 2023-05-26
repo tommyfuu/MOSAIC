@@ -22,20 +22,25 @@ from matplotlib.patches import Ellipse
 import matplotlib.transforms as transforms
 from sklearn.decomposition import PCA
 import seaborn as sns
-import random
 from sklearn.preprocessing import StandardScaler
 import itertools
 from scipy import stats
 from skbio.diversity import alpha_diversity, beta_diversity
+from skbio.stats.composition import clr
 from skbio.stats.ordination import pcoa
 from scipy.spatial import distance
+# from sklearn.metrics.pairwise import euclidean_distances
+from scipy.spatial.distance import pdist, squareform
 import os
 import time
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, KFold
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import roc_auc_score, accuracy_score, f1_score, precision_score, recall_score, roc_curve, auc, confusion_matrix
+from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_score
+from skbio.stats.distance import DissimilarityMatrix, permanova
+from sklearn.preprocessing import OneHotEncoder
+import time
 
 # data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
 def generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root, option = "harmonicMic", PCA_first = False, diversity_weight = None):
@@ -152,12 +157,17 @@ class Evaluate(object):
         # functions executed
         ## version 1, for batch evaluation
         self.alpha_beta_diversity_and_tests(self.batch_var) # has to happen before standard scaler
+
+        self.calculate_R_sq(self.bio_var)
+        self.calculate_R_sq(self.batch_var)
+
         self.standard_scaler()
         df = self.PCA_vis()
         if covar != False:
             self.covar == covar
             self.allPCs_covar_kw_test(df)
         self.PC01_kw_tests(df)
+        self.predict_difference_RF()
         global_df = pd.DataFrame({"PC_0_p": [self.global_PC0_p], "PC_1_p":[self.global_PC1_p], "PC_0_bc_distance": [self.bc_global_pval_l[0]], "PC_1_bc_distance": [self.bc_global_pval_l[1]]})
         global_df.to_csv(self.output_root+"_global_batches_eval.csv")
 
@@ -354,6 +364,34 @@ class Evaluate(object):
         
         plt.savefig(self.output_root+"_allPCs_covar_kw_tests.png")
 
+    def calculate_R_sq(self, R_sq_var):
+        data = np.array(self.batch_corrected_df)
+        data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+        data = data+np.abs(np.min(data))
+        ids = list(self.meta_data[self.IDCol])
+        np.savetxt('data.out', data, delimiter=',')
+        bc_div_bray = beta_diversity("braycurtis", data, ids)
+        # compute aitchison distance
+        data_clr = clr(data)
+        data_clr = np.nan_to_num(data_clr)
+        np.savetxt('data_clr.out', data_clr, delimiter=',')
+        # bc_div_aitch = beta_diversity("euclidean", data_clr, ids)
+        bc_div_aitch = pdist(data_clr)
+        bc_div_aitch = squareform(bc_div_aitch)
+        np.savetxt('bc_div_aitch.out', bc_div_aitch, delimiter=',')
+        print(bc_div_aitch.shape)
+        # bc_df_bray = pd.DataFrame(bc_div_bray.data, index=list(self.meta_data[self.IDCol]), columns=list(self.meta_data[self.IDCol]))
+        
+        # calculate R^2
+        permanova_results_bray = permanova(bc_div_bray, self.meta_data, column=R_sq_var, permutations=999)
+        # permanova_results_aitch = permanova(DissimilarityMatrix(bc_div_aitch), self.meta_data, column=R_sq_var, permutations=999)
+
+        bray_r2 = 1 - 1 / (1 + permanova_results_bray[4] * permanova_results_bray[3] / (permanova_results_bray[2] - permanova_results_bray[3] - 1))
+        # aitch_r2 = 1 - 1 / (1 + permanova_results_aitch[4] * permanova_results_aitch[3] / (permanova_results_aitch[2] - permanova_results_aitch[3] - 1))
+        print(R_sq_var, "bray_r2", bray_r2)
+        # print("aitch_r2", aitch_r2)
+        return
+    
     def alpha_beta_diversity_and_tests(self, test_var):
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
@@ -445,6 +483,48 @@ class Evaluate(object):
         if test_var == self.batch_var:
             self.bc_global_pval_l = bc_global_pval_l
         return 
+    
+    def predict_difference_RF(self):
+        # get the data
+        used_x = self.batch_corrected_df.copy() # note that standard scaler is already conducted
+        print(used_x)
+        used_y = list(self.meta_data[self.bio_var])
+
+        # Creating the Training and Test set from data
+        # X_train, X_test, y_train, y_test = train_test_split(used_x, used_y, test_size = self.test_percent, random_state = self.rng)
+        kf = KFold(n_splits=5, random_state=self.rng, shuffle = True)# Define the split - into n_splits folds 
+        kf.get_n_splits(used_x, used_y) # returns the number of splitting iterations in the cross-validator
+
+        # train random forest classifier and evaluate
+        used_x.reset_index(drop=True, inplace=True)
+        eval_df = pd.DataFrame(columns = ["fold", "average_acc", "macro_prec", "weighted_prec", "macro_recall", "weighted_recall", "macro_f1", "weighted_f1", "auc",  "baseline_likelihood"])
+        for i, (train_index, test_index) in enumerate(kf.split(used_x, used_y)):
+            # get training and testing data
+            X_train = used_x.loc[train_index]
+            y_train = [used_y[idx] for idx in train_index]
+            X_test = used_x.loc[test_index]
+            y_test = [used_y[idx] for idx in test_index]
+
+            # fit rf model and evaluate
+            clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            average_acc = sum(y_pred==y_test)/len(y_test)
+            
+            macro_precision = precision_score(y_test, y_pred, average = 'macro')
+            weighted_precision = precision_score(y_test, y_pred, average = 'weighted')
+            macro_recall = recall_score(y_test, y_pred, average = 'macro')
+            weighted_recall = recall_score(y_test, y_pred, average = 'weighted')
+            macro_f1 = f1_score(y_test, y_pred, average = 'macro')
+            weighted_f1 = f1_score(y_test, y_pred, average = 'weighted')
+            auc = roc_auc_score(y_test,  y_pred)
+            # find the most common element in y_test
+            most_common_element = max(set(y_test), key = y_test.count)
+            baseline_likelihood = sum(y_test==most_common_element)/len(y_test)
+            eval_df.loc[len(eval_df)] = [i+1, average_acc, macro_precision, weighted_precision, macro_recall, weighted_recall, macro_f1, weighted_f1, auc, baseline_likelihood]
+        eval_df.to_csv(self.output_root+"_"+self.bio_var+"_rf_evaluate.csv")
+        return
+        
 
 def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = "."):
     # fetch dimension (number of samples and number of features)
@@ -641,33 +721,6 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 
             PC01_kw_tests_perbatch(df, bio_var, batch, output_root)
 
-    def predict_difference_RF(self):
-        # get the data
-        used_x = self.batch_corrected_df.copy() # note that standard scaler is already conducted
-        used_y = list(self.meta_data[self.bio_var])
-
-        # Creating the Training and Test set from data
-        X_train, X_test, y_train, y_test = train_test_split(used_x, used_y, test_size = self.test_percent, random_state = self.rng)
-        
-        # train random forest classifier and evaluate
-        clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
-        clf.fit(X_train, y_train)
-        y_pred = clf.predict(X_test)
-        average_acc = sum(y_pred==y_test)/len(y_test)
-        macro_precision = precision_score(y_test, y_pred, average = 'macro')
-        weighted_precision = precision_score(y_test, y_pred, average = 'weighted')
-        macro_recall = recall_score(y_test, y_pred, average = 'macro')
-        weighted_recall = recall_score(y_test, y_pred, average = 'weighted')
-        macro_f1 = f1_score(y_test, y_pred, average = 'macro')
-        weighted_f1 = f1_score(y_test, y_pred, average = 'weighted')
-        auc = roc_auc_score(y_test,  y_pred)
-        # find the most common element in y_test
-        most_common_element = max(set(y_test), key = y_test.count)
-        baseline_likelihood = sum(y_test==most_common_element)/len(y_test)
-        eval_df = pd.DataFrame(columns = ["average_acc", "macro_prec", "weighted_prec", "macro_recall", "weighted_recall", "macro_f1", "weighted_f1", "auc",  "baseline_likelihood"])
-        eval_df.loc[0] = [average_acc, macro_precision, weighted_precision, macro_recall, weighted_recall, macro_f1, weighted_f1, auc, baseline_likelihood]
-        eval_df.to_csv(self.output_root+"_"+self.bio_var+"_rf_evaluate.csv")
-    return
 
 # Glickman dataset 
 #################################################################################
@@ -795,21 +848,21 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 
 # # cdi 3 microbiomeHD
 # #################################################################################
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
-data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Dataset", "DiseaseState", n_pc=10)
-vars_use = ["Dataset"]
-IDCol = 'Sam_id'
-res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
-res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic/cdi_3_microbiomeHD_harmonicMic_1201', "DiseaseState", 30, False, 'Sam_id')
-Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony_1201', "DiseaseState", 30, False, 'Sam_id')
-res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", option = "harmony", PCA_first=True)
-Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony_PCs/cdi_3_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
-Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1201', "DiseaseState", 30, False, 'Sam_id')
-res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
-Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic_weighted/cdi_3_microbiomeHD_harmonicMic_weighted_1201', "DiseaseState", 30, False, 'Sam_id')
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
+# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+# PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Dataset", "DiseaseState", n_pc=10)
+# vars_use = ["Dataset"]
+# IDCol = 'Sam_id'
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+# Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic/cdi_3_microbiomeHD_harmonicMic_1201', "DiseaseState", 30, False, 'Sam_id')
+# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony_1201', "DiseaseState", 30, False, 'Sam_id')
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", option = "harmony", PCA_first=True)
+# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony_PCs/cdi_3_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1201', "DiseaseState", 30, False, 'Sam_id')
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
+# Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic_weighted/cdi_3_microbiomeHD_harmonicMic_weighted_1201', "DiseaseState", 30, False, 'Sam_id')
 
 
 # # benchmarking other methods: 
@@ -1093,3 +1146,9 @@ Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic_wei
 # methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
 # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 # #################################################################################
+
+
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/hanninganGD'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD"
+data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
+Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_nobc/hanninganGD_nobc_050223', "disease", 30,  False, 'patient_visit_id')
