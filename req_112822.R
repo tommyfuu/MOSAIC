@@ -6,7 +6,7 @@ install.packages("dplyr")
 install.packages("DT")
 install.packages("gmp")
 install.packages("Rmpfr")
-
+install.packages("coda.base")
 
 install.packages("BiocManager")
 

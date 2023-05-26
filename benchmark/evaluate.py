@@ -41,6 +41,10 @@ from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_sco
 from skbio.stats.distance import DissimilarityMatrix, permanova
 from sklearn.preprocessing import OneHotEncoder
 import time
+import rpy2.robjects as robjects
+from rpy2.robjects.packages import importr
+from rpy2.robjects import pandas2ri, numpy2ri
+
 
 # data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
 def generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root, option = "harmonicMic", PCA_first = False, diversity_weight = None):
@@ -369,27 +373,47 @@ class Evaluate(object):
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
-        ids = list(self.meta_data[self.IDCol])
-        np.savetxt('data.out', data, delimiter=',')
-        bc_div_bray = beta_diversity("braycurtis", data, ids)
-        # compute aitchison distance
-        data_clr = clr(data)
-        data_clr = np.nan_to_num(data_clr)
-        np.savetxt('data_clr.out', data_clr, delimiter=',')
-        # bc_div_aitch = beta_diversity("euclidean", data_clr, ids)
-        bc_div_aitch = pdist(data_clr)
-        bc_div_aitch = squareform(bc_div_aitch)
-        np.savetxt('bc_div_aitch.out', bc_div_aitch, delimiter=',')
-        print(bc_div_aitch.shape)
-        # bc_df_bray = pd.DataFrame(bc_div_bray.data, index=list(self.meta_data[self.IDCol]), columns=list(self.meta_data[self.IDCol]))
-        
-        # calculate R^2
-        permanova_results_bray = permanova(bc_div_bray, self.meta_data, column=R_sq_var, permutations=999)
-        # permanova_results_aitch = permanova(DissimilarityMatrix(bc_div_aitch), self.meta_data, column=R_sq_var, permutations=999)
 
-        bray_r2 = 1 - 1 / (1 + permanova_results_bray[4] * permanova_results_bray[3] / (permanova_results_bray[2] - permanova_results_bray[3] - 1))
-        # aitch_r2 = 1 - 1 / (1 + permanova_results_aitch[4] * permanova_results_aitch[3] / (permanova_results_aitch[2] - permanova_results_aitch[3] - 1))
-        print(R_sq_var, "bray_r2", bray_r2)
+        # attempting rpy2
+        #Must be activated
+        pandas2ri.activate()
+        # numpy2ri.activate()
+
+        # import r packages/functions
+        r = robjects.r
+        r.source('./PERMANOVA_supporting.R')
+        r_batch = self.meta_data[self.batch_var]
+        r_covariate = self.meta_data[self.covar]
+        PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_batch, r_covariate, self.covar)
+        print("______________PERMANOVA_R2_results______________")
+        bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
+        aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
+        print(bray_curtis_permanova_df)
+        # bray_anova = PERMANOVA_R2_results[0]
+        print("______________PERMANOVA_R2_results______________")
+        bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_permanova_R2.csv")
+        aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_permanova_R2.csv")
+        # ids = list(self.meta_data[self.IDCol])
+        # np.savetxt('data.out', data, delimiter=',')
+        # bc_div_bray = beta_diversity("braycurtis", data, ids)
+        # # compute aitchison distance
+        # data_clr = clr(data)
+        # data_clr = np.nan_to_num(data_clr)
+        # np.savetxt('data_clr.out', data_clr, delimiter=',')
+        # # bc_div_aitch = beta_diversity("euclidean", data_clr, ids)
+        # bc_div_aitch = pdist(data_clr)
+        # bc_div_aitch = squareform(bc_div_aitch)
+        # np.savetxt('bc_div_aitch.out', bc_div_aitch, delimiter=',')
+        # print(bc_div_aitch.shape)
+        # # bc_df_bray = pd.DataFrame(bc_div_bray.data, index=list(self.meta_data[self.IDCol]), columns=list(self.meta_data[self.IDCol]))
+        
+        # # calculate R^2
+        # permanova_results_bray = permanova(bc_div_bray, self.meta_data, column=R_sq_var, permutations=999)
+        # # permanova_results_aitch = permanova(DissimilarityMatrix(bc_div_aitch), self.meta_data, column=R_sq_var, permutations=999)
+
+        # bray_r2 = 1 - 1 / (1 + permanova_results_bray[4] * permanova_results_bray[3] / (permanova_results_bray[2] - permanova_results_bray[3] - 1))
+        # # aitch_r2 = 1 - 1 / (1 + permanova_results_aitch[4] * permanova_results_aitch[3] / (permanova_results_aitch[2] - permanova_results_aitch[3] - 1))
+        # print(R_sq_var, "bray_r2", bray_r2)
         # print("aitch_r2", aitch_r2)
         return
     
@@ -530,16 +554,18 @@ class Evaluate(object):
         
             # for each fold, also plot the roc plot
             # one hot encode y_test and y_pred
-            # y_test_zeroone = np.where(np.array(y_test) == most_common_element, 1, 0)
-            # y_pred_zeroone = np.where(np.array(y_pred) == most_common_element, 1, 0)
-            # print("y_test_zeroone", y_test_zeroone)
-            if self.poslabel == '':
-                self.poslabel = most_common_element
+            y_test_zeroone = np.where(np.array(y_test) == most_common_element, 1, 0)
+            y_pred_zeroone = np.where(np.array(y_pred) == most_common_element, 1, 0)
+            print("y_test_zeroone", y_test_zeroone, y_pred_zeroone)
+
+            # print(most_common_element)
+            # if self.poslabel == '':
+            #     self.poslabel = most_common_element
             RocCurveDisplay.from_predictions(
-                y_test, y_pred,
+                y_test_zeroone, y_pred_zeroone,
                 name=f"{self.bio_var} classification",
                 color="darkorange",
-                pos_label=self.poslabel
+                # pos_label=self.poslabel
             )
             plt.plot([0, 1], [0, 1], "k--", label="chance level (AUC = 0.5)")
             plt.axis("square")
@@ -1177,4 +1203,4 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/hanninganGD'
 output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD"
 data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
-Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_nobc/hanninganGD_nobc_050223', "disease", 30,  False, 'patient_visit_id')
+Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_nobc/hanninganGD_nobc_050223', "disease", 30,  'gender', 'patient_visit_id')
