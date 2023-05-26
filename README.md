@@ -2,9 +2,8 @@
 Harmony batch correction and meta-analysis method revised to be used for microbiome data.
 
 _Developed and maintained by_:  [Chenlian (Tom) Fu](tfu@g.hmc.edu)\
-_Advised by_: Dr. Wesley Tansey, Dr. Quaid Morris\
-_Collaborators (TB data source)_: Dr. Michael Glickman\
-_Affiliations_: Memorial Sloan Kettering Cancer Center, Weill Cornell Medicine
+_Advised by_: Dr. Wodan Ling, Dr. Wesley Tansey, Dr. Quaid Morris\
+_Affiliations_: Weill Cornell Medicine, Memorial Sloan Kettering Cancer Center
 
 ## 0. TODO
 
