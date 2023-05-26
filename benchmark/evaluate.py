@@ -799,17 +799,17 @@ address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cd
 output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
 data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
 PCA_vis_for_each_batch(data_mat, meta_data, output_root, "Dataset", "DiseaseState", n_pc=10)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
-# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-# Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic/cdi_3_microbiomeHD_harmonicMic_1201', "DiseaseState", 30, False, 'Sam_id')
-# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony_1201', "DiseaseState", 30, False, 'Sam_id')
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", option = "harmony", PCA_first=True)
-# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony_PCs/cdi_3_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1201', "DiseaseState", 30, False, 'Sam_id')
-# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
-# Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic_weighted/cdi_3_microbiomeHD_harmonicMic_weighted_1201', "DiseaseState", 30, False, 'Sam_id')
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic/cdi_3_microbiomeHD_harmonicMic_1201', "DiseaseState", 30, False, 'Sam_id')
+Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony_1201', "DiseaseState", 30, False, 'Sam_id')
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", option = "harmony", PCA_first=True)
+Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony_PCs/cdi_3_microbiomeHD_harmony_PCs', "DiseaseState", 30, False, 'Sam_id')
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_1201', "DiseaseState", 30, False, 'Sam_id')
+res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
+Evaluate(res, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmonicMic_weighted/cdi_3_microbiomeHD_harmonicMic_weighted_1201', "DiseaseState", 30, False, 'Sam_id')
 
 
 # # benchmarking other methods: 
