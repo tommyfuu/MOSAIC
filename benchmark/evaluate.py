@@ -487,7 +487,6 @@ class Evaluate(object):
     def predict_difference_RF(self):
         # get the data
         used_x = self.batch_corrected_df.copy() # note that standard scaler is already conducted
-        print(used_x)
         used_y = list(self.meta_data[self.bio_var])
 
         # Creating the Training and Test set from data
@@ -525,7 +524,7 @@ class Evaluate(object):
             auc = roc_auc_score(y_test_oh,  y_pred_oh)
             # find the most common element in y_test
             most_common_element = max(set(y_test), key = y_test.count)
-            baseline_likelihood = sum(y_test==most_common_element)/len(y_test)
+            baseline_likelihood = y_test.count(most_common_element)/len(y_test)
             eval_df.loc[len(eval_df)] = [i+1, average_acc, macro_precision, weighted_precision, macro_recall, weighted_recall, macro_f1, weighted_f1, auc, baseline_likelihood]
         eval_df.to_csv(self.output_root+"_"+self.bio_var+"_rf_evaluate.csv")
         return
