@@ -1,3 +1,4 @@
+# open R in terminal, then copy and paste the following command one by one to install the necessary packages
 install.packages("xtable")
 install.packages("vegan")
 install.packages("doParallel")
@@ -6,8 +7,8 @@ install.packages("DT")
 install.packages("gmp")
 install.packages("Rmpfr")
 
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+
+install.packages("BiocManager")
 
 BiocManager::install("sva")
 BiocManager::install("limma")
@@ -16,7 +17,7 @@ BiocManager::install("curatedMetagenomicData")
 BiocManager::install("mia")
 BiocManager::install("phyloseq")
 BiocManager::install("mixOmics")
-BiocManager::install("SparseDOSSA")
+BiocManager::install("sparseDOSSA")
 
 install.packages("remotes")
-remotes::install_github("wdl2459/ConQuR")
+remotes::install_github("wdl2459/ConQuR", force=TRUE)

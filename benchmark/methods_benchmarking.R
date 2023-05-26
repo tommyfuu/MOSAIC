@@ -149,28 +149,28 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # batch_ref = 'HMP_2019_ibdmdb')
 
 # adenoma 5 CMD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/adenoma_5_CMD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
+run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_count_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_meta_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
 dataset = "study_name",
 batch_ref = 'FengQ_2015',
 # covar = c("gender")
 )
 
-# CRC_8_CMD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
-dataset = "study_name",
-batch_ref = 'FengQ_2015',
-# covar = c("gender")
-)
+# # CRC_8_CMD
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
+# dataset = "study_name",
+# batch_ref = 'FengQ_2015',
+# # covar = c("gender")
+# )
 
-# T2D 10 CMD
-run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
-'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
-dataset = "study_name",
-batch_ref = 'Castro-NallarE_2015',
-# covar = c("gender")
-)
+# # T2D 10 CMD
+# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
+# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
+# dataset = "study_name",
+# batch_ref = 'Castro-NallarE_2015',
+# # covar = c("gender")
+# )
