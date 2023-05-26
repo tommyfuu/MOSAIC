@@ -7,6 +7,8 @@ install.packages("DT")
 install.packages("gmp")
 install.packages("Rmpfr")
 install.packages("coda.base")
+install.packages("ade4")
+install.packages("compositions")
 
 install.packages("BiocManager")
 

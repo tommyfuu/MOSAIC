@@ -24,7 +24,8 @@
 #'
 #' @export
 library("vegan")
-
+library("ade4")
+library("compositions")
 PERMANOVA_R2 <- function(TAX, batchid, covariates, covar_name){
   # edited from Wodan's script, not exactly the same - can only take one covariate at a time
   tab_count = tab_rel = matrix(ncol=3, nrow=2)
@@ -79,7 +80,7 @@ PERMANOVA_R2 <- function(TAX, batchid, covariates, covar_name){
 #'
 #' @export
 
-Plot_PCoA <- function(TAX, factor, sub_index=NULL, dissimilarity="Bray", GUniFrac_type="d_0.5", tree=NULL, main=NULL, aa=1.5){
+Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GUniFrac_type="d_0.5", tree=NULL, main=NULL, aa=1.5){
 
   nfactor = length(table(factor))
   if (is.null(sub_index)){
@@ -92,13 +93,15 @@ Plot_PCoA <- function(TAX, factor, sub_index=NULL, dissimilarity="Bray", GUniFra
     bc =  vegdist(TAX[index, sub_index])
     MDS = cmdscale(bc, k=4)
     s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = main, csub = aa)
-
+    # save figure
+    png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
   } else if (dissimilarity == "Aitch"){
 
     Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
     s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = main, csub = aa)
-
+    # save figure
+    png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
   } else if (dissimilarity == "GUniFrac"){
 
     index = which( apply(TAX[, sub_index], 1, sum) > 0 )
@@ -113,7 +116,6 @@ Plot_PCoA <- function(TAX, factor, sub_index=NULL, dissimilarity="Bray", GUniFra
   } else{
     stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")
   }
-
 }
 
 

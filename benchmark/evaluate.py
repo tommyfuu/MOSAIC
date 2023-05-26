@@ -393,6 +393,10 @@ class Evaluate(object):
         print("______________PERMANOVA_R2_results______________")
         bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_permanova_R2.csv")
         aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_permanova_R2.csv")
+
+        # try plotting stuff
+        r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
+        r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Aitch", main="Aitchinson")
         # ids = list(self.meta_data[self.IDCol])
         # np.savetxt('data.out', data, delimiter=',')
         # bc_div_bray = beta_diversity("braycurtis", data, ids)
