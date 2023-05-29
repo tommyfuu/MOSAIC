@@ -1,0 +1,70 @@
+	patient_visit_id	study_name	subject_id	body_site	antibiotics_current_use	study_condition	disease	age	age_category	gender	country	non_westernized	sequencing_platform	DNA_extraction_kit	PMID	number_reads	number_bases	minimum_read_length	median_read_length	NCBI_accession	curator	BMI	family	days_from_first_collection	family_role	location	visit_number	disease_subtype	treatment	disease_location	calprotectin	remission	interval
+CSM79HLA	CSM79HLA	HMP_2019_ibdmdb	C3004	stool	no	IBD	IBD	47.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	25000138	2267607905	50	101		Paolo_Manghi			252		Los_Angeles	22	UC					8.0
+CSM79HLA_TR	CSM79HLA_TR	HMP_2019_ibdmdb	C3004	stool	no	IBD	IBD	47.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	16895596	1606192251	50	101		Paolo_Manghi			252		Los_Angeles	22	UC					8.0
+CSM79HLG	CSM79HLG	HMP_2019_ibdmdb	C3004	stool	no	IBD	IBD	47.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	21309568	1918057914	50	101		Paolo_Manghi			266		Los_Angeles	23	UC					8.0
+CSM7KOMR_P	CSM7KOMR_P	HMP_2019_ibdmdb	C3011	stool	no	IBD	IBD	37.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	29311644	21149048	2069250618	51	101		Paolo_Manghi	41.5		255		Los_Angeles	25	UC					8.0
+CSM7KOMT	CSM7KOMT	HMP_2019_ibdmdb	C3011	stool	no	IBD	IBD	37.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	23719196	2188903487	50	101		Paolo_Manghi	41.5		265		Los_Angeles	26	UC					8.0
+CSM7KONS_P	CSM7KONS_P	HMP_2019_ibdmdb	C3013	stool	no	IBD	IBD	26.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	29311644	19004950	1860706159	50	101		Paolo_Manghi	22.2		240		Los_Angeles	23	UC					8.0
+CSM7KONU	CSM7KONU	HMP_2019_ibdmdb	C3013	stool	no	IBD	IBD	26.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	1831422	167172084	50	101		Paolo_Manghi	22.2		254		Los_Angeles	24	UC					8.0
+CSM7KOPG	CSM7KOPG	HMP_2019_ibdmdb	C3015	stool	no	IBD	IBD	50.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	23550964	2213776210	50	101		Paolo_Manghi	22.4		252		Los_Angeles	22	UC					8.0
+CSM7KOPI	CSM7KOPI	HMP_2019_ibdmdb	C3015	stool	no	IBD	IBD	50.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	22726182	2054235004	50	101		Paolo_Manghi	22.4		266		Los_Angeles	23	UC					8.0
+CSM7KOKD	CSM7KOKD	HMP_2019_ibdmdb	C3016	stool	yes	IBD	IBD	32.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	18508730	1779619597	50	101		Paolo_Manghi	24.7		240		Los_Angeles	20	CD					8.0
+CSM7KOPS	CSM7KOPS	HMP_2019_ibdmdb	C3016	stool	yes	IBD	IBD	32.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	20355936	1941237903	50	101		Paolo_Manghi	24.7		254		Los_Angeles	22	CD					8.0
+CSM7KOPU	CSM7KOPU	HMP_2019_ibdmdb	C3016	stool	yes	IBD	IBD	32.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	17910510	1712793483	50	101		Paolo_Manghi	24.7		266		Los_Angeles	23	CD					8.0
+CSM7KOKP_P	CSM7KOKP_P	HMP_2019_ibdmdb	C3017	stool	no	IBD	IBD	45.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	29311644	26534230	2582625185	50	101		Paolo_Manghi	24.2		240		Los_Angeles	20	CD					8.0
+CSM7KOQX	CSM7KOQX	HMP_2019_ibdmdb	C3017	stool	yes	IBD	IBD	45.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	31142855	18772260	1674125426	50	101		Paolo_Manghi	24.2		260		Los_Angeles	22	CD					8.0
+CSM7KOQZ_P	CSM7KOQZ_P	HMP_2019_ibdmdb	C3017	stool	yes	IBD	IBD	45.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	29311644	32020614	3131303173	50	101		Paolo_Manghi	24.2		266		Los_Angeles	23	CD					8.0
+CSM7KOOP	CSM7KOOP	HMP_2019_ibdmdb	C3022	stool	no	control	healthy	69.0	senior	male	USA	no	IlluminaHiSeq	Chemagen	31142855	25179406	2354105429	50	101		Paolo_Manghi			241		Los_Angeles	20						8.0
+CSMA88CB	CSMA88CB	HMP_2019_ibdmdb	C3027	stool	no	IBD	IBD	36.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	11985412	1073113046	50	101		Paolo_Manghi			257		Los_Angeles	20	CD					8.0
+CSMA9J65	CSMA9J65	HMP_2019_ibdmdb	C3027	stool	no	IBD	IBD	36.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	10743858	1028297667	50	101		Paolo_Manghi			267		Los_Angeles	22	CD					8.0
+CSM9X1ZC	CSM9X1ZC	HMP_2019_ibdmdb	C3031	stool	no	IBD	IBD		adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	14142398	1358609101	50	101		Paolo_Manghi			247		Los_Angeles	17	CD					8.0
+HSM7CYX6	HSM7CYX6	HMP_2019_ibdmdb	H4006	stool	no	IBD	IBD	8.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	23427424	2172584473	50	101		Paolo_Manghi	26.6		252		Cincinnati	22	CD					8.0
+HSM7CYX8	HSM7CYX8	HMP_2019_ibdmdb	H4006	stool	no	IBD	IBD	8.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	23697794	2159130515	50	101		Paolo_Manghi	26.6		265		Cincinnati	23	CD					8.0
+HSM7CZ2J_P	HSM7CZ2J_P	HMP_2019_ibdmdb	H4008	stool	no	control	healthy	13.0	schoolage	female	USA	no	IlluminaHiSeq	Chemagen	29311644	8667144	850327072	51	101		Paolo_Manghi	35.6		253		Cincinnati	24						8.0
+HSM7CYYR_P	HSM7CYYR_P	HMP_2019_ibdmdb	H4009	stool	no	control	healthy	6.0	child	female	USA	no	IlluminaHiSeq	Chemagen	29311644	29386366	2871139686	50	101		Paolo_Manghi	14.0		250		Cincinnati	23						8.0
+HSM7CYYV_P	HSM7CYYV_P	HMP_2019_ibdmdb	H4009	stool	no	control	healthy	6.0	child	female	USA	no	IlluminaHiSeq	Chemagen	29311644	9102482	891265478	51	101		Paolo_Manghi	14.0		263		Cincinnati	25						8.0
+HSM67VH1	HSM67VH1	HMP_2019_ibdmdb	H4010	stool	no	IBD	IBD	13.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	21162672	1954073357	50	101		Paolo_Manghi	22.0		241		Cincinnati	27	UC					8.0
+HSM7J4QD	HSM7J4QD	HMP_2019_ibdmdb	H4015	stool	no	IBD	IBD	15.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	1437188	129664131	50	101		Paolo_Manghi	19.2		253		Cincinnati	23	CD					8.0
+HSM7J4QF	HSM7J4QF	HMP_2019_ibdmdb	H4015	stool	no	IBD	IBD	15.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	34556040	3171759173	50	101		Paolo_Manghi	19.2		266		Cincinnati	24	CD					8.0
+HSM7CYYD	HSM7CYYD	HMP_2019_ibdmdb	H4017	stool	no	IBD	IBD	16.0	schoolage	female	USA	no	IlluminaHiSeq	Chemagen	31142855	33440120	3103131942	50	101		Paolo_Manghi	28.6		244		Cincinnati	20	CD					8.0
+HSM7CYY9	HSM7CYY9	HMP_2019_ibdmdb	H4017	stool	no	IBD	IBD	16.0	schoolage	female	USA	no	IlluminaHiSeq	Chemagen	31142855	35610068	3324212638	50	101		Paolo_Manghi	28.6		253		Cincinnati	22	CD					8.0
+HSM7CYYB	HSM7CYYB	HMP_2019_ibdmdb	H4017	stool	yes	IBD	IBD	16.0	schoolage	female	USA	no	IlluminaHiSeq	Chemagen	31142855	13204906	1234413140	50	101		Paolo_Manghi	28.6		265		Cincinnati	23	CD					8.0
+HSM7J4PM	HSM7J4PM	HMP_2019_ibdmdb	H4019	stool	no	IBD	IBD	11.0	child	female	USA	no	IlluminaHiSeq	Chemagen	31142855	16358170	1498416837	50	101		Paolo_Manghi	16.9		252		Cincinnati	20	UC					8.0
+HSM7J4M4	HSM7J4M4	HMP_2019_ibdmdb	H4019	stool	no	IBD	IBD	11.0	child	female	USA	no	IlluminaHiSeq	Chemagen	31142855	11648456	1046043885	50	101		Paolo_Manghi	16.9		259		Cincinnati	22	UC					8.0
+HSM7J4M6	HSM7J4M6	HMP_2019_ibdmdb	H4019	stool	no	IBD	IBD	11.0	child	female	USA	no	IlluminaHiSeq	Chemagen	31142855	13131826	1190845990	50	101		Paolo_Manghi	16.9		266		Cincinnati	23	UC					8.0
+HSM7J4PY	HSM7J4PY	HMP_2019_ibdmdb	H4020	stool	no	IBD	IBD	13.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	20859816	1876752051	50	101		Paolo_Manghi	27.7		246		Cincinnati	20	CD					8.0
+HSM7J4IO	HSM7J4IO	HMP_2019_ibdmdb	H4020	stool	no	IBD	IBD	13.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	18251998	1635464174	50	101		Paolo_Manghi	27.7		259		Cincinnati	22	CD					8.0
+HSM7J4IP	HSM7J4IP	HMP_2019_ibdmdb	H4020	stool	no	IBD	IBD	13.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	22070314	2023685155	50	101		Paolo_Manghi	27.7		267		Cincinnati	23	CD					8.0
+HSM7J4KC	HSM7J4KC	HMP_2019_ibdmdb	H4023	stool	no	control	healthy	16.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	30367892	2781396278	50	101		Paolo_Manghi	18.8		251		Cincinnati	22						8.0
+HSM7J4KG	HSM7J4KG	HMP_2019_ibdmdb	H4023	stool	no	control	healthy	16.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	14850298	1346596673	50	101		Paolo_Manghi	18.8		264		Cincinnati	24						8.0
+HSM7J4I9	HSM7J4I9	HMP_2019_ibdmdb	H4024	stool	no	control	healthy	11.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	16996066	1542297224	50	101		Paolo_Manghi	15.4		243		Cincinnati	20						8.0
+HSMA33MA	HSMA33MA	HMP_2019_ibdmdb	H4035	stool	no	IBD	IBD	16.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	12812078	1181827355	50	101		Paolo_Manghi	31.0		259		Cincinnati	22	UC					8.0
+HSMA33MC	HSMA33MC	HMP_2019_ibdmdb	H4035	stool	yes	IBD	IBD	16.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	5213536	482494697	50	101		Paolo_Manghi	31.0		266		Cincinnati	23	UC					8.0
+MSM5LLDA	MSM5LLDA	HMP_2019_ibdmdb	M2008	stool	no	IBD	IBD	30.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	16652100	1540092338	50	101		Paolo_Manghi	24.1		247		Boston	22	CD					8.0
+MSM6J2QB	MSM6J2QB	HMP_2019_ibdmdb	M2028	stool	no	IBD	IBD	24.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	24145154	2231385430	50	101		Paolo_Manghi	20.9		254		Boston	20	CD					8.0
+MSM79HBR	MSM79HBR	HMP_2019_ibdmdb	M2034	stool	yes	IBD	IBD	22.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	23394958	2145085800	50	101		Paolo_Manghi	31.2		240		Boston	22	CD					8.0
+MSM79HBT	MSM79HBT	HMP_2019_ibdmdb	M2034	stool	yes	IBD	IBD	22.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	13735802	1311344429	50	101		Paolo_Manghi	31.2		248		Boston	23	CD					8.0
+MSM79HBV	MSM79HBV	HMP_2019_ibdmdb	M2034	stool	no	IBD	IBD	22.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	13603810	1257894169	50	101		Paolo_Manghi	31.2		261		Boston	24	CD					8.0
+MSM79HA1	MSM79HA1	HMP_2019_ibdmdb	M2042	stool	no	control	healthy	44.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	31142855	39422114	3684174241	50	101		Paolo_Manghi	24.5		247		Boston	24						8.0
+MSM9VZLT	MSM9VZLT	HMP_2019_ibdmdb	M2064	stool	no	IBD	IBD	74.0	senior	male	USA	no	IlluminaHiSeq	Chemagen	31142855	17650922	1605420915	50	101		Paolo_Manghi	27.7		265		Boston	20	UC					8.0
+MSM7J16R	MSM7J16R	HMP_2019_ibdmdb	M2068	stool	no	IBD	IBD	19.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	27249436	2548285012	50	101		Paolo_Manghi	21.3		244		Boston	20	CD					8.0
+MSM9VZJB	MSM9VZJB	HMP_2019_ibdmdb	M2068	stool	no	IBD	IBD	19.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	18435608	1689320496	50	101		Paolo_Manghi	21.3		254		Boston	22	CD					8.0
+MSM9VZP1	MSM9VZP1	HMP_2019_ibdmdb	M2069	stool	no	IBD	IBD	29.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	21572370	1993841129	50	101		Paolo_Manghi	19.1		245		Boston	20	UC					8.0
+MSM9VZP3	MSM9VZP3	HMP_2019_ibdmdb	M2069	stool	no	IBD	IBD	29.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	17098310	1597697418	50	101		Paolo_Manghi	19.1		256		Boston	22	UC					8.0
+MSMA26AV	MSMA26AV	HMP_2019_ibdmdb	M2071	stool	no	IBD	IBD	26.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	16725362	1505970304	50	101		Paolo_Manghi			265		Boston	10	UC					8.0
+MSM9VZHJ	MSM9VZHJ	HMP_2019_ibdmdb	M2072	stool	no	control	healthy	51.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	31142855	18863648	1717421617	50	101		Paolo_Manghi	28.7		248		Boston	22						8.0
+MSM9VZHL	MSM9VZHL	HMP_2019_ibdmdb	M2072	stool	no	control	healthy	51.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	31142855	10217370	873755474	50	98		Paolo_Manghi	28.7		263		Boston	23						8.0
+MSMAPC5B	MSMAPC5B	HMP_2019_ibdmdb	M2083	stool	no	IBD	IBD	25.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	31142855	14327388	1292672639	50	101		Paolo_Manghi			240		Boston	18	UC					8.0
+MSMAPC6K	MSMAPC6K	HMP_2019_ibdmdb	M2084	stool	no	control	healthy	23.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	31372072	2821020517	50	101		Paolo_Manghi	21.6		246		Boston	22						8.0
+MSMAPC6M	MSMAPC6M	HMP_2019_ibdmdb	M2084	stool	no	control	healthy	23.0	adult	female	USA	no	IlluminaHiSeq	Chemagen	31142855	22645322	2052993610	50	101		Paolo_Manghi	21.6		260		Boston	23						8.0
+MSMB4LYB	MSMB4LYB	HMP_2019_ibdmdb	M2085	stool	no	IBD	IBD	23.0	adult	male	USA	no	IlluminaHiSeq	Chemagen	31142855	23415036	2106776239	50	101		Paolo_Manghi			269		Boston	25	CD					8.0
+PSM7J141	PSM7J141	HMP_2019_ibdmdb	P6009	stool	no	IBD	IBD	16.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	31142855	41541936	3886695944	50	101		Paolo_Manghi	22.1		245		Boston	26	CD					8.0
+PSM7J143_P	PSM7J143_P	HMP_2019_ibdmdb	P6009	stool	no	IBD	IBD	16.0	schoolage	male	USA	no	IlluminaHiSeq	Chemagen	29311644	32615336	3226475666	51	101		Paolo_Manghi	22.1		259		Boston	27	CD					8.0
+PSM7J18M	PSM7J18M	HMP_2019_ibdmdb	P6010	stool	no	IBD	IBD	10.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	18581866	1736644692	50	101		Paolo_Manghi	19.0		251		Boston	22	CD					8.0
+PSM7J18Q	PSM7J18Q	HMP_2019_ibdmdb	P6012	stool	no	IBD	IBD	16.0	schoolage	female	USA	no	IlluminaHiSeq	Chemagen	31142855	26020298	2394732661	50	101		Paolo_Manghi	21.1		249		Boston	20	UC					8.0
+PSM7J12D	PSM7J12D	HMP_2019_ibdmdb	P6013	stool	no	IBD	IBD	6.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	24499164	2292996713	50	101		Paolo_Manghi	13.5		248		Boston	20	UC					8.0
+PSM7J12F	PSM7J12F	HMP_2019_ibdmdb	P6013	stool	no	IBD	IBD	6.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	11994510	1143210560	50	101		Paolo_Manghi	13.5		252		Boston	22	UC					8.0
+PSM7J169	PSM7J169	HMP_2019_ibdmdb	P6013	stool	no	IBD	IBD	6.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	19646980	1865554718	50	101		Paolo_Manghi	13.5		266		Boston	23	UC					8.0
+PSM7J173	PSM7J173	HMP_2019_ibdmdb	P6017	stool	no	control	healthy	11.0	child	male	USA	no	IlluminaHiSeq	Chemagen	31142855	25195306	2409845740	50	101		Paolo_Manghi			250		Boston	16						8.0
+PSM7J15U	PSM7J15U	HMP_2019_ibdmdb	P6018	stool	no	control	healthy	17.0	schoolage	female	USA	no	IlluminaHiSeq	Chemagen	31142855	9405068	843466279	50	101		Paolo_Manghi	20.9		252		Boston	22						8.0
+PSMA265D	PSMA265D	HMP_2019_ibdmdb	P6018	stool	no	control	healthy	17.0	schoolage	female	USA	no	IlluminaHiSeq	Chemagen	31142855	24614304	2351472640	50	101		Paolo_Manghi	20.9		266		Boston	23						8.0

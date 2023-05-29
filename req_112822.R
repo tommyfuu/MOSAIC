@@ -23,3 +23,4 @@ BiocManager::install("sparseDOSSA")
 
 install.packages("remotes")
 remotes::install_github("wdl2459/ConQuR", force=TRUE)
+remotes::install_github("mengyu-he/MIDAS")
