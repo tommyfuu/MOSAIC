@@ -9,6 +9,7 @@ install.packages("Rmpfr")
 install.packages("coda.base")
 install.packages("ade4")
 install.packages("compositions")
+install.packages("bindata")
 
 install.packages("BiocManager")
 

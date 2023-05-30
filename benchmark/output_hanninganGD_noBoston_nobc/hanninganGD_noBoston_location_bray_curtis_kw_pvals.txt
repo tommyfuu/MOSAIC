@@ -1,4 +1,4 @@
-bray_curtis_global_pvals, by PCs [0.039126438550060656, 0.8193731467312597, 0.8242201214555425] 
+bray_curtis_global_pvals, by PCs [0.039126438550060094, 0.8193731467312597, 0.8242201214555425] 
 
 bray_curtis_pairwise_pval 
 

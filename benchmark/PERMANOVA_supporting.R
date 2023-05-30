@@ -26,9 +26,12 @@
 library("vegan")
 library("ade4")
 library("compositions")
-PERMANOVA_R2 <- function(TAX, batchid, covariates, covar_name){
+PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, covar_name){
   # edited from Wodan's script, not exactly the same - can only take one covariate at a time
-  tab_count = tab_rel = matrix(ncol=3, nrow=2)
+  if (is.null(covariates)){
+    tab_count = tab_rel = matrix(ncol=3, nrow=1)
+  } else {tab_count = tab_rel = matrix(ncol=3, nrow=2)}
+#   tab_count = tab_rel = matrix(ncol=3, nrow=2)
   colnames(tab_count) = colnames(tab_rel) = c("standard", "sqrt.dist=T", "add=T")
   rownames(tab_count) = rownames(tab_rel) = c("batch", covar_name)
 
@@ -37,21 +40,24 @@ PERMANOVA_R2 <- function(TAX, batchid, covariates, covar_name){
   tab_count[1,2] = adonis2(formula = TAX ~ batchid, sqrt.dist=TRUE)$R2[1]
   tab_count[1,3] = adonis2(formula = TAX ~ batchid, add=TRUE)$R2[1]
 
-  tab_count[2,1] = adonis(formula = TAX ~ ., data=data.frame(covariates))$aov.tab[1, 5]
-  tab_count[2,2] = adonis2(formula = TAX ~ ., data=data.frame(covariates), sqrt.dist=TRUE)$R2[1]
-  tab_count[2,3] = adonis2(formula = TAX ~ ., data=data.frame(covariates), add=TRUE)$R2[1]
-  
+  if (is.null(covariates)){
+    tab_count[2,1] = adonis(formula = TAX ~ ., data=data.frame(covariates))$aov.tab[1, 5]
+    tab_count[2,2] = adonis2(formula = TAX ~ ., data=data.frame(covariates), sqrt.dist=TRUE)$R2[1]
+    tab_count[2,3] = adonis2(formula = TAX ~ ., data=data.frame(covariates), add=TRUE)$R2[1]
+  }
+
   # aitchison
   Z = coda.base::dist(TAX+0.5, method="aitchison")
 
   tab_rel[1,1] = adonis(formula = Z  ~ batchid, method="euclidean")$aov.tab[1, 5]
   tab_rel[1,2] = adonis2(formula = Z  ~ batchid, method="euclidean", sqrt.dist=TRUE)$R2[1]
   tab_rel[1,3] = adonis2(formula = Z  ~ batchid, method="euclidean", add=TRUE)$R2[1]
-
-  tab_rel[2,1] = adonis(formula = Z  ~ ., data=data.frame(covariates), method="euclidean")$aov.tab[1, 5]
-  tab_rel[2,2] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", sqrt.dist=TRUE)$R2[1]
-  tab_rel[2,3] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", add=TRUE)$R2[1]
-
+  
+  if (is.null(covariates)){
+    tab_rel[2,1] = adonis(formula = Z  ~ ., data=data.frame(covariates), method="euclidean")$aov.tab[1, 5]
+    tab_rel[2,2] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", sqrt.dist=TRUE)$R2[1]
+    tab_rel[2,3] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", add=TRUE)$R2[1]
+  }
   return(list(tab_count=tab_count, tab_rel=tab_rel))
 
 }
@@ -94,14 +100,15 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
     MDS = cmdscale(bc, k=4)
     s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = main, csub = aa)
     # save figure
-    png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
+    # png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
+    pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
   } else if (dissimilarity == "Aitch"){
 
     Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
     s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = main, csub = aa)
     # save figure
-    png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
+    pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
   } else if (dissimilarity == "GUniFrac"){
 
     index = which( apply(TAX[, sub_index], 1, sum) > 0 )

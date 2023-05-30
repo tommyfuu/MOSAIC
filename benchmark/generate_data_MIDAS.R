@@ -1,3 +1,6 @@
+load("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/ibd_150.Rdata") 
+library("bindata")
+otu_original = otu
 libsize = rowSums(otu_original)
 
 p = ncol(otu_original)
