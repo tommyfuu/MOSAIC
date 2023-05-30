@@ -1,0 +1,8 @@
+,patient_visit_id,study_name,subject_id,body_site,antibiotics_current_use,study_condition,disease,age,age_category,gender,country,non_westernized,sequencing_platform,DNA_extraction_kit,PMID,number_reads,number_bases,minimum_read_length,median_read_length,NCBI_accession,curator,BMI,family,days_from_first_collection,family_role,location,visit_number,disease_subtype,treatment,disease_location,calprotectin,remission,interval
+CSMAHYLR,CSMAHYLR,HMP_2019_ibdmdb,C3022,stool,no,control,healthy,69.0,senior,male,USA,no,IlluminaHiSeq,Chemagen,31142855,18355540,1727952893,50,101,,Paolo_Manghi,,,338,,Los_Angeles,27,,,,,,11.0
+MSM79H69,MSM79H69,HMP_2019_ibdmdb,M2028,stool,no,IBD,IBD,24.0,adult,female,USA,no,IlluminaHiSeq,Chemagen,31142855,22090728,2032621106,50,101,,Paolo_Manghi,20.9,,331,,Boston,26,CD,,,,,11.0
+MSM79H6B,MSM79H6B,HMP_2019_ibdmdb,M2028,stool,no,IBD,IBD,24.0,adult,female,USA,no,IlluminaHiSeq,Chemagen,31142855,31037294,2888851699,50,101,,Paolo_Manghi,20.9,,345,,Boston,27,CD,,,,,11.0
+MSMA26ET,MSMA26ET,HMP_2019_ibdmdb,M2064,stool,no,IBD,IBD,74.0,senior,male,USA,no,IlluminaHiSeq,Chemagen,31142855,16051588,1451627427,50,101,,Paolo_Manghi,27.7,,351,,Boston,24,UC,,,,,11.0
+MSMA26EZ,MSMA26EZ,HMP_2019_ibdmdb,M2064,stool,no,IBD,IBD,74.0,senior,male,USA,no,IlluminaHiSeq,Chemagen,31142855,17729658,1642022175,50,101,,Paolo_Manghi,27.7,,356,,Boston,25,UC,,,,,11.0
+MSMA26AT,MSMA26AT,HMP_2019_ibdmdb,M2068,stool,no,IBD,IBD,19.0,adult,female,USA,no,IlluminaHiSeq,Chemagen,31142855,17759516,1647567117,50,101,,Paolo_Manghi,21.3,,335,,Boston,27,CD,,,,,11.0
+PSM7J14T,PSM7J14T,HMP_2019_ibdmdb,P6010,stool,no,IBD,IBD,10.0,child,male,USA,no,IlluminaHiSeq,Chemagen,31142855,15677300,1414688421,50,101,,Paolo_Manghi,19.0,,335,,Boston,27,CD,,,,,11.0
