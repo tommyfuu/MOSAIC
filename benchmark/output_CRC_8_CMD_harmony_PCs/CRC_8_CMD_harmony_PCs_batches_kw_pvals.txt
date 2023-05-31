@@ -2,237 +2,237 @@ global batch kw p-vals
 
 
 
-. PC0 across all batches, p-val =  4.022612424220987e-10 
+. PC0 across all batches, p-val =  6.946259413980131e-09 
 
-. PC1 across all batches, p-val =  7.106991792280248e-20 
+. PC1 across all batches, p-val =  1.2762575071473522e-18 
 
 global pair-wise batch kw p-vals 
 
 current batch pair ('FengQ_2015', 'GuptaA_2019') 
 
-. PC0 ('FengQ_2015', 'GuptaA_2019') 0.001530370849323459 # samples in batch FengQ_2015: 29 # samples in batch GuptaA_2019: 60
-. PC1 ('FengQ_2015', 'GuptaA_2019') 6.007466172680569e-08 # samples in batch FengQ_2015: 29 # samples in batch GuptaA_2019: 60
+. PC0 ('FengQ_2015', 'GuptaA_2019') 0.0013559040827617642 # samples in batch FengQ_2015: 29 # samples in batch GuptaA_2019: 60
+. PC1 ('FengQ_2015', 'GuptaA_2019') 7.302536839228911e-08 # samples in batch FengQ_2015: 29 # samples in batch GuptaA_2019: 60
 current batch pair ('FengQ_2015', 'HanniganGD_2017') 
 
-. PC0 ('FengQ_2015', 'HanniganGD_2017') 0.33961830010872585 # samples in batch FengQ_2015: 29 # samples in batch HanniganGD_2017: 55
-. PC1 ('FengQ_2015', 'HanniganGD_2017') 0.14607173477491026 # samples in batch FengQ_2015: 29 # samples in batch HanniganGD_2017: 55
+. PC0 ('FengQ_2015', 'HanniganGD_2017') 0.46592465958515716 # samples in batch FengQ_2015: 29 # samples in batch HanniganGD_2017: 55
+. PC1 ('FengQ_2015', 'HanniganGD_2017') 0.08771694031024432 # samples in batch FengQ_2015: 29 # samples in batch HanniganGD_2017: 55
 current batch pair ('FengQ_2015', 'VogtmannE_2016') 
 
-. PC0 ('FengQ_2015', 'VogtmannE_2016') 0.00898739912474266 # samples in batch FengQ_2015: 29 # samples in batch VogtmannE_2016: 110
-. PC1 ('FengQ_2015', 'VogtmannE_2016') 4.567576390404787e-07 # samples in batch FengQ_2015: 29 # samples in batch VogtmannE_2016: 110
+. PC0 ('FengQ_2015', 'VogtmannE_2016') 0.03533132164219729 # samples in batch FengQ_2015: 29 # samples in batch VogtmannE_2016: 110
+. PC1 ('FengQ_2015', 'VogtmannE_2016') 1.6004059860773025e-07 # samples in batch FengQ_2015: 29 # samples in batch VogtmannE_2016: 110
 current batch pair ('FengQ_2015', 'WirbelJ_2018') 
 
-. PC0 ('FengQ_2015', 'WirbelJ_2018') 0.041779121133673075 # samples in batch FengQ_2015: 29 # samples in batch WirbelJ_2018: 125
-. PC1 ('FengQ_2015', 'WirbelJ_2018') 0.005676765876936072 # samples in batch FengQ_2015: 29 # samples in batch WirbelJ_2018: 125
+. PC0 ('FengQ_2015', 'WirbelJ_2018') 0.03951144030670681 # samples in batch FengQ_2015: 29 # samples in batch WirbelJ_2018: 125
+. PC1 ('FengQ_2015', 'WirbelJ_2018') 0.0014635605642624074 # samples in batch FengQ_2015: 29 # samples in batch WirbelJ_2018: 125
 current batch pair ('FengQ_2015', 'YachidaS_2019') 
 
-. PC0 ('FengQ_2015', 'YachidaS_2019') 0.046988148935535226 # samples in batch FengQ_2015: 29 # samples in batch YachidaS_2019: 504
-. PC1 ('FengQ_2015', 'YachidaS_2019') 1.7872211212723987e-07 # samples in batch FengQ_2015: 29 # samples in batch YachidaS_2019: 504
+. PC0 ('FengQ_2015', 'YachidaS_2019') 0.033770447372464714 # samples in batch FengQ_2015: 29 # samples in batch YachidaS_2019: 504
+. PC1 ('FengQ_2015', 'YachidaS_2019') 2.2721643365726543e-07 # samples in batch FengQ_2015: 29 # samples in batch YachidaS_2019: 504
 current batch pair ('FengQ_2015', 'YuJ_2015') 
 
-. PC0 ('FengQ_2015', 'YuJ_2015') 0.3016668701758204 # samples in batch FengQ_2015: 29 # samples in batch YuJ_2015: 83
-. PC1 ('FengQ_2015', 'YuJ_2015') 3.451545482551691e-05 # samples in batch FengQ_2015: 29 # samples in batch YuJ_2015: 83
+. PC0 ('FengQ_2015', 'YuJ_2015') 0.13766664410117951 # samples in batch FengQ_2015: 29 # samples in batch YuJ_2015: 83
+. PC1 ('FengQ_2015', 'YuJ_2015') 4.6013771668330175e-05 # samples in batch FengQ_2015: 29 # samples in batch YuJ_2015: 83
 current batch pair ('FengQ_2015', 'ZellerG_2014') 
 
-. PC0 ('FengQ_2015', 'ZellerG_2014') 0.02859732357756671 # samples in batch FengQ_2015: 29 # samples in batch ZellerG_2014: 114
-. PC1 ('FengQ_2015', 'ZellerG_2014') 0.004487723562928869 # samples in batch FengQ_2015: 29 # samples in batch ZellerG_2014: 114
+. PC0 ('FengQ_2015', 'ZellerG_2014') 0.03812401149985118 # samples in batch FengQ_2015: 29 # samples in batch ZellerG_2014: 114
+. PC1 ('FengQ_2015', 'ZellerG_2014') 0.0004163445390141147 # samples in batch FengQ_2015: 29 # samples in batch ZellerG_2014: 114
 current batch pair ('GuptaA_2019', 'HanniganGD_2017') 
 
-. PC0 ('GuptaA_2019', 'HanniganGD_2017') 8.478863751654868e-05 # samples in batch GuptaA_2019: 60 # samples in batch HanniganGD_2017: 55
-. PC1 ('GuptaA_2019', 'HanniganGD_2017') 2.7924147861259467e-11 # samples in batch GuptaA_2019: 60 # samples in batch HanniganGD_2017: 55
+. PC0 ('GuptaA_2019', 'HanniganGD_2017') 3.868271439005517e-05 # samples in batch GuptaA_2019: 60 # samples in batch HanniganGD_2017: 55
+. PC1 ('GuptaA_2019', 'HanniganGD_2017') 3.2510531560182145e-11 # samples in batch GuptaA_2019: 60 # samples in batch HanniganGD_2017: 55
 current batch pair ('GuptaA_2019', 'VogtmannE_2016') 
 
-. PC0 ('GuptaA_2019', 'VogtmannE_2016') 7.852144256200147e-08 # samples in batch GuptaA_2019: 60 # samples in batch VogtmannE_2016: 110
-. PC1 ('GuptaA_2019', 'VogtmannE_2016') 0.8397854344290511 # samples in batch GuptaA_2019: 60 # samples in batch VogtmannE_2016: 110
+. PC0 ('GuptaA_2019', 'VogtmannE_2016') 1.0888784630760663e-06 # samples in batch GuptaA_2019: 60 # samples in batch VogtmannE_2016: 110
+. PC1 ('GuptaA_2019', 'VogtmannE_2016') 0.6645187674026474 # samples in batch GuptaA_2019: 60 # samples in batch VogtmannE_2016: 110
 current batch pair ('GuptaA_2019', 'WirbelJ_2018') 
 
-. PC0 ('GuptaA_2019', 'WirbelJ_2018') 6.680946368963284e-08 # samples in batch GuptaA_2019: 60 # samples in batch WirbelJ_2018: 125
-. PC1 ('GuptaA_2019', 'WirbelJ_2018') 1.5177950208323812e-05 # samples in batch GuptaA_2019: 60 # samples in batch WirbelJ_2018: 125
+. PC0 ('GuptaA_2019', 'WirbelJ_2018') 1.2163080112250932e-07 # samples in batch GuptaA_2019: 60 # samples in batch WirbelJ_2018: 125
+. PC1 ('GuptaA_2019', 'WirbelJ_2018') 0.00013100756299060226 # samples in batch GuptaA_2019: 60 # samples in batch WirbelJ_2018: 125
 current batch pair ('GuptaA_2019', 'YachidaS_2019') 
 
-. PC0 ('GuptaA_2019', 'YachidaS_2019') 3.4002720241607585e-08 # samples in batch GuptaA_2019: 60 # samples in batch YachidaS_2019: 504
-. PC1 ('GuptaA_2019', 'YachidaS_2019') 0.34448913291128835 # samples in batch GuptaA_2019: 60 # samples in batch YachidaS_2019: 504
+. PC0 ('GuptaA_2019', 'YachidaS_2019') 2.9744524109654503e-08 # samples in batch GuptaA_2019: 60 # samples in batch YachidaS_2019: 504
+. PC1 ('GuptaA_2019', 'YachidaS_2019') 0.46031301195882346 # samples in batch GuptaA_2019: 60 # samples in batch YachidaS_2019: 504
 current batch pair ('GuptaA_2019', 'YuJ_2015') 
 
-. PC0 ('GuptaA_2019', 'YuJ_2015') 4.267383154909488e-06 # samples in batch GuptaA_2019: 60 # samples in batch YuJ_2015: 83
-. PC1 ('GuptaA_2019', 'YuJ_2015') 0.02804251462533281 # samples in batch GuptaA_2019: 60 # samples in batch YuJ_2015: 83
+. PC0 ('GuptaA_2019', 'YuJ_2015') 2.0832096304771076e-06 # samples in batch GuptaA_2019: 60 # samples in batch YuJ_2015: 83
+. PC1 ('GuptaA_2019', 'YuJ_2015') 0.04330128174967639 # samples in batch GuptaA_2019: 60 # samples in batch YuJ_2015: 83
 current batch pair ('GuptaA_2019', 'ZellerG_2014') 
 
-. PC0 ('GuptaA_2019', 'ZellerG_2014') 2.6990790568226463e-08 # samples in batch GuptaA_2019: 60 # samples in batch ZellerG_2014: 114
-. PC1 ('GuptaA_2019', 'ZellerG_2014') 4.070443735609123e-05 # samples in batch GuptaA_2019: 60 # samples in batch ZellerG_2014: 114
+. PC0 ('GuptaA_2019', 'ZellerG_2014') 1.3279055094379322e-07 # samples in batch GuptaA_2019: 60 # samples in batch ZellerG_2014: 114
+. PC1 ('GuptaA_2019', 'ZellerG_2014') 0.0001605505231789898 # samples in batch GuptaA_2019: 60 # samples in batch ZellerG_2014: 114
 current batch pair ('HanniganGD_2017', 'VogtmannE_2016') 
 
-. PC0 ('HanniganGD_2017', 'VogtmannE_2016') 2.3628447061237962e-05 # samples in batch HanniganGD_2017: 55 # samples in batch VogtmannE_2016: 110
-. PC1 ('HanniganGD_2017', 'VogtmannE_2016') 6.972410892446048e-10 # samples in batch HanniganGD_2017: 55 # samples in batch VogtmannE_2016: 110
+. PC0 ('HanniganGD_2017', 'VogtmannE_2016') 0.0020948622499111333 # samples in batch HanniganGD_2017: 55 # samples in batch VogtmannE_2016: 110
+. PC1 ('HanniganGD_2017', 'VogtmannE_2016') 3.281200470148074e-11 # samples in batch HanniganGD_2017: 55 # samples in batch VogtmannE_2016: 110
 current batch pair ('HanniganGD_2017', 'WirbelJ_2018') 
 
-. PC0 ('HanniganGD_2017', 'WirbelJ_2018') 0.00027481183061182083 # samples in batch HanniganGD_2017: 55 # samples in batch WirbelJ_2018: 125
-. PC1 ('HanniganGD_2017', 'WirbelJ_2018') 0.009217972303507719 # samples in batch HanniganGD_2017: 55 # samples in batch WirbelJ_2018: 125
+. PC0 ('HanniganGD_2017', 'WirbelJ_2018') 0.0007408512724567404 # samples in batch HanniganGD_2017: 55 # samples in batch WirbelJ_2018: 125
+. PC1 ('HanniganGD_2017', 'WirbelJ_2018') 0.002945175340278198 # samples in batch HanniganGD_2017: 55 # samples in batch WirbelJ_2018: 125
 current batch pair ('HanniganGD_2017', 'YachidaS_2019') 
 
-. PC0 ('HanniganGD_2017', 'YachidaS_2019') 0.0002296450713197449 # samples in batch HanniganGD_2017: 55 # samples in batch YachidaS_2019: 504
-. PC1 ('HanniganGD_2017', 'YachidaS_2019') 1.066068709668888e-11 # samples in batch HanniganGD_2017: 55 # samples in batch YachidaS_2019: 504
+. PC0 ('HanniganGD_2017', 'YachidaS_2019') 0.000344483219817566 # samples in batch HanniganGD_2017: 55 # samples in batch YachidaS_2019: 504
+. PC1 ('HanniganGD_2017', 'YachidaS_2019') 2.974662940750449e-11 # samples in batch HanniganGD_2017: 55 # samples in batch YachidaS_2019: 504
 current batch pair ('HanniganGD_2017', 'YuJ_2015') 
 
-. PC0 ('HanniganGD_2017', 'YuJ_2015') 0.06745316701725551 # samples in batch HanniganGD_2017: 55 # samples in batch YuJ_2015: 83
-. PC1 ('HanniganGD_2017', 'YuJ_2015') 1.5569926244635474e-05 # samples in batch HanniganGD_2017: 55 # samples in batch YuJ_2015: 83
+. PC0 ('HanniganGD_2017', 'YuJ_2015') 0.021792961786429803 # samples in batch HanniganGD_2017: 55 # samples in batch YuJ_2015: 83
+. PC1 ('HanniganGD_2017', 'YuJ_2015') 1.751863812819914e-05 # samples in batch HanniganGD_2017: 55 # samples in batch YuJ_2015: 83
 current batch pair ('HanniganGD_2017', 'ZellerG_2014') 
 
-. PC0 ('HanniganGD_2017', 'ZellerG_2014') 7.413211504837763e-05 # samples in batch HanniganGD_2017: 55 # samples in batch ZellerG_2014: 114
-. PC1 ('HanniganGD_2017', 'ZellerG_2014') 0.014177665324708094 # samples in batch HanniganGD_2017: 55 # samples in batch ZellerG_2014: 114
+. PC0 ('HanniganGD_2017', 'ZellerG_2014') 0.00045438813677664254 # samples in batch HanniganGD_2017: 55 # samples in batch ZellerG_2014: 114
+. PC1 ('HanniganGD_2017', 'ZellerG_2014') 0.0013857226023814091 # samples in batch HanniganGD_2017: 55 # samples in batch ZellerG_2014: 114
 current batch pair ('VogtmannE_2016', 'WirbelJ_2018') 
 
-. PC0 ('VogtmannE_2016', 'WirbelJ_2018') 0.13919362078551292 # samples in batch VogtmannE_2016: 110 # samples in batch WirbelJ_2018: 125
-. PC1 ('VogtmannE_2016', 'WirbelJ_2018') 2.625676488254331e-05 # samples in batch VogtmannE_2016: 110 # samples in batch WirbelJ_2018: 125
+. PC0 ('VogtmannE_2016', 'WirbelJ_2018') 0.5472376904325802 # samples in batch VogtmannE_2016: 110 # samples in batch WirbelJ_2018: 125
+. PC1 ('VogtmannE_2016', 'WirbelJ_2018') 2.350289778115132e-05 # samples in batch VogtmannE_2016: 110 # samples in batch WirbelJ_2018: 125
 current batch pair ('VogtmannE_2016', 'YachidaS_2019') 
 
-. PC0 ('VogtmannE_2016', 'YachidaS_2019') 0.03736695406907478 # samples in batch VogtmannE_2016: 110 # samples in batch YachidaS_2019: 504
-. PC1 ('VogtmannE_2016', 'YachidaS_2019') 0.5275066967094143 # samples in batch VogtmannE_2016: 110 # samples in batch YachidaS_2019: 504
+. PC0 ('VogtmannE_2016', 'YachidaS_2019') 0.30866574727926166 # samples in batch VogtmannE_2016: 110 # samples in batch YachidaS_2019: 504
+. PC1 ('VogtmannE_2016', 'YachidaS_2019') 0.24084984180829372 # samples in batch VogtmannE_2016: 110 # samples in batch YachidaS_2019: 504
 current batch pair ('VogtmannE_2016', 'YuJ_2015') 
 
-. PC0 ('VogtmannE_2016', 'YuJ_2015') 0.13790382486580902 # samples in batch VogtmannE_2016: 110 # samples in batch YuJ_2015: 83
-. PC1 ('VogtmannE_2016', 'YuJ_2015') 0.06964566418056994 # samples in batch VogtmannE_2016: 110 # samples in batch YuJ_2015: 83
+. PC0 ('VogtmannE_2016', 'YuJ_2015') 0.515227034631432 # samples in batch VogtmannE_2016: 110 # samples in batch YuJ_2015: 83
+. PC1 ('VogtmannE_2016', 'YuJ_2015') 0.023542964318499737 # samples in batch VogtmannE_2016: 110 # samples in batch YuJ_2015: 83
 current batch pair ('VogtmannE_2016', 'ZellerG_2014') 
 
-. PC0 ('VogtmannE_2016', 'ZellerG_2014') 0.1397822041878709 # samples in batch VogtmannE_2016: 110 # samples in batch ZellerG_2014: 114
-. PC1 ('VogtmannE_2016', 'ZellerG_2014') 9.146977274512737e-05 # samples in batch VogtmannE_2016: 110 # samples in batch ZellerG_2014: 114
+. PC0 ('VogtmannE_2016', 'ZellerG_2014') 0.31820646470748043 # samples in batch VogtmannE_2016: 110 # samples in batch ZellerG_2014: 114
+. PC1 ('VogtmannE_2016', 'ZellerG_2014') 8.689358499896813e-05 # samples in batch VogtmannE_2016: 110 # samples in batch ZellerG_2014: 114
 current batch pair ('WirbelJ_2018', 'YachidaS_2019') 
 
-. PC0 ('WirbelJ_2018', 'YachidaS_2019') 0.8242030402396343 # samples in batch WirbelJ_2018: 125 # samples in batch YachidaS_2019: 504
-. PC1 ('WirbelJ_2018', 'YachidaS_2019') 1.0375308205116056e-06 # samples in batch WirbelJ_2018: 125 # samples in batch YachidaS_2019: 504
+. PC0 ('WirbelJ_2018', 'YachidaS_2019') 0.8698433209763011 # samples in batch WirbelJ_2018: 125 # samples in batch YachidaS_2019: 504
+. PC1 ('WirbelJ_2018', 'YachidaS_2019') 2.0975395047170555e-05 # samples in batch WirbelJ_2018: 125 # samples in batch YachidaS_2019: 504
 current batch pair ('WirbelJ_2018', 'YuJ_2015') 
 
-. PC0 ('WirbelJ_2018', 'YuJ_2015') 0.5063244398193145 # samples in batch WirbelJ_2018: 125 # samples in batch YuJ_2015: 83
-. PC1 ('WirbelJ_2018', 'YuJ_2015') 0.03514934738837433 # samples in batch WirbelJ_2018: 125 # samples in batch YuJ_2015: 83
+. PC0 ('WirbelJ_2018', 'YuJ_2015') 0.7499091224019387 # samples in batch WirbelJ_2018: 125 # samples in batch YuJ_2015: 83
+. PC1 ('WirbelJ_2018', 'YuJ_2015') 0.0993726380430892 # samples in batch WirbelJ_2018: 125 # samples in batch YuJ_2015: 83
 current batch pair ('WirbelJ_2018', 'ZellerG_2014') 
 
-. PC0 ('WirbelJ_2018', 'ZellerG_2014') 0.9179435744220897 # samples in batch WirbelJ_2018: 125 # samples in batch ZellerG_2014: 114
-. PC1 ('WirbelJ_2018', 'ZellerG_2014') 0.8764482450660952 # samples in batch WirbelJ_2018: 125 # samples in batch ZellerG_2014: 114
+. PC0 ('WirbelJ_2018', 'ZellerG_2014') 0.7473121541038084 # samples in batch WirbelJ_2018: 125 # samples in batch ZellerG_2014: 114
+. PC1 ('WirbelJ_2018', 'ZellerG_2014') 0.7544176771486303 # samples in batch WirbelJ_2018: 125 # samples in batch ZellerG_2014: 114
 current batch pair ('YachidaS_2019', 'YuJ_2015') 
 
-. PC0 ('YachidaS_2019', 'YuJ_2015') 0.7400605492176385 # samples in batch YachidaS_2019: 504 # samples in batch YuJ_2015: 83
-. PC1 ('YachidaS_2019', 'YuJ_2015') 0.08078062569096867 # samples in batch YachidaS_2019: 504 # samples in batch YuJ_2015: 83
+. PC0 ('YachidaS_2019', 'YuJ_2015') 0.8641253953724782 # samples in batch YachidaS_2019: 504 # samples in batch YuJ_2015: 83
+. PC1 ('YachidaS_2019', 'YuJ_2015') 0.09477308198028059 # samples in batch YachidaS_2019: 504 # samples in batch YuJ_2015: 83
 current batch pair ('YachidaS_2019', 'ZellerG_2014') 
 
-. PC0 ('YachidaS_2019', 'ZellerG_2014') 0.7996196292178669 # samples in batch YachidaS_2019: 504 # samples in batch ZellerG_2014: 114
-. PC1 ('YachidaS_2019', 'ZellerG_2014') 6.777248670259473e-06 # samples in batch YachidaS_2019: 504 # samples in batch ZellerG_2014: 114
+. PC0 ('YachidaS_2019', 'ZellerG_2014') 0.7383801491573653 # samples in batch YachidaS_2019: 504 # samples in batch ZellerG_2014: 114
+. PC1 ('YachidaS_2019', 'ZellerG_2014') 0.00011535028913116241 # samples in batch YachidaS_2019: 504 # samples in batch ZellerG_2014: 114
 current batch pair ('YuJ_2015', 'ZellerG_2014') 
 
-. PC0 ('YuJ_2015', 'ZellerG_2014') 0.45530443970431944 # samples in batch YuJ_2015: 83 # samples in batch ZellerG_2014: 114
-. PC1 ('YuJ_2015', 'ZellerG_2014') 0.04667374926800575 # samples in batch YuJ_2015: 83 # samples in batch ZellerG_2014: 114
+. PC0 ('YuJ_2015', 'ZellerG_2014') 0.975771802468499 # samples in batch YuJ_2015: 83 # samples in batch ZellerG_2014: 114
+. PC1 ('YuJ_2015', 'ZellerG_2014') 0.1701502541591432 # samples in batch YuJ_2015: 83 # samples in batch ZellerG_2014: 114
 batch kw p-vals by bio_var 
 
 . bio_var == CRC
-.   PC0 ('FengQ_2015', 'GuptaA_2019') 0.4917351639721075 # new samples: 13 # old samples: 30
-.   PC1 ('FengQ_2015', 'GuptaA_2019') 0.03012582330411842 # new samples: 13 # old samples: 30
-.   PC0 ('FengQ_2015', 'HanniganGD_2017') 0.6337446394066926 # new samples: 13 # old samples: 27
+.   PC0 ('FengQ_2015', 'GuptaA_2019') 0.5607185999900051 # new samples: 13 # old samples: 30
+.   PC1 ('FengQ_2015', 'GuptaA_2019') 0.0535531497547404 # new samples: 13 # old samples: 30
+.   PC0 ('FengQ_2015', 'HanniganGD_2017') 0.9194965709281693 # new samples: 13 # old samples: 27
 .   PC1 ('FengQ_2015', 'HanniganGD_2017') 0.6544517552992455 # new samples: 13 # old samples: 27
-.   PC0 ('FengQ_2015', 'VogtmannE_2016') 0.03300625766123278 # new samples: 13 # old samples: 52
-.   PC1 ('FengQ_2015', 'VogtmannE_2016') 0.0029934477541546734 # new samples: 13 # old samples: 52
-.   PC0 ('FengQ_2015', 'WirbelJ_2018') 0.014238609737294166 # new samples: 13 # old samples: 60
-.   PC1 ('FengQ_2015', 'WirbelJ_2018') 0.3059623979249264 # new samples: 13 # old samples: 60
-.   PC0 ('FengQ_2015', 'YachidaS_2019') 0.1499118138095064 # new samples: 13 # old samples: 258
-.   PC1 ('FengQ_2015', 'YachidaS_2019') 0.008924599716877412 # new samples: 13 # old samples: 258
-.   PC0 ('FengQ_2015', 'YuJ_2015') 0.34638457474386153 # new samples: 13 # old samples: 45
-.   PC1 ('FengQ_2015', 'YuJ_2015') 0.03761424321074562 # new samples: 13 # old samples: 45
-.   PC0 ('FengQ_2015', 'ZellerG_2014') 0.06033742978903719 # new samples: 13 # old samples: 53
-.   PC1 ('FengQ_2015', 'ZellerG_2014') 0.10515644191262413 # new samples: 13 # old samples: 53
-.   PC0 ('GuptaA_2019', 'HanniganGD_2017') 0.12496015313623023 # new samples: 30 # old samples: 27
-.   PC1 ('GuptaA_2019', 'HanniganGD_2017') 4.918718503259343e-05 # new samples: 30 # old samples: 27
-.   PC0 ('GuptaA_2019', 'VogtmannE_2016') 0.00572836075443375 # new samples: 30 # old samples: 52
-.   PC1 ('GuptaA_2019', 'VogtmannE_2016') 0.03337368949963999 # new samples: 30 # old samples: 52
-.   PC0 ('GuptaA_2019', 'WirbelJ_2018') 0.00011329256882765502 # new samples: 30 # old samples: 60
-.   PC1 ('GuptaA_2019', 'WirbelJ_2018') 0.033780337058713535 # new samples: 30 # old samples: 60
-.   PC0 ('GuptaA_2019', 'YachidaS_2019') 0.02407353220994523 # new samples: 30 # old samples: 258
-.   PC1 ('GuptaA_2019', 'YachidaS_2019') 0.20934577322029496 # new samples: 30 # old samples: 258
-.   PC0 ('GuptaA_2019', 'YuJ_2015') 0.055592974818870225 # new samples: 30 # old samples: 45
-.   PC1 ('GuptaA_2019', 'YuJ_2015') 0.6653123239921195 # new samples: 30 # old samples: 45
-.   PC0 ('GuptaA_2019', 'ZellerG_2014') 0.0034011695433620614 # new samples: 30 # old samples: 53
-.   PC1 ('GuptaA_2019', 'ZellerG_2014') 0.3431915945198638 # new samples: 30 # old samples: 53
-.   PC0 ('HanniganGD_2017', 'VogtmannE_2016') 0.002542990344870076 # new samples: 27 # old samples: 52
-.   PC1 ('HanniganGD_2017', 'VogtmannE_2016') 6.999072490322822e-07 # new samples: 27 # old samples: 52
-.   PC0 ('HanniganGD_2017', 'WirbelJ_2018') 0.00015116344518131976 # new samples: 27 # old samples: 60
-.   PC1 ('HanniganGD_2017', 'WirbelJ_2018') 0.34466199109081574 # new samples: 27 # old samples: 60
-.   PC0 ('HanniganGD_2017', 'YachidaS_2019') 0.03060432984726235 # new samples: 27 # old samples: 258
-.   PC1 ('HanniganGD_2017', 'YachidaS_2019') 6.054937286454293e-07 # new samples: 27 # old samples: 258
-.   PC0 ('HanniganGD_2017', 'YuJ_2015') 0.2519123467806236 # new samples: 27 # old samples: 45
-.   PC1 ('HanniganGD_2017', 'YuJ_2015') 0.003706762779970417 # new samples: 27 # old samples: 45
+.   PC0 ('FengQ_2015', 'VogtmannE_2016') 0.038790070896476535 # new samples: 13 # old samples: 52
+.   PC1 ('FengQ_2015', 'VogtmannE_2016') 0.001833157638112763 # new samples: 13 # old samples: 52
+.   PC0 ('FengQ_2015', 'WirbelJ_2018') 0.01162656596234424 # new samples: 13 # old samples: 60
+.   PC1 ('FengQ_2015', 'WirbelJ_2018') 0.29253885258657797 # new samples: 13 # old samples: 60
+.   PC0 ('FengQ_2015', 'YachidaS_2019') 0.1276937629308752 # new samples: 13 # old samples: 258
+.   PC1 ('FengQ_2015', 'YachidaS_2019') 0.011009634962076093 # new samples: 13 # old samples: 258
+.   PC0 ('FengQ_2015', 'YuJ_2015') 0.22910413231204724 # new samples: 13 # old samples: 45
+.   PC1 ('FengQ_2015', 'YuJ_2015') 0.05597638929166181 # new samples: 13 # old samples: 45
+.   PC0 ('FengQ_2015', 'ZellerG_2014') 0.06970419013053525 # new samples: 13 # old samples: 53
+.   PC1 ('FengQ_2015', 'ZellerG_2014') 0.07481737335042214 # new samples: 13 # old samples: 53
+.   PC0 ('GuptaA_2019', 'HanniganGD_2017') 0.09973137065519669 # new samples: 30 # old samples: 27
+.   PC1 ('GuptaA_2019', 'HanniganGD_2017') 0.00018415665519669485 # new samples: 30 # old samples: 27
+.   PC0 ('GuptaA_2019', 'VogtmannE_2016') 0.014093341876300642 # new samples: 30 # old samples: 52
+.   PC1 ('GuptaA_2019', 'VogtmannE_2016') 0.014475238225249343 # new samples: 30 # old samples: 52
+.   PC0 ('GuptaA_2019', 'WirbelJ_2018') 0.0003580859692175119 # new samples: 30 # old samples: 60
+.   PC1 ('GuptaA_2019', 'WirbelJ_2018') 0.06959270957687916 # new samples: 30 # old samples: 60
+.   PC0 ('GuptaA_2019', 'YachidaS_2019') 0.021582012792361296 # new samples: 30 # old samples: 258
+.   PC1 ('GuptaA_2019', 'YachidaS_2019') 0.19065685749447372 # new samples: 30 # old samples: 258
+.   PC0 ('GuptaA_2019', 'YuJ_2015') 0.02517833280286012 # new samples: 30 # old samples: 45
+.   PC1 ('GuptaA_2019', 'YuJ_2015') 0.7374307722520317 # new samples: 30 # old samples: 45
+.   PC0 ('GuptaA_2019', 'ZellerG_2014') 0.004594703261867125 # new samples: 30 # old samples: 53
+.   PC1 ('GuptaA_2019', 'ZellerG_2014') 0.4889681646456848 # new samples: 30 # old samples: 53
+.   PC0 ('HanniganGD_2017', 'VogtmannE_2016') 0.0044766473634571605 # new samples: 27 # old samples: 52
+.   PC1 ('HanniganGD_2017', 'VogtmannE_2016') 2.3646813977794846e-07 # new samples: 27 # old samples: 52
+.   PC0 ('HanniganGD_2017', 'WirbelJ_2018') 0.00030054357665992897 # new samples: 27 # old samples: 60
+.   PC1 ('HanniganGD_2017', 'WirbelJ_2018') 0.3262512674915302 # new samples: 27 # old samples: 60
+.   PC0 ('HanniganGD_2017', 'YachidaS_2019') 0.024571226714768316 # new samples: 27 # old samples: 258
+.   PC1 ('HanniganGD_2017', 'YachidaS_2019') 1.6023666399808274e-06 # new samples: 27 # old samples: 258
+.   PC0 ('HanniganGD_2017', 'YuJ_2015') 0.10718353299646274 # new samples: 27 # old samples: 45
+.   PC1 ('HanniganGD_2017', 'YuJ_2015') 0.013890123543751071 # new samples: 27 # old samples: 45
 .   PC0 ('HanniganGD_2017', 'ZellerG_2014') 0.003017292378859983 # new samples: 27 # old samples: 53
-.   PC1 ('HanniganGD_2017', 'ZellerG_2014') 0.01049808582854845 # new samples: 27 # old samples: 53
-.   PC0 ('VogtmannE_2016', 'WirbelJ_2018') 0.7175654680355026 # new samples: 52 # old samples: 60
-.   PC1 ('VogtmannE_2016', 'WirbelJ_2018') 0.0001359055473503001 # new samples: 52 # old samples: 60
-.   PC0 ('VogtmannE_2016', 'YachidaS_2019') 0.026654919245825824 # new samples: 52 # old samples: 258
-.   PC1 ('VogtmannE_2016', 'YachidaS_2019') 0.10864431406247388 # new samples: 52 # old samples: 258
-.   PC0 ('VogtmannE_2016', 'YuJ_2015') 0.18798575930229247 # new samples: 52 # old samples: 45
-.   PC1 ('VogtmannE_2016', 'YuJ_2015') 0.053428829337110885 # new samples: 52 # old samples: 45
-.   PC0 ('VogtmannE_2016', 'ZellerG_2014') 0.22332586873893 # new samples: 52 # old samples: 53
-.   PC1 ('VogtmannE_2016', 'ZellerG_2014') 0.006706934509440342 # new samples: 52 # old samples: 53
-.   PC0 ('WirbelJ_2018', 'YachidaS_2019') 0.02569819220540205 # new samples: 60 # old samples: 258
-.   PC1 ('WirbelJ_2018', 'YachidaS_2019') 0.0002313659039609213 # new samples: 60 # old samples: 258
-.   PC0 ('WirbelJ_2018', 'YuJ_2015') 0.10410184401714512 # new samples: 60 # old samples: 45
-.   PC1 ('WirbelJ_2018', 'YuJ_2015') 0.05527977116363509 # new samples: 60 # old samples: 45
-.   PC0 ('WirbelJ_2018', 'ZellerG_2014') 0.32803567168487235 # new samples: 60 # old samples: 53
-.   PC1 ('WirbelJ_2018', 'ZellerG_2014') 0.20151223473186533 # new samples: 60 # old samples: 53
-.   PC0 ('YachidaS_2019', 'YuJ_2015') 0.9353372423073277 # new samples: 258 # old samples: 45
-.   PC1 ('YachidaS_2019', 'YuJ_2015') 0.2278515807499472 # new samples: 258 # old samples: 45
-.   PC0 ('YachidaS_2019', 'ZellerG_2014') 0.35806171954665345 # new samples: 258 # old samples: 53
-.   PC1 ('YachidaS_2019', 'ZellerG_2014') 0.029487374316735135 # new samples: 258 # old samples: 53
-.   PC0 ('YuJ_2015', 'ZellerG_2014') 0.4143452070167155 # new samples: 45 # old samples: 53
-.   PC1 ('YuJ_2015', 'ZellerG_2014') 0.5327669429458227 # new samples: 45 # old samples: 53
+.   PC1 ('HanniganGD_2017', 'ZellerG_2014') 0.0077972612107428145 # new samples: 27 # old samples: 53
+.   PC0 ('VogtmannE_2016', 'WirbelJ_2018') 0.9302649071286294 # new samples: 52 # old samples: 60
+.   PC1 ('VogtmannE_2016', 'WirbelJ_2018') 0.00011238142061999774 # new samples: 52 # old samples: 60
+.   PC0 ('VogtmannE_2016', 'YachidaS_2019') 0.07806343864612986 # new samples: 52 # old samples: 258
+.   PC1 ('VogtmannE_2016', 'YachidaS_2019') 0.062351430375601605 # new samples: 52 # old samples: 258
+.   PC0 ('VogtmannE_2016', 'YuJ_2015') 0.30093008057465165 # new samples: 52 # old samples: 45
+.   PC1 ('VogtmannE_2016', 'YuJ_2015') 0.03344063866399671 # new samples: 52 # old samples: 45
+.   PC0 ('VogtmannE_2016', 'ZellerG_2014') 0.2593181071150402 # new samples: 52 # old samples: 53
+.   PC1 ('VogtmannE_2016', 'ZellerG_2014') 0.005200025785530124 # new samples: 52 # old samples: 53
+.   PC0 ('WirbelJ_2018', 'YachidaS_2019') 0.03309121671209069 # new samples: 60 # old samples: 258
+.   PC1 ('WirbelJ_2018', 'YachidaS_2019') 0.0007990356290395548 # new samples: 60 # old samples: 258
+.   PC0 ('WirbelJ_2018', 'YuJ_2015') 0.13811964975130162 # new samples: 60 # old samples: 45
+.   PC1 ('WirbelJ_2018', 'YuJ_2015') 0.11264098911047343 # new samples: 60 # old samples: 45
+.   PC0 ('WirbelJ_2018', 'ZellerG_2014') 0.20355025855328132 # new samples: 60 # old samples: 53
+.   PC1 ('WirbelJ_2018', 'ZellerG_2014') 0.1377088180276238 # new samples: 60 # old samples: 53
+.   PC0 ('YachidaS_2019', 'YuJ_2015') 0.8987589912796276 # new samples: 258 # old samples: 45
+.   PC1 ('YachidaS_2019', 'YuJ_2015') 0.23576897306666716 # new samples: 258 # old samples: 45
+.   PC0 ('YachidaS_2019', 'ZellerG_2014') 0.5549572689953326 # new samples: 258 # old samples: 53
+.   PC1 ('YachidaS_2019', 'ZellerG_2014') 0.043460307910648935 # new samples: 258 # old samples: 53
+.   PC0 ('YuJ_2015', 'ZellerG_2014') 0.6253113372746995 # new samples: 45 # old samples: 53
+.   PC1 ('YuJ_2015', 'ZellerG_2014') 0.8112439044443681 # new samples: 45 # old samples: 53
 . bio_var == healthy
-.   PC0 ('FengQ_2015', 'GuptaA_2019') 0.00020466464540934225 # new samples: 16 # old samples: 30
-.   PC1 ('FengQ_2015', 'GuptaA_2019') 1.2813666228126602e-07 # new samples: 16 # old samples: 30
-.   PC0 ('FengQ_2015', 'HanniganGD_2017') 0.34134931395476026 # new samples: 16 # old samples: 28
-.   PC1 ('FengQ_2015', 'HanniganGD_2017') 0.17185733906279452 # new samples: 16 # old samples: 28
-.   PC0 ('FengQ_2015', 'VogtmannE_2016') 0.0928168591147446 # new samples: 16 # old samples: 58
-.   PC1 ('FengQ_2015', 'VogtmannE_2016') 4.691245821094141e-05 # new samples: 16 # old samples: 58
-.   PC0 ('FengQ_2015', 'WirbelJ_2018') 0.7849825741079388 # new samples: 16 # old samples: 65
-.   PC1 ('FengQ_2015', 'WirbelJ_2018') 0.0031398913760362574 # new samples: 16 # old samples: 65
-.   PC0 ('FengQ_2015', 'YachidaS_2019') 0.11651060539389539 # new samples: 16 # old samples: 246
-.   PC1 ('FengQ_2015', 'YachidaS_2019') 7.093450438500335e-06 # new samples: 16 # old samples: 246
-.   PC0 ('FengQ_2015', 'YuJ_2015') 0.6357962171465056 # new samples: 16 # old samples: 38
-.   PC1 ('FengQ_2015', 'YuJ_2015') 0.00022078920109745072 # new samples: 16 # old samples: 38
-.   PC0 ('FengQ_2015', 'ZellerG_2014') 0.2747059772843039 # new samples: 16 # old samples: 61
-.   PC1 ('FengQ_2015', 'ZellerG_2014') 0.028919763549947516 # new samples: 16 # old samples: 61
-.   PC0 ('GuptaA_2019', 'HanniganGD_2017') 5.9541093505768644e-05 # new samples: 30 # old samples: 28
-.   PC1 ('GuptaA_2019', 'HanniganGD_2017') 1.3273667118835453e-07 # new samples: 30 # old samples: 28
-.   PC0 ('GuptaA_2019', 'VogtmannE_2016') 1.53725635367402e-06 # new samples: 30 # old samples: 58
-.   PC1 ('GuptaA_2019', 'VogtmannE_2016') 0.03242909335677496 # new samples: 30 # old samples: 58
-.   PC0 ('GuptaA_2019', 'WirbelJ_2018') 1.1894918898959646e-05 # new samples: 30 # old samples: 65
-.   PC1 ('GuptaA_2019', 'WirbelJ_2018') 3.5571429224770497e-06 # new samples: 30 # old samples: 65
-.   PC0 ('GuptaA_2019', 'YachidaS_2019') 1.5592476260690546e-07 # new samples: 30 # old samples: 246
-.   PC1 ('GuptaA_2019', 'YachidaS_2019') 0.011503840729545193 # new samples: 30 # old samples: 246
-.   PC0 ('GuptaA_2019', 'YuJ_2015') 4.877443945776349e-06 # new samples: 30 # old samples: 38
-.   PC1 ('GuptaA_2019', 'YuJ_2015') 0.0025806244670520564 # new samples: 30 # old samples: 38
-.   PC0 ('GuptaA_2019', 'ZellerG_2014') 3.896545669997503e-07 # new samples: 30 # old samples: 61
-.   PC1 ('GuptaA_2019', 'ZellerG_2014') 4.743220135887386e-06 # new samples: 30 # old samples: 61
-.   PC0 ('HanniganGD_2017', 'VogtmannE_2016') 0.003002114071110929 # new samples: 28 # old samples: 58
-.   PC1 ('HanniganGD_2017', 'VogtmannE_2016') 0.00010061173745526934 # new samples: 28 # old samples: 58
-.   PC0 ('HanniganGD_2017', 'WirbelJ_2018') 0.16191948782081192 # new samples: 28 # old samples: 65
-.   PC1 ('HanniganGD_2017', 'WirbelJ_2018') 0.008543826486015002 # new samples: 28 # old samples: 65
-.   PC0 ('HanniganGD_2017', 'YachidaS_2019') 0.0026099508077609074 # new samples: 28 # old samples: 246
-.   PC1 ('HanniganGD_2017', 'YachidaS_2019') 3.140276964530687e-06 # new samples: 28 # old samples: 246
-.   PC0 ('HanniganGD_2017', 'YuJ_2015') 0.16506238814360608 # new samples: 28 # old samples: 38
-.   PC1 ('HanniganGD_2017', 'YuJ_2015') 0.0015470065886676006 # new samples: 28 # old samples: 38
-.   PC0 ('HanniganGD_2017', 'ZellerG_2014') 0.010940591783020627 # new samples: 28 # old samples: 61
-.   PC1 ('HanniganGD_2017', 'ZellerG_2014') 0.2295137970229199 # new samples: 28 # old samples: 61
-.   PC0 ('VogtmannE_2016', 'WirbelJ_2018') 0.06515246957019777 # new samples: 58 # old samples: 65
-.   PC1 ('VogtmannE_2016', 'WirbelJ_2018') 0.04218692794772423 # new samples: 58 # old samples: 65
-.   PC0 ('VogtmannE_2016', 'YachidaS_2019') 0.48864798026327794 # new samples: 58 # old samples: 246
-.   PC1 ('VogtmannE_2016', 'YachidaS_2019') 0.6078684648604561 # new samples: 58 # old samples: 246
-.   PC0 ('VogtmannE_2016', 'YuJ_2015') 0.4582630379226541 # new samples: 58 # old samples: 38
-.   PC1 ('VogtmannE_2016', 'YuJ_2015') 0.5690890842749639 # new samples: 58 # old samples: 38
-.   PC0 ('VogtmannE_2016', 'ZellerG_2014') 0.3494308618251357 # new samples: 58 # old samples: 61
-.   PC1 ('VogtmannE_2016', 'ZellerG_2014') 0.005082388548788233 # new samples: 58 # old samples: 61
-.   PC0 ('WirbelJ_2018', 'YachidaS_2019') 0.07525550196515891 # new samples: 65 # old samples: 246
-.   PC1 ('WirbelJ_2018', 'YachidaS_2019') 0.0013398703745700357 # new samples: 65 # old samples: 246
-.   PC0 ('WirbelJ_2018', 'YuJ_2015') 0.5117338596906877 # new samples: 65 # old samples: 38
-.   PC1 ('WirbelJ_2018', 'YuJ_2015') 0.22637150979342258 # new samples: 65 # old samples: 38
-.   PC0 ('WirbelJ_2018', 'ZellerG_2014') 0.2232341738586822 # new samples: 65 # old samples: 61
+.   PC0 ('FengQ_2015', 'GuptaA_2019') 0.00032083178982455173 # new samples: 16 # old samples: 30
+.   PC1 ('FengQ_2015', 'GuptaA_2019') 1.1294852901777356e-07 # new samples: 16 # old samples: 30
+.   PC0 ('FengQ_2015', 'HanniganGD_2017') 0.4349671606144292 # new samples: 16 # old samples: 28
+.   PC1 ('FengQ_2015', 'HanniganGD_2017') 0.09229233903407315 # new samples: 16 # old samples: 28
+.   PC0 ('FengQ_2015', 'VogtmannE_2016') 0.4155877324915337 # new samples: 16 # old samples: 58
+.   PC1 ('FengQ_2015', 'VogtmannE_2016') 2.3570746430249115e-05 # new samples: 16 # old samples: 58
+.   PC0 ('FengQ_2015', 'WirbelJ_2018') 0.7668053400963455 # new samples: 16 # old samples: 65
+.   PC1 ('FengQ_2015', 'WirbelJ_2018') 0.0002969046003708843 # new samples: 16 # old samples: 65
+.   PC0 ('FengQ_2015', 'YachidaS_2019') 0.09867658609056984 # new samples: 16 # old samples: 246
+.   PC1 ('FengQ_2015', 'YachidaS_2019') 5.945527234501771e-06 # new samples: 16 # old samples: 246
+.   PC0 ('FengQ_2015', 'YuJ_2015') 0.28876747374632694 # new samples: 16 # old samples: 38
+.   PC1 ('FengQ_2015', 'YuJ_2015') 0.0001203037760310848 # new samples: 16 # old samples: 38
+.   PC0 ('FengQ_2015', 'ZellerG_2014') 0.31518396040828023 # new samples: 16 # old samples: 61
+.   PC1 ('FengQ_2015', 'ZellerG_2014') 0.002011412196209471 # new samples: 16 # old samples: 61
+.   PC0 ('GuptaA_2019', 'HanniganGD_2017') 6.359411924817218e-05 # new samples: 30 # old samples: 28
+.   PC1 ('GuptaA_2019', 'HanniganGD_2017') 5.6154719976589696e-08 # new samples: 30 # old samples: 28
+.   PC0 ('GuptaA_2019', 'VogtmannE_2016') 2.5927506592405275e-06 # new samples: 30 # old samples: 58
+.   PC1 ('GuptaA_2019', 'VogtmannE_2016') 0.08933029538070891 # new samples: 30 # old samples: 58
+.   PC0 ('GuptaA_2019', 'WirbelJ_2018') 1.0650638241080439e-05 # new samples: 30 # old samples: 65
+.   PC1 ('GuptaA_2019', 'WirbelJ_2018') 2.7244137311558766e-05 # new samples: 30 # old samples: 65
+.   PC0 ('GuptaA_2019', 'YachidaS_2019') 1.6219086254654785e-07 # new samples: 30 # old samples: 246
+.   PC1 ('GuptaA_2019', 'YachidaS_2019') 0.019511783003464688 # new samples: 30 # old samples: 246
+.   PC0 ('GuptaA_2019', 'YuJ_2015') 9.244624089099293e-06 # new samples: 30 # old samples: 38
+.   PC1 ('GuptaA_2019', 'YuJ_2015') 0.004677340890684216 # new samples: 30 # old samples: 38
+.   PC0 ('GuptaA_2019', 'ZellerG_2014') 7.857915743057096e-07 # new samples: 30 # old samples: 61
+.   PC1 ('GuptaA_2019', 'ZellerG_2014') 1.5422845909294955e-05 # new samples: 30 # old samples: 61
+.   PC0 ('HanniganGD_2017', 'VogtmannE_2016') 0.1354433141591336 # new samples: 28 # old samples: 58
+.   PC1 ('HanniganGD_2017', 'VogtmannE_2016') 1.9815115043122753e-05 # new samples: 28 # old samples: 58
+.   PC0 ('HanniganGD_2017', 'WirbelJ_2018') 0.30689234913284014 # new samples: 28 # old samples: 65
+.   PC1 ('HanniganGD_2017', 'WirbelJ_2018') 0.0030288741379950546 # new samples: 28 # old samples: 65
+.   PC0 ('HanniganGD_2017', 'YachidaS_2019') 0.005088369969007665 # new samples: 28 # old samples: 246
+.   PC1 ('HanniganGD_2017', 'YachidaS_2019') 4.0545071295135525e-06 # new samples: 28 # old samples: 246
+.   PC0 ('HanniganGD_2017', 'YuJ_2015') 0.08442375100236453 # new samples: 28 # old samples: 38
+.   PC1 ('HanniganGD_2017', 'YuJ_2015') 0.0008956414705350626 # new samples: 28 # old samples: 38
+.   PC0 ('HanniganGD_2017', 'ZellerG_2014') 0.04584726021896913 # new samples: 28 # old samples: 61
+.   PC1 ('HanniganGD_2017', 'ZellerG_2014') 0.06353475185314951 # new samples: 28 # old samples: 61
+.   PC0 ('VogtmannE_2016', 'WirbelJ_2018') 0.3357295490357377 # new samples: 58 # old samples: 65
+.   PC1 ('VogtmannE_2016', 'WirbelJ_2018') 0.035500520378513555 # new samples: 58 # old samples: 65
+.   PC0 ('VogtmannE_2016', 'YachidaS_2019') 0.7599501408529015 # new samples: 58 # old samples: 246
+.   PC1 ('VogtmannE_2016', 'YachidaS_2019') 0.9708576010284333 # new samples: 58 # old samples: 246
+.   PC0 ('VogtmannE_2016', 'YuJ_2015') 0.9045842846168481 # new samples: 58 # old samples: 38
+.   PC1 ('VogtmannE_2016', 'YuJ_2015') 0.32268921303304865 # new samples: 58 # old samples: 38
+.   PC0 ('VogtmannE_2016', 'ZellerG_2014') 0.757813254363258 # new samples: 58 # old samples: 61
+.   PC1 ('VogtmannE_2016', 'ZellerG_2014') 0.0073735110058748225 # new samples: 58 # old samples: 61
+.   PC0 ('WirbelJ_2018', 'YachidaS_2019') 0.06121225707116914 # new samples: 65 # old samples: 246
+.   PC1 ('WirbelJ_2018', 'YachidaS_2019') 0.00938260762977062 # new samples: 65 # old samples: 246
+.   PC0 ('WirbelJ_2018', 'YuJ_2015') 0.3216634912950855 # new samples: 65 # old samples: 38
+.   PC1 ('WirbelJ_2018', 'YuJ_2015') 0.4082313006201911 # new samples: 65 # old samples: 38
+.   PC0 ('WirbelJ_2018', 'ZellerG_2014') 0.38621935433169785 # new samples: 65 # old samples: 61
 .   PC1 ('WirbelJ_2018', 'ZellerG_2014') 0.31813456735121426 # new samples: 65 # old samples: 61
-.   PC0 ('YachidaS_2019', 'YuJ_2015') 0.5709473785464636 # new samples: 246 # old samples: 38
-.   PC1 ('YachidaS_2019', 'YuJ_2015') 0.1818982583555957 # new samples: 246 # old samples: 38
-.   PC0 ('YachidaS_2019', 'ZellerG_2014') 0.5716829869206821 # new samples: 246 # old samples: 61
-.   PC1 ('YachidaS_2019', 'ZellerG_2014') 5.617941779910564e-05 # new samples: 246 # old samples: 61
-.   PC0 ('YuJ_2015', 'ZellerG_2014') 0.8179040004690469 # new samples: 38 # old samples: 61
-.   PC1 ('YuJ_2015', 'ZellerG_2014') 0.045476046958079656 # new samples: 38 # old samples: 61
+.   PC0 ('YachidaS_2019', 'YuJ_2015') 0.7293904021962679 # new samples: 246 # old samples: 38
+.   PC1 ('YachidaS_2019', 'YuJ_2015') 0.23715542108020984 # new samples: 246 # old samples: 38
+.   PC0 ('YachidaS_2019', 'ZellerG_2014') 0.2919718847523586 # new samples: 246 # old samples: 61
+.   PC1 ('YachidaS_2019', 'ZellerG_2014') 0.0009558355888512955 # new samples: 246 # old samples: 61
+.   PC0 ('YuJ_2015', 'ZellerG_2014') 0.6400146272214646 # new samples: 38 # old samples: 61
+.   PC1 ('YuJ_2015', 'ZellerG_2014') 0.11181082746996518 # new samples: 38 # old samples: 61
