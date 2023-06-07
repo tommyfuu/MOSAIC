@@ -1,6 +1,6 @@
 # load data
-# load("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/ibd_150.Rdata") 
-otu = read.csv("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/QinJ_2012_T2D/otu_table_QinJ_2012.csv", header = TRUE, row.names = 1)
+load("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/ibd_150.Rdata") 
+# otu = read.csv("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/QinJ_2012_T2D/otu_table_QinJ_2012.csv", header = TRUE, row.names = 1)
 library("bindata")
 library("MIDAS")
 
@@ -11,9 +11,7 @@ bin_corr = 0.3
 cond_effect = 0.3
 batch_effect = 0.3
 p = ncol(otu_original)
-n = 500
-id_batch = 201:450
-id_cond = 1:250
+
 
 if (p==301) {
   print("p=301")
@@ -87,7 +85,25 @@ midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect
 }
 
 # generate simulated data
+bin_corr_val = 0.2
+cond_effect_val = 0.4
+batch_effect_val = 0.8
+midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, ".csv"))
+      
+# for (bin_corr_val in c(0.2, 0.4, 0.6, 0.8)) {
+#   for (cond_effect_val in c( 0.2, 0.4, 0.6, 0.8)) {
+#     for (batch_effect_val in c(0.2, 0.4, 0.6, 0.8)) {
+#       print(bin_corr_val)
+#       print(cond_effect_val)
+#       print(batch_effect_val)
+#       midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, ".csv"))
+#       print("___")
+#     }
+#   }
+# }
 # midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
-midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./QinJ_2012_relab.csv")
-# # write relative abundance to csv
-# write.csv(rela, file = "./ibd_150_relab.csv", row.names = FALSE)
+
+# midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
+# midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./QinJ_2012_relab.csv")
+# write relative abundance to csv
+# write.csv(rela, file = "./ibd_150_relab.csv", row.names = FALSE, out = )
