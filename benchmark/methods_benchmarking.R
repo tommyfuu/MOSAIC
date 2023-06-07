@@ -11,7 +11,7 @@ library(readr)
 library(tibble)
 library(mixOmics)
 
-run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE) {
+run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id') {
     # r split and join everything except for last element
     output_dir = strsplit(output_root, "/")
     output_dir = paste(output_dir[[1]][1:(length(output_dir[[1]])-1)], collapse = "/")
@@ -22,31 +22,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     metadata = as.data.frame(read_csv(meta_data_path))
     sink(paste(output_root, "_runtime.txt", sep=""))
 
-    if (controlled) {
-        # remove batch effect
-        # print(
-        # in input count data, remove rows that have zero variance
-        count_data = count_data[apply(count_data, 1, var) != 0, ]
-
-        # combat requires that we remove features where variance is zero in each batch
-        # print(dataset)
-        count_data = count_data[apply(count_data, 1, function(x) var(x[metadata[[dataset]] == batch_ref])) != 0, ]
-    }
-    # print("AAAAA")
-    # print(count_data == count_data_1)
-    # print("BBBBB")
-    # print(count_data == count_data_2)
-    # print("CCCCC")
-    # print(count_data_1 == count_data_2)
-
-    # count_data = count_data[apply(count_data, 1, var) != 0]
-    # # combat requires that we remove features where variance is zero in each batch
-    # # print(dataset)
-    # count_data = count_data[apply(count_data, 1, function(x) var(x[metadata[[dataset]] == batch_ref])) != 0]
-    # print(dim(count_data))
-    # # save count data just to check
-    write.csv(count_data, paste(output_root, "_used_count_data.csv", sep=""), row.names = TRUE)
-
     # count_data = count_data[, apply(count_data, 2, var) != 0]
     ## TODO:  potentially need preprocessing such as log and +1
     # count_data <- count_data + 1
@@ -55,7 +30,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
     ## combat
     start_time <- Sys.time()
-    batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata$Sam_id))
+    batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
     if(is.null(covar)) {
         count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=NULL))
     }
@@ -88,7 +63,9 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         count_data_t_relab = t(t(count_data+0.001)/rowSums(t(count_data+0.001)))
     }
     metadata_mupphin <- metadata
-    row.names(metadata_mupphin) <- metadata$Sam_id
+    row.names(metadata_mupphin) <- metadata[[Sam_id]]
+    cat(colnames(t(count_data_t_relab)))
+    cat(rownames(metadata_mupphin))
     if(is.null(covar)) {
         fit_adjust_batch <- adjust_batch(feature_abd = t(count_data_t_relab),
                                     batch = dataset,
@@ -212,4 +189,5 @@ run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/bench
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0',
 dataset = 'location',
 batch_ref = 'Los_Angeles',
+Sam_id = 'patient_visit_id'
 )
