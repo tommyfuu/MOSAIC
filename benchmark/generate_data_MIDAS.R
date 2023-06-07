@@ -1,5 +1,6 @@
 # load data
-load("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/ibd_150.Rdata") 
+# load("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/ibd_150.Rdata") 
+otu = read.csv("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/QinJ_2012_T2D/otu_table_QinJ_2012.csv", header = TRUE, row.names = 1)
 library("bindata")
 library("MIDAS")
 
@@ -10,13 +11,18 @@ bin_corr = 0.3
 cond_effect = 0.3
 batch_effect = 0.3
 p = ncol(otu_original)
+n = 500
+id_batch = 201:450
+id_cond = 1:250
 
 if (p==301) {
+  print("p=301")
   n = nrow(otu_original) * 5
   id_batch = 101:250
   id_cond = 1:150
 } 
 if (p==233) {
+  print("p=233")
   n = nrow(otu_original) 
   id_batch = c(21:40,51:70,81:160)
   id_cond = c(1:20,41:50,71:80,121:200)
@@ -25,10 +31,12 @@ if (p==233) {
 # function to generate simulated data with MIDAs
 midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect, out){
 
+  # generate batch and condition id
   cond_batchid_vec = rmvbin(n, c(0.5, 0.5), bincorr=(1-bin_corr)*diag(2)+bin_corr)
   cond = cond_batchid_vec[, 1]
   batchid = cond_batchid_vec[, 2]
 
+  # simulate data
   fitted = Midas.setup(otu_original, fit.beta=FALSE)
 
   perm_batch = sample(id_batch, length(id_batch))
@@ -79,6 +87,7 @@ midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect
 }
 
 # generate simulated data
-midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
+# midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
+midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./QinJ_2012_relab.csv")
 # # write relative abundance to csv
 # write.csv(rela, file = "./ibd_150_relab.csv", row.names = FALSE)

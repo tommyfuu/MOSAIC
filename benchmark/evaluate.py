@@ -1087,11 +1087,11 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 
 # CRC_8_CMD
 #################################################################################
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/CRC_8_CMD'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
-data_mat, meta_data = load_data_CMD(address_directory, output_root)
-vars_use = ["study_name"]
-IDCol = 'Sam_id'
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/CRC_8_CMD'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
+# data_mat, meta_data = load_data_CMD(address_directory, output_root)
+# vars_use = ["study_name"]
+# IDCol = 'Sam_id'
 
 # res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
@@ -1104,43 +1104,43 @@ IDCol = 'Sam_id'
 # Evaluate(res, meta_data, "study_name", './output_CRC_8_CMD_harmonicMic_weighted/CRC_8_CMD_harmonicMic_weighted_1201', "disease", 30, 'gender', 'Sam_id')
 
 # benchmarking other methods: 
-address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv"
+# address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv"
 
-### combat # TODO: to fix: contains NAN
-address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_combat.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_combat/CRC_8_CMD_combat_1201', "disease", 30, 'gender', 'Sam_id')
+# ### combat # TODO: to fix: contains NAN
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_combat.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_combat/CRC_8_CMD_combat_1201', "disease", 30, 'gender', 'Sam_id')
 
-### ConQuR
-address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_ConQuR.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_ConQuR/CRC_8_CMD_ConQuR_1201', "disease", 30, 'gender', 'Sam_id')
+# ### ConQuR
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_ConQuR.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_ConQuR/CRC_8_CMD_ConQuR_1201', "disease", 30, 'gender', 'Sam_id')
 
-### ConQuR_libsize
-address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_ConQuR_libsize.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_ConQuR_libsize/CRC_8_CMD_ConQuR_libsize_1201', "disease", 30,  'gender', 'Sam_id')
+# ### ConQuR_libsize
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_ConQuR_libsize.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_ConQuR_libsize/CRC_8_CMD_ConQuR_libsize_1201', "disease", 30,  'gender', 'Sam_id')
 
-### limma
-address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_limma.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_limma/CRC_8_CMD_limma_1201', "disease", 30, 'gender','Sam_id')
+# ### limma
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_limma.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_limma/CRC_8_CMD_limma_1201', "disease", 30, 'gender','Sam_id')
 
-### MMUPHin
-address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_MMUPHin.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_MMUPHin/CRC_8_CMD_MMUPHin_1201', "disease" , 30, 'gender','Sam_id')
+# ### MMUPHin
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_MMUPHin.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_MMUPHin/CRC_8_CMD_MMUPHin_1201', "disease" , 30, 'gender','Sam_id')
 
-### Percentile_normalization
-address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_Percentile_norm/CRC_8_CMD_Percentile_norm_1201', "disease", 30, 'gender', 'Sam_id')
+# ### Percentile_normalization
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_Percentile_norm/CRC_8_CMD_Percentile_norm_1201', "disease", 30, 'gender', 'Sam_id')
 
-input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
-bio_var = "disease"
-dataset_name = "CRC_8_CMD"
-methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
-global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
+# bio_var = "disease"
+# dataset_name = "CRC_8_CMD"
+# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
 #################################################################################
@@ -1219,16 +1219,16 @@ global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, out
 # data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
 # Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_nobc/ibdmdb_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
 
-# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_0.0'
-# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0"
-# data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
-# Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_0.0_nobc/ibdmdb_interval_0.0_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_0.0'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0"
+data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
+Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_0.0_nobc/ibdmdb_interval_0.0_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
 
 
-# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_1.0'
-# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_1.0"
-# data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
-# Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_1.0_nobc/ibdmdb_interval_0.0_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_1.0'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_1.0"
+data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
+Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_1.0_nobc/ibdmdb_interval_0.0_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
 
 # address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_2.0'
 # output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_2.0"
