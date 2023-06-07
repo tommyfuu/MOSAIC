@@ -11,12 +11,43 @@ library(readr)
 library(tibble)
 library(mixOmics)
 
-run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL) {
+run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE) {
+    # r split and join everything except for last element
+    output_dir = strsplit(output_root, "/")
+    output_dir = paste(output_dir[[1]][1:(length(output_dir[[1]])-1)], collapse = "/")
+    dir.create(file.path(output_dir))
+
     # data loading <- load data_mat and meta_data, output of the preprocessing.py file
     count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
     metadata = as.data.frame(read_csv(meta_data_path))
     sink(paste(output_root, "_runtime.txt", sep=""))
 
+    if (controlled) {
+        # remove batch effect
+        # print(
+        # in input count data, remove rows that have zero variance
+        count_data = count_data[apply(count_data, 1, var) != 0, ]
+
+        # combat requires that we remove features where variance is zero in each batch
+        # print(dataset)
+        count_data = count_data[apply(count_data, 1, function(x) var(x[metadata[[dataset]] == batch_ref])) != 0, ]
+    }
+    # print("AAAAA")
+    # print(count_data == count_data_1)
+    # print("BBBBB")
+    # print(count_data == count_data_2)
+    # print("CCCCC")
+    # print(count_data_1 == count_data_2)
+
+    # count_data = count_data[apply(count_data, 1, var) != 0]
+    # # combat requires that we remove features where variance is zero in each batch
+    # # print(dataset)
+    # count_data = count_data[apply(count_data, 1, function(x) var(x[metadata[[dataset]] == batch_ref])) != 0]
+    # print(dim(count_data))
+    # # save count data just to check
+    write.csv(count_data, paste(output_root, "_used_count_data.csv", sep=""), row.names = TRUE)
+
+    # count_data = count_data[, apply(count_data, 2, var) != 0]
     ## TODO:  potentially need preprocessing such as log and +1
     # count_data <- count_data + 1
     count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
@@ -149,13 +180,13 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # batch_ref = 'HMP_2019_ibdmdb')
 
 # adenoma 5 CMD
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
-dataset = "study_name",
-batch_ref = 'FengQ_2015',
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
+# dataset = "study_name",
+# batch_ref = 'FengQ_2015',
 # covar = c("gender")
-)
+# )
 
 # # CRC_8_CMD
 # run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv',
@@ -174,3 +205,11 @@ batch_ref = 'FengQ_2015',
 # batch_ref = 'Castro-NallarE_2015',
 # # covar = c("gender")
 # )
+
+# IBD_MDB study
+run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0',
+dataset = 'location',
+batch_ref = 'Los_Angeles',
+)

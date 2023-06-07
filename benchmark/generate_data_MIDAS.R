@@ -26,13 +26,13 @@ if (p==233) {
   id_cond = c(1:20,41:50,71:80,121:200)
 }
 
-# function to generate simulated data with MIDAs
+# function to generate simulated data with MIDAs - linear combination
 midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect, out){
 
   # generate batch and condition id
   cond_batchid_vec = rmvbin(n, c(0.5, 0.5), bincorr=(1-bin_corr)*diag(2)+bin_corr)
-  cond = cond_batchid_vec[, 1]
-  batchid = cond_batchid_vec[, 2]
+  cond = cond_batchid_vec[, 1] # find the ids of taxa that are affected by condition
+  batchid = cond_batchid_vec[, 2] # find the ids of taxa that are affected by batch
 
   # simulate data
   fitted = Midas.setup(otu_original, fit.beta=FALSE)
@@ -75,32 +75,32 @@ midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect
   otu_c1b1 = Midas.sim(fitted_c1b1)$sim_count
 
   otu = matrix(NA, nrow = n, ncol = p)
-  otu[cond==0&batchid==0,] = otu_c0b0[cond==0&batchid==0,]
-  otu[cond==1&batchid==0,] = otu_c1b0[cond==1&batchid==0,]
-  otu[cond==0&batchid==1,] = otu_c0b1[cond==0&batchid==1,]
-  otu[cond==1&batchid==1,] = otu_c1b1[cond==1&batchid==1,]
+  otu[cond==0&batchid==0,] = otu_c0b0[cond==0&batchid==0,] # unadjusted ones
+  otu[cond==1&batchid==0,] = otu_c1b0[cond==1&batchid==0,] # ones adjuetd only for condition
+  otu[cond==0&batchid==1,] = otu_c0b1[cond==0&batchid==1,] # ones adjuetd only for batch
+  otu[cond==1&batchid==1,] = otu_c1b1[cond==1&batchid==1,] # ones adjuetd for both condition and batch (correlated by the coefficient)
 
   rela = otu / rowSums(otu)
   write.csv(rela, file = out, row.names = FALSE)
 }
 
-# generate simulated data
-bin_corr_val = 0.2
-cond_effect_val = 0.4
-batch_effect_val = 0.8
-midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, ".csv"))
-      
-# for (bin_corr_val in c(0.2, 0.4, 0.6, 0.8)) {
-#   for (cond_effect_val in c( 0.2, 0.4, 0.6, 0.8)) {
-#     for (batch_effect_val in c(0.2, 0.4, 0.6, 0.8)) {
-#       print(bin_corr_val)
-#       print(cond_effect_val)
-#       print(batch_effect_val)
-#       midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, ".csv"))
-#       print("___")
-#     }
-#   }
-# }
+
+# generate simulated data using Jiuyao's set up  
+scaled_midas_data_generation <- function(otu_original, n, bin_corr, cond_effect, batch_effect, out){   
+  for (bin_corr_val in c(0, 0.1, 0.3, 0.5, 0.7, 0.9)) {
+    for (cond_effect_val in c(0, 0.099, 0.299, 0.499, 0.699, 0.899)) {
+      for (batch_effect_val in c(0, 0.099, 0.299, 0.499, 0.699, 0.899)) {
+        if (cond_effect_val + batch_effect_val <= 1) {
+          print(bin_corr_val)
+          print(cond_effect_val)
+          print(batch_effect_val)
+          midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, ".csv"))
+          print("___")
+        }
+      }
+    }
+  }
+}
 # midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
 
 # midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
