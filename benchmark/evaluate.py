@@ -200,7 +200,7 @@ class Evaluate(object):
         ax1.plot(range(len(ecdf_var)),ecdf_var)
         plt.xticks(range(len(ecdf_var)), range(len(ecdf_var)))
         plt.yticks([0.1*i for i in range(11)])
-        plt.show()
+        
         plt.savefig(self.output_root+"_ecdf.png")
 
         # pca visualization
@@ -626,7 +626,9 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     # fetch time spent running
     benchmarked_results_dir = output_dir_path + "/benchmarked_results/" + dataset_name
     benchmarked_results_dir = os.listdir(benchmarked_results_dir)
-    current_runtime_kw_path = [result for result in benchmarked_results_dir if "runtime copy.txt" in result][0]
+    print("ACZDCFV DCFV ")
+    print(benchmarked_results_dir)
+    current_runtime_kw_path = [result for result in benchmarked_results_dir if "runtime.txt" in result][0]
     print(current_runtime_kw_path)
     with open(output_dir_path + "/benchmarked_results/" + dataset_name+'/'+current_runtime_kw_path) as f:
         lines = f.readlines()
@@ -755,7 +757,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
         ax1.plot(range(len(ecdf_var)),ecdf_var)
         plt.xticks(range(len(ecdf_var)), range(len(ecdf_var)))
         plt.yticks([0.1*i for i in range(11)])
-        plt.show()
+        
         plt.savefig(output_root+"_ecdf.png")
 
         # pca visualization
@@ -843,24 +845,61 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 
 # IBD_MDB dataset; stratified by days from start of study
 #################################################################################
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_0.0'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0"
-vars_use = ["study_name"]
-IDCol = 'Sam_id'
-data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
-Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_0.0_nobc/ibdmdb_interval_0.0_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_0.0'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0"
+# vars_use = ["location"]
+# IDCol = 'patient_visit_id'
+# data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
+# Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_0.0_nobc/ibdmdb_interval_0.0_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
 
-res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
-res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-Evaluate(res, meta_data, "study_name", './output_ibdmdb_interval_0.0_harmonicMic/CRC_8_CMD_harmonicMic_1201', "disease", 30, 'gender', 'Sam_id')
-Evaluate(res_h, meta_data, "study_name", './output_ibdmdb_interval_0.0_harmony/CRC_8_CMD_harmony_1201', "disease", 30, 'gender', 'Sam_id')
-res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", option = "harmony", PCA_first=True)
-Evaluate(res_h, meta_data, "study_name", './output_ibdmdb_interval_0.0_harmony_PCs/CRC_8_CMD_harmony_PCs', "disease", 30, 'gender', 'Sam_id')
-res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
-Evaluate(res, meta_data, "study_name", './output_ibdmdb_interval_0.0_harmonicMic_weighted/CRC_8_CMD_harmonicMic_weighted_1201', "disease", 30, 'gender', 'Sam_id')
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+# Evaluate(res, meta_data, "location", './output_ibdmdb_interval_0.0_harmonicMic/CRC_8_CMD_harmonicMic_1201', "disease", 30, 'gender', 'patient_visit_id')
+# Evaluate(res_h, meta_data, "location", './output_ibdmdb_interval_0.0_harmony/CRC_8_CMD_harmony_1201', "disease", 30, 'gender', 'patient_visit_id')
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", option = "harmony", PCA_first=True)
+# Evaluate(res_h, meta_data, "location", './output_ibdmdb_interval_0.0_harmony_PCs/CRC_8_CMD_harmony_PCs', "disease", 30, 'gender', 'patient_visit_id')
+# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
+# Evaluate(res, meta_data, "location", './output_ibdmdb_interval_0.0_harmonicMic_weighted/CRC_8_CMD_harmonicMic_weighted_1201', "disease", 30, 'gender', 'patient_visit_id')
 
-# benchmarking other methods
+# # benchmarking other methods
 
+address_Y = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv'
+
+# ### combat # TODO: to fix: contains NAN
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0_combat.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "location", './output_ibdmdb_interval_0.0_combat/output_ibdmdb_interval_0.0_combat_1201', "disease", 30, 'gender', 'patient_visit_id')
+
+# ### ConQuR
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0_ConQuR.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "location", './output_ibdmdb_interval_0.0_ConQuR/output_ibdmdb_interval_0.0_ConQuR_1201', "disease", 30, 'gender', 'patient_visit_id')
+
+# ### ConQuR_libsize
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0_ConQuR_libsize.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "location", './output_ibdmdb_interval_0.0_ConQuR_libsize/output_ibdmdb_interval_0.0_ConQuR_libsize_1201', "disease", 30,  'gender', 'patient_visit_id')
+
+# ### limma
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0_limma.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "location", './output_ibdmdb_interval_0.0_limma/output_ibdmdb_interval_0.0_limma_1201', "disease", 30, 'gender','patient_visit_id')
+
+# ### MMUPHin
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0_MMUPHin.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "location", './output_ibdmdb_interval_0.0_MMUPHin/output_ibdmdb_interval_0.0_MMUPHin_1201', "disease" , 30, 'gender','patient_visit_id')
+
+# ### Percentile_normalization
+# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0_percentile_norm.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "location", './output_ibdmdb_interval_0.0_Percentile_norm/output_ibdmdb_interval_0.0_Percentile_norm_1201', "disease", 30, 'gender', 'patient_visit_id')
+
+input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv"
+bio_var = "disease"
+dataset_name = "ibdmdb_interval_0.0"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 # address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibdmdb_interval_1.0'
 # output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_1.0"

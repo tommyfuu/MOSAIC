@@ -1,0 +1,62 @@
+global batch kw p-vals 
+
+
+
+. PC0 across all batches, p-val =  0.2365560660340729 
+
+. PC1 across all batches, p-val =  0.25980007302477903 
+
+global pair-wise batch kw p-vals 
+
+current batch pair ('Atlanta', 'Boston') 
+
+. PC0 ('Atlanta', 'Boston') 0.79280681387132 # samples in batch Atlanta: 24 # samples in batch Boston: 120
+. PC1 ('Atlanta', 'Boston') 0.5882203094034325 # samples in batch Atlanta: 24 # samples in batch Boston: 120
+current batch pair ('Atlanta', 'Cincinnati') 
+
+. PC0 ('Atlanta', 'Cincinnati') 0.27308182129686864 # samples in batch Atlanta: 24 # samples in batch Cincinnati: 87
+. PC1 ('Atlanta', 'Cincinnati') 0.3591902183791058 # samples in batch Atlanta: 24 # samples in batch Cincinnati: 87
+current batch pair ('Atlanta', 'Los_Angeles') 
+
+. PC0 ('Atlanta', 'Los_Angeles') 0.34916259788422366 # samples in batch Atlanta: 24 # samples in batch Los_Angeles: 76
+. PC1 ('Atlanta', 'Los_Angeles') 0.628209136354339 # samples in batch Atlanta: 24 # samples in batch Los_Angeles: 76
+current batch pair ('Boston', 'Cincinnati') 
+
+. PC0 ('Boston', 'Cincinnati') 0.07631578651824314 # samples in batch Boston: 120 # samples in batch Cincinnati: 87
+. PC1 ('Boston', 'Cincinnati') 0.6050391024736637 # samples in batch Boston: 120 # samples in batch Cincinnati: 87
+current batch pair ('Boston', 'Los_Angeles') 
+
+. PC0 ('Boston', 'Los_Angeles') 0.14423863082245791 # samples in batch Boston: 120 # samples in batch Los_Angeles: 76
+. PC1 ('Boston', 'Los_Angeles') 0.09552646025065793 # samples in batch Boston: 120 # samples in batch Los_Angeles: 76
+current batch pair ('Cincinnati', 'Los_Angeles') 
+
+. PC0 ('Cincinnati', 'Los_Angeles') 0.8678967479284889 # samples in batch Cincinnati: 87 # samples in batch Los_Angeles: 76
+. PC1 ('Cincinnati', 'Los_Angeles') 0.08667470705752496 # samples in batch Cincinnati: 87 # samples in batch Los_Angeles: 76
+batch kw p-vals by bio_var 
+
+. bio_var == IBD
+.   PC0 ('Atlanta', 'Boston') 0.7824305201097028 # new samples: 21 # old samples: 80
+.   PC1 ('Atlanta', 'Boston') 0.8934876716385644 # new samples: 21 # old samples: 80
+.   PC0 ('Atlanta', 'Cincinnati') 0.4474957085631427 # new samples: 21 # old samples: 61
+.   PC1 ('Atlanta', 'Cincinnati') 0.9703390502867554 # new samples: 21 # old samples: 61
+.   PC0 ('Atlanta', 'Los_Angeles') 0.3892406845260499 # new samples: 21 # old samples: 74
+.   PC1 ('Atlanta', 'Los_Angeles') 0.281818144050732 # new samples: 21 # old samples: 74
+.   PC0 ('Boston', 'Cincinnati') 0.30206262940240464 # new samples: 80 # old samples: 61
+.   PC1 ('Boston', 'Cincinnati') 0.9734425499330077 # new samples: 80 # old samples: 61
+.   PC0 ('Boston', 'Los_Angeles') 0.21216952702621913 # new samples: 80 # old samples: 74
+.   PC1 ('Boston', 'Los_Angeles') 0.14501506849367982 # new samples: 80 # old samples: 74
+.   PC0 ('Cincinnati', 'Los_Angeles') 0.8526874799187103 # new samples: 61 # old samples: 74
+.   PC1 ('Cincinnati', 'Los_Angeles') 0.21247852034221057 # new samples: 61 # old samples: 74
+. bio_var == healthy
+.   PC0 ('Atlanta', 'Boston') 0.8862748688838323 # new samples: 3 # old samples: 40
+.   PC1 ('Atlanta', 'Boston') 0.02830997616296631 # new samples: 3 # old samples: 40
+.   PC0 ('Atlanta', 'Cincinnati') 0.519249062248659 # new samples: 3 # old samples: 26
+.   PC1 ('Atlanta', 'Cincinnati') 0.04495004377553389 # new samples: 3 # old samples: 26
+.   PC0 ('Atlanta', 'Los_Angeles') 0.5637028616507738 # new samples: 3 # old samples: 2
+.   PC1 ('Atlanta', 'Los_Angeles') 1.0 # new samples: 3 # old samples: 2
+.   PC0 ('Boston', 'Cincinnati') 0.1183706265186576 # new samples: 40 # old samples: 26
+.   PC1 ('Boston', 'Cincinnati') 0.4624041791239726 # new samples: 40 # old samples: 26
+.   PC0 ('Boston', 'Los_Angeles') 0.5158945097448886 # new samples: 40 # old samples: 2
+.   PC1 ('Boston', 'Los_Angeles') 0.06711013921246456 # new samples: 40 # old samples: 2
+.   PC0 ('Cincinnati', 'Los_Angeles') 0.9289188686019256 # new samples: 26 # old samples: 2
+.   PC1 ('Cincinnati', 'Los_Angeles') 0.07440691359805163 # new samples: 26 # old samples: 2

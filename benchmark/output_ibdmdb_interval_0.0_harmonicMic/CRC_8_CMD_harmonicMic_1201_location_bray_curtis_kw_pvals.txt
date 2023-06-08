@@ -1,0 +1,19 @@
+bray_curtis_global_pvals, by PCs [0.6845642449997733, 0.941368979065253, 0.038083786361370345] 
+
+bray_curtis_pairwise_pval 
+
+PC1
+
+{('Atlanta', 'Boston'): 0.9273896405366467, ('Atlanta', 'Cincinnati'): 0.4182512286030391, ('Atlanta', 'Los_Angeles'): 0.5132817730262862, ('Boston', 'Cincinnati'): 0.2692210141544476, ('Boston', 'Los_Angeles'): 0.6344092609147598, ('Cincinnati', 'Los_Angeles'): 0.592245613314312}
+
+
+PC2
+
+{('Atlanta', 'Boston'): 0.8764615887624057, ('Atlanta', 'Cincinnati'): 0.9543007833228689, ('Atlanta', 'Los_Angeles'): 0.9485191272421019, ('Boston', 'Cincinnati'): 0.47774742372054946, ('Boston', 'Los_Angeles'): 0.8564396721834936, ('Cincinnati', 'Los_Angeles'): 0.7952681425327627}
+
+
+PC3
+
+{('Atlanta', 'Boston'): 0.36781458221868457, ('Atlanta', 'Cincinnati'): 0.505288483806323, ('Atlanta', 'Los_Angeles'): 0.8527358676242152, ('Boston', 'Cincinnati'): 0.003611470897456969, ('Boston', 'Los_Angeles'): 0.18319983715261015, ('Cincinnati', 'Los_Angeles'): 0.16538151439730103}
+
+

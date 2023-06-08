@@ -19,12 +19,12 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 
     # data loading <- load data_mat and meta_data, output of the preprocessing.py file
     count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
+
+    # print(count_data)
     metadata = as.data.frame(read_csv(meta_data_path))
     sink(paste(output_root, "_runtime.txt", sep=""))
 
-    # count_data = count_data[, apply(count_data, 2, var) != 0]
     ## TODO:  potentially need preprocessing such as log and +1
-    # count_data <- count_data + 1
     count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
 
     
@@ -44,6 +44,8 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     write.csv(count_data.combat, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
     end_time <- Sys.time()
     cat(c("combat runtime", toString(end_time - start_time), "seconds"))
+    cat('\n')
+    print(count_data.combat)
     cat('\n')
 
     ## limma
@@ -123,10 +125,10 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
 }
 
-# # glickman
-# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_count_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/Glickman_meta_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/Glickman/Glickman',
+# glickman
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/Glickman_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/Glickman_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/Glickman/Glickman',
 # dataset = "Dataset",
 # batch_ref = 'Old',
 # covar='Sex'
@@ -182,7 +184,20 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # )
 
 # IBD_MDB study
-for (i in c('0.0', '1.0', '2.0', '3.0', '4.0')){
+# for (i in c('0.0', '1.0', '2.0', '3.0', '4.0')){
+#     run_methods(paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_count_data.csv', sep=""),
+#         paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_meta_data.csv', sep=""),
+#         paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_', i, '/ibdmdb_interval_', i, sep=""),
+#         #     '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv',
+#         # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv',
+#         # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0',
+#         dataset = 'location',
+#         batch_ref = 'Los_Angeles',
+#         Sam_id = 'patient_visit_id'
+#     )
+# }
+
+for (i in c('0.0')){
     run_methods(paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_count_data.csv', sep=""),
         paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_meta_data.csv', sep=""),
         paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_', i, '/ibdmdb_interval_', i, sep=""),
