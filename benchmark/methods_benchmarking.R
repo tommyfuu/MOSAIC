@@ -64,8 +64,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     }
     metadata_mupphin <- metadata
     row.names(metadata_mupphin) <- metadata[[Sam_id]]
-    cat(colnames(t(count_data_t_relab)))
-    cat(rownames(metadata_mupphin))
     if(is.null(covar)) {
         fit_adjust_batch <- adjust_batch(feature_abd = t(count_data_t_relab),
                                     batch = dataset,
@@ -184,10 +182,24 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # )
 
 # IBD_MDB study
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0',
+for (i in c('0.0', '1.0', '2.0', '3.0', '4.0')){
+    run_methods(paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_count_data.csv', sep=""),
+        paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_meta_data.csv', sep=""),
+        paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_', i, '/ibdmdb_interval_', i, sep=""),
+        #     '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv',
+        # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv',
+        # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0',
+        dataset = 'location',
+        batch_ref = 'Los_Angeles',
+        Sam_id = 'patient_visit_id'
+    )
+}
+
+# # hanningan study
+run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston',
 dataset = 'location',
-batch_ref = 'Los_Angeles',
+batch_ref = 'Toronto',
 Sam_id = 'patient_visit_id'
 )

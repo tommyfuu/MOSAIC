@@ -91,11 +91,13 @@ scaled_midas_data_generation <- function(otu_original, n, bin_corr, cond_effect,
     for (cond_effect_val in c(0, 0.099, 0.299, 0.499, 0.699, 0.899)) {
       for (batch_effect_val in c(0, 0.099, 0.299, 0.499, 0.699, 0.899)) {
         if (cond_effect_val + batch_effect_val <= 1) {
-          print(bin_corr_val)
-          print(cond_effect_val)
-          print(batch_effect_val)
-          midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, ".csv"))
-          print("___")
+          for (iter in seq(1, 100)){
+            print(bin_corr_val)
+            print(cond_effect_val)
+            print(batch_effect_val)
+            midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"))
+            print("___")
+          }
         }
       }
     }
