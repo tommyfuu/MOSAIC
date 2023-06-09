@@ -922,10 +922,11 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
 # Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_4.0_nobc/ibdmdb_interval_0.0_nobc_052923', "disease", 30,  'gender', 'patient_visit_id')
 
-# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/hanninganGD_noBoston'
-# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston"
-# data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
-# Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_noBoston_nobc/hanninganGD_noBoston', "disease", 30,  'gender', 'patient_visit_id')
+input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_1.0_count_data.csv"
+bio_var = "disease"
+dataset_name = "CRC_8_CMD"
+methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
 ## hanninganGD_noBoston - adenoma dataset

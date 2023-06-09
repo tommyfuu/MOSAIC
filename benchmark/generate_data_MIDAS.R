@@ -86,12 +86,12 @@ midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect
 
 
 # generate simulated data using Jiuyao's set up  
-scaled_midas_data_generation <- function(otu_original, n, bin_corr, cond_effect, batch_effect, out){   
-  for (bin_corr_val in c(0, 0.1, 0.3, 0.5, 0.7, 0.9)) {
-    for (cond_effect_val in c(0, 0.099, 0.299, 0.499, 0.699, 0.899)) {
-      for (batch_effect_val in c(0, 0.099, 0.299, 0.499, 0.699, 0.899)) {
+scaled_midas_data_generation <- function(otu_original, n, bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter, out){   
+  for (bin_corr_val in bin_corr_val_l) {
+    for (cond_effect_val in cond_effect_val_l) {
+      for (batch_effect_val in batch_effect_val_l) {
         if (cond_effect_val + batch_effect_val <= 1) {
-          for (iter in seq(1, 100)){
+          for (iter in seq(1, num_iter)){
             print(bin_corr_val)
             print(cond_effect_val)
             print(batch_effect_val)
@@ -103,6 +103,11 @@ scaled_midas_data_generation <- function(otu_original, n, bin_corr, cond_effect,
     }
   }
 }
+
+bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+scaled_midas_data_generation(otu_original, n, bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter=10, out)
 # midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
 
 # midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")

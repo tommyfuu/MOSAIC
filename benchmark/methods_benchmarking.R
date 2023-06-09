@@ -121,6 +121,40 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     end_time <- Sys.time()
     cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"))
 
+    ## attempt Tune_ConQuR
+    start_time <- Sys.time()
+    batchid <- factor(metadata[, dataset])
+    # here for batch_ref_pool attempt all the potential batch_refs
+    # unique values in the batchid column
+    batch_ref_pool <- unique(metadata[, dataset])
+
+    if (is.null(covar)){
+        count_data.conqur_finetuned = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL,
+                           batch_ref_pool=batch_ref_pool,
+                           logistic_lasso_pool=F, 
+                           quantile_type_pool=c("standard", "lasso"),
+                           simple_match_pool=F,
+                           lambda_quantile_pool=c(NA, "2p/n"),
+                           interplt_pool=F,
+                           frequencyL=0,
+                           frequencyU=1)
+    }
+    else {
+        covar_df = factor(metadata[, covar])
+        count_data.conqur_finetuned = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df,
+                           batch_ref_pool=batch_ref_pool,
+                           logistic_lasso_pool=F, 
+                           quantile_type_pool=c("standard", "lasso"),
+                           simple_match_pool=F,
+                           lambda_quantile_pool=c(NA, "2p/n"),
+                           interplt_pool=F,
+                           frequencyL=0,
+                           frequencyU=1)
+    }
+    write.csv(count_data.conqur_finetuned,paste(output_root, "_ConQuR_finetuned.csv", sep=""), row.names = TRUE)
+    end_time <- Sys.time()
+    cat(c("ConquR_finetuned runtime", toString(end_time - start_time), "seconds"))
+
    
     
 }
