@@ -1,0 +1,19 @@
+bray_curtis_global_pvals, by PCs [0.0687850655946598, 0.6923452107866022, 4.288272135766338e-07] 
+
+bray_curtis_pairwise_pval 
+
+PC1
+
+{('AnnArbor', 'Houston'): 0.22233584869666023, ('AnnArbor', 'Toronto'): 0.3808364803067076, ('Houston', 'Toronto'): 0.024515960363890817}
+
+
+PC2
+
+{('AnnArbor', 'Houston'): 0.5417490574450239, ('AnnArbor', 'Toronto'): 0.9999999048847483, ('Houston', 'Toronto'): 0.40985561187895314}
+
+
+PC3
+
+{('AnnArbor', 'Houston'): 0.29191479596644304, ('AnnArbor', 'Toronto'): 0.00012604645012081263, ('Houston', 'Toronto'): 1.2527534058953163e-06}
+
+

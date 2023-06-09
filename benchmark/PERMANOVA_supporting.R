@@ -106,7 +106,16 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
 
     Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
+    # print("Aitchison distance plotting")
+    # print(MDS)
+    # library(txtplot)
     s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = main, csub = aa)
+    # print figure
+    print("AAAAAAAA")
+    print("AAAAAAAA")
+    print("AAAAAAAA")
+    print("AAAAAAAA")
+    png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
     # save figure
     pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
   } else if (dissimilarity == "GUniFrac"){

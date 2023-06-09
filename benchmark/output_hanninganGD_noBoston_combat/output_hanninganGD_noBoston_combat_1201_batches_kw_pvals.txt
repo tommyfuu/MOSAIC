@@ -1,0 +1,38 @@
+global batch kw p-vals 
+
+
+
+. PC0 across all batches, p-val =  0.3345933999941515 
+
+. PC1 across all batches, p-val =  0.5110147303153405 
+
+global pair-wise batch kw p-vals 
+
+current batch pair ('AnnArbor', 'Houston') 
+
+. PC0 ('AnnArbor', 'Houston') 0.3456858472776264 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
+. PC1 ('AnnArbor', 'Houston') 0.4374064429023632 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
+current batch pair ('AnnArbor', 'Toronto') 
+
+. PC0 ('AnnArbor', 'Toronto') 0.7424326978058204 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
+. PC1 ('AnnArbor', 'Toronto') 0.2576512716644303 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
+current batch pair ('Houston', 'Toronto') 
+
+. PC0 ('Houston', 'Toronto') 0.14245669739409403 # samples in batch Houston: 15 # samples in batch Toronto: 25
+. PC1 ('Houston', 'Toronto') 0.68541167172501 # samples in batch Houston: 15 # samples in batch Toronto: 25
+batch kw p-vals by bio_var 
+
+. bio_var == adenoma
+.   PC0 ('AnnArbor', 'Houston') nan # new samples: 4 # old samples: 0
+.   PC1 ('AnnArbor', 'Houston') nan # new samples: 4 # old samples: 0
+.   PC0 ('AnnArbor', 'Toronto') 0.35555412352926774 # new samples: 4 # old samples: 22
+.   PC1 ('AnnArbor', 'Toronto') 0.28642202277785495 # new samples: 4 # old samples: 22
+.   PC0 ('Houston', 'Toronto') nan # new samples: 0 # old samples: 22
+.   PC1 ('Houston', 'Toronto') nan # new samples: 0 # old samples: 22
+. bio_var == healthy
+.   PC0 ('AnnArbor', 'Houston') 0.7554968749288863 # new samples: 6 # old samples: 15
+.   PC1 ('AnnArbor', 'Houston') 0.6970916100059593 # new samples: 6 # old samples: 15
+.   PC0 ('AnnArbor', 'Toronto') 0.7962534147376396 # new samples: 6 # old samples: 3
+.   PC1 ('AnnArbor', 'Toronto') 0.4385780260810005 # new samples: 6 # old samples: 3
+.   PC0 ('Houston', 'Toronto') 0.10974463874701304 # new samples: 15 # old samples: 3
+.   PC1 ('Houston', 'Toronto') 0.44126813332893355 # new samples: 15 # old samples: 3

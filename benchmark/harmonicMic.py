@@ -85,7 +85,10 @@ def run_harmonicMic(
 
     if nclust is None:
         # nclust = np.min([np.round(N / 30.0), 100]).astype(int)
-        nclust = np.min([np.round(N / 50.0), 2]).astype(int)
+        nclust = np.min([np.round(N / 30.0), 2]).astype(int)
+        if nclust == 1:
+            logger.warning("Only one cluster detected. Please check your data.")
+        print("nclust", nclust)
 
     if type(sigma) is float and nclust > 1:
         sigma = np.repeat(sigma, nclust)
@@ -217,6 +220,18 @@ class HarmonicMic(object):
         # (2) Assign cluster probabilities
         self.dist_mat = 2 * (1 - np.dot(self.Y.T, self.Z_cos))
         self.R = -self.dist_mat
+        print("self.sigma")
+        print("self.sigma")
+        print("self.sigma")
+        print("self.sigma")
+        print("self.sigma")
+        print("self.sigma")
+        print(self.sigma)
+        print("self.sigma")
+        print("self.sigma")
+        print("self.sigma")
+        print("self.sigma")
+        print("self.sigma")
         self.R = self.R / self.sigma[:,None]
         self.R -= np.max(self.R, axis = 0)
         self.R = np.exp(self.R)
