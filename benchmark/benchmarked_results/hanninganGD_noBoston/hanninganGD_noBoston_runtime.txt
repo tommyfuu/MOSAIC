@@ -1,6 +1,5 @@
-combat runtime 4.5585629940033 secondslimma runtime 0.0503599643707275 seconds
-MMUPHin runtime 1.79336285591125 seconds
-ConquR runtime 2.68378806114197 seconds
-ConquR_libsize runtime 6.11013007164001 seconds[1] "batch ref pool"
-[1] "Toronto"  "Houston"  "AnnArbor"
-[1] "Running ConQuR_finetuned version now"
+combat runtime 3.51239705085754 seconds
+limma runtime 0.0441029071807861 seconds
+MMUPHin runtime 1.54733300209045 seconds
+ConquR runtime 2.15211987495422 seconds
+ConquR_libsize runtime 4.84336304664612 seconds

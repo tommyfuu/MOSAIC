@@ -1,19 +1,19 @@
-bray_curtis_global_pvals, by PCs [0.23502832028141024, 0.8962452515089132, 0.2472790145377663] 
+bray_curtis_global_pvals, by PCs [0.31158303170746593, 0.9450998807984281, 0.54187028664309] 
 
 bray_curtis_pairwise_pval 
 
 PC1
 
-{('Atlanta', 'Boston'): 0.331915991157214, ('Atlanta', 'Cincinnati'): 0.8747769129338314, ('Atlanta', 'Los_Angeles'): 0.3053661112680326, ('Boston', 'Cincinnati'): 0.07749279429013457, ('Boston', 'Los_Angeles'): 0.9217677009754963, ('Cincinnati', 'Los_Angeles'): 0.11105981167704852}
+{('Atlanta', 'Boston'): 0.3058978765638617, ('Atlanta', 'Cincinnati'): 0.9714284643560125, ('Atlanta', 'Los_Angeles'): 0.2484481539531145, ('Boston', 'Cincinnati'): 0.1259310536406525, ('Boston', 'Los_Angeles'): 0.9279263874078723, ('Cincinnati', 'Los_Angeles'): 0.15839684720995653}
 
 
 PC2
 
-{('Atlanta', 'Boston'): 0.8010824587861344, ('Atlanta', 'Cincinnati'): 0.7909755140359647, ('Atlanta', 'Los_Angeles'): 0.7775765477802581, ('Boston', 'Cincinnati'): 0.8600526309537828, ('Boston', 'Los_Angeles'): 0.45356998612418553, ('Cincinnati', 'Los_Angeles'): 0.6014766200019646}
+{('Atlanta', 'Boston'): 0.9700672532478081, ('Atlanta', 'Cincinnati'): 0.8020326367147045, ('Atlanta', 'Los_Angeles'): 0.7346290690919298, ('Boston', 'Cincinnati'): 0.6001255459460934, ('Boston', 'Los_Angeles'): 0.6529368883335083, ('Cincinnati', 'Los_Angeles'): 0.9337200844155658}
 
 
 PC3
 
-{('Atlanta', 'Boston'): 0.8093804874574482, ('Atlanta', 'Cincinnati'): 0.4476638847165315, ('Atlanta', 'Los_Angeles'): 0.35753451953047877, ('Boston', 'Cincinnati'): 0.14498597242354677, ('Boston', 'Los_Angeles'): 0.06462440354758775, ('Cincinnati', 'Los_Angeles'): 0.8626641028366115}
+{('Atlanta', 'Boston'): 0.9061212376605869, ('Atlanta', 'Cincinnati'): 0.7417670274042634, ('Atlanta', 'Los_Angeles'): 0.41961939421907357, ('Boston', 'Cincinnati'): 0.5646579350587548, ('Boston', 'Los_Angeles'): 0.133216559017874, ('Cincinnati', 'Los_Angeles'): 0.5058441822370656}
 
 

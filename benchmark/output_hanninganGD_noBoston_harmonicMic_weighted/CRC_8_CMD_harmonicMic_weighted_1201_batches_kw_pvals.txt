@@ -2,9 +2,9 @@ global batch kw p-vals
 
 
 
-. PC0 across all batches, p-val =  0.03803714271149673 
+. PC0 across all batches, p-val =  0.04733107439230195 
 
-. PC1 across all batches, p-val =  0.9097331888134335 
+. PC1 across all batches, p-val =  0.9177021898330361 
 
 global pair-wise batch kw p-vals 
 
@@ -18,8 +18,8 @@ current batch pair ('AnnArbor', 'Toronto')
 . PC1 ('AnnArbor', 'Toronto') 0.9999999048847483 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
 current batch pair ('Houston', 'Toronto') 
 
-. PC0 ('Houston', 'Toronto') 0.01240599939859552 # samples in batch Houston: 15 # samples in batch Toronto: 25
-. PC1 ('Houston', 'Toronto') 0.7060603818710635 # samples in batch Houston: 15 # samples in batch Toronto: 25
+. PC0 ('Houston', 'Toronto') 0.016911249961767946 # samples in batch Houston: 15 # samples in batch Toronto: 25
+. PC1 ('Houston', 'Toronto') 0.726927794856527 # samples in batch Houston: 15 # samples in batch Toronto: 25
 batch kw p-vals by bio_var 
 
 . bio_var == adenoma

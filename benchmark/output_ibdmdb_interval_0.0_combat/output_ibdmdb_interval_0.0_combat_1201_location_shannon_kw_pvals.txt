@@ -1,5 +1,5 @@
-shannon_global_pval 0.3630181124388021 
+shannon_global_pval 0.5009465315614903 
 
 shannon_pairwise_pval 
 
-{('Atlanta', 'Boston'): 0.7640310808453872, ('Atlanta', 'Cincinnati'): 0.7041995095292122, ('Atlanta', 'Los_Angeles'): 0.34091623916033204, ('Boston', 'Cincinnati'): 0.3704448439913278, ('Boston', 'Los_Angeles'): 0.354853581383482, ('Cincinnati', 'Los_Angeles'): 0.07243553215841979}
+{('Atlanta', 'Boston'): 0.3649702089629624, ('Atlanta', 'Cincinnati'): 0.24586026151782087, ('Atlanta', 'Los_Angeles'): 0.7775765477802581, ('Boston', 'Cincinnati'): 0.5395134301168627, ('Boston', 'Los_Angeles'): 0.4260344435178247, ('Cincinnati', 'Los_Angeles'): 0.219627139493486}

@@ -1,5 +1,5 @@
-shannon_global_pval 0.450147310933826 
+shannon_global_pval 0.4955037326429269 
 
 shannon_pairwise_pval 
 
-{('AnnArbor', 'Houston'): 0.6978013350844976, ('AnnArbor', 'Toronto'): 0.361310428526176, ('Houston', 'Toronto'): 0.26980146868630567}
+{('AnnArbor', 'Houston'): 0.6978013350844976, ('AnnArbor', 'Toronto'): 0.4009973989006199, ('Houston', 'Toronto'): 0.2948019919336995}
