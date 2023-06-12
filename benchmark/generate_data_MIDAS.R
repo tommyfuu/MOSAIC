@@ -95,8 +95,16 @@ scaled_midas_data_generation <- function(otu_original, n, bin_corr_val_l, cond_e
             print(bin_corr_val)
             print(cond_effect_val)
             print(batch_effect_val)
-            midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"))
-            print("___")
+            output_file_path = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            if (not file.exists(output_file_path)){
+              midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, output_file_path)
+              print("___")
+            }
+            else{
+              print(output_file_path)
+              print("file exists")
+              print("___")
+            }
           }
         }
       }

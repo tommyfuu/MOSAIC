@@ -44,9 +44,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     write.csv(count_data.combat, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
     end_time <- Sys.time()
     cat(c("combat runtime", toString(end_time - start_time), "seconds"))
-    cat('\n')
-    print(count_data.combat)
-    cat('\n')
 
     ## limma
     ## note that the 'covariates' argument here cannot be used because limma requires continuous covariates
@@ -128,12 +125,16 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     # unique values in the batchid column
     batch_ref_pool <- unique(metadata[, dataset])
 
+    print("batch ref pool")
+    print(batch_ref_pool)
+
     if (is.null(covar)){
+        print("Running ConQuR_finetuned version now")
         count_data.conqur_finetuned = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL,
                            batch_ref_pool=batch_ref_pool,
-                           logistic_lasso_pool=F, 
+                           logistic_lasso_pool=T, 
                            quantile_type_pool=c("standard", "lasso"),
-                           simple_match_pool=F,
+                           simple_match_pool=T,
                            lambda_quantile_pool=c(NA, "2p/n"),
                            interplt_pool=F,
                            frequencyL=0,
@@ -143,9 +144,9 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         covar_df = factor(metadata[, covar])
         count_data.conqur_finetuned = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df,
                            batch_ref_pool=batch_ref_pool,
-                           logistic_lasso_pool=F, 
+                           logistic_lasso_pool=c(T, F), 
                            quantile_type_pool=c("standard", "lasso"),
-                           simple_match_pool=F,
+                           simple_match_pool=c(T, F),
                            lambda_quantile_pool=c(NA, "2p/n"),
                            interplt_pool=F,
                            frequencyL=0,
@@ -231,24 +232,34 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 #     )
 # }
 
-for (i in c('0.0')){
-    run_methods(paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_count_data.csv', sep=""),
-        paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_meta_data.csv', sep=""),
-        paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_', i, '/ibdmdb_interval_', i, sep=""),
-        #     '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv',
-        # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv',
-        # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0',
-        dataset = 'location',
-        batch_ref = 'Los_Angeles',
-        Sam_id = 'patient_visit_id'
-    )
-}
+# for (i in c('0.0')){
+#     run_methods(paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_count_data.csv', sep=""),
+#         paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_', i, '_meta_data.csv', sep=""),
+#         paste('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_', i, '/ibdmdb_interval_', i, sep=""),
+#         #     '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv',
+#         # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv',
+#         # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0',
+#         dataset = 'location',
+#         batch_ref = 'Los_Angeles',
+#         Sam_id = 'patient_visit_id'
+#     )
+# }
 
 # # hanningan study
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston',
+# dataset = 'location',
+# batch_ref = 'Toronto',
+# Sam_id = 'patient_visit_id'
+# )
+
+## NOTICED THAT the finetuning version requires at least one covariate
 run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv',
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston_gender/hanninganGD_noBoston_gender',
 dataset = 'location',
 batch_ref = 'Toronto',
-Sam_id = 'patient_visit_id'
+Sam_id = 'patient_visit_id',
+covar = c("gender")
 )
