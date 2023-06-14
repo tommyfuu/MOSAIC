@@ -142,7 +142,7 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
 
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2, poslabel = '', R_PCOA_plot = True
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2, poslabel = '', R_PCOA_plot = True, pipeline = 'default'
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -156,10 +156,12 @@ class Evaluate(object):
         self.test_percent = test_percent
         self.poslabel = poslabel
         self.R_PCOA_plot = R_PCOA_plot
+        self.pipeline = pipeline # "default" or "scaled"
         # make directory if not exists
         directory_path = "/".join(output_root.split("/")[:-1])
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
+        
         # functions executed
         ## version 1, for batch evaluation
         self.alpha_beta_diversity_and_tests(self.batch_var) # has to happen before standard scaler
@@ -390,7 +392,7 @@ class Evaluate(object):
             PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_batch, 'batch', self.covar)
         print("______________batch_PERMANOVA_R2_results______________")
         bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
-        aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
+        aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results[1], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
         print(bray_curtis_permanova_df)
         print(aitchinson_permanova_df)
         # bray_anova = PERMANOVA_R2_results[0]
@@ -466,10 +468,11 @@ class Evaluate(object):
         bc_metadata = self.meta_data
         bc_metadata.index = bc_metadata[self.IDCol]
         bc_metadata[test_var] = bc_metadata[test_var].fillna("unknown")
-        bc_fig = bc_pc.plot(bc_metadata, test_var,
-                 axis_labels=('PC 1', 'PC 2', 'PC 3'),
-                 title='Samples colored by '+test_var, cmap='jet', s=50)
-        bc_fig.figure.savefig(self.output_root+"_"+test_var+"_beta_bc_pcoa.png")
+        if pipeline == "default":
+            bc_fig = bc_pc.plot(bc_metadata, test_var,
+                    axis_labels=('PC 1', 'PC 2', 'PC 3'),
+                    title='Samples colored by '+test_var, cmap='jet', s=50)
+            bc_fig.figure.savefig(self.output_root+"_"+test_var+"_beta_bc_pcoa.png")
 
         # get list of unique test_var options
         test_var_col_l = list(self.meta_data[test_var])
