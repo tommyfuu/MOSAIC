@@ -27,7 +27,7 @@ if (p==233) {
 }
 
 # function to generate simulated data with MIDAs - linear combination
-midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect, out){
+midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect, out_count, out_relab){
 
   # generate batch and condition id
   cond_batchid_vec = rmvbin(n, c(0.5, 0.5), bincorr=(1-bin_corr)*diag(2)+bin_corr)
@@ -80,8 +80,11 @@ midas_bc_biovar <- function(otu_original, n, bin_corr, cond_effect, batch_effect
   otu[cond==0&batchid==1,] = otu_c0b1[cond==0&batchid==1,] # ones adjuetd only for batch
   otu[cond==1&batchid==1,] = otu_c1b1[cond==1&batchid==1,] # ones adjuetd for both condition and batch (correlated by the coefficient)
 
+  # save otu
+  write.csv(otu, file = out_count, row.names = FALSE)
+  # relative abundance
   rela = otu / rowSums(otu)
-  write.csv(rela, file = out, row.names = FALSE)
+  write.csv(rela, file = out_relab, row.names = FALSE)
 }
 
 
@@ -95,9 +98,11 @@ scaled_midas_data_generation <- function(otu_original, n, bin_corr_val_l, cond_e
             print(bin_corr_val)
             print(cond_effect_val)
             print(batch_effect_val)
-            output_file_path = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-            if (not file.exists(output_file_path)){
-              midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, output_file_path)
+            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            
+            if (not file.exists(output_file_path_count)){
+              midas_bc_biovar(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab)
               print("___")
             }
             else{
@@ -122,3 +127,18 @@ scaled_midas_data_generation(otu_original, n, bin_corr_val_l, cond_effect_val_l,
 # midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./QinJ_2012_relab.csv")
 # write relative abundance to csv
 # write.csv(rela, file = "./ibd_150_relab.csv", row.names = FALSE, out = )
+
+
+
+# 1. modify count:
+## - 1.1 use midas to generate data
+# fitted_c0b0 = Midas.modify(fitted,
+#                             lib.size = rep(10000,n)) - can even remove the library size so we can use the original data's library size
+## - 1.2 multiply certain taxa by the fold change number
+### certain taxa can be randomly selected or selected using id_batch = 101:250
+#### the taxa that are already really big in the original data should not be multiplied by a fold change that's too big
+#### the taxa that are already really small in the original data would not be impacted by the fold change too much
+##### or we can just normalize back so the rel abund is still summing to 1
+
+# 2. when simulating with midas, 
+## dirichlet multi-normal distribution, multiply mean factor by fc

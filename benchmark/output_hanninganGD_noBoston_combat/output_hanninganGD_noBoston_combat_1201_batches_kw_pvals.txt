@@ -2,37 +2,37 @@ global batch kw p-vals
 
 
 
-. PC0 across all batches, p-val =  0.2952811129950973 
+. PC0 across all batches, p-val =  0.6272760102663046 
 
-. PC1 across all batches, p-val =  0.44425486420975346 
+. PC1 across all batches, p-val =  0.8643813964786398 
 
 global pair-wise batch kw p-vals 
 
 current batch pair ('AnnArbor', 'Houston') 
 
-. PC0 ('AnnArbor', 'Houston') 0.26725749315438274 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
-. PC1 ('AnnArbor', 'Houston') 0.2672574931543855 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
+. PC0 ('AnnArbor', 'Houston') 0.47084168199062715 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
+. PC1 ('AnnArbor', 'Houston') 0.6978013350844976 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
 current batch pair ('AnnArbor', 'Toronto') 
 
-. PC0 ('AnnArbor', 'Toronto') 0.6612572218537314 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
-. PC1 ('AnnArbor', 'Toronto') 0.24261530265807355 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
+. PC0 ('AnnArbor', 'Toronto') 0.7701958714564036 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
+. PC1 ('AnnArbor', 'Toronto') 0.9999999048847483 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
 current batch pair ('Houston', 'Toronto') 
 
-. PC0 ('Houston', 'Toronto') 0.14245669739409403 # samples in batch Houston: 15 # samples in batch Toronto: 25
-. PC1 ('Houston', 'Toronto') 0.834035229790987 # samples in batch Houston: 15 # samples in batch Toronto: 25
+. PC0 ('Houston', 'Toronto') 0.37884729811586415 # samples in batch Houston: 15 # samples in batch Toronto: 25
+. PC1 ('Houston', 'Toronto') 0.6052689584792145 # samples in batch Houston: 15 # samples in batch Toronto: 25
 batch kw p-vals by bio_var 
 
 . bio_var == adenoma
 .   PC0 ('AnnArbor', 'Houston') nan # new samples: 4 # old samples: 0
 .   PC1 ('AnnArbor', 'Houston') nan # new samples: 4 # old samples: 0
-.   PC0 ('AnnArbor', 'Toronto') 0.39376863464298606 # new samples: 4 # old samples: 22
-.   PC1 ('AnnArbor', 'Toronto') 0.35555412352926774 # new samples: 4 # old samples: 22
+.   PC0 ('AnnArbor', 'Toronto') 0.2269944187379949 # new samples: 4 # old samples: 22
+.   PC1 ('AnnArbor', 'Toronto') 0.5224312849615584 # new samples: 4 # old samples: 22
 .   PC0 ('Houston', 'Toronto') nan # new samples: 0 # old samples: 22
 .   PC1 ('Houston', 'Toronto') nan # new samples: 0 # old samples: 22
 . bio_var == healthy
-.   PC0 ('AnnArbor', 'Houston') 0.10208096113248362 # new samples: 6 # old samples: 15
-.   PC1 ('AnnArbor', 'Houston') 0.4835220598680453 # new samples: 6 # old samples: 15
-.   PC0 ('AnnArbor', 'Toronto') 0.19670560245894303 # new samples: 6 # old samples: 3
-.   PC1 ('AnnArbor', 'Toronto') 0.6055766163353469 # new samples: 6 # old samples: 3
-.   PC0 ('Houston', 'Toronto') 0.7670968684102832 # new samples: 15 # old samples: 3
-.   PC1 ('Houston', 'Toronto') 0.9527650219908095 # new samples: 15 # old samples: 3
+.   PC0 ('AnnArbor', 'Houston') 0.8153345943552157 # new samples: 6 # old samples: 15
+.   PC1 ('AnnArbor', 'Houston') 0.8762696636277456 # new samples: 6 # old samples: 15
+.   PC0 ('AnnArbor', 'Toronto') 0.7962534147376396 # new samples: 6 # old samples: 3
+.   PC1 ('AnnArbor', 'Toronto') 1.0 # new samples: 6 # old samples: 3
+.   PC0 ('Houston', 'Toronto') 0.6784023758521951 # new samples: 15 # old samples: 3
+.   PC1 ('Houston', 'Toronto') 0.8589549227374772 # new samples: 15 # old samples: 3
