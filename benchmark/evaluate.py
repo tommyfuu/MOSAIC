@@ -202,8 +202,8 @@ class Evaluate(object):
         ax1.plot(range(len(ecdf_var)),ecdf_var)
         plt.xticks(range(len(ecdf_var)), range(len(ecdf_var)))
         plt.yticks([0.1*i for i in range(11)])
-        
-        plt.savefig(self.output_root+"_ecdf.png")
+        if self.pipeline == "default":
+            plt.savefig(self.output_root+"_ecdf.png")
 
         # pca visualization
         transformed = pca_results.transform(source_df)
@@ -222,7 +222,8 @@ class Evaluate(object):
         for index, current_biovar in enumerate(np.unique(list(df[self.bio_var]))):
             currentDF = df.loc[df[self.bio_var] == current_biovar]
             confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor=list(colors.values())[index])
-        plt.savefig(self.output_root+"_PCA_"+self.bio_var+".png")
+        if self.pipeline == "default":
+            plt.savefig(self.output_root+"_PCA_"+self.bio_var+".png")
 
         ## pca visualization for batches
         fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
@@ -232,7 +233,8 @@ class Evaluate(object):
         for index, current_batch in enumerate(np.unique(list(df["batches"]))):
             currentDF = df.loc[df["batches"] == current_batch]
             confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor="grey")
-        plt.savefig(self.output_root+"_PCA_batches.png")
+        if self.pipeline == "default":
+            plt.savefig(self.output_root+"_PCA_batches.png")
         
         if self.covar != False:
             df[self.covar] = list(self.meta_data[self.covar])
@@ -269,28 +271,30 @@ class Evaluate(object):
             print([bio_var_l.index(pair[0]), bio_var_l.index(pair[1])], kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])])
             kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])]=PC1_p
             kw_heatmap_array[bio_var_l.index(pair[1]), bio_var_l.index(pair[0])]=PC0_p
-        fig, ax = plt.subplots()
-        ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
-        im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
-        # Show all ticks and label them with the respective list entries
-        ax.set_xticks(np.arange(len(bio_var_l)), labels=bio_var_l)
-        ax.set_xlabel("PC0 (lower diagonal)")
-        ax.set_yticks(np.arange(len(bio_var_l)), labels=bio_var_l)
-        ax.set_ylabel("PC1 (upper diagonal)")
-        # Rotate the tidata["PC0"].valuesck labels and set their alignment.
-        plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-                rotation_mode="anchor")
+        
+        if self.pipeline == 'default':
+            fig, ax = plt.subplots()
+            ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
+            im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
+            # Show all ticks and label them with the respective list entries
+            ax.set_xticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+            ax.set_xlabel("PC0 (lower diagonal)")
+            ax.set_yticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+            ax.set_ylabel("PC1 (upper diagonal)")
+            # Rotate the tidata["PC0"].valuesck labels and set their alignment.
+            plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+                    rotation_mode="anchor")
 
-        # Loop over data dimensionsif i!=j: and create text annotations.
-        for i in range(len(bio_var_l)):
-            for j in range(len(bio_var_l)):
-                if i!=j:
-                    text = ax.text(i, j, round(-np.log2(kw_heatmap_array)[i, j], 5),
-                                ha="center", va="center", color="black", fontsize=8)
+            # Loop over data dimensionsif i!=j: and create text annotations.
+            for i in range(len(bio_var_l)):
+                for j in range(len(bio_var_l)):
+                    if i!=j:
+                        text = ax.text(i, j, round(-np.log2(kw_heatmap_array)[i, j], 5),
+                                    ha="center", va="center", color="black", fontsize=8)
 
-        ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
-        fig.tight_layout()
-        plt.savefig(self.output_root+"_PC01_kw_tests.png")
+            ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
+            fig.tight_layout()
+            plt.savefig(self.output_root+"_PC01_kw_tests.png")
 
 
         # to investigate whether batch effect is eliminated thouroughly
@@ -323,8 +327,6 @@ class Evaluate(object):
 
                 PC0_p = stats.kruskal(data_batch1["PC0"].values,data_batch2["PC0"].values)[1]
                 PC1_p = stats.kruskal(data_batch1["PC1"].values,data_batch2["PC1"].values)[1]
-                # global_PC_0_bc_distance += distance.braycurtis(data_batch1["PC0"].values,data_batch2["PC0"].values)
-                # global_PC_1_bc_distance += distance.braycurtis(data_batch1["PC1"].values,data_batch2["PC1"].values)
 
                 print(". PC0", str(pair_batch), PC0_p, "# samples in batch "+pair_batch[0]+":", len(data_batch1["PC0"].values), "# samples in batch "+pair_batch[1]+":", len(data_batch2["PC0"].values), file=text_file)
                 print(". PC1", str(pair_batch), PC1_p, "# samples in batch "+pair_batch[0]+":", len(data_batch1["PC1"].values), "# samples in batch "+pair_batch[1]+":", len(data_batch2["PC1"].values), file=text_file)
@@ -368,8 +370,8 @@ class Evaluate(object):
             else:
                 current_ax_index[1] +=1
             print("PC"+str(i), PC1_p)
-        
-        plt.savefig(self.output_root+"_allPCs_covar_kw_tests.png")
+        if self.pipeline == 'default':
+            plt.savefig(self.output_root+"_allPCs_covar_kw_tests.png")
 
     def calculate_R_sq(self):
         data = np.array(self.batch_corrected_df)
@@ -420,8 +422,9 @@ class Evaluate(object):
 
         # try plotting stuff
         if self.R_PCOA_plot:
-            r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
-            r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Aitch", main="Aitchinson")
+            if self.pipeline == 'default':
+                r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
+                r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Aitch", main="Aitchinson")
         # ids = list(self.meta_data[self.IDCol])
         # np.savetxt('data.out', data, delimiter=',')
         # bc_div_bray = beta_diversity("braycurtis", data, ids)
@@ -592,19 +595,20 @@ class Evaluate(object):
             # print(most_common_element)
             # if self.poslabel == '':
             #     self.poslabel = most_common_element
-            RocCurveDisplay.from_predictions(
-                y_test_zeroone, y_pred_zeroone,
-                name=f"{self.bio_var} classification",
-                color="darkorange",
-                # pos_label=self.poslabel
-            )
-            plt.plot([0, 1], [0, 1], "k--", label="chance level (AUC = 0.5)")
-            plt.axis("square")
-            plt.xlabel("False Positive Rate")
-            plt.ylabel("True Positive Rate")
-            plt.title(f"{self.bio_var} classification fold {i+1}")
-            plt.legend()
-            plt.savefig(self.output_root+"_"+self.bio_var+"_rf_fold_"+str(i+1)+"_roc.png")
+            if self.pipeline == 'default':
+                RocCurveDisplay.from_predictions(
+                    y_test_zeroone, y_pred_zeroone,
+                    name=f"{self.bio_var} classification",
+                    color="darkorange",
+                    # pos_label=self.poslabel
+                )
+                plt.plot([0, 1], [0, 1], "k--", label="chance level (AUC = 0.5)")
+                plt.axis("square")
+                plt.xlabel("False Positive Rate")
+                plt.ylabel("True Positive Rate")
+                plt.title(f"{self.bio_var} classification fold {i+1}")
+                plt.legend()
+                plt.savefig(self.output_root+"_"+self.bio_var+"_rf_fold_"+str(i+1)+"_roc.png")
         eval_df.to_csv(self.output_root+"_"+self.bio_var+"_rf_evaluate.csv")
         return
         
