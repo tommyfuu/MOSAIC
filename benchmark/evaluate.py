@@ -463,12 +463,13 @@ class Evaluate(object):
         shannon_df = shannon_div.to_frame()
         shannon_df.columns = ["shannon"]
         shannon_df[test_var] = list(self.meta_data[test_var])
-        shannon_fig = shannon_df.boxplot(column='shannon', by=test_var)
-        shannon_fig.figure.savefig(self.output_root+"_"+test_var+"_alpha_shannon_pcoa.png")
+        if self.pipeline == "default":
+            shannon_fig = shannon_df.boxplot(column='shannon', by=test_var)
+            shannon_fig.figure.savefig(self.output_root+"_"+test_var+"_alpha_shannon_pcoa.png")
         bc_metadata = self.meta_data
         bc_metadata.index = bc_metadata[self.IDCol]
         bc_metadata[test_var] = bc_metadata[test_var].fillna("unknown")
-        if pipeline == "default":
+        if self.pipeline == "default":
             bc_fig = bc_pc.plot(bc_metadata, test_var,
                     axis_labels=('PC 1', 'PC 2', 'PC 3'),
                     title='Samples colored by '+test_var, cmap='jet', s=50)
