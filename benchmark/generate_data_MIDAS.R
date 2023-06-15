@@ -153,12 +153,13 @@ print("checkpoint 4")
 scaled_midas_FC_data_generation <- function(otu_original, n, cond_effect_val_l, batch_effect_val_l, num_iter){  
   for (cond_effect_val in cond_effect_val_l) {
     for (batch_effect_val in batch_effect_val_l) {
-      print(cond_effect_val)
-      print(batch_effect_val)
-      output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_count_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-      output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_relab_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-      
-      if (file.exists(output_file_path_count)){
+      for (iter in seq(1, num_iter)){
+        print(cond_effect_val)
+        print(batch_effect_val)
+        output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_count_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+        output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_relab_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+        
+        if (file.exists(output_file_path_count)){
           print(output_file_path_count)
           print("file exists")
           print("___")
@@ -166,6 +167,7 @@ scaled_midas_FC_data_generation <- function(otu_original, n, cond_effect_val_l, 
         else{
           midas_FC_simulate(otu_original, n, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab)
           print("___")
+        }
         }
       }
     }
