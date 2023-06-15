@@ -958,11 +958,11 @@ Evaluate(data_mat, meta_data, 'location', './output_ibdmdb_interval_0.0_nobc/ibd
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, "location", './output_ibdmdb_interval_0.0_Percentile_norm/output_ibdmdb_interval_0.0_Percentile_norm_1201', "disease", 30, 'gender', 'patient_visit_id')
 
-input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv"
-bio_var = "disease"
-dataset_name = "ibdmdb_interval_0.0"
-methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted", "nobc"]
-global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv"
+# bio_var = "disease"
+# dataset_name = "ibdmdb_interval_0.0"
+# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted", "nobc"]
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
 ## hanninganGD_noBoston - adenoma dataset
