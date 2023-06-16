@@ -109,6 +109,7 @@ midas_FC_simulate <- function(otu_original, n, cond_effect_FC, batch_effect_FC, 
   ## manipulate taxa by fold changes
   # otu_FC = matrix(NA, nrow = n, ncol = p)
   otu_FC = otu_null
+  otu_FC = round(otu_FC,0)
   # print(cond==0&batchid==0)
   otu_FC[cond==0&batchid==0] = otu_null[cond==0&batchid==0] # unadjusted ones
   otu_FC[cond==1&batchid==0] = otu_null[cond==1&batchid==0]*cond_effect_FC # ones adjuetd only for condition
