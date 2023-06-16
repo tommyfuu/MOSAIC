@@ -102,9 +102,6 @@ midas_FC_simulate <- function(otu_original, n, cond_effect_FC, batch_effect_FC, 
   ## generate r vector where an element is 1 if id_cond is 1 and 0 otherwise
   cond = rep(0,n)
   cond[id_cond] = 1
-  print("cond")
-  print(length(cond))
-  print(cond)
   ## repeat the same manipulation for batch
   batchid = rep(0,n)
   batchid[id_batch] = 1
