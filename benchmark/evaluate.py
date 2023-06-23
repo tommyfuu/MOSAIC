@@ -157,11 +157,14 @@ class Evaluate(object):
         self.poslabel = poslabel
         self.R_PCOA_plot = R_PCOA_plot
         self.pipeline = pipeline # "default" or "scaled"
+        if self.pipeline != "default":
+            # self.short_summary_df = pd.DataFrame(['global_batch_p_val_PC0', 'global_batch_p_val_PC1', 'global_biovar_p_val_PC0', 'global_biovar_p_val_PC1',
+            #                                       'batch_aitch_r2', 'batch_bray_r2', 'biovar_aitch_r2', 'biovar_bray_r2'])
+            self.short_summary_dict = {}
         # make directory if not exists
         directory_path = "/".join(output_root.split("/")[:-1])
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
-        
         # functions executed
         ## version 1, for batch evaluation
         self.alpha_beta_diversity_and_tests(self.batch_var) # has to happen before standard scaler
@@ -176,7 +179,12 @@ class Evaluate(object):
         self.PC01_kw_tests(df)
         self.predict_difference_RF()
         global_df = pd.DataFrame({"PC_0_p": [self.global_PC0_p], "PC_1_p":[self.global_PC1_p], "PC_0_bc_distance": [self.bc_global_pval_l[0]], "PC_1_bc_distance": [self.bc_global_pval_l[1]]})
-        global_df.to_csv(self.output_root+"_global_batches_eval.csv")
+        if self.pipeline == "default":
+            global_df.to_csv(self.output_root+"_global_batches_eval.csv")
+        if self.pipeline != "default":
+            # convert summary dict to df
+            self.summary_df = pd.DataFrame.from_dict(self.short_summary_dict, orient='index')
+            self.summary_df.to_csv(self.output_root+"_summary.csv")
 
     def standard_scaler(self):
         source_df = self.batch_corrected_df
@@ -256,9 +264,16 @@ class Evaluate(object):
             
             self.global_PC0_p = stats.kruskal(*data_PC0)[1]
             self.global_PC1_p = stats.kruskal(*data_PC1)[1]
+            if self.pipeline != 'default':
+                self.short_summary_dict["global_biovar_p_val_PC0"] = self.global_PC0_p
+                self.short_summary_dict["global_biovar_p_val_PC1"] = self.global_PC1_p
             print(". PC0", "across all biovar options, p-val = ", str(self.global_PC0_p), "\n",file=text_file)
             print(". PC1", "across all biovar options, p-val = ", str(self.global_PC1_p), "\n",file=text_file)
-            
+
+        # if not default, remove the file just generated
+        if self.pipeline != 'default':
+            os.remove(self.output_root+"_"+self.bio_var+"_kw_pvals.txt")
+
         dim = len(np.unique(bio_var_l))
         kw_heatmap_array = np.full((dim, dim), 1, dtype=float)
         for pair in itertools.combinations(bio_var_l, 2):
@@ -310,6 +325,9 @@ class Evaluate(object):
             
             self.global_PC0_p = stats.kruskal(*data_PC0)[1]
             self.global_PC1_p = stats.kruskal(*data_PC1)[1]
+            if self.pipeline != 'default':
+                self.short_summary_dict["global_batch_p_val_PC0"] = self.global_PC0_p
+                self.short_summary_dict["global_batch_p_val_PC1"] = self.global_PC1_p
             print(". PC0", "across all batches, p-val = ", str(self.global_PC0_p), "\n",file=text_file)
             print(". PC1", "across all batches, p-val = ", str(self.global_PC1_p), "\n",file=text_file)
             # global_PC_0_bc_distance = 0
@@ -351,6 +369,11 @@ class Evaluate(object):
 
                     print(".   PC0", str(pair_batch), PC0_p, "# new samples:", len(data_batch1["PC0"].values), "# old samples:", len(data_batch2["PC0"].values), file=text_file)
                     print(".   PC1", str(pair_batch), PC1_p, "# new samples:", len(data_batch1["PC1"].values), "# old samples:", len(data_batch2["PC1"].values), file=text_file)
+        # if default, remove the file just generated
+        if self.pipeline != 'default':
+            os.remove(self.output_root+"_batches_kw_pvals.txt")
+
+
 
     def allPCs_covar_kw_test(self, df):
         # to debug
@@ -399,8 +422,12 @@ class Evaluate(object):
         print(aitchinson_permanova_df)
         # bray_anova = PERMANOVA_R2_results[0]
         print("______________batch_PERMANOVA_R2_results______________")
-        bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_permanova_R2.csv")
-        aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_permanova_R2.csv")
+        if self.pipeline != 'default':
+            self.short_summary_dict["batch_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
+            self.short_summary_dict["batch_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
+        else:
+            bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_permanova_R2.csv")
+            aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_permanova_R2.csv")
 
 
         # calculate the equivalent stats but for biological variable
@@ -417,8 +444,12 @@ class Evaluate(object):
         print(aitchinson_permanova_df)
         # bray_anova = PERMANOVA_R2_results[0]
         print("______________biovar_PERMANOVA_R2_results______________")
-        bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_biovar_permanova_R2.csv")
-        aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_biovar_permanova_R2.csv")
+        if self.pipeline != 'default':
+            self.short_summary_dict["biovar_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
+            self.short_summary_dict["biovar_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
+        else:
+            bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_biovar_permanova_R2.csv")
+            aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_biovar_permanova_R2.csv")
 
         # try plotting stuff
         if self.R_PCOA_plot:
@@ -524,20 +555,22 @@ class Evaluate(object):
         
         # return dataframes to csv for self checks
         ## alpha and beta diversity data themselves
-        shannon_df.to_csv(self.output_root+"_shannon_df.csv")
-        bc_df.to_csv(self.output_root+"_"+test_var+"_bray_curtis_dissimilaritymatrix.csv")
+        if self.pipeline == 'default':
+            shannon_df.to_csv(self.output_root+"_shannon_df.csv")
+            bc_df.to_csv(self.output_root+"_"+test_var+"_bray_curtis_dissimilaritymatrix.csv")
         ## kw significance testing to txt file
-        with open(self.output_root+"_"+test_var+"_shannon_kw_pvals.txt", "w") as text_file:
-            print("shannon_global_pval", shannon_global_pval, "\n", file=text_file)
-            print("shannon_pairwise_pval \n", file=text_file)
-            print(alpha_pairwise_pval_dict, file=text_file)
-        with open(self.output_root+"_"+test_var+"_bray_curtis_kw_pvals.txt", "w") as text_file:
-            print("bray_curtis_global_pvals, by PCs", bc_global_pval_l, "\n", file=text_file)
-            print("bray_curtis_pairwise_pval \n", file=text_file)
-            for index, pval_dict in enumerate(bc_pairwise_pval_l):
-                print("PC"+str(index+1)+"\n", file=text_file)
-                print(pval_dict, file=text_file)
-                print("\n", file=text_file)
+        if self.pipeline == 'default':
+            with open(self.output_root+"_"+test_var+"_shannon_kw_pvals.txt", "w") as text_file:
+                print("shannon_global_pval", shannon_global_pval, "\n", file=text_file)
+                print("shannon_pairwise_pval \n", file=text_file)
+                print(alpha_pairwise_pval_dict, file=text_file)
+            with open(self.output_root+"_"+test_var+"_bray_curtis_kw_pvals.txt", "w") as text_file:
+                print("bray_curtis_global_pvals, by PCs", bc_global_pval_l, "\n", file=text_file)
+                print("bray_curtis_pairwise_pval \n", file=text_file)
+                for index, pval_dict in enumerate(bc_pairwise_pval_l):
+                    print("PC"+str(index+1)+"\n", file=text_file)
+                    print(pval_dict, file=text_file)
+                    print("\n", file=text_file)
 
         if test_var == self.batch_var:
             self.bc_global_pval_l = bc_global_pval_l
