@@ -36,7 +36,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
     }
     # save count_data
-    write.csv(count_data, paste(output_root, "_count_data.csv", sep=""), row.names = TRUE)
+    # write.csv(count_data, paste(output_root, "_count_data.csv", sep=""), row.names = TRUE)
     # print(count_data)
     metadata = as.data.frame(read_csv(meta_data_path))
     sink(paste(output_root, "_runtime.txt", sep=""))
@@ -62,6 +62,24 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     cat(c("combat runtime", toString(end_time - start_time), "seconds"))
     cat('\n')
 
+    ## combat_seq
+    start_time <- Sys.time()
+    batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
+    if(is.null(covar)) {
+        count_data.combat <- t(ComBat_seq(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=NULL))
+    }
+    else {
+        if(length(covar)>1){
+            covar = covar[1]
+        }
+        covar_df = factor(metadata[, covar])
+        count_data.combat <- t(ComBat_seq(t(count_data.clr), batch = batch_info, mod = covar_df, par.prior=FALSE, mean.only=TRUE))
+    }
+    write.csv(count_data.combat, paste(output_root, "_combat_seq.csv", sep=""), row.names = TRUE)
+    end_time <- Sys.time()
+    cat(c("combat runtime", toString(end_time - start_time), "seconds"))
+    cat('\n')
+
     ## limma
     ## note that the 'covariates' argument here cannot be used because limma requires continuous covariates
     start_time <- Sys.time()
@@ -75,40 +93,19 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     start_time <- Sys.time()
     if (count == FALSE) {
         count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
-        write.csv(count_data_t_relab, "WTF.csv")
         if(any(is.na(t(count_data_t_relab)))) {
             count_data_t_relab = t(t(count_data+0.001)/rowSums(t(count_data+0.001)))
         }
     }
     else{
-        print("DOING COUNT")
         count_data_t_relab = count_data
     }
-    # count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
-    # write.csv(count_data_t_relab, "WTF.csv")
-    # if(any(is.na(t(count_data_t_relab)))) {
-    #     count_data_t_relab = t(t(count_data+0.001)/rowSums(t(count_data+0.001)))
-    # }
     metadata_mupphin <- metadata
-    print("?????")
-    print(dim(metadata_mupphin))
-    print(metadata[[Sam_id]])
     row.names(metadata_mupphin) <- metadata[[Sam_id]]
     feature_abd = t(count_data_t_relab)
     # print(t(count_data_t_relab))
     colnames(feature_abd) = row.names(metadata_mupphin)
-    print(colnames(feature_abd))
-    print(rownames(metadata_mupphin))
-    print(.libPaths())
     if(is.null(covar)) {
-        # df_batch <- MMUPHin::check_metadata(data = feature_abd,
-        #                      variables = dataset)
-        # df_covariates <- MMUPHin::check_metadata(data = data,
-        #                           variables = covar)
-        # mod <- construct_design(data = df_covariates, 
-        #                   with_intercept = TRUE)[, -1, drop = FALSE]
-        # batchmod <- construct_design(data = df_batch, with_intercept = FALSE)
-        print("______")
         fit_adjust_batch <- adjust_batch(feature_abd = feature_abd,
                                     batch = dataset,
                                     data = metadata_mupphin,
@@ -319,9 +316,9 @@ scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, 
       for (batch_effect_val in batch_effect_val_l) {
         if (cond_effect_val + batch_effect_val <= 1) {
           for (iter in seq(1, num_iter)){
-            print(bin_corr_val)
-            print(cond_effect_val)
-            print(batch_effect_val)
+            # print(bin_corr_val)
+            # print(cond_effect_val)
+            # print(batch_effect_val)
             
             output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             # run the methods on this
