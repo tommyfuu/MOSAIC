@@ -2,7 +2,7 @@ global batch kw p-vals
 
 
 
-. PC0 across all biovar options, p-val =  0.6668309147145661 
+. PC0 across all biovar options, p-val =  0.14781155773847884 
 
-. PC1 across all biovar options, p-val =  0.12926539712584448 
+. PC1 across all biovar options, p-val =  0.3415012363323756 
 

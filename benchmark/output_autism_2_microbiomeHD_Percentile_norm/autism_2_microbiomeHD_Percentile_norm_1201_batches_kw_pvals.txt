@@ -2,21 +2,21 @@ global batch kw p-vals
 
 
 
-. PC0 across all batches, p-val =  0.3914534580348741 
+. PC0 across all batches, p-val =  0.4277799714853755 
 
-. PC1 across all batches, p-val =  0.17976907699845712 
+. PC1 across all batches, p-val =  0.6361736287862393 
 
 global pair-wise batch kw p-vals 
 
 current batch pair ('asd_son', 'autism_kb') 
 
-. PC0 ('asd_son', 'autism_kb') 0.3914534580348741 # samples in batch asd_son: 103 # samples in batch autism_kb: 39
-. PC1 ('asd_son', 'autism_kb') 0.17976907699845712 # samples in batch asd_son: 103 # samples in batch autism_kb: 39
+. PC0 ('asd_son', 'autism_kb') 0.4277799714853755 # samples in batch asd_son: 103 # samples in batch autism_kb: 39
+. PC1 ('asd_son', 'autism_kb') 0.6361736287862393 # samples in batch asd_son: 103 # samples in batch autism_kb: 39
 batch kw p-vals by bio_var 
 
 . bio_var == ASD
-.   PC0 ('asd_son', 'autism_kb') 0.08813036042603094 # new samples: 59 # old samples: 19
-.   PC1 ('asd_son', 'autism_kb') 0.8294940153361955 # new samples: 59 # old samples: 19
+.   PC0 ('asd_son', 'autism_kb') 0.5032832001445102 # new samples: 59 # old samples: 19
+.   PC1 ('asd_son', 'autism_kb') 0.7051939696362549 # new samples: 59 # old samples: 19
 . bio_var == H
-.   PC0 ('asd_son', 'autism_kb') 0.5145391427581396 # new samples: 44 # old samples: 20
-.   PC1 ('asd_son', 'autism_kb') 0.12830141671704168 # new samples: 44 # old samples: 20
+.   PC0 ('asd_son', 'autism_kb') 0.7172747538742584 # new samples: 44 # old samples: 20
+.   PC1 ('asd_son', 'autism_kb') 0.7831636676726933 # new samples: 44 # old samples: 20

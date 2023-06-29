@@ -1,19 +1,19 @@
-bray_curtis_global_pvals, by PCs [0.7938812545383551, 0.39504659271849807, 0.15283740115466413] 
+bray_curtis_global_pvals, by PCs [0.43593883740889994, 0.8361788767767778, 0.7140391452173653] 
 
 bray_curtis_pairwise_pval 
 
 PC1
 
-{('cdi_schubert', 'cdi_vincent_v3v5'): 0.5554472402157814, ('cdi_schubert', 'cdi_youngster'): 0.8331699605242376, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.49289090961899695}
+{('cdi_schubert', 'cdi_vincent_v3v5'): 0.21383570294914142, ('cdi_schubert', 'cdi_youngster'): 0.5813217873148412, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.47299659736840405}
 
 
 PC2
 
-{('cdi_schubert', 'cdi_vincent_v3v5'): 0.20062657971229125, ('cdi_schubert', 'cdi_youngster'): 0.7291612771477158, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.22705492141043154}
+{('cdi_schubert', 'cdi_vincent_v3v5'): 0.9544976067981528, ('cdi_schubert', 'cdi_youngster'): 0.5537594302872572, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.7137835503314469}
 
 
 PC3
 
-{('cdi_schubert', 'cdi_vincent_v3v5'): 0.6895850993782564, ('cdi_schubert', 'cdi_youngster'): 0.06810344930714574, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.14896489051467465}
+{('cdi_schubert', 'cdi_vincent_v3v5'): 0.5134533998500939, ('cdi_schubert', 'cdi_youngster'): 0.5640963799045561, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.710811703833288}
 
 

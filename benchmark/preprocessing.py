@@ -127,6 +127,7 @@ def load_data(address_X, address_Y, IDCol, index_col = False, output_root = Fals
     else:
         data_mat = pd.read_csv(address_X)
     meta_data = pd.read_csv(address_Y)
+    data_mat.index = list(meta_data[IDCol])
     data_mat, meta_data = preprocess(data_mat, meta_data, IDCol)
 
     # save stuff if needed

@@ -26,16 +26,24 @@
 library("vegan")
 library("ade4")
 library("compositions")
-PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batch', covar_name){
+PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batch', covar_name = FALSE){
   # edited from Wodan's script, not exactly the same - can only take one covariate at a time
   if (is.null(covariates)){
     tab_count = tab_rel = matrix(ncol=3, nrow=1)
   } else {tab_count = tab_rel = matrix(ncol=3, nrow=2)}
 #   tab_count = tab_rel = matrix(ncol=3, nrow=2)
   colnames(tab_count) = colnames(tab_rel) = c("standard", "sqrt.dist=T", "add=T")
+  # if (is.null(covar_name)){
+  #   print("HERE 1")
+  #   rownames(tab_count) = rownames(tab_rel) = c(first_row_name)
+  #   print("Here 2")
+  # }
+  # else{
   rownames(tab_count) = rownames(tab_rel) = c(first_row_name, covar_name)
+  # }
 
   # bray-curtis
+  print("Here 3")
   tab_count[1,1] = adonis(formula = TAX ~ batchid)$aov.tab[1, 5]
   tab_count[1,2] = adonis2(formula = TAX ~ batchid, sqrt.dist=TRUE)$R2[1]
   tab_count[1,3] = adonis2(formula = TAX ~ batchid, add=TRUE)$R2[1]

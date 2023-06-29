@@ -11,4 +11,9 @@ MMUPHin runtime 0.877831697463989 seconds
 ConquR runtime 2.24074220657349 seconds
 [1] "2022-12-01 18:55:56 EST"
 [1] "2022-12-01 18:56:05 EST"
-ConquR_libsize runtime 8.86651849746704 seconds
+ConquR_libsize runtime 8.86651849746704 secondscombat runtime 0.333827018737793 seconds
+combat_seq runtime 1.57038497924805 seconds
+limma runtime 0.0601778030395508 seconds
+MMUPHin runtime 0.627150058746338 seconds
+ConquR runtime 1.49704384803772 seconds
+ConquR_libsize runtime 5.9176619052887 seconds
