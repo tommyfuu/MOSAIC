@@ -36,16 +36,15 @@ midas_simulate <- function(otu_original, n, bin_corr, cond_effect, batch_effect,
   cond = cond_batchid_vec[, 1] # find the ids of samples that are affected by condition
   batchid = cond_batchid_vec[, 2] # find the ids of samples that are affected by batch
 
-  # print("cond")
-  # print(cond)
-  # print("batchid")
-  # print(batchid)
-
   # save metadata as a dataframe with an additional column being the subject id
-  cond_text = replace(cond, c(0, 1), c("cond_0", "cond_1"))
-  batchid_text = replace(cond, c(0, 1), c("batch_0", "batch_1"))
-  subjectid_text = sprintf("Fst%d", 1:750) 
-  current_metadata <- data.frame(subjectid_text, batchid_text, subjectid_text)
+  subjectid_text = sprintf("Subject_%d", 1:750) 
+  current_metadata <- data.frame(subjectid_text, batchid, cond)
+
+  current_metadata$batchid <- replace(current_metadata$batchid, current_metadata$batchid == 0, "batch_0")
+  current_metadata$batchid <- replace(current_metadata$batchid, current_metadata$batchid == 1, "batch_1")
+  
+  current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 0, "cond_0")
+  current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 1, "cond_1")
   write.csv(current_metadata, file = out_meta, row.names = FALSE)
 
   # print(cond)
@@ -195,12 +194,12 @@ scaled_midas_FC_data_generation <- function(otu_original, n, cond_effect_val_l, 
 
 
 
-# bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-bin_corr_val_l = c(0)
-cond_effect_val_l = c(0)
-batch_effect_val_l = c(0)
+bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# bin_corr_val_l = c(0)
+# cond_effect_val_l = c(0)
+# batch_effect_val_l = c(0)
 scaled_midas_data_generation(otu_original, n, bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter=10)
 
 # test for effect
