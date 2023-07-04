@@ -398,6 +398,8 @@ class Evaluate(object):
 
     def calculate_R_sq(self):
         data = np.array(self.batch_corrected_df)
+        print(data)
+        print(np.percentile(data.flatten(), 0.01))
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
 
@@ -482,6 +484,8 @@ class Evaluate(object):
     
     def alpha_beta_diversity_and_tests(self, test_var):
         data = np.array(self.batch_corrected_df)
+        print(data)
+        print(np.percentile(data.flatten(), 0.01))
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
         ids = list(self.meta_data[self.IDCol])
@@ -1128,42 +1132,55 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 
 ## simulation evaluation - MIDAS
 ### null data
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/output_simulation_MIDAS/"
 # bin_corr_val_l = [0, 0.1, 0.3, 0.5, 0.7, 0.9]
 # cond_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
 # batch_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
 bin_corr_val_l = [0.3]
-cond_effect_val_l = [0, 0.099, 0.899]
+cond_effect_val_l = [0.099, 0.899]
 batch_effect_val_l = [0, 0.099, 0.899]
 num_iters = 1
 IDCol = 'subjectid_text'
+# methods_list = ["nobc", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "harmony", "Percentile_norm"]
+methods_list = ["harmony", "nobc", "combat_seq", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin"]
 for bin_corr_val in bin_corr_val_l:
     for cond_effect_val in cond_effect_val_l:
         for batch_effect_val in batch_effect_val_l:
             for iter in list(range(1, num_iters+1)):
-                address_X = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
-                address_Y = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
-                data_mat, meta_data = load_data(address_X, address_Y, IDCol)
-                print("___________________________________________________________")
-                print("bin_corr_val", bin_corr_val)
-                print("cond_effect_val", cond_effect_val)
-                print("batch_effect_val", batch_effect_val)
-                print("___________________________________________________________")
-                # Evaluate(data_mat, meta_data, 'batch_var', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) 
-                #          , "bio_var", 30, IDCol, pipeline='brief')
-                Evaluate(data_mat, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
-                          "cond", n_pc=30, IDCol=IDCol, pipeline='brief')
+                for method in methods_list:
+                    if method in ['nobc', 'harmony']:
+                        address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                    else:
+                        address_X = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_'+ method+'.csv'
+                    address_Y = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
+                    data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+                    print("___________________________________________________________")
+                    print("bin_corr_val", bin_corr_val)
+                    print("cond_effect_val", cond_effect_val)
+                    print("batch_effect_val", batch_effect_val)
+                    print("___________________________________________________________")
+                    output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/output_simulation_MIDAS/out_"+str(bin_corr_val)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "/" +method + "/"
+                    # Evaluate(data_mat, meta_data, 'batch_var', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) 
+                    #          , "bio_var", 30, IDCol, pipeline='brief')
+                    if method == 'harmony':
+                        # create output directory
+                        if not os.path.exists(output_root):
+                            os.makedirs(output_root)
+                        res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony", option = "harmony")
+                        Evaluate(res_h, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
+                                  "cond", 30, IDCol=IDCol, pipeline='brief')
+                    else:
+                        Evaluate(data_mat, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
+                                "cond", n_pc=30, IDCol=IDCol, pipeline='brief')
                 
-                input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
-                bio_var = "cond"
-                dataset_name = "cdi_3_microbiomeHD"
-                methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-                global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+                # input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                # bio_var = "cond"
+                # dataset_name = "cdi_3_microbiomeHD"
+                # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
 ## microbiomeHD - nobc eval
 ################################################################################
-# # autism 2 microbiomeHD
+# autism 2 microbiomeHD
 # address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
 # output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
 # data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)

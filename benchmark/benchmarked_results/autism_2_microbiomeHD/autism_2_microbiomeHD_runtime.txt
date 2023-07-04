@@ -16,4 +16,39 @@ combat_seq runtime 0.222747087478638 seconds
 limma runtime 0.0180869102478027 seconds
 MMUPHin runtime 0.648857831954956 seconds
 ConquR runtime 0.323253154754639 seconds
-ConquR_libsize runtime 1.03124618530273 seconds
+ConquR_libsize runtime 1.03124618530273 secondscombat runtime 3.74029898643494 seconds
+combat_seq runtime 1.61388111114502 seconds
+limma runtime 0.103394031524658 seconds
+MMUPHin runtime 4.95912003517151 seconds
+ConquR runtime 3.25925493240356 seconds
+ConquR_libsize runtime 10.5312299728394 secondscombat runtime 0.789700984954834 seconds
+combat_seq runtime 0.202893972396851 seconds
+limma runtime 0.0155730247497559 seconds
+MMUPHin runtime 0.629447937011719 seconds
+ConquR runtime 0.440934896469116 seconds
+ConquR_libsize runtime 1.34515309333801 secondscombat runtime 0.767478942871094 seconds
+combat_seq runtime 0.225454092025757 seconds
+limma runtime 0.0158071517944336 seconds
+MMUPHin runtime 0.605529069900513 seconds
+ConquR runtime 0.331325054168701 seconds
+ConquR_libsize runtime 1.17354011535645 secondscombat runtime 0.760261058807373 seconds
+combat_seq runtime 0.233217000961304 seconds
+limma runtime 0.0158121585845947 seconds
+MMUPHin runtime 0.52842903137207 seconds
+ConquR runtime 0.319924116134644 seconds
+ConquR_libsize runtime 1.08570909500122 secondscombat runtime 0.912316799163818 seconds
+combat_seq runtime 0.235856056213379 seconds
+limma runtime 0.0181128978729248 seconds
+MMUPHin runtime 0.595646858215332 seconds
+ConquR runtime 0.322530031204224 seconds
+ConquR_libsize runtime 1.25984907150269 secondscombat runtime 0.757165193557739 seconds
+combat_seq runtime 0.220609188079834 seconds
+limma runtime 0.0157179832458496 seconds
+MMUPHin runtime 0.532618999481201 seconds
+ConquR runtime 0.318053960800171 seconds
+ConquR_libsize runtime 1.08764219284058 secondscombat runtime 0.754859924316406 seconds
+combat_seq runtime 0.218585968017578 seconds
+limma runtime 0.0156600475311279 seconds
+MMUPHin runtime 0.533583879470825 seconds
+ConquR runtime 0.314204931259155 seconds
+ConquR_libsize runtime 1.02795481681824 seconds

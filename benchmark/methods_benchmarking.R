@@ -296,14 +296,14 @@ batch_ref = 'cdi_schubert')
 #     )
 # }
 
-# hanningan study
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston',
-dataset = 'location',
-batch_ref = 'Toronto',
-Sam_id = 'patient_visit_id'
-)
+# # hanningan study
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston',
+# dataset = 'location',
+# batch_ref = 'Toronto',
+# Sam_id = 'patient_visit_id'
+# )
 
 # # NOTICED THAT the finetuning version requires at least one covariate
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv',
@@ -319,32 +319,35 @@ Sam_id = 'patient_visit_id'
 # bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
-#   for (bin_corr_val in bin_corr_val_l) {
-#     for (cond_effect_val in cond_effect_val_l) {
-#       for (batch_effect_val in batch_effect_val_l) {
-#         if (cond_effect_val + batch_effect_val <= 1) {
-#           for (iter in seq(1, num_iter)){
-#             # print(bin_corr_val)
-#             # print(cond_effect_val)
-#             # print(batch_effect_val)
+bin_corr_val_l = c(0.3)
+cond_effect_val_l = c(0, 0.099, 0.899)
+batch_effect_val_l = c(0, 0.099, 0.899)
+scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
+  for (bin_corr_val in bin_corr_val_l) {
+    for (cond_effect_val in cond_effect_val_l) {
+      for (batch_effect_val in batch_effect_val_l) {
+        if (cond_effect_val + batch_effect_val <= 1) {
+          for (iter in seq(1, num_iter)){
+            # print(bin_corr_val)
+            # print(cond_effect_val)
+            # print(batch_effect_val)
             
-#             output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-#             # run the methods on this
-#             run_methods(output_file_path_count,
-#                         '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_metadata.csv',
-#                         paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
-#                         dataset = 'batch_var',
-#                         batch_ref = 1,
-#                         Sam_id = 'subject_id',
-#                         transpose = TRUE,
-#                         count = TRUE,
-#             )
-#           }
-#         }
-#       }
-#     }
-#   }
-# }
+            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            # run the methods on this
+            run_methods(output_file_path_count,
+                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
+                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
+                        dataset = 'batchid',
+                        batch_ref = "batch_0",
+                        Sam_id = 'subjectid_text',
+                        transpose = TRUE,
+                        count = TRUE,
+            )
+          }
+        }
+      }
+    }
+  }
+}
 
-# scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 10)
+scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 1)

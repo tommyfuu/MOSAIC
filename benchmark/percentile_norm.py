@@ -107,3 +107,17 @@ print('Percentile-normalized data written to {}'.format(args.o))
 
 # python percentile_norm.py -i /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_count_data.csv -meta /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibdmdb_interval_0.0_meta_data.csv -diseaseName disease -case IBD -o /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibdmdb_interval_0.0/ibdmdb_interval_0.0_percentile_norm.csv
 # python percentile_norm.py -i /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv -meta /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv -diseaseName disease -case adenoma -o /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston_percentile_norm.csv
+
+# bin_corr_val_l = [0.3]
+# cond_effect_val_l = [0, 0.099, 0.899]
+# batch_effect_val_l = [0, 0.099, 0.899]
+# num_iters = 1
+# IDCol = 'subjectid_text'
+# methods_list = ["nobc", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "harmony", "Percentile_norm"]
+# for bin_corr_val in bin_corr_val_l:
+#     for cond_effect_val in cond_effect_val_l:
+#         for batch_effect_val in batch_effect_val_l:
+#             for iter in list(range(1, num_iters+1)):
+# python percentile_norm.py -i /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv -meta /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv -diseaseName disease -case adenoma -o /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston_percentile_norm.csv
+# python percentile_norm.py -i /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv -meta /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_meta_data.csv -diseaseName disease -case adenoma -o /Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/hanninganGD_noBoston/hanninganGD_noBoston_percentile_norm.csv
+
