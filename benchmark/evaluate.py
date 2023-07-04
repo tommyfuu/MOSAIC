@@ -1161,16 +1161,17 @@ for bin_corr_val in bin_corr_val_l:
                     output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/output_simulation_MIDAS/out_"+str(bin_corr_val)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "/" +method + "/"
                     # Evaluate(data_mat, meta_data, 'batch_var', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) 
                     #          , "bio_var", 30, IDCol, pipeline='brief')
-                    if method == 'harmony':
-                        # create output directory
-                        if not os.path.exists(output_root):
-                            os.makedirs(output_root)
-                        res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony", option = "harmony")
-                        Evaluate(res_h, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
-                                  "cond", 30, IDCol=IDCol, pipeline='brief')
-                    else:
-                        Evaluate(data_mat, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
-                                "cond", n_pc=30, IDCol=IDCol, pipeline='brief')
+                    if not os.path.exists(output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter)+'_summary.csv'):
+                        if method == 'harmony':
+                            # create output directory
+                            if not os.path.exists(output_root):
+                                os.makedirs(output_root)
+                            res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony", option = "harmony")
+                            Evaluate(res_h, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
+                                    "cond", 30, IDCol=IDCol, pipeline='brief')
+                        else:
+                            Evaluate(data_mat, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
+                                    "cond", n_pc=30, IDCol=IDCol, pipeline='brief')
                 
                 # input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
                 # bio_var = "cond"
