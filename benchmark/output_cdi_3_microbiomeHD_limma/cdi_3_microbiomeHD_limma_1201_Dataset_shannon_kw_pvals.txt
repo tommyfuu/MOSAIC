@@ -1,0 +1,5 @@
+shannon_global_pval 0.7524413096384435 
+
+shannon_pairwise_pval 
+
+{('cdi_schubert', 'cdi_vincent_v3v5'): 0.459870872785042, ('cdi_schubert', 'cdi_youngster'): 0.9258125683445375, ('cdi_vincent_v3v5', 'cdi_youngster'): 0.5209614857186327}

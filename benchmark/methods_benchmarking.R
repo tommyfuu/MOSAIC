@@ -46,6 +46,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
     ## TODO:  potentially need preprocessing such as log and +1
     count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
+    cat("runtime documenting...", file=sink_file_name, append=FALSE)
 
     ## combat
     start_time <- Sys.time()
