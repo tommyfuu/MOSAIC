@@ -18,7 +18,7 @@ import pandas as pd
 import numpy as np
 import os
 
-def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'):
+def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id', covar_l = []):
     ### note that due to the complexity of metadata, the current microbiomeHD loading does 
     ### not take into account the covariates other than batches and diseaseStates
     ### so default vars_use will just be Dataset

@@ -46,7 +46,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
     ## TODO:  potentially need preprocessing such as log and +1
     count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
-    cat("runtime documenting...", file=sink_file_name, append=FALSE)
+    cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
 
     ## combat
     start_time <- Sys.time()
@@ -222,20 +222,19 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # )
 
 
-# autism 2 microbiomeHD
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
-dataset = "Dataset",
-batch_ref = 'asd_son',
-covar = '')
+# # autism 2 microbiomeHD
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
+# dataset = "Dataset",
+# batch_ref = 'asd_son')
 
-# cdi 3 microbiomeHD
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
-dataset = "Dataset",
-batch_ref = 'cdi_schubert')
+# # cdi 3 microbiomeHD
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
+# dataset = "Dataset",
+# batch_ref = 'cdi_schubert')
 
 # # ibd 3 CMD
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
@@ -253,23 +252,23 @@ batch_ref = 'cdi_schubert')
 # covar = c("gender")
 # )
 
-# # CRC_8_CMD
-# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_meta_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
-# dataset = "study_name",
-# batch_ref = 'FengQ_2015',
-# # covar = c("gender")
-# )
+# CRC_8_CMD
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/CRC_8_CMD_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
+dataset = "study_name",
+batch_ref = 'FengQ_2015',
+# covar = c("gender")
+)
 
-# # T2D 10 CMD
-# run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
-# '/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
-# dataset = "study_name",
-# batch_ref = 'Castro-NallarE_2015',
-# # covar = c("gender")
-# )
+# T2D 10 CMD
+run_methods('/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_count_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_data/T2D_10_CMD_meta_data.csv',
+'/home/fuc/harmonicMic/harmonypy/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
+dataset = "study_name",
+batch_ref = 'Castro-NallarE_2015',
+# covar = c("gender")
+)
 
 # IBD_MDB study
 # for (i in c('0.0', '1.0', '2.0', '3.0', '4.0')){
@@ -318,12 +317,12 @@ batch_ref = 'cdi_schubert')
 # )
 
 
-# bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-bin_corr_val_l = c(0.3)
-cond_effect_val_l = c(0, 0.099, 0.899)
-batch_effect_val_l = c(0, 0.099, 0.899)
+bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# bin_corr_val_l = c(0.3)
+# cond_effect_val_l = c(0, 0.099, 0.899)
+# batch_effect_val_l = c(0, 0.099, 0.899)
 scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (bin_corr_val in bin_corr_val_l) {
     for (cond_effect_val in cond_effect_val_l) {
@@ -352,4 +351,4 @@ scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, 
   }
 }
 
-scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 1)
+scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 10)

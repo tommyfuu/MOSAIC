@@ -1,54 +1,7 @@
-Found 3 batches
-Adjusting for 0 covariate(s) or covariate level(s)
-Standardizing Data across genes
-Fitting L/S model and finding priors
-Finding nonparametric adjustments
-Adjusting the Data
-combat runtime 5.86506819725037 seconds
-limma runtime 0.0882961750030518 seconds
-MMUPHin runtime 0.877831697463989 seconds
-[1] "2022-12-01 18:55:54 EST"
-ConquR runtime 2.24074220657349 seconds
-[1] "2022-12-01 18:55:56 EST"
-[1] "2022-12-01 18:56:05 EST"
-ConquR_libsize runtime 8.86651849746704 secondscombat runtime 0.333827018737793 seconds
-combat_seq runtime 1.57038497924805 seconds
-limma runtime 0.0601778030395508 seconds
-MMUPHin runtime 0.627150058746338 seconds
-ConquR runtime 1.49704384803772 seconds
-ConquR_libsize runtime 5.9176619052887 secondscombat runtime 2.29432892799377 seconds
-combat_seq runtime 10.1346700191498 seconds
-limma runtime 0.490607023239136 seconds
-MMUPHin runtime 5.0398530960083 seconds
-ConquR runtime 13.6155869960785 seconds
-ConquR_libsize runtime 47.3742311000824 secondscombat runtime 0.415151119232178 seconds
-combat_seq runtime 2.02674198150635 seconds
-limma runtime 0.063974142074585 seconds
-MMUPHin runtime 0.580080986022949 seconds
-ConquR runtime 1.56634497642517 seconds
-ConquR_libsize runtime 5.52633094787598 secondscombat runtime 0.369664907455444 seconds
-combat_seq runtime 1.57036900520325 seconds
-limma runtime 0.0585589408874512 seconds
-MMUPHin runtime 0.565368175506592 seconds
-ConquR runtime 1.52945995330811 seconds
-ConquR_libsize runtime 5.17927885055542 secondscombat runtime 0.391129970550537 seconds
-combat_seq runtime 1.53415584564209 seconds
-limma runtime 0.0589098930358887 seconds
-MMUPHin runtime 0.551796913146973 seconds
-ConquR runtime 1.51413702964783 seconds
-ConquR_libsize runtime 4.97246718406677 secondscombat runtime 0.387135982513428 seconds
-combat_seq runtime 1.7037079334259 seconds
-limma runtime 0.0778720378875732 seconds
-MMUPHin runtime 0.703549146652222 seconds
-ConquR runtime 1.63782095909119 seconds
-ConquR_libsize runtime 4.85959982872009 secondscombat runtime 0.382193088531494 seconds
-combat_seq runtime 1.53452491760254 seconds
-limma runtime 0.0584290027618408 seconds
-MMUPHin runtime 0.538069009780884 seconds
-ConquR runtime 1.49873304367065 seconds
-ConquR_libsize runtime 4.8109610080719 secondscombat runtime 0.365872144699097 seconds
-combat_seq runtime 1.77920293807983 seconds
-limma runtime 0.0703310966491699 seconds
-MMUPHin runtime 0.685138940811157 seconds
-ConquR runtime 1.96782398223877 seconds
-ConquR_libsize runtime 5.75054693222046 seconds
+runtime documenting...
+combat runtime 0.390184164047241 seconds
+combat_seq runtime 1.97104096412659 seconds
+limma runtime 0.0677690505981445 seconds
+MMUPHin runtime 0.948773860931396 seconds
+ConquR runtime 2.04236793518066 seconds
+ConquR_libsize runtime 5.91391587257385 seconds
