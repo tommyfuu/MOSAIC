@@ -38,13 +38,11 @@ import numpy as np
 from sklearn.model_selection import train_test_split, KFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_score, RocCurveDisplay
-from skbio.stats.distance import DissimilarityMatrix, permanova
 from sklearn.preprocessing import OneHotEncoder
 import time
 import rpy2.robjects as robjects
-from rpy2.robjects.packages import importr
 from rpy2.robjects import pandas2ri, numpy2ri
-from rpy2.robjects.conversion import localconverter
+from statsmodels.stats.multitest import multipletests
 
 
 # data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
@@ -167,6 +165,7 @@ class Evaluate(object):
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
         # functions executed
+        self.diff_abund_test()
         ## version 1, for batch evaluation
         self.alpha_beta_diversity_and_tests(self.batch_var) # has to happen before standard scaler
 
@@ -377,6 +376,44 @@ class Evaluate(object):
             os.remove(self.output_root+"_batches_kw_pvals.txt")
 
 
+    def diff_abund_test(self):
+        ### if two categories then wilcox test, three or more then kruskal-wallis test
+        df = self.batch_corrected_df
+        
+        meta_data = self.meta_data
+        # use the metadata to get indices of samples in each bio_var category
+        bio_var_l = list(meta_data[self.bio_var].values)
+        # get the indices for each category
+        bio_var_indices = {}
+        for var in np.unique(bio_var_l):
+            bio_var_indices[var] = np.where(np.array(bio_var_l) == var)[0].tolist()
+        p_values_by_taxa = {}
+        for taxa in df.columns:
+            current_taxa_values_by_bio_var = {}
+            current_taxa_values = df[taxa].values.tolist()
+            for var in np.unique(bio_var_l):
+                current_taxa_values_by_bio_var[var] = [current_taxa_values[i] for i in bio_var_indices[var]]
+            
+            # conduct statistical test
+            if len(np.unique(bio_var_l)) == 2:
+                # wilcox test (unpaired)
+                p = stats.ranksums(current_taxa_values_by_bio_var[np.unique(bio_var_l)[0]], current_taxa_values_by_bio_var[np.unique(bio_var_l)[1]])[1]
+                FC = np.mean(current_taxa_values_by_bio_var[np.unique(bio_var_l)[0]])/np.mean(current_taxa_values_by_bio_var[np.unique(bio_var_l)[1]])
+            else:
+                # kruskal-wallis test
+                p = stats.kruskal(*current_taxa_values_by_bio_var.values)[1]
+                FC = 'NA'
+            p_values_by_taxa[taxa] = p
+
+        # transpose the batch corrected dataframe and save the p-values alongside
+        df = df.T
+        df["p_value"] = [p_values_by_taxa[taxa] for taxa in df.index]
+        df["FC"] = [FC for taxa in df.index]
+        # add FDR corrected p-values
+        df["FDR_p_value"] = multipletests(df["p_value"].values, method='fdr_bh')[1]
+        # save the dataframe
+        df.to_csv(self.output_root+"_diff_abund_test.csv")
+        return
 
     def allPCs_covar_kw_test(self, df):
         # to debug
