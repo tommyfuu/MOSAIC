@@ -227,7 +227,8 @@ run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/bench
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
 dataset = "Dataset",
-batch_ref = 'asd_son')
+batch_ref = 'asd_son',
+covar = '')
 
 # cdi 3 microbiomeHD
 run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
