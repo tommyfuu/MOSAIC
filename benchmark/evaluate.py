@@ -44,6 +44,7 @@ import time
 import rpy2.robjects as robjects
 from rpy2.robjects.packages import importr
 from rpy2.robjects import pandas2ri, numpy2ri
+from rpy2.robjects.conversion import localconverter
 
 
 # data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
@@ -225,7 +226,7 @@ class Evaluate(object):
         all_colors_used = self.rng.uniform(0, 1, 3*len(np.unique(list(df[self.bio_var])))).tolist()
         colors = {var: all_colors_used[idx*3:idx*3+3] for idx,var in enumerate(np.unique(list(df[self.bio_var])))} # unlikely to get repeated colors
         fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
-        sns.scatterplot(df["PC0"] , df["PC1"], hue = df[self.bio_var], hue_order = np.unique(list(df[self.bio_var])), style = df["batches"], s = 100,ax = ax, cmap = "tab10", x_jitter = True, palette = colors)
+        sns.scatterplot(x=df["PC0"] , y=df["PC1"], hue = df[self.bio_var], hue_order = np.unique(list(df[self.bio_var])), style = df["batches"], s = 100,ax = ax, cmap = "tab10", palette = colors)
         ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
         for index, current_biovar in enumerate(np.unique(list(df[self.bio_var]))):
             currentDF = df.loc[df[self.bio_var] == current_biovar]
@@ -235,7 +236,7 @@ class Evaluate(object):
 
         ## pca visualization for batches
         fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
-        sns.scatterplot(df["PC0"] , df["PC1"], hue = df[self.bio_var], hue_order = np.unique(list(df[self.bio_var])), style = df["batches"], s = 100,ax = ax, cmap = "tab10", x_jitter = True, palette = colors)
+        sns.scatterplot(x=df["PC0"] , y=df["PC1"], hue = df[self.bio_var], hue_order = np.unique(list(df[self.bio_var])), style = df["batches"], s = 100,ax = ax, cmap = "tab10", palette = colors)
         ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
         ### fetch info for bio_var
         for index, current_batch in enumerate(np.unique(list(df["batches"]))):
@@ -292,9 +293,11 @@ class Evaluate(object):
             ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
             im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
             # Show all ticks and label them with the respective list entries
-            ax.set_xticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+            ax.set_xticks(np.arange(len(bio_var_l)))
+            ax.set_xticklabels(bio_var_l)
             ax.set_xlabel("PC0 (lower diagonal)")
-            ax.set_yticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+            ax.set_yticks(np.arange(len(bio_var_l)))
+            ax.set_xticklabels(bio_var_l)
             ax.set_ylabel("PC1 (upper diagonal)")
             # Rotate the tidata["PC0"].valuesck labels and set their alignment.
             plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
@@ -384,7 +387,7 @@ class Evaluate(object):
         covar_unique = [x for x in covar_unique if str(x) != 'nan']
         covar_unique = np.unique(covar_unique).tolist()
         for i in range(30):
-            a = sns.scatterplot(df["PC0"],df["PC"+str(i)], hue = df[self.covar], style = df["batches"], s = 100,ax = axes[current_ax_index[0], current_ax_index[1]], cmap = "tab10", x_jitter = True)
+            a = sns.scatterplot(x=df["PC0"],y=df["PC"+str(i)], hue = df[self.covar], style = df["batches"], s = 100,ax = axes[current_ax_index[0], current_ax_index[1]], cmap = "tab10")
             data_for_kw = [df.loc[df[self.covar]==var]["PC"+str(i)].values for var in covar_unique]
             PC1_p = stats.kruskal(*data_for_kw)[1]
             a.set_title("PC"+str(i)+" kw_pval="+str(round(PC1_p, 5)))
@@ -412,15 +415,24 @@ class Evaluate(object):
         r = robjects.r
         r.source('./PERMANOVA_supporting.R')
         r_batch = self.meta_data[self.batch_var]
+
+        # r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
         if self.covar != False:
             r_covariate = self.meta_data[self.covar]
             PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_batch, r_covariate, 'batch', self.covar)
         else:
             PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_batch, 'batch')
         print("______________batch_PERMANOVA_R2_results______________")
-        bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
-        aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results[1], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
-        print(bray_curtis_permanova_df)
+        print(PERMANOVA_R2_results)
+        # bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results)
+        print(PERMANOVA_R2_results.rx2("tab_rel"))
+        # with localconverter(robjects.default_converter + pandas2ri.converter):
+        #     aitchinson_permanova_df = robjects.conversion.rpy2py(PERMANOVA_R2_results.rx2("tab_rel"))
+        # aitchinson_permanova_df = robjects.conversion.rpy2py(PERMANOVA_R2_results.rx2("tab_rel"))
+        aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_rel"), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
+        # bray_curtis_permanova_df = pd.DataFrame(eval(PERMANOVA_R2_results[0]), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
+        bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_count"), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
+        # print(bray_curtis_permanova_df)
         print(aitchinson_permanova_df)
         # bray_anova = PERMANOVA_R2_results[0]
         print("______________batch_PERMANOVA_R2_results______________")
@@ -456,8 +468,11 @@ class Evaluate(object):
         # try plotting stuff
         if self.R_PCOA_plot:
             # if self.pipeline == 'default':
-            r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
+            # r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="both")
+
             r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Aitch", main="Aitchinson")
+            r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
+            # r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Aitch", main="Aitchinson")
         # ids = list(self.meta_data[self.IDCol])
         # np.savetxt('data.out', data, delimiter=',')
         # bc_div_bray = beta_diversity("braycurtis", data, ids)
@@ -508,10 +523,14 @@ class Evaluate(object):
         bc_metadata.index = bc_metadata[self.IDCol]
         bc_metadata[test_var] = bc_metadata[test_var].fillna("unknown")
         if self.pipeline == "default":
+            print("bc_pc")
+            print(bc_pc)
             bc_fig = bc_pc.plot(bc_metadata, test_var,
                     axis_labels=('PC 1', 'PC 2', 'PC 3'),
                     title='Samples colored by '+test_var, cmap='jet', s=50)
-            bc_fig.figure.savefig(self.output_root+"_"+test_var+"_beta_bc_pcoa.png")
+            print("bc_fig")
+            print(bc_fig)
+            bc_fig.savefig(self.output_root+"_"+test_var+"_beta_bc_pcoa.png")
 
         # get list of unique test_var options
         test_var_col_l = list(self.meta_data[test_var])
@@ -815,9 +834,11 @@ def PC01_kw_tests_perbatch(df, bio_var, batch, output_root):
     ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
     im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
     # Show all ticks and label them with the respective list entries
-    ax.set_xticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+    ax.set_xticks(np.arange(len(bio_var_l)))
+    ax.set_xticklabels(bio_var_l)
     ax.set_xlabel("PC0 (lower diagonal)")
-    ax.set_yticks(np.arange(len(bio_var_l)), labels=bio_var_l)
+    ax.set_yticks(np.arange(len(bio_var_l)))
+    ax.set_yticklabels(bio_var_l)
     ax.set_ylabel("PC1 (upper diagonal)")
     # Rotate the tidata["PC0"].valuesck labels and set their alignment.
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
@@ -879,7 +900,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
             all_colors_used = rng.uniform(0, 1, 3*len(np.unique(list(df[bio_var])))).tolist()
             colors = {var: all_colors_used[idx*3:idx*3+3] for idx,var in enumerate(np.unique(list(df[bio_var])))} # unlikely to get repeated colors
             fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
-            sns.scatterplot(df["PC0"] , df["PC1"], hue = df[bio_var], hue_order = np.unique(list(df[bio_var])), s = 100,ax = ax, cmap = "tab10", x_jitter = True, palette = colors)
+            sns.scatterplot(x=df["PC0"] , y=df["PC1"], hue = df[bio_var], hue_order = np.unique(list(df[bio_var])), s = 100,ax = ax, cmap = "tab10", palette = colors)
             ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
             for index, current_biovar in enumerate(np.unique(list(df[bio_var]))):
                 currentDF = df.loc[df[bio_var] == current_biovar]
@@ -1135,13 +1156,17 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # bin_corr_val_l = [0, 0.1, 0.3, 0.5, 0.7, 0.9]
 # cond_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
 # batch_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
+# bin_corr_val_l = [0.3]
+# cond_effect_val_l = [0.099, 0.899]
+# batch_effect_val_l = [0, 0.099, 0.899]
 bin_corr_val_l = [0.3]
-cond_effect_val_l = [0.099, 0.899]
-batch_effect_val_l = [0, 0.099, 0.899]
+cond_effect_val_l = [0.099]
+batch_effect_val_l = [0.899]
 num_iters = 1
 IDCol = 'subjectid_text'
 # methods_list = ["nobc", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "harmony", "Percentile_norm"]
-methods_list = ["harmony", "nobc", "combat_seq", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin"]
+# methods_list = ["harmony", "nobc", "combat_seq", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin"]
+methods_list = ["harmony"]
 for bin_corr_val in bin_corr_val_l:
     for cond_effect_val in cond_effect_val_l:
         for batch_effect_val in batch_effect_val_l:
@@ -1182,14 +1207,14 @@ for bin_corr_val in bin_corr_val_l:
 ## microbiomeHD - nobc eval
 ################################################################################
 # autism 2 microbiomeHD
-# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
-# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-# Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
 # # benchmarking other methods: 
 # address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
@@ -1230,11 +1255,11 @@ for bin_corr_val in bin_corr_val_l:
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_Percentile_norm/autism_2_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
-bio_var = "DiseaseState"
-dataset_name = "autism_2_microbiomeHD"
-methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
+# bio_var = "DiseaseState"
+# dataset_name = "autism_2_microbiomeHD"
+# methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
 # cdi 3 microbiomeHD
@@ -1286,8 +1311,8 @@ global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, out
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
-bio_var = "DiseaseState"
-dataset_name = "cdi_3_microbiomeHD"
-methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
+# bio_var = "DiseaseState"
+# dataset_name = "cdi_3_microbiomeHD"
+# methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")

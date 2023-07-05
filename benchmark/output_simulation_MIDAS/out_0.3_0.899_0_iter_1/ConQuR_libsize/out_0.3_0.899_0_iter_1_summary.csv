@@ -1,0 +1,9 @@
+,0
+batch_aitch_r2,4.756031059714085e-05
+batch_bray_r2,-0.0005958245063603413
+biovar_aitch_r2,0.14772026075161696
+biovar_bray_r2,0.14772026075161696
+global_biovar_p_val_PC0,7.203778834776015e-72
+global_biovar_p_val_PC1,6.196032179578717e-12
+global_batch_p_val_PC0,0.5227123992659595
+global_batch_p_val_PC1,0.9376604784919342

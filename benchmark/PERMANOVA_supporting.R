@@ -100,32 +100,55 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
   if (is.null(sub_index)){
     sub_index = seq(ncol(TAX))
   }
-
-  if (dissimilarity == "Bray"){
-
-    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
-    bc =  vegdist(TAX[index, sub_index])
-    MDS = cmdscale(bc, k=4)
-    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = main, csub = aa)
-    # save figure
-    # png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
-    pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
-  } else if (dissimilarity == "Aitch"){
+  if (dissimilarity == "Aitch"){
 
     Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
     # print("Aitchison distance plotting")
     # print(MDS)
     # library(txtplot)
-    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = main, csub = aa)
+    print(main)
+    pdf(paste0(out, "AAAAAAAPCoA_", main, dissimilarity, ".pdf"))
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
     # print figure
     print("AAAAAAAA")
     print("AAAAAAAA")
     print("AAAAAAAA")
     print("AAAAAAAA")
-    png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
     # save figure
-    pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
+    print(main)
+    # pdf(paste0(out, "AAAAAAAPCoA_", main, dissimilarity, ".pdf"))
+    print(paste0(out, "PCoA_", main, dissimilarity, ".pdf"))
+    print(main)
+    dev.off()
+  } else if (dissimilarity == "Bray"){
+
+    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
+    bc =  vegdist(TAX[index, sub_index])
+    MDS = cmdscale(bc, k=4)
+    print(main)
+    pdf(paste0(out, "PCoA_", main, dissimilarity, ".pdf"))
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis WTF", csub = aa)
+    # save figure
+    # png(paste0(out, "PCoA_", dissimilarity, ".png"), width=500, height=400, res = 300)
+    print(paste0(out, "PCoA_", main, dissimilarity, ".pdf"))
+    print(main)
+    dev.off()
+    # pdf(paste0(out, "PCoA_", main, dissimilarity, ".pdf"))
+  } else if (dissimilarity == 'both'){
+    pdf(paste0(out, "PCoA_both.pdf"))
+    par(mfrow = c(1, 2))
+    Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
+    MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
+
+    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
+    bc =  vegdist(TAX[index, sub_index])
+    MDS = cmdscale(bc, k=4)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis WTF", csub = aa)
+    dev.off()
+    # side by side
+    # pdf(paste0(out, "PCoA_both.pdf"))
   } else if (dissimilarity == "GUniFrac"){
 
     index = which( apply(TAX[, sub_index], 1, sum) > 0 )
@@ -136,7 +159,8 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
     d = unifracs[, , GUniFrac_type]
     MDS = cmdscale(d, k=4)
     s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = main, csub = aa)
-
+    # save figure
+    pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
   } else{
     stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")
   }
