@@ -114,10 +114,17 @@ def load_data_CMD(address_directory, output_root = False, id = 'Sam_id'):
     data_mat = data_mat.reindex(intersection_ids)
     meta_data = meta_data.reindex(intersection_ids)
 
+    # drop taxa and samples where all values are 0
+    data_mat = data_mat.loc[:, (data_mat != 0).any(axis=0)]
+    data_mat = data_mat.loc[(data_mat != 0).any(axis=1), :]
+
+    # convert data_mat to relative abundance for each sample
+    data_mat = data_mat.div(data_mat.sum(axis=1), axis=0) # divide by row sum
+
     # save stuff if needed
     if output_root != False:
         print()
-        data_mat.to_csv(output_root+"_count_data.csv")
+        data_mat.to_csv(output_root+"_count_data.csv") # this is actually not count, but relative abundance
         meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 

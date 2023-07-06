@@ -1,0 +1,38 @@
+global batch kw p-vals 
+
+
+
+. PC0 across all batches, p-val =  0.03548646504395952 
+
+. PC1 across all batches, p-val =  0.9368874167326222 
+
+global pair-wise batch kw p-vals 
+
+current batch pair ('AnnArbor', 'Houston') 
+
+. PC0 ('AnnArbor', 'Houston') 0.6978013350844976 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
+. PC1 ('AnnArbor', 'Houston') 0.9557640140392004 # samples in batch AnnArbor: 10 # samples in batch Houston: 15
+current batch pair ('AnnArbor', 'Toronto') 
+
+. PC0 ('AnnArbor', 'Toronto') 0.10034824646228979 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
+. PC1 ('AnnArbor', 'Toronto') 0.7982567374169298 # samples in batch AnnArbor: 10 # samples in batch Toronto: 25
+current batch pair ('Houston', 'Toronto') 
+
+. PC0 ('Houston', 'Toronto') 0.015667564032754377 # samples in batch Houston: 15 # samples in batch Toronto: 25
+. PC1 ('Houston', 'Toronto') 0.7479997753208949 # samples in batch Houston: 15 # samples in batch Toronto: 25
+batch kw p-vals by bio_var 
+
+. bio_var == adenoma
+.   PC0 ('AnnArbor', 'Houston') nan # new samples: 4 # old samples: 0
+.   PC1 ('AnnArbor', 'Houston') nan # new samples: 4 # old samples: 0
+.   PC0 ('AnnArbor', 'Toronto') 0.20082512269513925 # new samples: 4 # old samples: 22
+.   PC1 ('AnnArbor', 'Toronto') 0.17692900573221365 # new samples: 4 # old samples: 22
+.   PC0 ('Houston', 'Toronto') nan # new samples: 0 # old samples: 22
+.   PC1 ('Houston', 'Toronto') nan # new samples: 0 # old samples: 22
+. bio_var == healthy
+.   PC0 ('AnnArbor', 'Houston') 0.6404287874127905 # new samples: 6 # old samples: 15
+.   PC1 ('AnnArbor', 'Houston') 0.2129119028115016 # new samples: 6 # old samples: 15
+.   PC0 ('AnnArbor', 'Toronto') 0.19670560245894303 # new samples: 6 # old samples: 3
+.   PC1 ('AnnArbor', 'Toronto') 0.7962534147376396 # new samples: 6 # old samples: 3
+.   PC0 ('Houston', 'Toronto') 0.020879263166351754 # new samples: 15 # old samples: 3
+.   PC1 ('Houston', 'Toronto') 0.5939546753269194 # new samples: 15 # old samples: 3
