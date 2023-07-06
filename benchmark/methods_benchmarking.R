@@ -25,7 +25,7 @@ library(mixOmics)
 run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
                         used_methods = c("combat", "combat_seq", "limma", "mmuphin", 'conqur_libsize', "conqur")) {
     sink_file_name = paste(output_root, "_runtime.txt", sep="")
-    
+    print(data_mat_path)
     # r split and join everything except for last element
     output_dir = strsplit(output_root, "/")
     output_dir = paste(output_dir[[1]][1:(length(output_dir[[1]])-1)], collapse = "/")
@@ -296,9 +296,18 @@ run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/bench
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
 dataset = "study_name",
 batch_ref = 'HMP_2019_ibdmdb',
-covar = c("gender", "age"),
 used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 )
+
+# # ibd 3 CMD - gender/age
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD_covar/ibd_3_CMD',
+# dataset = "study_name",
+# batch_ref = 'HMP_2019_ibdmdb',
+# covar = c("gender", "age"),
+# used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+# )
 
 # CRC_8_CMD
 run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
@@ -306,9 +315,17 @@ run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/bench
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
 dataset = "study_name",
 batch_ref = 'FengQ_2015',
-covar = c("gender", "age"),
 used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 )
+
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD_covar/CRC_8_CMD',
+# dataset = "study_name",
+# batch_ref = 'FengQ_2015',
+# covar = c("gender", "age"),
+# used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+# )
 
 # T2D 10 CMD
 run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_count_data.csv',
@@ -316,9 +333,17 @@ run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/bench
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
 dataset = "study_name",
 batch_ref = 'Castro-NallarE_2015',
-covar = c("gender", "age"),
 used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 )
+
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/T2D_10_CMD_covar/T2D_10_CMD',
+# dataset = "study_name",
+# batch_ref = 'Castro-NallarE_2015',
+# covar = c("gender", "age"),
+# used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+# )
 
 # IBD_MDB study
 # for (i in c('0.0', '1.0', '2.0', '3.0', '4.0')){
@@ -367,39 +392,39 @@ used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
 
-# bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# # bin_corr_val_l = c(0.3)
-# # cond_effect_val_l = c(0, 0.099, 0.899)
-# # batch_effect_val_l = c(0, 0.099, 0.899)
-# scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
-#   for (bin_corr_val in bin_corr_val_l) {
-#     for (cond_effect_val in cond_effect_val_l) {
-#       for (batch_effect_val in batch_effect_val_l) {
-#         if (cond_effect_val + batch_effect_val <= 1) {
-#           for (iter in seq(1, num_iter)){
-#             # print(bin_corr_val)
-#             # print(cond_effect_val)
-#             # print(batch_effect_val)
+bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# bin_corr_val_l = c(0.3)
+# cond_effect_val_l = c(0, 0.099, 0.899)
+# batch_effect_val_l = c(0, 0.099, 0.899)
+scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
+  for (bin_corr_val in bin_corr_val_l) {
+    for (cond_effect_val in cond_effect_val_l) {
+      for (batch_effect_val in batch_effect_val_l) {
+        if (cond_effect_val + batch_effect_val <= 1) {
+          for (iter in seq(1, num_iter)){
+            # print(bin_corr_val)
+            # print(cond_effect_val)
+            # print(batch_effect_val)
             
-#             output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-#             # run the methods on this
-#             run_methods(output_file_path_count,
-#                         paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
-#                         paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
-#                         dataset = 'batchid',
-#                         batch_ref = "batch_0",
-#                         Sam_id = 'subjectid_text',
-#                         transpose = TRUE,
-#                         count = TRUE,
-#                         used_methods = c("combat", "combat_seq", "limma", "mmuphin", 'conqur_libsize', "conqur")
-#             )
-#           }
-#         }
-#       }
-#     }
-#   }
-# }
+            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            # run the methods on this
+            run_methods(output_file_path_count,
+                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
+                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
+                        dataset = 'batchid',
+                        batch_ref = "batch_0",
+                        Sam_id = 'subjectid_text',
+                        transpose = TRUE,
+                        count = TRUE,
+                        used_methods = c("combat", "combat_seq", "limma", "mmuphin", 'conqur_libsize', "conqur")
+            )
+          }
+        }
+      }
+    }
+  }
+}
 
 # scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 10)

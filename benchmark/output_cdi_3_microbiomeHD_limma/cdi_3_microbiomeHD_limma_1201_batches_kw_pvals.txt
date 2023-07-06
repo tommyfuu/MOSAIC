@@ -1,0 +1,52 @@
+global batch kw p-vals 
+
+
+
+. PC0 across all batches, p-val =  0.5198328396397909 
+
+. PC1 across all batches, p-val =  0.5050428252185396 
+
+global pair-wise batch kw p-vals 
+
+current batch pair ('cdi_schubert', 'cdi_vincent_v3v5') 
+
+. PC0 ('cdi_schubert', 'cdi_vincent_v3v5') 0.8962323534195622 # samples in batch cdi_schubert: 336 # samples in batch cdi_vincent_v3v5: 50
+. PC1 ('cdi_schubert', 'cdi_vincent_v3v5') 0.5038692977279244 # samples in batch cdi_schubert: 336 # samples in batch cdi_vincent_v3v5: 50
+current batch pair ('cdi_schubert', 'cdi_youngster') 
+
+. PC0 ('cdi_schubert', 'cdi_youngster') 0.25279322754464784 # samples in batch cdi_schubert: 336 # samples in batch cdi_youngster: 100
+. PC1 ('cdi_schubert', 'cdi_youngster') 0.42682430780040903 # samples in batch cdi_schubert: 336 # samples in batch cdi_youngster: 100
+current batch pair ('cdi_vincent_v3v5', 'cdi_youngster') 
+
+. PC0 ('cdi_vincent_v3v5', 'cdi_youngster') 0.5313693338607357 # samples in batch cdi_vincent_v3v5: 50 # samples in batch cdi_youngster: 100
+. PC1 ('cdi_vincent_v3v5', 'cdi_youngster') 0.23013676846000225 # samples in batch cdi_vincent_v3v5: 50 # samples in batch cdi_youngster: 100
+batch kw p-vals by bio_var 
+
+. bio_var == CDI
+.   PC0 ('cdi_schubert', 'cdi_vincent_v3v5') 0.43128310025943195 # new samples: 93 # old samples: 25
+.   PC1 ('cdi_schubert', 'cdi_vincent_v3v5') 0.18889385854135943 # new samples: 93 # old samples: 25
+.   PC0 ('cdi_schubert', 'cdi_youngster') 0.19008426722351573 # new samples: 93 # old samples: 27
+.   PC1 ('cdi_schubert', 'cdi_youngster') 0.2755500071313164 # new samples: 93 # old samples: 27
+.   PC0 ('cdi_vincent_v3v5', 'cdi_youngster') 0.6937531072149816 # new samples: 25 # old samples: 27
+.   PC1 ('cdi_vincent_v3v5', 'cdi_youngster') 0.031398758807249086 # new samples: 25 # old samples: 27
+. bio_var == H
+.   PC0 ('cdi_schubert', 'cdi_vincent_v3v5') 0.3448609923738569 # new samples: 154 # old samples: 25
+.   PC1 ('cdi_schubert', 'cdi_vincent_v3v5') 0.9734433161089913 # new samples: 154 # old samples: 25
+.   PC0 ('cdi_schubert', 'cdi_youngster') 0.06347372484896079 # new samples: 154 # old samples: 18
+.   PC1 ('cdi_schubert', 'cdi_youngster') 0.6670508798612094 # new samples: 154 # old samples: 18
+.   PC0 ('cdi_vincent_v3v5', 'cdi_youngster') 0.4601809354471257 # new samples: 25 # old samples: 18
+.   PC1 ('cdi_vincent_v3v5', 'cdi_youngster') 0.9411258466850994 # new samples: 25 # old samples: 18
+. bio_var == nonCDI
+.   PC0 ('cdi_schubert', 'cdi_vincent_v3v5') nan # new samples: 89 # old samples: 0
+.   PC1 ('cdi_schubert', 'cdi_vincent_v3v5') nan # new samples: 89 # old samples: 0
+.   PC0 ('cdi_schubert', 'cdi_youngster') nan # new samples: 89 # old samples: 0
+.   PC1 ('cdi_schubert', 'cdi_youngster') nan # new samples: 89 # old samples: 0
+.   PC0 ('cdi_vincent_v3v5', 'cdi_youngster') nan # new samples: 0 # old samples: 0
+.   PC1 ('cdi_vincent_v3v5', 'cdi_youngster') nan # new samples: 0 # old samples: 0
+. bio_var == postFMT_CDI
+.   PC0 ('cdi_schubert', 'cdi_vincent_v3v5') nan # new samples: 0 # old samples: 0
+.   PC1 ('cdi_schubert', 'cdi_vincent_v3v5') nan # new samples: 0 # old samples: 0
+.   PC0 ('cdi_schubert', 'cdi_youngster') nan # new samples: 0 # old samples: 55
+.   PC1 ('cdi_schubert', 'cdi_youngster') nan # new samples: 0 # old samples: 55
+.   PC0 ('cdi_vincent_v3v5', 'cdi_youngster') nan # new samples: 0 # old samples: 55
+.   PC1 ('cdi_vincent_v3v5', 'cdi_youngster') nan # new samples: 0 # old samples: 55

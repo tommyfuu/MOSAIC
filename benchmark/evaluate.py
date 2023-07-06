@@ -1190,115 +1190,115 @@ for bin_corr_val in bin_corr_val_l:
 
 # ## microbiomeHD - nobc eval
 # ################################################################################
-# # autism 2 microbiomeHD
-# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
-# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-# Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+# autism 2 microbiomeHD
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
-# # benchmarking other methods: 
-# address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
+# benchmarking other methods: 
+address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
 
-# ### combat
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_combat/autism_2_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
+### combat
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_combat/autism_2_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-# ### combat_seq
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
-
-
-# ### ConQuR
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR_1201', "DiseaseState", 30,  False, 'Sam_id')
-
-# ### ConQuR_libsize
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize_1201',"DiseaseState", 30,   False, 'Sam_id')
-
-# ### limma
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_limma.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma_1201', "DiseaseState", 30,  False,'Sam_id')
-
-# ### MMUPHin
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
-
-# ### Percentile_normalization
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_Percentile_norm/autism_2_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
-
-# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
-# bio_var = "DiseaseState"
-# dataset_name = "autism_2_microbiomeHD"
-# methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+### combat_seq
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
 
 
-# # cdi 3 microbiomeHD
-# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
-# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-# vars_use = ["Dataset"]
-# meta_data['DiseaseState'] = meta_data['DiseaseState'].replace({'nonCDI': 'H'})
-# print(meta_data)
-# IDCol = 'Sam_id'
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+### ConQuR
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-# # benchmarking other methods: 
-# address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
+### ConQuR_libsize
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize_1201',"DiseaseState", 30,   False, 'Sam_id')
 
-# ### combat
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
+### limma
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_limma.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma_1201', "DiseaseState", 30,  False,'Sam_id')
 
-# ### combat_seq
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
+### MMUPHin
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
+
+### Percentile_normalization
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_Percentile_norm/autism_2_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
+
+input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
+bio_var = "DiseaseState"
+dataset_name = "autism_2_microbiomeHD"
+methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
-# ### ConQuR
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR_1201', "DiseaseState", 30,  False, 'Sam_id')
+# cdi 3 microbiomeHD
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+vars_use = ["Dataset"]
+meta_data['DiseaseState'] = meta_data['DiseaseState'].replace({'nonCDI': 'H'})
+print(meta_data)
+IDCol = 'Sam_id'
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
-# ### ConQuR_libsize
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize_1201',"DiseaseState", 30,   False, 'Sam_id')
+# benchmarking other methods: 
+address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
 
-# ### limma
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma_1201', "DiseaseState", 30,  False,'Sam_id')
+### combat
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-# ### MMUPHin
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
+### combat_seq
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-# ### Percentile_normalization
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
-# bio_var = "DiseaseState"
-# dataset_name = "cdi_3_microbiomeHD"
-# methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+### ConQuR
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR_1201', "DiseaseState", 30,  False, 'Sam_id')
+
+### ConQuR_libsize
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize_1201',"DiseaseState", 30,   False, 'Sam_id')
+
+### limma
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma_1201', "DiseaseState", 30,  False,'Sam_id')
+
+### MMUPHin
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
+
+### Percentile_normalization
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
+
+input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
+bio_var = "DiseaseState"
+dataset_name = "cdi_3_microbiomeHD"
+methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
