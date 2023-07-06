@@ -22,7 +22,8 @@ library(readr)
 library(tibble)
 library(mixOmics)
 
-run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE) {
+run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
+                        used_methods = c("combat", "combat_seq", "limma", "mmuphin", 'conqur_libsize', "conqur")) {
     sink_file_name = paste(output_root, "_runtime.txt", sep="")
     
     # r split and join everything except for last element
@@ -43,52 +44,93 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     # print(count_data)
     metadata = as.data.frame(read_csv(meta_data_path))
     # sink(paste(output_root, "_runtime.txt", sep=""))
+
+    # for nas in covar columns in metadata, fill in with 'unknown'
+    for (col in colnames(metadata)) {
+        if (col %in% covar) {
+            # metadata <- metadata %>%
+            #     mutate(col = ifelse(is.na(col), 'unknown', col))
+            metadata[is.na(metadata[, col]), col] = "unknown"
+        }
+    }
     
     ## TODO:  potentially need preprocessing such as log and +1
     count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
     cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
 
     ## combat
+    if ('combat' %in% used_methods) {
     start_time <- Sys.time()
     batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
     if(is.null(covar)) {
-        count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=NULL))
-    }
+        if(count == TRUE) {
+            count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=NULL))
+            }
+        else {
+            count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=NULL))
+            # now normalize it back to relative abundance
+            count_data.combat <- count_data.combat/rowSums(count_data.combat)
+            }
+        }
     else {
         if(length(covar)>1){
             covar = covar[1]
         }
-        covar_df = factor(metadata[, covar])
-        count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, mod = covar_df, par.prior=FALSE, mean.only=TRUE))
-    }
-    # if(count == FALSE) {
-    #     count_data.combat = clr(count_data.combat, inverse = TRUE)
-    # }
+        covar_df = as.numeric(factor(metadata[, covar]))
+        # print(design)
+        if(count == TRUE) {
+            count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, mod = covar_df, par.prior=FALSE, mean.only=TRUE))
+            }
+        else {
+            count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, mod = covar_df, par.prior=FALSE, mean.only=TRUE))
+            # now normalize it back to relative abundance
+            count_data.combat <- count_data.combat/rowSums(count_data.combat)
+            }
+        }
     write.csv(count_data.combat, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
     end_time <- Sys.time()
     cat(c("combat runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
     cat('\n', file=sink_file_name, append=TRUE)
+    }
 
     ## combat_seq
+    ### CAN ONLY WORK IF count == TRUE
+    if ('combat_seq' %in% used_methods) {
     start_time <- Sys.time()
     batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
     if(is.null(covar)) {
-        count_data.combat <- t(ComBat_seq(t(count_data), batch = batch_info))
+        if(count == TRUE) {
+            count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info))
+            
+            write.csv(count_data.combat_seq, paste(output_root, "_combat_seq.csv", sep=""), row.names = TRUE)
+            end_time <- Sys.time()
+            cat(c("combat_seq runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat('\n', file=sink_file_name, append=TRUE)
+        }
+        else {
+            print("count must be TRUE for combat_seq")
+        }
     }
     else {
         if(length(covar)>1){
             covar = covar[1]
         }
-        covar_df = factor(metadata[, covar])
-        count_data.combat <- t(ComBat_seq(t(count_data), batch = batch_info, covar_mod = covar_df))
+        covar_df = as.numeric(factor(metadata[, covar]))
+        if(count == TRUE) {
+            count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, covar_mod = covar_df))
+            write.csv(count_data.combat_seq, paste(output_root, "_combat_seq.csv", sep=""), row.names = TRUE)
+            end_time <- Sys.time()
+            cat(c("combat_seq runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat('\n', file=sink_file_name, append=TRUE)
+            }
+        else {
+         print("count must be TRUE for combat_seq")
+            }
+        }
     }
-    write.csv(count_data.combat, paste(output_root, "_combat_seq.csv", sep=""), row.names = TRUE)
-    end_time <- Sys.time()
-    cat(c("combat_seq runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
-    cat('\n', file=sink_file_name, append=TRUE)
-
     ## limma
     ## note that the 'covariates' argument here cannot be used because limma requires continuous covariates
+    if ('limma' %in% used_methods) {
     start_time <- Sys.time()
     count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
     if(count == TRUE) {
@@ -98,8 +140,10 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     end_time <- Sys.time()
     cat(c("limma runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
     cat('\n', file=sink_file_name, append=TRUE)
+    }
 
     ## MMUPHin
+    if ('mmuphin' %in% used_methods) {
     start_time <- Sys.time()
     if (count == FALSE) {
         count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
@@ -133,10 +177,12 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     end_time <- Sys.time()
     cat(c("MMUPHin runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
     cat('\n', file=sink_file_name, append=TRUE)
+    }
 
     ## ConquR
     ## need to put batchid and covar into countdata dataframe
     # count_data.conqur_pre <- count_data
+    if ('conqur' %in% used_methods) {
     start_time <- Sys.time()
     batchid <- factor(metadata[, dataset])
     if (is.null(covar)){
@@ -152,24 +198,40 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     end_time <- Sys.time()
     cat(c("ConquR runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
     cat('\n', file=sink_file_name, append=TRUE)
+    }
 
     ## ConQuR_libsize
     ## need to put batchid and covar into countdata dataframe
+    if ('conqur_libsize' %in% used_methods) {
     start_time <- Sys.time()
     batchid <- factor(metadata[, dataset])
     if (is.null(covar)){
-        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
+        if(count == TRUE){
+            count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
                          logistic_lasso=T, quantile_type="lasso", interplt=F)
-    }
+                         
+            write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
+            end_time <- Sys.time()
+            cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            }
+        else{
+            print("Due to unknown libsize, conqur_libsize cannot be run")
+            } 
+        }
     else {
         covar_df = factor(metadata[, covar])
-        count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
+        if(count == TRUE){
+            count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+                            logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
+            write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
+            end_time <- Sys.time()
+            cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+        }
+        else{
+            print("Due to unknown libsize, conqur_libsize cannot be run")
+        }
     }
-    write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
-    end_time <- Sys.time()
-    cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
-
+    }
     # ## attempt Tune_ConQuR
     # start_time <- Sys.time()
     # batchid <- factor(metadata[, dataset])
@@ -212,14 +274,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
 }
 
-# glickman
-# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/Glickman_count_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/Glickman_meta_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/Glickman/Glickman',
-# dataset = "Dataset",
-# batch_ref = 'Old',
-# covar='Sex'
-# )
 
 
 # # autism 2 microbiomeHD
@@ -241,33 +295,29 @@ run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/bench
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
 '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
 dataset = "study_name",
-batch_ref = 'HMP_2019_ibdmdb')
-
-# adenoma 5 CMD
-# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_count_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/adenoma_5_CMD_meta_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/adenoma_5_CMD/adenoma_5_CMD',
-# dataset = "study_name",
-# batch_ref = 'FengQ_2015',
-# covar = c("gender")
-# )
+batch_ref = 'HMP_2019_ibdmdb',
+covar = c("gender", "age"),
+used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+)
 
 # CRC_8_CMD
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
+run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
 dataset = "study_name",
 batch_ref = 'FengQ_2015',
-covar = c("gender")
+covar = c("gender", "age"),
+used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 )
 
 # T2D 10 CMD
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmarked_data/T2D_10_CMD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmarked_data/T2D_10_CMD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/harmonypy/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
+run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_count_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_meta_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/T2D_10_CMD/T2D_10_CMD',
 dataset = "study_name",
 batch_ref = 'Castro-NallarE_2015',
-covar = c("gender")
+covar = c("gender", "age"),
+used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 )
 
 # IBD_MDB study
@@ -317,38 +367,39 @@ covar = c("gender")
 # )
 
 
-bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
-cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# bin_corr_val_l = c(0.3)
-# cond_effect_val_l = c(0, 0.099, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.899)
-scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
-  for (bin_corr_val in bin_corr_val_l) {
-    for (cond_effect_val in cond_effect_val_l) {
-      for (batch_effect_val in batch_effect_val_l) {
-        if (cond_effect_val + batch_effect_val <= 1) {
-          for (iter in seq(1, num_iter)){
-            # print(bin_corr_val)
-            # print(cond_effect_val)
-            # print(batch_effect_val)
+# bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# # bin_corr_val_l = c(0.3)
+# # cond_effect_val_l = c(0, 0.099, 0.899)
+# # batch_effect_val_l = c(0, 0.099, 0.899)
+# scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
+#   for (bin_corr_val in bin_corr_val_l) {
+#     for (cond_effect_val in cond_effect_val_l) {
+#       for (batch_effect_val in batch_effect_val_l) {
+#         if (cond_effect_val + batch_effect_val <= 1) {
+#           for (iter in seq(1, num_iter)){
+#             # print(bin_corr_val)
+#             # print(cond_effect_val)
+#             # print(batch_effect_val)
             
-            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-            # run the methods on this
-            run_methods(output_file_path_count,
-                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
-                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
-                        dataset = 'batchid',
-                        batch_ref = "batch_0",
-                        Sam_id = 'subjectid_text',
-                        transpose = TRUE,
-                        count = TRUE,
-            )
-          }
-        }
-      }
-    }
-  }
-}
+#             output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+#             # run the methods on this
+#             run_methods(output_file_path_count,
+#                         paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
+#                         paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
+#                         dataset = 'batchid',
+#                         batch_ref = "batch_0",
+#                         Sam_id = 'subjectid_text',
+#                         transpose = TRUE,
+#                         count = TRUE,
+#                         used_methods = c("combat", "combat_seq", "limma", "mmuphin", 'conqur_libsize', "conqur")
+#             )
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
 
-scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 10)
+# scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 10)
