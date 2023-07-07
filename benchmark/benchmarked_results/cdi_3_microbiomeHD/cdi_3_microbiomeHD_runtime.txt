@@ -5,3 +5,4 @@ limma runtime 0.0677690505981445 seconds
 MMUPHin runtime 0.948773860931396 seconds
 ConquR runtime 2.04236793518066 seconds
 ConquR_libsize runtime 5.91391587257385 seconds
+percentile_normalization runtime 10.497792959213257 seconds

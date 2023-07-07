@@ -787,9 +787,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     # fetch time spent running
     benchmarked_results_dir = output_dir_path + "/benchmarked_results/" + dataset_name
     benchmarked_results_dir = os.listdir(benchmarked_results_dir)
-    print(benchmarked_results_dir)
     current_runtime_kw_path = [result for result in benchmarked_results_dir if "runtime.txt" in result][0]
-    print(current_runtime_kw_path)
     with open(output_dir_path + "/benchmarked_results/" + dataset_name+'/'+current_runtime_kw_path) as f:
         lines = f.readlines()
 
@@ -807,6 +805,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         if "ConquR_libsize" in line:
             method_dict["ConQuR_libsize"]["runtime"] = float(line.split(" ")[-2])
         if "percentile_normalization" in line:
+            print("percentile_normalization in line")
             method_dict["Percentile_norm"]["runtime"] = float(line.split(" ")[-2])
     
     benchmarked_data_harmony_dir = output_dir_path + "/benchmarked_data"
@@ -1137,16 +1136,16 @@ print("ibd_3_CMD loaded")
 
 ## simulation evaluation - MIDAS
 ### null data
-# bin_corr_val_l = [0, 0.1, 0.3, 0.5, 0.7, 0.9]
-# cond_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
-# batch_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
+bin_corr_val_l = [0, 0.1, 0.3, 0.5, 0.7, 0.9]
+cond_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
+batch_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
 # bin_corr_val_l = [0.3]
 # cond_effect_val_l = [0.099, 0.899]
 # batch_effect_val_l = [0, 0.099, 0.899]
-bin_corr_val_l = [0]
-cond_effect_val_l = [0.099, 0.299]
-batch_effect_val_l = [0.699]
-num_iters = 1
+# bin_corr_val_l = [0]
+# cond_effect_val_l = [0.099, 0.299]
+# batch_effect_val_l = [0.699]
+num_iters = 10
 IDCol = 'subjectid_text'
 # methods_list = ["nobc", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "harmony", "Percentile_norm"]
 # methods_list = ["harmony", "nobc", "combat_seq", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin"]
@@ -1192,9 +1191,9 @@ for bin_corr_val in bin_corr_val_l:
                 # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
-# # ## microbiomeHD - nobc eval
-# # ################################################################################
-# # autism 2 microbiomeHD
+# ## microbiomeHD - nobc eval
+# ################################################################################
+# autism 2 microbiomeHD
 # address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
 # output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
 # data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
@@ -1238,7 +1237,7 @@ for bin_corr_val in bin_corr_val_l:
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
 
-# ### Percentile_normalization
+### Percentile_normalization
 # address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_Percentile_norm/autism_2_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
@@ -1250,7 +1249,7 @@ for bin_corr_val in bin_corr_val_l:
 # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
-# # cdi 3 microbiomeHD
+# cdi 3 microbiomeHD
 # address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
 # output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
 # data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
@@ -1296,7 +1295,7 @@ for bin_corr_val in bin_corr_val_l:
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
 
-# ### Percentile_normalization
+### Percentile_normalization
 # address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
