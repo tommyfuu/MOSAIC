@@ -105,7 +105,7 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
     Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
     print(main)
-    pdf(paste0(out, "CoA_", dissimilarity, ".pdf"))
+    pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
     s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
     dev.off()
   } else if (dissimilarity == "Bray"){
