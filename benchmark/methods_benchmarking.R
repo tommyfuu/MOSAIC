@@ -63,9 +63,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     if ('combat' %in% used_methods) {
     start_time <- Sys.time()
     print("check point3")
-    print(metadata)
-    print(as.character(metadata[, dataset]))
-    print(metadata[[Sam_id]])
     batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
     print("check point4")
     if(is.null(covar)) {
@@ -305,15 +302,15 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
-# ibd 3 CMD - gender/age
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD_covar/ibd_3_CMD',
-dataset = "study_name",
-batch_ref = 'HMP_2019_ibdmdb',
-covar = c("gender", "age"),
-used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
-)
+# # ibd 3 CMD - gender/age
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD_covar/ibd_3_CMD',
+# dataset = "study_name",
+# batch_ref = 'HMP_2019_ibdmdb',
+# covar = c("gender", "age"),
+# used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+# )
 
 # # CRC_8_CMD
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
@@ -324,14 +321,14 @@ used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD_covar/CRC_8_CMD',
-dataset = "study_name",
-batch_ref = 'FengQ_2015',
-covar = c("gender", "age"),
-used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
-)
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD_covar/CRC_8_CMD',
+# dataset = "study_name",
+# batch_ref = 'FengQ_2015',
+# covar = c("gender", "age"),
+# used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+# )
 
 # # T2D 10 CMD
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_count_data.csv',
@@ -342,14 +339,14 @@ used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/T2D_10_CMD_covar/T2D_10_CMD',
-dataset = "study_name",
-batch_ref = 'Castro-NallarE_2015',
-covar = c("gender", "age"),
-used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
-)
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/T2D_10_CMD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/T2D_10_CMD_covar/T2D_10_CMD',
+# dataset = "study_name",
+# batch_ref = 'Castro-NallarE_2015',
+# covar = c("gender", "age"),
+# used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+# )
 
 # IBD_MDB study
 # for (i in c('0.0', '1.0', '2.0', '3.0', '4.0')){
@@ -433,4 +430,4 @@ scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, 
   }
 }
 
-# scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 10)
+scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 10)

@@ -1143,9 +1143,9 @@ print("hanningan loaded")
 # bin_corr_val_l = [0.3]
 # cond_effect_val_l = [0.099, 0.899]
 # batch_effect_val_l = [0, 0.099, 0.899]
-bin_corr_val_l = [0.3]
+bin_corr_val_l = [0]
 cond_effect_val_l = [0.099]
-batch_effect_val_l = [0.899]
+batch_effect_val_l = [0.699]
 num_iters = 1
 IDCol = 'subjectid_text'
 # methods_list = ["nobc", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "harmony", "Percentile_norm"]
