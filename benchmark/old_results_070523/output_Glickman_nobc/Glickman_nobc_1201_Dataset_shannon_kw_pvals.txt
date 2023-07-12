@@ -1,5 +1,0 @@
-shannon_global_pval 6.8524174359072776e-18 
-
-shannon_pairwise_pval 
-
-{('New', 'Old'): 6.8524174359072776e-18}

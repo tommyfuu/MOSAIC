@@ -141,7 +141,7 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
 
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2, poslabel = '', R_PCOA_plot = False, pipeline = 'default'
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2, poslabel = '', R_PCOA_plot = True, pipeline = 'default'
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -514,9 +514,10 @@ class Evaluate(object):
             # if self.pipeline == 'default':
             # r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="both")
 
-            r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Aitch", main="Aitchinson")
-            r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
-            # r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Aitch", main="Aitchinson")
+            r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Aitch", main="Aitchinson")
+            r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
+            r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Aitch", main="Aitchinson")
+            r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Bray", main="Bray-Curtis")
         # ids = list(self.meta_data[self.IDCol])
         # np.savetxt('data.out', data, delimiter=',')
         # bc_div_bray = beta_diversity("braycurtis", data, ids)
@@ -592,6 +593,9 @@ class Evaluate(object):
         # calculate global kw p_val
         shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
         print("shannon_global_pval", shannon_global_pval)
+        if self.pipeline != "default":
+            self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval
+
         # calculate pairwise kw p_val
         kw_data_pair_l = list(itertools.combinations(alpha_kruskal_data, 2))
         for index, pair in enumerate(itertools.combinations(test_var_l, 2)):
@@ -953,12 +957,12 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
             PC01_kw_tests_perbatch(df, bio_var, batch, output_root)
 
 
-# ibd_3_CMD
-################################################################################
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibd_3_CMD'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
-data_mat, meta_data = load_data_CMD(address_directory, output_root)
-print("ibd_3_CMD loaded")
+# # ibd_3_CMD
+# ################################################################################
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibd_3_CMD'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
+# data_mat, meta_data = load_data_CMD(address_directory, output_root)
+# print("ibd_3_CMD loaded")
 # vars_use = ["study_name"]
 # IDCol = 'Sam_id'
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
@@ -1145,7 +1149,7 @@ batch_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
 # bin_corr_val_l = [0]
 # cond_effect_val_l = [0.099, 0.299]
 # batch_effect_val_l = [0.699]
-num_iters = 10
+num_iters = 1
 IDCol = 'subjectid_text'
 # methods_list = ["nobc", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "harmony", "Percentile_norm"]
 # methods_list = ["harmony", "nobc", "combat_seq", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin"]
@@ -1153,27 +1157,31 @@ methods_list = ["harmony", "nobc", "combat_seq", "limma", "ConQuR", "ConQuR_libs
 for bin_corr_val in bin_corr_val_l:
     for cond_effect_val in cond_effect_val_l:
         for batch_effect_val in batch_effect_val_l:
-            for iter in list(range(1, num_iters+1)):
-                if iter == 1:
-                    R_PCOA_plot = True
-                else:
-                    R_PCOA_plot = False
-                for method in methods_list:
-                    if method in ['nobc', 'harmony']:
-                        address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+            if cond_effect_val + batch_effect_val <= 1:
+                for iter in list(range(1, num_iters+1)):
+                    if iter == 1:
+                        R_PCOA_plot = True
                     else:
-                        address_X = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_'+ method+'.csv'
-                    address_Y = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
-                    data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-                    print("___________________________________________________________")
-                    print("bin_corr_val", bin_corr_val)
-                    print("cond_effect_val", cond_effect_val)
-                    print("batch_effect_val", batch_effect_val)
-                    print("___________________________________________________________")
-                    output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/output_simulation_MIDAS/out_"+str(bin_corr_val)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "/" +method + "/"
-                    # Evaluate(data_mat, meta_data, 'batch_var', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) 
-                    #          , "bio_var", 30, IDCol, pipeline='brief')
-                    if not os.path.exists(output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter)+'_summary.csv'):
+                        R_PCOA_plot = False
+                    for method in methods_list:
+                        if method in ['nobc', 'harmony']:
+                            address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                        else:
+                            address_X = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_'+ method+'.csv'
+                        # address_Y = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
+                        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+                        print("___________________________________________________________")
+                        print("bin_corr_val", bin_corr_val)
+                        print("cond_effect_val", cond_effect_val)
+                        print("batch_effect_val", batch_effect_val)
+                        print("___________________________________________________________")
+                        # Evaluate(data_mat, meta_data, 'batch_var', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) 
+                        #          , "bio_var", 30, IDCol, pipeline='brief')
+                        # if not os.path.exists(output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter)+'_summary.csv'):
+                        address_Y = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_' + str(bin_corr_val) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
+                        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+                        output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/output_simulation_MIDAS/out_"+str(bin_corr_val)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "/" +method + "/"
+
                         if method == 'harmony':
                             # create output directory
                             if not os.path.exists(output_root):
@@ -1184,16 +1192,16 @@ for bin_corr_val in bin_corr_val_l:
                         else:
                             Evaluate(data_mat, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
                                     "cond", n_pc=30, IDCol=IDCol, pipeline='brief', R_PCOA_plot = R_PCOA_plot)
-                
-                # input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
-                # bio_var = "cond"
-                # dataset_name = "cdi_3_microbiomeHD"
-                # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+                    
+                    # input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_"+ str(bin_corr_val)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                    # bio_var = "cond"
+                    # dataset_name = "cdi_3_microbiomeHD"
+                    # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
 # ## microbiomeHD - nobc eval
 # ################################################################################
-# autism 2 microbiomeHD
+# # autism 2 microbiomeHD
 # address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
 # output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
 # data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
@@ -1237,7 +1245,7 @@ for bin_corr_val in bin_corr_val_l:
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
 
-### Percentile_normalization
+# ## Percentile_normalization
 # address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_Percentile_norm/autism_2_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
@@ -1249,7 +1257,7 @@ for bin_corr_val in bin_corr_val_l:
 # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
-# cdi 3 microbiomeHD
+# # cdi 3 microbiomeHD
 # address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
 # output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
 # data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
@@ -1295,7 +1303,7 @@ for bin_corr_val in bin_corr_val_l:
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
 
-### Percentile_normalization
+# ## Percentile_normalization
 # address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')

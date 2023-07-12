@@ -1,7 +1,0 @@
-runtime documenting...
-combat runtime 1.74054408073425 seconds
-combat_seq runtime 5.10750985145569 seconds
-limma runtime 0.245635986328125 seconds
-MMUPHin runtime 0.879360914230347 seconds
-ConquR runtime 6.89351081848145 seconds
-ConquR_libsize runtime 19.2534849643707 seconds

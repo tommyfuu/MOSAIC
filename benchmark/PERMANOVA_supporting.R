@@ -114,7 +114,7 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
     bc =  vegdist(TAX[index, sub_index])
     MDS = cmdscale(bc, k=4)
     pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
-    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis WTF", csub = aa)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis", csub = aa)
     dev.off()
   } else if (dissimilarity == 'both'){
     pdf(paste0(out, "PCoA_both.pdf"))
@@ -126,7 +126,7 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
     index = which( apply(TAX[, sub_index], 1, sum) > 0 )
     bc =  vegdist(TAX[index, sub_index])
     MDS = cmdscale(bc, k=4)
-    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis WTF", csub = aa)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis", csub = aa)
     dev.off()
     # side by side
     # pdf(paste0(out, "PCoA_both.pdf"))

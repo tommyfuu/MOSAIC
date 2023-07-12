@@ -118,7 +118,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         if(length(covar)>1){
             covar = covar[1]
         }
-        covar_df = as.numeric(factor(metadata[, covar]))
+        covar_df = data.frame(factor(metadata[, covar]))
         if(count == TRUE) {
             count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, covar_mod = covar_df))
             write.csv(count_data.combat_seq, paste(output_root, "_combat_seq.csv", sep=""), row.names = TRUE)
@@ -148,18 +148,19 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     ## MMUPHin
     if ('mmuphin' %in% used_methods) {
     start_time <- Sys.time()
-    if (count == FALSE) {
-        count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
-        if(any(is.na(t(count_data_t_relab)))) {
-            count_data_t_relab = t(t(count_data+0.001)/rowSums(t(count_data+0.001)))
-        }
-    }
-    else{
-        count_data_t_relab = count_data
-    }
+    # if (count == FALSE) {
+    #     count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
+    #     if(any(is.na(t(count_data_t_relab)))) {
+    #         count_data_t_relab = t(t(count_data+0.001)/rowSums(t(count_data+0.001)))
+    #     }
+    # }
+    # else{
+    #     # here 
+    #     count_data_t_relab = count_data
+    # }
     metadata_mupphin <- metadata
     row.names(metadata_mupphin) <- metadata[[Sam_id]]
-    feature_abd = t(count_data_t_relab)
+    feature_abd = t(count_data)
     # print(t(count_data_t_relab))
     colnames(feature_abd) = row.names(metadata_mupphin)
     if(is.null(covar)) {
@@ -189,13 +190,33 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     start_time <- Sys.time()
     batchid <- factor(metadata[, dataset])
     if (is.null(covar)){
-        count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F)
+        # count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
+        #                  logistic_lasso=T, quantile_type="lasso", interplt=F)
+        count_data.conqur = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=NULL,
+                           batch_ref_pool=batch_ref,  
+                           logistic_lasso_pool=c(T, F),
+                           quantile_type_pool=c("standard", "lasso", "composite"),
+                           simple_match_pool=c(T, F),
+                           lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
+                           interplt_pool=c(T, F),
+                           frequencyL=0,
+                           frequencyU=1,
+                           cutoff=0.25)
     }
     else {
-        covar_df = factor(metadata[, covar])
-        count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F)
+        covar_df = data.frame(factor(metadata[, covar]))
+        # count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+        #                  logistic_lasso=T, quantile_type="lasso", interplt=F)
+        count_data.conqur = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df,
+                           batch_ref_pool=batch_ref,  
+                           logistic_lasso_pool=c(T, F),
+                           quantile_type_pool=c("standard", "lasso", "composite"),
+                           simple_match_pool=c(T, F),
+                           lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
+                           interplt_pool=c(T, F),
+                           frequencyL=0,
+                           frequencyU=1,
+                           cutoff=0.25)
     }
     write.csv(count_data.conqur,paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
     end_time <- Sys.time()
@@ -210,9 +231,18 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     batchid <- factor(metadata[, dataset])
     if (is.null(covar)){
         if(count == TRUE){
-            count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
-                         logistic_lasso=T, quantile_type="lasso", interplt=F)
-                         
+            # count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL, simple_match = T, batch_ref = batch_ref,
+            #              logistic_lasso=T, quantile_type="lasso", interplt=F)
+            count_data.conqur = Tune_ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=NULL,
+                           batch_ref_pool=batch_ref,
+                           logistic_lasso_pool=c(T, F),
+                           quantile_type_pool=c("standard", "lasso", "composite"),
+                           simple_match_pool=c(T, F),
+                           lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
+                           interplt_pool=c(T, F),
+                           frequencyL=0,
+                           frequencyU=1,
+                           cutoff=0.25)           
             write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
             end_time <- Sys.time()
             cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
@@ -222,10 +252,20 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             } 
         }
     else {
-        covar_df = factor(metadata[, covar])
+        covar_df = data.frame(factor(metadata[, covar]))
         if(count == TRUE){
-            count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
-                            logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
+            # count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
+            #                 logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
+            count_data.conqur = Tune_ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df,
+                           batch_ref_pool=batch_ref,  
+                           logistic_lasso_pool=c(T, F),
+                           quantile_type_pool=c("standard", "lasso", "composite"),
+                           simple_match_pool=c(T, F),
+                           lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
+                           interplt_pool=c(T, F),
+                           frequencyL=0,
+                           frequencyU=1,
+                           cutoff=0.25) 
             write.csv(count_data.conqur_libsize,paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
             end_time <- Sys.time()
             cat(c("ConquR_libsize runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
@@ -284,14 +324,18 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
 # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
 # dataset = "Dataset",
+# covar = c("DiseaseState"),
+# count = TRUE,
 # batch_ref = 'asd_son')
 
-# # cdi 3 microbiomeHD
-# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
-# dataset = "Dataset",
-# batch_ref = 'cdi_schubert')
+# cdi 3 microbiomeHD
+run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
+dataset = "Dataset",
+covar = c("DiseaseState"),
+count = TRUE,
+batch_ref = 'cdi_schubert')
 
 # # ibd 3 CMD
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
@@ -302,15 +346,15 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
-# # ibd 3 CMD - gender/age
-# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
-# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD_covar/ibd_3_CMD',
-# dataset = "study_name",
-# batch_ref = 'HMP_2019_ibdmdb',
-# covar = c("gender", "age"),
-# used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
-# )
+# ibd 3 CMD - gender/age
+run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
+'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD_covar/ibd_3_CMD',
+dataset = "study_name",
+batch_ref = 'HMP_2019_ibdmdb',
+covar = c("gender", "age"),
+used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
+)
 
 # # CRC_8_CMD
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
@@ -395,12 +439,12 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # )
 
 
-bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
-cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# bin_corr_val_l = c(0.3)
-# cond_effect_val_l = c(0, 0.099, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.899)
+# bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+bin_corr_val_l = c(0.1, 0.3)
+cond_effect_val_l = c(0, 0.099, 0.299, 0.899)
+batch_effect_val_l = c(0, 0.099, 0.299, 0.899)
 scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (bin_corr_val in bin_corr_val_l) {
     for (cond_effect_val in cond_effect_val_l) {

@@ -1,5 +1,0 @@
-shannon_global_pval 0.008474154533533104 
-
-shannon_pairwise_pval 
-
-{('HMP_2019_ibdmdb', 'IjazUZ_2017'): 0.001981212439801564, ('HMP_2019_ibdmdb', 'LiJ_2014'): 0.8189000979983609, ('IjazUZ_2017', 'LiJ_2014'): 0.0331625444634922}
