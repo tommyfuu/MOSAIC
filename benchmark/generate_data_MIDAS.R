@@ -165,10 +165,10 @@ scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_
             print(cond_effect_val)
             print(batch_effect_val)
             
-            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_OR/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             print(output_file_path_count)
-            output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_OR/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-            output_file_path_meta = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_OR/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_meta = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             
             if (file.exists(output_file_path_count)){
               print(output_file_path_count)
@@ -213,43 +213,9 @@ scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_
 
 
 
-# bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
-# or_l = c(1.01, 1.1, 1.2, 1.25, 1.3)
-or_l = c(0.75, 0.85, 1.15, 1.25)
-or_l = c(1.25)
+or_l = c(1.05, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# bin_corr_val_l = c(0)
-# cond_effect_val_l = c(0)
-# batch_effect_val_l = c(0)
-# scaled_midas_data_generation(otu_original, n, bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter=10)
-scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=10)
+scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000)
 
 
-# test for effect
-# cond_effect_val_l = c(0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2)
-# batch_effect_val_l = c(0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2)
-# scaled_midas_FC_data_generation(otu_original, n, cond_effect_val_l, batch_effect_val_l, num_iter=10)
-
-
-# midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
-
-# midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./ibd_150_relab.csv")
-# midas_bc_biovar(otu_original, n, bin_corr, cond_effect, batch_effect, "./QinJ_2012_relab.csv")
-# write relative abundance to csv
-# write.csv(rela, file = "./ibd_150_relab.csv", row.names = FALSE, out = )
-
-
-
-# 1. modify count:
-## - 1.1 use midas to generate data
-# fitted_c0b0 = Midas.modify(fitted,
-#                             lib.size = rep(10000,n)) - can even remove the library size so we can use the original data's library size
-## - 1.2 multiply certain taxa by the fold change number
-### certain taxa can be randomly selected or selected using id_batch = 101:250
-#### the taxa that are already really big in the original data should not be multiplied by a fold change that's too big
-#### the taxa that are already really small in the original data would not be impacted by the fold change too much
-##### or we can just normalize back so the rel abund is still summing to 1
-
-# 2. when simulating with midas, 
-## dirichlet multi-normal distribution, multiply mean factor by fc
