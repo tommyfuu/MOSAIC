@@ -8,7 +8,7 @@ library(tibble)
 # instantiate variables
 otu_original = t(otu)
 libsize = rowSums(otu_original)
-bin_corr = 0.3
+cor = 0.3
 cond_effect = 0.3
 batch_effect = 0.3
 p = ncol(otu_original)
@@ -16,7 +16,7 @@ p = ncol(otu_original)
 
 if (p==301) {
   print("p=301")
-  n = nrow(otu_original) * 5
+  n = nrow(otu_original) * 5 # TODO: change this to 3
   id_batch = 101:250 # these are impacting taxa instead of sample
   id_cond = 1:150
 } 
@@ -27,17 +27,36 @@ if (p==233) {
   id_cond = c(1:20,41:50,71:80,121:200)
 }
 
+bincorr <- function(OR, p1, p2) {    
+  #from odds ratio to binary correlation
+  #from the conqur paper
+  if (OR==1) p11=p2-p2+p1*p2 else {
+    p11_1=p2-(1/2/(1-OR)*(1-p1+OR*p1+p2-OR*p2-
+                            sqrt((-1+p1-OR*p1-p2+OR*p2)^2-4*(1-OR)*(p2-p1*p2))))
+    p11_2=p2-(1/2/(1-OR)*(1-p1+OR*p1+p2-OR*p2-
+                            sqrt((-1+p1-OR*p1-p2+OR*p2)^2)-4*(1-OR)*(p2-p1*p2)))
+    if (p11_1>0 && p11_1<=p1 && p11_1<p2) p11=p11_1 else p11=p11_2
+  }
+  bincorr=(p11-p1*p2)/sqrt(p1*(1-p1)*p2*(1-p2))
+  return(bincorr)
+}
+
 print("checkpoint 1")
 # function to generate simulated data with MIDAs - linear combination
-midas_simulate <- function(otu_original, n, bin_corr, cond_effect, batch_effect, out_count, out_relab, out_meta){
-
+midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_count, out_relab, out_meta, p_cond = 0.5, p_batch = 0.5){
+  # TODO: change the correlation part
+  # use odd ratio c(0.25, 0.75, 1.25)
+  # turn this into bincorr with the bincorr function and document bincorr value as well
+  bin_corr = bincorr(or, p_cond, p_batch)
+  print('OR, p_cond, p_batch, bin_corr')
+  print(c(or, p_cond, p_batch, bin_corr))
   # generate batch and condition id
-  cond_batchid_vec = rmvbin(n, c(0.5, 0.5), bincorr=(1-bin_corr)*diag(2)+bin_corr)
+  cond_batchid_vec = rmvbin(n, c(p_cond, p_batch), bincorr=(1-bin_corr)*diag(2)+bin_corr)
   cond = cond_batchid_vec[, 1] # find the ids of samples that are affected by condition
   batchid = cond_batchid_vec[, 2] # find the ids of samples that are affected by batch
 
   # save metadata as a dataframe with an additional column being the subject id
-  subjectid_text = sprintf("Subject_%d", 1:750) 
+  subjectid_text = sprintf("Subject_%d", 1:n) 
   current_metadata <- data.frame(subjectid_text, batchid, cond)
 
   current_metadata$batchid <- replace(current_metadata$batchid, current_metadata$batchid == 0, "batch_0")
@@ -136,20 +155,20 @@ midas_FC_simulate <- function(otu_original, n, cond_effect_FC, batch_effect_FC, 
 }
 print("checkpoint 3")
 # generate simulated data using Jiuyao's set up + FC set up  
-scaled_midas_data_generation <- function(otu_original, n, bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
-  for (bin_corr_val in bin_corr_val_l) {
+scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
+  for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
       for (batch_effect_val in batch_effect_val_l) {
         if (cond_effect_val + batch_effect_val <= 1) {
           for (iter in seq(1, num_iter)){
-            print(bin_corr_val)
+            print(or)
             print(cond_effect_val)
             print(batch_effect_val)
             
-            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_OR/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             print(output_file_path_count)
-            output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_relab_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-            output_file_path_meta = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_OR/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_meta = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_OR/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             
             if (file.exists(output_file_path_count)){
               print(output_file_path_count)
@@ -157,7 +176,7 @@ scaled_midas_data_generation <- function(otu_original, n, bin_corr_val_l, cond_e
               print("___")
             }
             else{
-              midas_simulate(otu_original, n, bin_corr_val, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta)
+              midas_simulate(otu_original, n, or, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta)
               print("___")
             }
           }
@@ -166,41 +185,46 @@ scaled_midas_data_generation <- function(otu_original, n, bin_corr_val_l, cond_e
     }
   }
 }
-print("checkpoint 4")
-# repeat but for the FC version
-scaled_midas_FC_data_generation <- function(otu_original, n, cond_effect_val_l, batch_effect_val_l, num_iter){  
-  for (cond_effect_val in cond_effect_val_l) {
-    for (batch_effect_val in batch_effect_val_l) {
-      for (iter in seq(1, num_iter)){
-        print(cond_effect_val)
-        print(batch_effect_val)
-        print(iter)
-        output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_count_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-        output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_relab_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+# print("checkpoint 4")
+# # repeat but for the FC version
+# scaled_midas_FC_data_generation <- function(otu_original, n, cond_effect_val_l, batch_effect_val_l, num_iter){  
+#   for (cond_effect_val in cond_effect_val_l) {
+#     for (batch_effect_val in batch_effect_val_l) {
+#       for (iter in seq(1, num_iter)){
+#         print(cond_effect_val)
+#         print(batch_effect_val)
+#         print(iter)
+#         output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_count_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+#         output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_relab_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
         
-        if (file.exists(output_file_path_count)){
-          print(output_file_path_count)
-          print("file exists")
-          print("___")
-        }
-        else{
-          midas_FC_simulate(otu_original, n, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab)
-          print("___")
-        }
-      }
-    }
-  }
-}
+#         if (file.exists(output_file_path_count)){
+#           print(output_file_path_count)
+#           print("file exists")
+#           print("___")
+#         }
+#         else{
+#           midas_FC_simulate(otu_original, n, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab)
+#           print("___")
+#         }
+#       }
+#     }
+#   }
+# }
 
 
 
-bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+# bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
+# or_l = c(1.01, 1.1, 1.2, 1.25, 1.3)
+or_l = c(0.75, 0.85, 1.15, 1.25)
+or_l = c(1.25)
 cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # bin_corr_val_l = c(0)
 # cond_effect_val_l = c(0)
 # batch_effect_val_l = c(0)
-scaled_midas_data_generation(otu_original, n, bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter=10)
+# scaled_midas_data_generation(otu_original, n, bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter=10)
+scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=10)
+
 
 # test for effect
 # cond_effect_val_l = c(0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2)

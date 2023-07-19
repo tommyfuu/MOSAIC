@@ -76,10 +76,16 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             }
         }
     else {
-        if(length(covar)>1){
-            covar = covar[1]
+        if(length(covar)==1){
+            # covar = covar[1]
+            covar_df = as.numeric(factor(metadata[, covar]))
         }
-        covar_df = as.numeric(factor(metadata[, covar]))
+        else{
+            # turn each column into a factor
+            print("doing more than 1 covariate")
+            covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+        }
+        # covar_df = as.numeric(factor(metadata[, covar]))
         # print(design)
         if(count == TRUE) {
             count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, mod = covar_df, par.prior=FALSE, mean.only=TRUE))
@@ -115,8 +121,14 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         }
     }
     else {
-        if(length(covar)>1){
-            covar = covar[1]
+        if(length(covar)==1){
+            # covar = covar[1]
+            covar_df = as.numeric(factor(metadata[, covar]))
+        }
+        else{
+            print("doing more than 1 covariate")
+            # turn each column into a factor
+            covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
         }
         covar_df = data.frame(factor(metadata[, covar]))
         if(count == TRUE) {
@@ -148,16 +160,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     ## MMUPHin
     if ('mmuphin' %in% used_methods) {
     start_time <- Sys.time()
-    # if (count == FALSE) {
-    #     count_data_t_relab = t(t(count_data)/rowSums(t(count_data)))
-    #     if(any(is.na(t(count_data_t_relab)))) {
-    #         count_data_t_relab = t(t(count_data+0.001)/rowSums(t(count_data+0.001)))
-    #     }
-    # }
-    # else{
-    #     # here 
-    #     count_data_t_relab = count_data
-    # }
     metadata_mupphin <- metadata
     row.names(metadata_mupphin) <- metadata[[Sam_id]]
     feature_abd = t(count_data)
@@ -202,7 +204,17 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         #                    cutoff=0.25)
     }
     else {
-        covar_df = data.frame(factor(metadata[, covar]))
+        
+        # covar_df = data.frame(factor(metadata[, covar]))
+        if(length(covar)==1){
+            # covar = covar[1]
+            covar_df = as.numeric(factor(metadata[, covar]))
+        }
+        else{
+            print("ConQuR: doing more than 1 covariate")
+            # turn each column into a factor
+            covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+        }
         count_data.conqur = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
                          logistic_lasso=T, quantile_type="lasso", interplt=F)
         # count_data.conqur = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df,
@@ -250,7 +262,15 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             } 
         }
     else {
-        covar_df = data.frame(factor(metadata[, covar]))
+        if(length(covar)==1){
+            covar_df = as.numeric(factor(metadata[, covar]))
+        }
+        else{
+            print("ConQuR_libsize: doing more than 1 covariate")
+            # turn each column into a factor
+            covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+        }
+        # covar_df = data.frame(factor(metadata[, covar]))
         if(count == TRUE){
             count_data.conqur_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref = batch_ref,
                             logistic_lasso=T, quantile_type="lasso", interplt=F, num_core=5)
@@ -279,23 +299,23 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 
 
 
-# autism 2 microbiomeHD
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
-dataset = "Dataset",
-covar = c("DiseaseState"),
-count = TRUE,
-batch_ref = 'asd_son')
+# # autism 2 microbiomeHD
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
+# dataset = "Dataset",
+# covar = c("DiseaseState"),
+# count = TRUE,
+# batch_ref = 'asd_son')
 
-# cdi 3 microbiomeHD
-run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
-'/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
-dataset = "Dataset",
-covar = c("DiseaseState"),
-count = TRUE,
-batch_ref = 'cdi_schubert')
+# # cdi 3 microbiomeHD
+# run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
+# '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
+# dataset = "Dataset",
+# covar = c("DiseaseState"),
+# count = TRUE,
+# batch_ref = 'cdi_schubert')
 
 # # ibd 3 CMD
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
@@ -306,13 +326,13 @@ batch_ref = 'cdi_schubert')
 # used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
-# # ibd 3 CMD - gender/age
+# # # ibd 3 CMD - gender/age
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
 # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
 # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD_covar/ibd_3_CMD',
 # dataset = "study_name",
 # batch_ref = 'HMP_2019_ibdmdb',
-# covar = c("gender", "age"),
+# covar = c("disease", "gender", "age"),
 # used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
@@ -330,7 +350,7 @@ batch_ref = 'cdi_schubert')
 # '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD_covar/CRC_8_CMD',
 # dataset = "study_name",
 # batch_ref = 'FengQ_2015',
-# covar = c("gender", "age"),
+# covar = c("disease", "gender", "age"),
 # used_methods = c("combat", "limma", "mmuphin", 'conqur_libsize', "conqur")
 # )
 
