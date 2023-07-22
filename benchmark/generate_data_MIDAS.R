@@ -1,6 +1,7 @@
 # load data
-load("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/ibd_150.Rdata") 
-# otu = read.csv("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/QinJ_2012_T2D/otu_table_QinJ_2012.csv", header = TRUE, row.names = 1)
+
+overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/'
+load(paste0(overall_path, "/benchmark/ibd_150.Rdata"))
 library("bindata")
 library("MIDAS")
 library(tibble)
@@ -42,6 +43,27 @@ bincorr <- function(OR, p1, p2) {
 }
 
 print("checkpoint 1")
+
+
+
+midas_generate_per_iter <- function(or, cond_effect_val, batch_effect_val, iter){
+  output_file_path_count = paste0(overall_path, "/data/simulation_data_midas/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  print(output_file_path_count)
+  output_file_path_relab = paste0(overall_path, "/data/simulation_data_midas/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  output_file_path_meta = paste0(overall_path, "/data/simulation_data_midas/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  
+  if (file.exists(output_file_path_count)){
+    print(output_file_path_count)
+    print("file exists")
+    print("___")
+  }
+  else{
+    midas_simulate(otu_original, n, or, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta)
+    print("___")
+  }
+}
+
+
 # function to generate simulated data with MIDAs - linear combination
 midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_count, out_relab, out_meta, p_cond = 0.5, p_batch = 0.5){
   # TODO: change the correlation part
@@ -154,32 +176,50 @@ midas_FC_simulate <- function(otu_original, n, cond_effect_FC, batch_effect_FC, 
   write.csv(rela_FC, file = out_relab, row.names = FALSE)
 }
 print("checkpoint 3")
+
+
+# just to speed up
+# An mc-version of the sapply function.
+library(parallel)
+mcsapply <- function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
+  FUN <- match.fun(FUN)
+  answer <- parallel::mclapply(X = X, FUN = FUN, ...)
+  if (USE.NAMES && is.character(X) && is.null(names(answer))) 
+    names(answer) <- X
+  if (!isFALSE(simplify) && length(answer)) 
+    simplify2array(answer, higher = (simplify == "array"))
+  else answer
+}
+
+
 # generate simulated data using Jiuyao's set up + FC set up  
 scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
       for (batch_effect_val in batch_effect_val_l) {
         if (cond_effect_val + batch_effect_val <= 1) {
-          for (iter in seq(1, num_iter)){
-            print(or)
-            print(cond_effect_val)
-            print(batch_effect_val)
+          mcsapply(seq(1, num_iter), function(iter) midas_generate_per_iter(or, cond_effect_val, batch_effect_val, iter), mc.cores = 10)
+
+          # for (iter in seq(1, num_iter)){
+          #   print(or)
+          #   print(cond_effect_val)
+          #   print(batch_effect_val)
             
-            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-            print(output_file_path_count)
-            output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-            output_file_path_meta = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+          #   output_file_path_count = paste0(overall_path, "/data/simulation_data_midas/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+          #   print(output_file_path_count)
+          #   output_file_path_relab = paste0(overall_path, "/data/simulation_data_midas/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+          #   output_file_path_meta = paste0(overall_path, "/data/simulation_data_midas/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             
-            if (file.exists(output_file_path_count)){
-              print(output_file_path_count)
-              print("file exists")
-              print("___")
-            }
-            else{
-              midas_simulate(otu_original, n, or, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta)
-              print("___")
-            }
-          }
+          #   if (file.exists(output_file_path_count)){
+          #     print(output_file_path_count)
+          #     print("file exists")
+          #     print("___")
+          #   }
+          #   else{
+          #     midas_simulate(otu_original, n, or, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta)
+          #     print("___")
+          #   }
+          # }
         }
       }
     }
@@ -194,8 +234,8 @@ scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_
 #         print(cond_effect_val)
 #         print(batch_effect_val)
 #         print(iter)
-#         output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_count_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-#         output_file_path_relab = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas_FC/ibd_150_relab_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+#         output_file_path_count = paste0(overall_path, "/data/simulation_data_midas_FC/ibd_150_count_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+#         output_file_path_relab = paste0(overall_path, "/data/simulation_data_midas_FC/ibd_150_relab_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
         
 #         if (file.exists(output_file_path_count)){
 #           print(output_file_path_count)
