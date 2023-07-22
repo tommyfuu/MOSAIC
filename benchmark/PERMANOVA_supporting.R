@@ -147,7 +147,53 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
   }
 }
 
+Plot_single_PCoA <- function(TAX, factor, sub_index=NULL, dissimilarity="Bray", aa=1.5){
+  # dissimilarity can be either "Bray" or "Aitch"
+  
+  nfactor = length(table(factor))
+  if (is.null(sub_index)){
+    sub_index = seq(ncol(TAX))
+  }
+  if (dissimilarity == "Aitch") {
+    Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
+    MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
+  }
+  else if (dissimilarity == "Bray") {
+    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
+    bc =  vegdist(TAX[index, sub_index])
+    MDS = cmdscale(bc, k=4)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis", csub = aa)
+  }
+  else{
+    stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")
+  }
+}
+Plot_multiple_PCoA <- function(out, TAX_l, factor, sub_index=NULL, tree=NULL, main=NULL, aa=1.5){
+  # plot multiple PCOA plots on the same figure
+  # TAX_l: a list of TAX
+  nfactor = length(table(factor))
+  pdf(paste0(out, "PCoA_both.pdf"))
 
+  # generate a num-of-TAX * 2 (aitchinson/bray curtis) graph
+  par(mfrow=c(2, length(TAX_l)))
+
+  # plot Aitchinson plots on the first row
+  for (TAX in Tax_l) {
+    Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
+    MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
+  }
+  # plot Bray-Curtis plots on the second row
+  for (TAX in Tax_l) {
+    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
+    bc =  vegdist(TAX[index, sub_index])
+    MDS = cmdscale(bc, k=4)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis", csub = aa)
+  }
+
+  dev.off()
+}
 ### RF - predict key variable
 
 # Predict binary key variable using random forest, k-fold cross-validation (out-of-bag is not stable), AUC/ROC of the data accumulated from k fold

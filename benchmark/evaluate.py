@@ -76,67 +76,41 @@ def generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_ro
     return res.T, meta_data
 
 
-def confidence_ellipse(x, y, ax, n_std=3.0, facecolor='none', **kwargs):
-    """
-    Create a plot of the covariance confidence ellipse of *x* and *y*.
-
-    Parameters
-    ----------
-    x, y : array-like, shape (n, )
-        Input data.
-
-    ax : matplotlib.axes.Axes
-        The axes object to draw the ellipse into.
-
-    n_std : float
-        The number of standard deviations to determine the ellipse's radiuses.
-
-    **kwargs
-        Forwarded to `~matplotlib.patches.Ellipse`
-
-    Returns
-    -------
-    matplotlib.patches.Ellipse
-    """
-    # source: https://matplotlib.org/stable/gallery/statistics/confidence_ellipse.html
-    if x.size != y.size:
-        raise ValueError("x and y must be the same size")
-
-    cov = np.cov(x, y)
-    pearson = cov[0, 1]/np.sqrt(cov[0, 0] * cov[1, 1])
-    # Using a special case to obtain the eigenvalues of this
-    # two-dimensionl dataset.
-    ell_radius_x = np.sqrt(1 + pearson)
-    ell_radius_y = np.sqrt(1 - pearson)
-    ellipse = Ellipse((0, 0), width=ell_radius_x * 2, height=ell_radius_y * 2,
-                      facecolor=facecolor, **kwargs)
-
-    # Calculating the stdandard deviation of x from
-    # the squareroot of the variance and multiplying
-    # with the given number of standard deviations.
-    scale_x = np.sqrt(cov[0, 0]) * n_std
-    mean_x = np.mean(x)
-
-    # calculating the stdandard deviation of y ...
-    scale_y = np.sqrt(cov[1, 1]) * n_std
-    mean_y = np.mean(y)
-
-    transf = transforms.Affine2D() \
-        .rotate_deg(45) \
-        .scale(scale_x, scale_y) \
-        .translate(mean_x, mean_y)
-
-    ellipse.set_transform(transf + ax.transData)
-    return ax.add_patch(ellipse)
-
-
 def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, R_PCOA_plot = True):
     a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar, IDCol, R_PCOA_plot)
     return
 
+def plot_PCOA_multiple(batch_corrected_df_l, meta_data, used_var, output_root):
+    # prepare metadata
+    r = robjects.r
+    r.source('./PERMANOVA_supporting.R')
+    r_used_var = meta_data[used_var]
+    # r_bio_var = meta_data[bio_var]
+
+    # initial graphics
+    r.par(mfrow = robjects.IntVector([2, len(batch_corrected_df_l)]))
+    r.pdf(output_root+"_PCOA_both_batch.pdf")
+
+    # plot the subplots in order
+    for batch_corrected_df in batch_corrected_df_l:
+        data = np.array(batch_corrected_df)
+        data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+        data = data+np.abs(np.min(data))
+
+        r.Plot_PCoA(data, r_used_var, dissimilarity="Aitch")
+    
+    for batch_corrected_df in batch_corrected_df_l:
+        data = np.array(batch_corrected_df)
+        data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+        data = data+np.abs(np.min(data))
+
+        r.Plot_PCoA(data, r_used_var, dissimilarity="Aitch")
+    r.dev_off()
+    return
+
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2, poslabel = '', R_PCOA_plot = True, pipeline = 'default'
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar = False, IDCol = None, test_percent = 0.2, poslabel = '', R_PCOA_plot = True, pipeline = 'default', taxa_gt = None,
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -151,8 +125,7 @@ class Evaluate(object):
         self.poslabel = poslabel
         self.R_PCOA_plot = R_PCOA_plot
         self.pipeline = pipeline # "default" or "scaled"
-        if self.pipeline != "default":
-            self.short_summary_dict = {}
+        self.short_summary_dict = {}
         # make directory if not exists
         directory_path = "/".join(output_root.split("/")[:-1])
         if not os.path.exists(directory_path):
@@ -164,26 +137,9 @@ class Evaluate(object):
         self.predict_difference_RF()
         self.calculate_R_sq()
 
-        self.standard_scaler()
-        # df = self.PCA_vis()
-        # if covar != False:
-        #     self.covar == covar
-        #     self.allPCs_covar_kw_test(df)
-        # self.PC01_kw_tests(df)
-        # self.predict_difference_RF()
-        if self.pipeline != "default":
-            # convert summary dict to df
-            self.summary_df = pd.DataFrame.from_dict(self.short_summary_dict, orient='index')
-            self.summary_df.to_csv(self.output_root+"_summary.csv")
-
-    # def standard_scaler(self):
-    #     source_df = self.batch_corrected_df
-    #     scaler = StandardScaler()
-    #     data = source_df.T.to_numpy()
-    #     scaler.fit(data)
-    #     ss_scaled = scaler.transform(data).T
-    #     self.batch_corrected_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
-        
+        # convert summary dict to df
+        self.summary_df = pd.DataFrame.from_dict(self.short_summary_dict, orient='index')
+        self.summary_df.to_csv(self.output_root+"_summary.csv")
 
     def diff_abund_test(self):
         ### if two categories then wilcox test, three or more then kruskal-wallis test
@@ -230,31 +186,8 @@ class Evaluate(object):
         df.to_csv(self.output_root+"_diff_abund_test.csv")
         return
 
-    def allPCs_covar_kw_test(self, df):
-        # to debug
-        # lets do 30PCs for now
-        fig, axes = plt.subplots(5, 6, sharex=True, sharey=True, figsize=(35, 35))
-        current_ax_index = [0, 0]
-        covar_unique = list(df[self.covar].values)
-        covar_unique = [x for x in covar_unique if str(x) != 'nan']
-        covar_unique = np.unique(covar_unique).tolist()
-        for i in range(30):
-            a = sns.scatterplot(x=df["PC0"],y=df["PC"+str(i)], hue = df[self.covar], style = df["batches"], s = 100,ax = axes[current_ax_index[0], current_ax_index[1]], cmap = "tab10")
-            data_for_kw = [df.loc[df[self.covar]==var]["PC"+str(i)].values for var in covar_unique]
-            PC1_p = stats.kruskal(*data_for_kw)[1]
-            a.set_title("PC"+str(i)+" kw_pval="+str(round(PC1_p, 5)))
-            if current_ax_index[1] == 5:
-                current_ax_index = [current_ax_index[0]+1, 0]
-            else:
-                current_ax_index[1] +=1
-            print("PC"+str(i), PC1_p)
-        if self.pipeline == 'default':
-            plt.savefig(self.output_root+"_allPCs_covar_kw_tests.png")
-
     def calculate_R_sq(self):
         data = np.array(self.batch_corrected_df)
-        print(data)
-        print(np.percentile(data.flatten(), 0.01))
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
 
@@ -268,7 +201,6 @@ class Evaluate(object):
         r.source('./PERMANOVA_supporting.R')
         r_batch = self.meta_data[self.batch_var]
 
-        # r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
         if self.covar != False:
             r_covariate = self.meta_data[self.covar]
             print(r_covariate)
@@ -283,14 +215,9 @@ class Evaluate(object):
         bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_count"), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
         print(aitchinson_permanova_df)
         print("______________batch_PERMANOVA_R2_results______________")
-        if self.pipeline != 'default':
-            self.short_summary_dict["batch_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
-            self.short_summary_dict["batch_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
-        else:
-            bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_permanova_R2.csv")
-            aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_permanova_R2.csv")
-
-
+        self.short_summary_dict["batch_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
+        self.short_summary_dict["batch_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
+    
         # calculate the equivalent stats but for biological variable
         r_bio_var = self.meta_data[self.bio_var]
         if self.covar != False:
@@ -305,13 +232,9 @@ class Evaluate(object):
         print(aitchinson_permanova_df)
         # bray_anova = PERMANOVA_R2_results[0]
         print("______________biovar_PERMANOVA_R2_results______________")
-        if self.pipeline != 'default':
-            self.short_summary_dict["biovar_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
-            self.short_summary_dict["biovar_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
-        else:
-            bray_curtis_permanova_df.to_csv(self.output_root+"_bray_curtis_biovar_permanova_R2.csv")
-            aitchinson_permanova_df.to_csv(self.output_root+"_aitchinson_biovar_permanova_R2.csv")
-
+        self.short_summary_dict["biovar_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
+        self.short_summary_dict["biovar_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
+        
         # try plotting stuff
         if self.R_PCOA_plot:
             r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Aitch", main="Aitchinson")
@@ -319,6 +242,21 @@ class Evaluate(object):
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Aitch", main="Aitchinson")
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Bray", main="Bray-Curtis")
         return
+    
+    # def plot_R_PCOA_plot(self):
+    #     data = np.array(self.batch_corrected_df)
+    #     data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+    #     data = data+np.abs(np.min(data))
+
+    #     # import r packages/functions
+    #     r = robjects.r
+    #     r.source('./PERMANOVA_supporting.R')
+    #     r_batch = self.meta_data[self.batch_var]
+    #     r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Aitch", main="Aitchinson")
+    #     r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
+
+    #     r_bio_var = self.meta_data[self.bio_var]
+
     
     def alpha_diversity_and_tests(self, test_var):
         print("______________alpha_diversity_and_tests______________")
@@ -352,12 +290,13 @@ class Evaluate(object):
             current_data_condition = list(shannon_div.drop(index = removed_indices))
             alpha_kruskal_data.append(current_data_condition)
         # calculate global kw p_val for alpha diversity
-            if len(alpha_kruskal_data) == 2:
-                # wilcox test (unpaired)
-                test_type = 'wilcox'
-                shannon_global_pval = stats.ranksums(alpha_kruskal_data[0], alpha_kruskal_data[1])[1]
-            else:
-                shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
+        print(alpha_kruskal_data)
+        print(len(alpha_kruskal_data))
+        if len(alpha_kruskal_data) == 2:
+            # wilcox test (unpaired)
+            shannon_global_pval = stats.ranksums(alpha_kruskal_data[0], alpha_kruskal_data[1])[1]
+        else:
+            shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
         print("shannon_global_pval", shannon_global_pval)
         if self.pipeline != "default":
             self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval
@@ -622,60 +561,6 @@ def PC01_kw_tests_perbatch(df, bio_var, batch, output_root):
     ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
     fig.tight_layout()
     plt.savefig(output_root+"_"+batch+"_PC01_kw_tests.png")
-
-def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var, n_pc=30):
-    scaler = StandardScaler()
-    data = source_df.T.to_numpy()
-    scaler.fit(data)
-    ss_scaled = scaler.transform(data).T
-    source_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
-    
-    list_batches = list(np.unique(meta_data[batch_var]))
-    rng = np.random.RandomState(88)
-    for batch in list_batches:
-        # get current_source_df and current_meta_data
-        current_meta_data = meta_data[meta_data[batch_var]==batch]
-        current_Sam_ids = list(current_meta_data['Sam_id'])
-        current_source_df = source_df[source_df.index.isin(current_Sam_ids)]
-
-        # zero mean for PCA
-        current_source_df = current_source_df-current_source_df.mean()
-        # fit PCA
-        pca_results  = PCA(n_components = n_pc, random_state=rng)
-        pca_results.fit(current_source_df)
-        variances = pca_results.explained_variance_ratio_
-
-        # ecdf plot
-        ecdf_var = [variances[:i].sum() for i in range(len(variances))]
-        fig, ax1 = plt.subplots(1,1,figsize = (20, 8))
-        ax1.plot(range(len(ecdf_var)),ecdf_var)
-        plt.xticks(range(len(ecdf_var)), range(len(ecdf_var)))
-        plt.yticks([0.1*i for i in range(11)])
-        
-        plt.savefig(output_root+"_ecdf.png")
-
-        # pca visualization
-        transformed = pca_results.transform(current_source_df)
-        df = pd.DataFrame()
-        for i in range(n_pc):
-            df[f"PC{i}"] = transformed[:, i] 
-        df[bio_var] = list(current_meta_data[bio_var])
-        if len(np.unique(df[bio_var])) == 1:
-            print(batch, "only has one bio_var option:", np.unique(df[bio_var])[0])
-        else:
-            ## pca visualization for bio_vars
-            ### fetch info for bio_va
-            all_colors_used = rng.uniform(0, 1, 3*len(np.unique(list(df[bio_var])))).tolist()
-            colors = {var: all_colors_used[idx*3:idx*3+3] for idx,var in enumerate(np.unique(list(df[bio_var])))} # unlikely to get repeated colors
-            fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
-            sns.scatterplot(x=df["PC0"] , y=df["PC1"], hue = df[bio_var], hue_order = np.unique(list(df[bio_var])), s = 100,ax = ax, cmap = "tab10", palette = colors)
-            ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
-            for index, current_biovar in enumerate(np.unique(list(df[bio_var]))):
-                currentDF = df.loc[df[bio_var] == current_biovar]
-                confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor=list(colors.values())[index])
-            plt.savefig(output_root+"_PCA_"+bio_var+"_"+batch+".png")
-
-            PC01_kw_tests_perbatch(df, bio_var, batch, output_root)
 
 
 # # ibd_3_CMD
@@ -986,7 +871,7 @@ vars_use = ["Dataset"]
 meta_data['DiseaseState'] = meta_data['DiseaseState'].replace({'nonCDI': 'H'})
 print(meta_data)
 IDCol = 'Sam_id'
-Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc_AAA/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
@@ -1029,8 +914,9 @@ address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/bench
 data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
-bio_var = "DiseaseState"
-dataset_name = "cdi_3_microbiomeHD"
-methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+
+# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
+# bio_var = "DiseaseState"
+# dataset_name = "cdi_3_microbiomeHD"
+# methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
