@@ -25,12 +25,7 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 import itertools
 from scipy import stats
-from skbio.diversity import alpha_diversity, beta_diversity
-from skbio.stats.composition import clr
-from skbio.stats.ordination import pcoa
-from scipy.spatial import distance
-# from sklearn.metrics.pairwise import euclidean_distances
-from scipy.spatial.distance import pdist, squareform
+from skbio.diversity import alpha_diversity
 import os
 import time
 import pandas as pd
@@ -157,8 +152,6 @@ class Evaluate(object):
         self.R_PCOA_plot = R_PCOA_plot
         self.pipeline = pipeline # "default" or "scaled"
         if self.pipeline != "default":
-            # self.short_summary_df = pd.DataFrame(['global_batch_p_val_PC0', 'global_batch_p_val_PC1', 'global_biovar_p_val_PC0', 'global_biovar_p_val_PC1',
-            #                                       'batch_aitch_r2', 'batch_bray_r2', 'biovar_aitch_r2', 'biovar_bray_r2'])
             self.short_summary_dict = {}
         # make directory if not exists
         directory_path = "/".join(output_root.split("/")[:-1])
@@ -167,214 +160,30 @@ class Evaluate(object):
         # functions executed
         self.diff_abund_test()
         ## version 1, for batch evaluation
-        self.alpha_beta_diversity_and_tests(self.batch_var) # has to happen before standard scaler
-
+        self.alpha_diversity_and_tests(self.batch_var) # has to happen before standard scaler
+        self.predict_difference_RF()
         self.calculate_R_sq()
 
         self.standard_scaler()
-        df = self.PCA_vis()
-        if covar != False:
-            self.covar == covar
-            self.allPCs_covar_kw_test(df)
-        self.PC01_kw_tests(df)
-        self.predict_difference_RF()
-        global_df = pd.DataFrame({"PC_0_p": [self.global_PC0_p], "PC_1_p":[self.global_PC1_p], "PC_0_bc_distance": [self.bc_global_pval_l[0]], "PC_1_bc_distance": [self.bc_global_pval_l[1]]})
-        if self.pipeline == "default":
-            global_df.to_csv(self.output_root+"_global_batches_eval.csv")
+        # df = self.PCA_vis()
+        # if covar != False:
+        #     self.covar == covar
+        #     self.allPCs_covar_kw_test(df)
+        # self.PC01_kw_tests(df)
+        # self.predict_difference_RF()
         if self.pipeline != "default":
             # convert summary dict to df
             self.summary_df = pd.DataFrame.from_dict(self.short_summary_dict, orient='index')
             self.summary_df.to_csv(self.output_root+"_summary.csv")
 
-    def standard_scaler(self):
-        source_df = self.batch_corrected_df
-        scaler = StandardScaler()
-        data = source_df.T.to_numpy()
-        scaler.fit(data)
-        ss_scaled = scaler.transform(data).T
-        self.batch_corrected_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
+    # def standard_scaler(self):
+    #     source_df = self.batch_corrected_df
+    #     scaler = StandardScaler()
+    #     data = source_df.T.to_numpy()
+    #     scaler.fit(data)
+    #     ss_scaled = scaler.transform(data).T
+    #     self.batch_corrected_df = pd.DataFrame(ss_scaled, columns = source_df.columns, index=source_df.index)
         
-    def PCA_vis(self):
-        source_df = self.batch_corrected_df.copy()
-
-        # zero mean for PCA
-        source_df = source_df-source_df.mean()
-        # fit PCA
-        pca_results  = PCA(n_components = self.n_pc, random_state=self.rng)
-        pca_results.fit(source_df)
-        variances = pca_results.explained_variance_ratio_
-
-        # ecdf plot
-        ecdf_var = [variances[:i].sum() for i in range(len(variances))]
-        fig, ax1 = plt.subplots(1,1,figsize = (20, 8))
-        ax1.plot(range(len(ecdf_var)),ecdf_var)
-        plt.xticks(range(len(ecdf_var)), range(len(ecdf_var)))
-        plt.yticks([0.1*i for i in range(11)])
-        if self.pipeline == "default":
-            plt.savefig(self.output_root+"_ecdf.png")
-
-        # pca visualization
-        transformed = pca_results.transform(source_df)
-        df = pd.DataFrame()
-        for i in range(self.n_pc):
-            df[f"PC{i}"] = transformed[:, i] 
-        df['batches'] = list(self.meta_data[self.batch_var])
-        df[self.bio_var] = list(self.meta_data[self.bio_var])
-        ## pca visualization for bio_vars
-        ### fetch info for bio_va
-        all_colors_used = self.rng.uniform(0, 1, 3*len(np.unique(list(df[self.bio_var])))).tolist()
-        colors = {var: all_colors_used[idx*3:idx*3+3] for idx,var in enumerate(np.unique(list(df[self.bio_var])))} # unlikely to get repeated colors
-        fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
-        sns.scatterplot(x=df["PC0"] , y=df["PC1"], hue = df[self.bio_var], hue_order = np.unique(list(df[self.bio_var])), style = df["batches"], s = 100,ax = ax, cmap = "tab10", palette = colors)
-        ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
-        for index, current_biovar in enumerate(np.unique(list(df[self.bio_var]))):
-            currentDF = df.loc[df[self.bio_var] == current_biovar]
-            confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor=list(colors.values())[index])
-        if self.pipeline == "default":
-            plt.savefig(self.output_root+"_PCA_"+self.bio_var+".png")
-
-        ## pca visualization for batches
-        fig, ax =  plt.subplots(1, 1, sharex=True, sharey=True, figsize=(20, 10))
-        sns.scatterplot(x=df["PC0"] , y=df["PC1"], hue = df[self.bio_var], hue_order = np.unique(list(df[self.bio_var])), style = df["batches"], s = 100,ax = ax, cmap = "tab10", palette = colors)
-        ax.legend(bbox_to_anchor=(1.04,1), loc="upper left")
-        ### fetch info for bio_var
-        for index, current_batch in enumerate(np.unique(list(df["batches"]))):
-            currentDF = df.loc[df["batches"] == current_batch]
-            confidence_ellipse(currentDF['PC0'], currentDF['PC1'], ax, n_std=1.5, edgecolor="grey")
-        if self.pipeline == "default":
-            plt.savefig(self.output_root+"_PCA_batches.png")
-        
-        if self.covar != False:
-            df[self.covar] = list(self.meta_data[self.covar])
-        return df
-
-    def PC01_kw_tests(self, df):
-        # to investigate whether the bio_var info is retained
-        bio_var_l = list(df[self.bio_var])
-        bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
-        bio_var_l = list(np.unique(bio_var_l))
-        
-        # generate global metrics
-        with open(self.output_root+"_"+self.bio_var+"_kw_pvals.txt", "w") as text_file:
-            print("global batch kw p-vals \n", file=text_file)
-            print("\n", file=text_file)
-
-            data_PC0 = [df.loc[df[self.bio_var]==var]["PC0"].values for var in bio_var_l]
-            data_PC1 = [df.loc[df[self.bio_var]==var]["PC1"].values for var in bio_var_l]
-            
-            self.global_PC0_p = stats.kruskal(*data_PC0)[1]
-            self.global_PC1_p = stats.kruskal(*data_PC1)[1]
-            if self.pipeline != 'default':
-                self.short_summary_dict["global_biovar_p_val_PC0"] = self.global_PC0_p
-                self.short_summary_dict["global_biovar_p_val_PC1"] = self.global_PC1_p
-            print(". PC0", "across all biovar options, p-val = ", str(self.global_PC0_p), "\n",file=text_file)
-            print(". PC1", "across all biovar options, p-val = ", str(self.global_PC1_p), "\n",file=text_file)
-
-        # if not default, remove the file just generated
-        if self.pipeline != 'default':
-            os.remove(self.output_root+"_"+self.bio_var+"_kw_pvals.txt")
-
-        dim = len(np.unique(bio_var_l))
-        kw_heatmap_array = np.full((dim, dim), 1, dtype=float)
-        for pair in itertools.combinations(bio_var_l, 2):
-            data_for_kw_PC0 = [df.loc[df[self.bio_var]==var]["PC0"].values for var in pair]
-            data_for_kw_PC1 = [df.loc[df[self.bio_var]==var]["PC1"].values for var in pair]
-            PC0_p = stats.kruskal(*data_for_kw_PC0)[1]
-            PC1_p = stats.kruskal(*data_for_kw_PC1)[1]
-            print("PC0", pair[0], pair[1], PC0_p)
-            print("PC1", pair[0], pair[1], PC1_p)
-            print([bio_var_l.index(pair[0]), bio_var_l.index(pair[1])], kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])])
-            kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])]=PC1_p
-            kw_heatmap_array[bio_var_l.index(pair[1]), bio_var_l.index(pair[0])]=PC0_p
-        
-        if self.pipeline == 'default':
-            fig, ax = plt.subplots()
-            ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
-            im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
-            # Show all ticks and label them with the respective list entries
-            ax.set_xticks(np.arange(len(bio_var_l)))
-            ax.set_xticklabels(bio_var_l)
-            ax.set_xlabel("PC0 (lower diagonal)")
-            ax.set_yticks(np.arange(len(bio_var_l)))
-            ax.set_xticklabels(bio_var_l)
-            ax.set_ylabel("PC1 (upper diagonal)")
-            # Rotate the tidata["PC0"].valuesck labels and set their alignment.
-            plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-                    rotation_mode="anchor")
-
-            # Loop over data dimensionsif i!=j: and create text annotations.
-            for i in range(len(bio_var_l)):
-                for j in range(len(bio_var_l)):
-                    if i!=j:
-                        text = ax.text(i, j, round(-np.log2(kw_heatmap_array)[i, j], 5),
-                                    ha="center", va="center", color="black", fontsize=8)
-
-            ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
-            fig.tight_layout()
-            plt.savefig(self.output_root+"_PC01_kw_tests.png")
-
-
-        # to investigate whether batch effect is eliminated thouroughly
-        batches_l = list(df["batches"])
-        batches_l = [x for x in batches_l if str(x) != 'nan']
-        batches_l = list(np.unique(batches_l))
-        with open(self.output_root+"_batches_kw_pvals.txt", "w") as text_file:
-            print("global batch kw p-vals \n", file=text_file)
-            print("\n", file=text_file)
-
-            data_PC0 = [df.loc[df["batches"]== batch]["PC0"].values for batch in batches_l]
-            data_PC1 = [df.loc[df["batches"]== batch]["PC1"].values for batch in batches_l]
-            
-            self.global_PC0_p = stats.kruskal(*data_PC0)[1]
-            self.global_PC1_p = stats.kruskal(*data_PC1)[1]
-            if self.pipeline != 'default':
-                self.short_summary_dict["global_batch_p_val_PC0"] = self.global_PC0_p
-                self.short_summary_dict["global_batch_p_val_PC1"] = self.global_PC1_p
-            print(". PC0", "across all batches, p-val = ", str(self.global_PC0_p), "\n",file=text_file)
-            print(". PC1", "across all batches, p-val = ", str(self.global_PC1_p), "\n",file=text_file)
-            # global_PC_0_bc_distance = 0
-            # global_PC_1_bc_distance = 0
-
-            print("global pair-wise batch kw p-vals \n", file=text_file)
-        
-            # num_of_pairs = 0
-            for pair_batch in itertools.combinations(batches_l, 2):
-                # num_of_pairs += 1
-                print("current batch pair", str(pair_batch), '\n', file=text_file)
-                current_df = df.loc[df["batches"].isin(pair_batch)]
-                data_batch1 = current_df.loc[current_df["batches"]==pair_batch[0]]
-                data_batch2 = current_df.loc[current_df["batches"]==pair_batch[1]]
-
-                PC0_p = stats.kruskal(data_batch1["PC0"].values,data_batch2["PC0"].values)[1]
-                PC1_p = stats.kruskal(data_batch1["PC1"].values,data_batch2["PC1"].values)[1]
-
-                print(". PC0", str(pair_batch), PC0_p, "# samples in batch "+pair_batch[0]+":", len(data_batch1["PC0"].values), "# samples in batch "+pair_batch[1]+":", len(data_batch2["PC0"].values), file=text_file)
-                print(". PC1", str(pair_batch), PC1_p, "# samples in batch "+pair_batch[0]+":", len(data_batch1["PC1"].values), "# samples in batch "+pair_batch[1]+":", len(data_batch2["PC1"].values), file=text_file)
-
-            # global_PC_0_bc_distance = global_PC_0_bc_distance/num_of_pairs
-            # global_PC_1_bc_distance = global_PC_1_bc_distance/num_of_pairs
-            
-            # global_df = pd.DataFrame({"PC_0_p": [global_PC0_p], "PC_1_p":[global_PC1_p], "PC_0_bc_distance": [global_PC_0_bc_distance], "PC_1_bc_distance": [global_PC_1_bc_distance]})
-            # global_df.to_csv(self.output_root+"_global_batches_eval.csv")
-            
-            print("batch kw p-vals by bio_var \n", file=text_file)
-            for var in bio_var_l:
-                print(". bio_var == "+var, file=text_file)
-                current_df_biovar = df.loc[df[self.bio_var] == var]
-                for pair_batch in itertools.combinations(batches_l, 2):
-                    current_df = current_df_biovar.loc[current_df_biovar["batches"].isin(pair_batch)]
-                    data_batch1 = current_df.loc[current_df["batches"]==pair_batch[0]]
-                    data_batch2 = current_df.loc[current_df["batches"]==pair_batch[1]]
-
-                    PC0_p = stats.kruskal(data_batch1["PC0"].values,data_batch2["PC0"].values)[1]
-                    PC1_p = stats.kruskal(data_batch1["PC1"].values,data_batch2["PC1"].values)[1]
-
-                    print(".   PC0", str(pair_batch), PC0_p, "# new samples:", len(data_batch1["PC0"].values), "# old samples:", len(data_batch2["PC0"].values), file=text_file)
-                    print(".   PC1", str(pair_batch), PC1_p, "# new samples:", len(data_batch1["PC1"].values), "# old samples:", len(data_batch2["PC1"].values), file=text_file)
-        # if default, remove the file just generated
-        if self.pipeline != 'default':
-            os.remove(self.output_root+"_batches_kw_pvals.txt")
-
 
     def diff_abund_test(self):
         ### if two categories then wilcox test, three or more then kruskal-wallis test
@@ -470,15 +279,9 @@ class Evaluate(object):
         print(PERMANOVA_R2_results)
         # bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results)
         print(PERMANOVA_R2_results.rx2("tab_rel"))
-        # with localconverter(robjects.default_converter + pandas2ri.converter):
-        #     aitchinson_permanova_df = robjects.conversion.rpy2py(PERMANOVA_R2_results.rx2("tab_rel"))
-        # aitchinson_permanova_df = robjects.conversion.rpy2py(PERMANOVA_R2_results.rx2("tab_rel"))
         aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_rel"), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
-        # bray_curtis_permanova_df = pd.DataFrame(eval(PERMANOVA_R2_results[0]), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
         bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_count"), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
-        # print(bray_curtis_permanova_df)
         print(aitchinson_permanova_df)
-        # bray_anova = PERMANOVA_R2_results[0]
         print("______________batch_PERMANOVA_R2_results______________")
         if self.pipeline != 'default':
             self.short_summary_dict["batch_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
@@ -511,71 +314,29 @@ class Evaluate(object):
 
         # try plotting stuff
         if self.R_PCOA_plot:
-            # if self.pipeline == 'default':
-            # r.Plot_PCoA(self.output_root, data, r_batch, dissimilarity="both")
-
             r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Aitch", main="Aitchinson")
             r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Aitch", main="Aitchinson")
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Bray", main="Bray-Curtis")
-        # ids = list(self.meta_data[self.IDCol])
-        # np.savetxt('data.out', data, delimiter=',')
-        # bc_div_bray = beta_diversity("braycurtis", data, ids)
-        # # compute aitchison distance
-        # data_clr = clr(data)
-        # data_clr = np.nan_to_num(data_clr)
-        # np.savetxt('data_clr.out', data_clr, delimiter=',')
-        # # bc_div_aitch = beta_diversity("euclidean", data_clr, ids)
-        # bc_div_aitch = pdist(data_clr)
-        # bc_div_aitch = squareform(bc_div_aitch)
-        # np.savetxt('bc_div_aitch.out', bc_div_aitch, delimiter=',')
-        # print(bc_div_aitch.shape)
-        # # bc_df_bray = pd.DataFrame(bc_div_bray.data, index=list(self.meta_data[self.IDCol]), columns=list(self.meta_data[self.IDCol]))
-        
-        # # calculate R^2
-        # permanova_results_bray = permanova(bc_div_bray, self.meta_data, column=R_sq_var, permutations=999)
-        # # permanova_results_aitch = permanova(DissimilarityMatrix(bc_div_aitch), self.meta_data, column=R_sq_var, permutations=999)
-
-        # bray_r2 = 1 - 1 / (1 + permanova_results_bray[4] * permanova_results_bray[3] / (permanova_results_bray[2] - permanova_results_bray[3] - 1))
-        # # aitch_r2 = 1 - 1 / (1 + permanova_results_aitch[4] * permanova_results_aitch[3] / (permanova_results_aitch[2] - permanova_results_aitch[3] - 1))
-        # print(R_sq_var, "bray_r2", bray_r2)
-        # print("aitch_r2", aitch_r2)
         return
     
-    def alpha_beta_diversity_and_tests(self, test_var):
+    def alpha_diversity_and_tests(self, test_var):
+        print("______________alpha_diversity_and_tests______________")
+        
         data = np.array(self.batch_corrected_df)
-        print(data)
-        print(np.percentile(data.flatten(), 0.01))
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
         ids = list(self.meta_data[self.IDCol])
-        # print(data.shape)
-        # print("ids", len(ids))
         shannon_div = alpha_diversity('shannon', data, ids)
-        bc_div = beta_diversity("braycurtis", data, ids)
-        bc_df = pd.DataFrame(bc_div.data, index=list(self.meta_data[self.IDCol]), columns=list(self.meta_data[self.IDCol]))
-        bc_pc = pcoa(bc_div)
+        
 
         # visualize and save
-        import matplotlib.pyplot as plt
         shannon_df = shannon_div.to_frame()
         shannon_df.columns = ["shannon"]
         shannon_df[test_var] = list(self.meta_data[test_var])
         if self.pipeline == "default":
             shannon_fig = shannon_df.boxplot(column='shannon', by=test_var)
-            shannon_fig.figure.savefig(self.output_root+"_"+test_var+"_alpha_shannon_pcoa.png")
-        bc_metadata = self.meta_data
-        bc_metadata.index = bc_metadata[self.IDCol]
-        bc_metadata[test_var] = bc_metadata[test_var].fillna("unknown")
-        if self.pipeline == "default":
-            print("bc_pc")
-            print(bc_pc)
-            bc_fig = bc_pc.plot(bc_metadata, test_var,
-                    axis_labels=('PC 1', 'PC 2', 'PC 3'),
-                    title='Samples colored by '+test_var, cmap='jet', s=50)
-            print("bc_fig")
-            print(bc_fig)
-            bc_fig.savefig(self.output_root+"_"+test_var+"_beta_bc_pcoa.png")
+            shannon_fig.figure.savefig(self.output_root+"_"+test_var+"_alpha_shannon_boxplot.png")
 
         # get list of unique test_var options
         test_var_col_l = list(self.meta_data[test_var])
@@ -590,61 +351,27 @@ class Evaluate(object):
             removed_indices = [var for i, var in enumerate(list(self.meta_data[self.IDCol])) if i in removed_indices]
             current_data_condition = list(shannon_div.drop(index = removed_indices))
             alpha_kruskal_data.append(current_data_condition)
-        # calculate global kw p_val
-        shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
+        # calculate global kw p_val for alpha diversity
+            if len(alpha_kruskal_data) == 2:
+                # wilcox test (unpaired)
+                test_type = 'wilcox'
+                shannon_global_pval = stats.ranksums(alpha_kruskal_data[0], alpha_kruskal_data[1])[1]
+            else:
+                shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
         print("shannon_global_pval", shannon_global_pval)
         if self.pipeline != "default":
             self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval
 
-        # calculate pairwise kw p_val
-        kw_data_pair_l = list(itertools.combinations(alpha_kruskal_data, 2))
-        for index, pair in enumerate(itertools.combinations(test_var_l, 2)):
-            alpha_pairwise_pval_dict[pair] = stats.kruskal(*kw_data_pair_l[index])[1]
-        print("shannon_pairwise_pval", alpha_pairwise_pval_dict)
-
-        ## 2. beta diversity
-        bc_global_pval_l = []
-        bc_pairwise_pval_l = []
-        for pc in ['PC1', 'PC2', 'PC3']:
-            beta_kruskal_data = []
-            bc_pairwise_pval_dict = {}
-            current_data = bc_pc.samples[pc]
-            for var in test_var_l:
-                removed_indices = [i for i, e in enumerate(test_var_col_l) if e != var]
-                removed_indices = [var for i, var in enumerate(list(self.meta_data[self.IDCol])) if i in removed_indices]
-                current_data_condition = list(current_data.drop(index = removed_indices))
-                beta_kruskal_data.append(current_data_condition)
-            # calculate global kw p_val
-            bc_global_pval_l.append(stats.kruskal(*beta_kruskal_data)[1])
-            # calculate pairwise kw p_val
-            kw_data_pair_l = list(itertools.combinations(beta_kruskal_data, 2))
-            for index, pair in enumerate(itertools.combinations(test_var_l, 2)):
-                bc_pairwise_pval_dict[pair] = stats.kruskal(*kw_data_pair_l[index])[1]
-            bc_pairwise_pval_l.append(bc_pairwise_pval_dict)
-        print("bray_curtis_global_pval, by PCs", bc_global_pval_l)
-        print("bray_curtis_pairwise_pval, by PCs", bc_pairwise_pval_l)
-        
         # return dataframes to csv for self checks
-        ## alpha and beta diversity data themselves
+        ## alpha diversity data themselves
         if self.pipeline == 'default':
             shannon_df.to_csv(self.output_root+"_shannon_df.csv")
-            bc_df.to_csv(self.output_root+"_"+test_var+"_bray_curtis_dissimilaritymatrix.csv")
         ## kw significance testing to txt file
         if self.pipeline == 'default':
             with open(self.output_root+"_"+test_var+"_shannon_kw_pvals.txt", "w") as text_file:
                 print("shannon_global_pval", shannon_global_pval, "\n", file=text_file)
                 print("shannon_pairwise_pval \n", file=text_file)
                 print(alpha_pairwise_pval_dict, file=text_file)
-            with open(self.output_root+"_"+test_var+"_bray_curtis_kw_pvals.txt", "w") as text_file:
-                print("bray_curtis_global_pvals, by PCs", bc_global_pval_l, "\n", file=text_file)
-                print("bray_curtis_pairwise_pval \n", file=text_file)
-                for index, pval_dict in enumerate(bc_pairwise_pval_l):
-                    print("PC"+str(index+1)+"\n", file=text_file)
-                    print(pval_dict, file=text_file)
-                    print("\n", file=text_file)
-
-        if test_var == self.batch_var:
-            self.bc_global_pval_l = bc_global_pval_l
         return 
     
     def predict_difference_RF(self):
@@ -694,11 +421,7 @@ class Evaluate(object):
             # one hot encode y_test and y_pred
             y_test_zeroone = np.where(np.array(y_test) == most_common_element, 1, 0)
             y_pred_zeroone = np.where(np.array(y_pred) == most_common_element, 1, 0)
-            # print("y_test_zeroone", y_test_zeroone, y_pred_zeroone)
-
-            # print(most_common_element)
-            # if self.poslabel == '':
-            #     self.poslabel = most_common_element
+            
             if self.pipeline == 'default':
                 RocCurveDisplay.from_predictions(
                     y_test_zeroone, y_pred_zeroone,
@@ -720,8 +443,6 @@ class Evaluate(object):
 def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = "."):
     # fetch dimension (number of samples and number of features)
     data_mat = pd.read_csv(input_frame_path, index_col=0)
-    num_of_samples = data_mat.shape[0]
-    num_of_taxa = data_mat.shape[0]
 
     # rest of the stats
     method_dict = {}
