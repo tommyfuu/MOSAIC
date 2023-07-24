@@ -1,5 +1,0 @@
-shannon_global_pval 4.622349199948613e-18 
-
-shannon_pairwise_pval 
-
-{}
