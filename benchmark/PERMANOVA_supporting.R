@@ -51,7 +51,8 @@ PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batc
   }
 
   # aitchison
-  Z = coda.base::dist(TAX+0.5, method="aitchison")
+  kappa = min(TAX[TAX > 0])/2
+  Z = coda.base::dist(TAX+kappa, method="aitchison")
 
   tab_rel[1,1] = adonis(formula = Z  ~ batchid, method="euclidean")$aov.tab[1, 5]
   tab_rel[1,2] = adonis2(formula = Z  ~ batchid, method="euclidean", sqrt.dist=TRUE)$R2[1]
@@ -99,8 +100,9 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
     sub_index = seq(ncol(TAX))
   }
   if (dissimilarity == "Aitch"){
-
-    Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
+    temp_mat = as.matrix(TAX[, sub_index])
+    kappa = min(temp_mat[temp_mat > 0])/2
+    Z = as.matrix(clr(temp_mat+kappa))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
     print(main)
     pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
@@ -153,7 +155,9 @@ Plot_single_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Br
     sub_index = seq(ncol(TAX))
   }
   if (dissimilarity == "Aitch") {
-    Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
+    temp_mat = as.matrix(TAX[, sub_index])
+    kappa = min(temp_mat[temp_mat > 0])/2
+    Z = as.matrix(clr(temp_mat+kappa))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
     s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
   }
