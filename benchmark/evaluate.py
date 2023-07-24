@@ -123,8 +123,17 @@ class Evaluate(object):
         self.IDCol = IDCol
         self.test_percent = test_percent
         self.poslabel = poslabel
-        self.R_PCOA_plot = R_PCOA_plot
-        self.pipeline = pipeline # "default" or "scaled"
+        self.pipeline = pipeline # "scaled" or "default"
+        ## note: for pipelines
+        # 1. scaled pipeline generates:
+        # 1.1 _summary.csv: contains summary stats for biovar/batch aitch/bray r2 + biovar/batch shannon pval
+        ##### 1.1 TODO: ADD adonis PERMANOVA p values for the aitch and bray curtis stuff
+        # 1.2  _diff_abund_test.csv: contains diff abund test results for biovar/batch concatenated to taxa level data
+        # 1.3 _rf_evaluate.csv: contains RF eval results for biovar state prediction based on taxa data, 5F
+        # 2. default pipeline additionally generates,
+        # 2.1 4* PCoA_Aitch/Bray.pdf: PCoA plots for Aitch/Bray dissimilarity
+        # 2.2 5* _rf_fold_k_roc.pdf: ROC plots for 5F CV prediction of biovar states
+        # 2.3 2* _shannon_df_batch/biovar.pdf: Shannon diversity indices with groupings for batch/biovar
         self.short_summary_dict = {}
         # make directory if not exists
         directory_path = "/".join(output_root.split("/")[:-1])
@@ -207,57 +216,49 @@ class Evaluate(object):
             r_covariate = self.meta_data[self.covar]
             print(r_covariate)
             PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_batch, r_covariate, 'batch', self.covar)
+            aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_rel"), columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch', self.covar])
+            bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_count"), columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch', self.covar])
         else:
-            PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_batch, 'batch')
+            PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_batch, robjects.NULL, 'batch')
+            aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_rel"), columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch'])
+            bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_count"), columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch'])
+
         print("______________batch_PERMANOVA_R2_results______________")
-        print(PERMANOVA_R2_results)
-        # bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results)
-        print(PERMANOVA_R2_results.rx2("tab_rel"))
-        aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_rel"), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
-        bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results.rx2("tab_count"), columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
         print(aitchinson_permanova_df)
+        print(bray_curtis_permanova_df)
         print("______________batch_PERMANOVA_R2_results______________")
         self.short_summary_dict["batch_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
         self.short_summary_dict["batch_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
-    
+        self.short_summary_dict["batch_aitch_pval"] = aitchinson_permanova_df.loc["batch", 'Pr(>F)']
+        self.short_summary_dict["batch_bray_pval"] = bray_curtis_permanova_df.loc["batch", 'Pr(>F)']
         # calculate the equivalent stats but for biological variable
         r_bio_var = self.meta_data[self.bio_var]
         if self.covar != False:
             r_covariate = self.meta_data[self.covar]
             PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_bio_var, r_covariate, 'biovar', self.covar)
+            bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch', self.covar])
+            aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch', self.covar])
         else:
-            PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_bio_var, 'biovar', self.covar)
+            PERMANOVA_R2_results = r.PERMANOVA_R2(data, r_bio_var, robjects.NULL, 'biovar')
+            bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch'])
+            aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T", 'Pr(>F)'], index=['batch'])
         print("______________biovar_PERMANOVA_R2_results______________")
-        bray_curtis_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
-        aitchinson_permanova_df = pd.DataFrame(PERMANOVA_R2_results[0], columns=["standard", "sqrt.dist=T", "add=T"], index=['batch', self.covar])
         print(bray_curtis_permanova_df)
         print(aitchinson_permanova_df)
         # bray_anova = PERMANOVA_R2_results[0]
         print("______________biovar_PERMANOVA_R2_results______________")
         self.short_summary_dict["biovar_aitch_r2"] = aitchinson_permanova_df.loc["batch", "standard"]
         self.short_summary_dict["biovar_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
-        
+        self.short_summary_dict["biovar_aitch_pval"] = aitchinson_permanova_df.loc["batch", 'Pr(>F)']
+        self.short_summary_dict["biovar_bray_pval"] = bray_curtis_permanova_df.loc["batch", 'Pr(>F)']
+
         # try plotting stuff
-        if self.R_PCOA_plot:
+        if self.pipeline == "default":
             r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Aitch", main="Aitchinson")
             r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Aitch", main="Aitchinson")
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Bray", main="Bray-Curtis")
         return
-    
-    # def plot_R_PCOA_plot(self):
-    #     data = np.array(self.batch_corrected_df)
-    #     data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-    #     data = data+np.abs(np.min(data))
-
-    #     # import r packages/functions
-    #     r = robjects.r
-    #     r.source('./PERMANOVA_supporting.R')
-    #     r_batch = self.meta_data[self.batch_var]
-    #     r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Aitch", main="Aitchinson")
-    #     r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
-
-    #     r_bio_var = self.meta_data[self.bio_var]
 
     
     def alpha_diversity_and_tests(self, test_var):
@@ -301,14 +302,6 @@ class Evaluate(object):
             shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
 
         return shannon_global_pval, shannon_df
-        # print("shannon_global_pval", shannon_global_pval)
-        # self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval
-
-        # # return dataframes to csv for self checks
-        # ## alpha diversity data themselves
-        # if self.pipeline == 'default':
-        #     shannon_df.to_csv(self.output_root+"_shannon_df.csv")
-        # return 
     
     def alpha_diversity_and_tests_for_batches_and_biovars(self):
         print("______________alpha_diversity_and_tests_for_batches_and_biovars______________")
@@ -414,6 +407,10 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         bray_r2_biovar = summary_dict["biovar_bray_r2"]
         shannon_pval_batch = summary_dict["batches_shannon_pval"]
         shannon_pval_biovar = summary_dict["biovar_shannon_pval"]
+        aitch_pval_batch = summary_dict["batch_aitch_pval"]
+        aitch_pval_biovar = summary_dict["biovar_aitch_pval"]
+        bray_pval_batch = summary_dict["batch_bray_pval"]
+        bray_pval_biovar = summary_dict["biovar_bray_pval"]
 
         current_method_dict.update({"batch_aitch_r2": aitch_r2_batch})
         current_method_dict.update({"batch_bray_r2": bray_r2_batch})
@@ -421,10 +418,14 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         current_method_dict.update({"biovar_bray_r2": bray_r2_biovar})
         current_method_dict.update({"shannon_pval": shannon_pval_batch})
         current_method_dict.update({"shannon_pval": shannon_pval_biovar})
+        current_method_dict.update({"aitch_pval_batch": aitch_pval_batch})
+        current_method_dict.update({"aitch_pval_biovar": aitch_pval_biovar})
+        current_method_dict.update({"bray_pval_batch": bray_pval_batch})
+        current_method_dict.update({"bray_pval_biovar": bray_pval_biovar})
 
     if "combat" not in method_dict:
         # method_dict["combat"] = {"global_batch_p_val_PC0": "NA", "global_batch_p_val_PC1": "NA", "global_biovar_p_val_PC0": "NA", "global_biovar_p_val_PC1": "NA", }
-        method_dict["combat"] = {"batch_aitch_r2": "NA", "batch_bray_r2": "NA", "biovar_aitch_r2": "NA", "biovar_bray_r2": "NA", "shannon_pval": "NA"}
+        method_dict["combat"] = {"batch_aitch_r2": "NA", "batch_bray_r2": "NA", "biovar_aitch_r2": "NA", "biovar_bray_r2": "NA", "shannon_pval": "NA", "aitch_pval_batch": "NA", "aitch_pval_biovar": "NA", "bray_pval_batch": "NA", "bray_pval_biovar": "NA"}
     
     # fetch time spent running
     benchmarked_results_dir = output_dir_path + "/benchmarked_results/" + dataset_name
@@ -470,61 +471,6 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     results_df.T.to_csv(output_dir_path+"/global_benchmarking_stats_"+dataset_name+".csv")
     return pd.DataFrame.from_dict(method_dict, orient ='index') 
 
-def PC01_kw_tests_perbatch(df, bio_var, batch, output_root):
-    # to investigate whether the bio_var info is retained
-    bio_var_l = list(df[bio_var])
-    bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
-    bio_var_l = list(np.unique(bio_var_l))
-    
-    # generate global metrics
-    with open(output_root+"_"+bio_var+"_kw_pvals.txt", "w") as text_file:
-        print("global batch kw p-vals \n", file=text_file)
-        print("\n", file=text_file)
-
-        data_PC0 = [df.loc[df[bio_var]==var]["PC0"].values for var in bio_var_l]
-        data_PC1 = [df.loc[df[bio_var]==var]["PC1"].values for var in bio_var_l]
-        
-        global_PC0_p = stats.kruskal(*data_PC0)[1]
-        global_PC1_p = stats.kruskal(*data_PC1)[1]
-        print(". PC0", "across all biovar options, p-val = ", str(global_PC0_p), "\n",file=text_file)
-        print(". PC1", "across all biovar options, p-val = ", str(global_PC1_p), "\n",file=text_file)
-        
-    dim = len(np.unique(bio_var_l))
-    kw_heatmap_array = np.full((dim, dim), 1, dtype=float)
-    for pair in itertools.combinations(bio_var_l, 2):
-        data_for_kw_PC0 = [df.loc[df[bio_var]==var]["PC0"].values for var in pair]
-        data_for_kw_PC1 = [df.loc[df[bio_var]==var]["PC1"].values for var in pair]
-        PC0_p = stats.kruskal(*data_for_kw_PC0)[1]
-        PC1_p = stats.kruskal(*data_for_kw_PC1)[1]
-        print("PC0", pair[0], pair[1], PC0_p)
-        print("PC1", pair[0], pair[1], PC1_p)
-        print([bio_var_l.index(pair[0]), bio_var_l.index(pair[1])], kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])])
-        kw_heatmap_array[bio_var_l.index(pair[0]), bio_var_l.index(pair[1])]=PC1_p
-        kw_heatmap_array[bio_var_l.index(pair[1]), bio_var_l.index(pair[0])]=PC0_p
-    fig, ax = plt.subplots()
-    ax.plot([0, 1], [0, 1], transform=ax.transAxes, color="red")
-    im = ax.imshow((-np.log2(kw_heatmap_array)).T, cmap="Oranges", rasterized=True,origin='lower')
-    # Show all ticks and label them with the respective list entries
-    ax.set_xticks(np.arange(len(bio_var_l)))
-    ax.set_xticklabels(bio_var_l)
-    ax.set_xlabel("PC0 (lower diagonal)")
-    ax.set_yticks(np.arange(len(bio_var_l)))
-    ax.set_yticklabels(bio_var_l)
-    ax.set_ylabel("PC1 (upper diagonal)")
-    # Rotate the tidata["PC0"].valuesck labels and set their alignment.
-    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-            rotation_mode="anchor")
-
-    # Loop over data dimensionsif i!=j: and create text annotations.
-    for i in range(len(bio_var_l)):
-        for j in range(len(bio_var_l)):
-            if i!=j:
-                text = ax.text(i, j, round(-np.log2(kw_heatmap_array)[i, j], 5),
-                            ha="center", va="center", color="black", fontsize=8)
-
-    ax.set_title("Kruskal-Wallis -log2(p-val) Heatmap")
-    fig.tight_layout()
-    plt.savefig(output_root+"_"+batch+"_PC01_kw_tests.png")
 
 def check_complete_confounding(meta_data, batch_var, bio_var, output_root):
     # make a pandas dataframe where rows are batches whereas columns are the bio_var options
@@ -868,52 +814,52 @@ IDCol = 'Sam_id'
 
 check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
 
-Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc_AAA/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-# Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id', pipeline = 'default')
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
-# # benchmarking other methods: 
-# address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
+# benchmarking other methods: 
+address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
 
-# ### combat
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
+### combat
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
 
-# ### combat_seq
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
-
-
-# ### ConQuR
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR_1201', "DiseaseState", 30,  False, 'Sam_id')
-
-# ### ConQuR_libsize
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize_1201',"DiseaseState", 30,   False, 'Sam_id')
-
-# ### limma
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma_1201', "DiseaseState", 30,  False,'Sam_id')
-
-# ### MMUPHin
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
-
-# ## Percentile_normalization
-# address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
+### combat_seq
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_1201', "DiseaseState", 30,  False, 'Sam_id')
 
 
-# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
-# bio_var = "DiseaseState"
-# dataset_name = "cdi_3_microbiomeHD"
-# methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+### ConQuR
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR_1201', "DiseaseState", 30,  False, 'Sam_id')
+
+### ConQuR_libsize
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize_1201',"DiseaseState", 30,   False, 'Sam_id')
+
+### limma
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma_1201', "DiseaseState", 30,  False,'Sam_id')
+
+### MMUPHin
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin_1201',"DiseaseState" , 30,  False,'Sam_id')
+
+## Percentile_normalization
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
+
+
+input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
+bio_var = "DiseaseState"
+dataset_name = "cdi_3_microbiomeHD"
+methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")

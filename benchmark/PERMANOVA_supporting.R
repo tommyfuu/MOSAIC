@@ -29,29 +29,25 @@ library("compositions")
 PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batch', covar_name = FALSE){
   # edited from Wodan's script, not exactly the same - can only take one covariate at a time
   if (is.null(covariates)){
-    tab_count = tab_rel = matrix(ncol=3, nrow=1)
-  } else {tab_count = tab_rel = matrix(ncol=3, nrow=2)}
-#   tab_count = tab_rel = matrix(ncol=3, nrow=2)
-  colnames(tab_count) = colnames(tab_rel) = c("standard", "sqrt.dist=T", "add=T")
-  # if (is.null(covar_name)){
-  #   print("HERE 1")
-  #   rownames(tab_count) = rownames(tab_rel) = c(first_row_name)
-  #   print("Here 2")
-  # }
-  # else{
-  rownames(tab_count) = rownames(tab_rel) = c(first_row_name, covar_name)
-  # }
+    tab_count = tab_rel = matrix(ncol=4, nrow=1)
+    rownames(tab_count) = rownames(tab_rel) = c(first_row_name)
+  } else {
+    tab_count = tab_rel = matrix(ncol=4, nrow=2)
+    rownames(tab_count) = rownames(tab_rel) = c(first_row_name, covar_name)
+    }
 
   # bray-curtis
   print("Here 3")
   tab_count[1,1] = adonis(formula = TAX ~ batchid)$aov.tab[1, 5]
   tab_count[1,2] = adonis2(formula = TAX ~ batchid, sqrt.dist=TRUE)$R2[1]
   tab_count[1,3] = adonis2(formula = TAX ~ batchid, add=TRUE)$R2[1]
+  tab_count[1,4] = adonis(formula = TAX ~ batchid)$aov.tab[1, 6]
 
-  if (is.null(covariates)){
+  if (!is.null(covariates)){
     tab_count[2,1] = adonis(formula = TAX ~ ., data=data.frame(covariates))$aov.tab[1, 5]
     tab_count[2,2] = adonis2(formula = TAX ~ ., data=data.frame(covariates), sqrt.dist=TRUE)$R2[1]
     tab_count[2,3] = adonis2(formula = TAX ~ ., data=data.frame(covariates), add=TRUE)$R2[1]
+    tab_count[2,4] = adonis(formula = TAX ~ ., data=data.frame(covariates))$aov.tab[1, 6]
   }
 
   # aitchison
@@ -60,11 +56,13 @@ PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batc
   tab_rel[1,1] = adonis(formula = Z  ~ batchid, method="euclidean")$aov.tab[1, 5]
   tab_rel[1,2] = adonis2(formula = Z  ~ batchid, method="euclidean", sqrt.dist=TRUE)$R2[1]
   tab_rel[1,3] = adonis2(formula = Z  ~ batchid, method="euclidean", add=TRUE)$R2[1]
-  
-  if (is.null(covariates)){
+  tab_rel[1,4] = adonis(formula = Z  ~ batchid, method="euclidean")$aov.tab[1, 6]
+
+  if (!is.null(covariates)){
     tab_rel[2,1] = adonis(formula = Z  ~ ., data=data.frame(covariates), method="euclidean")$aov.tab[1, 5]
     tab_rel[2,2] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", sqrt.dist=TRUE)$R2[1]
     tab_rel[2,3] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", add=TRUE)$R2[1]
+    tab_rel[2,4] = adonis(formula = Z  ~ ., data=data.frame(covariates), method="euclidean")$aov.tab[1, 6]
   }
   return(list(tab_count=tab_count, tab_rel=tab_rel))
 
@@ -147,7 +145,7 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
   }
 }
 
-Plot_single_PCoA <- function(TAX, factor, sub_index=NULL, dissimilarity="Bray", aa=1.5){
+Plot_single_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", aa=1.5){
   # dissimilarity can be either "Bray" or "Aitch"
   
   nfactor = length(table(factor))
