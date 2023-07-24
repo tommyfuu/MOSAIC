@@ -132,10 +132,10 @@ class Evaluate(object):
             os.makedirs(directory_path)
         # functions executed
         self.diff_abund_test()
-        ## version 1, for batch evaluation
         self.alpha_diversity_and_tests(self.batch_var) # has to happen before standard scaler
         self.predict_difference_RF()
         self.calculate_R_sq()
+        ## TODO: add FP stuff for simulation
 
         # convert summary dict to df
         self.summary_df = pd.DataFrame.from_dict(self.short_summary_dict, orient='index')
@@ -283,12 +283,12 @@ class Evaluate(object):
         # conduct statistical tests
         ## 1. alpha diversity
         alpha_kruskal_data = []
-        alpha_pairwise_pval_dict = {}
         for var in test_var_l:
             removed_indices = [i for i, e in enumerate(test_var_col_l) if e != var]
             removed_indices = [var for i, var in enumerate(list(self.meta_data[self.IDCol])) if i in removed_indices]
             current_data_condition = list(shannon_div.drop(index = removed_indices))
             alpha_kruskal_data.append(current_data_condition)
+
         # calculate global kw p_val for alpha diversity
         print(alpha_kruskal_data)
         print(len(alpha_kruskal_data))
@@ -297,21 +297,31 @@ class Evaluate(object):
             shannon_global_pval = stats.ranksums(alpha_kruskal_data[0], alpha_kruskal_data[1])[1]
         else:
             shannon_global_pval = stats.kruskal(*alpha_kruskal_data)[1]
-        print("shannon_global_pval", shannon_global_pval)
-        if self.pipeline != "default":
-            self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval
 
-        # return dataframes to csv for self checks
-        ## alpha diversity data themselves
+        return shannon_global_pval, shannon_df
+        # print("shannon_global_pval", shannon_global_pval)
+        # self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval
+
+        # # return dataframes to csv for self checks
+        # ## alpha diversity data themselves
+        # if self.pipeline == 'default':
+        #     shannon_df.to_csv(self.output_root+"_shannon_df.csv")
+        # return 
+    
+    def alpha_diversity_and_tests_for_batches_and_biovars(self):
+        print("______________alpha_diversity_and_tests_for_batches_and_biovars______________")
+        shannon_global_pval_batch, shannon_df_batch = self.alpha_diversity_and_tests(self.batch_var)
+        shannon_global_pval_biovar, shannon_df_biovar = self.alpha_diversity_and_tests(self.bio_var)
+
+        # save to csv
         if self.pipeline == 'default':
-            shannon_df.to_csv(self.output_root+"_shannon_df.csv")
-        ## kw significance testing to txt file
-        if self.pipeline == 'default':
-            with open(self.output_root+"_"+test_var+"_shannon_kw_pvals.txt", "w") as text_file:
-                print("shannon_global_pval", shannon_global_pval, "\n", file=text_file)
-                print("shannon_pairwise_pval \n", file=text_file)
-                print(alpha_pairwise_pval_dict, file=text_file)
-        return 
+            shannon_df_batch.to_csv(self.output_root+"_shannon_df_batch.csv")
+            shannon_df_biovar.to_csv(self.output_root+"_shannon_df_biovar.csv")
+
+        # save to summary dict
+        self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval_batch
+        self.short_summary_dict["biovar_shannon_pval"] = shannon_global_pval_biovar
+        return
     
     def predict_difference_RF(self):
         # get the data
@@ -392,62 +402,28 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         print(current_dir_path)
         current_dir_file_names = os.listdir(current_dir_path)
 
-        # fetch between batch kw p-val (all methods + nbc)
-        current_batch_kw_path = [result for result in current_dir_file_names if "batches_kw_pvals" in result][0]
-        with open(current_dir_path+'/'+current_batch_kw_path) as f:
-            lines = f.readlines()
-        
-        global_batch_p_val_PC0 = float([line for line in lines if "PC0 across all batches" in line][0].split(" ")[-2])
-        global_batch_p_val_PC1 = float([line for line in lines if "PC1 across all batches" in line][0].split(" ")[-2])
+        # fetch stats available in the summary file: batch/biovar PERMANOVA R2 in both Aitchinson and Bray-curtis + Shannon pval
+        aitch_method_perm_path = [result for result in current_dir_file_names if "_summary" in result][0]
+        summary_df = pd.read_csv(current_dir_path+'/'+aitch_method_perm_path)
+        summary_dict = dict(zip(summary_df["Unnamed: 0"], summary_df["0"]))
+        aitch_r2_batch = summary_dict["batch_aitch_r2"]
+        aitch_r2_biovar = summary_dict["biovar_aitch_r2"]
+        bray_r2_batch = summary_dict["batch_bray_r2"]
+        bray_r2_biovar = summary_dict["biovar_bray_r2"]
+        shannon_pval_batch = summary_dict["batches_shannon_pval"]
+        shannon_pval_biovar = summary_dict["biovar_shannon_pval"]
 
-        # fetch between biological variable kw pval (all methods + nbc)
-        current_biovar_kw_path = [result for result in current_dir_file_names if bio_var+"_kw_pvals" in result][0]
-        with open(current_dir_path+'/'+current_biovar_kw_path) as f:
-            lines = f.readlines()
-        
-        global_biovar_p_val_PC0 = float([line for line in lines if "PC0 across all biovar options" in line][0].split(" ")[-2])
-        global_biovar_p_val_PC1 = float([line for line in lines if "PC1 across all biovar options" in line][0].split(" ")[-2])
-
-        current_method_dict.update({"global_batch_p_val_PC0": global_batch_p_val_PC0})
-        current_method_dict.update({"global_batch_p_val_PC1": global_batch_p_val_PC1})
-        current_method_dict.update({"global_biovar_p_val_PC0": global_biovar_p_val_PC0})
-        current_method_dict.update({"global_biovar_p_val_PC1": global_biovar_p_val_PC1})
-
-
-        # fetch batch PERMANOVA R2 in both Aitchinson and Bray-curtis
-        ## batch
-        aitch_method_perm_path = [result for result in current_dir_file_names if "aitchinson_permanova" in result][0]
-        with open(current_dir_path+'/'+aitch_method_perm_path) as f:
-            lines = f.readlines()
-        aitch_r2 = float([line for line in lines if "batch" in line][0].split(",")[1])
-
-        bray_method_perm_path = [result for result in current_dir_file_names if "bray_curtis_permanova" in result][0]
-        with open(current_dir_path+'/'+bray_method_perm_path) as f:
-            lines = f.readlines()
-        bray_r2 = float([line for line in lines if "batch" in line][0].split(",")[1])
-
-        current_method_dict.update({"batch_aitch_r2": aitch_r2})
-        current_method_dict.update({"batch_bray_r2": bray_r2})
-        
-        ## biovar
-        print(current_dir_file_names)
-        aitch_method_perm_path = [result for result in current_dir_file_names if "aitchinson_biovar_permanova" in result][0]
-        with open(current_dir_path+'/'+aitch_method_perm_path) as f:
-            lines = f.readlines()
-        aitch_r2 = float([line for line in lines if "batch" in line][0].split(",")[1])
-
-        bray_method_perm_path = [result for result in current_dir_file_names if "bray_curtis_biovar_permanova" in result][0]
-        with open(current_dir_path+'/'+bray_method_perm_path) as f:
-            lines = f.readlines()
-        bray_r2 = float([line for line in lines if "batch" in line][0].split(",")[1])
-
-        current_method_dict.update({"biovar_aitch_r2": aitch_r2})
-        current_method_dict.update({"biovar_bray_r2": bray_r2})
-
-        method_dict[method] = current_method_dict
+        current_method_dict.update({"batch_aitch_r2": aitch_r2_batch})
+        current_method_dict.update({"batch_bray_r2": bray_r2_batch})
+        current_method_dict.update({"biovar_aitch_r2": aitch_r2_biovar})
+        current_method_dict.update({"biovar_bray_r2": bray_r2_biovar})
+        current_method_dict.update({"shannon_pval": shannon_pval_batch})
+        current_method_dict.update({"shannon_pval": shannon_pval_biovar})
 
     if "combat" not in method_dict:
-        method_dict["combat"] = {"global_batch_p_val_PC0": "NA", "global_batch_p_val_PC1": "NA", "global_biovar_p_val_PC0": "NA", "global_biovar_p_val_PC1": "NA", }
+        # method_dict["combat"] = {"global_batch_p_val_PC0": "NA", "global_batch_p_val_PC1": "NA", "global_biovar_p_val_PC0": "NA", "global_biovar_p_val_PC1": "NA", }
+        method_dict["combat"] = {"batch_aitch_r2": "NA", "batch_bray_r2": "NA", "biovar_aitch_r2": "NA", "biovar_bray_r2": "NA", "shannon_pval": "NA"}
+    
     # fetch time spent running
     benchmarked_results_dir = output_dir_path + "/benchmarked_results/" + dataset_name
     benchmarked_results_dir = os.listdir(benchmarked_results_dir)
@@ -478,28 +454,14 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
 
     for time_file in current_runtime_kw_paths:
         time_file = output_dir_path + "/benchmarked_data/"+time_file
-        if "harmonicMic_elapsed_time" in time_file:
-            with open(time_file) as f:
-                lines = f.readlines()
-            if "harmonicMic" in method_dict:
-                method_dict["harmonicMic"]["runtime"] = float(lines[0].split(" ")[-2])
-        if "harmonicMic_weighted_elapsed_time" in time_file:
-            with open(time_file) as f:
-                lines = f.readlines()
-            if "harmonicMic_weighted" in method_dict:
-                method_dict["harmonicMic_weighted"]["runtime"] = float(lines[0].split(" ")[-2])
         if "harmony_elapsed_time" in time_file:
             with open(time_file) as f:
                 lines = f.readlines()
             method_dict["harmony"]["runtime"] = float(lines[0].split(" ")[-2])
-        if "harmony_PCA_first_elapsed_time" in time_file:
-            with open(time_file) as f:
-                lines = f.readlines()
-            if "harmony_PCs" in method_dict:
-                method_dict["harmony_PCs"]["runtime"] = float(lines[0].split(" ")[-2])
-    
     if 'nobc' in method_dict:
         method_dict['nobc']['runtime'] = 'NA'
+
+    ## TODO: add FP stuff for simulation after those calculations are done
         
     # print into a pandas df where rows are datasets and columns and different stats
     results_df = pd.DataFrame.from_dict(method_dict, orient ='index') 
@@ -562,6 +524,35 @@ def PC01_kw_tests_perbatch(df, bio_var, batch, output_root):
     fig.tight_layout()
     plt.savefig(output_root+"_"+batch+"_PC01_kw_tests.png")
 
+def check_complete_confounding(meta_data, batch_var, bio_var, output_root):
+    # make a pandas dataframe where rows are batches whereas columns are the bio_var options
+    # each entry is the number of samples in that batch with that bio_var option
+    # if there is a batch with only one bio_var option, then it is a complete confounder
+
+    # get the list of batches
+    batch_l = list(meta_data[batch_var])
+    # batch_l = [x for x in batch_l if str(x) != 'nan']
+    batch_l = list(np.unique(batch_l))
+
+    # get the list of bio_var options
+    bio_var_l = list(meta_data[bio_var])
+    # bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
+    bio_var_l = list(np.unique(bio_var_l))
+
+    # generate a dataframe
+    df = pd.DataFrame(columns=bio_var_l, index=batch_l)
+    for batch in batch_l:
+        for bio_var in bio_var_l:
+            df.loc[batch, bio_var] = len(meta_data.loc[(meta_data[batch_var]==batch) & (meta_data[bio_var]==bio_var)])
+    
+    df.to_csv(output_root+"_complete_confounding.csv")
+    print(df)
+    # check if there is a batch with only one bio_var option
+    for batch in batch_l:
+        if len(df.loc[batch].unique())==1:
+            print("batch", batch, "is a complete confounder")
+    return
+    
 
 # # ibd_3_CMD
 # ################################################################################
