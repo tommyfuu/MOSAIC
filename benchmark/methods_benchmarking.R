@@ -422,11 +422,13 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-bin_corr_val_l = c(0.1, 0.3)
+bin_corr_val_l = c(1.05)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.899)
 # batch_effect_val_l = c(0, 0.099, 0.299, 0.899)
-cond_effect_val_l = c(0, 0.099, 0.299, 0.899)
-batch_effect_val_l = c(0.899, 0.299, 0.099, 0)
+# cond_effect_val_l = c(0, 0.099, 0.299, 0.899)
+# batch_effect_val_l = c(0.899, 0.299, 0.099, 0)
+cond_effect_val_l = c(0)
+batch_effect_val_l = c(0)
 scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (bin_corr_val in bin_corr_val_l) {
     for (cond_effect_val in cond_effect_val_l) {
@@ -436,7 +438,6 @@ scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, 
             print(bin_corr_val)
             print(cond_effect_val)
             print(batch_effect_val)
-            
             output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             # run the methods on this
             run_methods(output_file_path_count,

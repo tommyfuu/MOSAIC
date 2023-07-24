@@ -88,8 +88,8 @@ def plot_PCOA_multiple(batch_corrected_df_l, meta_data, used_var, output_root):
     # r_bio_var = meta_data[bio_var]
 
     # initial graphics
-    r.par(mfrow = robjects.IntVector([2, len(batch_corrected_df_l)]))
     r.pdf(output_root+"_PCOA_both_batch.pdf")
+    r.par(mfrow = robjects.IntVector([2, len(batch_corrected_df_l)]))
 
     # plot the subplots in order
     for batch_corrected_df in batch_corrected_df_l:
@@ -97,14 +97,14 @@ def plot_PCOA_multiple(batch_corrected_df_l, meta_data, used_var, output_root):
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
 
-        r.Plot_PCoA(data, r_used_var, dissimilarity="Aitch")
+        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch")
     
     for batch_corrected_df in batch_corrected_df_l:
         data = np.array(batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
 
-        r.Plot_PCoA(data, r_used_var, dissimilarity="Aitch")
+        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch")
     r.dev_off()
     return
 
@@ -503,13 +503,13 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root):
 
 # # ibd_3_CMD
 # ################################################################################
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibd_3_CMD'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
-data_mat, meta_data = load_data_CMD(address_directory, output_root)
-print("ibd_3_CMD loaded")
-vars_use = ["study_name"]
-IDCol = 'Sam_id'
-check_complete_confounding(meta_data, "study_name", "disease", output_root)
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/ibd_3_CMD'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
+# data_mat, meta_data = load_data_CMD(address_directory, output_root)
+# print("ibd_3_CMD loaded")
+# vars_use = ["study_name"]
+# IDCol = 'Sam_id'
+# check_complete_confounding(meta_data, "study_name", "disease", output_root)
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, 'gender', 'Sam_id')
 # Evaluate(data_mat, meta_data, "study_name", './output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, 'gender', 'Sam_id')
@@ -517,13 +517,13 @@ check_complete_confounding(meta_data, "study_name", "disease", output_root)
 
 # CRC_8_CMD
 ################################################################################
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/CRC_8_CMD'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
-data_mat, meta_data = load_data_CMD(address_directory, output_root)
-print("CRC_8_CMD loaded")
-vars_use = ["study_name"]
-IDCol = 'Sam_id'
-check_complete_confounding(meta_data, "study_name", "disease", output_root)
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/CRC_8_CMD'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
+# data_mat, meta_data = load_data_CMD(address_directory, output_root)
+# print("CRC_8_CMD loaded")
+# vars_use = ["study_name"]
+# IDCol = 'Sam_id'
+# check_complete_confounding(meta_data, "study_name", "disease", output_root)
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, "study_name", './output_CRC_8_CMD_harmony/CRC_8_CMD_harmony', "disease", 30, 'gender', 'Sam_id')
 # Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_nobc/CRC_8_CMD_nobc', "disease", 30, 'gender', 'Sam_id')
@@ -625,12 +625,12 @@ check_complete_confounding(meta_data, "study_name", "disease", output_root)
 ## hanninganGD_noBoston - adenoma dataset
 ## batch by location
 ################################################################################
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/hanninganGD_noBoston'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston"
-vars_use = ["location"]
-IDCol = 'patient_visit_id'
-data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
-check_complete_confounding(meta_data, "location", "disease", output_root)
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/hanninganGD_noBoston'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston"
+# vars_use = ["location"]
+# IDCol = 'patient_visit_id'
+# data_mat, meta_data = load_data_CMD(address_directory, output_root, id = 'patient_visit_id')
+# check_complete_confounding(meta_data, "location", "disease", output_root)
 # Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_noBoston_nobc_brief/hanninganGD_noBoston', "disease", 30,  'gender', 'patient_visit_id', pipeline='brief')
 
 # Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_noBoston_nobc/hanninganGD_noBoston', "disease", 30,  'gender', 'patient_visit_id')
@@ -749,14 +749,14 @@ check_complete_confounding(meta_data, "location", "disease", output_root)
 # ## microbiomeHD - nobc eval
 # ################################################################################
 # autism 2 microbiomeHD
-print("autism 2 microbiomeHD")
-address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
-output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-vars_use = ["Dataset"]
-IDCol = 'Sam_id'
+# print("autism 2 microbiomeHD")
+# address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/autism_2_microbiomeHD'
+# output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
+# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+# vars_use = ["Dataset"]
+# IDCol = 'Sam_id'
 
-check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
+# check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
@@ -818,7 +818,7 @@ IDCol = 'Sam_id'
 
 # check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
 
-# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id', pipeline = 'default')
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id', pipeline = 'default')
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
@@ -862,8 +862,50 @@ IDCol = 'Sam_id'
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_Percentile_norm/cdi_3_microbiomeHD_Percentile_norm_1201', "DiseaseState", 30,  False, 'Sam_id')
 
 
-input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
-bio_var = "DiseaseState"
-dataset_name = "cdi_3_microbiomeHD"
-methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
-global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+# input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
+# bio_var = "DiseaseState"
+# dataset_name = "cdi_3_microbiomeHD"
+# methods_list = ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "nobc"]
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
+
+address_directory = '/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/cdi_3_microbiomeHD'
+output_root = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+address_Y = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
+
+### combat
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat.csv"
+data_mat_combat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+
+### combat_seq
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
+data_mat_combat_seq, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+
+### ConQuR
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
+data_mat_conqur, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+
+### ConQuR_libsize
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
+data_mat_conqur_libsize, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+
+### limma
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
+data_mat_limma, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+
+### MMUPHin
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
+data_mat_mupphin, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+
+## Percentile_normalization
+address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
+data_mat_pn, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+
+df_l = [data_mat, res_h, data_mat_combat, data_mat_combat_seq, data_mat_conqur, data_mat_conqur_libsize, data_mat_limma, data_mat_mupphin, data_mat_pn]
+
+
+plot_PCOA_multiple(df_l, meta_data, used_var="Dataset", output_root="./output_cdi_3_microbiomeHD_PCOA/")
+
