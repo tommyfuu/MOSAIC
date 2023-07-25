@@ -32,7 +32,7 @@ PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batc
     tab_count = tab_rel = matrix(ncol=4, nrow=1)
     rownames(tab_count) = rownames(tab_rel) = c(first_row_name)
   } else {
-    tab_count = tab_rel = matrix(ncol=4, nrow=2)
+    tab_count = tab_rel = matrix(ncol=4, nrow=1+length(covariates))
     rownames(tab_count) = rownames(tab_rel) = c(first_row_name, covar_name)
     }
 
@@ -44,10 +44,14 @@ PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batc
   tab_count[1,4] = adonis(formula = TAX ~ batchid)$aov.tab[1, 6]
 
   if (!is.null(covariates)){
-    tab_count[2,1] = adonis(formula = TAX ~ ., data=data.frame(covariates))$aov.tab[1, 5]
-    tab_count[2,2] = adonis2(formula = TAX ~ ., data=data.frame(covariates), sqrt.dist=TRUE)$R2[1]
-    tab_count[2,3] = adonis2(formula = TAX ~ ., data=data.frame(covariates), add=TRUE)$R2[1]
-    tab_count[2,4] = adonis(formula = TAX ~ ., data=data.frame(covariates))$aov.tab[1, 6]
+    row_len = 2
+    for (covariate in covariates){
+      tab_count[row_len,1] = adonis(formula = TAX ~ ., data=data.frame(covariate))$aov.tab[1, 5]
+      tab_count[row_len,2] = adonis2(formula = TAX ~ ., data=data.frame(covariate), sqrt.dist=TRUE)$R2[1]
+      tab_count[row_len,3] = adonis2(formula = TAX ~ ., data=data.frame(covariate), add=TRUE)$R2[1]
+      tab_count[row_len,4] = adonis(formula = TAX ~ ., data=data.frame(covariate))$aov.tab[1, 6]
+      row_len = row_len + 1
+    }
   }
 
   # aitchison
@@ -60,10 +64,15 @@ PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batc
   tab_rel[1,4] = adonis(formula = Z  ~ batchid, method="euclidean")$aov.tab[1, 6]
 
   if (!is.null(covariates)){
-    tab_rel[2,1] = adonis(formula = Z  ~ ., data=data.frame(covariates), method="euclidean")$aov.tab[1, 5]
-    tab_rel[2,2] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", sqrt.dist=TRUE)$R2[1]
-    tab_rel[2,3] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", add=TRUE)$R2[1]
-    tab_rel[2,4] = adonis(formula = Z  ~ ., data=data.frame(covariates), method="euclidean")$aov.tab[1, 6]
+    row_len = 2
+    for (covariate in covariates){
+      tab_rel[row_len,1] = adonis(formula = Z  ~ ., data=data.frame(covariate), method="euclidean")$aov.tab[1, 5]
+      tab_rel[row_len,2] = adonis2(formula = Z  ~ ., data=data.frame(covariate), method="euclidean", sqrt.dist=TRUE)$R2[1]
+      tab_rel[row_len,3] = adonis2(formula = Z  ~ ., data=data.frame(covariate), method="euclidean", add=TRUE)$R2[1]
+      tab_rel[row_len,4] = adonis(formula = Z  ~ ., data=data.frame(covariate), method="euclidean")$aov.tab[1, 6]
+      row_len = row_len + 1
+    }
+
   }
   return(list(tab_count=tab_count, tab_rel=tab_rel))
 
