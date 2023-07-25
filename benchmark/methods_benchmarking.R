@@ -297,7 +297,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
 }
 
-
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_071923'
 
 # # autism 2 microbiomeHD
 # run_methods('/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
@@ -437,11 +437,11 @@ scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, 
             print(cond_effect_val)
             print(batch_effect_val)
             
-            output_file_path_count = paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+            output_file_path_count = paste0(overall_path, "/ibd_150_count_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             # run the methods on this
             run_methods(output_file_path_count,
-                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/data/simulation_data_midas/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
-                        paste0("/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/simulation_MIDAS/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
+                        paste0(overall_path, "/ibd_150_meta_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
+                        paste0(overall_path, "/ibd_150_", bin_corr_val, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
                         dataset = 'batchid',
                         batch_ref = "batch_0",
                         covar = c("cond"),
@@ -457,4 +457,4 @@ scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, 
   }
 }
 
-scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 1)
+scaled_midas_methods_bencharking(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, 5)

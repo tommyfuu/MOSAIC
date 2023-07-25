@@ -1,7 +1,7 @@
 # load data
 
-overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/'
-load(paste0(overall_path, "/benchmark/ibd_150.Rdata"))
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_071923'
+load("/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/ibd_150.Rdata")
 library("bindata")
 library("MIDAS")
 library(tibble)
@@ -47,10 +47,10 @@ print("checkpoint 1")
 
 
 midas_generate_per_iter <- function(or, cond_effect_val, batch_effect_val, iter){
-  output_file_path_count = paste0(overall_path, "/data/simulation_data_midas/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
   print(output_file_path_count)
-  output_file_path_relab = paste0(overall_path, "/data/simulation_data_midas/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-  output_file_path_meta = paste0(overall_path, "/data/simulation_data_midas/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  output_file_path_relab = paste0(overall_path, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  output_file_path_meta = paste0(overall_path, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
   
   if (file.exists(output_file_path_count)){
     print(output_file_path_count)
@@ -205,10 +205,10 @@ scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_
           #   print(cond_effect_val)
           #   print(batch_effect_val)
             
-          #   output_file_path_count = paste0(overall_path, "/data/simulation_data_midas/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+          #   output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
           #   print(output_file_path_count)
-          #   output_file_path_relab = paste0(overall_path, "/data/simulation_data_midas/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-          #   output_file_path_meta = paste0(overall_path, "/data/simulation_data_midas/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+          #   output_file_path_relab = paste0(overall_path, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+          #   output_file_path_meta = paste0(overall_path, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
             
           #   if (file.exists(output_file_path_count)){
           #     print(output_file_path_count)
@@ -258,4 +258,5 @@ cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000)
 
+# scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5)
 

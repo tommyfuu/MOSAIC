@@ -9,20 +9,22 @@ install.packages("Rmpfr")
 install.packages("coda.base")
 install.packages("ade4")
 install.packages("compositions")
-install.packages("bindata")
-install.packages("FDboost")
+install.packages("bindata") # need to install in R
+install.packages("FDboost") # need to install in R
 
-install.packages("BiocManager")
+install.packages("BiocManager") # need to install in R
 
-BiocManager::install("sva")
+BiocManager::install("sva") # need to install in R
+BiocManager::install("annotate") # need to install in R
 BiocManager::install("limma")
 BiocManager::install("MMUPHin")
 BiocManager::install("curatedMetagenomicData")
 BiocManager::install("mia")
 BiocManager::install("phyloseq")
 BiocManager::install("mixOmics")
-BiocManager::install("sparseDOSSA")
+
 
 install.packages("remotes")
-remotes::install_github("wdl2459/ConQuR", force=TRUE)
+remotes::install_github("r-lib/xml2") 
 remotes::install_github("mengyu-he/MIDAS")
+# remotes::install_github("wdl2459/ConQuR", force=TRUE)

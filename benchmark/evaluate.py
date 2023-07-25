@@ -1,21 +1,4 @@
-# harmonicMic - A data alignment algorithm dedicated to microbiome data.
-# Copyright (C) 2022  Chenlian (Tom) Fu <chf4012@med.cornell.edu; tfu@g.hmc.edu>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 from preprocessing import *
-from harmonicMic import run_harmonicMic
 from harmony import run_harmony
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
@@ -46,21 +29,15 @@ from statsmodels.stats.multitest import multipletests
 
 
 # data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
-def generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root, option = "harmonicMic", PCA_first = False, diversity_weight = None):
+def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root, PCA_first = False, diversity_weight = None):
     start_time = time.time()
-    PCA_first_str = ""
-    if option == "harmonicMic":
-        ho = run_harmonicMic(data_mat, meta_data, vars_use, diversity_weight = diversity_weight)
-    elif option == 'harmony':
-        if PCA_first:
-            PCA_first_str = "_PCA_first"
-            pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
-            pca_results.fit(data_mat)
-            data_mat_1 = pca_results.transform(data_mat)
-            data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
-        ho = run_harmony(data_mat, meta_data, vars_use)
-    else:
-        raise ValueError('Currently only support harmonicMic and harmony.')
+    if PCA_first:
+        PCA_first_str = "_PCA_first"
+        pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
+        pca_results.fit(data_mat)
+        data_mat_1 = pca_results.transform(data_mat)
+        data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
+    ho = run_harmony(data_mat, meta_data, vars_use)
     res = pd.DataFrame(ho.Z_corr)
     elapsed = time.time() - start_time
     print("time")
@@ -73,11 +50,11 @@ def generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_ro
         weight_str = "_weighted"
     else:
         weight_str = ""
-    with open(output_root+"_"+option+PCA_first_str+weight_str+"_elapsed_time.txt", "w") as text_file:
-        print(option, PCA_first_str, str(elapsed), "seconds", file=text_file)
+    with open(output_root+"_"+PCA_first_str+weight_str+"_elapsed_time.txt", "w") as text_file:
+        print(PCA_first_str, str(elapsed), "seconds", file=text_file)
         print("\n", file=text_file)
 
-    res.T.to_csv(output_root+"_"+option+PCA_first_str+weight_str+"_adjusted_count.csv")
+    res.T.to_csv(output_root+"_"+PCA_first_str+weight_str+"_adjusted_count.csv")
     return res.T, meta_data
 
 
@@ -818,16 +795,6 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
 
     for time_file in current_runtime_kw_paths:
         time_file = output_dir_path + "/benchmarked_data/"+time_file
-        if "harmonicMic_elapsed_time" in time_file:
-            with open(time_file) as f:
-                lines = f.readlines()
-            if "harmonicMic" in method_dict:
-                method_dict["harmonicMic"]["runtime"] = float(lines[0].split(" ")[-2])
-        if "harmonicMic_weighted_elapsed_time" in time_file:
-            with open(time_file) as f:
-                lines = f.readlines()
-            if "harmonicMic_weighted" in method_dict:
-                method_dict["harmonicMic_weighted"]["runtime"] = float(lines[0].split(" ")[-2])
         if "harmony_elapsed_time" in time_file:
             with open(time_file) as f:
                 lines = f.readlines()
@@ -965,7 +932,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # print("ibd_3_CMD loaded")
 # vars_use = ["study_name"]
 # IDCol = 'Sam_id'
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+# res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, 'gender', 'Sam_id')
 # Evaluate(data_mat, meta_data, "study_name", './output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, 'gender', 'Sam_id')
 
@@ -978,7 +945,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # print("CRC_8_CMD loaded")
 # vars_use = ["study_name"]
 # IDCol = 'Sam_id'
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+# res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, "study_name", './output_CRC_8_CMD_harmony/CRC_8_CMD_harmony', "disease", 30, 'gender', 'Sam_id')
 # Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_nobc/CRC_8_CMD_nobc', "disease", 30, 'gender', 'Sam_id')
 # # benchmarking other methods: 
@@ -1017,7 +984,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
 # bio_var = "disease"
 # dataset_name = "CRC_8_CMD"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted", "nobc"]
+# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmony_PCs", "nobc"]
 # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
@@ -1032,7 +999,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # print("hanningan loaded")
 # Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_noBoston_nobc/hanninganGD_noBoston', "disease", 30,  'gender', 'patient_visit_id')
 
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+# res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, "location", './output_hanninganGD_noBoston_harmony/CRC_8_CMD_harmony_1201', "disease", 30, 'gender', 'patient_visit_id')
 # # benchmarking other methods
 
@@ -1071,7 +1038,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv"
 # bio_var = "disease"
 # dataset_name = "hanninganGD_noBoston"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmony_PCs"]
 # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
@@ -1088,14 +1055,10 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 
 # Evaluate(data_mat, meta_data, 'location', './output_hanninganGD_noBoston_nobc/hanninganGD_noBoston', "disease", 30,  'gender', 'patient_visit_id')
 
-# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic", option = "harmonicMic")
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-# Evaluate(res, meta_data, "location", './output_hanninganGD_noBoston_harmonicMic/CRC_8_CMD_harmonicMic_1201', "disease", 30, 'gender', 'patient_visit_id')
+# res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony")
 # Evaluate(res_h, meta_data, "location", './output_hanninganGD_noBoston_harmony/CRC_8_CMD_harmony_1201', "disease", 30, 'gender', 'patient_visit_id')
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", option = "harmony", PCA_first=True)
+# res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony_PCs", PCA_first=True)
 # Evaluate(res_h, meta_data, "location", './output_hanninganGD_noBoston_harmony_PCs/CRC_8_CMD_harmony_PCs', "disease", 30, 'gender', 'patient_visit_id')
-# res, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmonicMic_weighted", option = "harmonicMic", diversity_weight=0.3)
-# Evaluate(res, meta_data, "location", './output_hanninganGD_noBoston_harmonicMic_weighted/CRC_8_CMD_harmonicMic_weighted_1201', "disease", 30, 'gender', 'patient_visit_id')
 
 # # benchmarking other methods
 
@@ -1134,7 +1097,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # input_frame_path = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_data/hanninganGD_noBoston_count_data.csv"
 # bio_var = "disease"
 # dataset_name = "hanninganGD_noBoston"
-# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmonicMic", "harmony_PCs", "harmonicMic_weighted"]
+# methods_list = ["combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Percentile_norm", "harmony", "harmony_PCs"]
 # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path = ".")
 
 
@@ -1186,7 +1149,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 #                             # create output directory
 #                             if not os.path.exists(output_root):
 #                                 os.makedirs(output_root)
-#                             res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony", option = "harmony")
+#                             res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony", option = "harmony")
 #                             Evaluate(res_h, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
 #                                     "cond", 30, IDCol=IDCol, pipeline='brief', R_PCOA_plot = R_PCOA_plot)
 #                         else:
@@ -1208,7 +1171,7 @@ def PCA_vis_for_each_batch(source_df, meta_data, output_root, batch_var, bio_var
 # vars_use = ["Dataset"]
 # IDCol = 'Sam_id'
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+# res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
 # # benchmarking other methods: 
@@ -1266,7 +1229,7 @@ meta_data['DiseaseState'] = meta_data['DiseaseState'].replace({'nonCDI': 'H'})
 print(meta_data)
 IDCol = 'Sam_id'
 Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
 # benchmarking other methods: 
