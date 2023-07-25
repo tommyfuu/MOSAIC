@@ -422,11 +422,13 @@ overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_0719
 # bin_corr_val_l = c(0, 0.1, 0.3, 0.5, 0.7, 0.9)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-bin_corr_val_l = c(0.1, 0.3)
+bin_corr_val_l = c(1.05)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.899)
 # batch_effect_val_l = c(0, 0.099, 0.299, 0.899)
-cond_effect_val_l = c(0, 0.099, 0.299, 0.899)
-batch_effect_val_l = c(0.899, 0.299, 0.099, 0)
+# cond_effect_val_l = c(0, 0.099, 0.299, 0.899)
+# batch_effect_val_l = c(0.899, 0.299, 0.099, 0)
+cond_effect_val_l = c(0)
+batch_effect_val_l = c(0)
 scaled_midas_methods_bencharking <- function(bin_corr_val_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (bin_corr_val in bin_corr_val_l) {
     for (cond_effect_val in cond_effect_val_l) {

@@ -29,42 +29,50 @@ library("compositions")
 PERMANOVA_R2 <- function(TAX, batchid, covariates = NULL, first_row_name = 'batch', covar_name = FALSE){
   # edited from Wodan's script, not exactly the same - can only take one covariate at a time
   if (is.null(covariates)){
-    tab_count = tab_rel = matrix(ncol=3, nrow=1)
-  } else {tab_count = tab_rel = matrix(ncol=3, nrow=2)}
-#   tab_count = tab_rel = matrix(ncol=3, nrow=2)
-  colnames(tab_count) = colnames(tab_rel) = c("standard", "sqrt.dist=T", "add=T")
-  # if (is.null(covar_name)){
-  #   print("HERE 1")
-  #   rownames(tab_count) = rownames(tab_rel) = c(first_row_name)
-  #   print("Here 2")
-  # }
-  # else{
-  rownames(tab_count) = rownames(tab_rel) = c(first_row_name, covar_name)
-  # }
+    tab_count = tab_rel = matrix(ncol=4, nrow=1)
+    rownames(tab_count) = rownames(tab_rel) = c(first_row_name)
+  } else {
+    tab_count = tab_rel = matrix(ncol=4, nrow=1+length(covariates))
+    rownames(tab_count) = rownames(tab_rel) = c(first_row_name, covar_name)
+    }
 
   # bray-curtis
   print("Here 3")
   tab_count[1,1] = adonis(formula = TAX ~ batchid)$aov.tab[1, 5]
   tab_count[1,2] = adonis2(formula = TAX ~ batchid, sqrt.dist=TRUE)$R2[1]
   tab_count[1,3] = adonis2(formula = TAX ~ batchid, add=TRUE)$R2[1]
+  tab_count[1,4] = adonis(formula = TAX ~ batchid)$aov.tab[1, 6]
 
-  if (is.null(covariates)){
-    tab_count[2,1] = adonis(formula = TAX ~ ., data=data.frame(covariates))$aov.tab[1, 5]
-    tab_count[2,2] = adonis2(formula = TAX ~ ., data=data.frame(covariates), sqrt.dist=TRUE)$R2[1]
-    tab_count[2,3] = adonis2(formula = TAX ~ ., data=data.frame(covariates), add=TRUE)$R2[1]
+  if (!is.null(covariates)){
+    row_len = 2
+    for (covariate in covariates){
+      tab_count[row_len,1] = adonis(formula = TAX ~ ., data=data.frame(covariate))$aov.tab[1, 5]
+      tab_count[row_len,2] = adonis2(formula = TAX ~ ., data=data.frame(covariate), sqrt.dist=TRUE)$R2[1]
+      tab_count[row_len,3] = adonis2(formula = TAX ~ ., data=data.frame(covariate), add=TRUE)$R2[1]
+      tab_count[row_len,4] = adonis(formula = TAX ~ ., data=data.frame(covariate))$aov.tab[1, 6]
+      row_len = row_len + 1
+    }
   }
 
   # aitchison
-  Z = coda.base::dist(TAX+0.5, method="aitchison")
+  kappa = min(TAX[TAX > 0])/2
+  Z = coda.base::dist(TAX+kappa, method="aitchison")
 
   tab_rel[1,1] = adonis(formula = Z  ~ batchid, method="euclidean")$aov.tab[1, 5]
   tab_rel[1,2] = adonis2(formula = Z  ~ batchid, method="euclidean", sqrt.dist=TRUE)$R2[1]
   tab_rel[1,3] = adonis2(formula = Z  ~ batchid, method="euclidean", add=TRUE)$R2[1]
-  
-  if (is.null(covariates)){
-    tab_rel[2,1] = adonis(formula = Z  ~ ., data=data.frame(covariates), method="euclidean")$aov.tab[1, 5]
-    tab_rel[2,2] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", sqrt.dist=TRUE)$R2[1]
-    tab_rel[2,3] = adonis2(formula = Z  ~ ., data=data.frame(covariates), method="euclidean", add=TRUE)$R2[1]
+  tab_rel[1,4] = adonis(formula = Z  ~ batchid, method="euclidean")$aov.tab[1, 6]
+
+  if (!is.null(covariates)){
+    row_len = 2
+    for (covariate in covariates){
+      tab_rel[row_len,1] = adonis(formula = Z  ~ ., data=data.frame(covariate), method="euclidean")$aov.tab[1, 5]
+      tab_rel[row_len,2] = adonis2(formula = Z  ~ ., data=data.frame(covariate), method="euclidean", sqrt.dist=TRUE)$R2[1]
+      tab_rel[row_len,3] = adonis2(formula = Z  ~ ., data=data.frame(covariate), method="euclidean", add=TRUE)$R2[1]
+      tab_rel[row_len,4] = adonis(formula = Z  ~ ., data=data.frame(covariate), method="euclidean")$aov.tab[1, 6]
+      row_len = row_len + 1
+    }
+
   }
   return(list(tab_count=tab_count, tab_rel=tab_rel))
 
@@ -101,8 +109,9 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
     sub_index = seq(ncol(TAX))
   }
   if (dissimilarity == "Aitch"){
-
-    Z = as.matrix(clr(as.matrix(TAX[, sub_index])+0.5))
+    temp_mat = as.matrix(TAX[, sub_index])
+    kappa = min(temp_mat[temp_mat > 0])/2
+    Z = as.matrix(clr(temp_mat+kappa))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
     print(main)
     pdf(paste0(out, "PCoA_", dissimilarity, ".pdf"))
@@ -147,167 +156,54 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
   }
 }
 
-
-### RF - predict key variable
-
-# Predict binary key variable using random forest, k-fold cross-validation (out-of-bag is not stable), AUC/ROC of the data accumulated from k fold
-
-#' Predict binary variables based on a taxa read count table by random forest
-#'
-#' @param TAX The taxa read count table, samples (row) by taxa (col).
-#' @param factor The binary variable to predict, e.g., the key variable, case/control, must be a factor.
-#' @param fold The number of folds; default is 5.
-#' @param seed The seed to generate fold indices for samples; default is 2020.
-#'
-#' @return A list
-#' \itemize{
-#'   \item pred - A table summarizing the predicted probabilities and true labels for all samples.
-#'   \item auc_across_fold - AUC of the ROC curves across folds.
-#'   \item auc_on_all - AUC of the ROC curve on all samples.
-#'}
-#'
-#' @export
-
-RF_Pred <- function(TAX, factor, fold=5, seed=2020){
-
-  set.seed(seed)
-  ss = sample(1:fold,size=nrow(TAX),replace=T,prob=rep(1/fold, fold)) # assign fold for samples
-
-  temp = as.matrix(TAX)
-  rownames(temp) = NULL
-  colnames(temp) = NULL
-
-  # do prediction across folds
-  record_tab = NULL
-  record_auc = NULL
-  for (ii in 1:fold){
-    trainy = factor[ss!=ii]
-    testy = factor[ss==ii]
-
-    trainx = temp[ss!=ii, ]
-    testx = temp[ss==ii, ]
-
-    rf_classifier = randomForest(trainy ~ ., data=trainx, importance=TRUE)
-
-    prediction_for_roc_curve = predict(rf_classifier,testx,type="prob")
-    pred = prediction(prediction_for_roc_curve[,2],testy)
-    record_tab = rbind(record_tab, data.frame(prob=prediction_for_roc_curve[,2],testy))
-
-    auc.perf = performance(pred, measure = "auc")
-    record_auc[ii] = auc.perf@y.values[[1]]
+Plot_single_PCoA <- function(TAX, factor, bc_method, sub_index=NULL, dissimilarity="Bray", aa=1.5){
+  # dissimilarity can be either "Bray" or "Aitch"
+  
+  nfactor = length(table(factor))
+  if (is.null(sub_index)){
+    sub_index = seq(ncol(TAX))
   }
-
-  # ROC on the accumulated prediction, e.g., on all samples
-  pred = prediction(record_tab[,1],record_tab[,2])
-  perf = performance(pred, "tpr", "fpr")
-
-  auc.perf = performance(pred, measure = "auc")
-  auc_value = auc.perf@y.values[[1]]
-
-  return(list(pred=record_tab, auc_across_fold=record_auc, auc_on_all=auc_value))
-
+  if (dissimilarity == "Aitch") {
+    temp_mat = as.matrix(TAX[, sub_index])
+    kappa = min(temp_mat[temp_mat > 0])/2
+    Z = as.matrix(clr(temp_mat+kappa))
+    MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = paste0(bc_method, " Aitchinson"), csub = aa)
+  }
+  else if (dissimilarity == "Bray") {
+    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
+    bc =  vegdist(TAX[index, sub_index])
+    MDS = cmdscale(bc, k=4)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = paste0(bc_method, " Bray-Curtis"), csub = aa)
+  }
+  else{
+    stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")
+  }
 }
+Plot_multiple_PCoA <- function(out, TAX_l, factor, sub_index=NULL, tree=NULL, main=NULL, aa=1.5){
+  # plot multiple PCOA plots on the same figure
+  # TAX_l: a list of TAX
+  nfactor = length(table(factor))
+  pdf(paste0(out, "PCoA_both.pdf"))
 
+  # generate a num-of-TAX * 2 (aitchinson/bray curtis) graph
+  par(mfrow=c(2, length(TAX_l)))
 
-# Predict continuous key variable using random forest, k-fold cross-validation (out-of-bag is not stable), rmse from k fold
-
-#' Predict continuous variables based on a taxa read count table by random forest
-#'
-#' @param TAX The taxa read count table, samples (row) by taxa (col).
-#' @param variable The continuous variable to predict.
-#' @param fold The number of folds; default is 5.
-#' @param seed The seed to generate fold indices for samples; default is 2020.
-#'
-#' @return A list
-#' \itemize{
-#'   \item pred - A table summarizing the predicted and true values for all samples.
-#'   \item rmse_across_fold - RMSEs across folds.
-#'}
-#'
-#' @export
-
-RF_Pred_Regression <- function(TAX, variable, fold=5, seed=2020){
-
-  set.seed(seed)
-  ss = sample(1:fold,size=nrow(TAX),replace=T,prob=rep(1/fold, fold)) # assign fold for samples
-
-  temp = as.matrix(TAX)
-  rownames(temp) = NULL
-  colnames(temp) = NULL
-
-  # do prediction across folds
-  record_tab = NULL
-  record_rmse = NULL
-  for (ii in 1:fold){
-    trainy = variable[ss!=ii]
-    testy = variable[ss==ii]
-
-    trainx = temp[ss!=ii, ]
-    testx = temp[ss==ii, ]
-
-    rf_regression = randomForest(trainy ~ ., data=trainx, importance=TRUE)
-
-    prediction_for_rmse <- predict(rf_regression,testx)
-    record_tab = rbind(record_tab, data.frame(pred=prediction_for_rmse,testy))
-
-    record_rmse[ii] = sqrt(mean( (prediction_for_rmse - testy)^2 ))
+  # plot Aitchinson plots on the first row
+  for (TAX in Tax_l) {
+    temp_mat = as.matrix(TAX[, sub_index])
+    kappa = min(temp_mat[temp_mat > 0])/2
+    Z = as.matrix(clr(temp_mat+kappa))
+    MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
+  }
+  # plot Bray-Curtis plots on the second row
+  for (TAX in Tax_l) {
+    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
+    bc =  vegdist(TAX[index, sub_index])
+    MDS = cmdscale(bc, k=4)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis", csub = aa)
   }
 
-  return(list(pred=record_tab, rmse_across_fold=record_rmse))
-
-}
-
-
-# Predict multiclass key variable using random forest, k-fold cross-validation (out-of-bag is not stable), cross entropy from k fold
-
-#' Predict multiclass variables based on a taxa read count table by random forest
-#'
-#' @param TAX The taxa read count table, samples (row) by taxa (col).
-#' @param factor The multiclass variable to predict, e.g., the key variable, never smoker/former smoker/current smoker, must be a factor.
-#' @param fold The number of folds; default is 5.
-#' @param seed The seed to generate fold indices for samples; default is 2020.
-#'
-#' @return A list
-#' \itemize{
-#'   \item pred - A table summarizing the predicted probabilities and true labels for all samples.
-#'   \item cross_entropy_across_fold - mean cross-entropy across folds.
-#'}
-#'
-#' @export
-
-RF_Pred_Multiclass <- function(TAX, factor, fold=5, seed=2020){
-
-  set.seed(seed)
-  ss = sample(1:fold,size=nrow(TAX),replace=T,prob=rep(1/fold, fold)) # assign fold for samples
-
-  temp = as.matrix(TAX)
-  rownames(temp) = NULL
-  colnames(temp) = NULL
-
-  # do prediction across folds
-  record_tab = NULL
-  record_entropy = NULL
-  for (ii in 1:fold){
-    trainy = factor[ss!=ii]
-    testy = factor[ss==ii]
-
-    trainx = temp[ss!=ii, ]
-    testx = temp[ss==ii, ]
-
-    rf_classifier = randomForest(trainy ~ ., data=trainx, importance=TRUE)
-
-    prediction_for_roc_curve = predict(rf_classifier,testx,type="prob")
-    testy = dummy_cols(testy)[, -1]
-
-    cross_entropy = NULL
-    for (jj in 1:nrow(testy)){
-      cross_entropy[jj] = - sum( testy[jj, ] * log(prediction_for_roc_curve[jj, ])    )
-    }
-
-    record_tab = rbind(record_tab, data.frame(prediction_for_roc_curve, testy))
-    record_entropy[[ii]] = mean( cross_entropy )
-  }
-
-  return(list(pred=record_tab, cross_entropy_across_fold=record_entropy))
-
+  dev.off()
 }

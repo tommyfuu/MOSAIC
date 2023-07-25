@@ -256,7 +256,7 @@ scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_
 or_l = c(1.05, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000)
+scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1)
 
 # scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5)
 

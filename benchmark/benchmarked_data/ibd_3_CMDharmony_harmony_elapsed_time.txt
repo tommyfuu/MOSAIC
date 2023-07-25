@@ -1,3 +1,3 @@
-harmony  3.8064022064208984 seconds
+harmony  3.177441120147705 seconds
 
 

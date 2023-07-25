@@ -70,7 +70,7 @@ def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'
     combined_metadata = pd.concat(metadata_l)
     combined_metadata[id] = list(combined_metadata.index) # the default IDCol for microbiomeHD will be Sam_id
 
-    data_mat, meta_data = preprocess(combined_countdf, combined_metadata, id)
+    data_mat, meta_data = preprocess(combined_countdf, combined_metadata, id, covar_l)
 
     # TODO: ensure that the sample ids are correctly aligned in metadata and count_table
     data_mat_ids = list(data_mat.index)
@@ -91,7 +91,7 @@ def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'
         meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 
-def load_data_CMD(address_directory, output_root = False, id = 'Sam_id'):
+def load_data_CMD(address_directory, output_root = False, id = 'Sam_id', covar_l = []):
     ### CuratedMetagenomicsDataset provides way more metadata in a congestible manner
     cur_dir_names = os.listdir(address_directory)
     address_X = address_directory + '/'+ [result for result in cur_dir_names if "otu_table_" in result][0]
@@ -99,7 +99,7 @@ def load_data_CMD(address_directory, output_root = False, id = 'Sam_id'):
     data_mat = pd.read_csv(address_X, index_col=0)
     meta_data = pd.read_csv(address_Y, index_col=0)
     meta_data[id] = list(meta_data.index)
-    data_mat, meta_data = preprocess(data_mat.T, meta_data, id)
+    data_mat, meta_data = preprocess(data_mat.T, meta_data, id, covar_l)
     
     # TODO: ensure that the sample ids are correctly aligned in metadata and count_table
     data_mat_ids = list(data_mat.index)
@@ -130,14 +130,14 @@ def load_data_CMD(address_directory, output_root = False, id = 'Sam_id'):
         meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
 
-def load_data(address_X, address_Y, IDCol, index_col = False, output_root = False):
+def load_data(address_X, address_Y, IDCol, index_col = False, output_root = False, covar_l = []):
     if index_col != False:
         data_mat = pd.read_csv(address_X, index_col=index_col)
     else:
         data_mat = pd.read_csv(address_X)
     meta_data = pd.read_csv(address_Y)
     data_mat.index = list(meta_data[IDCol])
-    data_mat, meta_data = preprocess(data_mat, meta_data, IDCol)
+    data_mat, meta_data = preprocess(data_mat, meta_data, IDCol, covar_l)
 
     # save stuff if needed
     if output_root != False:
@@ -162,13 +162,26 @@ def load_data_simulation(address, output_root = False):
 
     return
 
-def preprocess(data_mat, meta_data, IDCol):
+def preprocess(data_mat, meta_data, IDCol, covar_l = []):
     # remove samples with all zeros
     data_mat = data_mat.loc[~(data_mat==0).all(axis=1)]
     kept_samples = data_mat.index
     meta_data = meta_data[meta_data[IDCol].isin(kept_samples)]
     print(data_mat.shape, meta_data.shape)
     # remove features with all zeros
+    col_names = list(data_mat.columns)
+    col_sums = data_mat.sum(axis = 1)
+    print(len(col_sums))
+    removable_feature_names = [col_names[index] for index, col_sum in enumerate(col_sums) if col_sum==0]
+    data_mat.drop(removable_feature_names, axis=1, inplace=True)
+    print(data_mat.shape, meta_data.shape)
+    # for each covar used, remove samples with missing values
+    for covar in covar_l:
+        meta_data = meta_data[meta_data[covar].notna()]
+        print(data_mat.shape, meta_data.shape)
+    data_mat = data_mat.loc[meta_data[IDCol]]
+    print(data_mat.shape, meta_data.shape)
+    # after cleaning samples, remove features with all zeros again
     col_names = list(data_mat.columns)
     col_sums = data_mat.sum(axis = 1)
     print(len(col_sums))

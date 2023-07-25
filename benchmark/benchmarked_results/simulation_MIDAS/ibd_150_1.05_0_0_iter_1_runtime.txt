@@ -1,0 +1,3 @@
+runtime documenting...
+combat runtime 3.01649808883667 seconds
+combat_seq runtime 5.27773785591125 seconds
