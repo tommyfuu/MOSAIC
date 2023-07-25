@@ -147,7 +147,7 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
   }
 }
 
-Plot_single_PCoA <- function(TAX, factor, sub_index=NULL, dissimilarity="Bray", aa=1.5){
+Plot_single_PCoA <- function(TAX, factor, bc_method, sub_index=NULL, dissimilarity="Bray", aa=1.5){
   # dissimilarity can be either "Bray" or "Aitch"
   
   nfactor = length(table(factor))
@@ -159,13 +159,13 @@ Plot_single_PCoA <- function(TAX, factor, sub_index=NULL, dissimilarity="Bray", 
     kappa = min(temp_mat[temp_mat > 0])/2
     Z = as.matrix(clr(temp_mat+kappa))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
-    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = "Aitchinson", csub = aa)
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = paste0(bc_method, " Aitchinson"), csub = aa)
   }
   else if (dissimilarity == "Bray") {
     index = which( apply(TAX[, sub_index], 1, sum) > 0 )
     bc =  vegdist(TAX[index, sub_index])
     MDS = cmdscale(bc, k=4)
-    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = "Bray-Curtis", csub = aa)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = paste0(bc_method, " Bray-Curtis"), csub = aa)
   }
   else{
     stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")

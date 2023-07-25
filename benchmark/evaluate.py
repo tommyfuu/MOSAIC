@@ -80,32 +80,33 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
     a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar, IDCol, R_PCOA_plot)
     return
 
-def plot_PCOA_multiple(batch_corrected_df_l, meta_data, used_var, output_root):
+def plot_PCOA_multiple(batch_corrected_df_l, methods, meta_data, used_var, output_root):
     # prepare metadata
     r = robjects.r
+    numpy2ri.activate()
+    pandas2ri.activate()
     r.source('./PERMANOVA_supporting.R')
     r_used_var = meta_data[used_var]
     # r_bio_var = meta_data[bio_var]
 
     # initial graphics
-    r.pdf(output_root+"_PCOA_both_batch.pdf")
+    r.pdf(output_root+"multi_PCOA_both_batch.pdf", len(batch_corrected_df_l)*6, height=12)
     r.par(mfrow = robjects.IntVector([2, len(batch_corrected_df_l)]))
 
     # plot the subplots in order
-    for batch_corrected_df in batch_corrected_df_l:
+    for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
         data = np.array(batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
 
-        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch")
+        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
     
-    for batch_corrected_df in batch_corrected_df_l:
+    for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
         data = np.array(batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
 
-        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch")
-    r.dev_off()
+        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
     return
 
 class Evaluate(object):
@@ -204,7 +205,7 @@ class Evaluate(object):
         # attempting rpy2
         #Must be activated
         pandas2ri.activate()
-        # numpy2ri.activate()
+        numpy2ri.activate()
 
         # import r packages/functions
         r = robjects.r
@@ -818,7 +819,7 @@ IDCol = 'Sam_id'
 
 # check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
 
-Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id', pipeline = 'default')
+# Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id', pipeline = 'default')
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
 
@@ -904,8 +905,8 @@ data_mat_mupphin, meta_data = load_results_from_benchmarked_methods(address_X, a
 address_X = "/Users/chenlianfu/Documents/GitHub/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
 data_mat_pn, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 
-df_l = [data_mat, res_h, data_mat_combat, data_mat_combat_seq, data_mat_conqur, data_mat_conqur_libsize, data_mat_limma, data_mat_mupphin, data_mat_pn]
+df_l = [data_mat, res_h, data_mat_combat_seq, data_mat_conqur, data_mat_conqur_libsize, data_mat_limma, data_mat_mupphin, data_mat_pn]
+methods = ["nobc", "harmony", "combat_seq", "conqur", "conqur_libsize", "limma", "mupphin", "pn"]
 
-
-plot_PCOA_multiple(df_l, meta_data, used_var="Dataset", output_root="./output_cdi_3_microbiomeHD_PCOA/")
+plot_PCOA_multiple(df_l, methods, meta_data, used_var="Dataset", output_root="./output_cdi_3_microbiomeHD_PCOA/")
 
