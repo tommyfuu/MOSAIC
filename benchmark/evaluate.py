@@ -32,6 +32,8 @@ def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root, 
         pca_results.fit(data_mat)
         data_mat_1 = pca_results.transform(data_mat)
         data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
+    else:
+        PCA_first_str = ''
     ho = run_harmony(data_mat, meta_data, vars_use)
     res = pd.DataFrame(ho.Z_corr)
     elapsed = time.time() - start_time
@@ -447,7 +449,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     return pd.DataFrame.from_dict(method_dict, orient ='index') 
 
 
-def check_complete_confounding(meta_data, batch_var, bio_var, output_root):
+def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
     # make a pandas dataframe where rows are batches whereas columns are the bio_var options
     # each entry is the number of samples in that batch with that bio_var option
     # if there is a batch with only one bio_var option, then it is a complete confounder
@@ -469,7 +471,8 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root):
         for bio_var_val in bio_var_l:
             df.loc[batch, bio_var_val] = len(meta_data.loc[(meta_data[batch_var]==batch) & (meta_data[bio_var]==bio_var_val)])
     
-    df.to_csv(output_root+"_complete_confounding.csv")
+    if output_root != '':
+        df.to_csv(output_root+"_complete_confounding.csv")
     print(df)
     # check if there is a batch with only one bio_var option
     for batch in batch_l:
@@ -479,6 +482,8 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root):
     
 
 overall_path = '/athena/linglab/scratch/chf4012'
+
+## GENERATE RW DATA FOR RUNNING R METHODS
 # ibd_3_CMD
 ################################################################################
 address_directory = overall_path+'/mic_bc_benchmark/data/ibd_3_CMD'
@@ -488,10 +493,6 @@ print("ibd_3_CMD loaded")
 vars_use = ["study_name"]
 IDCol = 'Sam_id'
 check_complete_confounding(meta_data, "study_name", "disease", output_root)
-# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-# Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id')
-# Evaluate(data_mat, meta_data, "study_name", './output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id')
-
 
 # CRC_8_CMD
 ################################################################################
@@ -502,6 +503,41 @@ print("CRC_8_CMD loaded")
 vars_use = ["study_name"]
 IDCol = 'Sam_id'
 check_complete_confounding(meta_data, "study_name", "disease", output_root)
+
+# cdi 3 microbiomeHD
+address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
+
+
+
+#######
+# ibd_3_CMD
+################################################################################
+address_directory = overall_path+'/mic_bc_benchmark/data/ibd_3_CMD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
+data_mat, meta_data = load_data_CMD(address_directory, covar_l=['age', 'gender'] )
+print("ibd_3_CMD loaded")
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+check_complete_confounding(meta_data, "study_name", "disease")
+# res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
+# Evaluate(res_h, meta_data, "study_name", './output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id')
+# Evaluate(data_mat, meta_data, "study_name", './output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id')
+
+
+# CRC_8_CMD
+################################################################################
+address_directory = overall_path+'/mic_bc_benchmark/data/CRC_8_CMD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
+data_mat, meta_data = load_data_CMD(address_directory, covar_l=['age', 'gender'] )
+print("CRC_8_CMD loaded")
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+check_complete_confounding(meta_data, "study_name", "disease")
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, "study_name", './output_CRC_8_CMD_harmony/CRC_8_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id')
 # Evaluate(data_mat, meta_data, "study_name", './output_CRC_8_CMD_nobc/CRC_8_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id')
@@ -594,7 +630,7 @@ check_complete_confounding(meta_data, "study_name", "disease", output_root)
 #                             # create output directory
 #                             if not os.path.exists(output_root):
 #                                 os.makedirs(output_root)
-#                             res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony", option = "harmony")
+#                             res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony")
 #                             Evaluate(res_h, meta_data, 'batchid', output_root+'out_'+str(bin_corr_val)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
 #                                     "cond", 30, IDCol=IDCol, pipeline='brief', R_PCOA_plot = R_PCOA_plot)
 #                         else:
@@ -612,11 +648,11 @@ check_complete_confounding(meta_data, "study_name", "disease", output_root)
 # # autism 2 microbiomeHD
 address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
 output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+data_mat, meta_data = load_data_microbiomeHD(address_directory)
 vars_use = ["Dataset"]
 IDCol = 'Sam_id'
 
-check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
+check_complete_confounding(meta_data, 'Dataset', "DiseaseState")
 # Evaluate(data_mat, meta_data, 'Dataset', './output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, [], 'Sam_id')
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
 # Evaluate(res_h, meta_data, 'Dataset', './output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nobc_0626', "DiseaseState", 30, [], 'Sam_id')
@@ -675,10 +711,10 @@ vars_use = ["Dataset"]
 meta_data['DiseaseState'] = meta_data['DiseaseState'].replace({'nonCDI': 'H'})
 print(meta_data)
 IDCol = 'Sam_id'
-Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
-Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, False, 'Sam_id')
-check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
+Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, [], 'Sam_id')
+res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony")
+Evaluate(res_h, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, [], 'Sam_id')
+check_complete_confounding(meta_data, 'Dataset', "DiseaseState")
 
 # Evaluate(data_mat, meta_data, 'Dataset', './output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc_0626', "DiseaseState", 30, [], 'Sam_id', pipeline = 'default')
 # res_h, meta_data = generate_harmonicMic_results(data_mat, meta_data, IDCol, vars_use, output_root+"harmony", option = "harmony")
