@@ -1,8 +1,0 @@
-Found 3 batches
-Adjusting for 0 covariate(s) or covariate level(s)
-Standardizing Data across genes
-Fitting L/S model and finding priors
-Finding nonparametric adjustments
-Adjusting the Data
-combat runtime 3.11010546684265 seconds
-limma runtime 2.13420653343201 seconds

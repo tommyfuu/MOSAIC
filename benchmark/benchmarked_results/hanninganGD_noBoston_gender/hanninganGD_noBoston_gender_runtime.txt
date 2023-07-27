@@ -1,2 +1,0 @@
-[1] "batch ref pool"
-[1] "Houston"  "AnnArbor" "Toronto" 

@@ -1,0 +1,1564 @@
+conda activated?
+[1] "p=301"
+[1] "checkpoint 1"
+[1] "checkpoint 2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0[1] 0.5 0.5 0.0 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0_iter_3.csv"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0_iter_4.csv" 1.0
+ 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "OR, p_cond, p_batch, bin_corr" 1.0
+ 0.5 0.5 0.0
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.099_iter_5.csv" 1.0
+ 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.699_iter_1.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.699_iter_2.csv"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.899_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.899_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.899_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.899_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0_0.899_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_2.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_3.csv"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_5.csv"[1]
+ 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ 1.0 0.5 0.5 0.0[1]
+ 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ 1.0 0.5 0.5[1] 0.0 1.0
+ 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.699_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.699_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0[1] 0.5 0.5 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0_iter_2.csv" 0.0
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.0 1.0 0.5 0.5 0.5 0.5 0.0 0.0
+
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.499_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0_iter_5.csv"
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.099_iter_3.csv" 1.0
+ 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.299_iter_1.csv"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.299_iter_2.csv" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5 0.5 0.0
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.699_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.899_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5 0.0
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000[1] 0.50000000 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0_iter_3.csv" 0.50000000
+ 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.25000000 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0_iter_5.csv" 0.50000000
+ 0.50000000 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.099_iter_1.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.099_iter_2.csv"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.099_iter_5.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.25000000 0.50000000[1] 0.50000000 0.05572809 1.25000000
+ 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.299_iter_3.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.25000000 0.50000000[1] 0.50000000 1.25000000 0.05572809 0.50000000
+ 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.499_iter_4.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.499_iter_3.csv"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.699_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.699_iter_2.csv"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.699_iter_4.csv"
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.899_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.899_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.899_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.899_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0_0.899_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000[1] 0.50000000 0.05572809 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.099_iter_5.csv"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000[1] 0.05572809
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.699_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.699_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.899_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.899_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.899_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.899_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.099_0.899_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.699_iter_2.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.25000000 0.50000000 0.50000000[1] 0.05572809 1.25000000
+ 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.299_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000[1] 0.50000000 0.05572809
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.25000000 1.25000000 0.50000000 0.50000000 0.50000000 0.50000000 0.05572809 0.05572809
+
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.299_iter_3.csv"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.499_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.25000000 0.50000000 0.50000000 0.05572809
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.099_iter_3.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000[1] 0.50000000 0.05572809
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.25000000 0.50000000 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.699_0.299_iter_5.csv" 0.50000000
+ 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.25_0.899_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25000000 0.50000000 0.50000000 0.05572809
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000[1] 0.5000000 0.1010205 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.299_iter_4.csv"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000[1] 0.5000000 "OR, p_cond, p_batch, bin_corr" 0.1010205
+
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.699_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.699_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.899_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.899_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.899_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.899_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0_0.899_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000[1] 0.1010205 "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000[1] 0.5000000 0.5000000 0.1010205 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.099_iter_4.csv"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.299_iter_4.csv"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.299_iter_5.csv" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.499_iter_4.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.499_iter_3.csv"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.699_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000[1] 0.5000000 "OR, p_cond, p_batch, bin_corr" 0.5000000
+ 0.1010205
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.899_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.899_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.899_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.899_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.099_0.899_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0_iter_2.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0_iter_3.csv"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.499_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.699_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.699_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.699_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.299_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0_iter_4.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0_iter_5.csv"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.099_iter_5.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.5000000 "OR, p_cond, p_batch, bin_corr" 0.5000000
+ 0.5000000 0.1010205
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.299_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.299_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.499_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.499_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.499_0.499_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0_iter_2.csv" 1.5000000
+ 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0_iter_5.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1][1] 1.5000000 1.5000000 0.5000000 0.5000000 0.5000000 0.5000000 0.1010205 0.1010205
+
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ 1.5000000 0.5000000 0.5000000 0.1010205
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000[1] 0.5000000 "OR, p_cond, p_batch, bin_corr" 0.1010205
+
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.299_iter_2.csv"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.299_iter_1.csv"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.299_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.299_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.699_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0.099_iter_1.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0.099_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0.099_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1.5_0.899_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5000000 0.5000000 0.5000000 0.1010205
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"

@@ -1,0 +1,79 @@
+Loading required package: SparseM
+
+Attaching package: ‘SparseM’
+
+The following object is masked from ‘package:base’:
+
+    backsolve
+
+Loading required package: Rcpp
+Loading required package: Matrix
+Loaded glmnet 4.1-7
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: ‘gplots’
+
+The following object is masked from ‘package:stats’:
+
+    lowess
+
+Loading required package: permute
+Loading required package: lattice
+This is vegan 2.6-4
+Welcome to compositions, a package for compositional data analysis.
+Find an intro with "? compositions"
+
+
+Attaching package: ‘compositions’
+
+The following object is masked from ‘package:glmnet’:
+
+    rmult
+
+The following object is masked from ‘package:Matrix’:
+
+    norm
+
+The following object is masked from ‘package:SparseM’:
+
+    norm
+
+The following objects are masked from ‘package:stats’:
+
+    anova, cor, cov, dist, var
+
+The following object is masked from ‘package:graphics’:
+
+    segments
+
+The following objects are masked from ‘package:base’:
+
+    %*%, norm, scale, scale.default
+
+Thank you for using fastDummies!
+To acknowledge our work, please cite the package:
+Kaplan, J. & Schlegel, B. (2023). fastDummies: Fast Creation of Dummy (Binary) Columns and Rows from Categorical Variables. Version 1.7.1. URL: https://github.com/jacobkap/fastDummies, https://jacobkap.github.io/fastDummies/.
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead
+slurmstepd: error: *** JOB 4204505 ON scu-node079 CANCELLED AT 2023-07-26T13:41:49 ***
