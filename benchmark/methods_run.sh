@@ -1,12 +1,12 @@
 #! /bin/bash -l
  
 #SBATCH --partition=scu-cpu
-#SBATCH --job-name=methods_benchmark
+#SBATCH --job-name=methods_benchmark_sim
 #SBATCH --time=72:00:00
 #SBATCH --mem=20G   # memory requested, units available: K,M,G,T
-#SBATCH --cpus-per-task=10
-#SBATCH --output methods_benchmark-%j.out
-#SBATCH --error methods_benchmark-%j.err
+#SBATCH --cpus-per-task=20
+#SBATCH --output methods_benchmark_sim-%j.out
+#SBATCH --error methods_benchmark_sim-%j.err
 
 
 source ~/.bashrc

@@ -1,6 +1,8 @@
 runtime documenting...
-combat runtime 0.690116882324219 seconds
-limma runtime 0.0115203857421875 seconds
-MMUPHin runtime 0.608098268508911 seconds
-ConQuR runtime 35.0592129230499 seconds
-ConQuR_libsize runtime 35.3246281147003 seconds
+combat runtime 0.395550966262817 seconds
+limma runtime 0.0150110721588135 seconds
+MMUPHin runtime 0.708553075790405 seconds
+ConQuR runtime 38.1321499347687 seconds
+ConQuR_libsize runtime 38.6214582920074 seconds
+Tune_ConQuR runtime 14.3476871093114 seconds
+Tune_ConQuR_libsize runtime 13.6940778374672 seconds
