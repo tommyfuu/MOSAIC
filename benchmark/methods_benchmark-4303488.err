@@ -154,3 +154,5 @@ Fitting L/S model and finding priors
 Finding nonparametric adjustments
 Adjusting the Data
 
+'adonis' will be deprecated: use 'adonis2' instead
+'adonis' will be deprecated: use 'adonis2' instead

@@ -6,3 +6,5 @@ ConQuR runtime 44.3123676776886 seconds
 ConQuR runtime 43.6050572395325 seconds
 ConQuR_libsize runtime 44.6819651126862 seconds
 ConQuR_libsize runtime 42.1284804344177 seconds
+Tune_ConQuR runtime 951.526775836945 seconds
+Tune_ConQuR_libsize runtime 910.851597070694 seconds
