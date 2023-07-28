@@ -3,3 +3,4 @@ combat runtime 4.79459190368652 seconds
 limma runtime 3.40230202674866 seconds
 MMUPHin runtime 5.82273244857788 seconds
 ConQuR_simple runtime 21.6780722339948 seconds
+Tune_ConQuR_rel runtime 8.98371431688468 seconds

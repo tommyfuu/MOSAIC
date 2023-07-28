@@ -1,4 +1,5 @@
 from preprocessing import *
+from percentile_norm_func import *
 from harmony import run_harmony
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
@@ -424,9 +425,6 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             method_dict["ConQuR"]["runtime"] = float(line.split(" ")[-2])
         if "ConquR_libsize" in line:
             method_dict["ConQuR_libsize"]["runtime"] = float(line.split(" ")[-2])
-        if "percentile_normalization" in line:
-            print("percentile_normalization in line")
-            method_dict["Percentile_norm"]["runtime"] = float(line.split(" ")[-2])
     
     benchmarked_data_harmony_dir = output_dir_path + "/benchmarked_data"
     benchmarked_data_harmony_dir = os.listdir(benchmarked_data_harmony_dir)
@@ -438,6 +436,10 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             with open(time_file) as f:
                 lines = f.readlines()
             method_dict["harmony"]["runtime"] = float(lines[0].split(" ")[-2])
+        if "percentile_norm_elapsed_time" in time_file:
+            with open(time_file) as f:
+                lines = f.readlines()
+            method_dict["Percentile_norm"]["runtime"] = float(lines[0].split(" ")[-2])
     if 'nobc' in method_dict:
         method_dict['nobc']['runtime'] = 'NA'
 

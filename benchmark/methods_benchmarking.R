@@ -383,11 +383,12 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             )
                         }
     
-# or_l = c(1, 1.25, 1.5)
+or_l = c(1, 1.25, 1.5)
 # or_l = c(1.25, 1.5)
 or_l = c(1)
 # or_l = c(1.5)
-cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+cond_effect_val_l = c(0.499, 0.699, 0.899)
 batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_072623'
 scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   

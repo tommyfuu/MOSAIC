@@ -1,5 +1,0 @@
-shannon_global_pval 2.0254241213166076e-05 
-
-shannon_pairwise_pval 
-
-{('asd_son', 'autism_kb'): 2.0254241213166076e-05}
