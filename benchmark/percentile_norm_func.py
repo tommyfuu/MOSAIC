@@ -86,10 +86,10 @@ def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter =
 
     ## Put back into dataframe and write to file
     norm_df = pd.DataFrame(data=norm_x, columns=df.columns, index=all_samples)
-    norm_df.to_csv(output_root+ "_percentile_norm.txt")
+    norm_df.to_csv(output_root+ "_percentile_norm.csv")
 
     print('Percentile-normalized data written to {}'.format(output_root))
     return
 
-overall_path = "/athena/linglab/scratch/chf4012/mic_bc_benchmark"
-percentile_norm(overall_path+"/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
+# overall_path = "/athena/linglab/scratch/chf4012/mic_bc_benchmark"
+# percentile_norm(overall_path+"/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")

@@ -85,7 +85,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, covar_mod = covar_df))
             }
             end_time <- Sys.time()
-            cat(c("combat runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.combat_seq, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
         }
@@ -114,7 +114,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             count_data.limma = clr(count_data.limma, inverse = TRUE)
             ## the above line is count specific
             end_time <- Sys.time()
-            cat(c("limma runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("limma runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.limma, paste(output_root, "_limma.csv", sep=""), row.names = TRUE)
         }
@@ -134,7 +134,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                                     control = list(verbose = FALSE))
             count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
             end_time <- Sys.time()
-            cat(c("MMUPHin runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
         }
@@ -144,7 +144,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             start_time <- Sys.time()
             count_data.ConQuR = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
             end_time <- Sys.time()
-            cat(c("ConQuR runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("ConQuR runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.ConQuR, paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
         }
@@ -154,7 +154,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             start_time <- Sys.time()
             count_data.ConQuR_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
             end_time <- Sys.time()
-            cat(c("ConQuR_libsize runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("ConQuR_libsize runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.ConQuR_libsize, paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
         }
@@ -174,7 +174,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                          cutoff=0.25,
                          num_core = num_core)
             end_time <- Sys.time()
-            cat(c("Tune_ConQuR runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("Tune_ConQuR runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.Tune_ConQuR$tax_final, paste(output_root, "_Tune_ConQuR.csv", sep=""), row.names = TRUE)
         }
@@ -194,7 +194,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                          cutoff=0.25,
                          num_core = num_core)
             end_time <- Sys.time()
-            cat(c("Tune_ConQuR_libsize runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("Tune_ConQuR_libsize runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.Tune_ConQuR_libsize$tax_final, paste(output_root, "_Tune_ConQuR_libsize.csv", sep=""), row.names = TRUE)
         }
@@ -224,7 +224,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             # now normalize it back to relative abundance
             count_data.combat <- count_data.combat/rowSums(count_data.combat)
             end_time <- Sys.time()
-            cat(c("combat runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.combat, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
         }
@@ -251,7 +251,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info, design = covar_df))
             }
             end_time <- Sys.time()
-            cat(c("limma runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("limma runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.limma, paste(output_root, "_limma.csv", sep=""), row.names = TRUE)
         }
@@ -271,7 +271,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                                     control = list(verbose = FALSE))
             count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
             end_time <- Sys.time()
-            cat(c("MMUPHin runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
         }
@@ -281,7 +281,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             start_time <- Sys.time()
             count_data.ConQuR_rel = ConQuR_rel(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
             end_time <- Sys.time()
-            cat(c("ConQuR_simple runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("ConQuR_simple runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.ConQuR_rel, paste(output_root, "_ConQuR_rel.csv", sep=""), row.names = TRUE)
         }
@@ -300,7 +300,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                          frequencyU=1,
                          cutoff=0.25, num_core = num_core)
             end_time <- Sys.time()
-            cat(c("Tune_ConQuR_rel runtime", toString(end_time - start_time), "seconds"), file=sink_file_name, append=TRUE)
+            cat(c("Tune_ConQuR_rel runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
             cat('\n', file=sink_file_name, append=TRUE)
             write.csv(count_data.Tune_ConQuR_rel$tax_final, paste(output_root, "_Tune_ConQuR_rel.csv", sep=""), row.names = TRUE)
         }
@@ -333,15 +333,15 @@ overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_0726
 # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
 # )
 
-# # ibd 3 CMD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
-# dataset = "study_name",
-# batch_ref = 'HMP_2019_ibdmdb',
-# covar = c("disease", "gender", "age"),
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-# )
+# ibd 3 CMD
+run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
+'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
+'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
+dataset = "study_name",
+batch_ref = 'HMP_2019_ibdmdb',
+covar = c("disease", "gender", "age"),
+used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
+)
 
 
 # # CRC_8_CMD
@@ -437,5 +437,5 @@ scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_
     }
   }
 }
-method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
+# scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
