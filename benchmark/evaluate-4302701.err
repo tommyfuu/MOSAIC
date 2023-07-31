@@ -116,3 +116,45 @@ R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
 
 R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
 
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+Traceback (most recent call last):
+  File "evaluate.py", line 770, in <module>
+    Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_ibd_3_CMD_combat/ibd_3_CMD_combat', "disease", 30, ['gender', 'age'], 'Sam_id')
+  File "evaluate.py", line 123, in __init__
+    self.diff_abund_test()
+  File "evaluate.py", line 170, in diff_abund_test
+    df[test_type+"_p_value"] = [p_values_by_taxa[taxa] for taxa in df.index]
+UnboundLocalError: local variable 'test_type' referenced before assignment

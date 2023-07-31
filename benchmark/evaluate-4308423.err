@@ -1,0 +1,154 @@
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+R[write to console]: Loading required package: permute
+
+R[write to console]: Loading required package: lattice
+
+R[write to console]: This is vegan 2.6-4
+
+R[write to console]: Welcome to compositions, a package for compositional data analysis.
+Find an intro with "? compositions"
+
+
+R[write to console]: 
+Attaching package: ‘compositions’
+
+
+R[write to console]: The following objects are masked from ‘package:stats’:
+
+    anova, cor, cov, dist, var
+
+
+R[write to console]: The following object is masked from ‘package:graphics’:
+
+    segments
+
+
+R[write to console]: The following objects are masked from ‘package:base’:
+
+    %*%, norm, scale, scale.default
+
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+2023-07-30 23:12:08,563 - harmonypy - INFO - Iteration 1 of 10
+2023-07-30 23:12:09,052 - harmonypy - INFO - Iteration 2 of 10
+2023-07-30 23:12:09,531 - harmonypy - INFO - Converged after 2 iterations
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/athena/linglab/scratch/chf4012/miniconda3/envs/bc_benchmark/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1469: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+Traceback (most recent call last):
+  File "evaluate.py", line 794, in <module>
+    percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
+  File "/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/percentile_norm_func.py", line 84, in percentile_norm
+    with open(output_root + "_percentile_norm_elapsed_time.txt", "w") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CDM/ibd_3_CDM_percentile_norm_elapsed_time.txt'

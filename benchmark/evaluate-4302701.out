@@ -92,3 +92,39 @@ HSM7J4JD      male  15.0
 
 [1664 rows x 2 columns]
 [1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.003990     0.002686  0.003990   0.001
+gender  0.003554     0.003059  0.003554   0.001
+age     0.009364     0.006337  0.009364   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.009926     0.006000  0.002035   0.001
+gender  0.003178     0.002921  0.000847   0.001
+age     0.010657     0.007240  0.001561   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.009767     0.006692  0.001476   0.001
+gender  0.003178     0.002921  0.000847   0.001
+age     0.010657     0.007240  0.001561   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.009767     0.006692  0.001476   0.001
+gender  0.003178     0.002921  0.000847   0.001
+age     0.010657     0.007240  0.001561   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+[1] "Aitchinson"
+                                 0
+batches_shannon_pval  1.650891e-07
+biovar_shannon_pval   6.365083e-14
+batch_aitch_r2        3.990253e-03
+batch_bray_r2         9.925705e-03
+batch_aitch_pval      1.000000e-03
+batch_bray_pval       1.000000e-03
+biovar_aitch_r2       9.767418e-03
+biovar_bray_r2        9.767418e-03
+biovar_aitch_pval     1.000000e-03
+biovar_bray_pval      1.000000e-03
+fill out nans
+unique biovar variables ['IBD' 'healthy']

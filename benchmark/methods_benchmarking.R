@@ -333,15 +333,15 @@ overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_0726
 # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
 # )
 
-# ibd 3 CMD
-run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
-dataset = "study_name",
-batch_ref = 'HMP_2019_ibdmdb',
-covar = c("disease", "gender", "age"),
-used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-)
+# # ibd 3 CMD
+# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
+# dataset = "study_name",
+# batch_ref = 'HMP_2019_ibdmdb',
+# covar = c("disease", "gender", "age"),
+# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
+# )
 
 
 # # CRC_8_CMD
@@ -383,13 +383,16 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             )
                         }
     
-or_l = c(1, 1.25, 1.5)
+# or_l = c(1, 1.25, 1.5)
 # or_l = c(1.25, 1.5)
-or_l = c(1)
+or_l = c(1.5)
 # or_l = c(1.5)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-cond_effect_val_l = c(0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# cond_effect_val_l = c(0.499, 0.699, 0.899)
+# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+cond_effect_val_l = c(0.299)
+batch_effect_val_l = c(0.299, 0.499, 0.699, 0.899)
+
 output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_072623'
 scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (or in or_l) {
@@ -437,5 +440,5 @@ scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_
     }
   }
 }
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-# scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
+scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)

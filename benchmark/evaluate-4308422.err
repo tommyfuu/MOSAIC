@@ -1,0 +1,142 @@
+R[write to console]: Loading required package: permute
+
+R[write to console]: Loading required package: lattice
+
+R[write to console]: This is vegan 2.6-4
+
+R[write to console]: Welcome to compositions, a package for compositional data analysis.
+Find an intro with "? compositions"
+
+
+R[write to console]: 
+Attaching package: ‘compositions’
+
+
+R[write to console]: The following objects are masked from ‘package:stats’:
+
+    anova, cor, cov, dist, var
+
+
+R[write to console]: The following object is masked from ‘package:graphics’:
+
+    segments
+
+
+R[write to console]: The following objects are masked from ‘package:base’:
+
+    %*%, norm, scale, scale.default
+
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+2023-07-30 22:36:17,742 - harmonypy - INFO - Iteration 1 of 10
+2023-07-30 22:36:18,052 - harmonypy - INFO - Iteration 2 of 10
+2023-07-30 22:36:18,353 - harmonypy - INFO - Iteration 3 of 10
+2023-07-30 22:36:18,581 - harmonypy - INFO - Iteration 4 of 10
+2023-07-30 22:36:18,798 - harmonypy - INFO - Iteration 5 of 10
+2023-07-30 22:36:19,006 - harmonypy - INFO - Iteration 6 of 10
+2023-07-30 22:36:19,219 - harmonypy - INFO - Iteration 7 of 10
+2023-07-30 22:36:19,482 - harmonypy - INFO - Iteration 8 of 10
+2023-07-30 22:36:19,694 - harmonypy - INFO - Iteration 9 of 10
+2023-07-30 22:36:19,927 - harmonypy - INFO - Iteration 10 of 10
+2023-07-30 22:36:20,143 - harmonypy - INFO - Converged after 10 iterations
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+Traceback (most recent call last):
+  File "evaluate.py", line 858, in <module>
+    # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CDM/ibd_3_CDM")
+  File "/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/percentile_norm_func.py", line 84, in percentile_norm
+    with open(output_root + "_percentile_norm_elapsed_time.txt", "w") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CDM/ibd_3_CDM_percentile_norm_elapsed_time.txt'

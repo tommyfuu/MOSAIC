@@ -394,3 +394,597 @@ Shrinkage off - using GLM estimates for parameters
 Adjusting the data
 Shrinkage off - using GLM estimates for parameters
 Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_4.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450[1]
+ 450
+[1] 301[1]
+ 301
+[1] "check point2"
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] 450
+[1] 301
+[1] "check point2"
+FoundFound  22  batches
+batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting forAdjusting for  11  covariate(s) or covariate level(s)
+covariate(s) or covariate level(s)
+Found 2 batches
+Found 2 batches
+Estimating dispersions
+Estimating dispersions
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+[1] "in count mode, can only use combat seq"
+Found 2 batches
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Fitting the GLM model
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_3.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_4.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] 450 450
+
+[1][1] 301 301
+
+[1][1] "check point2" "check point2"
+
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+FoundFound  22  batches
+batches
+Found 2 batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 Adjusting forcovariate(s) or covariate level(s)
+ 1 covariate(s) or covariate level(s)
+Using full model in ComBat-seq.
+Estimating dispersions
+Estimating dispersions
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Found 2 batches
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+[1] "in count mode, can only use combat seq"
+Found 2 batches
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Fitting the GLM model
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_4.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] 450[1] 450
+[1] 450
+ 450
+
+[1][1] 301 301
+[1]
+[1] 301 301[1]
+
+[1] "check point2" "check point2"
+[1]
+ "check point2"[1]
+ "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1][1] "in count mode, can only use combat seq" "in count mode, can only use combat seq"
+
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+Found Found2  2batches
+ batches
+Found 2 batches
+Found 2 batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 Adjusting forcovariate(s) or covariate level(s)
+ 1 Adjusting forcovariate(s) or covariate level(s)
+ 1 covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Found 2 batches
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Fitting the GLM model
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_4.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] 450[1] 450
+ 450
+[1]
+ 450[1]
+[1] 301 301[1]
+
+ 301[1]
+ 301[1][1]
+ "check point2" "check point2"[1]
+
+ "check point2"[1]
+ "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+FoundFoundFound FoundFound  2  22 22  batches
+  batches
+batches
+batches
+batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting forAdjusting for Adjusting for Adjusting for1 1Adjusting for  1  1covariate(s) or covariate level(s)
+ covariate(s) or covariate level(s)
+1 covariate(s) or covariate level(s)
+ covariate(s) or covariate level(s)
+covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1][1] 450 450
+
+[1][1][1] 450 301 301
+
+
+[1][1][1][1] 450 "check point2" "check point2" 301
+
+
+
+[1] 301[1]
+ "check point2"
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1][1] "in count mode, can only use combat seq" "in count mode, can only use combat seq"
+
+[1] "in count mode, can only use combat seq"
+FoundFoundFoundFound Found   2 222 2   batches
+ batches
+batches
+batches
+batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Adjusting forAdjusting forAdjusting for   111   covariate(s) or covariate level(s)
+covariate(s) or covariate level(s)
+covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_3.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_4.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.099_0.899_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] 450 450
+
+[1][1] 301 301
+
+[1][1][1] 450 "check point2" "check point2"
+
+[1]
+ 450[1]
+ 301
+[1][1] 301 "check point2"
+
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+Found FoundFound2   22batches
+  batches
+batches
+Found 2 batches
+Found 2 batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Adjusting forAdjusting for  11  covariate(s) or covariate level(s)
+covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Using full model in ComBat-seq.
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_3.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_4.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1][1] 450 450 450
+
+
+[1][1] 301[1] 301
+ 301
+
+[1] "check point2"[1][1]
+ "check point2" "check point2"
+
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+FoundFoundFound   222   batches
+batches
+batches
+Found 2 batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Found 2 batches
+Adjusting forAdjusting for Adjusting for 1 1 1 covariate(s) or covariate level(s)
+ covariate(s) or covariate level(s)
+covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Estimating dispersions
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_3.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] 450 450
+
+[1][1] 301 301
+
+[1][1] "check point2" "check point2"
+
+[1][1] 450 450
+
+[1] 301[1]
+ 301
+[1] "check point2"[1]
+ "check point2"
+[1] "in count mode, can only use combat seq"
+[1] "in count mode, can only use combat seq"
+[1][1] "in count mode, can only use combat seq" 450
+
+[1] 301
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+FoundFound  22  batches
+batches
+Found 2 batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Found 2 batches
+Adjusting forAdjusting for  11  covariate(s) or covariate level(s)
+covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+[1] "in count mode, can only use combat seq"
+Found 2 batches
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Fitting the GLM model
+Fitting the GLM model
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_3.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_4.csv"
+[1] "check point1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623/ibd_150_count_1_0.299_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in count mode, can only use combat seq"
+[1][1] 450 450[1]
+
+ 450
+[1][1] 301 301[1]
+
+ 301
+[1][1] "check point2" "check point2"
+[1]
+ "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+Found 2 batches
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+[1] "in count mode, can only use combat seq"
+[1][1] "in count mode, can only use combat seq"[1]
+ "in count mode, can only use combat seq" "in count mode, can only use combat seq"
+
+Found 2 batches
+Found 2 batches
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Found 2 batches
+Found 2 Adjusting forbatches
+ 1 covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Using full model in ComBat-seq.
+Using full model in ComBat-seq.
+Adjusting for 1 covariate(s) or covariate level(s)
+Adjusting for 1 covariate(s) or covariate level(s)
+Estimating dispersions
+Estimating dispersions
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
+Fitting the GLM model
+Shrinkage off - using GLM estimates for parameters
+Adjusting the data
