@@ -115,9 +115,7 @@ def load_data_CMD(address_directory, output_root = False, id = 'Sam_id', covar_l
     meta_data = meta_data.reindex(intersection_ids)
 
     # drop taxa where all values are 0
-    print(data_mat.shape)
     data_mat = data_mat.loc[:, (data_mat != 0).any(axis=0)]
-    print(data_mat.shape)
     # data_mat = data_mat.loc[(data_mat != 0).any(axis=1), :]
 
     # convert data_mat to relative abundance for each sample
@@ -125,7 +123,6 @@ def load_data_CMD(address_directory, output_root = False, id = 'Sam_id', covar_l
 
     # save stuff if needed
     if output_root != False:
-        print()
         data_mat.to_csv(output_root+"_count_data.csv") # this is actually not count, but relative abundance
         meta_data.to_csv(output_root+"_meta_data.csv", index=False)
     return data_mat, meta_data
@@ -167,27 +164,20 @@ def preprocess(data_mat, meta_data, IDCol, covar_l = []):
     data_mat = data_mat.loc[~(data_mat==0).all(axis=1)]
     kept_samples = data_mat.index
     meta_data = meta_data[meta_data[IDCol].isin(kept_samples)]
-    print(data_mat.shape, meta_data.shape)
     # remove features with all zeros
     col_names = list(data_mat.columns)
     col_sums = data_mat.sum(axis = 1)
-    print(len(col_sums))
     removable_feature_names = [col_names[index] for index, col_sum in enumerate(col_sums) if col_sum==0]
     data_mat.drop(removable_feature_names, axis=1, inplace=True)
-    print(data_mat.shape, meta_data.shape)
     # for each covar used, remove samples with missing values
     for covar in covar_l:
         meta_data = meta_data[meta_data[covar].notna()]
-        print(data_mat.shape, meta_data.shape)
     data_mat = data_mat.loc[meta_data[IDCol]]
-    print(data_mat.shape, meta_data.shape)
     # after cleaning samples, remove features with all zeros again
     col_names = list(data_mat.columns)
     col_sums = data_mat.sum(axis = 1)
-    print(len(col_sums))
     removable_feature_names = [col_names[index] for index, col_sum in enumerate(col_sums) if col_sum==0]
     data_mat.drop(removable_feature_names, axis=1, inplace=True)
-    print(data_mat.shape, meta_data.shape)
     return data_mat, meta_data
 
 # output_root = '/home/fuc/harmonicMic/harmonypy/harmonypy/percentile_norm_data/ibd_3_CMD'

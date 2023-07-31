@@ -13,8 +13,10 @@ overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_0726
 if (p==301) {
   print("p=301")
   n = nrow(otu_original) * 3 # 450 samples in this case
-  id_batch = 101:250 # these are impacting taxa instead of sample
-  id_cond = 1:150
+  # id_batch = 101:250 # these are impacting taxa instead of sample # NOTE THAT IN 0726 version still using these settings
+  # id_cond = 1:150
+  id_batch = 26:275 # these are impacting taxa instead of sample
+  id_cond = 1:50
 } 
 
 # function that turns from odds ratio to binary correlation (from ConQuR paper)
