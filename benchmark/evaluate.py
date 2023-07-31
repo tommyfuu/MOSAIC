@@ -399,6 +399,11 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     for method in methods_list:
         print(method)
         current_method_dict = {}
+
+        # methods_output_dir = overall_path+'/simulation_data_output_small_072623/'
+        # output_dir_path = overall_path+"/simulation_data_eval_small_072623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter))
+
+
         if not simulate:
             current_dir_path = output_dir_path + "/output_" + dataset_name+"_"+method 
         else:
@@ -441,7 +446,10 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         method_dict[method] = current_method_dict
     
     # fetch time spent running
-    benchmarked_results_dir = methods_output_dir + "/" + dataset_name
+    if not simulate:
+        benchmarked_results_dir = methods_output_dir + "/" + dataset_name
+    else:
+        benchmarked_results_dir = methods_output_dir
     benchmarked_results_dir_files = os.listdir(benchmarked_results_dir)
     current_runtime_kw_path = [result for result in benchmarked_results_dir_files if "runtime.txt" in result][0]
     with open(benchmarked_results_dir+'/'+current_runtime_kw_path) as f:
@@ -470,7 +478,10 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         if "Tune_ConQuR_rel" in line and "Tune_ConQuR_rel" in method_dict.keys():
             method_dict["Tune_ConQuR_rel"]["runtime"] = float(line.split(" ")[-2])
 
-    benchmarked_data_harmony_dir = benchmarked_results_dir
+    if not simulate:
+        benchmarked_data_harmony_dir = benchmarked_results_dir
+    else:
+        benchmarked_data_harmony_dir = output_dir_path + "/harmony"
     benchmarked_data_harmony_dir_files = os.listdir(benchmarked_data_harmony_dir)
     current_runtime_kw_paths = [result for result in benchmarked_data_harmony_dir_files if "elapsed_time.txt" in result]
 
@@ -480,6 +491,13 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             with open(time_file) as f:
                 lines = f.readlines()
             method_dict["harmony"]["runtime"] = float(lines[0].split(" ")[-2])
+
+    if not simulate:
+        benchmarked_data_harmony_dir = benchmarked_results_dir
+    else:
+        benchmarked_data_harmony_dir = output_dir_path + "/percentile_norm"
+    for time_file in current_runtime_kw_paths:
+        time_file = benchmarked_data_harmony_dir + "/"+time_file
         if "percentile_norm_elapsed_time" in time_file:
             with open(time_file) as f:
                 lines = f.readlines()
@@ -581,7 +599,7 @@ num_iters = 5
 IDCol = 'subjectid_text'
 # methods_list = ["nobc", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "harmony", "Percentile_norm"]
 # methods_list = ["harmony", "nobc", "combat_seq", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin"]
-methods_list = ["harmony", "nobc", "combat", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin"]
+methods_list = ["harmony", "nobc", "combat", "limma", "ConQuR", "ConQuR_libsize", "MMUPHin", "percentile_norm"]
 for odds_ratio in or_l:
     for cond_effect_val in cond_effect_val_l:
         for batch_effect_val in batch_effect_val_l:
@@ -591,12 +609,25 @@ for odds_ratio in or_l:
                         pipeline = "default"
                     else:
                         pipeline = "scaled"
+                    df_l = []
+                    metadata_l = []
                     for method in methods_list:
+                        address_Y = overall_path+'/simulation_data_MIDAS_small_072623/ibd_150_meta_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
+                        
                         # check if already exists
                         if os.path.exists(overall_path+'/simulation_data_eval_small_072623/out_'+str(odds_ratio)+'_'+str(cond_effect_val)+'_'+str(batch_effect_val)+'_iter_'+str(iter)+'/'+method+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_summary.csv'):
                             print("already exists", method, "out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_summary.csv')
+                            if method == 'harmony':
+                                data_mat, meta_data = load_results_from_benchmarked_methods(overall_path+'/simulation_data_eval_small_072623/out_'+str(odds_ratio)+'_'+str(cond_effect_val)+'_'+str(batch_effect_val)+'_iter_'+str(iter)+'/harmony/harmony__adjusted_count.csv', address_Y)
+                            elif method == 'nobc':
+                                address_X = overall_path+"/simulation_data_MIDAS_small_072623/ibd_150_count_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                                data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+                            else:
+                                data_mat, meta_data = load_results_from_benchmarked_methods(overall_path+'/simulation_data_output_small_072623/ibd_150_'+str(odds_ratio)+'_'+str(cond_effect_val)+'_'+str(batch_effect_val)+'_iter_'+str(iter)+'_'+method+'.csv', address_Y)
+                            df_l.append(data_mat)
+                            metadata_l.append(meta_data)
                             continue
-                        if method in ['nobc', 'harmony']:
+                        if method in ['nobc', 'harmony', 'percentile_norm']:
                             address_X = overall_path+"/simulation_data_MIDAS_small_072623/ibd_150_count_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
                         else:
                             address_X = overall_path+'/simulation_data_output_small_072623/ibd_150_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_'+ method+'.csv'
@@ -610,26 +641,54 @@ for odds_ratio in or_l:
                         # Evaluate(data_mat, meta_data, 'batch_var', output_root+'out_'+str(odds_ratio)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) 
                         #          , "bio_var", 30, IDCol, pipeline='brief')
                         # if not os.path.exists(output_root+'out_'+str(odds_ratio)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter)+'_summary.csv'):
-                        address_Y = overall_path+'/simulation_data_MIDAS_small_072623/ibd_150_meta_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
                         data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
                         output_root = overall_path+"/simulation_data_eval_small_072623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "/" +method + "/"
+
+                        if method == 'percentile_norm':
+                            # create output directory
+                            if not os.path.exists(output_root):
+                                os.makedirs(output_root)
+                                print("percentile_norm")
+                                print(address_X)
+                                print(address_Y)
+                                percentile_norm(address_X, address_Y, "cond", "cond_1", "comma", overall_path+"/simulation_data_output_small_072623/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), simulate=True)
+                            address_X = overall_path+"/simulation_data_output_small_072623/ibd_150_" + str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "_percentile_norm.csv"
+                            data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+                            df_l.append(data_mat_percentile_norm)
+                            metadata_l.append(meta_data_percentile_norm)
+                            Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'batchid', output_root+'out_'+str(odds_ratio)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
+                                    "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = list(range(150)))
+
 
                         if method == 'harmony':
                             # create output directory
                             if not os.path.exists(output_root):
                                 os.makedirs(output_root)
                             res_h, meta_data = generate_harmony_results(data_mat, meta_data, IDCol, ["batchid"], output_root+"harmony")
+                            df_l.append(res_h)
+                            metadata_l.append(meta_data)
                             Evaluate(res_h, meta_data, 'batchid', output_root+'out_'+str(odds_ratio)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
                                     "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = list(range(150)))
+                        # elif method == 'nobc':
+                        #     Evaluate(data_mat, meta_data, 'batchid', output_root+'out_'+str(odds_ratio)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
+                        #             "cond", n_pc=30, IDCol=IDCol, pipeline = pipeline, taxa_gt = list(range(150)))
                         else:
+                            df_l.append(data_mat)
+                            metadata_l.append(meta_data)
                             Evaluate(data_mat, meta_data, 'batchid', output_root+'out_'+str(odds_ratio)+'_'+ str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter),
                                     "cond", n_pc=30, IDCol=IDCol, pipeline = pipeline, taxa_gt = list(range(150)))
-                    
+
                     # TO FIX TOMORROW:
-                    # input_frame_path = overall_path+"/simulation_data_MIDAS_small_072623/ibd_150_count_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
-                    # bio_var = "cond"
-                    # dataset_name = "batch_0"
-                    # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+'/simulation_data_output_small_072623/', output_dir_path = overall_path+"/simulation_data_eval_small_072623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter))
+                    input_frame_path = overall_path+"/simulation_data_MIDAS_small_072623/ibd_150_count_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                    bio_var = "cond"
+                    dataset_name = "batch_0"
+                    global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+'/simulation_data_output_small_072623/', output_dir_path = overall_path+"/simulation_data_eval_small_072623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), simulate = True)
+
+                    # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_conqur_tune, data_mat_conqur_tune_libsize, data_mat_percentile_norm]
+                    # methods = ["nobc", "harmony", "combat", "limma", "MMUPhin", "ConQuR", "ConQuR_libsize", "Tune_ConQuR", "Tune_ConQuR_libsize", "percentile_norm"]
+                    # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_conqur_tune, meta_data_conqur_tune_libsize, meta_data_percentile_norm]
+                    if not os.path.exists(overall_path+"/simulation_data_eval_small_072623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+"/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'):
+                        plot_PCOA_multiple("ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), df_l, methods_list, metadata_l, used_var="batchid", output_root= overall_path+"/simulation_data_eval_small_072623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'/')
 
 
 

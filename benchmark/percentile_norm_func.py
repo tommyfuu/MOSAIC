@@ -24,8 +24,11 @@ seps = {'tab': '\t', 'newline': '\n', 'comma': ','}
 ## Read data
 print('Loading data...')
 
-def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter = 'comma', output_root = ''):
-    df = pd.read_csv(input_file, sep=seps[delimiter], header=0, index_col=0)
+def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter = 'comma', output_root = '', simulate = False):
+    if not simulate:
+        df = pd.read_csv(input_file, sep=seps[delimiter], header=0, index_col=0)
+    else:
+        df = pd.read_csv(input_file, sep=seps[delimiter])
 
     # documenting time elapsed
     import time
@@ -59,6 +62,10 @@ def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter =
     control_indices = [df.index.get_loc(i) for i in control_list]
     case_indices = [df.index.get_loc(i) for i in case_list]
 
+    print("control indices")
+    print(control_indices)
+    print("case indices")
+    print(case_indices)
     all_samples = control_list + case_list
     all_indices = control_indices + case_indices
 
