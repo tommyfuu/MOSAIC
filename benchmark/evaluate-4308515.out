@@ -1,0 +1,1019 @@
+conda activated?
+Loading data...
+already exists harmony out_1_0_0_iter_1_summary.csv
+already exists nobc out_1_0_0_iter_1_summary.csv
+already exists combat out_1_0_0_iter_1_summary.csv
+already exists limma out_1_0_0_iter_1_summary.csv
+already exists ConQuR out_1_0_0_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0_0_iter_1_summary.csv
+already exists MMUPHin out_1_0_0_iter_1_summary.csv
+already exists percentile_norm out_1_0_0_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0036727020394201, 'batch_bray_r2': 0.0127237393675549, 'biovar_aitch_r2': 0.0022029316899311, 'biovar_bray_r2': 0.0022029316899311, 'shannon_pval': 0.2462128336624839, 'aitch_pval_batch': 0.019, 'aitch_pval_biovar': 0.443, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.443}, 'nobc': {'batch_aitch_r2': 0.0031182227868711, 'batch_bray_r2': 0.0021330412664443, 'biovar_aitch_r2': 0.0022024075832708, 'biovar_bray_r2': 0.0022024075832708, 'shannon_pval': 0.1827783249868784, 'aitch_pval_batch': 0.021, 'aitch_pval_biovar': 0.445, 'bray_pval_batch': 0.486, 'bray_pval_biovar': 0.445}, 'combat': {'batch_aitch_r2': 0.0005215542849318, 'batch_bray_r2': 0.0008986099740469, 'biovar_aitch_r2': 0.0020975829699678, 'biovar_bray_r2': 0.0020975829699678, 'shannon_pval': 0.2250232006014372, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.501, 'bray_pval_batch': 0.993, 'bray_pval_biovar': 0.501}, 'limma': {'batch_aitch_r2': 0.0022130440422016, 'batch_bray_r2': 0.0023607503258529, 'biovar_aitch_r2': 0.0028130137624909, 'biovar_bray_r2': 0.0028130137624909, 'shannon_pval': 0.2317478259382268, 'aitch_pval_batch': 0.525, 'aitch_pval_biovar': 0.057, 'bray_pval_batch': 0.309, 'bray_pval_biovar': 0.057}, 'ConQuR': {'batch_aitch_r2': 0.0017009589335567, 'batch_bray_r2': -0.0013014095378636, 'biovar_aitch_r2': 0.0035073597306462, 'biovar_bray_r2': 0.0035073597306462, 'shannon_pval': 0.1957340067895728, 'aitch_pval_batch': 0.95, 'aitch_pval_biovar': 0.065, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.065}, 'ConQuR_libsize': {'batch_aitch_r2': 0.001072123609225, 'batch_bray_r2': -0.0012967781653886, 'biovar_aitch_r2': 0.0034305073230086, 'biovar_bray_r2': 0.0034305073230086, 'shannon_pval': 0.2098772990397257, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.091, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.091}, 'MMUPHin': {'batch_aitch_r2': 0.002970276465779, 'batch_bray_r2': 0.0008711709547929, 'biovar_aitch_r2': 0.002275159391989, 'biovar_bray_r2': 0.002275159391989, 'shannon_pval': 0.2051693728717523, 'aitch_pval_batch': 0.034, 'aitch_pval_biovar': 0.425, 'bray_pval_batch': 0.997, 'bray_pval_biovar': 0.425}, 'percentile_norm': {'batch_aitch_r2': 0.0022333799122461, 'batch_bray_r2': 0.0024116667063876, 'biovar_aitch_r2': 0.0024898914942692, 'biovar_bray_r2': 0.0024898914942692, 'shannon_pval': 0.4365560987701289, 'aitch_pval_batch': 0.469, 'aitch_pval_biovar': 0.158, 'bray_pval_batch': 0.236, 'bray_pval_biovar': 0.158}}
+already exists harmony out_1_0_0_iter_2_summary.csv
+already exists nobc out_1_0_0_iter_2_summary.csv
+already exists combat out_1_0_0_iter_2_summary.csv
+already exists limma out_1_0_0_iter_2_summary.csv
+already exists ConQuR out_1_0_0_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0_0_iter_2_summary.csv
+already exists MMUPHin out_1_0_0_iter_2_summary.csv
+already exists percentile_norm out_1_0_0_iter_2_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.002901658070664, 'batch_bray_r2': 0.0103420756936719, 'biovar_aitch_r2': 0.0017852700937603, 'biovar_bray_r2': 0.0017852700937603, 'shannon_pval': 0.081288635274569, 'aitch_pval_batch': 0.125, 'aitch_pval_biovar': 0.689, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.689}, 'nobc': {'batch_aitch_r2': 0.0034589738425652, 'batch_bray_r2': 0.002149530433511, 'biovar_aitch_r2': 0.0021109712358028, 'biovar_bray_r2': 0.0021109712358028, 'shannon_pval': 0.0350931232908649, 'aitch_pval_batch': 0.009, 'aitch_pval_biovar': 0.497, 'bray_pval_batch': 0.5, 'bray_pval_biovar': 0.497}, 'combat': {'batch_aitch_r2': 0.0006918783510072, 'batch_bray_r2': 0.0002058401137574, 'biovar_aitch_r2': 0.0021208249000834, 'biovar_bray_r2': 0.0021208249000834, 'shannon_pval': 0.0125103425873768, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.512, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.512}, 'limma': {'batch_aitch_r2': 0.0024318854281188, 'batch_bray_r2': 0.001544049643216, 'biovar_aitch_r2': 0.0027502516500097, 'biovar_bray_r2': 0.0027502516500097, 'shannon_pval': 0.0052765507039744, 'aitch_pval_batch': 0.19, 'aitch_pval_biovar': 0.073, 'bray_pval_batch': 0.992, 'bray_pval_biovar': 0.073}, 'ConQuR': {'batch_aitch_r2': 0.0001757731417422, 'batch_bray_r2': -0.0016378319357304, 'biovar_aitch_r2': 0.0033310635312888, 'biovar_bray_r2': 0.0033310635312888, 'shannon_pval': 0.0057304941623995, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.096, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.096}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0004150483488473, 'batch_bray_r2': -0.0013831187903777, 'biovar_aitch_r2': 0.0039567486882171, 'biovar_bray_r2': 0.0039567486882171, 'shannon_pval': 0.0123829895398978, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.043, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.043}, 'MMUPHin': {'batch_aitch_r2': 0.0028239412091635, 'batch_bray_r2': 0.0008742072633385, 'biovar_aitch_r2': 0.0022228513157151, 'biovar_bray_r2': 0.0022228513157151, 'shannon_pval': 0.0295424500807824, 'aitch_pval_batch': 0.06, 'aitch_pval_biovar': 0.429, 'bray_pval_batch': 0.992, 'bray_pval_biovar': 0.429}, 'percentile_norm': {'batch_aitch_r2': 0.0024150768161879, 'batch_bray_r2': 0.0025821698117183, 'biovar_aitch_r2': 0.0023052046636209, 'biovar_bray_r2': 0.0023052046636209, 'shannon_pval': 0.0489784960206498, 'aitch_pval_batch': 0.159, 'aitch_pval_biovar': 0.378, 'bray_pval_batch': 0.107, 'bray_pval_biovar': 0.378}}
+already exists harmony out_1_0_0_iter_3_summary.csv
+already exists nobc out_1_0_0_iter_3_summary.csv
+already exists combat out_1_0_0_iter_3_summary.csv
+already exists limma out_1_0_0_iter_3_summary.csv
+already exists ConQuR out_1_0_0_iter_3_summary.csv
+already exists ConQuR_libsize out_1_0_0_iter_3_summary.csv
+already exists MMUPHin out_1_0_0_iter_3_summary.csv
+already exists percentile_norm out_1_0_0_iter_3_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_3/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.002018857423048, 'batch_bray_r2': 0.0100679188799454, 'biovar_aitch_r2': 0.0029737842790286, 'biovar_bray_r2': 0.0029737842790286, 'shannon_pval': 0.9041193094066758, 'aitch_pval_batch': 0.626, 'aitch_pval_biovar': 0.14, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.14}, 'nobc': {'batch_aitch_r2': 0.0023816711348788, 'batch_bray_r2': 0.0016912701978476, 'biovar_aitch_r2': 0.0028972360307442, 'biovar_bray_r2': 0.0028972360307442, 'shannon_pval': 0.5883993113798619, 'aitch_pval_batch': 0.3, 'aitch_pval_biovar': 0.17, 'bray_pval_batch': 0.728, 'bray_pval_biovar': 0.17}, 'combat': {'batch_aitch_r2': 0.0005834560804778, 'batch_bray_r2': 0.0004267995070738, 'biovar_aitch_r2': 0.002985969768579, 'biovar_bray_r2': 0.002985969768579, 'shannon_pval': 0.435026018595304, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.149, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.149}, 'limma': {'batch_aitch_r2': 0.0017468199098416, 'batch_bray_r2': 0.0012557115397527, 'biovar_aitch_r2': 0.0025291668388736, 'biovar_bray_r2': 0.0025291668388736, 'shannon_pval': 0.4776926757750668, 'aitch_pval_batch': 0.983, 'aitch_pval_biovar': 0.181, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.181}, 'ConQuR': {'batch_aitch_r2': 0.0017756118628989, 'batch_bray_r2': -0.001183694647851, 'biovar_aitch_r2': 0.0044484964991003, 'biovar_bray_r2': 0.0044484964991003, 'shannon_pval': 0.3786775463639001, 'aitch_pval_batch': 0.917, 'aitch_pval_biovar': 0.016, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.016}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0022575886409968, 'batch_bray_r2': -0.0009524934321238, 'biovar_aitch_r2': 0.0048464452271532, 'biovar_bray_r2': 0.0048464452271532, 'shannon_pval': 0.3638814414454556, 'aitch_pval_batch': 0.441, 'aitch_pval_biovar': 0.005, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.005}, 'MMUPHin': {'batch_aitch_r2': 0.0022119989787523, 'batch_bray_r2': 0.0010048399242793, 'biovar_aitch_r2': 0.0027541825903359, 'biovar_bray_r2': 0.0027541825903359, 'shannon_pval': 0.4427731814705368, 'aitch_pval_batch': 0.446, 'aitch_pval_biovar': 0.204, 'bray_pval_batch': 0.971, 'bray_pval_biovar': 0.204}, 'percentile_norm': {'batch_aitch_r2': 0.0026147987176966, 'batch_bray_r2': 0.0021851843962032, 'biovar_aitch_r2': 0.002244751427197, 'biovar_bray_r2': 0.002244751427197, 'shannon_pval': 0.6684034470623204, 'aitch_pval_batch': 0.026, 'aitch_pval_biovar': 0.45, 'bray_pval_batch': 0.53, 'bray_pval_biovar': 0.45}}
+already exists harmony out_1_0_0_iter_4_summary.csv
+already exists nobc out_1_0_0_iter_4_summary.csv
+already exists combat out_1_0_0_iter_4_summary.csv
+already exists limma out_1_0_0_iter_4_summary.csv
+already exists ConQuR out_1_0_0_iter_4_summary.csv
+already exists ConQuR_libsize out_1_0_0_iter_4_summary.csv
+already exists MMUPHin out_1_0_0_iter_4_summary.csv
+already exists percentile_norm out_1_0_0_iter_4_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_4/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0031529204186232, 'batch_bray_r2': 0.011589994359522, 'biovar_aitch_r2': 0.0031883870683585, 'biovar_bray_r2': 0.0031883870683585, 'shannon_pval': 0.064915290783933, 'aitch_pval_batch': 0.072, 'aitch_pval_biovar': 0.109, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.109}, 'nobc': {'batch_aitch_r2': 0.0039328317638046, 'batch_bray_r2': 0.0032812656913997, 'biovar_aitch_r2': 0.0037008410813176, 'biovar_bray_r2': 0.0037008410813176, 'shannon_pval': 0.0350512648968999, 'aitch_pval_batch': 0.002, 'aitch_pval_biovar': 0.067, 'bray_pval_batch': 0.108, 'bray_pval_biovar': 0.067}, 'combat': {'batch_aitch_r2': 0.0008270037950539, 'batch_bray_r2': 0.0015343916662537, 'biovar_aitch_r2': 0.0040424463641354, 'biovar_bray_r2': 0.0040424463641354, 'shannon_pval': 0.0262345876594498, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.032, 'bray_pval_batch': 0.808, 'bray_pval_biovar': 0.032}, 'limma': {'batch_aitch_r2': 0.003353654424919, 'batch_bray_r2': 0.0021559493266513, 'biovar_aitch_r2': 0.0033487530613465, 'biovar_bray_r2': 0.0033487530613465, 'shannon_pval': 0.1920528892073735, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.005, 'bray_pval_batch': 0.527, 'bray_pval_biovar': 0.005}, 'ConQuR': {'batch_aitch_r2': 0.0001470237512822, 'batch_bray_r2': -0.0015009433986316, 'biovar_aitch_r2': 0.0057100033518702, 'biovar_bray_r2': 0.0057100033518702, 'shannon_pval': 0.0070253353460564, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.003}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0004754869722686, 'batch_bray_r2': -0.0011208300731206, 'biovar_aitch_r2': 0.0056084929157351, 'biovar_bray_r2': 0.0056084929157351, 'shannon_pval': 0.0478995543513659, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.002}, 'MMUPHin': {'batch_aitch_r2': 0.0038353542626008, 'batch_bray_r2': 0.0025401397584447, 'biovar_aitch_r2': 0.0036482587937201, 'biovar_bray_r2': 0.0036482587937201, 'shannon_pval': 0.0428855569627025, 'aitch_pval_batch': 0.004, 'aitch_pval_biovar': 0.06, 'bray_pval_batch': 0.3, 'bray_pval_biovar': 0.06}, 'percentile_norm': {'batch_aitch_r2': 0.0022342258049757, 'batch_bray_r2': 0.0022344044738356, 'biovar_aitch_r2': 0.0024656813112058, 'biovar_bray_r2': 0.0024656813112058, 'shannon_pval': 0.7788320463135882, 'aitch_pval_batch': 0.457, 'aitch_pval_biovar': 0.185, 'bray_pval_batch': 0.46, 'bray_pval_biovar': 0.185}}
+already exists harmony out_1_0_0_iter_5_summary.csv
+already exists nobc out_1_0_0_iter_5_summary.csv
+already exists combat out_1_0_0_iter_5_summary.csv
+already exists limma out_1_0_0_iter_5_summary.csv
+already exists ConQuR out_1_0_0_iter_5_summary.csv
+already exists ConQuR_libsize out_1_0_0_iter_5_summary.csv
+already exists MMUPHin out_1_0_0_iter_5_summary.csv
+already exists percentile_norm out_1_0_0_iter_5_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0_iter_5/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0033921178437792, 'batch_bray_r2': 0.0119825473753777, 'biovar_aitch_r2': 0.0025415746967367, 'biovar_bray_r2': 0.0025415746967367, 'shannon_pval': 0.1711906789247494, 'aitch_pval_batch': 0.026, 'aitch_pval_biovar': 0.274, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.274}, 'nobc': {'batch_aitch_r2': 0.003119031785449, 'batch_bray_r2': 0.0022321825409486, 'biovar_aitch_r2': 0.0026062225829546, 'biovar_bray_r2': 0.0026062225829546, 'shannon_pval': 0.156482983903315, 'aitch_pval_batch': 0.032, 'aitch_pval_biovar': 0.248, 'bray_pval_batch': 0.451, 'bray_pval_biovar': 0.248}, 'combat': {'batch_aitch_r2': 0.000674234393072, 'batch_bray_r2': 0.0012737786676051, 'biovar_aitch_r2': 0.0027206353262202, 'biovar_bray_r2': 0.0027206353262202, 'shannon_pval': 0.1310765351842666, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.203, 'bray_pval_batch': 0.934, 'bray_pval_biovar': 0.203}, 'limma': {'batch_aitch_r2': 0.002152701405759, 'batch_bray_r2': 0.002055257435232, 'biovar_aitch_r2': 0.0026265182273265, 'biovar_bray_r2': 0.0026265182273265, 'shannon_pval': 0.2270313728410303, 'aitch_pval_batch': 0.595, 'aitch_pval_biovar': 0.135, 'bray_pval_batch': 0.662, 'bray_pval_biovar': 0.135}, 'ConQuR': {'batch_aitch_r2': 0.0002665148885102, 'batch_bray_r2': -0.0015948066855401, 'biovar_aitch_r2': 0.004173903096852, 'biovar_bray_r2': 0.004173903096852, 'shannon_pval': 0.0696968429232395, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.021, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.021}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0006801042963681, 'batch_bray_r2': -0.0013986606681391, 'biovar_aitch_r2': 0.0043318893253854, 'biovar_bray_r2': 0.0043318893253854, 'shannon_pval': 0.0813734651940576, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.022, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.022}, 'MMUPHin': {'batch_aitch_r2': 0.0023529000419983, 'batch_bray_r2': 0.0010691869449674, 'biovar_aitch_r2': 0.0026494565099346, 'biovar_bray_r2': 0.0026494565099346, 'shannon_pval': 0.15584757761944, 'aitch_pval_batch': 0.323, 'aitch_pval_biovar': 0.254, 'bray_pval_batch': 0.971, 'bray_pval_biovar': 0.254}, 'percentile_norm': {'batch_aitch_r2': 0.0024159814100517, 'batch_bray_r2': 0.0023692496763153, 'biovar_aitch_r2': 0.002305667038245, 'biovar_bray_r2': 0.002305667038245, 'shannon_pval': 0.7309133248056912, 'aitch_pval_batch': 0.177, 'aitch_pval_biovar': 0.351, 'bray_pval_batch': 0.305, 'bray_pval_biovar': 0.351}}
+already exists harmony out_1_0_0.099_iter_1_summary.csv
+already exists nobc out_1_0_0.099_iter_1_summary.csv
+already exists combat out_1_0_0.099_iter_1_summary.csv
+already exists limma out_1_0_0.099_iter_1_summary.csv
+already exists ConQuR out_1_0_0.099_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0_0.099_iter_1_summary.csv
+already exists MMUPHin out_1_0_0.099_iter_1_summary.csv
+already exists percentile_norm out_1_0_0.099_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0070143232315324, 'batch_bray_r2': 0.0201476216067342, 'biovar_aitch_r2': 0.0021511852814295, 'biovar_bray_r2': 0.0021511852814295, 'shannon_pval': 0.2340585474349534, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.497, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.497}, 'nobc': {'batch_aitch_r2': 0.0211979524971513, 'batch_bray_r2': 0.0097783251628719, 'biovar_aitch_r2': 0.0022761295006524, 'biovar_bray_r2': 0.0022761295006524, 'shannon_pval': 0.2349147254959562, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.392, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.392}, 'combat': {'batch_aitch_r2': 0.0032802561389524, 'batch_bray_r2': 0.0009166526831193, 'biovar_aitch_r2': 0.0024715416446746, 'biovar_bray_r2': 0.0024715416446746, 'shannon_pval': 0.2864378181638084, 'aitch_pval_batch': 0.01, 'aitch_pval_biovar': 0.318, 'bray_pval_batch': 0.986, 'bray_pval_biovar': 0.318}, 'limma': {'batch_aitch_r2': 0.0122752993502162, 'batch_bray_r2': 0.0139900733115844, 'biovar_aitch_r2': 0.0026358885946879, 'biovar_bray_r2': 0.0026358885946879, 'shannon_pval': 0.7901394102331531, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.122, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.122}, 'ConQuR': {'batch_aitch_r2': 0.0004705000964039, 'batch_bray_r2': -0.0014410204542945, 'biovar_aitch_r2': 0.0035521474935901, 'biovar_bray_r2': 0.0035521474935901, 'shannon_pval': 0.1117781992174108, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.086, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.086}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0003837654397989, 'batch_bray_r2': -0.0013568869638567, 'biovar_aitch_r2': 0.0035367407313014, 'biovar_bray_r2': 0.0035367407313014, 'shannon_pval': 0.1238615269843628, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.079, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.079}, 'MMUPHin': {'batch_aitch_r2': 0.0123701851425317, 'batch_bray_r2': 0.0029873781215598, 'biovar_aitch_r2': 0.0023671564608529, 'biovar_bray_r2': 0.0023671564608529, 'shannon_pval': 0.1852219891881104, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.383, 'bray_pval_batch': 0.139, 'bray_pval_biovar': 0.383}, 'percentile_norm': {'batch_aitch_r2': 0.0021031028970676, 'batch_bray_r2': 0.0019886763641971, 'biovar_aitch_r2': 0.0027654360738429, 'biovar_bray_r2': 0.0027654360738429, 'shannon_pval': 0.5462933379765488, 'aitch_pval_batch': 0.713, 'aitch_pval_biovar': 0.053, 'bray_pval_batch': 0.777, 'bray_pval_biovar': 0.053}}
+already exists harmony out_1_0_0.099_iter_2_summary.csv
+already exists nobc out_1_0_0.099_iter_2_summary.csv
+already exists combat out_1_0_0.099_iter_2_summary.csv
+already exists limma out_1_0_0.099_iter_2_summary.csv
+already exists ConQuR out_1_0_0.099_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0_0.099_iter_2_summary.csv
+already exists MMUPHin out_1_0_0.099_iter_2_summary.csv
+already exists percentile_norm out_1_0_0.099_iter_2_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0032600544911192, 'batch_bray_r2': 0.0167504576401929, 'biovar_aitch_r2': 0.0024711115337803, 'biovar_bray_r2': 0.0024711115337803, 'shannon_pval': 0.0536916722164877, 'aitch_pval_batch': 0.059, 'aitch_pval_biovar': 0.294, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.294}, 'nobc': {'batch_aitch_r2': 0.0166613864360569, 'batch_bray_r2': 0.0070230498616912, 'biovar_aitch_r2': 0.0030619764292713, 'biovar_bray_r2': 0.0030619764292713, 'shannon_pval': 0.009993729003112, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.15, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.15}, 'combat': {'batch_aitch_r2': 0.002769987945816, 'batch_bray_r2': 0.0007942599898874, 'biovar_aitch_r2': 0.0028342615406285, 'biovar_bray_r2': 0.0028342615406285, 'shannon_pval': 0.014232531112508, 'aitch_pval_batch': 0.061, 'aitch_pval_biovar': 0.226, 'bray_pval_batch': 0.993, 'bray_pval_biovar': 0.226}, 'limma': {'batch_aitch_r2': 0.0145595048210395, 'batch_bray_r2': 0.0192479467043665, 'biovar_aitch_r2': 0.0029386910236726, 'biovar_bray_r2': 0.0029386910236726, 'shannon_pval': 0.7196759694939471, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.048, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.048}, 'ConQuR': {'batch_aitch_r2': 0.0003180025597178, 'batch_bray_r2': -0.0014884906354188, 'biovar_aitch_r2': 0.0038947222900375, 'biovar_bray_r2': 0.0038947222900375, 'shannon_pval': 0.0130192664919925, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.043, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.043}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0004353855815323, 'batch_bray_r2': -0.0013515648612427, 'biovar_aitch_r2': 0.0040705551784794, 'biovar_bray_r2': 0.0040705551784794, 'shannon_pval': 0.023334893357282, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.043, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.043}, 'MMUPHin': {'batch_aitch_r2': 0.0140079403700121, 'batch_bray_r2': 0.0042183688513208, 'biovar_aitch_r2': 0.0029024528251014, 'biovar_bray_r2': 0.0029024528251014, 'shannon_pval': 0.0104861939969006, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.154, 'bray_pval_batch': 0.029, 'bray_pval_biovar': 0.154}, 'percentile_norm': {'batch_aitch_r2': 0.0022931515660237, 'batch_bray_r2': 0.0022477637260051, 'biovar_aitch_r2': 0.0019542103258053, 'biovar_bray_r2': 0.0019542103258053, 'shannon_pval': 0.7662649739513321, 'aitch_pval_batch': 0.366, 'aitch_pval_biovar': 0.833, 'bray_pval_batch': 0.452, 'bray_pval_biovar': 0.833}}
+already exists harmony out_1_0_0.099_iter_3_summary.csv
+already exists nobc out_1_0_0.099_iter_3_summary.csv
+already exists combat out_1_0_0.099_iter_3_summary.csv
+already exists limma out_1_0_0.099_iter_3_summary.csv
+already exists ConQuR out_1_0_0.099_iter_3_summary.csv
+already exists ConQuR_libsize out_1_0_0.099_iter_3_summary.csv
+already exists MMUPHin out_1_0_0.099_iter_3_summary.csv
+already exists percentile_norm out_1_0_0.099_iter_3_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_3/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0047742040032233, 'batch_bray_r2': 0.0187897542761984, 'biovar_aitch_r2': 0.0035024727825878, 'biovar_bray_r2': 0.0035024727825878, 'shannon_pval': 0.0293984355620724, 'aitch_pval_batch': 0.003, 'aitch_pval_biovar': 0.046, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.046}, 'nobc': {'batch_aitch_r2': 0.0196971469839851, 'batch_bray_r2': 0.0061117799946407, 'biovar_aitch_r2': 0.0042367673808614, 'biovar_bray_r2': 0.0042367673808614, 'shannon_pval': 0.0123093827992283, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.022, 'bray_pval_batch': 0.002, 'bray_pval_biovar': 0.022}, 'combat': {'batch_aitch_r2': 0.0034104416345144, 'batch_bray_r2': 0.001224347941641, 'biovar_aitch_r2': 0.0042869375725395, 'biovar_bray_r2': 0.0042869375725395, 'shannon_pval': 0.0056910174979808, 'aitch_pval_batch': 0.007, 'aitch_pval_biovar': 0.021, 'bray_pval_batch': 0.944, 'bray_pval_biovar': 0.021}, 'limma': {'batch_aitch_r2': 0.0186864089948144, 'batch_bray_r2': 0.0175347263173298, 'biovar_aitch_r2': 0.0044477333092706, 'biovar_bray_r2': 0.0044477333092706, 'shannon_pval': 0.4509412187281976, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0002321646823808, 'batch_bray_r2': -0.0016264386412348, 'biovar_aitch_r2': 0.006099462977491, 'biovar_bray_r2': 0.006099462977491, 'shannon_pval': 0.0033605605632663, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.002}, 'ConQuR_libsize': {'batch_aitch_r2': 0.000183571977794, 'batch_bray_r2': -0.0014861988681751, 'biovar_aitch_r2': 0.0073185642509037, 'biovar_bray_r2': 0.0073185642509037, 'shannon_pval': 0.0023710469439153, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0148099554975186, 'batch_bray_r2': 0.0036493570081366, 'biovar_aitch_r2': 0.0042463921982017, 'biovar_bray_r2': 0.0042463921982017, 'shannon_pval': 0.0056531561666751, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.025, 'bray_pval_batch': 0.058, 'bray_pval_biovar': 0.025}, 'percentile_norm': {'batch_aitch_r2': 0.0021679574991521, 'batch_bray_r2': 0.0021536756251605, 'biovar_aitch_r2': 0.0026740697284512, 'biovar_bray_r2': 0.0026740697284512, 'shannon_pval': 0.230962333090766, 'aitch_pval_batch': 0.616, 'aitch_pval_biovar': 0.054, 'bray_pval_batch': 0.599, 'bray_pval_biovar': 0.054}}
+already exists harmony out_1_0_0.099_iter_4_summary.csv
+already exists nobc out_1_0_0.099_iter_4_summary.csv
+already exists combat out_1_0_0.099_iter_4_summary.csv
+already exists limma out_1_0_0.099_iter_4_summary.csv
+already exists ConQuR out_1_0_0.099_iter_4_summary.csv
+already exists ConQuR_libsize out_1_0_0.099_iter_4_summary.csv
+already exists MMUPHin out_1_0_0.099_iter_4_summary.csv
+already exists percentile_norm out_1_0_0.099_iter_4_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_4/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0034798488635537, 'batch_bray_r2': 0.0155765101282971, 'biovar_aitch_r2': 0.0028512737574652, 'biovar_bray_r2': 0.0028512737574652, 'shannon_pval': 0.0001138538653091, 'aitch_pval_batch': 0.03, 'aitch_pval_biovar': 0.186, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.186}, 'nobc': {'batch_aitch_r2': 0.0218343110775731, 'batch_bray_r2': 0.0089955247551617, 'biovar_aitch_r2': 0.0032859033597264, 'biovar_bray_r2': 0.0032859033597264, 'shannon_pval': 1.1980744359324594e-05, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.109, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.109}, 'combat': {'batch_aitch_r2': 0.0035288760147392, 'batch_bray_r2': 0.0005745582263168, 'biovar_aitch_r2': 0.0032900818915574, 'biovar_bray_r2': 0.0032900818915574, 'shannon_pval': 1.4572289739076209e-05, 'aitch_pval_batch': 0.006, 'aitch_pval_biovar': 0.108, 'bray_pval_batch': 0.999, 'bray_pval_biovar': 0.108}, 'limma': {'batch_aitch_r2': 0.0154501269702827, 'batch_bray_r2': 0.0164508768440793, 'biovar_aitch_r2': 0.0042774217740378, 'biovar_bray_r2': 0.0042774217740378, 'shannon_pval': 0.1284802175667273, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0002928621560188, 'batch_bray_r2': -0.0014968134153587, 'biovar_aitch_r2': 0.0035631053682191, 'biovar_bray_r2': 0.0035631053682191, 'shannon_pval': 7.224683418011395e-06, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.069, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.069}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0005941685167624, 'batch_bray_r2': -0.0013069163186687, 'biovar_aitch_r2': 0.0039026052835773, 'biovar_bray_r2': 0.0039026052835773, 'shannon_pval': 4.352456635846243e-06, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.047, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.047}, 'MMUPHin': {'batch_aitch_r2': 0.0143625509492237, 'batch_bray_r2': 0.0032975857153665, 'biovar_aitch_r2': 0.0033435119820532, 'biovar_bray_r2': 0.0033435119820532, 'shannon_pval': 1.938807942529603e-05, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.075, 'bray_pval_batch': 0.108, 'bray_pval_biovar': 0.075}, 'percentile_norm': {'batch_aitch_r2': 0.0022776501005085, 'batch_bray_r2': 0.0022902190734451, 'biovar_aitch_r2': 0.0019206464009566, 'biovar_bray_r2': 0.0019206464009566, 'shannon_pval': 0.7682067790141218, 'aitch_pval_batch': 0.371, 'aitch_pval_biovar': 0.873, 'bray_pval_batch': 0.369, 'bray_pval_biovar': 0.873}}
+already exists harmony out_1_0_0.099_iter_5_summary.csv
+already exists nobc out_1_0_0.099_iter_5_summary.csv
+already exists combat out_1_0_0.099_iter_5_summary.csv
+already exists limma out_1_0_0.099_iter_5_summary.csv
+already exists ConQuR out_1_0_0.099_iter_5_summary.csv
+already exists ConQuR_libsize out_1_0_0.099_iter_5_summary.csv
+already exists MMUPHin out_1_0_0.099_iter_5_summary.csv
+already exists percentile_norm out_1_0_0.099_iter_5_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.099_iter_5/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0022826220112489, 'batch_bray_r2': 0.0178618556135399, 'biovar_aitch_r2': 0.0024715418862734, 'biovar_bray_r2': 0.0024715418862734, 'shannon_pval': 0.4378261570778189, 'aitch_pval_batch': 0.404, 'aitch_pval_biovar': 0.304, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.304}, 'nobc': {'batch_aitch_r2': 0.0183573139532574, 'batch_bray_r2': 0.0085062676992538, 'biovar_aitch_r2': 0.0027956979678034, 'biovar_bray_r2': 0.0027956979678034, 'shannon_pval': 0.1879674769822455, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.192, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.192}, 'combat': {'batch_aitch_r2': 0.0029604416997039, 'batch_bray_r2': 0.0017708605540292, 'biovar_aitch_r2': 0.0027901817467765, 'biovar_bray_r2': 0.0027901817467765, 'shannon_pval': 0.1647425606139368, 'aitch_pval_batch': 0.035, 'aitch_pval_biovar': 0.194, 'bray_pval_batch': 0.729, 'bray_pval_biovar': 0.194}, 'limma': {'batch_aitch_r2': 0.0120217208818984, 'batch_bray_r2': 0.0132001268020859, 'biovar_aitch_r2': 0.0033782598107503, 'biovar_bray_r2': 0.0033782598107503, 'shannon_pval': 0.1022102488634587, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.006, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.006}, 'ConQuR': {'batch_aitch_r2': 0.0004819339865267, 'batch_bray_r2': -0.0014261049911275, 'biovar_aitch_r2': 0.0053371416743734, 'biovar_bray_r2': 0.0053371416743734, 'shannon_pval': 0.1043638203632451, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.005, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.005}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0004394464275399, 'batch_bray_r2': -0.0013663185553373, 'biovar_aitch_r2': 0.0051326395937831, 'biovar_bray_r2': 0.0051326395937831, 'shannon_pval': 0.1625444961607912, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.012, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.012}, 'MMUPHin': {'batch_aitch_r2': 0.0144880936768452, 'batch_bray_r2': 0.0037007411594734, 'biovar_aitch_r2': 0.0026246197312692, 'biovar_bray_r2': 0.0026246197312692, 'shannon_pval': 0.1918973646750856, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.258, 'bray_pval_batch': 0.053, 'bray_pval_biovar': 0.258}, 'percentile_norm': {'batch_aitch_r2': 0.0023615304943279, 'batch_bray_r2': 0.0021096283190501, 'biovar_aitch_r2': 0.0018141964123345, 'biovar_bray_r2': 0.0018141964123345, 'shannon_pval': 0.4814856156913047, 'aitch_pval_batch': 0.247, 'aitch_pval_biovar': 0.93, 'bray_pval_batch': 0.613, 'bray_pval_biovar': 0.93}}
+already exists harmony out_1_0_0.299_iter_1_summary.csv
+already exists nobc out_1_0_0.299_iter_1_summary.csv
+already exists combat out_1_0_0.299_iter_1_summary.csv
+already exists limma out_1_0_0.299_iter_1_summary.csv
+already exists ConQuR out_1_0_0.299_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0_0.299_iter_1_summary.csv
+already exists MMUPHin out_1_0_0.299_iter_1_summary.csv
+already exists percentile_norm out_1_0_0.299_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0047430432027875, 'batch_bray_r2': 0.0331161791515593, 'biovar_aitch_r2': 0.0027578845224678, 'biovar_bray_r2': 0.0027578845224678, 'shannon_pval': 0.3604093454763344, 'aitch_pval_batch': 0.005, 'aitch_pval_biovar': 0.188, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.188}, 'nobc': {'batch_aitch_r2': 0.046154259051186, 'batch_bray_r2': 0.0316705337332907, 'biovar_aitch_r2': 0.0032698403202208, 'biovar_bray_r2': 0.0032698403202208, 'shannon_pval': 0.3221813592974609, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.099, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.099}, 'combat': {'batch_aitch_r2': 0.0053969014386608, 'batch_bray_r2': 0.0027252394998099, 'biovar_aitch_r2': 0.0034600192721839, 'biovar_bray_r2': 0.0034600192721839, 'shannon_pval': 0.1413833420382517, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.072, 'bray_pval_batch': 0.207, 'bray_pval_biovar': 0.072}, 'limma': {'batch_aitch_r2': 0.0269792840197077, 'batch_bray_r2': 0.033774513380531, 'biovar_aitch_r2': 0.0044992546214239, 'biovar_bray_r2': 0.0044992546214239, 'shannon_pval': 0.2044019999709846, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0011799560861312, 'batch_bray_r2': -0.0013809460642191, 'biovar_aitch_r2': 0.0041453718424699, 'biovar_bray_r2': 0.0041453718424699, 'shannon_pval': 0.0688529804205301, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.034, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.034}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0013237856169164, 'batch_bray_r2': -0.0011183159379039, 'biovar_aitch_r2': 0.0056835591743847, 'biovar_bray_r2': 0.0056835591743847, 'shannon_pval': 0.0356688384143611, 'aitch_pval_batch': 0.999, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.003}, 'MMUPHin': {'batch_aitch_r2': 0.0334761337384963, 'batch_bray_r2': 0.014306664753368, 'biovar_aitch_r2': 0.0036058482528408, 'biovar_bray_r2': 0.0036058482528408, 'shannon_pval': 0.1571171156980371, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.051, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.051}, 'percentile_norm': {'batch_aitch_r2': 0.0022015847784782, 'batch_bray_r2': 0.0020282253193985, 'biovar_aitch_r2': 0.0023685040307853, 'biovar_bray_r2': 0.0023685040307853, 'shannon_pval': 0.8106311074482335, 'aitch_pval_batch': 0.54, 'aitch_pval_biovar': 0.305, 'bray_pval_batch': 0.758, 'bray_pval_biovar': 0.305}}
+already exists harmony out_1_0_0.299_iter_2_summary.csv
+already exists nobc out_1_0_0.299_iter_2_summary.csv
+already exists combat out_1_0_0.299_iter_2_summary.csv
+already exists limma out_1_0_0.299_iter_2_summary.csv
+already exists ConQuR out_1_0_0.299_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0_0.299_iter_2_summary.csv
+already exists MMUPHin out_1_0_0.299_iter_2_summary.csv
+already exists percentile_norm out_1_0_0.299_iter_2_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0065602320820777, 'batch_bray_r2': 0.0341643086418256, 'biovar_aitch_r2': 0.002649217704406, 'biovar_bray_r2': 0.002649217704406, 'shannon_pval': 0.0139202143010748, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.227, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.227}, 'nobc': {'batch_aitch_r2': 0.0485573139299225, 'batch_bray_r2': 0.0332822086339439, 'biovar_aitch_r2': 0.002565604276098, 'biovar_bray_r2': 0.002565604276098, 'shannon_pval': 0.0158886437026184, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.274, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.274}, 'combat': {'batch_aitch_r2': 0.0060197945295736, 'batch_bray_r2': 0.0018152906299559, 'biovar_aitch_r2': 0.0027504495353837, 'biovar_bray_r2': 0.0027504495353837, 'shannon_pval': 0.003367455865115, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.208, 'bray_pval_batch': 0.647, 'bray_pval_biovar': 0.208}, 'limma': {'batch_aitch_r2': 0.0319123978165256, 'batch_bray_r2': 0.0400302712396607, 'biovar_aitch_r2': 0.0053850025707049, 'biovar_bray_r2': 0.0053850025707049, 'shannon_pval': 0.9612561720187108, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0011419951026725, 'batch_bray_r2': -0.0012586471989819, 'biovar_aitch_r2': 0.0031567727687025, 'biovar_bray_r2': 0.0031567727687025, 'shannon_pval': 0.0009706267761146, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.123, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.123}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0016807409114624, 'batch_bray_r2': -0.001022580611213, 'biovar_aitch_r2': 0.0041218134159415, 'biovar_bray_r2': 0.0041218134159415, 'shannon_pval': 0.0011323149942416, 'aitch_pval_batch': 0.966, 'aitch_pval_biovar': 0.035, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.035}, 'MMUPHin': {'batch_aitch_r2': 0.0367109763610176, 'batch_bray_r2': 0.0174450553855242, 'biovar_aitch_r2': 0.0029329405776505, 'biovar_bray_r2': 0.0029329405776505, 'shannon_pval': 0.013752422775234, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.156, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.156}, 'percentile_norm': {'batch_aitch_r2': 0.0022052586212754, 'batch_bray_r2': 0.0024395492150875, 'biovar_aitch_r2': 0.0020839196768313, 'biovar_bray_r2': 0.0020839196768313, 'shannon_pval': 0.5001322196286482, 'aitch_pval_batch': 0.524, 'aitch_pval_biovar': 0.663, 'bray_pval_batch': 0.223, 'bray_pval_biovar': 0.663}}
+already exists harmony out_1_0_0.299_iter_3_summary.csv
+already exists nobc out_1_0_0.299_iter_3_summary.csv
+already exists combat out_1_0_0.299_iter_3_summary.csv
+already exists limma out_1_0_0.299_iter_3_summary.csv
+already exists ConQuR out_1_0_0.299_iter_3_summary.csv
+already exists ConQuR_libsize out_1_0_0.299_iter_3_summary.csv
+already exists MMUPHin out_1_0_0.299_iter_3_summary.csv
+already exists percentile_norm out_1_0_0.299_iter_3_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_3/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0054068054286321, 'batch_bray_r2': 0.032900845437488, 'biovar_aitch_r2': 0.0023852593668411, 'biovar_bray_r2': 0.0023852593668411, 'shannon_pval': 0.0759374474295098, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.381, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.381}, 'nobc': {'batch_aitch_r2': 0.0539750265094981, 'batch_bray_r2': 0.0373391581734073, 'biovar_aitch_r2': 0.0024925183379701, 'biovar_bray_r2': 0.0024925183379701, 'shannon_pval': 0.057685112235162, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.276, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.276}, 'combat': {'batch_aitch_r2': 0.0068960795357421, 'batch_bray_r2': 0.0023788397918657, 'biovar_aitch_r2': 0.0027017946021493, 'biovar_bray_r2': 0.0027017946021493, 'shannon_pval': 0.0245003720928118, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.205, 'bray_pval_batch': 0.365, 'bray_pval_biovar': 0.205}, 'limma': {'batch_aitch_r2': 0.0299788345193102, 'batch_bray_r2': 0.0456520607370938, 'biovar_aitch_r2': 0.0027941608669953, 'biovar_bray_r2': 0.0027941608669953, 'shannon_pval': 0.3027889716011767, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.071, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.071}, 'ConQuR': {'batch_aitch_r2': 0.001735944222447, 'batch_bray_r2': -0.0012957716508044, 'biovar_aitch_r2': 0.004069918564565, 'biovar_bray_r2': 0.004069918564565, 'shannon_pval': 0.0035224419705409, 'aitch_pval_batch': 0.937, 'aitch_pval_biovar': 0.028, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.028}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0013706334584915, 'batch_bray_r2': -0.0012250234526323, 'biovar_aitch_r2': 0.0050441795027258, 'biovar_bray_r2': 0.0050441795027258, 'shannon_pval': 0.008162467563777, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.004, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.004}, 'MMUPHin': {'batch_aitch_r2': 0.0385031049879599, 'batch_bray_r2': 0.0173514779089284, 'biovar_aitch_r2': 0.0026621554444258, 'biovar_bray_r2': 0.0026621554444258, 'shannon_pval': 0.0511386904843495, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.233, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.233}, 'percentile_norm': {'batch_aitch_r2': 0.0025437123275961, 'batch_bray_r2': 0.0023555191645535, 'biovar_aitch_r2': 0.0025138066070674, 'biovar_bray_r2': 0.0025138066070674, 'shannon_pval': 0.4693022648177776, 'aitch_pval_batch': 0.059, 'aitch_pval_biovar': 0.163, 'bray_pval_batch': 0.276, 'bray_pval_biovar': 0.163}}
+already exists harmony out_1_0_0.299_iter_4_summary.csv
+already exists nobc out_1_0_0.299_iter_4_summary.csv
+already exists combat out_1_0_0.299_iter_4_summary.csv
+already exists limma out_1_0_0.299_iter_4_summary.csv
+already exists ConQuR out_1_0_0.299_iter_4_summary.csv
+already exists ConQuR_libsize out_1_0_0.299_iter_4_summary.csv
+already exists MMUPHin out_1_0_0.299_iter_4_summary.csv
+already exists percentile_norm out_1_0_0.299_iter_4_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_4/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.005145201048578, 'batch_bray_r2': 0.033198017096843, 'biovar_aitch_r2': 0.0030280461708945, 'biovar_bray_r2': 0.0030280461708945, 'shannon_pval': 0.0525328566044605, 'aitch_pval_batch': 0.002, 'aitch_pval_biovar': 0.146, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.146}, 'nobc': {'batch_aitch_r2': 0.0551936812813205, 'batch_bray_r2': 0.0341479794189197, 'biovar_aitch_r2': 0.00343639857347, 'biovar_bray_r2': 0.00343639857347, 'shannon_pval': 0.0161111334002096, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.057, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.057}, 'combat': {'batch_aitch_r2': 0.0064431835415195, 'batch_bray_r2': 0.0023948501817275, 'biovar_aitch_r2': 0.0035253094491635, 'biovar_bray_r2': 0.0035253094491635, 'shannon_pval': 0.0174700964133107, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.058, 'bray_pval_batch': 0.366, 'bray_pval_biovar': 0.058}, 'limma': {'batch_aitch_r2': 0.0389740020456123, 'batch_bray_r2': 0.0494251323292694, 'biovar_aitch_r2': 0.0034958467258118, 'biovar_bray_r2': 0.0034958467258118, 'shannon_pval': 0.2881562573285822, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.013, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.013}, 'ConQuR': {'batch_aitch_r2': 0.0011149073285708, 'batch_bray_r2': -0.0014391962156411, 'biovar_aitch_r2': 0.0048543099013326, 'biovar_bray_r2': 0.0048543099013326, 'shannon_pval': 0.0347465907223595, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.004, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.004}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0018092368383139, 'batch_bray_r2': -0.001158596343977, 'biovar_aitch_r2': 0.0048802482101124, 'biovar_bray_r2': 0.0048802482101124, 'shannon_pval': 0.0485163216391967, 'aitch_pval_batch': 0.881, 'aitch_pval_biovar': 0.01, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.01}, 'MMUPHin': {'batch_aitch_r2': 0.0421029045756794, 'batch_bray_r2': 0.0207960093378417, 'biovar_aitch_r2': 0.0035218549003789, 'biovar_bray_r2': 0.0035218549003789, 'shannon_pval': 0.0245551049137974, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.067, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.067}, 'percentile_norm': {'batch_aitch_r2': 0.0022653141694561, 'batch_bray_r2': 0.0020855513222359, 'biovar_aitch_r2': 0.0022877758131649, 'biovar_bray_r2': 0.0022877758131649, 'shannon_pval': 0.8595804002691501, 'aitch_pval_batch': 0.401, 'aitch_pval_biovar': 0.36, 'bray_pval_batch': 0.66, 'bray_pval_biovar': 0.36}}
+already exists harmony out_1_0_0.299_iter_5_summary.csv
+already exists nobc out_1_0_0.299_iter_5_summary.csv
+already exists combat out_1_0_0.299_iter_5_summary.csv
+already exists limma out_1_0_0.299_iter_5_summary.csv
+already exists ConQuR out_1_0_0.299_iter_5_summary.csv
+already exists ConQuR_libsize out_1_0_0.299_iter_5_summary.csv
+already exists MMUPHin out_1_0_0.299_iter_5_summary.csv
+already exists percentile_norm out_1_0_0.299_iter_5_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.299_iter_5/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0115634916122093, 'batch_bray_r2': 0.0356330009500664, 'biovar_aitch_r2': 0.002925494662163, 'biovar_bray_r2': 0.002925494662163, 'shannon_pval': 0.5456161366996535, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.163, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.163}, 'nobc': {'batch_aitch_r2': 0.0347389281681325, 'batch_bray_r2': 0.0252958592845939, 'biovar_aitch_r2': 0.0030506776531486, 'biovar_bray_r2': 0.0030506776531486, 'shannon_pval': 0.3338973696707106, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.151, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.151}, 'combat': {'batch_aitch_r2': 0.003998198991103, 'batch_bray_r2': 0.0021706742644199, 'biovar_aitch_r2': 0.0031126526999125, 'biovar_bray_r2': 0.0031126526999125, 'shannon_pval': 0.2351315590327609, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.132, 'bray_pval_batch': 0.46, 'bray_pval_biovar': 0.132}, 'limma': {'batch_aitch_r2': 0.0344856213836703, 'batch_bray_r2': 0.0495118005264719, 'biovar_aitch_r2': 0.0037815996660566, 'biovar_bray_r2': 0.0037815996660566, 'shannon_pval': 0.211656884081584, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.005, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.005}, 'ConQuR': {'batch_aitch_r2': 0.0006623806709616, 'batch_bray_r2': -0.0014249194319442, 'biovar_aitch_r2': 0.0050752542406415, 'biovar_bray_r2': 0.0050752542406415, 'shannon_pval': 0.1314282847558459, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.012, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.012}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0009506245548198, 'batch_bray_r2': -0.0012475046319083, 'biovar_aitch_r2': 0.0054302018933107, 'biovar_bray_r2': 0.0054302018933107, 'shannon_pval': 0.1292123714148352, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.007, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.007}, 'MMUPHin': {'batch_aitch_r2': 0.0255221473990143, 'batch_bray_r2': 0.0092447301939694, 'biovar_aitch_r2': 0.0032113912495763, 'biovar_bray_r2': 0.0032113912495763, 'shannon_pval': 0.303232626786965, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.133, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.133}, 'percentile_norm': {'batch_aitch_r2': 0.0023082469621851, 'batch_bray_r2': 0.0019739867999922, 'biovar_aitch_r2': 0.0019347357607425, 'biovar_bray_r2': 0.0019347357607425, 'shannon_pval': 0.2691101603028311, 'aitch_pval_batch': 0.32, 'aitch_pval_biovar': 0.856, 'bray_pval_batch': 0.826, 'bray_pval_biovar': 0.856}}
+already exists harmony out_1_0_0.499_iter_1_summary.csv
+already exists nobc out_1_0_0.499_iter_1_summary.csv
+already exists combat out_1_0_0.499_iter_1_summary.csv
+already exists limma out_1_0_0.499_iter_1_summary.csv
+already exists ConQuR out_1_0_0.499_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0_0.499_iter_1_summary.csv
+already exists MMUPHin out_1_0_0.499_iter_1_summary.csv
+already exists percentile_norm out_1_0_0.499_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0042764041282675, 'batch_bray_r2': 0.0515429481098991, 'biovar_aitch_r2': 0.0020301769287109, 'biovar_bray_r2': 0.0020301769287109, 'shannon_pval': 0.0289234878248661, 'aitch_pval_batch': 0.006, 'aitch_pval_biovar': 0.523, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.523}, 'nobc': {'batch_aitch_r2': 0.0607301187611385, 'batch_bray_r2': 0.0578160248853315, 'biovar_aitch_r2': 0.0025318052298483, 'biovar_bray_r2': 0.0025318052298483, 'shannon_pval': 0.0512218175039115, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.282, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.282}, 'combat': {'batch_aitch_r2': 0.0077243885430215, 'batch_bray_r2': 0.0039174915012613, 'biovar_aitch_r2': 0.0021754512129353, 'biovar_bray_r2': 0.0021754512129353, 'shannon_pval': 0.017129690225594, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.446, 'bray_pval_batch': 0.038, 'bray_pval_biovar': 0.446}, 'limma': {'batch_aitch_r2': 0.0508221092179267, 'batch_bray_r2': 0.0666776443796801, 'biovar_aitch_r2': 0.0033176025908918, 'biovar_bray_r2': 0.0033176025908918, 'shannon_pval': 0.0926941533475777, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.015, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.015}, 'ConQuR': {'batch_aitch_r2': 0.001210835641248, 'batch_bray_r2': -0.0013987173783586, 'biovar_aitch_r2': 0.0040129447561234, 'biovar_bray_r2': 0.0040129447561234, 'shannon_pval': 0.0092056079975042, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.03, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.03}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0022966201814585, 'batch_bray_r2': -0.0008794807494091, 'biovar_aitch_r2': 0.0051520944350133, 'biovar_bray_r2': 0.0051520944350133, 'shannon_pval': 0.0222948018550983, 'aitch_pval_batch': 0.381, 'aitch_pval_biovar': 0.01, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.01}, 'MMUPHin': {'batch_aitch_r2': 0.0437138254097445, 'batch_bray_r2': 0.0219399747169341, 'biovar_aitch_r2': 0.0021328871666089, 'biovar_bray_r2': 0.0021328871666089, 'shannon_pval': 0.0706827896825977, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.493, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.493}, 'percentile_norm': {'batch_aitch_r2': 0.0020531221451948, 'batch_bray_r2': 0.0021933968167639, 'biovar_aitch_r2': 0.0023006501613357, 'biovar_bray_r2': 0.0023006501613357, 'shannon_pval': 0.6266142005783535, 'aitch_pval_batch': 0.801, 'aitch_pval_biovar': 0.383, 'bray_pval_batch': 0.515, 'bray_pval_biovar': 0.383}}
+already exists harmony out_1_0_0.499_iter_2_summary.csv
+already exists nobc out_1_0_0.499_iter_2_summary.csv
+already exists combat out_1_0_0.499_iter_2_summary.csv
+already exists limma out_1_0_0.499_iter_2_summary.csv
+already exists ConQuR out_1_0_0.499_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0_0.499_iter_2_summary.csv
+already exists MMUPHin out_1_0_0.499_iter_2_summary.csv
+already exists percentile_norm out_1_0_0.499_iter_2_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0061014596052389, 'batch_bray_r2': 0.0520845142202744, 'biovar_aitch_r2': 0.0026032967239659, 'biovar_bray_r2': 0.0026032967239659, 'shannon_pval': 0.5873283506143614, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.263, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.263}, 'nobc': {'batch_aitch_r2': 0.0695663057058349, 'batch_bray_r2': 0.0680166329977507, 'biovar_aitch_r2': 0.0031819023308204, 'biovar_bray_r2': 0.0031819023308204, 'shannon_pval': 0.5302653266001781, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.111, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.111}, 'combat': {'batch_aitch_r2': 0.0081817717746344, 'batch_bray_r2': 0.0023208160589104, 'biovar_aitch_r2': 0.0035515582858179, 'biovar_bray_r2': 0.0035515582858179, 'shannon_pval': 0.4358377263341068, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.076, 'bray_pval_batch': 0.379, 'bray_pval_biovar': 0.076}, 'limma': {'batch_aitch_r2': 0.0372610426874698, 'batch_bray_r2': 0.0518751006867829, 'biovar_aitch_r2': 0.0025280758955429, 'biovar_bray_r2': 0.0025280758955429, 'shannon_pval': 0.8851968423880685, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.191, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.191}, 'ConQuR': {'batch_aitch_r2': 0.0013739677454379, 'batch_bray_r2': -0.001377792451532, 'biovar_aitch_r2': 0.0040704521210014, 'biovar_bray_r2': 0.0040704521210014, 'shannon_pval': 0.3470569122598557, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.039, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.039}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0022744331807762, 'batch_bray_r2': -0.0010780745019824, 'biovar_aitch_r2': 0.0050554905860898, 'biovar_bray_r2': 0.0050554905860898, 'shannon_pval': 0.5058396648448586, 'aitch_pval_batch': 0.383, 'aitch_pval_biovar': 0.007, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.007}, 'MMUPHin': {'batch_aitch_r2': 0.0448926496685099, 'batch_bray_r2': 0.0286556749134011, 'biovar_aitch_r2': 0.0033572350419505, 'biovar_bray_r2': 0.0033572350419505, 'shannon_pval': 0.3991783957543723, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.082, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.082}, 'percentile_norm': {'batch_aitch_r2': 0.0027807218197854, 'batch_bray_r2': 0.0029332125026869, 'biovar_aitch_r2': 0.0018181096565461, 'biovar_bray_r2': 0.0018181096565461, 'shannon_pval': 0.5978637072098827, 'aitch_pval_batch': 0.007, 'aitch_pval_biovar': 0.941, 'bray_pval_batch': 0.025, 'bray_pval_biovar': 0.941}}
+already exists harmony out_1_0_0.499_iter_3_summary.csv
+already exists nobc out_1_0_0.499_iter_3_summary.csv
+already exists combat out_1_0_0.499_iter_3_summary.csv
+already exists limma out_1_0_0.499_iter_3_summary.csv
+already exists ConQuR out_1_0_0.499_iter_3_summary.csv
+already exists ConQuR_libsize out_1_0_0.499_iter_3_summary.csv
+already exists MMUPHin out_1_0_0.499_iter_3_summary.csv
+already exists percentile_norm out_1_0_0.499_iter_3_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_3/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0077025588899215, 'batch_bray_r2': 0.053060063410402, 'biovar_aitch_r2': 0.0035175419560676, 'biovar_bray_r2': 0.0035175419560676, 'shannon_pval': 0.2820030240593413, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.074, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.074}, 'nobc': {'batch_aitch_r2': 0.0585523200825784, 'batch_bray_r2': 0.0625127932529613, 'biovar_aitch_r2': 0.0039153722565073, 'biovar_bray_r2': 0.0039153722565073, 'shannon_pval': 0.1344638098249636, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.035, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.035}, 'combat': {'batch_aitch_r2': 0.0068534900822236, 'batch_bray_r2': 0.004191600448845, 'biovar_aitch_r2': 0.0038955678906569, 'biovar_bray_r2': 0.0038955678906569, 'shannon_pval': 0.0543347309434973, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.045, 'bray_pval_batch': 0.035, 'bray_pval_biovar': 0.045}, 'limma': {'batch_aitch_r2': 0.0442718763783447, 'batch_bray_r2': 0.0563988217730329, 'biovar_aitch_r2': 0.0033800642213658, 'biovar_bray_r2': 0.0033800642213658, 'shannon_pval': 0.1078879744456844, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.012, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.012}, 'ConQuR': {'batch_aitch_r2': 0.0013414823540468, 'batch_bray_r2': -0.0012196346953952, 'biovar_aitch_r2': 0.0054106743017845, 'biovar_bray_r2': 0.0054106743017845, 'shannon_pval': 0.0340593670786885, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.005, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.005}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0018376479048368, 'batch_bray_r2': -0.0009557871989403, 'biovar_aitch_r2': 0.0064667722264797, 'biovar_bray_r2': 0.0064667722264797, 'shannon_pval': 0.0273017492458507, 'aitch_pval_batch': 0.883, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.003}, 'MMUPHin': {'batch_aitch_r2': 0.0403081422887398, 'batch_bray_r2': 0.0304722474787645, 'biovar_aitch_r2': 0.0041405677985167, 'biovar_bray_r2': 0.0041405677985167, 'shannon_pval': 0.06619867710152, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.025, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.025}, 'percentile_norm': {'batch_aitch_r2': 0.0025327057625908, 'batch_bray_r2': 0.0026676122598417, 'biovar_aitch_r2': 0.0018645826945179, 'biovar_bray_r2': 0.0018645826945179, 'shannon_pval': 0.0632549452436206, 'aitch_pval_batch': 0.074, 'aitch_pval_biovar': 0.908, 'bray_pval_batch': 0.079, 'bray_pval_biovar': 0.908}}
+already exists harmony out_1_0_0.499_iter_4_summary.csv
+already exists nobc out_1_0_0.499_iter_4_summary.csv
+already exists combat out_1_0_0.499_iter_4_summary.csv
+already exists limma out_1_0_0.499_iter_4_summary.csv
+already exists ConQuR out_1_0_0.499_iter_4_summary.csv
+already exists ConQuR_libsize out_1_0_0.499_iter_4_summary.csv
+already exists MMUPHin out_1_0_0.499_iter_4_summary.csv
+already exists percentile_norm out_1_0_0.499_iter_4_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_4/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0088711672760303, 'batch_bray_r2': 0.0488836570540411, 'biovar_aitch_r2': 0.0035380782923601, 'biovar_bray_r2': 0.0035380782923601, 'shannon_pval': 0.0077835260855592, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.052, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.052}, 'nobc': {'batch_aitch_r2': 0.0652173247910785, 'batch_bray_r2': 0.0545038427712785, 'biovar_aitch_r2': 0.0039916546770487, 'biovar_bray_r2': 0.0039916546770487, 'shannon_pval': 0.0140214482302891, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.027, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.027}, 'combat': {'batch_aitch_r2': 0.007551277070153, 'batch_bray_r2': 0.0029860610652695, 'biovar_aitch_r2': 0.0042154294864984, 'biovar_bray_r2': 0.0042154294864984, 'shannon_pval': 0.0048427463352076, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.027, 'bray_pval_batch': 0.145, 'bray_pval_biovar': 0.027}, 'limma': {'batch_aitch_r2': 0.0430431297008705, 'batch_bray_r2': 0.0544631888257713, 'biovar_aitch_r2': 0.00404672156752, 'biovar_bray_r2': 0.00404672156752, 'shannon_pval': 0.2888014431715829, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.004, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.004}, 'ConQuR': {'batch_aitch_r2': 0.000649104732346, 'batch_bray_r2': -0.0014253876247053, 'biovar_aitch_r2': 0.0061968081038959, 'biovar_bray_r2': 0.0061968081038959, 'shannon_pval': 0.0074222414306568, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0022321271400059, 'batch_bray_r2': -0.0009607604824885, 'biovar_aitch_r2': 0.007319768834955, 'biovar_bray_r2': 0.007319768834955, 'shannon_pval': 0.0066856975916825, 'aitch_pval_batch': 0.427, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0448642162234699, 'batch_bray_r2': 0.0233907222590202, 'biovar_aitch_r2': 0.0042474755672013, 'biovar_bray_r2': 0.0042474755672013, 'shannon_pval': 0.008517274152347, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.016, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.016}, 'percentile_norm': {'batch_aitch_r2': 0.0021405406247841, 'batch_bray_r2': 0.0019044889296766, 'biovar_aitch_r2': 0.0020433201537863, 'biovar_bray_r2': 0.0020433201537863, 'shannon_pval': 0.1367235373330457, 'aitch_pval_batch': 0.67, 'aitch_pval_biovar': 0.738, 'bray_pval_batch': 0.872, 'bray_pval_biovar': 0.738}}
+already exists harmony out_1_0_0.499_iter_5_summary.csv
+already exists nobc out_1_0_0.499_iter_5_summary.csv
+already exists combat out_1_0_0.499_iter_5_summary.csv
+already exists limma out_1_0_0.499_iter_5_summary.csv
+already exists ConQuR out_1_0_0.499_iter_5_summary.csv
+already exists ConQuR_libsize out_1_0_0.499_iter_5_summary.csv
+already exists MMUPHin out_1_0_0.499_iter_5_summary.csv
+already exists percentile_norm out_1_0_0.499_iter_5_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.499_iter_5/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0106575613050223, 'batch_bray_r2': 0.0543340972896233, 'biovar_aitch_r2': 0.0044828446858443, 'biovar_bray_r2': 0.0044828446858443, 'shannon_pval': 0.0214283162911126, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.018, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.018}, 'nobc': {'batch_aitch_r2': 0.0662738603772928, 'batch_bray_r2': 0.0654739282119554, 'biovar_aitch_r2': 0.0046824951773484, 'biovar_bray_r2': 0.0046824951773484, 'shannon_pval': 0.024566427099577, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.011, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.011}, 'combat': {'batch_aitch_r2': 0.0077536885815222, 'batch_bray_r2': 0.0026307083553745, 'biovar_aitch_r2': 0.005162291150937, 'biovar_bray_r2': 0.005162291150937, 'shannon_pval': 0.0198021604062747, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.007, 'bray_pval_batch': 0.258, 'bray_pval_biovar': 0.007}, 'limma': {'batch_aitch_r2': 0.0418005877821092, 'batch_bray_r2': 0.0606898920533399, 'biovar_aitch_r2': 0.0037845197430237, 'biovar_bray_r2': 0.0037845197430237, 'shannon_pval': 0.7094178215011542, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.007, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.007}, 'ConQuR': {'batch_aitch_r2': 0.0013525772195856, 'batch_bray_r2': -0.0012287347419066, 'biovar_aitch_r2': 0.0065291406423775, 'biovar_bray_r2': 0.0065291406423775, 'shannon_pval': 0.010041622719992, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.002}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0043256632084058, 'batch_bray_r2': -0.0001834607326115, 'biovar_aitch_r2': 0.0078233808252695, 'biovar_bray_r2': 0.0078233808252695, 'shannon_pval': 0.0120280705134582, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0398329153729367, 'batch_bray_r2': 0.0200938190117888, 'biovar_aitch_r2': 0.005231561217969, 'biovar_bray_r2': 0.005231561217969, 'shannon_pval': 0.0127636964232671, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.006, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.006}, 'percentile_norm': {'batch_aitch_r2': 0.0020663104803646, 'batch_bray_r2': 0.0020621285484698, 'biovar_aitch_r2': 0.0024398500063986, 'biovar_bray_r2': 0.0024398500063986, 'shannon_pval': 0.8829976061935453, 'aitch_pval_batch': 0.798, 'aitch_pval_biovar': 0.212, 'bray_pval_batch': 0.691, 'bray_pval_biovar': 0.212}}
+already exists harmony out_1_0_0.699_iter_1_summary.csv
+already exists nobc out_1_0_0.699_iter_1_summary.csv
+already exists combat out_1_0_0.699_iter_1_summary.csv
+already exists limma out_1_0_0.699_iter_1_summary.csv
+already exists ConQuR out_1_0_0.699_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0_0.699_iter_1_summary.csv
+already exists MMUPHin out_1_0_0.699_iter_1_summary.csv
+already exists percentile_norm out_1_0_0.699_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0081088241622798, 'batch_bray_r2': 0.0745190607033924, 'biovar_aitch_r2': 0.0033173761855047, 'biovar_bray_r2': 0.0033173761855047, 'shannon_pval': 0.0007405173921143, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.078, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.078}, 'nobc': {'batch_aitch_r2': 0.0867459904528302, 'batch_bray_r2': 0.0844281042923675, 'biovar_aitch_r2': 0.0033464331058731, 'biovar_bray_r2': 0.0033464331058731, 'shannon_pval': 0.0001946530237577, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.076, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.076}, 'combat': {'batch_aitch_r2': 0.0103951425137056, 'batch_bray_r2': 0.0049963188298579, 'biovar_aitch_r2': 0.0037864607792599, 'biovar_bray_r2': 0.0037864607792599, 'shannon_pval': 0.0003038493667047, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.054, 'bray_pval_batch': 0.007, 'bray_pval_biovar': 0.054}, 'limma': {'batch_aitch_r2': 0.0599710064709464, 'batch_bray_r2': 0.0878558081392787, 'biovar_aitch_r2': 0.004194754668438, 'biovar_bray_r2': 0.004194754668438, 'shannon_pval': 0.4910727700168268, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.004, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.004}, 'ConQuR': {'batch_aitch_r2': 0.0034526864255521, 'batch_bray_r2': -0.0001796349852562, 'biovar_aitch_r2': 0.0047976312992541, 'biovar_bray_r2': 0.0047976312992541, 'shannon_pval': 0.0001679925110664, 'aitch_pval_batch': 0.008, 'aitch_pval_biovar': 0.009, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.009}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0063425702466467, 'batch_bray_r2': 0.0004846905289976, 'biovar_aitch_r2': 0.0061139895950346, 'biovar_bray_r2': 0.0061139895950346, 'shannon_pval': 0.0001504037352034, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.002}, 'MMUPHin': {'batch_aitch_r2': 0.0598391262803863, 'batch_bray_r2': 0.0376593414995988, 'biovar_aitch_r2': 0.0039407403609527, 'biovar_bray_r2': 0.0039407403609527, 'shannon_pval': 0.000453465285359, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.028, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.028}, 'percentile_norm': {'batch_aitch_r2': 0.0019350060778943, 'batch_bray_r2': 0.0019576441625452, 'biovar_aitch_r2': 0.0023598979623517, 'biovar_bray_r2': 0.0023598979623517, 'shannon_pval': 0.5479392051841994, 'aitch_pval_batch': 0.942, 'aitch_pval_biovar': 0.281, 'bray_pval_batch': 0.812, 'bray_pval_biovar': 0.281}}
+already exists harmony out_1_0_0.699_iter_2_summary.csv
+already exists nobc out_1_0_0.699_iter_2_summary.csv
+already exists combat out_1_0_0.699_iter_2_summary.csv
+already exists limma out_1_0_0.699_iter_2_summary.csv
+already exists ConQuR out_1_0_0.699_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0_0.699_iter_2_summary.csv
+already exists MMUPHin out_1_0_0.699_iter_2_summary.csv
+already exists percentile_norm out_1_0_0.699_iter_2_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.008601598061634, 'batch_bray_r2': 0.0707455756393306, 'biovar_aitch_r2': 0.0023919259928089, 'biovar_bray_r2': 0.0023919259928089, 'shannon_pval': 0.0010443808719881, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.333, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.333}, 'nobc': {'batch_aitch_r2': 0.0964015091253416, 'batch_bray_r2': 0.1153489337870913, 'biovar_aitch_r2': 0.0022233557412525, 'biovar_bray_r2': 0.0022233557412525, 'shannon_pval': 0.0077468703253081, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.441, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.441}, 'combat': {'batch_aitch_r2': 0.0116131088414574, 'batch_bray_r2': 0.0052922029373833, 'biovar_aitch_r2': 0.0033679172294293, 'biovar_bray_r2': 0.0033679172294293, 'shannon_pval': 0.0003510720988337, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.096, 'bray_pval_batch': 0.007, 'bray_pval_biovar': 0.096}, 'limma': {'batch_aitch_r2': 0.0461507993538298, 'batch_bray_r2': 0.064816389899956, 'biovar_aitch_r2': 0.0044617678565993, 'biovar_bray_r2': 0.0044617678565993, 'shannon_pval': 0.1983454447140453, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.002}, 'ConQuR': {'batch_aitch_r2': 0.0029749065705768, 'batch_bray_r2': -0.0005296790998481, 'biovar_aitch_r2': 0.0032510951624802, 'biovar_bray_r2': 0.0032510951624802, 'shannon_pval': 6.975314738501212e-05, 'aitch_pval_batch': 0.031, 'aitch_pval_biovar': 0.101, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.101}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0070520463783456, 'batch_bray_r2': 0.0005075631091771, 'biovar_aitch_r2': 0.0047640297274612, 'biovar_bray_r2': 0.0047640297274612, 'shannon_pval': 4.200980490168596e-05, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.015, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.015}, 'MMUPHin': {'batch_aitch_r2': 0.0632759076988362, 'batch_bray_r2': 0.0529397116425199, 'biovar_aitch_r2': 0.0030733105181786, 'biovar_bray_r2': 0.0030733105181786, 'shannon_pval': 0.0004722959612982, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.132, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.132}, 'percentile_norm': {'batch_aitch_r2': 0.0020746906096007, 'batch_bray_r2': 0.0019460369711207, 'biovar_aitch_r2': 0.0018573517906751, 'biovar_bray_r2': 0.0018573517906751, 'shannon_pval': 0.9032534102605224, 'aitch_pval_batch': 0.792, 'aitch_pval_biovar': 0.918, 'bray_pval_batch': 0.827, 'bray_pval_biovar': 0.918}}
+already exists harmony out_1_0_0.699_iter_3_summary.csv
+already exists nobc out_1_0_0.699_iter_3_summary.csv
+already exists combat out_1_0_0.699_iter_3_summary.csv
+already exists limma out_1_0_0.699_iter_3_summary.csv
+already exists ConQuR out_1_0_0.699_iter_3_summary.csv
+already exists ConQuR_libsize out_1_0_0.699_iter_3_summary.csv
+already exists MMUPHin out_1_0_0.699_iter_3_summary.csv
+already exists percentile_norm out_1_0_0.699_iter_3_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_3/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0106818653772487, 'batch_bray_r2': 0.0665393624647232, 'biovar_aitch_r2': 0.0021636271908786, 'biovar_bray_r2': 0.0021636271908786, 'shannon_pval': 0.0283834220242206, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.444, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.444}, 'nobc': {'batch_aitch_r2': 0.0900341553564366, 'batch_bray_r2': 0.101867537655874, 'biovar_aitch_r2': 0.0030440376247008, 'biovar_bray_r2': 0.0030440376247008, 'shannon_pval': 0.0202482679607236, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.13, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.13}, 'combat': {'batch_aitch_r2': 0.0097460045174647, 'batch_bray_r2': 0.0037451808020863, 'biovar_aitch_r2': 0.0026073549469632, 'biovar_bray_r2': 0.0026073549469632, 'shannon_pval': 0.0105259304035299, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.255, 'bray_pval_batch': 0.044, 'bray_pval_biovar': 0.255}, 'limma': {'batch_aitch_r2': 0.0418091272944994, 'batch_bray_r2': 0.068696579260611, 'biovar_aitch_r2': 0.004329063605681, 'biovar_bray_r2': 0.004329063605681, 'shannon_pval': 0.2542801368179128, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.002}, 'ConQuR': {'batch_aitch_r2': 0.0016153974541371, 'batch_bray_r2': -0.001165127233206, 'biovar_aitch_r2': 0.0045358221313955, 'biovar_bray_r2': 0.0045358221313955, 'shannon_pval': 0.0064765806899138, 'aitch_pval_batch': 0.987, 'aitch_pval_biovar': 0.011, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.011}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0039087029327628, 'batch_bray_r2': -0.0004175264641482, 'biovar_aitch_r2': 0.0049474245643551, 'biovar_bray_r2': 0.0049474245643551, 'shannon_pval': 0.0072388847833684, 'aitch_pval_batch': 0.002, 'aitch_pval_biovar': 0.005, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.005}, 'MMUPHin': {'batch_aitch_r2': 0.0582718873733116, 'batch_bray_r2': 0.0384256741428171, 'biovar_aitch_r2': 0.0027466843463209, 'biovar_bray_r2': 0.0027466843463209, 'shannon_pval': 0.0228869029925219, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.204, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.204}, 'percentile_norm': {'batch_aitch_r2': 0.0025827791717588, 'batch_bray_r2': 0.0024349247936553, 'biovar_aitch_r2': 0.0022009891828332, 'biovar_bray_r2': 0.0022009891828332, 'shannon_pval': 0.2412318018913013, 'aitch_pval_batch': 0.044, 'aitch_pval_biovar': 0.493, 'bray_pval_batch': 0.226, 'bray_pval_biovar': 0.493}}
+already exists harmony out_1_0_0.699_iter_4_summary.csv
+already exists nobc out_1_0_0.699_iter_4_summary.csv
+already exists combat out_1_0_0.699_iter_4_summary.csv
+already exists limma out_1_0_0.699_iter_4_summary.csv
+already exists ConQuR out_1_0_0.699_iter_4_summary.csv
+already exists ConQuR_libsize out_1_0_0.699_iter_4_summary.csv
+already exists MMUPHin out_1_0_0.699_iter_4_summary.csv
+already exists percentile_norm out_1_0_0.699_iter_4_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_4/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0108969732828354, 'batch_bray_r2': 0.0713043734856147, 'biovar_aitch_r2': 0.0022160804621143, 'biovar_bray_r2': 0.0022160804621143, 'shannon_pval': 0.037246209091285, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.423, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.423}, 'nobc': {'batch_aitch_r2': 0.096284673232404, 'batch_bray_r2': 0.1052758904488715, 'biovar_aitch_r2': 0.0021913813916789, 'biovar_bray_r2': 0.0021913813916789, 'shannon_pval': 0.0172197506120846, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.462, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.462}, 'combat': {'batch_aitch_r2': 0.0117965607091378, 'batch_bray_r2': 0.0043406052470563, 'biovar_aitch_r2': 0.0020847455027115, 'biovar_bray_r2': 0.0020847455027115, 'shannon_pval': 0.0534317521916837, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.497, 'bray_pval_batch': 0.018, 'bray_pval_biovar': 0.497}, 'limma': {'batch_aitch_r2': 0.0548906750715522, 'batch_bray_r2': 0.0748685089752123, 'biovar_aitch_r2': 0.0042237892547889, 'biovar_bray_r2': 0.0042237892547889, 'shannon_pval': 0.9335030446718314, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.003}, 'ConQuR': {'batch_aitch_r2': 0.0029256292588637, 'batch_bray_r2': -0.0007663253415467, 'biovar_aitch_r2': 0.0028560048775397, 'biovar_bray_r2': 0.0028560048775397, 'shannon_pval': 0.0387254002069498, 'aitch_pval_batch': 0.034, 'aitch_pval_biovar': 0.178, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.178}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0099226672993112, 'batch_bray_r2': 0.0004287206087679, 'biovar_aitch_r2': 0.0041499998797251, 'biovar_bray_r2': 0.0041499998797251, 'shannon_pval': 0.0215308769916465, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.026, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.026}, 'MMUPHin': {'batch_aitch_r2': 0.0660368174979349, 'batch_bray_r2': 0.0418745565932168, 'biovar_aitch_r2': 0.0022637094109518, 'biovar_bray_r2': 0.0022637094109518, 'shannon_pval': 0.0424950996299882, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.401, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.401}, 'percentile_norm': {'batch_aitch_r2': 0.0021967287173665, 'batch_bray_r2': 0.0017149745124194, 'biovar_aitch_r2': 0.0026178955438104, 'biovar_bray_r2': 0.0026178955438104, 'shannon_pval': 0.0744028233749302, 'aitch_pval_batch': 0.541, 'aitch_pval_biovar': 0.099, 'bray_pval_batch': 0.974, 'bray_pval_biovar': 0.099}}
+already exists harmony out_1_0_0.699_iter_5_summary.csv
+already exists nobc out_1_0_0.699_iter_5_summary.csv
+already exists combat out_1_0_0.699_iter_5_summary.csv
+already exists limma out_1_0_0.699_iter_5_summary.csv
+already exists ConQuR out_1_0_0.699_iter_5_summary.csv
+already exists ConQuR_libsize out_1_0_0.699_iter_5_summary.csv
+already exists MMUPHin out_1_0_0.699_iter_5_summary.csv
+already exists percentile_norm out_1_0_0.699_iter_5_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.699_iter_5/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0053923626037269, 'batch_bray_r2': 0.0733527595260699, 'biovar_aitch_r2': 0.0052878335805117, 'biovar_bray_r2': 0.0052878335805117, 'shannon_pval': 0.0221108711922528, 'aitch_pval_batch': 0.002, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.003}, 'nobc': {'batch_aitch_r2': 0.0987697798319983, 'batch_bray_r2': 0.1057083011597296, 'biovar_aitch_r2': 0.0060219135612996, 'biovar_bray_r2': 0.0060219135612996, 'shannon_pval': 0.023818277208086, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0109457770200542, 'batch_bray_r2': 0.0047747578653066, 'biovar_aitch_r2': 0.0061872131661878, 'biovar_bray_r2': 0.0061872131661878, 'shannon_pval': 0.0361987865623634, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 0.01, 'bray_pval_biovar': 0.002}, 'limma': {'batch_aitch_r2': 0.0421236742296247, 'batch_bray_r2': 0.0683879826819614, 'biovar_aitch_r2': 0.006808654113414, 'biovar_bray_r2': 0.006808654113414, 'shannon_pval': 0.9799497728360318, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0024971724908552, 'batch_bray_r2': -0.0007038610154085, 'biovar_aitch_r2': 0.0073847379866104, 'biovar_bray_r2': 0.0073847379866104, 'shannon_pval': 0.0139923141977196, 'aitch_pval_batch': 0.174, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0055339954322042, 'batch_bray_r2': -2.9979375071598304e-06, 'biovar_aitch_r2': 0.0100518865370497, 'biovar_bray_r2': 0.0100518865370497, 'shannon_pval': 0.0059672932791886, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0674327033406431, 'batch_bray_r2': 0.0386970922043893, 'biovar_aitch_r2': 0.0062468254979289, 'biovar_bray_r2': 0.0062468254979289, 'shannon_pval': 0.0210732590177516, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.003}, 'percentile_norm': {'batch_aitch_r2': 0.002221997689941, 'batch_bray_r2': 0.0019486497094594, 'biovar_aitch_r2': 0.0028109553954988, 'biovar_bray_r2': 0.0028109553954988, 'shannon_pval': 0.089706464734612, 'aitch_pval_batch': 0.493, 'aitch_pval_biovar': 0.053, 'bray_pval_batch': 0.833, 'bray_pval_biovar': 0.053}}
+already exists harmony out_1_0_0.899_iter_1_summary.csv
+already exists nobc out_1_0_0.899_iter_1_summary.csv
+already exists combat out_1_0_0.899_iter_1_summary.csv
+already exists limma out_1_0_0.899_iter_1_summary.csv
+already exists ConQuR out_1_0_0.899_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0_0.899_iter_1_summary.csv
+already exists MMUPHin out_1_0_0.899_iter_1_summary.csv
+already exists percentile_norm out_1_0_0.899_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0131134977473779, 'batch_bray_r2': 0.0952887476605429, 'biovar_aitch_r2': 0.0026056589516922, 'biovar_bray_r2': 0.0026056589516922, 'shannon_pval': 0.1510424257393587, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.272, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.272}, 'nobc': {'batch_aitch_r2': 0.1263487372496237, 'batch_bray_r2': 0.1146831819321927, 'biovar_aitch_r2': 0.0031153160254566, 'biovar_bray_r2': 0.0031153160254566, 'shannon_pval': 0.1140762262931687, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.13, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.13}, 'combat': {'batch_aitch_r2': 0.0183851845029397, 'batch_bray_r2': 0.0072594403033247, 'biovar_aitch_r2': 0.0027945778891626, 'biovar_bray_r2': 0.0027945778891626, 'shannon_pval': 0.117095096190099, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.19, 'bray_pval_batch': 0.002, 'bray_pval_biovar': 0.19}, 'limma': {'batch_aitch_r2': 0.0737145112830999, 'batch_bray_r2': 0.1172475658765244, 'biovar_aitch_r2': 0.0040420772554145, 'biovar_bray_r2': 0.0040420772554145, 'shannon_pval': 0.3278838382179683, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.018, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.018}, 'ConQuR': {'batch_aitch_r2': 0.0086027170946961, 'batch_bray_r2': 0.004003224449675, 'biovar_aitch_r2': 0.005806387115922, 'biovar_bray_r2': 0.005806387115922, 'shannon_pval': 0.0350368220017918, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 0.028, 'bray_pval_biovar': 0.002}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0197791696637499, 'batch_bray_r2': 0.003966897654549, 'biovar_aitch_r2': 0.0066119638505929, 'biovar_bray_r2': 0.0066119638505929, 'shannon_pval': 0.0211591753802368, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.002, 'bray_pval_batch': 0.032, 'bray_pval_biovar': 0.002}, 'MMUPHin': {'batch_aitch_r2': 0.088519159281264, 'batch_bray_r2': 0.0523696610273915, 'biovar_aitch_r2': 0.0030863739368763, 'biovar_bray_r2': 0.0030863739368763, 'shannon_pval': 0.0866144363637211, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.129, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.129}, 'percentile_norm': {'batch_aitch_r2': 0.002040085139837, 'batch_bray_r2': 0.0017712208822919, 'biovar_aitch_r2': 0.0021326665581507, 'biovar_bray_r2': 0.0021326665581507, 'shannon_pval': 0.7704305086722715, 'aitch_pval_batch': 0.825, 'aitch_pval_biovar': 0.59, 'bray_pval_batch': 0.951, 'bray_pval_biovar': 0.59}}
+already exists harmony out_1_0_0.899_iter_2_summary.csv
+already exists nobc out_1_0_0.899_iter_2_summary.csv
+already exists combat out_1_0_0.899_iter_2_summary.csv
+already exists limma out_1_0_0.899_iter_2_summary.csv
+already exists ConQuR out_1_0_0.899_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0_0.899_iter_2_summary.csv
+already exists MMUPHin out_1_0_0.899_iter_2_summary.csv
+already exists percentile_norm out_1_0_0.899_iter_2_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0091133543265673, 'batch_bray_r2': 0.0854193782761935, 'biovar_aitch_r2': 0.0025676171530904, 'biovar_bray_r2': 0.0025676171530904, 'shannon_pval': 0.481393867528628, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.3, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.3}, 'nobc': {'batch_aitch_r2': 0.121374483698779, 'batch_bray_r2': 0.1426307914518071, 'biovar_aitch_r2': 0.0030661921823501, 'biovar_bray_r2': 0.0030661921823501, 'shannon_pval': 0.3085115798216131, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.14, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.14}, 'combat': {'batch_aitch_r2': 0.016752846766141, 'batch_bray_r2': 0.0058270091098302, 'biovar_aitch_r2': 0.0021429513308264, 'biovar_bray_r2': 0.0021429513308264, 'shannon_pval': 0.7063893414586513, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.49, 'bray_pval_batch': 0.004, 'bray_pval_biovar': 0.49}, 'limma': {'batch_aitch_r2': 0.0579184559984058, 'batch_bray_r2': 0.0842483831905386, 'biovar_aitch_r2': 0.0039332844517985, 'biovar_bray_r2': 0.0039332844517985, 'shannon_pval': 0.4900234286789883, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.005, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.005}, 'ConQuR': {'batch_aitch_r2': 0.0065104991479014, 'batch_bray_r2': 0.0016256995490445, 'biovar_aitch_r2': 0.0040008343423892, 'biovar_bray_r2': 0.0040008343423892, 'shannon_pval': 0.648515095255942, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.039, 'bray_pval_batch': 0.773, 'bray_pval_biovar': 0.039}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0157502414193128, 'batch_bray_r2': 0.0022052438631084, 'biovar_aitch_r2': 0.0056708217056794, 'biovar_bray_r2': 0.0056708217056794, 'shannon_pval': 0.5560932027097928, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.454, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0783507617363237, 'batch_bray_r2': 0.0691952437604226, 'biovar_aitch_r2': 0.0031413641633168, 'biovar_bray_r2': 0.0031413641633168, 'shannon_pval': 0.9213654209978412, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.107, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.107}, 'percentile_norm': {'batch_aitch_r2': 0.0022707158555595, 'batch_bray_r2': 0.002112309922093, 'biovar_aitch_r2': 0.0020999542430175, 'biovar_bray_r2': 0.0020999542430175, 'shannon_pval': 0.6308687087945484, 'aitch_pval_batch': 0.412, 'aitch_pval_biovar': 0.631, 'bray_pval_batch': 0.619, 'bray_pval_biovar': 0.631}}
+already exists harmony out_1_0_0.899_iter_3_summary.csv
+already exists nobc out_1_0_0.899_iter_3_summary.csv
+already exists combat out_1_0_0.899_iter_3_summary.csv
+already exists limma out_1_0_0.899_iter_3_summary.csv
+already exists ConQuR out_1_0_0.899_iter_3_summary.csv
+already exists ConQuR_libsize out_1_0_0.899_iter_3_summary.csv
+already exists MMUPHin out_1_0_0.899_iter_3_summary.csv
+already exists percentile_norm out_1_0_0.899_iter_3_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_3/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0105786827119252, 'batch_bray_r2': 0.0958569593909708, 'biovar_aitch_r2': 0.0029422812889361, 'biovar_bray_r2': 0.0029422812889361, 'shannon_pval': 0.2162755055887938, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.173, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.173}, 'nobc': {'batch_aitch_r2': 0.130520981337452, 'batch_bray_r2': 0.156306294156578, 'biovar_aitch_r2': 0.0041190268425542, 'biovar_bray_r2': 0.0041190268425542, 'shannon_pval': 0.084842412872756, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.027, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.027}, 'combat': {'batch_aitch_r2': 0.0165055900916223, 'batch_bray_r2': 0.0085470675225765, 'biovar_aitch_r2': 0.0035377103996127, 'biovar_bray_r2': 0.0035377103996127, 'shannon_pval': 0.019898180229829, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.069, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.069}, 'limma': {'batch_aitch_r2': 0.0584290782937843, 'batch_bray_r2': 0.0928811484160297, 'biovar_aitch_r2': 0.0046828727401054, 'biovar_bray_r2': 0.0046828727401054, 'shannon_pval': 0.1143601875085993, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0059874691406554, 'batch_bray_r2': 0.0021714149905786, 'biovar_aitch_r2': 0.0054111993570677, 'biovar_bray_r2': 0.0054111993570677, 'shannon_pval': 0.0044545196552737, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.004, 'bray_pval_batch': 0.476, 'bray_pval_biovar': 0.004}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0111481387483639, 'batch_bray_r2': 0.0021118510999795, 'biovar_aitch_r2': 0.0075287302075929, 'biovar_bray_r2': 0.0075287302075929, 'shannon_pval': 0.0062888902095547, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.474, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0785805324739681, 'batch_bray_r2': 0.0537836087887493, 'biovar_aitch_r2': 0.003773023242531, 'biovar_bray_r2': 0.003773023242531, 'shannon_pval': 0.0762976357194203, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.038, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.038}, 'percentile_norm': {'batch_aitch_r2': 0.001824161075539, 'batch_bray_r2': 0.0015668629178979, 'biovar_aitch_r2': 0.0021576256710225, 'biovar_bray_r2': 0.0021576256710225, 'shannon_pval': 0.3488147755172003, 'aitch_pval_batch': 0.988, 'aitch_pval_biovar': 0.57, 'bray_pval_batch': 0.996, 'bray_pval_biovar': 0.57}}
+already exists harmony out_1_0_0.899_iter_4_summary.csv
+already exists nobc out_1_0_0.899_iter_4_summary.csv
+already exists combat out_1_0_0.899_iter_4_summary.csv
+already exists limma out_1_0_0.899_iter_4_summary.csv
+already exists ConQuR out_1_0_0.899_iter_4_summary.csv
+already exists ConQuR_libsize out_1_0_0.899_iter_4_summary.csv
+already exists MMUPHin out_1_0_0.899_iter_4_summary.csv
+already exists percentile_norm out_1_0_0.899_iter_4_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_4/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0120840278365793, 'batch_bray_r2': 0.0961020452488558, 'biovar_aitch_r2': 0.0027569879105411, 'biovar_bray_r2': 0.0027569879105411, 'shannon_pval': 0.286186301532109, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.211, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.211}, 'nobc': {'batch_aitch_r2': 0.1161282852320135, 'batch_bray_r2': 0.1351010918655393, 'biovar_aitch_r2': 0.0026372152792537, 'biovar_bray_r2': 0.0026372152792537, 'shannon_pval': 0.2327103468590364, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.225, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.225}, 'combat': {'batch_aitch_r2': 0.0149959644053931, 'batch_bray_r2': 0.007542705953586, 'biovar_aitch_r2': 0.0030407998443672, 'biovar_bray_r2': 0.0030407998443672, 'shannon_pval': 0.3198594242846864, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.163, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.163}, 'limma': {'batch_aitch_r2': 0.0570458498687113, 'batch_bray_r2': 0.0841007187477872, 'biovar_aitch_r2': 0.0036635584874327, 'biovar_bray_r2': 0.0036635584874327, 'shannon_pval': 0.542505445011962, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.012, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.012}, 'ConQuR': {'batch_aitch_r2': 0.0048921559343153, 'batch_bray_r2': 0.0003898913056408, 'biovar_aitch_r2': 0.0053374307135516, 'biovar_bray_r2': 0.0053374307135516, 'shannon_pval': 0.3059542372885115, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.003}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0105838513819356, 'batch_bray_r2': 0.000727695415988, 'biovar_aitch_r2': 0.0070778253253059, 'biovar_bray_r2': 0.0070778253253059, 'shannon_pval': 0.1765469760852809, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.999, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0728486654358999, 'batch_bray_r2': 0.0487869349499961, 'biovar_aitch_r2': 0.0031210041371545, 'biovar_bray_r2': 0.0031210041371545, 'shannon_pval': 0.2276414196352625, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.12, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.12}, 'percentile_norm': {'batch_aitch_r2': 0.0025316384769104, 'batch_bray_r2': 0.0024061526527655, 'biovar_aitch_r2': 0.002129625386153, 'biovar_bray_r2': 0.002129625386153, 'shannon_pval': 0.4280911734106548, 'aitch_pval_batch': 0.069, 'aitch_pval_biovar': 0.587, 'bray_pval_batch': 0.267, 'bray_pval_biovar': 0.587}}
+already exists harmony out_1_0_0.899_iter_5_summary.csv
+already exists nobc out_1_0_0.899_iter_5_summary.csv
+already exists combat out_1_0_0.899_iter_5_summary.csv
+already exists limma out_1_0_0.899_iter_5_summary.csv
+already exists ConQuR out_1_0_0.899_iter_5_summary.csv
+already exists ConQuR_libsize out_1_0_0.899_iter_5_summary.csv
+already exists MMUPHin out_1_0_0.899_iter_5_summary.csv
+already exists percentile_norm out_1_0_0.899_iter_5_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0_0.899_iter_5/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0102798017934068, 'batch_bray_r2': 0.1019446650715226, 'biovar_aitch_r2': 0.0025689371077458, 'biovar_bray_r2': 0.0025689371077458, 'shannon_pval': 0.2432957718407834, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.285, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.285}, 'nobc': {'batch_aitch_r2': 0.1242286806519733, 'batch_bray_r2': 0.143314805112713, 'biovar_aitch_r2': 0.0023017928283726, 'biovar_bray_r2': 0.0023017928283726, 'shannon_pval': 0.1973199366530987, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.391, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.391}, 'combat': {'batch_aitch_r2': 0.0159449773620438, 'batch_bray_r2': 0.007487017286059, 'biovar_aitch_r2': 0.0031168775775495, 'biovar_bray_r2': 0.0031168775775495, 'shannon_pval': 0.0267248353207195, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.134, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.134}, 'limma': {'batch_aitch_r2': 0.056995889008764, 'batch_bray_r2': 0.0794524784943974, 'biovar_aitch_r2': 0.0032518942240997, 'biovar_bray_r2': 0.0032518942240997, 'shannon_pval': 0.6471834674976797, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.021, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.021}, 'ConQuR': {'batch_aitch_r2': 0.0049520686526473, 'batch_bray_r2': 0.0009151208641237, 'biovar_aitch_r2': 0.0030736681690542, 'biovar_bray_r2': 0.0030736681690542, 'shannon_pval': 0.0375961865295406, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.133, 'bray_pval_batch': 0.986, 'bray_pval_biovar': 0.133}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0134358845405527, 'batch_bray_r2': 0.0020601370963582, 'biovar_aitch_r2': 0.0049636033540789, 'biovar_bray_r2': 0.0049636033540789, 'shannon_pval': 0.0228022530349733, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.011, 'bray_pval_batch': 0.502, 'bray_pval_biovar': 0.011}, 'MMUPHin': {'batch_aitch_r2': 0.0756954502362866, 'batch_bray_r2': 0.0619793304196771, 'biovar_aitch_r2': 0.0032742590604453, 'biovar_bray_r2': 0.0032742590604453, 'shannon_pval': 0.0256449263428501, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.103, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.103}, 'percentile_norm': {'batch_aitch_r2': 0.0023779187098107, 'batch_bray_r2': 0.0021597091941402, 'biovar_aitch_r2': 0.0024027648758494, 'biovar_bray_r2': 0.0024027648758494, 'shannon_pval': 0.0712707118168749, 'aitch_pval_batch': 0.232, 'aitch_pval_biovar': 0.27, 'bray_pval_batch': 0.591, 'bray_pval_biovar': 0.27}}
+already exists harmony out_1_0.099_0_iter_1_summary.csv
+already exists nobc out_1_0.099_0_iter_1_summary.csv
+already exists combat out_1_0.099_0_iter_1_summary.csv
+already exists limma out_1_0.099_0_iter_1_summary.csv
+already exists ConQuR out_1_0.099_0_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0.099_0_iter_1_summary.csv
+already exists MMUPHin out_1_0.099_0_iter_1_summary.csv
+already exists percentile_norm out_1_0.099_0_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0030667068676042, 'batch_bray_r2': 0.013396122741792, 'biovar_aitch_r2': 0.0125317116229742, 'biovar_bray_r2': 0.0125317116229742, 'shannon_pval': 0.0010371335990666, 'aitch_pval_batch': 0.076, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'nobc': {'batch_aitch_r2': 0.0033068153177068, 'batch_bray_r2': 0.0061297176643882, 'biovar_aitch_r2': 0.0158292329354667, 'biovar_bray_r2': 0.0158292329354667, 'shannon_pval': 8.27205383091065e-05, 'aitch_pval_batch': 0.007, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0007160427528941, 'batch_bray_r2': 0.0010586193263978, 'biovar_aitch_r2': 0.0158939893727115, 'biovar_bray_r2': 0.0158939893727115, 'shannon_pval': 1.87479911984181e-05, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.975, 'bray_pval_biovar': 0.001}, 'limma': {'batch_aitch_r2': 0.0022725481847999, 'batch_bray_r2': 0.0018372492396461, 'biovar_aitch_r2': 0.0203009116743276, 'biovar_bray_r2': 0.0203009116743276, 'shannon_pval': 0.7709849198409218, 'aitch_pval_batch': 0.407, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.908, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0001370003837159, 'batch_bray_r2': -0.0015772049340592, 'biovar_aitch_r2': 0.0177091813791843, 'biovar_bray_r2': 0.0177091813791843, 'shannon_pval': 2.5652873994578947e-05, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0003058210136815, 'batch_bray_r2': -0.0012498588483667, 'biovar_aitch_r2': 0.0177406840359395, 'biovar_bray_r2': 0.0177406840359395, 'shannon_pval': 0.0001216120563917, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0032311811563603, 'batch_bray_r2': 0.0021326909847671, 'biovar_aitch_r2': 0.0161946961056745, 'biovar_bray_r2': 0.0161946961056745, 'shannon_pval': 6.486426397886827e-05, 'aitch_pval_batch': 0.009, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.502, 'bray_pval_biovar': 0.001}, 'percentile_norm': {'batch_aitch_r2': 0.0021105460279176, 'batch_bray_r2': 0.0024165791028245, 'biovar_aitch_r2': 0.0021366243480057, 'biovar_bray_r2': 0.0021366243480057, 'shannon_pval': 0.5227669824278327, 'aitch_pval_batch': 0.716, 'aitch_pval_biovar': 0.606, 'bray_pval_batch': 0.23, 'bray_pval_biovar': 0.606}}
+already exists harmony out_1_0.099_0_iter_2_summary.csv
+already exists nobc out_1_0.099_0_iter_2_summary.csv
+already exists combat out_1_0.099_0_iter_2_summary.csv
+already exists limma out_1_0.099_0_iter_2_summary.csv
+already exists ConQuR out_1_0.099_0_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0.099_0_iter_2_summary.csv
+already exists MMUPHin out_1_0.099_0_iter_2_summary.csv
+already exists percentile_norm out_1_0.099_0_iter_2_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0037546861431898, 'batch_bray_r2': 0.0132080258466649, 'biovar_aitch_r2': 0.0127625458531718, 'biovar_bray_r2': 0.0127625458531718, 'shannon_pval': 0.0067585379827237, 'aitch_pval_batch': 0.025, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'nobc': {'batch_aitch_r2': 0.0036397380944926, 'batch_bray_r2': 0.003050799288701, 'biovar_aitch_r2': 0.0149833239971276, 'biovar_bray_r2': 0.0149833239971276, 'shannon_pval': 0.0015533693734014, 'aitch_pval_batch': 0.005, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.124, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0007268078254756, 'batch_bray_r2': 0.0009163200185957, 'biovar_aitch_r2': 0.0150397113794884, 'biovar_bray_r2': 0.0150397113794884, 'shannon_pval': 0.0007644872138093, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.993, 'bray_pval_biovar': 0.001}, 'limma': {'batch_aitch_r2': 0.0021777187979757, 'batch_bray_r2': 0.0020972270337767, 'biovar_aitch_r2': 0.0217012025351298, 'biovar_bray_r2': 0.0217012025351298, 'shannon_pval': 0.6235613247303651, 'aitch_pval_batch': 0.564, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.605, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0015178804897953, 'batch_bray_r2': -0.0013658044927548, 'biovar_aitch_r2': 0.0146519359336214, 'biovar_bray_r2': 0.0146519359336214, 'shannon_pval': 0.0019352005479875, 'aitch_pval_batch': 0.993, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0021885244486858, 'batch_bray_r2': -0.0009460170801109, 'biovar_aitch_r2': 0.015409866364795, 'biovar_bray_r2': 0.015409866364795, 'shannon_pval': 0.0050553524420506, 'aitch_pval_batch': 0.498, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0032013017797597, 'batch_bray_r2': 0.0009749025773224, 'biovar_aitch_r2': 0.0152995393375233, 'biovar_bray_r2': 0.0152995393375233, 'shannon_pval': 0.0012706741485012, 'aitch_pval_batch': 0.013, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.983, 'bray_pval_biovar': 0.001}, 'percentile_norm': {'batch_aitch_r2': 0.0023488234357558, 'batch_bray_r2': 0.0021671613482071, 'biovar_aitch_r2': 0.0023114355250629, 'biovar_bray_r2': 0.0023114355250629, 'shannon_pval': 0.6997279952595385, 'aitch_pval_batch': 0.267, 'aitch_pval_biovar': 0.38, 'bray_pval_batch': 0.555, 'bray_pval_biovar': 0.38}}
+already exists harmony out_1_0.099_0_iter_3_summary.csv
+already exists nobc out_1_0.099_0_iter_3_summary.csv
+already exists combat out_1_0.099_0_iter_3_summary.csv
+already exists limma out_1_0.099_0_iter_3_summary.csv
+already exists ConQuR out_1_0.099_0_iter_3_summary.csv
+already exists ConQuR_libsize out_1_0.099_0_iter_3_summary.csv
+already exists MMUPHin out_1_0.099_0_iter_3_summary.csv
+already exists percentile_norm out_1_0.099_0_iter_3_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_3/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0026825994971629, 'batch_bray_r2': 0.0121473614665783, 'biovar_aitch_r2': 0.0135658087750752, 'biovar_bray_r2': 0.0135658087750752, 'shannon_pval': 0.0006661643790082, 'aitch_pval_batch': 0.199, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'nobc': {'batch_aitch_r2': 0.002866581125865, 'batch_bray_r2': 0.0035677516219201, 'biovar_aitch_r2': 0.0158646136274714, 'biovar_bray_r2': 0.0158646136274714, 'shannon_pval': 3.048699167481224e-05, 'aitch_pval_batch': 0.053, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.072, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0005413422292121, 'batch_bray_r2': 0.0007052861912315, 'biovar_aitch_r2': 0.0156220200839518, 'biovar_bray_r2': 0.0156220200839518, 'shannon_pval': 2.906285253554264e-05, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'limma': {'batch_aitch_r2': 0.0024204327940926, 'batch_bray_r2': 0.0017506023482103, 'biovar_aitch_r2': 0.0200384598352069, 'biovar_bray_r2': 0.0200384598352069, 'shannon_pval': 0.2379533765932565, 'aitch_pval_batch': 0.195, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.946, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0003220284791461, 'batch_bray_r2': -0.0014446382451315, 'biovar_aitch_r2': 0.0161604439452638, 'biovar_bray_r2': 0.0161604439452638, 'shannon_pval': 9.717206183200662e-05, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0005956693524996, 'batch_bray_r2': -0.0012365090424431, 'biovar_aitch_r2': 0.016186618126316, 'biovar_bray_r2': 0.016186618126316, 'shannon_pval': 0.0002161540802986, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.002508226135029, 'batch_bray_r2': 0.001787195648484, 'biovar_aitch_r2': 0.0161374205008775, 'biovar_bray_r2': 0.0161374205008775, 'shannon_pval': 1.954849998837728e-05, 'aitch_pval_batch': 0.197, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.686, 'bray_pval_biovar': 0.001}, 'percentile_norm': {'batch_aitch_r2': 0.0023311878691691, 'batch_bray_r2': 0.0020083526110714, 'biovar_aitch_r2': 0.0024561206049415, 'biovar_bray_r2': 0.0024561206049415, 'shannon_pval': 0.0469548716704893, 'aitch_pval_batch': 0.263, 'aitch_pval_biovar': 0.193, 'bray_pval_batch': 0.772, 'bray_pval_biovar': 0.193}}
+already exists harmony out_1_0.099_0_iter_4_summary.csv
+already exists nobc out_1_0.099_0_iter_4_summary.csv
+already exists combat out_1_0.099_0_iter_4_summary.csv
+already exists limma out_1_0.099_0_iter_4_summary.csv
+already exists ConQuR out_1_0.099_0_iter_4_summary.csv
+already exists ConQuR_libsize out_1_0.099_0_iter_4_summary.csv
+already exists MMUPHin out_1_0.099_0_iter_4_summary.csv
+already exists percentile_norm out_1_0.099_0_iter_4_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_4/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0045999989763552, 'batch_bray_r2': 0.0147062234376599, 'biovar_aitch_r2': 0.0151946044264927, 'biovar_bray_r2': 0.0151946044264927, 'shannon_pval': 3.894120305490876e-07, 'aitch_pval_batch': 0.002, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'nobc': {'batch_aitch_r2': 0.0027977155117542, 'batch_bray_r2': 0.0032444189346278, 'biovar_aitch_r2': 0.0167078871331428, 'biovar_bray_r2': 0.0167078871331428, 'shannon_pval': 2.9424794906504133e-09, 'aitch_pval_batch': 0.06, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.094, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0008802524498621, 'batch_bray_r2': 0.0014244731056776, 'biovar_aitch_r2': 0.0167042992514514, 'biovar_bray_r2': 0.0167042992514514, 'shannon_pval': 1.5110297332702639e-09, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.862, 'bray_pval_biovar': 0.001}, 'limma': {'batch_aitch_r2': 0.002371653696563, 'batch_bray_r2': 0.0019190463736169, 'biovar_aitch_r2': 0.0175722331678888, 'biovar_bray_r2': 0.0175722331678888, 'shannon_pval': 0.2367987563418795, 'aitch_pval_batch': 0.278, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.822, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0002255772684673, 'batch_bray_r2': -0.0015165992806593, 'biovar_aitch_r2': 0.0163067786112687, 'biovar_bray_r2': 0.0163067786112687, 'shannon_pval': 3.6061749839846006e-11, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0003646419943394, 'batch_bray_r2': -0.001410824769285, 'biovar_aitch_r2': 0.0170155484015279, 'biovar_bray_r2': 0.0170155484015279, 'shannon_pval': 1.0979922410883107e-10, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0025232908182512, 'batch_bray_r2': 0.0012922819623957, 'biovar_aitch_r2': 0.0171029816300038, 'biovar_bray_r2': 0.0171029816300038, 'shannon_pval': 3.390201502248388e-09, 'aitch_pval_batch': 0.178, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.918, 'bray_pval_biovar': 0.001}, 'percentile_norm': {'batch_aitch_r2': 0.0024837825201026, 'batch_bray_r2': 0.0028446438566178, 'biovar_aitch_r2': 0.0020125302037145, 'biovar_bray_r2': 0.0020125302037145, 'shannon_pval': 0.6656137700833387, 'aitch_pval_batch': 0.103, 'aitch_pval_biovar': 0.796, 'bray_pval_batch': 0.034, 'bray_pval_biovar': 0.796}}
+already exists harmony out_1_0.099_0_iter_5_summary.csv
+already exists nobc out_1_0.099_0_iter_5_summary.csv
+already exists combat out_1_0.099_0_iter_5_summary.csv
+already exists limma out_1_0.099_0_iter_5_summary.csv
+already exists ConQuR out_1_0.099_0_iter_5_summary.csv
+already exists ConQuR_libsize out_1_0.099_0_iter_5_summary.csv
+already exists MMUPHin out_1_0.099_0_iter_5_summary.csv
+already exists percentile_norm out_1_0.099_0_iter_5_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0_iter_5/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0030115371093323, 'batch_bray_r2': 0.0101107153697585, 'biovar_aitch_r2': 0.0106468599189147, 'biovar_bray_r2': 0.0106468599189147, 'shannon_pval': 1.4038220625122286e-06, 'aitch_pval_batch': 0.103, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'nobc': {'batch_aitch_r2': 0.0032760122811548, 'batch_bray_r2': 0.0027777923316447, 'biovar_aitch_r2': 0.0130474836163942, 'biovar_bray_r2': 0.0130474836163942, 'shannon_pval': 1.0337063632212806e-09, 'aitch_pval_batch': 0.012, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.201, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0008702019081766, 'batch_bray_r2': 0.000180208942512, 'biovar_aitch_r2': 0.0129778149086285, 'biovar_bray_r2': 0.0129778149086285, 'shannon_pval': 6.91790182392212e-10, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'limma': {'batch_aitch_r2': 0.0025419213004797, 'batch_bray_r2': 0.0022236584527484, 'biovar_aitch_r2': 0.0174737433218164, 'biovar_bray_r2': 0.0174737433218164, 'shannon_pval': 0.0749837236153362, 'aitch_pval_batch': 0.099, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.471, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0008660592215144, 'batch_bray_r2': -0.0013342920216681, 'biovar_aitch_r2': 0.0129401339783763, 'biovar_bray_r2': 0.0129401339783763, 'shannon_pval': 4.341632521389722e-10, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0009802899475746, 'batch_bray_r2': -0.0011119517335433, 'biovar_aitch_r2': 0.0136411343194348, 'biovar_bray_r2': 0.0136411343194348, 'shannon_pval': 3.3301645013821005e-10, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0032764960742301, 'batch_bray_r2': 0.0016818208866876, 'biovar_aitch_r2': 0.0133786992780396, 'biovar_bray_r2': 0.0133786992780396, 'shannon_pval': 6.91790182392212e-10, 'aitch_pval_batch': 0.016, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.75, 'bray_pval_biovar': 0.001}, 'percentile_norm': {'batch_aitch_r2': 0.0022479780184643, 'batch_bray_r2': 0.0023532990655971, 'biovar_aitch_r2': 0.0022343581899948, 'biovar_bray_r2': 0.0022343581899948, 'shannon_pval': 0.6541878337297615, 'aitch_pval_batch': 0.448, 'aitch_pval_biovar': 0.476, 'bray_pval_batch': 0.293, 'bray_pval_biovar': 0.476}}
+already exists harmony out_1_0.099_0.099_iter_1_summary.csv
+already exists nobc out_1_0.099_0.099_iter_1_summary.csv
+already exists combat out_1_0.099_0.099_iter_1_summary.csv
+already exists limma out_1_0.099_0.099_iter_1_summary.csv
+already exists ConQuR out_1_0.099_0.099_iter_1_summary.csv
+already exists ConQuR_libsize out_1_0.099_0.099_iter_1_summary.csv
+already exists MMUPHin out_1_0.099_0.099_iter_1_summary.csv
+already exists percentile_norm out_1_0.099_0.099_iter_1_summary.csv
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_1/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0018119488150479, 'batch_bray_r2': 0.0194692772705741, 'biovar_aitch_r2': 0.0184790141160564, 'biovar_bray_r2': 0.0184790141160564, 'shannon_pval': 8.424136664516192e-07, 'aitch_pval_batch': 0.778, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'nobc': {'batch_aitch_r2': 0.0197776243625348, 'batch_bray_r2': 0.0114429031060607, 'biovar_aitch_r2': 0.0205013660380155, 'biovar_bray_r2': 0.0205013660380155, 'shannon_pval': 4.554805887880542e-07, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0028705244312445, 'batch_bray_r2': 0.001787735432412, 'biovar_aitch_r2': 0.0211348109177094, 'biovar_bray_r2': 0.0211348109177094, 'shannon_pval': 1.550576997045879e-07, 'aitch_pval_batch': 0.046, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.693, 'bray_pval_biovar': 0.001}, 'limma': {'batch_aitch_r2': 0.0151676760274779, 'batch_bray_r2': 0.0145676500908739, 'biovar_aitch_r2': 0.024298490498751, 'biovar_bray_r2': 0.024298490498751, 'shannon_pval': 0.0230996689262661, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0007146214698598, 'batch_bray_r2': -0.00151891453177, 'biovar_aitch_r2': 0.019541063308385, 'biovar_bray_r2': 0.019541063308385, 'shannon_pval': 6.317453885698786e-08, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0010429911262192, 'batch_bray_r2': -0.0012510202787997, 'biovar_aitch_r2': 0.0213308787681674, 'biovar_bray_r2': 0.0213308787681674, 'shannon_pval': 2.529188427382013e-08, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0137863459114789, 'batch_bray_r2': 0.0053377605406427, 'biovar_aitch_r2': 0.020974804583929, 'biovar_bray_r2': 0.020974804583929, 'shannon_pval': 6.089690079500464e-07, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.003, 'bray_pval_biovar': 0.001}, 'percentile_norm': {'batch_aitch_r2': 0.0021336896845265, 'batch_bray_r2': 0.0020596246919819, 'biovar_aitch_r2': 0.0023105223744572, 'biovar_bray_r2': 0.0023105223744572, 'shannon_pval': 0.0905490520706182, 'aitch_pval_batch': 0.701, 'aitch_pval_biovar': 0.359, 'bray_pval_batch': 0.703, 'bray_pval_biovar': 0.359}}
+already exists harmony out_1_0.099_0.099_iter_2_summary.csv
+already exists nobc out_1_0.099_0.099_iter_2_summary.csv
+already exists combat out_1_0.099_0.099_iter_2_summary.csv
+already exists limma out_1_0.099_0.099_iter_2_summary.csv
+already exists ConQuR out_1_0.099_0.099_iter_2_summary.csv
+already exists ConQuR_libsize out_1_0.099_0.099_iter_2_summary.csv
+already exists MMUPHin out_1_0.099_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0.099
+batch_effect_val 0.099
+___________________________________________________________
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001971     0.002091  0.001971   0.904
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001653     0.001935  0.001881   0.991
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001777     0.001985  0.001955   0.941
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001777     0.001985  0.001955   0.941
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.601005
+biovar_shannon_pval   0.399920
+batch_aitch_r2        0.001971
+batch_bray_r2         0.001653
+batch_aitch_pval      0.904000
+batch_bray_pval       0.991000
+biovar_aitch_r2       0.001777
+biovar_bray_r2        0.001777
+biovar_aitch_pval     0.941000
+biovar_bray_pval      0.941000
+unique biovar variables ['cond_0' 'cond_1']
+V2      1
+V3      1
+V4      1
+V5      1
+V6      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 300, dtype: int64
+TP, FP, TN, FN 19 0 150 131
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T    add=T  Pr(>F)
+batch   0.01345     0.007924  0.01345   0.001
+       standard  sqrt.dist=T    add=T  Pr(>F)
+batch  0.007904     0.005281  0.00351   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.00707     0.004932  0.003322   0.001
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.00707     0.004932  0.003322   0.001
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                   0.000000
+power                 0.126667
+batches_shannon_pval  0.000719
+biovar_shannon_pval   0.001564
+batch_aitch_r2        0.013450
+batch_bray_r2         0.007904
+batch_aitch_pval      0.001000
+batch_bray_pval       0.001000
+biovar_aitch_r2       0.007070
+biovar_bray_r2        0.007070
+biovar_aitch_pval     0.001000
+biovar_bray_pval      0.001000
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/harmony
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/nobc
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/limma
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/ConQuR_libsize
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/MMUPHin
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_072623/out_1_0.099_0.099_iter_2/percentile_norm
+{'harmony': {'batch_aitch_r2': 0.0037991547910144, 'batch_bray_r2': 0.0154154164284484, 'biovar_aitch_r2': 0.0062686253425955, 'biovar_bray_r2': 0.0062686253425955, 'shannon_pval': 0.0003247417124993, 'aitch_pval_batch': 0.018, 'aitch_pval_biovar': 0.003, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.003}, 'nobc': {'batch_aitch_r2': 0.0134497019395835, 'batch_bray_r2': 0.0079043052549597, 'biovar_aitch_r2': 0.0070704268321304, 'biovar_bray_r2': 0.0070704268321304, 'shannon_pval': 0.0015636766224018, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'combat': {'batch_aitch_r2': 0.0022897517399473, 'batch_bray_r2': 0.0013741972421354, 'biovar_aitch_r2': 0.0075733517844803, 'biovar_bray_r2': 0.0075733517844803, 'shannon_pval': 0.0001443293584724, 'aitch_pval_batch': 0.398, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.888, 'bray_pval_biovar': 0.001}, 'limma': {'batch_aitch_r2': 0.0117847255611121, 'batch_bray_r2': 0.0164174667238536, 'biovar_aitch_r2': 0.0102229206231298, 'biovar_bray_r2': 0.0102229206231298, 'shannon_pval': 0.1692354259858675, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}, 'ConQuR': {'batch_aitch_r2': 0.0002786155989099, 'batch_bray_r2': -0.0016213800212527, 'biovar_aitch_r2': 0.0079432202310888, 'biovar_bray_r2': 0.0079432202310888, 'shannon_pval': 5.618412468583372e-05, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0002682685704946, 'batch_bray_r2': -0.0014973469635399, 'biovar_aitch_r2': 0.0089367757652064, 'biovar_bray_r2': 0.0089367757652064, 'shannon_pval': 7.651509699776757e-05, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.001}, 'MMUPHin': {'batch_aitch_r2': 0.0111914874754471, 'batch_bray_r2': 0.0049057773492597, 'biovar_aitch_r2': 0.0074721859130291, 'biovar_bray_r2': 0.0074721859130291, 'shannon_pval': 0.0006982648765451, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.005, 'bray_pval_biovar': 0.001}, 'percentile_norm': {'batch_aitch_r2': 0.0134497019395835, 'batch_bray_r2': 0.0079043052549597, 'biovar_aitch_r2': 0.0070704268321304, 'biovar_bray_r2': 0.0070704268321304, 'shannon_pval': 0.0015636766224018, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.001, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.001}}

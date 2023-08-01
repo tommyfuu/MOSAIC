@@ -37,14 +37,16 @@ covar = factor(autism_meta$DiseaseState)
 #                          frequencyU=1,
 #                          cutoff=0.25)
 
-# fit_autism = ConQuR(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son")
-# fit_autism_lasso = ConQuR(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son",
-#                     logistic_lasso=T, quantile_type="lasso")
-# fit_autism_simple = ConQuR(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son", simple_match=T)
+fit_autism = ConQuR(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son")
+fit_autism_lasso = ConQuR(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son",
+                    logistic_lasso=T, quantile_type="lasso")
+fit_autism_simple = ConQuR(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son", simple_match=T)
 
-# # save(taxa_tuned, fit_autism, fit_autism_lasso, fit_autism_simple, file="autism_results.Rdata")
-# output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_2_microbiomeHD'
+# save(taxa_tuned, fit_autism, fit_autism_lasso, fit_autism_simple, file="autism_results.Rdata")
+output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_2_microbiomeHD'
 # save(taxa_tuned, fit_autism, fit_autism_lasso, fit_autism_simple, file="/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_results.Rdata")
+save(fit_autism, fit_autism_lasso, fit_autism_simple, file="/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_results_1.Rdata")
+
 
 # # ConQuR_libsize - old
 # taxa_tuned_libsize_old = Tune_ConQuR_libsize(tax_tab=autism_taxa, batchid=batchid, covariates=covar,
@@ -58,26 +60,33 @@ covar = factor(autism_meta$DiseaseState)
 #                                          frequencyU=1,
 #                                          cutoff=0.25) 
 
-# fit_autism_libsize_old = ConQuR_libsize(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son")
-# fit_autism_lasso_libsize_old = ConQuR_libsize(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son",
-#                                           logistic_lasso=T, quantile_type="lasso")
-# fit_autism_simple_libsize_old = ConQuR_libsize(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son", simple_match=T)
+fit_autism_libsize_old = ConQuR_libsize(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son")
+fit_autism_lasso_libsize_old = ConQuR_libsize(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son",
+                                          logistic_lasso=T, quantile_type="lasso")
+fit_autism_simple_libsize_old = ConQuR_libsize(tax_tab=autism_taxa, batchid=batchid, covariates=covar, batch_ref="asd_son", simple_match=T)
   
 # save(taxa_tuned_libsize_old, fit_autism_libsize_old, fit_autism_lasso_libsize_old, fit_autism_simple_libsize_old, file="./autism_results_libsize_old.Rdata")
+save(fit_autism_libsize_old, fit_autism_lasso_libsize_old, fit_autism_simple_libsize_old, file="./autism_results_libsize_old_1.Rdata")
 
 
 # plot
-load(file="/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_results_libsize_old.Rdata")
-pdf("/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_count_old.pdf", width=20, height=8)
+# load(file="/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_results_libsize_old.Rdata")
+load(file="/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_results_libsize_old_1.Rdata")
+load(file="/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_results_1.Rdata")
+
+pdf("/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR/autism_count_old_1.pdf", width=20, height=8)
+# par(mfrow=c(2, 5))
 par(mfrow=c(2, 5))
 Plot_PCoA(TAX=autism_taxa, factor=batchid)
-Plot_PCoA(TAX=taxa_tuned_libsize$tax_final, factor=batchid)
-Plot_PCoA(TAX=fit_autism_libsize, factor=batchid)
-Plot_PCoA(TAX=fit_autism_lasso_libsize, factor=batchid)
-Plot_PCoA(TAX=fit_autism_simple_libsize, factor=batchid)
+# Plot_PCoA(TAX=taxa_tuned_libsize_old$tax_final, factor=batchid)
+Plot_PCoA(TAX=fit_autism, factor=batchid)
+Plot_PCoA(TAX=fit_autism_libsize_old, factor=batchid)
+Plot_PCoA(TAX=fit_autism_lasso_libsize_old, factor=batchid)
+Plot_PCoA(TAX=fit_autism_simple_libsize_old, factor=batchid)
 
 Plot_PCoA(TAX=autism_taxa, factor=batchid, dissimilarity="Aitch")
-Plot_PCoA(TAX=taxa_tuned_libsize_old$tax_final, factor=batchid, dissimilarity="Aitch")
+# Plot_PCoA(TAX=taxa_tuned_libsize_old$tax_final, factor=batchid, dissimilarity="Aitch")
+Plot_PCoA(TAX=fit_autism, factor=batchid, dissimilarity="Aitch")
 Plot_PCoA(TAX=fit_autism_libsize_old, factor=batchid, dissimilarity="Aitch")
 Plot_PCoA(TAX=fit_autism_lasso_libsize_old, factor=batchid, dissimilarity="Aitch")
 Plot_PCoA(TAX=fit_autism_simple_libsize_old, factor=batchid, dissimilarity="Aitch")

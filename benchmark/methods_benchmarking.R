@@ -311,16 +311,17 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 
 overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623'
 
-# # autism 2 microbiomeHD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
-# dataset = "Dataset",
-# covar = c("DiseaseState"),
-# count = TRUE,
-# batch_ref = 'asd_son',
+# autism 2 microbiomeHD
+run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
+'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
+'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
+dataset = "Dataset",
+covar = c("DiseaseState"),
+count = TRUE,
+batch_ref = 'asd_son',
+used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-# )
+)
 
 # # cdi 3 microbiomeHD
 # run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
@@ -440,5 +441,5 @@ scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_
     }
   }
 }
-method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
+# scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
