@@ -168,13 +168,13 @@ Plot_single_PCoA <- function(TAX, factor, bc_method, sub_index=NULL, dissimilari
     kappa = min(temp_mat[temp_mat > 0])/2
     Z = as.matrix(clr(temp_mat+kappa))
     MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
-    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, sub = paste0(bc_method, " Aitchinson"), csub = aa)
+    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, csub = aa)
   }
   else if (dissimilarity == "Bray") {
     index = which( apply(TAX[, sub_index], 1, sum) > 0 )
     bc =  vegdist(TAX[index, sub_index])
     MDS = cmdscale(bc, k=4)
-    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, sub = paste0(bc_method, " Bray-Curtis"), csub = aa)
+    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, csub = aa)
   }
   else{
     stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")

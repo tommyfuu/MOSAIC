@@ -16,7 +16,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, KFold
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_score, RocCurveDisplay
+from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_score, RocCurveDisplay, roc_curve
 from sklearn.preprocessing import OneHotEncoder
 import time
 import rpy2.robjects as robjects
@@ -26,16 +26,8 @@ from statsmodels.stats.multitest import multipletests
 
 
 # data_mat, meta_data = load_data(address_X, address_Y, IDCol, index_col, PCA_first = False)
-def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root, PCA_first = False, diversity_weight = None):
+def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root):
     start_time = time.time()
-    if PCA_first:
-        PCA_first_str = "_PCA_first"
-        pca_results  = PCA(n_components = 30, random_state=np.random.RandomState(88))
-        pca_results.fit(data_mat)
-        data_mat_1 = pca_results.transform(data_mat)
-        data_mat = pd.DataFrame(data_mat_1, index = data_mat.index, columns= ['PC'+str(i) for i in range(30)])
-    else:
-        PCA_first_str = ''
     ho = run_harmony(data_mat, meta_data, vars_use)
     res = pd.DataFrame(ho.Z_corr)
     elapsed = time.time() - start_time
@@ -45,15 +37,11 @@ def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root, 
     res.index = data_mat.columns
     res.columns = list(meta_data[IDCol])
     
-    if diversity_weight is not None:
-        weight_str = "_weighted"
-    else:
-        weight_str = ""
-    with open(output_root+"_"+PCA_first_str+weight_str+"_elapsed_time.txt", "w") as text_file:
-        print(PCA_first_str, str(elapsed), "seconds", file=text_file)
+    with open(output_root+"_elapsed_time.txt", "w") as text_file:
+        print(str(elapsed), "seconds", file=text_file)
         print("\n", file=text_file)
 
-    res.T.to_csv(output_root+"_"+PCA_first_str+weight_str+"_adjusted_count.csv")
+    res.T.to_csv(output_root+"_adjusted_count.csv")
     return res.T, meta_data
 
 
@@ -61,7 +49,7 @@ def run_eval(batch_corrected_df, meta_data, batch_var, output_root, bio_var = Fa
     a = Evaluate(batch_corrected_df, meta_data, batch_var, output_root, bio_var, n_pc, covar, IDCol)
     return
 
-def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l, used_var, output_root):
+def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l, used_var, output_root, datatype = 'count'):
     # prepare metadata
     r = robjects.r
     numpy2ri.activate()
@@ -74,15 +62,19 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
     # initial graphics
     
     r.pdf(output_root+dataset_name+"_multi_PCOA_both_batch.pdf", len(batch_corrected_df_l)*6, height=12)
-    r.par(mfrow = robjects.IntVector([2, len(batch_corrected_df_l)]))
+    if datatype == 'count':
+        r.par(mfrow = robjects.IntVector([2, len(batch_corrected_df_l)]))
+    else:
+        r.par(mfrow = robjects.IntVector([1, len(batch_corrected_df_l)]))
 
     # plot the subplots in order
-    for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
-        data = np.array(batch_corrected_df)
-        data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-        data = data+np.abs(np.min(data))
-        r_used_var = meta_data_l[idx][used_var]
-        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
+    if datatype == 'count':
+        for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
+            data = np.array(batch_corrected_df)
+            data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+            data = data+np.abs(np.min(data))
+            r_used_var = meta_data_l[idx][used_var]
+            r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
     
     for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
         data = np.array(batch_corrected_df)
@@ -341,6 +333,13 @@ class Evaluate(object):
         # train random forest classifier and evaluate
         used_x.reset_index(drop=True, inplace=True)
         eval_df = pd.DataFrame(columns = ["fold", "average_acc", "macro_prec", "weighted_prec", "macro_recall", "weighted_recall", "macro_f1", "weighted_f1", "auc",  "baseline_likelihood"])
+        
+        if self.pipeline == 'default':
+            tprs = []
+            base_fpr = np.linspace(0, 1, 101)
+            plt.figure(figsize=(5, 5))
+            plt.axes().set_aspect('equal', 'datalim')
+        
         for i, (train_index, test_index) in enumerate(kf.split(used_x, used_y)):
             # get training and testing data
             X_train = used_x.loc[train_index]
@@ -352,6 +351,7 @@ class Evaluate(object):
             clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
             clf.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
+            y_pred_prob = clf.predict_proba(X_test)
             average_acc = sum(y_pred==y_test)/len(y_test)
 
             macro_precision = precision_score(y_test, y_pred, average = 'macro')
@@ -369,7 +369,7 @@ class Evaluate(object):
             # find the most common element in y_test
             most_common_element = max(set(y_test), key = y_test.count)
             baseline_likelihood = y_test.count(most_common_element)/len(y_test)
-            eval_df.loc[len(eval_df)] = [i+1, average_acc, macro_precision, weighted_precision, macro_recall, weighted_recall, macro_f1, weighted_f1, auc, baseline_likelihood]
+            eval_df.loc[len(eval_df)] = [str(i+1), average_acc, macro_precision, weighted_precision, macro_recall, weighted_recall, macro_f1, weighted_f1, auc, baseline_likelihood]
         
             # for each fold, also plot the roc plot
             # one hot encode y_test and y_pred
@@ -377,20 +377,55 @@ class Evaluate(object):
             y_pred_zeroone = np.where(np.array(y_pred) == most_common_element, 1, 0)
             
             if self.pipeline == 'default':
-                RocCurveDisplay.from_predictions(
-                    y_test_zeroone, y_pred_zeroone,
-                    name=f"{self.bio_var} classification",
-                    color="darkorange",
-                    # pos_label=self.poslabel
-                )
-                plt.plot([0, 1], [0, 1], "k--", label="chance level (AUC = 0.5)")
-                plt.axis("square")
-                plt.xlabel("False Positive Rate")
-                plt.ylabel("True Positive Rate")
-                plt.title(f"{self.bio_var} classification fold {i+1}")
-                plt.legend()
-                plt.savefig(self.output_root+"_"+self.bio_var+"_rf_fold_"+str(i+1)+"_roc.png")
+                # RocCurveDisplay.from_predictions(
+                #     y_test_zeroone, y_pred_zeroone,
+                #     name=f"{self.bio_var} classification",
+                #     color="darkorange",
+                #     # pos_label=self.poslabel
+                # )
+                # plt.plot([0, 1], [0, 1], "k--", label="chance level (AUC = 0.5)")
+                # plt.axis("square")
+                # plt.xlabel("False Positive Rate")
+                # plt.ylabel("True Positive Rate")
+                # plt.title(f"{self.bio_var} classification fold {i+1}")
+                # plt.legend()
+                # plt.savefig(self.output_root+"_"+self.bio_var+"_rf_fold_"+str(i+1)+"_roc.png")
+                # print(y_test)
+                # print(y_test_oh)
+                # print(y_pred_oh)
+                # print("y_pred_prob", y_pred_prob)
+
+                # https://stats.stackexchange.com/questions/186337/average-roc-for-repeated-10-fold-cross-validation-with-probability-estimates
+                y_test_oh_diseased_state = [el[0] for el in list(y_test_oh)]
+                y_pred_prob_diseased_state = [el[0] for el in list(y_pred_oh)]
+                fpr, tpr, _ = roc_curve(y_test_oh_diseased_state, y_pred_prob_diseased_state)
+                plt.plot(fpr, tpr, 'b', alpha=0.15)
+                tpr = np.interp(base_fpr, fpr, tpr)
+                tpr[0] = 0.0
+                tprs.append(tpr)
+
+        eval_df.loc[len(eval_df)] = eval_df.mean()
+        eval_df.loc[len(eval_df)-1, 'fold'] = 'mean'
         eval_df.to_csv(self.output_root+"_"+self.bio_var+"_rf_evaluate.csv")
+        if self.pipeline == 'default':
+            tprs = np.array(tprs)
+            mean_tprs = tprs.mean(axis=0)
+            std = tprs.std(axis=0)
+
+            tprs_upper = np.minimum(mean_tprs + std, 1)
+            tprs_lower = mean_tprs - std
+
+            plt.plot(base_fpr, mean_tprs, 'b')
+            plt.fill_between(base_fpr, tprs_lower, tprs_upper, color='grey', alpha=0.3)
+
+            plt.plot([0, 1], [0, 1],'r--')
+            plt.xlim([-0.01, 1.01])
+            plt.ylim([-0.01, 1.01])
+            plt.ylabel('True Positive Rate')
+            plt.xlabel('False Positive Rate')
+            # annotate the mean AUC score
+            plt.annotate(f"mean AUC: {round(eval_df.loc[len(eval_df)-1][-2], 4)}", xy=(0.1, 0.9))
+            plt.savefig(self.output_root+"_"+self.bio_var+"_rf_5fold_roc.png")
         return
         
 
@@ -551,44 +586,74 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
 
 overall_path = '/athena/linglab/scratch/chf4012'
 
-# ## GENERATE RW DATA FOR RUNNING R METHODS
-# # autism 2 microbiomeHD
-# ################################################################################
-# address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, "Dataset", "Disease", output_root)
+## GENERATE RW DATA FOR RUNNING R METHODS + RUN ON HARMONY/PERCENTILE_NORM
+# autism 2 microbiomeHD
+################################################################################
+### STEP 1. GENERATE DATA FROM DATABASE
+address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory)
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+check_complete_confounding(meta_data, "Dataset", "DiseaseState", output_root)
+### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"autism_2_microbiomeHD_harmony")
+percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
 
-# # cdi 3 microbiomeHD
-# ################################################################################
-# address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
 
-# # ibd_3_CMD
-# ################################################################################
-# address_directory = overall_path+'/mic_bc_benchmark/data/ibd_3_CMD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
-# data_mat, meta_data = load_data_CMD(address_directory, output_root, covar_l=['age', 'gender'] )
-# print("ibd_3_CMD loaded")
-# vars_use = ["study_name"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, "study_name", "disease", output_root)
+# cdi 3 microbiomeHD
+################################################################################
+### STEP 1. GENERATE DATA FROM DATABASE
+address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
+data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
+### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/"+"cdi_3_microbiomeHD_harmony")
+percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
 
-# # CRC_8_CMD
-# ################################################################################
-# address_directory = overall_path+'/mic_bc_benchmark/data/CRC_8_CMD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
-# data_mat, meta_data = load_data_CMD(address_directory, output_root, covar_l=['age', 'gender'] )
-# print("CRC_8_CMD loaded")
-# vars_use = ["study_name"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, "study_name", "disease", output_root)
+
+# ibd_3_CMD
+################################################################################
+### STEP 1. GENERATE DATA FROM DATABASE
+address_directory = overall_path+'/mic_bc_benchmark/data/ibd_3_CMD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
+data_mat, meta_data = load_data_CMD(address_directory, output_root, covar_l=['age', 'gender'] )
+print("ibd_3_CMD loaded")
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+check_complete_confounding(meta_data, "study_name", "disease", output_root)
+### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"ibd_3_CMD_harmony")
+percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
+
+# CRC_8_CMD
+################################################################################
+### STEP 1. GENERATE DATA FROM DATABASE
+address_directory = overall_path+'/mic_bc_benchmark/data/CRC_8_CMD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
+data_mat, meta_data = load_data_CMD(address_directory, output_root, covar_l=['age', 'gender'] )
+print("CRC_8_CMD loaded")
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+check_complete_confounding(meta_data, "study_name", "disease", output_root)
+### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/"+"CRC_8_CMD_harmony")
+percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD")
 
 
 
@@ -702,19 +767,26 @@ overall_path = '/athena/linglab/scratch/chf4012'
 output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/autism_2_microbiomeHD'
 address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
 output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-data_mat, meta_data = load_data_microbiomeHD(address_directory)
 vars_use = ["Dataset"]
 IDCol = 'Sam_id'
 
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
+
+# data_mat, meta_data = load_data_microbiomeHD(address_directory)
+# nobc
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 ### nobc
 Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
 
 ### harmony
-res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"harmony")
+# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"harmony")
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
+res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nob', "DiseaseState", 30, [], 'Sam_id')
 
 # benchmarking other methods: 
-address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
+# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
 
 ### combat (combat_seq)
 address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat.csv"
@@ -741,18 +813,8 @@ address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism
 data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
 
-# ### Tune_ConQuR
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_Tune_ConQuR.csv"
-# data_mat_conqur_tune, meta_data_conqur_tune = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_tune, meta_data_conqur_tune, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_Tune_ConQuR/autism_2_microbiomeHD_Tune_ConQuR', "DiseaseState", 30, [], 'Sam_id')
-
-# ### Tune_ConQuR_libsize
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_Tune_ConQuR_libsize.csv"
-# data_mat_conqur_tune_libsize, meta_data_conqur_tune_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_tune_libsize, meta_data_conqur_tune_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_Tune_ConQuR_libsize/autism_2_microbiomeHD_Tune_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
-
 ### percentile_norm
-percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
+# percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
 address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
 data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
@@ -765,7 +827,7 @@ dataset_name = "autism_2_microbiomeHD"
 methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path)
 
-#### multi-method plot
+### multi-method plot
 # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_conqur_tune, data_mat_conqur_tune_libsize, data_mat_percentile_norm]
 # methods = ["nobc", "harmony", "combat", "limma", "MMUPhin", "ConQuR", "ConQuR_libsize", "Tune_ConQuR", "Tune_ConQuR_libsize", "percentile_norm"]
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_conqur_tune, meta_data_conqur_tune_libsize, meta_data_percentile_norm]
