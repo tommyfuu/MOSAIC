@@ -587,21 +587,21 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
 overall_path = '/athena/linglab/scratch/chf4012'
 
 ## GENERATE RW DATA FOR RUNNING R METHODS + RUN ON HARMONY/PERCENTILE_NORM
-# autism 2 microbiomeHD
-################################################################################
-### STEP 1. GENERATE DATA FROM DATABASE
-address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
-output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-data_mat, meta_data = load_data_microbiomeHD(address_directory)
-vars_use = ["Dataset"]
-IDCol = 'Sam_id'
-check_complete_confounding(meta_data, "Dataset", "DiseaseState", output_root)
-### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
-address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
-address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
-data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"autism_2_microbiomeHD_harmony")
-percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
+# # autism 2 microbiomeHD
+# ################################################################################
+# ### STEP 1. GENERATE DATA FROM DATABASE
+# address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
+# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
+# data_mat, meta_data = load_data_microbiomeHD(address_directory)
+# vars_use = ["Dataset"]
+# IDCol = 'Sam_id'
+# check_complete_confounding(meta_data, "Dataset", "DiseaseState", output_root)
+# ### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
+# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
+# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"autism_2_microbiomeHD_harmony")
+# percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
 
 
 # cdi 3 microbiomeHD
@@ -618,7 +618,7 @@ address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_mic
 address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
 data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/"+"cdi_3_microbiomeHD_harmony")
-percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
+percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv", "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
 
 
 # ibd_3_CMD
@@ -636,7 +636,7 @@ address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD
 address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
 data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"ibd_3_CMD_harmony")
-percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
+percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
 
 # CRC_8_CMD
 ################################################################################
@@ -653,7 +653,7 @@ address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD
 address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv"
 data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/"+"CRC_8_CMD_harmony")
-percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD")
+percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv", "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD")
 
 
 
@@ -786,8 +786,6 @@ res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nob', "DiseaseState", 30, [], 'Sam_id')
 
 # benchmarking other methods: 
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
-
 ### combat (combat_seq)
 address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat.csv"
 data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
