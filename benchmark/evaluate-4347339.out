@@ -83,3 +83,166 @@ ______________alpha_diversity_and_tests_for_batches_and_biovars______________
 ______________alpha_diversity_and_tests______________
 ______________alpha_diversity_and_tests______________
 [1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.009313     0.007077  0.009313   0.001
+gender  0.004319     0.003349  0.004319   0.003
+age     0.004371     0.004395  0.004371   0.002
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.081060     0.034054  0.007309   0.001
+gender  0.003166     0.002961  0.000797   0.001
+age     0.010509     0.007581  0.001359   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.013455     0.007833  0.001584   0.001
+gender  0.003166     0.002961  0.000797   0.001
+age     0.010509     0.007581  0.001359   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.013455     0.007833  0.001584   0.001
+gender  0.003166     0.002961  0.000797   0.001
+age     0.010509     0.007581  0.001359   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+[1] "Aitchinson"
+                                 0
+batches_shannon_pval  9.379113e-06
+biovar_shannon_pval   2.412024e-08
+batch_aitch_r2        9.313357e-03
+batch_bray_r2         8.106025e-02
+batch_aitch_pval      1.000000e-03
+batch_bray_pval       1.000000e-03
+biovar_aitch_r2       1.345517e-02
+biovar_bray_r2        1.345517e-02
+biovar_aitch_pval     1.000000e-03
+biovar_bray_pval      1.000000e-03
+unique biovar variables ['IBD' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.012006     0.006422  0.012006   0.001
+gender  0.006375     0.004332  0.006375   0.001
+age     0.013981     0.008336  0.013981   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.004624     0.003169  0.001477   0.001
+gender  0.003425     0.003092  0.000828   0.001
+age     0.011122     0.007457  0.001446   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.010668     0.007099  0.001410   0.001
+gender  0.003425     0.003092  0.000828   0.001
+age     0.011122     0.007457  0.001446   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.010668     0.007099  0.001410   0.001
+gender  0.003425     0.003092  0.000828   0.001
+age     0.011122     0.007457  0.001446   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+[1] "Aitchinson"
+                                 0
+batches_shannon_pval  5.773888e-07
+biovar_shannon_pval   1.179416e-10
+batch_aitch_r2        1.200600e-02
+batch_bray_r2         4.623627e-03
+batch_aitch_pval      1.000000e-03
+batch_bray_pval       1.000000e-03
+biovar_aitch_r2       1.066794e-02
+biovar_bray_r2        1.066794e-02
+biovar_aitch_pval     1.000000e-03
+biovar_bray_pval      1.000000e-03
+unique biovar variables ['IBD' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.020730     0.010724  0.020730   0.001
+gender  0.006879     0.004486  0.006879   0.001
+age     0.014537     0.008557  0.014537   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.001823     0.001649  0.001249   0.046
+gender  0.003439     0.003136  0.000813   0.001
+age     0.011454     0.007750  0.001409   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.011993     0.007929  0.001449   0.001
+gender  0.003439     0.003136  0.000813   0.001
+age     0.011454     0.007750  0.001409   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.011993     0.007929  0.001449   0.001
+gender  0.003439     0.003136  0.000813   0.001
+age     0.011454     0.007750  0.001409   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+[1] "Aitchinson"
+                                 0
+batches_shannon_pval  1.673976e-06
+biovar_shannon_pval   4.296953e-13
+batch_aitch_r2        2.072973e-02
+batch_bray_r2         1.823060e-03
+batch_aitch_pval      1.000000e-03
+batch_bray_pval       4.600000e-02
+biovar_aitch_r2       1.199348e-02
+biovar_bray_r2        1.199348e-02
+biovar_aitch_pval     1.000000e-03
+biovar_bray_pval      1.000000e-03
+unique biovar variables ['IBD' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.001246     0.001222  0.001246   0.239
+gender  0.000618     0.000609  0.000618   0.298
+age     0.000549     0.000573  0.000549   0.958
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.001217     0.001208  0.001211   0.389
+gender  0.000628     0.000615  0.000616   0.270
+age     0.000581     0.000592  0.000590   0.645
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.000653     0.000627  0.000630   0.144
+gender  0.000628     0.000615  0.000616   0.273
+age     0.000581     0.000592  0.000590   0.666
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.000653     0.000627  0.000630   0.144
+gender  0.000628     0.000615  0.000616   0.273
+age     0.000581     0.000592  0.000590   0.666
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+[1] "Aitchinson"
+                             0
+batches_shannon_pval  0.883486
+biovar_shannon_pval   0.823262
+batch_aitch_r2        0.001246
+batch_bray_r2         0.001217
+batch_aitch_pval      0.239000
+batch_bray_pval       0.389000
+biovar_aitch_r2       0.000653
+biovar_bray_r2        0.000653
+biovar_aitch_pval     0.144000
+biovar_bray_pval      0.144000
+nobc
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD/output_ibd_3_CMD_nobc
+harmony
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD/output_ibd_3_CMD_harmony
+limma
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD/output_ibd_3_CMD_limma
+MMUPHin
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD/output_ibd_3_CMD_MMUPHin
+ConQuR_rel
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD/output_ibd_3_CMD_ConQuR_rel
+Tune_ConQuR_rel
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD/output_ibd_3_CMD_Tune_ConQuR_rel

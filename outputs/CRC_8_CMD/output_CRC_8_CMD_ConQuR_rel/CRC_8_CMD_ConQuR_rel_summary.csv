@@ -1,0 +1,11 @@
+,0
+batches_shannon_pval,3.457141644506003e-10
+biovar_shannon_pval,7.373358461647122e-05
+batch_aitch_r2,0.3892180409148369
+batch_bray_r2,0.032738362463298094
+batch_aitch_pval,0.001
+batch_bray_pval,0.001
+biovar_aitch_r2,0.012493072540179166
+biovar_bray_r2,0.012493072540179166
+biovar_aitch_pval,0.001
+biovar_bray_pval,0.001

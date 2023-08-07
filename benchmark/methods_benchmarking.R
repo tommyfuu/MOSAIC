@@ -25,7 +25,7 @@ source(paste0(conqur_path, "/supporting_functions.R"))
 
 run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
                         used_methods = c("combat_seq", "limma", "MMUPHin", 'conqur_libsize', "conqur")) {
-    
+    print(output_root)
     # set up file save address
     sink_file_name = paste(output_root, "_runtime.txt", sep="")
     print(data_mat_path)
@@ -309,7 +309,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     
 }
 
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623'
 
 # autism 2 microbiomeHD
 # run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
@@ -323,40 +322,40 @@ overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_0726
 # # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
 # )
 
-# cdi 3 microbiomeHD
-run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
-dataset = "Dataset",
-covar = c("DiseaseState"),
-count = TRUE,
-batch_ref = 'cdi_youngster',
-used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-)
+# # cdi 3 microbiomeHD
+# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
+# dataset = "Dataset",
+# covar = c("DiseaseState"),
+# count = TRUE,
+# batch_ref = 'cdi_youngster',
+# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
+# )
 
-# ibd 3 CMD
-run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
-dataset = "study_name",
-batch_ref = 'HMP_2019_ibdmdb',
-covar = c("disease", "gender", "age"),
-used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-)
+# # ibd 3 CMD
+# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
+# dataset = "study_name",
+# batch_ref = 'HMP_2019_ibdmdb',
+# covar = c("disease", "gender", "age"),
+# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
+# )
 
 
-# CRC_8_CMD
-run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
-dataset = "study_name",
-batch_ref = 'FengQ_2015',
-covar = c("disease", "gender", "age"),
-used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-)
+# # CRC_8_CMD
+# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
+# dataset = "study_name",
+# batch_ref = 'FengQ_2015',
+# covar = c("disease", "gender", "age"),
+# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
+# )
 
 
 # just to speed up
@@ -376,7 +375,7 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
                             run_methods(output_file_path_count,
                                 paste0(overall_path, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
-                                paste0(output_dir, "/ibd_150_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
+                                paste0(output_dir, "/out_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, "/ibd_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
                                 dataset = dataset,
                                 batch_ref = batch_ref,
                                 covar = covar,
@@ -387,17 +386,18 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             )
                         }
     
-# or_l = c(1, 1.25, 1.5)
+or_l = c(1, 1.25, 1.5)
 # or_l = c(1.25, 1.5)
-or_l = c(1.5)
 # or_l = c(1.5)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# or_l = c(1.5)
+cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # cond_effect_val_l = c(0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-cond_effect_val_l = c(0.299)
-batch_effect_val_l = c(0.299, 0.499, 0.699, 0.899)
+batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# cond_effect_val_l = c(0.299)
+# batch_effect_val_l = c(0.299, 0.499, 0.699, 0.899)
 
-output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_072623'
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
 scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
@@ -436,6 +436,7 @@ scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_
 
             mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
                 mc.cores=5)
+            # sapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l))
 
             print("WHAT'S HAPPENING??")
           
@@ -444,5 +445,14 @@ scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_
     }
   }
 }
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
+
+# # method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 # scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_yesrelation_080723'
+method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
