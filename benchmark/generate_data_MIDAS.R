@@ -7,7 +7,7 @@ library(tibble)
 # instantiate variables
 otu_original = t(otu)
 p = ncol(otu_original)
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_072623'
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_080723'
 
 # making sure we are generating from the right data
 if (p==301) {
@@ -17,6 +17,14 @@ if (p==301) {
   # id_cond = 1:150
   id_batch = 26:275 # these are impacting taxa instead of sample
   id_cond = 1:50
+
+
+  # get library sizes of the original dataset
+  print("library sizes of the original dataset")
+  libsize_l = rowSums(otu_original)
+  print(length(libsize_l))
+  sampled_libsize_l = sample(libsize_l, n, replace = TRUE)
+  print(sampled_libsize_l)
 } 
 
 # function that turns from odds ratio to binary correlation (from ConQuR paper)
@@ -36,11 +44,11 @@ print("checkpoint 1")
 
 
 # function to generate from midas for each iteration
-midas_generate_per_iter <- function(or, cond_effect_val, batch_effect_val, iter){
-  output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+midas_generate_per_iter <- function(output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related){
+  output_file_path_count = paste0(output_root, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
   print(output_file_path_count)
-  output_file_path_relab = paste0(overall_path, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-  output_file_path_meta = paste0(overall_path, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  output_file_path_relab = paste0(output_root, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+  output_file_path_meta = paste0(output_root, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
   
   if (file.exists(output_file_path_count)){
     print(output_file_path_count)
@@ -48,20 +56,47 @@ midas_generate_per_iter <- function(or, cond_effect_val, batch_effect_val, iter)
     print("___")
   }
   else{
-    midas_simulate(otu_original, n, or, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta)
+    print("cond_effect_val")
+    print(cond_effect_val)
+    midas_simulate(otu_original, n, or, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta, libsize_l=libsize_l, batch_libsize_related=batch_libsize_related)
     print("___")
   }
 }
 
 
 # function to generate simulated data with MIDAs - linear combination
-midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_count, out_relab, out_meta, p_cond = 0.5, p_batch = 0.5){
-  # turn this into bincorr with the bincorr function and document bincorr value as well
-  bin_corr = bincorr(or, p_cond, p_batch)
-  print('OR, p_cond, p_batch, bin_corr')
-  print(c(or, p_cond, p_batch, bin_corr))
-  # generate batch and condition id
-  cond_batchid_vec = rmvbin(n, c(p_cond, p_batch), bincorr=(1-bin_corr)*diag(2)+bin_corr)
+midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_count, out_relab, out_meta, p_cond = 0.5, p_batch = 0.5, libsize_l = NULL, batch_libsize_related = FALSE){
+  if(is.null(libsize_l)){
+    rep(10000,n)
+  } 
+
+  # check if p_batch and libsize are related
+  if(batch_libsize_related == TRUE){
+    print("TRUE")
+    p_batch = 1 / (1 + exp(-scale(libsize_l)))
+    bin_corr = sapply(p_batch, function(x) bincorr(or, p_cond, x))
+    
+    cond_batchid_vec = matrix(ncol=2, nrow=n)
+    for (i in 1:n){
+      cond_batchid_vec[i, ] = rmvbin(1, c(p_cond, p_batch[i]), bincorr=(1-bin_corr[i])*diag(2)+bin_corr[i])
+    }
+  }
+  else{
+    print("FALSE")
+    bin_corr = bincorr(or, p_cond, p_batch)
+    print('OR, p_cond, p_batch, bin_corr')
+    # print(p_cond)
+    print(c(or, p_cond, p_batch))
+    print(length(bin_corr))
+    # print(c(or, p_cond, p_batch, bin_corr))
+    cond_batchid_vec = rmvbin(n, c(p_cond, p_batch), bincorr=(1-bin_corr)*diag(2)+bin_corr)
+  }
+  # # turn this into bincorr with the bincorr function and document bincorr value as well
+  # bin_corr = bincorr(or, p_cond, p_batch)
+  # print('OR, p_cond, p_batch, bin_corr')
+  # print(c(or, p_cond, p_batch, bin_corr))
+  # # generate batch and condition id
+  # cond_batchid_vec = rmvbin(n, c(p_cond, p_batch), bincorr=(1-bin_corr)*diag(2)+bin_corr)
   cond = cond_batchid_vec[, 1] # find the ids of samples that are affected by condition
   batchid = cond_batchid_vec[, 2] # find the ids of samples that are affected by batch
 
@@ -75,7 +110,7 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
   current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 0, "cond_0")
   current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 1, "cond_1")
   write.csv(current_metadata, file = out_meta, row.names = FALSE)
-
+  print("doing its thing")
   # print(cond)
   # simulate data
   fitted = Midas.setup(otu_original, fit.beta=FALSE)
@@ -97,17 +132,17 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
 
 
   fitted_c0b0 = Midas.modify(fitted,
-                            lib.size = rep(10000,n))
+                            lib.size = libsize_l)
   fitted_c1b0 = Midas.modify(fitted, 
-                            lib.size = rep(10000,n),
+                            lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect)*rel10 + cond_effect*rel1_cond,
                             mean.rel.abund = (1-cond_effect)*rel0 + cond_effect*rel_cond)
   fitted_c0b1 = Midas.modify(fitted, 
-                            lib.size = rep(10000,n),
+                            lib.size = libsize_l,
                             mean.rel.abund.1 = (1-batch_effect)*rel10 + batch_effect*rel1_batch,
                             mean.rel.abund = (1-batch_effect)*rel0 + batch_effect*rel_batch)
   fitted_c1b1 = Midas.modify(fitted, 
-                            lib.size = rep(10000,n),
+                            lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect-batch_effect)*rel10 + cond_effect*rel1_cond + batch_effect*rel1_batch,
                             mean.rel.abund = (1-cond_effect-batch_effect)*rel0 + cond_effect*rel_cond + batch_effect*rel_batch)
 
@@ -147,13 +182,14 @@ mcsapply <- function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
 }
 
 
-# generate simulated data using Jiuyao's set up
-scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
+# generate simulated data using both set ups 08072023
+scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter, libsize_l, batch_libsize_related = FALSE){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
       for (batch_effect_val in batch_effect_val_l) {
         if (cond_effect_val + batch_effect_val <= 1) {
-          mcsapply(seq(1, num_iter), function(iter) midas_generate_per_iter(or, cond_effect_val, batch_effect_val, iter), mc.cores = 10)
+          mcsapply(seq(1, num_iter), function(iter) midas_generate_per_iter(output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related), mc.cores = 10)
+          # sapply(seq(1, num_iter), function(iter) midas_generate_per_iter(output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related))
         }
       }
     }
@@ -166,7 +202,14 @@ scaled_midas_data_generation <- function(otu_original, n, or_l, cond_effect_val_
 or_l = c(1, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5)
+output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
+scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+
+output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
+# scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+# scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5)
 
 # scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5)
 

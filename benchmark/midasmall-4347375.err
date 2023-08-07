@@ -1,0 +1,7 @@
+Error in bincorr2commonprob(margprob, bincorr) : 
+  dims [product 4] do not match the length of object [450]
+Calls: scaled_midas_data_generation ... midas_generate_per_iter -> midas_simulate -> rmvbin -> bincorr2commonprob
+In addition: Warning message:
+In (1 - bin_corr) * diag(2) :
+  longer object length is not a multiple of shorter object length
+Execution halted
