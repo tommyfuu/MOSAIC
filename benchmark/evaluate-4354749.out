@@ -1,0 +1,682 @@
+conda activated?
+Loading data...
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/nobc/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/harmony/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/combat/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/limma/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/MMUPHin/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR_libsize/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/percentile_norm/out_1_0_0_iter_1_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/percentile_norm
+['ibd_1_0_0_iter_1_ConQuR.csv', 'ibd_0_0_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_1_combat.csv', 'ibd_1_0_0_iter_1_ConQuR_libsize.csv', 'ibd_1_0_0_iter_1_limma.csv', 'ibd_0_0_iter_1_percentile_norm.csv', 'ibd_0_0_iter_1_percentile_norm_elapsed_time.txt', 'ibd_1_0_0_iter_1_MMUPHin.csv', 'ibd_1_0_0_iter_1_runtime.txt', 'ibd_0_0_iter_1_harmony_adjusted_count.csv']
+{'nobc': {'batch_aitch_r2': 0.0023560298784236, 'batch_bray_r2': 0.0020236674008365, 'biovar_aitch_r2': 0.0020692356246619, 'biovar_bray_r2': 0.0020692356246619, 'shannon_pval': 0.7633356563727327, 'aitch_pval_batch': 0.315, 'aitch_pval_biovar': 0.545, 'bray_pval_batch': 0.529, 'bray_pval_biovar': 0.545}, 'harmony': {'batch_aitch_r2': 0.0045865553025764, 'batch_bray_r2': 0.0131191741523449, 'biovar_aitch_r2': 0.0024708510352339, 'biovar_bray_r2': 0.0024708510352339, 'shannon_pval': 0.950246422021734, 'aitch_pval_batch': 0.001, 'aitch_pval_biovar': 0.299, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.299}, 'combat': {'batch_aitch_r2': 0.0005734161072426, 'batch_bray_r2': 0.0011143799831577, 'biovar_aitch_r2': 0.0022702590140967, 'biovar_bray_r2': 0.0022702590140967, 'shannon_pval': 0.7561537343093718, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.417, 'bray_pval_batch': 0.972, 'bray_pval_biovar': 0.417}, 'limma': {'batch_aitch_r2': 0.0023794546806024, 'batch_bray_r2': 0.0016415683333611, 'biovar_aitch_r2': 0.0021448334502815, 'biovar_bray_r2': 0.0021448334502815, 'shannon_pval': 0.8486668237660587, 'aitch_pval_batch': 0.254, 'aitch_pval_biovar': 0.564, 'bray_pval_batch': 0.971, 'bray_pval_biovar': 0.564}, 'MMUPHin': {'batch_aitch_r2': 0.0017886258205567, 'batch_bray_r2': 0.0013976071724659, 'biovar_aitch_r2': 0.0021609718894077, 'biovar_bray_r2': 0.0021609718894077, 'shannon_pval': 0.7287317643409663, 'aitch_pval_batch': 0.919, 'aitch_pval_biovar': 0.496, 'bray_pval_batch': 0.901, 'bray_pval_biovar': 0.496}, 'ConQuR': {'batch_aitch_r2': 0.0029464016645981, 'batch_bray_r2': -0.0007929526604546, 'biovar_aitch_r2': 0.0024375380038813, 'biovar_bray_r2': 0.0024375380038813, 'shannon_pval': 0.5868288173621052, 'aitch_pval_batch': 0.04, 'aitch_pval_biovar': 0.3, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.3}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0025955537096361, 'batch_bray_r2': 0.0002361851099126, 'biovar_aitch_r2': 0.0025079883160992, 'biovar_bray_r2': 0.0025079883160992, 'shannon_pval': 0.4610255770439623, 'aitch_pval_batch': 0.16, 'aitch_pval_biovar': 0.287, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.287}, 'percentile_norm': {'batch_aitch_r2': 0.0026177402636331, 'batch_bray_r2': 0.0025736772993474, 'biovar_aitch_r2': 0.0023456397314174, 'biovar_bray_r2': 0.0023456397314174, 'shannon_pval': 0.6627962796392882, 'aitch_pval_batch': 0.032, 'aitch_pval_biovar': 0.315, 'bray_pval_batch': 0.122, 'bray_pval_biovar': 0.315}}
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/nobc/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method harmony
+unique biovar variables ['cond_0' 'cond_1']
+V2      1
+V3      1
+V4      1
+V5      1
+V6      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 300, dtype: int64
+TP, FP, TN, FN 0 0 150 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.004526     0.004078  0.004526   0.003
+       standard  sqrt.dist=T    add=T  Pr(>F)
+batch  0.012363     0.008861  0.00395   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002613     0.002397  0.002293   0.256
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002613     0.002397  0.002293   0.256
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.917140
+biovar_shannon_pval   0.417001
+batch_aitch_r2        0.004526
+batch_bray_r2         0.012363
+batch_aitch_pval      0.003000
+batch_bray_pval       0.001000
+biovar_aitch_r2       0.002613
+biovar_bray_r2        0.002613
+biovar_aitch_pval     0.256000
+biovar_bray_pval      0.256000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method combat
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.000438     0.001327  0.000438     1.0
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch -0.000005     0.001074  0.001643     1.0
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002826     0.002583  0.002384   0.167
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002826     0.002583  0.002384   0.167
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.986407
+biovar_shannon_pval   0.883853
+batch_aitch_r2        0.000438
+batch_bray_r2        -0.000005
+batch_aitch_pval      1.000000
+batch_bray_pval       1.000000
+biovar_aitch_r2       0.002826
+biovar_bray_r2        0.002826
+biovar_aitch_pval     0.167000
+biovar_bray_pval      0.167000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method limma
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002058      0.00205  0.002058   0.721
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001515     0.001879  0.002132   0.997
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.003031     0.002718  0.002334   0.022
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.003031     0.002718  0.002334   0.022
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.606982
+biovar_shannon_pval   0.003107
+batch_aitch_r2        0.002058
+batch_bray_r2         0.001515
+batch_aitch_pval      0.721000
+batch_bray_pval       0.997000
+biovar_aitch_r2       0.003031
+biovar_bray_r2        0.003031
+biovar_aitch_pval     0.022000
+biovar_bray_pval      0.022000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method MMUPHin
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001369     0.001796  0.001369     1.0
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.000534     0.001359  0.001783     1.0
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002876     0.002619  0.002397   0.144
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002876     0.002619  0.002397   0.144
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.596884
+biovar_shannon_pval   0.924047
+batch_aitch_r2        0.001369
+batch_bray_r2         0.000534
+batch_aitch_pval      1.000000
+batch_bray_pval       1.000000
+biovar_aitch_r2       0.002876
+biovar_bray_r2        0.002876
+biovar_aitch_pval     0.144000
+biovar_bray_pval      0.144000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method ConQuR
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 1 1 150 149
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001305     0.001795  0.001305     1.0
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch -0.001003     0.000467  0.001383     1.0
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.003431     0.002951  0.002542   0.059
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.003431     0.002951  0.002542   0.059
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                   0.500000
+power                 0.006667
+batches_shannon_pval  0.768768
+biovar_shannon_pval   0.937301
+batch_aitch_r2        0.001305
+batch_bray_r2        -0.001003
+batch_aitch_pval      1.000000
+batch_bray_pval       1.000000
+biovar_aitch_r2       0.003431
+biovar_bray_r2        0.003431
+biovar_aitch_pval     0.059000
+biovar_bray_pval      0.059000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method ConQuR_libsize
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 2 149 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001127     0.001657  0.001127     1.0
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch -0.000266     0.000911  0.001589     1.0
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.003083     0.002733  0.002446   0.129
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.003083     0.002733  0.002446   0.129
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                   1.000000
+power                 0.000000
+batches_shannon_pval  0.719960
+biovar_shannon_pval   0.970216
+batch_aitch_r2        0.001127
+batch_bray_r2        -0.000266
+batch_aitch_pval      1.000000
+batch_bray_pval       1.000000
+biovar_aitch_r2       0.003083
+biovar_bray_r2        0.003083
+biovar_aitch_pval     0.129000
+biovar_bray_pval      0.129000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method percentile_norm
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002198      0.00222  0.002198   0.544
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001944     0.002094  0.002056   0.833
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002075     0.002145  0.002135   0.666
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002075     0.002145  0.002135   0.666
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.049570
+biovar_shannon_pval   0.311318
+batch_aitch_r2        0.002198
+batch_bray_r2         0.001944
+batch_aitch_pval      0.544000
+batch_bray_pval       0.833000
+biovar_aitch_r2       0.002075
+biovar_bray_r2        0.002075
+biovar_aitch_pval     0.666000
+biovar_bray_pval      0.666000
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/percentile_norm
+['ibd_1_0_0_iter_2_MMUPHin.csv', 'ibd_1_0_0_iter_2_runtime.txt', 'ibd_0_0_iter_2_percentile_norm.csv', 'ibd_1_0_0_iter_2_ConQuR_libsize.csv', 'ibd_1_0_0_iter_2_ConQuR.csv', 'ibd_1_0_0_iter_2_combat.csv', 'ibd_0_0_iter_2_percentile_norm_elapsed_time.txt', 'ibd_0_0_iter_2_harmony_elapsed_time.txt', 'ibd_0_0_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0_iter_2_limma.csv']
+{'nobc': {'batch_aitch_r2': 0.0017470038047989, 'batch_bray_r2': 0.0012915584082989, 'biovar_aitch_r2': 0.0027326003783599, 'biovar_bray_r2': 0.0027326003783599, 'shannon_pval': 0.8388520793330112, 'aitch_pval_batch': 0.941, 'aitch_pval_biovar': 0.207, 'bray_pval_batch': 0.928, 'bray_pval_biovar': 0.207}, 'harmony': {'batch_aitch_r2': 0.0045262825140139, 'batch_bray_r2': 0.0123631767209214, 'biovar_aitch_r2': 0.0026131930154499, 'biovar_bray_r2': 0.0026131930154499, 'shannon_pval': 0.4170007552474595, 'aitch_pval_batch': 0.003, 'aitch_pval_biovar': 0.256, 'bray_pval_batch': 0.001, 'bray_pval_biovar': 0.256}, 'combat': {'batch_aitch_r2': 0.0004384260192159, 'batch_bray_r2': -4.820914471105301e-06, 'biovar_aitch_r2': 0.0028256745767902, 'biovar_bray_r2': 0.0028256745767902, 'shannon_pval': 0.883852583526692, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.167, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.167}, 'limma': {'batch_aitch_r2': 0.0020578152138626, 'batch_bray_r2': 0.0015145430897161, 'biovar_aitch_r2': 0.0030310269881139, 'biovar_bray_r2': 0.0030310269881139, 'shannon_pval': 0.0031074324553551, 'aitch_pval_batch': 0.721, 'aitch_pval_biovar': 0.022, 'bray_pval_batch': 0.997, 'bray_pval_biovar': 0.022}, 'MMUPHin': {'batch_aitch_r2': 0.0013694625099521, 'batch_bray_r2': 0.0005341586025796, 'biovar_aitch_r2': 0.0028760422672917, 'biovar_bray_r2': 0.0028760422672917, 'shannon_pval': 0.9240469345068848, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.144, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.144}, 'ConQuR': {'batch_aitch_r2': 0.0013051759647758, 'batch_bray_r2': -0.0010025674343626, 'biovar_aitch_r2': 0.0034305729547231, 'biovar_bray_r2': 0.0034305729547231, 'shannon_pval': 0.9373012198566768, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.059, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.059}, 'ConQuR_libsize': {'batch_aitch_r2': 0.0011266108715644, 'batch_bray_r2': -0.000266127304054, 'biovar_aitch_r2': 0.0030826599354122, 'biovar_bray_r2': 0.0030826599354122, 'shannon_pval': 0.9702159752007506, 'aitch_pval_batch': 1.0, 'aitch_pval_biovar': 0.129, 'bray_pval_batch': 1.0, 'bray_pval_biovar': 0.129}, 'percentile_norm': {'batch_aitch_r2': 0.0021977646791682, 'batch_bray_r2': 0.0019436885881773, 'biovar_aitch_r2': 0.0020745419221272, 'biovar_bray_r2': 0.0020745419221272, 'shannon_pval': 0.3113180984204567, 'aitch_pval_batch': 0.544, 'aitch_pval_biovar': 0.666, 'bray_pval_batch': 0.833, 'bray_pval_biovar': 0.666}}
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method nobc
+unique biovar variables ['cond_0' 'cond_1']
+V2      1
+V3      1
+V4      1
+V5      1
+V6      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 300, dtype: int64
+TP, FP, TN, FN 0 0 150 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001948     0.002104  0.001948   0.774
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002418     0.002298  0.002274   0.313
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001879     0.002043  0.002141   0.634
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001879     0.002043  0.002141   0.634
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.336374
+biovar_shannon_pval   0.975411
+batch_aitch_r2        0.001948
+batch_bray_r2         0.002418
+batch_aitch_pval      0.774000
+batch_bray_pval       0.313000
+biovar_aitch_r2       0.001879
+biovar_bray_r2        0.001879
+biovar_aitch_pval     0.634000
+biovar_bray_pval      0.634000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method harmony
+unique biovar variables ['cond_0' 'cond_1']
+V2      1
+V3      1
+V4      1
+V5      1
+V6      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 300, dtype: int64
+TP, FP, TN, FN 0 0 150 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.004352     0.003975  0.004352   0.004
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.01085     0.007919  0.003699   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002158     0.002178  0.002215   0.485
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002158     0.002178  0.002215   0.485
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.833348
+biovar_shannon_pval   0.854704
+batch_aitch_r2        0.004352
+batch_bray_r2         0.010850
+batch_aitch_pval      0.004000
+batch_bray_pval       0.001000
+biovar_aitch_r2       0.002158
+biovar_bray_r2        0.002158
+biovar_aitch_pval     0.485000
+biovar_bray_pval      0.485000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method combat
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.000498     0.001383  0.000498     1.0
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.000619     0.001382  0.001824   0.999
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002014     0.002141  0.002174   0.558
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002014     0.002141  0.002174   0.558
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.965277
+biovar_shannon_pval   0.925751
+batch_aitch_r2        0.000498
+batch_bray_r2         0.000619
+batch_aitch_pval      1.000000
+batch_bray_pval       0.999000
+biovar_aitch_r2       0.002014
+biovar_bray_r2        0.002014
+biovar_aitch_pval     0.558000
+biovar_bray_pval      0.558000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method limma
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001667      0.00197  0.001667   0.987
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001127     0.001707  0.002075     1.0
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002185     0.002228  0.002221    0.51
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002185     0.002228  0.002221    0.51
+______________biovar_PERMANOVA_R2_results______________
+                             0
+FDR                        inf
+power                 0.000000
+batches_shannon_pval  0.383148
+biovar_shannon_pval   0.121448
+batch_aitch_r2        0.001667
+batch_bray_r2         0.001127
+batch_aitch_pval      0.987000
+batch_bray_pval       1.000000
+biovar_aitch_r2       0.002185
+biovar_bray_r2        0.002185
+biovar_aitch_pval     0.510000
+biovar_bray_pval      0.510000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method MMUPHin
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 0 0 151 150
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001789     0.002019  0.001789   0.924
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.001003     0.001569  0.001922   0.991
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
