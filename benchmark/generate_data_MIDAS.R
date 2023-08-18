@@ -22,6 +22,7 @@ if (p==301) {
   # get library sizes of the original dataset
   print("library sizes of the original dataset")
   libsize_l = rowSums(otu_original)
+  print(libsize_l)
   print(length(libsize_l))
   sampled_libsize_l = sample(libsize_l, n, replace = TRUE)
   print(sampled_libsize_l)
@@ -67,7 +68,7 @@ midas_generate_per_iter <- function(output_root, or, cond_effect_val, batch_effe
 # function to generate simulated data with MIDAs - linear combination
 midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_count, out_relab, out_meta, p_cond = 0.5, p_batch = 0.5, libsize_l = NULL, batch_libsize_related = FALSE){
   if(is.null(libsize_l)){
-    rep(10000,n)
+    libsize_l = rep(10000,n)
   } 
 
   # check if p_batch and libsize are related
@@ -201,15 +202,12 @@ scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, con
 
 or_l = c(1, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
-scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-
-output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+batch_effect_val_l = c(0.899)
 # output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
 # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-# scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5)
 
-# scaled_midas_data_generation(otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5)
+# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+output_root = '/athena/linglab/scratch/chf4012/asafca'
+scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
 

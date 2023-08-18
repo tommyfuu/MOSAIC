@@ -25,286 +25,294 @@ source(paste0(conqur_path, "/supporting_functions.R"))
 
 run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
                         used_methods = c("combat_seq", "limma", "MMUPHin", 'conqur_libsize', "conqur")) {
-    print(output_root)
-    # set up file save address
-    sink_file_name = paste(output_root, "_runtime.txt", sep="")
-    print(data_mat_path)
-    output_dir = strsplit(output_root, "/")
-    output_dir = paste(output_dir[[1]][1:(length(output_dir[[1]])-1)], collapse = "/")
-    dir.create(file.path(output_dir))
+    if(!file.exists(paste(output_root, "_limma.csv", sep=""))){
 
-    # data loading <- load data_mat and meta_data, output of the preprocessing.py file
-    if(transpose == TRUE) {
-        count_data = read.table(data_mat_path, sep=",",header=T,check.names = F)
-    }
-    else {
-        count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
-    }
-    print("check point1")
-
-    metadata = as.data.frame(read_csv(meta_data_path))
-
-    # count the number of samples and taxa to determine whether to use 10 cores or 2
-    print(nrow(count_data))
-    print(ncol(count_data))
-    if(nrow(count_data)>300){
-        num_core = 10
-    }
-    else {
-        num_core = 2
-    }
-
-    print("check point2")
     
-    ## TODO:  potentially need preprocessing such as log and +1
-    count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
-    # count_data.clr <- mutate_all(count_data.clr, function(x) as.numeric(as.character(x)))
-    cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
-
-    # for ConQuR
-    batchid <- factor(metadata[, dataset])
-    
-    ## CASE 1. count data (combat will not work)
-    if(count == TRUE) {
-
-        ### 1.1 combat_seq (in place of combat)
-        if ('combat' %in% used_methods) {
-            print("in count mode, can only use combat seq")
-            batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
-            start_time <- Sys.time()
-            ## check for covars
-            if(is.null(covar)) {
-                count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info))
-            }
-            else if(length(covar)==1){
-                covar_df = as.numeric(factor(metadata[, covar]))
-                count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, group = covar_df))
-            }
-            else{
-                covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
-                count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, covar_mod = covar_df))
-            }
-            end_time <- Sys.time()
-            cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.combat_seq, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
+        print(output_root)
+        # set up file save address
+        sink_file_name = paste(output_root, "_runtime.txt", sep="")
+        print(data_mat_path)
+        output_dir = strsplit(output_root, "/")
+        output_dir = paste(output_dir[[1]][1:(length(output_dir[[1]])-1)], collapse = "/")
+        if(!dir.create(file.path(output_dir))){
+            dir.create(file.path(output_dir))
         }
 
-        ### 1.2 limma
-        if ('limma' %in% used_methods) {
-            batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
-            start_time <- Sys.time()
-            ## check for covars
-            count_data.limma <-removeBatchEffect(t(count_data.clr), batch = batch_info)
-            count_data.limma <- t(count_data.limma)
-            if(is.null(covar)) {
-                count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
-            }
-            else if(length(covar)==1){
-                covar_df = matrix(as.numeric(factor(metadata[, covar])))
-                # design0 <- model.matrix(factor(metadata[, covar]))
-                count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info, design = covar_df))
-            }
-            else{
-                covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
-                # design0 <- model.matrix(factor(metadata[, covar]))
-                count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info, design = covar_df))
-            }
-            ## the following line is count specific
-            count_data.limma = clr(count_data.limma, inverse = TRUE)
-            ## the above line is count specific
-            end_time <- Sys.time()
-            cat(c("limma runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.limma, paste(output_root, "_limma.csv", sep=""), row.names = TRUE)
+        # data loading <- load data_mat and meta_data, output of the preprocessing.py file
+        if(transpose == TRUE) {
+            count_data = read.table(data_mat_path, sep=",",header=T,check.names = F)
+        }
+        else {
+            count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
+        }
+        print("check point1")
+
+        metadata = as.data.frame(read_csv(meta_data_path))
+
+        # count the number of samples and taxa to determine whether to use 10 cores or 2
+        print(nrow(count_data))
+        print(ncol(count_data))
+        if(nrow(count_data)>300){
+            num_core = 10
+        }
+        else {
+            num_core = 2
         }
 
-        ### 1.3 MMUPHin - count/relab agnostic
-        if ('MMUPHin' %in% used_methods) {
-            metadata_mupphin <- metadata
-            feature_abd = count_data
-            row.names(metadata_mupphin) <- metadata[[Sam_id]]
-            feature_abd = as.data.frame(t(feature_abd))
-            colnames(feature_abd) <- rownames(metadata_mupphin)
-            start_time <- Sys.time()
-            fit_adjust_batch <- adjust_batch(feature_abd = feature_abd,
-                                    batch = dataset,
-                                    covariates = covar,
-                                    data = metadata_mupphin,
-                                    control = list(verbose = FALSE))
-            count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
-            end_time <- Sys.time()
-            cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
-        }
+        print("check point2")
         
-        ### 1.4 ConQuR (count version) - simple
-        if ('ConQuR' %in% used_methods) {
-            start_time <- Sys.time()
-            count_data.ConQuR = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
-            end_time <- Sys.time()
-            cat(c("ConQuR runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.ConQuR, paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
-        }
+        ## TODO:  potentially need preprocessing such as log and +1
+        # print(count_data+1)
+        print(any(is.na(count_data+1)))
+        count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
+        # count_data.clr <- mutate_all(count_data.clr, function(x) as.numeric(as.character(x)))
+        cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
 
-        ### 1.5 ConQuR_libsize (only runnable for counts bc relab does not have libsize) - simple
-        if ('ConQuR' %in% used_methods) {
-            start_time <- Sys.time()
-            count_data.ConQuR_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
-            end_time <- Sys.time()
-            cat(c("ConQuR_libsize runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.ConQuR_libsize, paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
-        }
-
-        ### 1.6 Tune_ConQuR (count version)
-        if ('Tune_ConQuR' %in% used_methods) {
-            start_time <- Sys.time()
-            count_data.Tune_ConQuR = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df,
-                         batch_ref_pool=batch_ref,
-                         logistic_lasso_pool=c(T, F),
-                         quantile_type_pool=c("standard", "lasso", "composite"),
-                         simple_match_pool=c(T, F),
-                         lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
-                         interplt_pool=c(T, F),
-                         frequencyL=0,
-                         frequencyU=1,
-                         cutoff=0.25,
-                         num_core = num_core)
-            end_time <- Sys.time()
-            cat(c("Tune_ConQuR runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.Tune_ConQuR$tax_final, paste(output_root, "_Tune_ConQuR.csv", sep=""), row.names = TRUE)
-        }
-
-        ### 1.7 Tune_ConQuR_libsize (only runnable for counts bc relab does not have libsize) - simple
-        if ('Tune_ConQuR_libsize' %in% used_methods) {
-            start_time <- Sys.time()
-            count_data.Tune_ConQuR_libsize = Tune_ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df,
-                         batch_ref_pool=batch_ref,
-                         logistic_lasso_pool=c(T, F),
-                         quantile_type_pool=c("standard", "lasso", "composite"),
-                         simple_match_pool=c(T, F),
-                         lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
-                         interplt_pool=c(T, F),
-                         frequencyL=0,
-                         frequencyU=1,
-                         cutoff=0.25,
-                         num_core = num_core)
-            end_time <- Sys.time()
-            cat(c("Tune_ConQuR_libsize runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.Tune_ConQuR_libsize$tax_final, paste(output_root, "_Tune_ConQuR_libsize.csv", sep=""), row.names = TRUE)
-        }
-
-    }
-
-    ## CASE 2. relative abundance data
-    else {
-
-        ### 1.1 combat
-        if ('combat' %in% used_methods) {
-            print("in relative abundance mode, can only use combat")
-            batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
-            start_time <- Sys.time()
-            ## check for covars
-            if(is.null(covar)) {
-                count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=NULL))
-            }
-            else if(length(covar)==1){
-                covar_df = as.numeric(factor(metadata[, covar]))
-                count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
-            }
-            else{
-                covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
-                count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
-            }
-            # now normalize it back to relative abundance
-            count_data.combat <- count_data.combat/rowSums(count_data.combat)
-            end_time <- Sys.time()
-            cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.combat, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
-        }
-
-        ### 1.2 limma
-        if ('limma' %in% used_methods) {
-            batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
-            start_time <- Sys.time()
-            ## check for covars
-            # print("AAAAAAA")
-            print(removeBatchEffect(t(count_data.clr), batch = batch_info))
-            # print("BBBBBB")
-            if(is.null(covar)) {
-                count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
-            }
-            else if(length(covar)==1){
-                # covar_df = matrix(as.numeric(factor(metadata[, covar])))
-                # design0 <- model.matrix(factor(metadata[, covar]))
-                count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
-            }
-            else{
-                covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
-                # design0 <- model.matrix(factor(metadata[, covar]))
-                count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info, design = covar_df))
-            }
-            end_time <- Sys.time()
-            cat(c("limma runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.limma, paste(output_root, "_limma.csv", sep=""), row.names = TRUE)
-        }
-
-        ### 1.3 MMUPHin - count/relab agnostic
-        if ('MMUPHin' %in% used_methods) {
-            metadata_mupphin <- metadata
-            feature_abd = count_data
-            row.names(metadata_mupphin) <- metadata[[Sam_id]]
-            feature_abd = as.data.frame(t(feature_abd))
-            colnames(feature_abd) <- rownames(metadata_mupphin)
-            start_time <- Sys.time()
-            fit_adjust_batch <- adjust_batch(feature_abd = feature_abd,
-                                    batch = dataset,
-                                    covariates = covar,
-                                    data = metadata_mupphin,
-                                    control = list(verbose = FALSE))
-            count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
-            end_time <- Sys.time()
-            cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
-        }
+        # for ConQuR
+        batchid <- factor(metadata[, dataset])
         
-        ### 1.4 ConQuR_rel (rel_ab version) - simple
-        if ('ConQuR_rel' %in% used_methods) {
-            start_time <- Sys.time()
-            count_data.ConQuR_rel = ConQuR_rel(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
-            end_time <- Sys.time()
-            cat(c("ConQuR_rel runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.ConQuR_rel, paste(output_root, "_ConQuR_rel.csv", sep=""), row.names = TRUE)
+        ## CASE 1. count data (combat will not work)
+        if(count == TRUE) {
+
+            ### 1.1 combat_seq (in place of combat)
+            if ('combat' %in% used_methods) {
+                print("in count mode, can only use combat seq")
+                batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
+                start_time <- Sys.time()
+                ## check for covars
+                if(is.null(covar)) {
+                    count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info))
+                }
+                else if(length(covar)==1){
+                    covar_df = as.numeric(factor(metadata[, covar]))
+                    count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, group = covar_df))
+                }
+                else{
+                    covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+                    count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, covar_mod = covar_df))
+                }
+                end_time <- Sys.time()
+                cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.combat_seq, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.2 limma
+            if ('limma' %in% used_methods) {
+                batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
+                start_time <- Sys.time()
+                ## check for covars
+                count_data.limma <-removeBatchEffect(t(count_data.clr), batch = batch_info)
+                count_data.limma <- t(count_data.limma)
+                if(is.null(covar)) {
+                    count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
+                }
+                else if(length(covar)==1){
+                    covar_df = matrix(as.numeric(factor(metadata[, covar])))
+                    # design0 <- model.matrix(factor(metadata[, covar]))
+                    count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info, design = covar_df))
+                }
+                else{
+                    covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+                    # design0 <- model.matrix(factor(metadata[, covar]))
+                    count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info, design = covar_df))
+                }
+                ## the following line is count specific
+                count_data.limma = clr(count_data.limma, inverse = TRUE)
+                ## the above line is count specific
+                end_time <- Sys.time()
+                cat(c("limma runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.limma, paste(output_root, "_limma.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.3 MMUPHin - count/relab agnostic
+            if ('MMUPHin' %in% used_methods) {
+                metadata_mupphin <- metadata
+                feature_abd = count_data
+                row.names(metadata_mupphin) <- metadata[[Sam_id]]
+                feature_abd = as.data.frame(t(feature_abd))
+                colnames(feature_abd) <- rownames(metadata_mupphin)
+                start_time <- Sys.time()
+                fit_adjust_batch <- adjust_batch(feature_abd = feature_abd,
+                                        batch = dataset,
+                                        covariates = covar,
+                                        data = metadata_mupphin,
+                                        control = list(verbose = FALSE))
+                count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
+                end_time <- Sys.time()
+                cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
+            }
+            
+            ### 1.4 ConQuR (count version) - simple
+            if ('ConQuR' %in% used_methods) {
+                start_time <- Sys.time()
+                count_data.ConQuR = ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
+                end_time <- Sys.time()
+                cat(c("ConQuR runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.ConQuR, paste(output_root, "_ConQuR.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.5 ConQuR_libsize (only runnable for counts bc relab does not have libsize) - simple
+            if ('ConQuR' %in% used_methods) {
+                start_time <- Sys.time()
+                count_data.ConQuR_libsize = ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
+                end_time <- Sys.time()
+                cat(c("ConQuR_libsize runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.ConQuR_libsize, paste(output_root, "_ConQuR_libsize.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.6 Tune_ConQuR (count version)
+            if ('Tune_ConQuR' %in% used_methods) {
+                start_time <- Sys.time()
+                count_data.Tune_ConQuR = Tune_ConQuR(tax_tab=count_data, batchid=batchid, covariates=covar_df,
+                            batch_ref_pool=batch_ref,
+                            logistic_lasso_pool=c(T, F),
+                            quantile_type_pool=c("standard", "lasso", "composite"),
+                            simple_match_pool=c(T, F),
+                            lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
+                            interplt_pool=c(T, F),
+                            frequencyL=0,
+                            frequencyU=1,
+                            cutoff=0.25,
+                            num_core = num_core)
+                end_time <- Sys.time()
+                cat(c("Tune_ConQuR runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.Tune_ConQuR$tax_final, paste(output_root, "_Tune_ConQuR.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.7 Tune_ConQuR_libsize (only runnable for counts bc relab does not have libsize) - simple
+            if ('Tune_ConQuR_libsize' %in% used_methods) {
+                start_time <- Sys.time()
+                count_data.Tune_ConQuR_libsize = Tune_ConQuR_libsize(tax_tab=count_data, batchid=batchid, covariates=covar_df,
+                            batch_ref_pool=batch_ref,
+                            logistic_lasso_pool=c(T, F),
+                            quantile_type_pool=c("standard", "lasso", "composite"),
+                            simple_match_pool=c(T, F),
+                            lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
+                            interplt_pool=c(T, F),
+                            frequencyL=0,
+                            frequencyU=1,
+                            cutoff=0.25,
+                            num_core = num_core)
+                end_time <- Sys.time()
+                cat(c("Tune_ConQuR_libsize runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.Tune_ConQuR_libsize$tax_final, paste(output_root, "_Tune_ConQuR_libsize.csv", sep=""), row.names = TRUE)
+            }
+
         }
 
-        ### 1.5 Tune_ConQuR_rel (rel_ab version)
-        if ('Tune_ConQuR_rel' %in% used_methods) {
-            start_time <- Sys.time()
-            count_data.Tune_ConQuR_rel = Tune_ConQuR_rel(tax_tab=count_data, batchid=batchid, covariates=covar_df,
-                         batch_ref_pool=batch_ref,
-                         logistic_lasso_pool=c(T, F),
-                         quantile_type_pool=c("standard", "lasso", "composite"),
-                         simple_match_pool=c(T, F),
-                         lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
-                         interplt_pool=c(T, F),
-                         frequencyL=0,
-                         frequencyU=1,
-                         cutoff=0.25, num_core = num_core)
-            end_time <- Sys.time()
-            cat(c("Tune_ConQuR_rel runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-            cat('\n', file=sink_file_name, append=TRUE)
-            write.csv(count_data.Tune_ConQuR_rel$tax_final, paste(output_root, "_Tune_ConQuR_rel.csv", sep=""), row.names = TRUE)
-        }
+        ## CASE 2. relative abundance data
+        else {
 
+            ### 1.1 combat
+            if ('combat' %in% used_methods) {
+                print("in relative abundance mode, can only use combat")
+                batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
+                start_time <- Sys.time()
+                ## check for covars
+                if(is.null(covar)) {
+                    count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=NULL))
+                }
+                else if(length(covar)==1){
+                    covar_df = as.numeric(factor(metadata[, covar]))
+                    count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
+                }
+                else{
+                    covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+                    count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
+                }
+                # now normalize it back to relative abundance
+                count_data.combat <- count_data.combat/rowSums(count_data.combat)
+                end_time <- Sys.time()
+                cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.combat, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.2 limma
+            if ('limma' %in% used_methods) {
+                batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
+                start_time <- Sys.time()
+                ## check for covars
+                # print("AAAAAAA")
+                print(removeBatchEffect(t(count_data.clr), batch = batch_info))
+                # print("BBBBBB")
+                if(is.null(covar)) {
+                    count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
+                }
+                else if(length(covar)==1){
+                    # covar_df = matrix(as.numeric(factor(metadata[, covar])))
+                    # design0 <- model.matrix(factor(metadata[, covar]))
+                    count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
+                }
+                else{
+                    covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+                    # design0 <- model.matrix(factor(metadata[, covar]))
+                    count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info, design = covar_df))
+                }
+                end_time <- Sys.time()
+                cat(c("limma runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.limma, paste(output_root, "_limma.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.3 MMUPHin - count/relab agnostic
+            if ('MMUPHin' %in% used_methods) {
+                metadata_mupphin <- metadata
+                feature_abd = count_data
+                row.names(metadata_mupphin) <- metadata[[Sam_id]]
+                feature_abd = as.data.frame(t(feature_abd))
+                colnames(feature_abd) <- rownames(metadata_mupphin)
+                start_time <- Sys.time()
+                fit_adjust_batch <- adjust_batch(feature_abd = feature_abd,
+                                        batch = dataset,
+                                        covariates = covar,
+                                        data = metadata_mupphin,
+                                        control = list(verbose = FALSE))
+                count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
+                end_time <- Sys.time()
+                cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
+            }
+            
+            ### 1.4 ConQuR_rel (rel_ab version) - simple
+            if ('ConQuR_rel' %in% used_methods) {
+                start_time <- Sys.time()
+                count_data.ConQuR_rel = ConQuR_rel(tax_tab=count_data, batchid=batchid, covariates=covar_df, batch_ref=batch_ref, num_core = num_core)                       
+                end_time <- Sys.time()
+                cat(c("ConQuR_rel runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.ConQuR_rel, paste(output_root, "_ConQuR_rel.csv", sep=""), row.names = TRUE)
+            }
+
+            ### 1.5 Tune_ConQuR_rel (rel_ab version)
+            if ('Tune_ConQuR_rel' %in% used_methods) {
+                start_time <- Sys.time()
+                count_data.Tune_ConQuR_rel = Tune_ConQuR_rel(tax_tab=count_data, batchid=batchid, covariates=covar_df,
+                            batch_ref_pool=batch_ref,
+                            logistic_lasso_pool=c(T, F),
+                            quantile_type_pool=c("standard", "lasso", "composite"),
+                            simple_match_pool=c(T, F),
+                            lambda_quantile_pool=c(NA, "2p/n", "2p/logn"),
+                            interplt_pool=c(T, F),
+                            frequencyL=0,
+                            frequencyU=1,
+                            cutoff=0.25, num_core = num_core)
+                end_time <- Sys.time()
+                cat(c("Tune_ConQuR_rel runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.Tune_ConQuR_rel$tax_final, paste(output_root, "_Tune_ConQuR_rel.csv", sep=""), row.names = TRUE)
+            }
+
+        }
     }
     
 }
@@ -398,7 +406,7 @@ batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
-scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
+scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
       for (batch_effect_val in batch_effect_val_l) {
@@ -433,11 +441,24 @@ scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_
             #             count = TRUE,
             #             used_methods = method_l), 
             #         mc.cores = 5)
-
-            mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
-                mc.cores=5)
+            print(output_dir)
+            print(or)
+            print(cond_effect_val)
+            print(batch_effect_val)
+            print(iter)
+            # ConQuR_file = paste0(output_dir, "/out_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, "/ibd_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, "_ConQuR_libsize.csv", sep="")
+            # if (!file.exists(ConQuR_file)){
+            #     mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
+            #     mc.cores=5)
+            # }
+            # else{
+            #     print(paste(or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter))
+            #     print("Done")
+            # }
+            # mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
+            #     mc.cores=5)
             # sapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l))
-
+            run_methods_per_iter(1, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l)
             print("WHAT'S HAPPENING??")
           
         }
@@ -455,4 +476,5 @@ scaled_midas_methods_bencharking <- function(overall_path, method_l, or_l, cond_
 overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
 output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_yesrelation_080723'
 method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+run_methods_per_iter(1, overall_path, output_dir, 1, 0, 0.89, used_methods = method_l)
