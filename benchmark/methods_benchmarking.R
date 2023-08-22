@@ -63,7 +63,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         
         ## TODO:  potentially need preprocessing such as log and +1
         # print(count_data+1)
-        print(any(is.na(count_data+1)))
         count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
         # count_data.clr <- mutate_all(count_data.clr, function(x) as.numeric(as.character(x)))
         cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
@@ -455,10 +454,10 @@ scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l,
             #     print(paste(or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter))
             #     print("Done")
             # }
-            # mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
-            #     mc.cores=5)
+            mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
+                mc.cores=5)
             # sapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l))
-            run_methods_per_iter(1, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l)
+            # run_methods_per_iter(1, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l)
             print("WHAT'S HAPPENING??")
           
         }
@@ -466,15 +465,15 @@ scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l,
     }
   }
 }
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
 
-# # method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# scaled_midas_methods_bencharking(overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
-
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_yesrelation_080723'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
 method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_yesrelation_080723'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 # scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
-run_methods_per_iter(1, overall_path, output_dir, 1, 0, 0.89, used_methods = method_l)
+# run_methods_per_iter(1, overall_path, output_dir, 1, 0, 0.899, used_methods = method_l)

@@ -45,7 +45,7 @@ print("checkpoint 1")
 
 
 # function to generate from midas for each iteration
-midas_generate_per_iter <- function(output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related){
+midas_generate_per_iter <- function(otu_original, output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related){
   output_file_path_count = paste0(output_root, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
   print(output_file_path_count)
   output_file_path_relab = paste0(output_root, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
@@ -134,18 +134,22 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
 
   fitted_c0b0 = Midas.modify(fitted,
                             lib.size = libsize_l)
+                            # taxa.1.prop = 'same')
   fitted_c1b0 = Midas.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect)*rel10 + cond_effect*rel1_cond,
                             mean.rel.abund = (1-cond_effect)*rel0 + cond_effect*rel_cond)
+                            # taxa.1.prop = 'same')
   fitted_c0b1 = Midas.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-batch_effect)*rel10 + batch_effect*rel1_batch,
                             mean.rel.abund = (1-batch_effect)*rel0 + batch_effect*rel_batch)
+                            # taxa.1.prop = 'same')
   fitted_c1b1 = Midas.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect-batch_effect)*rel10 + cond_effect*rel1_cond + batch_effect*rel1_batch,
                             mean.rel.abund = (1-cond_effect-batch_effect)*rel0 + cond_effect*rel_cond + batch_effect*rel_batch)
+                            # taxa.1.prop = 'same')
 
 
   otu_c0b0 = Midas.sim(fitted_c0b0)$sim_count
@@ -189,7 +193,7 @@ scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, con
     for (cond_effect_val in cond_effect_val_l) {
       for (batch_effect_val in batch_effect_val_l) {
         if (cond_effect_val + batch_effect_val <= 1) {
-          mcsapply(seq(1, num_iter), function(iter) midas_generate_per_iter(output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related), mc.cores = 10)
+          mcsapply(seq(1, num_iter), function(iter) midas_generate_per_iter(otu_original, output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related), mc.cores = 10)
           # sapply(seq(1, num_iter), function(iter) midas_generate_per_iter(output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related))
         }
       }
@@ -202,12 +206,23 @@ scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, con
 
 or_l = c(1, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0.899)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
-# scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-
+batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023'
+# scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
+scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
 # output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-output_root = '/athena/linglab/scratch/chf4012/asafca'
-scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+# output_root = '/athena/linglab/scratch/chf4012/asafca'
+# or=1
+# cond_effect_val=0.099
+# batch_effect_val=0.899
+# for(iter in c(1, 2, 3)){
+#   output_file_path_count = paste0(output_root, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+#   output_file_path_relab = paste0(output_root, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+#   output_file_path_meta = paste0(output_root, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+    
+#   midas_simulate(otu_original, n, or=1, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+
+# }
+# scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
 

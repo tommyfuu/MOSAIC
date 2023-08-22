@@ -1,0 +1,393 @@
+conda activated?
+[1] "p=301"
+[1] "library sizes of the original dataset"
+206534 206536 206538 206547 206548 206561 206562 206563 206564 206569 206570 
+ 19258  16535   8792  11158   4255   8451  13577  14411   2361  24002  28459 
+206571 206572 206603 206604 206605 206608 206609 206615 206619 206622 206629 
+ 12977  14111  23487   9648  14851  14159  10147   5233   3170   5961   4599 
+206630 206635 206643 206644 206646 206647 206648 206655 206657 206658 206659 
+  6858  24936  13624   5872  23174  22988  17022   2246  21465  14527  12323 
+206660 206667 206670 206671 206672 206673 206675 206676 206677 206678 206683 
+ 19222  10479  26574  15601  11145  14281   3867   5719   7553   8444  22957 
+206684 206700 206701 206702 206703 206704 206708 206709 206710 206711 206712 
+ 22665  30030   7665  18621  16990  18505  19395  21869  21220  23074  21732 
+206713 206718 206719 206720 206721 206724 206725 206726 206727 206728 206729 
+ 20965  16145  23404  27367  23141  26168  26577  23897  26237  27256  14816 
+206730 206731 206732 206733 206734 206738 206739 206740 206741 206742 206743 
+  7359  23232  21256  30018  31781  17637  26463  16382  23037  24221  23479 
+206746 206747 206750 206751 206752 206753 206754 206755 206756 206757 206758 
+ 24373  19029  27861  25402  27831  25718  20995  24723  23478  24412  27962 
+206761 206762 206766 206767 206768 206770 214994 214995 215003 215007 215008 
+ 23229  16343  23897  11606   2059  25961  15995  17646   3927  17136   8601 
+215009 215010 215023 215048 215050 215055 215056 215057 215058 215061 215062 
+ 21975  19241  29841   9419  23223  16662  15655  25826  14296  12704  10699 
+215067 215074 215075 215076 215077 215080 215084 215085 219633 219634 219638 
+ 17852   7069  19707  19865  21280  20227   6145   4137  16216  12843  16282 
+219643 219644 219645 219646 219651 219652 219653 219654 219655 219656 219657 
+ 17375  23060  23059  21137  21288  18443  19286  16381  20694   9778  17602 
+219659 219669 219670 219675 219676 219691 219693 222170 222171 224323 224324 
+  1882  23735  15858  16644  22695  16578   8280   6747  11854  19762  23202 
+224325 224326 224327 224328 224330 224844 224845 
+ 26028  28197  22967  26163  20760  11018  21431 
+[1] 150
+206767 215048 224845 206726 224326 206767 215084 206728 219691 206703 206702 
+ 11606   9419  21431  23897  28197  11606   6145  27256  16578  16990  18621 
+206684 219655 206667 219675 206713 206741 224328 215067 219643 224326 215009 
+ 22665  20694  10479  16644  20965  23037  26163  17852  17375  28197  21975 
+219634 215050 206729 206547 215077 206726 206762 206730 206700 219633 206758 
+ 12843  23223  14816  11158  21280  23897  16343   7359  30030  16216  27962 
+206536 215050 206536 206712 219634 206730 206702 215085 219652 219676 215076 
+ 16535  23223  16535  21732  12843   7359  18621   4137  18443  22695  19865 
+206657 206757 206538 206743 206718 215009 224325 206747 206766 206571 219670 
+ 21465  24412   8792  23479  16145  21975  26028  19029  23897  12977  15858 
+224844 219653 219651 219659 214995 206561 206572 215076 206676 215056 206646 
+ 11018  19286  21288   1882  17646   8451  14111  19865   5719  15655  23174 
+206572 206743 215010 224328 206648 206619 206742 215007 206713 206704 206644 
+ 14111  23479  19241  26163  17022   3170  24221  17136  20965  18505   5872 
+206738 206740 206733 219652 219646 219644 206538 224844 224330 215055 215048 
+ 17637  16382  30018  18443  21137  23060   8792  11018  20760  16662   9419 
+206667 224844 215048 206732 219691 206604 206538 219676 215010 219670 215003 
+ 10479  11018   9419  21256  16578   9648   8792  22695  19241  15858   3927 
+206615 215056 206731 206671 215085 215076 206747 206710 224328 206615 206766 
+  5233  15655  23232  15601   4137  19865  19029  21220  26163   5233  23897 
+206750 206572 219634 206622 219654 206727 224323 206563 224330 206762 206743 
+ 27861  14111  12843   5961  16381  26237  19762  14411  20760  16343  23479 
+219652 206709 224844 219646 206647 206761 206770 219676 206571 206563 215007 
+ 18443  21869  11018  21137  22988  23229  25961  22695  12977  14411  17136 
+206673 206742 206608 215008 219691 215067 206754 224327 206740 215048 206755 
+ 14281  24221  14159   8601  16578  17852  20995  22967  16382   9419  24723 
+215008 206548 206732 206741 206684 206733 206538 215062 222170 206604 206762 
+  8601   4255  21256  23037  22665  30018   8792  10699   6747   9648  16343 
+222170 206678 206536 215010 206729 206622 206740 206727 219656 206622 206724 
+  6747   8444  16535  19241  14816   5961  16382  26237   9778   5961  26168 
+206657 215009 206677 214995 206684 206724 219644 215067 206572 206762 206684 
+ 21465  21975   7553  17646  22665  26168  23060  17852  14111  16343  22665 
+215084 206712 219646 215003 206767 206563 206753 219676 224327 206768 206732 
+  6145  21732  21137   3927  11606  14411  25718  22695  22967   2059  21256 
+215007 206720 206700 206672 215007 224323 206678 219651 206676 215074 219675 
+ 17136  27367  30030  11145  17136  19762   8444  21288   5719   7069  16644 
+206734 206672 206670 206672 206703 206683 219669 206562 206564 206659 206750 
+ 31781  11145  26574  11145  16990  22957  23735  13577   2361  12323  27861 
+219655 206721 206712 206761 206753 215085 206701 215080 215074 206672 206670 
+ 20694  23141  21732  23229  25718   4137   7665  20227   7069  11145  26574 
+224325 206658 206603 224324 206605 206719 206647 206547 222170 219693 206536 
+ 26028  14527  23487  23202  14851  23404  22988  11158   6747   8280  16535 
+224330 206757 206622 219638 206767 206683 219644 224844 215055 215023 206630 
+ 20760  24412   5961  16282  11606  22957  23060  11018  16662  29841   6858 
+215055 206766 206672 215058 215056 219644 206761 206647 206713 206655 206609 
+ 16662  23897  11145  14296  15655  23060  23229  22988  20965   2246  10147 
+206562 219675 206757 206731 206615 206711 206742 215007 222170 214994 219657 
+ 13577  16644  24412  23232   5233  23074  24221  17136   6747  15995  17602 
+219652 224323 206740 206720 206569 206734 206678 219646 215010 206629 219693 
+ 18443  19762  16382  27367  24002  31781   8444  21137  19241   4599   8280 
+206720 219655 206727 206746 206658 206619 215050 206739 219691 215077 219645 
+ 27367  20694  26237  24373  14527   3170  23223  26463  16578  21280  23059 
+206659 206643 219653 206569 206655 219653 206767 206729 219693 206718 206761 
+ 12323  13624  19286  24002   2246  19286  11606  14816   8280  16145  23229 
+206726 215057 215077 224324 206608 215050 215067 219656 206743 206569 215048 
+ 23897  25826  21280  23202  14159  23223  17852   9778  23479  24002   9419 
+206658 215084 224328 215084 206739 215055 215010 206719 206635 219659 219657 
+ 14527   6145  26163   6145  26463  16662  19241  23404  24936   1882  17602 
+219651 206677 206615 215062 215009 206734 224328 206746 206572 219659 206571 
+ 21288   7553   5233  10699  21975  31781  26163  24373  14111   1882  12977 
+215074 219656 206767 206743 206721 215008 206739 219691 206767 206741 206752 
+  7069   9778  11606  23479  23141   8601  26463  16578  11606  23037  27831 
+219643 206648 219669 215080 206604 222171 224845 206751 206738 215048 206732 
+ 17375  17022  23735  20227   9648  11854  21431  25402  17637   9419  21256 
+215058 219655 206562 206712 206605 224328 219656 206730 206741 206713 206646 
+ 14296  20694  13577  21732  14851  26163   9778   7359  23037  20965  23174 
+206703 206742 206673 206754 219675 219644 206677 224845 215067 206740 215057 
+ 16990  24221  14281  20995  16644  23060   7553  21431  17852  16382  25826 
+206726 206604 206603 219656 219654 206757 206754 206670 219643 206740 206534 
+ 23897   9648  23487   9778  16381  24412  20995  26574  17375  16382  19258 
+206646 206635 219645 215057 206770 215084 215057 206743 206538 206766 219659 
+ 23174  24936  23059  25826  25961   6145  25826  23479   8792  23897   1882 
+206644 219676 206712 206659 206630 224330 206572 206619 222171 206767 215050 
+  5872  22695  21732  12323   6858  20760  14111   3170  11854  11606  23223 
+206562 206710 222170 206643 215062 206757 206604 206756 215048 206747 215076 
+ 13577  21220   6747  13624  10699  24412   9648  23478   9419  19029  19865 
+224844 219693 206767 219643 206729 206670 206762 215067 206742 206753 206647 
+ 11018   8280  11606  17375  14816  26574  16343  17852  24221  25718  22988 
+206548 206562 206743 219693 206753 219638 206571 206646 215075 206671 215061 
+  4255  13577  23479   8280  25718  16282  12977  23174  19707  15601  12704 
+206704 206742 206561 219645 222171 224330 219675 219654 206756 215023 
+ 18505  24221   8451  23059  11854  20760  16644  16381  23478  29841 
+[1] "checkpoint 1"
+[1] "checkpoint 2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1][1] "TRUE"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_4.csv" "TRUE"
+
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_5.csv" "cond_effect_val"
+
+[1] 0
+[1] "TRUE"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_6.csv"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_7.csv" "cond_effect_val"
+
+[1] 0
+[1] "TRUE"
+[1] "cond_effect_val"
+[1] 0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_8.csv"[1]
+ "TRUE"
+[1] "cond_effect_val"
+[1][1] 0 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_9.csv"
+
+[1] "TRUE"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_10.csv"
+[1] "cond_effect_val"
+[1][1] "cond_effect_val" 0
+
+[1] 0
+[1] "TRUE"
+[1] "TRUE"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_12.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_13.csv"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_17.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_18.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_15.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_19.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_11.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_14.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_20.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_16.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_27.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_30.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_28.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_23.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_29.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_22.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_25.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_26.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_21.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_24.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_40.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_37.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_39.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_36.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_33.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_32.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_35.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_31.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_38.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_34.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_49.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_50.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_43.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_42.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_47.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_46.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_48.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_41.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023/ibd_150_count_1_0_0_iter_45.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "TRUE"
+[1] "doing its thing"
+[1] "doing its thing"

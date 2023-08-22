@@ -1,0 +1,3626 @@
+conda activated?
+[1] "p=301"
+[1] "library sizes of the original dataset"
+206534 206536 206538 206547 206548 206561 206562 206563 206564 206569 206570 
+ 19258  16535   8792  11158   4255   8451  13577  14411   2361  24002  28459 
+206571 206572 206603 206604 206605 206608 206609 206615 206619 206622 206629 
+ 12977  14111  23487   9648  14851  14159  10147   5233   3170   5961   4599 
+206630 206635 206643 206644 206646 206647 206648 206655 206657 206658 206659 
+  6858  24936  13624   5872  23174  22988  17022   2246  21465  14527  12323 
+206660 206667 206670 206671 206672 206673 206675 206676 206677 206678 206683 
+ 19222  10479  26574  15601  11145  14281   3867   5719   7553   8444  22957 
+206684 206700 206701 206702 206703 206704 206708 206709 206710 206711 206712 
+ 22665  30030   7665  18621  16990  18505  19395  21869  21220  23074  21732 
+206713 206718 206719 206720 206721 206724 206725 206726 206727 206728 206729 
+ 20965  16145  23404  27367  23141  26168  26577  23897  26237  27256  14816 
+206730 206731 206732 206733 206734 206738 206739 206740 206741 206742 206743 
+  7359  23232  21256  30018  31781  17637  26463  16382  23037  24221  23479 
+206746 206747 206750 206751 206752 206753 206754 206755 206756 206757 206758 
+ 24373  19029  27861  25402  27831  25718  20995  24723  23478  24412  27962 
+206761 206762 206766 206767 206768 206770 214994 214995 215003 215007 215008 
+ 23229  16343  23897  11606   2059  25961  15995  17646   3927  17136   8601 
+215009 215010 215023 215048 215050 215055 215056 215057 215058 215061 215062 
+ 21975  19241  29841   9419  23223  16662  15655  25826  14296  12704  10699 
+215067 215074 215075 215076 215077 215080 215084 215085 219633 219634 219638 
+ 17852   7069  19707  19865  21280  20227   6145   4137  16216  12843  16282 
+219643 219644 219645 219646 219651 219652 219653 219654 219655 219656 219657 
+ 17375  23060  23059  21137  21288  18443  19286  16381  20694   9778  17602 
+219659 219669 219670 219675 219676 219691 219693 222170 222171 224323 224324 
+  1882  23735  15858  16644  22695  16578   8280   6747  11854  19762  23202 
+224325 224326 224327 224328 224330 224844 224845 
+ 26028  28197  22967  26163  20760  11018  21431 
+[1] 150
+206751 206671 206619 224323 215010 206675 206746 206572 206725 206704 206733 
+ 25402  15601   3170  19762  19241   3867  24373  14111  26577  18505  30018 
+215056 215008 215084 206677 219653 206703 215009 219670 206604 206727 219646 
+ 15655   8601   6145   7553  19286  16990  21975  15858   9648  26237  21137 
+219675 215080 206646 206643 224845 206704 206562 206615 214994 206675 206704 
+ 16644  20227  23174  13624  21431  18505  13577   5233  15995   3867  18505 
+206750 219675 206704 206762 206548 206605 224325 215057 206671 206709 206667 
+ 27861  16644  18505  16343   4255  14851  26028  25826  15601  21869  10479 
+206655 206758 206757 206756 206734 219676 206734 206646 206739 206703 206712 
+  2246  27962  24412  23478  31781  22695  31781  23174  26463  16990  21732 
+206657 206678 206563 219652 206711 206603 206721 206761 206734 206572 206752 
+ 21465   8444  14411  18443  23074  23487  23141  23229  31781  14111  27831 
+206710 206704 206756 219638 206658 215084 219646 206710 206670 206704 206710 
+ 21220  18505  23478  16282  14527   6145  21137  21220  26574  18505  21220 
+214994 206678 219659 206536 206646 224324 206750 224323 215023 222171 206750 
+ 15995   8444   1882  16535  23174  23202  27861  19762  29841  11854  27861 
+206761 206701 206672 215003 206741 206536 206725 224326 219633 206572 206752 
+ 23229   7665  11145   3927  23037  16535  26577  28197  16216  14111  27831 
+206751 219656 215084 206605 215084 215050 219638 206659 215010 206609 219675 
+ 25402   9778   6145  14851   6145  23223  16282  12323  19241  10147  16644 
+215074 206534 206708 219675 206700 219638 206725 206726 206727 206615 206643 
+  7069  19258  19395  16644  30030  16282  26577  23897  26237   5233  13624 
+206563 219653 206711 219655 215055 224327 206604 219659 206619 219655 206683 
+ 14411  19286  23074  20694  16662  22967   9648   1882   3170  20694  22957 
+206750 219645 215077 206752 206724 206720 224324 215062 206655 206724 215061 
+ 27861  23059  21280  27831  26168  27367  23202  10699   2246  26168  12704 
+206629 215067 206570 206731 219670 206729 219675 219652 206676 206730 206710 
+  4599  17852  28459  23232  15858  14816  16644  18443   5719   7359  21220 
+215067 206719 206648 206712 206704 206702 206747 206713 215050 215075 206644 
+ 17852  23404  17022  21732  18505  18621  19029  20965  23223  19707   5872 
+206742 206603 224330 206643 206643 224324 206733 206675 206704 206713 214995 
+ 24221  23487  20760  13624  13624  23202  30018   3867  18505  20965  17646 
+206732 219656 206670 224325 206609 206728 206608 206740 215050 206734 206742 
+ 21256   9778  26574  26028  10147  27256  14159  16382  23223  31781  24221 
+206734 224325 206534 206753 219655 215074 219675 206746 215050 224845 215084 
+ 31781  26028  19258  25718  20694   7069  16644  24373  23223  21431   6145 
+222170 206572 206727 215062 206538 206740 206740 206718 215085 206629 206747 
+  6747  14111  26237  10699   8792  16382  16382  16145   4137   4599  19029 
+206673 215003 206761 206761 206648 215050 206643 219676 206684 219655 214995 
+ 14281   3927  23229  23229  17022  23223  13624  22695  22665  20694  17646 
+219691 224326 206734 215023 206710 224323 215007 224327 219657 206731 206725 
+ 16578  28197  31781  29841  21220  19762  17136  22967  17602  23232  26577 
+215003 206727 215058 206746 206757 224324 224328 206709 206678 206741 206733 
+  3927  26237  14296  24373  24412  23202  26163  21869   8444  23037  30018 
+206731 206728 206738 206741 206572 215085 215077 206757 215085 219693 206561 
+ 23232  27256  17637  23037  14111   4137  21280  24412   4137   8280   8451 
+219691 224845 219634 206630 206766 206768 206538 215057 206755 206727 206757 
+ 16578  21431  12843   6858  23897   2059   8792  25826  24723  26237  24412 
+206571 206761 215050 206704 206569 215067 206561 215055 214995 206536 206750 
+ 12977  23229  23223  18505  24002  17852   8451  16662  17646  16535  27861 
+219643 206562 219634 206752 206569 206739 206757 206770 206727 219654 206728 
+ 17375  13577  12843  27831  24002  26463  24412  25961  26237  16381  27256 
+206675 206758 215084 206732 206770 206660 206754 206703 206721 224330 206615 
+  3867  27962   6145  21256  25961  19222  20995  16990  23141  20760   5233 
+219659 215057 206704 206768 206608 206569 219657 206536 206756 214995 206729 
+  1882  25826  18505   2059  14159  24002  17602  16535  23478  17646  14816 
+206742 215056 215075 206660 206647 206670 224845 206746 206710 206700 215067 
+ 24221  15655  19707  19222  22988  26574  21431  24373  21220  30030  17852 
+206561 219634 206739 222171 215075 206672 219670 219669 206619 206648 215003 
+  8451  12843  26463  11854  19707  11145  15858  23735   3170  17022   3927 
+206538 219644 215050 206732 219651 206719 206683 206657 206742 206720 206673 
+  8792  23060  23223  21256  21288  23404  22957  21465  24221  27367  14281 
+206727 222171 206677 206562 206569 206658 206709 206630 206700 206728 206684 
+ 26237  11854   7553  13577  24002  14527  21869   6858  30030  27256  22665 
+219645 224325 206683 206676 219646 219676 206742 206751 206667 206746 206740 
+ 23059  26028  22957   5719  21137  22695  24221  25402  10479  24373  16382 
+206676 206739 206563 219634 206729 206673 206561 224845 206673 224330 214995 
+  5719  26463  14411  12843  14816  14281   8451  21431  14281  20760  17646 
+215023 206766 206534 215061 206700 215023 206718 206547 206562 215075 214995 
+ 29841  23897  19258  12704  30030  29841  16145  11158  13577  19707  17646 
+206710 219645 215055 206738 222170 206718 206725 219633 224330 206754 206750 
+ 21220  23059  16662  17637   6747  16145  26577  16216  20760  20995  27861 
+206751 215023 206756 206608 215058 206676 219646 219676 206746 206718 219657 
+ 25402  29841  23478  14159  14296   5719  21137  22695  24373  16145  17602 
+219653 206564 206678 206720 206721 206675 206753 206747 215067 206767 206747 
+ 19286   2361   8444  27367  23141   3867  25718  19029  17852  11606  19029 
+215067 206609 224325 206683 215055 219656 206561 219693 206629 215056 206629 
+ 17852  10147  26028  22957  16662   9778   8451   8280   4599  15655   4599 
+206742 215085 206561 206711 206655 206728 224325 206677 206755 215074 206709 
+ 24221   4137   8451  23074   2246  27256  26028   7553  24723   7069  21869 
+224327 206667 219670 206755 215076 206730 206667 215085 206701 206562 
+ 22967  10479  15858  24723  19865   7359  10479   4137   7665  13577 
+[1] "checkpoint 1"
+[1] "checkpoint 2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.0 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0_iter_2.csv" 0.5
+ 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1][1] 1 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0_iter_3.csv"
+
+[1] "cond_effect_val"
+[1] 0
+[1][1] "FALSE"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1][1] 1 "cond_effect_val"
+
+[1] 0
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0_iter_5.csv"[1]
+ "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] "cond_effect_val"[1]
+ 1
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.299_iter_2.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.299_iter_3.csv"
+
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1][1] "cond_effect_val" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5[1] 0.5 0
+
+[1] 1
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.499_iter_5.csv" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.699_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.699_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5 0.5[1]
+ 1.0[1] 0.5 1 0.5
+
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.699_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.699_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.899_iter_2.csv"
+[1] "cond_effect_val"
+[1][1] "cond_effect_val" 0
+
+[1] 0
+[1][1] "FALSE" "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5[1]
+ 1.0[1] 0.5 1 0.5
+[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.899_iter_3.csv"
+[1] 1
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.899_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0_0.899_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.099_iter_3.csv" 1.0
+ 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.299_iter_4.csv"
+
+[1] 1.0 0.5 0.5
+[1][1] "cond_effect_val" 1
+
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1][1] "doing its thing" "doing its thing"
+
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.499_iter_2.csv" 0.099
+
+[1] "FALSE"
+[1] "cond_effect_val"
+[1][1] "OR, p_cond, p_batch, bin_corr" 0.099
+
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.499_iter_3.csv"
+[1][1] 1.0 "FALSE" 0.5
+ 0.5
+[1] "cond_effect_val"
+[1][1][1] "OR, p_cond, p_batch, bin_corr" 1 0.099
+
+
+[1] 1.0[1] 0.5 "FALSE" 0.5
+
+[1][1] "OR, p_cond, p_batch, bin_corr" 1
+
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.699_iter_2.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.699_iter_1.csv"
+
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1][1] "cond_effect_val" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5 0.5[1]
+ 0.099[1]
+ 1
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.699_iter_4.csv"
+[1] "cond_effect_val"
+[1] "cond_effect_val"
+[1][1] 0.099 0.099
+
+[1] "FALSE"
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1][1] "OR, p_cond, p_batch, bin_corr" 1
+
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.699_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.899_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.899_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.899_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.899_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.099_0.899_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299[1]
+ "cond_effect_val"
+[1] 0.299
+[1] "FALSE"[1]
+ "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5 0.5[1]
+ 1.0[1] 0.5 1 0.5
+
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.499_iter_2.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.499_iter_1.csv"
+
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr" "cond_effect_val"
+
+[1] 1.0 0.5 0.5
+[1][1] 0.299 1
+
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.699_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.699_iter_3.csv"
+[1] "cond_effect_val"
+[1][1] 0.299 "cond_effect_val"
+
+[1] 0.299
+[1][1] "FALSE" "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ "OR, p_cond, p_batch, bin_corr"[1]
+ 1.0 0.5 0.5
+[1][1] 1.0 1 0.5
+ 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.699_iter_5.csv"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.299_0.699_iter_4.csv" "cond_effect_val"
+
+[1] 0.299
+[1] "FALSE"
+[1][1] "cond_effect_val" "OR, p_cond, p_batch, bin_corr"
+
+[1][1] 0.299 1.0
+ 0.5 0.5
+[1] 1[1]
+ "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0_iter_5.csv"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "cond_effect_val"
+[1] "FALSE"[1]
+ 0.499
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "FALSE"[1]
+ 1.0 0.5 0.5
+[1][1] "OR, p_cond, p_batch, bin_corr" 1
+
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.299_iter_4.csv" "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5[1]
+ "cond_effect_val"
+[1][1] 1 0.499
+
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1][1] 0.499 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.499_iter_3.csv"
+
+[1] "FALSE"
+[1] "cond_effect_val"[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 0.499
+[1] 1.0[1] 0.5 "FALSE" 0.5
+
+[1][1] 1 "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.499_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.099_iter_3.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.099_iter_4.csv"
+
+[1] "cond_effect_val"
+[1] 0.699
+[1][1] "cond_effect_val" "FALSE"
+
+[1][1] 0.699 "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.0 0.5 0.5
+[1][1] "FALSE" 1
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.699_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5[1] 0.5 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0_iter_5.csv"
+
+[1] 1
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.0 0.5 0.5
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0_iter_4.csv"[1]
+ 1
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "cond_effect_val" 1.0
+ 0.5 0.5
+[1] 1[1]
+ 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1][1] 1 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1_0.899_0.099_iter_5.csv"
+
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.0 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0_iter_2.csv" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.25 0.50 0.50
+[1][1] "cond_effect_val" 1
+
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0_iter_5.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "cond_effect_val" 1.25
+ 0.50 0.50
+[1][1] 0 1
+
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.099_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.299_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1][1] "cond_effect_val" 1
+
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] "cond_effect_val"
+[1][1] 0 0
+
+[1] "FALSE"
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.699_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.699_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.699_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.699_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.699_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"[1]
+ "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.899_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.899_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "cond_effect_val"
+[1][1] 0 "FALSE"
+
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.25 1.25 0.50 0.50 0.50 0.50
+
+[1] 1
+[1] 1
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.899_iter_4.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0_0.899_iter_5.csv"
+
+[1] "cond_effect_val"
+[1] 0
+[1][1] "cond_effect_val" "FALSE"
+
+[1] 0[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1][1] "FALSE" 1
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.099_iter_4.csv"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.099_iter_5.csv" "cond_effect_val"
+
+[1] 0.099
+[1] "FALSE"
+[1] "cond_effect_val"
+[1][1] "OR, p_cond, p_batch, bin_corr" 0.099
+
+[1] 1.25 0.50 0.50
+[1] "FALSE"
+[1] 1
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1][1] "FALSE"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.499_iter_2.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099[1]
+ "cond_effect_val"
+[1] 0.099
+[1][1] "FALSE" "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "OR, p_cond, p_batch, bin_corr" 1.25
+ 0.50 0.50
+[1][1] 1.25 1 0.50
+[1] 0.50 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.499_iter_5.csv"
+
+[1] 1
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.699_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.699_iter_3.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "cond_effect_val"
+[1][1] 0.099 1.25
+ 0.50 0.50
+[1] "FALSE"
+[1] 1[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.699_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1][1] 1 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.699_iter_4.csv"
+
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.699_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.899_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.899_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.899_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.899_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.099_0.899_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1][1] "FALSE" "cond_effect_val"
+
+[1] 0.299
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] "FALSE" 1.25
+ 0.50 0.50
+[1] 1
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"[1]
+ "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] "cond_effect_val"[1]
+ 0.299
+[1] 0.299
+[1] "FALSE"
+[1] "FALSE"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.099_iter_3.csv" "OR, p_cond, p_batch, bin_corr"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25[1] 0.50[1] 1.25 0.50 "cond_effect_val" 0.50
+
+ 0.50[1]
+ 0.299[1]
+ 1[1]
+[1] 1 "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1][1] 0.299
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.099_iter_5.csv"
+[1] "FALSE"
+[1] "cond_effect_val"
+[1][1] "OR, p_cond, p_batch, bin_corr" 0.299
+
+[1] 1.25[1] 0.50 "FALSE" 0.50
+
+[1] 1
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"[1]
+ "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.25 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.499_iter_3.csv" 0.50
+ 0.50
+[1] 1
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.499_iter_4.csv"
+
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.699_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.699_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.699_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.699_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.299_0.699_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0_iter_2.csv" "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] "cond_effect_val"[1]
+ 1.25 0.50[1] 0.50 0.499
+
+[1] 1[1]
+ "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1][1] "FALSE"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0_iter_3.csv"[1]
+ "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "cond_effect_val"
+[1][1] 0.499 "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.25[1] 0.50 "FALSE" 0.50
+
+[1] 1
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499[1]
+ "cond_effect_val"
+[1] 0.499
+[1][1] "FALSE" "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50[1] 0.50 "OR, p_cond, p_batch, bin_corr"
+
+[1] 1
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.299_iter_5.csv"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.499_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] "cond_effect_val"
+[1][1] 0.699 0.699
+
+[1] "FALSE"
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1][1] "cond_effect_val" 0.699
+
+[1] 0.699
+[1] "FALSE"[1]
+ "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1][1] "OR, p_cond, p_batch, bin_corr" 1
+
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25[1] 0.50 0.50 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.299_iter_4.csv"
+
+[1] 1
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.699_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0_iter_3.csv"
+[1][1] "cond_effect_val"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0_iter_2.csv"[1]
+ 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.25_0.899_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.25 0.50 0.50
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"[1]
+ "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.099_iter_1.csv" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.099_iter_2.csv"
+
+[1] "cond_effect_val"
+[1] 0
+[1][1] "cond_effect_val" "FALSE"
+
+[1] 0[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5[1] 0.5 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.099_iter_3.csv"
+
+[1] 1
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.099_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5[1] 0.5 "cond_effect_val" 0.5
+
+[1][1] 0 1
+
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.299_iter_5.csv"
+ 0
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.299_iter_4.csv" "FALSE"
+
+[1] "cond_effect_val"
+[1] 0
+[1][1] "FALSE" "OR, p_cond, p_batch, bin_corr"
+[1]
+ "cond_effect_val"
+[1][1][1] 1.5 0 "OR, p_cond, p_batch, bin_corr" 0.5
+
+ 0.5
+[1][1] 1.5 "FALSE"[1] 0.5
+ 1 0.5
+
+[1][1] 1 "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.699_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.699_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.699_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.699_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.699_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.899_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.899_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.899_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.899_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0_0.899_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0_iter_2.csv"
+[1] "cond_effect_val"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0_iter_3.csv" 0.099
+
+[1] "FALSE"
+[1] "cond_effect_val"
+[1] 0.099[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] "FALSE"[1]
+ 1.5 0.5 0.5
+[1][1] "OR, p_cond, p_batch, bin_corr" 1
+
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1][1] 0.099 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.499_iter_5.csv"
+
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ "cond_effect_val"
+[1] 1.5[1] 0.5 0.099 0.5
+
+[1] 1
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.699_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.699_iter_2.csv"
+[1] "FALSE"
+[1][1] "cond_effect_val" "OR, p_cond, p_batch, bin_corr"
+
+[1] 0.099
+[1] 1.5[1] 0.5 "FALSE" 0.5
+
+[1] 1
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.699_iter_4.csv"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.699_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1][1] "FALSE" "cond_effect_val"
+
+[1] 0.099[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1][1] "FALSE" 1
+
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.699_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] "cond_effect_val"
+[1] 1[1]
+ 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.899_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.899_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.899_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.899_iter_5.csv"
+
+[1] 1.5 0.5 0.5
+[1] "cond_effect_val"
+[1] 1[1]
+ 0.099
+[1][1] "FALSE"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.099_0.899_iter_4.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.099
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.099_iter_4.csv" "OR, p_cond, p_batch, bin_corr"
+
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.099_iter_5.csv"
+[1] 0.299
+[1] "FALSE"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ "FALSE"
+[1] 1.5 0.5 0.5[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.5 1 0.5
+ 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.499_iter_2.csv"[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.699_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.299[1]
+ "cond_effect_val"
+[1] 0.299
+[1][1] "FALSE" "FALSE"
+
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.5 "OR, p_cond, p_batch, bin_corr" 0.5
+ 0.5
+[1][1] 1 1.5
+ 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.699_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.699_iter_4.csv"[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.299_0.699_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.299
+[1] "FALSE"
+[1] "cond_effect_val"
+[1] 0.299[1]
+ "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.5 "FALSE" 0.5
+ 0.5
+[1] 1
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"[1]
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0_iter_5.csv"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.099_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.099_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.299_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.299_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.299_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.299_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.499_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.499_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.499_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.499_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.499_0.499_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.499
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "cond_effect_val"
+[1][1] 0.699 "FALSE"
+
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr" "OR, p_cond, p_batch, bin_corr"
+
+[1][1] 1.5 1.5 0.5 0.5 0.5 0.5
+
+[1] 1
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.099_iter_3.csv"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1][1] 1.5 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.099_iter_4.csv" 0.5
+ 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1][1] "OR, p_cond, p_batch, bin_corr"
+ "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.099_iter_5.csv"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.699
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.299_iter_1.csv"
+[1] "cond_effect_val"
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.299_iter_3.csv" 0.699
+
+[1] "FALSE"
+[1] "cond_effect_val"
+[1] 0.699
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ "FALSE"[1]
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.299_iter_2.csv" 1.5
+ 0.5[1] 0.5 "OR, p_cond, p_batch, bin_corr"
+
+[1][1] 1.5 1[1] 0.5
+ 0.5 "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.299_iter_4.csv"
+
+[1] 1
+[1] "cond_effect_val"
+[1][1] 0.699 "cond_effect_val"
+
+[1][1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.699_0.299_iter_5.csv" 0.699
+
+[1] "FALSE"[1]
+ "FALSE"
+[1] "cond_effect_val"
+[1] "OR, p_cond, p_batch, bin_corr"[1]
+ 0.699
+[1][1] "OR, p_cond, p_batch, bin_corr"[1] 1.5
+ "FALSE" 0.5
+ 0.5
+[1][1] 1.5 1[1] 0.5
+ "OR, p_cond, p_batch, bin_corr" 0.5
+
+[1] 1.5 0.5 0.5[1]
+ 1[1]
+ 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0_iter_4.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0_iter_5.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0.099_iter_1.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0.099_iter_2.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0.099_iter_3.csv"
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0.099_iter_5.csv"
+[1][1] "cond_effect_val" "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723/ibd_150_count_1.5_0.899_0.099_iter_4.csv"
+
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "cond_effect_val"
+[1] 0.899
+[1] "FALSE"
+[1] "OR, p_cond, p_batch, bin_corr"
+[1] 1.5 0.5 0.5
+[1] 1
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "doing its thing"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
+[1] "___"
