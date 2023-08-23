@@ -25,7 +25,7 @@ source(paste0(conqur_path, "/supporting_functions.R"))
 
 run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
                         used_methods = c("combat_seq", "limma", "MMUPHin", 'conqur_libsize', "conqur")) {
-    if(!file.exists(paste(output_root, "_limma.csv", sep=""))){
+    if(!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep=""))){
 
     
         print(output_root)
@@ -393,13 +393,16 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             )
                         }
     
-or_l = c(1, 1.25, 1.5)
+# or_l = c(1, 1.25, 1.5)
+or_l = c(1)
 # or_l = c(1.25, 1.5)
 # or_l = c(1.5)
 # or_l = c(1.5)
-cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+cond_effect_val_l = c(0)
 # cond_effect_val_l = c(0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+batch_effect_val_l = c(0.899)
 # cond_effect_val_l = c(0.299)
 # batch_effect_val_l = c(0.299, 0.499, 0.699, 0.899)
 

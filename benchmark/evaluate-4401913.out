@@ -1,0 +1,2047 @@
+conda activated?
+Loading data...
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/nobc/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/harmony/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/combat/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/limma/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/MMUPHin/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR_libsize/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/percentile_norm/out_1_0_0_iter_1_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_1/percentile_norm
+['ibd_1_0_0_iter_1_ConQuR.csv', 'ibd_10_0_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0_iter_1_harmony_elapsed_time.txt', 'ibd_10_0_iter_1_percentile_norm.csv', 'ibd_1_0_0_iter_1_combat.csv', 'ibd_1_0_0_iter_1_ConQuR_libsize.csv', 'ibd_1_0_0_iter_1_limma.csv', 'ibd_1_0_0_iter_1_MMUPHin.csv', 'ibd_1_0_0_iter_1_runtime.txt', 'ibd_10_0_iter_1_harmony_adjusted_count.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0_iter_1/
+['ibd_1_0_0_iter_1_ConQuR.csv', 'ibd_10_0_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0_iter_1_harmony_elapsed_time.txt', 'ibd_10_0_iter_1_percentile_norm.csv', 'ibd_1_0_0_iter_1_combat.csv', 'ibd_1_0_0_iter_1_ConQuR_libsize.csv', 'ibd_1_0_0_iter_1_limma.csv', 'ibd_1_0_0_iter_1_MMUPHin.csv', 'ibd_1_0_0_iter_1_runtime.txt', 'ibd_10_0_iter_1_harmony_adjusted_count.csv']
+['ibd_10_0_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0_iter_1_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/nobc/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/harmony/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/combat/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/limma/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/MMUPHin/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/ConQuR/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/ConQuR_libsize/out_1_0_0_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 2
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/percentile_norm/out_1_0_0_iter_2_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_2/percentile_norm
+['ibd_1_0_0_iter_2_MMUPHin.csv', 'ibd_1_0_0_iter_2_runtime.txt', 'ibd_10_0_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_2_ConQuR_libsize.csv', 'ibd_1_0_0_iter_2_ConQuR.csv', 'ibd_10_0_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0_iter_2_combat.csv', 'ibd_10_0_iter_2_percentile_norm.csv', 'ibd_1_0_0_iter_2_limma.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0_iter_2/
+['ibd_1_0_0_iter_2_MMUPHin.csv', 'ibd_1_0_0_iter_2_runtime.txt', 'ibd_10_0_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_2_ConQuR_libsize.csv', 'ibd_1_0_0_iter_2_ConQuR.csv', 'ibd_10_0_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0_iter_2_combat.csv', 'ibd_10_0_iter_2_percentile_norm.csv', 'ibd_1_0_0_iter_2_limma.csv']
+['ibd_10_0_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0_iter_2_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/nobc/out_1_0_0_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/harmony/out_1_0_0_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/combat/out_1_0_0_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/limma/out_1_0_0_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/MMUPHin/out_1_0_0_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/ConQuR/out_1_0_0_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/ConQuR_libsize/out_1_0_0_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 3
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/percentile_norm/out_1_0_0_iter_3_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_3/percentile_norm
+['ibd_1_0_0_iter_3_combat.csv', 'ibd_10_0_iter_3_harmony_adjusted_count.csv', 'ibd_10_0_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_3_limma.csv', 'ibd_1_0_0_iter_3_MMUPHin.csv', 'ibd_1_0_0_iter_3_ConQuR.csv', 'ibd_10_0_iter_3_percentile_norm.csv', 'ibd_10_0_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0_iter_3_runtime.txt', 'ibd_1_0_0_iter_3_ConQuR_libsize.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0_iter_3/
+['ibd_1_0_0_iter_3_combat.csv', 'ibd_10_0_iter_3_harmony_adjusted_count.csv', 'ibd_10_0_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_3_limma.csv', 'ibd_1_0_0_iter_3_MMUPHin.csv', 'ibd_1_0_0_iter_3_ConQuR.csv', 'ibd_10_0_iter_3_percentile_norm.csv', 'ibd_10_0_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0_iter_3_runtime.txt', 'ibd_1_0_0_iter_3_ConQuR_libsize.csv']
+['ibd_10_0_iter_3_harmony_elapsed_time.txt', 'ibd_10_0_iter_3_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/nobc/out_1_0_0_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/harmony/out_1_0_0_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/combat/out_1_0_0_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/limma/out_1_0_0_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/MMUPHin/out_1_0_0_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/ConQuR/out_1_0_0_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/ConQuR_libsize/out_1_0_0_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 4
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/percentile_norm/out_1_0_0_iter_4_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_4/percentile_norm
+['ibd_10_0_iter_4_harmony_adjusted_count.csv', 'ibd_1_0_0_iter_4_runtime.txt', 'ibd_1_0_0_iter_4_ConQuR_libsize.csv', 'ibd_1_0_0_iter_4_combat.csv', 'ibd_10_0_iter_4_percentile_norm.csv', 'ibd_10_0_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_4_MMUPHin.csv', 'ibd_1_0_0_iter_4_limma.csv', 'ibd_1_0_0_iter_4_ConQuR.csv', 'ibd_10_0_iter_4_percentile_norm_elapsed_time.txt']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0_iter_4/
+['ibd_10_0_iter_4_harmony_adjusted_count.csv', 'ibd_1_0_0_iter_4_runtime.txt', 'ibd_1_0_0_iter_4_ConQuR_libsize.csv', 'ibd_1_0_0_iter_4_combat.csv', 'ibd_10_0_iter_4_percentile_norm.csv', 'ibd_10_0_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_4_MMUPHin.csv', 'ibd_1_0_0_iter_4_limma.csv', 'ibd_1_0_0_iter_4_ConQuR.csv', 'ibd_10_0_iter_4_percentile_norm_elapsed_time.txt']
+['ibd_10_0_iter_4_harmony_elapsed_time.txt', 'ibd_10_0_iter_4_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/nobc/out_1_0_0_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/harmony/out_1_0_0_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/combat/out_1_0_0_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/limma/out_1_0_0_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/MMUPHin/out_1_0_0_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/ConQuR/out_1_0_0_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/ConQuR_libsize/out_1_0_0_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 5
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/percentile_norm/out_1_0_0_iter_5_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0_iter_5/percentile_norm
+['ibd_1_0_0_iter_5_MMUPHin.csv', 'ibd_10_0_iter_5_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_5_combat.csv', 'ibd_10_0_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0_iter_5_ConQuR.csv', 'ibd_10_0_iter_5_percentile_norm_elapsed_time.txt', 'ibd_1_0_0_iter_5_ConQuR_libsize.csv', 'ibd_10_0_iter_5_percentile_norm.csv', 'ibd_1_0_0_iter_5_limma.csv', 'ibd_1_0_0_iter_5_runtime.txt']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0_iter_5/
+['ibd_1_0_0_iter_5_MMUPHin.csv', 'ibd_10_0_iter_5_harmony_elapsed_time.txt', 'ibd_1_0_0_iter_5_combat.csv', 'ibd_10_0_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0_iter_5_ConQuR.csv', 'ibd_10_0_iter_5_percentile_norm_elapsed_time.txt', 'ibd_1_0_0_iter_5_ConQuR_libsize.csv', 'ibd_10_0_iter_5_percentile_norm.csv', 'ibd_1_0_0_iter_5_limma.csv', 'ibd_1_0_0_iter_5_runtime.txt']
+['ibd_10_0_iter_5_harmony_elapsed_time.txt', 'ibd_10_0_iter_5_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/nobc/out_1_0_0.099_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/harmony/out_1_0_0.099_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/combat/out_1_0_0.099_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/limma/out_1_0_0.099_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/MMUPHin/out_1_0_0.099_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/ConQuR/out_1_0_0.099_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/ConQuR_libsize/out_1_0_0.099_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 1
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/percentile_norm/out_1_0_0.099_iter_1_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_1/percentile_norm
+['ibd_10_0.099_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_1_percentile_norm.csv', 'ibd_10_0.099_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_1_runtime.txt', 'ibd_1_0_0.099_iter_1_combat.csv', 'ibd_1_0_0.099_iter_1_ConQuR.csv', 'ibd_1_0_0.099_iter_1_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_1_limma.csv', 'ibd_10_0.099_iter_1_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_1_MMUPHin.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.099_iter_1/
+['ibd_10_0.099_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_1_percentile_norm.csv', 'ibd_10_0.099_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_1_runtime.txt', 'ibd_1_0_0.099_iter_1_combat.csv', 'ibd_1_0_0.099_iter_1_ConQuR.csv', 'ibd_1_0_0.099_iter_1_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_1_limma.csv', 'ibd_10_0.099_iter_1_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_1_MMUPHin.csv']
+['ibd_10_0.099_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_1_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/nobc/out_1_0_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/harmony/out_1_0_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/combat/out_1_0_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/limma/out_1_0_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/MMUPHin/out_1_0_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/ConQuR/out_1_0_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/ConQuR_libsize/out_1_0_0.099_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 2
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/percentile_norm/out_1_0_0.099_iter_2_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_2/percentile_norm
+['ibd_10_0.099_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_2_combat.csv', 'ibd_10_0.099_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_2_runtime.txt', 'ibd_10_0.099_iter_2_percentile_norm.csv', 'ibd_1_0_0.099_iter_2_ConQuR.csv', 'ibd_1_0_0.099_iter_2_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_2_MMUPHin.csv', 'ibd_1_0_0.099_iter_2_limma.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.099_iter_2/
+['ibd_10_0.099_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_2_combat.csv', 'ibd_10_0.099_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_2_runtime.txt', 'ibd_10_0.099_iter_2_percentile_norm.csv', 'ibd_1_0_0.099_iter_2_ConQuR.csv', 'ibd_1_0_0.099_iter_2_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_2_MMUPHin.csv', 'ibd_1_0_0.099_iter_2_limma.csv']
+['ibd_10_0.099_iter_2_harmony_elapsed_time.txt', 'ibd_10_0.099_iter_2_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/nobc/out_1_0_0.099_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/harmony/out_1_0_0.099_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/combat/out_1_0_0.099_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/limma/out_1_0_0.099_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/MMUPHin/out_1_0_0.099_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/ConQuR/out_1_0_0.099_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/ConQuR_libsize/out_1_0_0.099_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 3
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/percentile_norm/out_1_0_0.099_iter_3_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_3/percentile_norm
+['ibd_1_0_0.099_iter_3_ConQuR.csv', 'ibd_1_0_0.099_iter_3_runtime.txt', 'ibd_1_0_0.099_iter_3_limma.csv', 'ibd_1_0_0.099_iter_3_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_3_combat.csv', 'ibd_10_0.099_iter_3_harmony_adjusted_count.csv', 'ibd_10_0.099_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_3_MMUPHin.csv', 'ibd_10_0.099_iter_3_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_3_percentile_norm.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.099_iter_3/
+['ibd_1_0_0.099_iter_3_ConQuR.csv', 'ibd_1_0_0.099_iter_3_runtime.txt', 'ibd_1_0_0.099_iter_3_limma.csv', 'ibd_1_0_0.099_iter_3_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_3_combat.csv', 'ibd_10_0.099_iter_3_harmony_adjusted_count.csv', 'ibd_10_0.099_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_3_MMUPHin.csv', 'ibd_10_0.099_iter_3_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_3_percentile_norm.csv']
+['ibd_10_0.099_iter_3_harmony_elapsed_time.txt', 'ibd_10_0.099_iter_3_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/nobc/out_1_0_0.099_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/harmony/out_1_0_0.099_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/combat/out_1_0_0.099_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/limma/out_1_0_0.099_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/MMUPHin/out_1_0_0.099_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/ConQuR/out_1_0_0.099_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/ConQuR_libsize/out_1_0_0.099_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 4
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/percentile_norm/out_1_0_0.099_iter_4_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_4/percentile_norm
+['ibd_10_0.099_iter_4_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_4_percentile_norm.csv', 'ibd_1_0_0.099_iter_4_ConQuR.csv', 'ibd_1_0_0.099_iter_4_combat.csv', 'ibd_1_0_0.099_iter_4_ConQuR_libsize.csv', 'ibd_10_0.099_iter_4_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_4_limma.csv', 'ibd_1_0_0.099_iter_4_MMUPHin.csv', 'ibd_10_0.099_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_4_runtime.txt']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.099_iter_4/
+['ibd_10_0.099_iter_4_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_4_percentile_norm.csv', 'ibd_1_0_0.099_iter_4_ConQuR.csv', 'ibd_1_0_0.099_iter_4_combat.csv', 'ibd_1_0_0.099_iter_4_ConQuR_libsize.csv', 'ibd_10_0.099_iter_4_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_4_limma.csv', 'ibd_1_0_0.099_iter_4_MMUPHin.csv', 'ibd_10_0.099_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.099_iter_4_runtime.txt']
+['ibd_10_0.099_iter_4_percentile_norm_elapsed_time.txt', 'ibd_10_0.099_iter_4_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/nobc/out_1_0_0.099_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/harmony/out_1_0_0.099_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/combat/out_1_0_0.099_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/limma/out_1_0_0.099_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/MMUPHin/out_1_0_0.099_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/ConQuR/out_1_0_0.099_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/ConQuR_libsize/out_1_0_0.099_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.099
+iter 5
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/percentile_norm/out_1_0_0.099_iter_5_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.099_iter_5/percentile_norm
+['ibd_1_0_0.099_iter_5_ConQuR.csv', 'ibd_1_0_0.099_iter_5_combat.csv', 'ibd_10_0.099_iter_5_percentile_norm.csv', 'ibd_1_0_0.099_iter_5_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_5_MMUPHin.csv', 'ibd_10_0.099_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_5_runtime.txt', 'ibd_1_0_0.099_iter_5_limma.csv', 'ibd_10_0.099_iter_5_harmony_elapsed_time.txt', 'ibd_10_0.099_iter_5_percentile_norm_elapsed_time.txt']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.099_iter_5/
+['ibd_1_0_0.099_iter_5_ConQuR.csv', 'ibd_1_0_0.099_iter_5_combat.csv', 'ibd_10_0.099_iter_5_percentile_norm.csv', 'ibd_1_0_0.099_iter_5_ConQuR_libsize.csv', 'ibd_1_0_0.099_iter_5_MMUPHin.csv', 'ibd_10_0.099_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0.099_iter_5_runtime.txt', 'ibd_1_0_0.099_iter_5_limma.csv', 'ibd_10_0.099_iter_5_harmony_elapsed_time.txt', 'ibd_10_0.099_iter_5_percentile_norm_elapsed_time.txt']
+['ibd_10_0.099_iter_5_harmony_elapsed_time.txt', 'ibd_10_0.099_iter_5_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/nobc/out_1_0_0.299_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/harmony/out_1_0_0.299_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/combat/out_1_0_0.299_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/limma/out_1_0_0.299_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/MMUPHin/out_1_0_0.299_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/ConQuR/out_1_0_0.299_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/ConQuR_libsize/out_1_0_0.299_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 1
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/percentile_norm/out_1_0_0.299_iter_1_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_1/percentile_norm
+['ibd_10_0.299_iter_1_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_1_combat.csv', 'ibd_10_0.299_iter_1_percentile_norm.csv', 'ibd_1_0_0.299_iter_1_runtime.txt', 'ibd_10_0.299_iter_1_harmony_adjusted_count.csv', 'ibd_1_0_0.299_iter_1_MMUPHin.csv', 'ibd_1_0_0.299_iter_1_limma.csv', 'ibd_1_0_0.299_iter_1_ConQuR_libsize.csv', 'ibd_10_0.299_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_1_ConQuR.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.299_iter_1/
+['ibd_10_0.299_iter_1_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_1_combat.csv', 'ibd_10_0.299_iter_1_percentile_norm.csv', 'ibd_1_0_0.299_iter_1_runtime.txt', 'ibd_10_0.299_iter_1_harmony_adjusted_count.csv', 'ibd_1_0_0.299_iter_1_MMUPHin.csv', 'ibd_1_0_0.299_iter_1_limma.csv', 'ibd_1_0_0.299_iter_1_ConQuR_libsize.csv', 'ibd_10_0.299_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_1_ConQuR.csv']
+['ibd_10_0.299_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0.299_iter_1_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/nobc/out_1_0_0.299_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/harmony/out_1_0_0.299_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/combat/out_1_0_0.299_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/limma/out_1_0_0.299_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/MMUPHin/out_1_0_0.299_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/ConQuR/out_1_0_0.299_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/ConQuR_libsize/out_1_0_0.299_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 2
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/percentile_norm/out_1_0_0.299_iter_2_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_2/percentile_norm
+['ibd_1_0_0.299_iter_2_runtime.txt', 'ibd_1_0_0.299_iter_2_limma.csv', 'ibd_10_0.299_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_2_ConQuR_libsize.csv', 'ibd_10_0.299_iter_2_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_2_MMUPHin.csv', 'ibd_1_0_0.299_iter_2_ConQuR.csv', 'ibd_10_0.299_iter_2_percentile_norm.csv', 'ibd_1_0_0.299_iter_2_combat.csv', 'ibd_10_0.299_iter_2_harmony_adjusted_count.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.299_iter_2/
+['ibd_1_0_0.299_iter_2_runtime.txt', 'ibd_1_0_0.299_iter_2_limma.csv', 'ibd_10_0.299_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_2_ConQuR_libsize.csv', 'ibd_10_0.299_iter_2_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_2_MMUPHin.csv', 'ibd_1_0_0.299_iter_2_ConQuR.csv', 'ibd_10_0.299_iter_2_percentile_norm.csv', 'ibd_1_0_0.299_iter_2_combat.csv', 'ibd_10_0.299_iter_2_harmony_adjusted_count.csv']
+['ibd_10_0.299_iter_2_harmony_elapsed_time.txt', 'ibd_10_0.299_iter_2_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/nobc/out_1_0_0.299_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/harmony/out_1_0_0.299_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/combat/out_1_0_0.299_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/limma/out_1_0_0.299_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/MMUPHin/out_1_0_0.299_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/ConQuR/out_1_0_0.299_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/ConQuR_libsize/out_1_0_0.299_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 3
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/percentile_norm/out_1_0_0.299_iter_3_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_3/percentile_norm
+['ibd_1_0_0.299_iter_3_limma.csv', 'ibd_10_0.299_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_3_MMUPHin.csv', 'ibd_1_0_0.299_iter_3_ConQuR.csv', 'ibd_1_0_0.299_iter_3_ConQuR_libsize.csv', 'ibd_1_0_0.299_iter_3_combat.csv', 'ibd_10_0.299_iter_3_percentile_norm.csv', 'ibd_10_0.299_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_3_runtime.txt', 'ibd_10_0.299_iter_3_harmony_adjusted_count.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.299_iter_3/
+['ibd_1_0_0.299_iter_3_limma.csv', 'ibd_10_0.299_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_3_MMUPHin.csv', 'ibd_1_0_0.299_iter_3_ConQuR.csv', 'ibd_1_0_0.299_iter_3_ConQuR_libsize.csv', 'ibd_1_0_0.299_iter_3_combat.csv', 'ibd_10_0.299_iter_3_percentile_norm.csv', 'ibd_10_0.299_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_3_runtime.txt', 'ibd_10_0.299_iter_3_harmony_adjusted_count.csv']
+['ibd_10_0.299_iter_3_percentile_norm_elapsed_time.txt', 'ibd_10_0.299_iter_3_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/nobc/out_1_0_0.299_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/harmony/out_1_0_0.299_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/combat/out_1_0_0.299_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/limma/out_1_0_0.299_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/MMUPHin/out_1_0_0.299_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/ConQuR/out_1_0_0.299_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/ConQuR_libsize/out_1_0_0.299_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 4
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/percentile_norm/out_1_0_0.299_iter_4_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_4/percentile_norm
+['ibd_1_0_0.299_iter_4_ConQuR_libsize.csv', 'ibd_10_0.299_iter_4_percentile_norm.csv', 'ibd_1_0_0.299_iter_4_limma.csv', 'ibd_10_0.299_iter_4_harmony_adjusted_count.csv', 'ibd_1_0_0.299_iter_4_combat.csv', 'ibd_10_0.299_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_4_runtime.txt', 'ibd_1_0_0.299_iter_4_ConQuR.csv', 'ibd_1_0_0.299_iter_4_MMUPHin.csv', 'ibd_10_0.299_iter_4_percentile_norm_elapsed_time.txt']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.299_iter_4/
+['ibd_1_0_0.299_iter_4_ConQuR_libsize.csv', 'ibd_10_0.299_iter_4_percentile_norm.csv', 'ibd_1_0_0.299_iter_4_limma.csv', 'ibd_10_0.299_iter_4_harmony_adjusted_count.csv', 'ibd_1_0_0.299_iter_4_combat.csv', 'ibd_10_0.299_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.299_iter_4_runtime.txt', 'ibd_1_0_0.299_iter_4_ConQuR.csv', 'ibd_1_0_0.299_iter_4_MMUPHin.csv', 'ibd_10_0.299_iter_4_percentile_norm_elapsed_time.txt']
+['ibd_10_0.299_iter_4_harmony_elapsed_time.txt', 'ibd_10_0.299_iter_4_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/nobc/out_1_0_0.299_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/harmony/out_1_0_0.299_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/combat/out_1_0_0.299_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/limma/out_1_0_0.299_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/MMUPHin/out_1_0_0.299_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/ConQuR/out_1_0_0.299_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/ConQuR_libsize/out_1_0_0.299_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.299
+iter 5
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/percentile_norm/out_1_0_0.299_iter_5_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.299_iter_5/percentile_norm
+['ibd_10_0.299_iter_5_harmony_elapsed_time.txt', 'ibd_10_0.299_iter_5_percentile_norm.csv', 'ibd_1_0_0.299_iter_5_combat.csv', 'ibd_10_0.299_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0.299_iter_5_ConQuR.csv', 'ibd_10_0.299_iter_5_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_5_ConQuR_libsize.csv', 'ibd_1_0_0.299_iter_5_runtime.txt', 'ibd_1_0_0.299_iter_5_limma.csv', 'ibd_1_0_0.299_iter_5_MMUPHin.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.299_iter_5/
+['ibd_10_0.299_iter_5_harmony_elapsed_time.txt', 'ibd_10_0.299_iter_5_percentile_norm.csv', 'ibd_1_0_0.299_iter_5_combat.csv', 'ibd_10_0.299_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0.299_iter_5_ConQuR.csv', 'ibd_10_0.299_iter_5_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.299_iter_5_ConQuR_libsize.csv', 'ibd_1_0_0.299_iter_5_runtime.txt', 'ibd_1_0_0.299_iter_5_limma.csv', 'ibd_1_0_0.299_iter_5_MMUPHin.csv']
+['ibd_10_0.299_iter_5_harmony_elapsed_time.txt', 'ibd_10_0.299_iter_5_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/nobc/out_1_0_0.499_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/harmony/out_1_0_0.499_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/combat/out_1_0_0.499_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/limma/out_1_0_0.499_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/MMUPHin/out_1_0_0.499_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/ConQuR/out_1_0_0.499_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/ConQuR_libsize/out_1_0_0.499_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 1
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/percentile_norm/out_1_0_0.499_iter_1_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_1/percentile_norm
+['ibd_1_0_0.499_iter_1_ConQuR_libsize.csv', 'ibd_1_0_0.499_iter_1_combat.csv', 'ibd_1_0_0.499_iter_1_limma.csv', 'ibd_10_0.499_iter_1_percentile_norm.csv', 'ibd_10_0.499_iter_1_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_1_ConQuR.csv', 'ibd_10_0.499_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_1_runtime.txt', 'ibd_10_0.499_iter_1_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.499_iter_1_MMUPHin.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.499_iter_1/
+['ibd_1_0_0.499_iter_1_ConQuR_libsize.csv', 'ibd_1_0_0.499_iter_1_combat.csv', 'ibd_1_0_0.499_iter_1_limma.csv', 'ibd_10_0.499_iter_1_percentile_norm.csv', 'ibd_10_0.499_iter_1_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_1_ConQuR.csv', 'ibd_10_0.499_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_1_runtime.txt', 'ibd_10_0.499_iter_1_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.499_iter_1_MMUPHin.csv']
+['ibd_10_0.499_iter_1_harmony_elapsed_time.txt', 'ibd_10_0.499_iter_1_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/nobc/out_1_0_0.499_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/harmony/out_1_0_0.499_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/combat/out_1_0_0.499_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/limma/out_1_0_0.499_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/MMUPHin/out_1_0_0.499_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/ConQuR/out_1_0_0.499_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/ConQuR_libsize/out_1_0_0.499_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 2
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/percentile_norm/out_1_0_0.499_iter_2_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_2/percentile_norm
+['ibd_10_0.499_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_2_limma.csv', 'ibd_1_0_0.499_iter_2_ConQuR.csv', 'ibd_10_0.499_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.499_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_2_runtime.txt', 'ibd_1_0_0.499_iter_2_MMUPHin.csv', 'ibd_1_0_0.499_iter_2_combat.csv', 'ibd_10_0.499_iter_2_percentile_norm.csv', 'ibd_1_0_0.499_iter_2_ConQuR_libsize.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.499_iter_2/
+['ibd_10_0.499_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_2_limma.csv', 'ibd_1_0_0.499_iter_2_ConQuR.csv', 'ibd_10_0.499_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.499_iter_2_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_2_runtime.txt', 'ibd_1_0_0.499_iter_2_MMUPHin.csv', 'ibd_1_0_0.499_iter_2_combat.csv', 'ibd_10_0.499_iter_2_percentile_norm.csv', 'ibd_1_0_0.499_iter_2_ConQuR_libsize.csv']
+['ibd_10_0.499_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.499_iter_2_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/nobc/out_1_0_0.499_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/harmony/out_1_0_0.499_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/combat/out_1_0_0.499_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/limma/out_1_0_0.499_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/MMUPHin/out_1_0_0.499_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/ConQuR/out_1_0_0.499_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/ConQuR_libsize/out_1_0_0.499_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 3
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/percentile_norm/out_1_0_0.499_iter_3_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_3/percentile_norm
+['ibd_1_0_0.499_iter_3_runtime.txt', 'ibd_10_0.499_iter_3_percentile_norm.csv', 'ibd_1_0_0.499_iter_3_ConQuR.csv', 'ibd_10_0.499_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_3_limma.csv', 'ibd_1_0_0.499_iter_3_ConQuR_libsize.csv', 'ibd_10_0.499_iter_3_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_3_combat.csv', 'ibd_10_0.499_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.499_iter_3_MMUPHin.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.499_iter_3/
+['ibd_1_0_0.499_iter_3_runtime.txt', 'ibd_10_0.499_iter_3_percentile_norm.csv', 'ibd_1_0_0.499_iter_3_ConQuR.csv', 'ibd_10_0.499_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_3_limma.csv', 'ibd_1_0_0.499_iter_3_ConQuR_libsize.csv', 'ibd_10_0.499_iter_3_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_3_combat.csv', 'ibd_10_0.499_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.499_iter_3_MMUPHin.csv']
+['ibd_10_0.499_iter_3_harmony_elapsed_time.txt', 'ibd_10_0.499_iter_3_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/nobc/out_1_0_0.499_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/harmony/out_1_0_0.499_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/combat/out_1_0_0.499_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/limma/out_1_0_0.499_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/MMUPHin/out_1_0_0.499_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/ConQuR/out_1_0_0.499_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/ConQuR_libsize/out_1_0_0.499_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 4
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/percentile_norm/out_1_0_0.499_iter_4_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_4/percentile_norm
+['ibd_10_0.499_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_4_ConQuR_libsize.csv', 'ibd_10_0.499_iter_4_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.499_iter_4_runtime.txt', 'ibd_1_0_0.499_iter_4_combat.csv', 'ibd_1_0_0.499_iter_4_limma.csv', 'ibd_10_0.499_iter_4_percentile_norm.csv', 'ibd_1_0_0.499_iter_4_MMUPHin.csv', 'ibd_1_0_0.499_iter_4_ConQuR.csv', 'ibd_10_0.499_iter_4_harmony_adjusted_count.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.499_iter_4/
+['ibd_10_0.499_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_4_ConQuR_libsize.csv', 'ibd_10_0.499_iter_4_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.499_iter_4_runtime.txt', 'ibd_1_0_0.499_iter_4_combat.csv', 'ibd_1_0_0.499_iter_4_limma.csv', 'ibd_10_0.499_iter_4_percentile_norm.csv', 'ibd_1_0_0.499_iter_4_MMUPHin.csv', 'ibd_1_0_0.499_iter_4_ConQuR.csv', 'ibd_10_0.499_iter_4_harmony_adjusted_count.csv']
+['ibd_10_0.499_iter_4_harmony_elapsed_time.txt', 'ibd_10_0.499_iter_4_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/nobc/out_1_0_0.499_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/harmony/out_1_0_0.499_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/combat/out_1_0_0.499_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/limma/out_1_0_0.499_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/MMUPHin/out_1_0_0.499_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/ConQuR/out_1_0_0.499_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/ConQuR_libsize/out_1_0_0.499_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.499
+iter 5
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/percentile_norm/out_1_0_0.499_iter_5_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.499_iter_5/percentile_norm
+['ibd_10_0.499_iter_5_percentile_norm_elapsed_time.txt', 'ibd_10_0.499_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_5_limma.csv', 'ibd_1_0_0.499_iter_5_runtime.txt', 'ibd_10_0.499_iter_5_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_5_combat.csv', 'ibd_10_0.499_iter_5_percentile_norm.csv', 'ibd_1_0_0.499_iter_5_MMUPHin.csv', 'ibd_1_0_0.499_iter_5_ConQuR.csv', 'ibd_1_0_0.499_iter_5_ConQuR_libsize.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.499_iter_5/
+['ibd_10_0.499_iter_5_percentile_norm_elapsed_time.txt', 'ibd_10_0.499_iter_5_harmony_adjusted_count.csv', 'ibd_1_0_0.499_iter_5_limma.csv', 'ibd_1_0_0.499_iter_5_runtime.txt', 'ibd_10_0.499_iter_5_harmony_elapsed_time.txt', 'ibd_1_0_0.499_iter_5_combat.csv', 'ibd_10_0.499_iter_5_percentile_norm.csv', 'ibd_1_0_0.499_iter_5_MMUPHin.csv', 'ibd_1_0_0.499_iter_5_ConQuR.csv', 'ibd_1_0_0.499_iter_5_ConQuR_libsize.csv']
+['ibd_10_0.499_iter_5_percentile_norm_elapsed_time.txt', 'ibd_10_0.499_iter_5_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/nobc/out_1_0_0.699_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/harmony/out_1_0_0.699_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/combat/out_1_0_0.699_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/limma/out_1_0_0.699_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/MMUPHin/out_1_0_0.699_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/ConQuR/out_1_0_0.699_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/ConQuR_libsize/out_1_0_0.699_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 1
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/percentile_norm/out_1_0_0.699_iter_1_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_1/percentile_norm
+['ibd_1_0_0.699_iter_1_ConQuR_libsize.csv', 'ibd_10_0.699_iter_1_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.699_iter_1_runtime.txt', 'ibd_10_0.699_iter_1_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_1_percentile_norm.csv', 'ibd_10_0.699_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_1_MMUPHin.csv', 'ibd_1_0_0.699_iter_1_limma.csv', 'ibd_1_0_0.699_iter_1_ConQuR.csv', 'ibd_1_0_0.699_iter_1_combat.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.699_iter_1/
+['ibd_1_0_0.699_iter_1_ConQuR_libsize.csv', 'ibd_10_0.699_iter_1_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.699_iter_1_runtime.txt', 'ibd_10_0.699_iter_1_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_1_percentile_norm.csv', 'ibd_10_0.699_iter_1_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_1_MMUPHin.csv', 'ibd_1_0_0.699_iter_1_limma.csv', 'ibd_1_0_0.699_iter_1_ConQuR.csv', 'ibd_1_0_0.699_iter_1_combat.csv']
+['ibd_10_0.699_iter_1_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_1_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/nobc/out_1_0_0.699_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/harmony/out_1_0_0.699_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/combat/out_1_0_0.699_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/limma/out_1_0_0.699_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/MMUPHin/out_1_0_0.699_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/ConQuR/out_1_0_0.699_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/ConQuR_libsize/out_1_0_0.699_iter_2_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 2
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/percentile_norm/out_1_0_0.699_iter_2_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_2/percentile_norm
+['ibd_1_0_0.699_iter_2_runtime.txt', 'ibd_1_0_0.699_iter_2_MMUPHin.csv', 'ibd_10_0.699_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0.699_iter_2_ConQuR.csv', 'ibd_1_0_0.699_iter_2_limma.csv', 'ibd_10_0.699_iter_2_percentile_norm.csv', 'ibd_1_0_0.699_iter_2_ConQuR_libsize.csv', 'ibd_1_0_0.699_iter_2_combat.csv', 'ibd_10_0.699_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_2_harmony_elapsed_time.txt']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.699_iter_2/
+['ibd_1_0_0.699_iter_2_runtime.txt', 'ibd_1_0_0.699_iter_2_MMUPHin.csv', 'ibd_10_0.699_iter_2_harmony_adjusted_count.csv', 'ibd_1_0_0.699_iter_2_ConQuR.csv', 'ibd_1_0_0.699_iter_2_limma.csv', 'ibd_10_0.699_iter_2_percentile_norm.csv', 'ibd_1_0_0.699_iter_2_ConQuR_libsize.csv', 'ibd_1_0_0.699_iter_2_combat.csv', 'ibd_10_0.699_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_2_harmony_elapsed_time.txt']
+['ibd_10_0.699_iter_2_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_2_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/nobc/out_1_0_0.699_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/harmony/out_1_0_0.699_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/combat/out_1_0_0.699_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/limma/out_1_0_0.699_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/MMUPHin/out_1_0_0.699_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/ConQuR/out_1_0_0.699_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/ConQuR_libsize/out_1_0_0.699_iter_3_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 3
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/percentile_norm/out_1_0_0.699_iter_3_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_3/percentile_norm
+['ibd_10_0.699_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_3_ConQuR_libsize.csv', 'ibd_1_0_0.699_iter_3_combat.csv', 'ibd_1_0_0.699_iter_3_runtime.txt', 'ibd_1_0_0.699_iter_3_MMUPHin.csv', 'ibd_1_0_0.699_iter_3_ConQuR.csv', 'ibd_10_0.699_iter_3_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_3_percentile_norm.csv', 'ibd_10_0.699_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.699_iter_3_limma.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.699_iter_3/
+['ibd_10_0.699_iter_3_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_3_ConQuR_libsize.csv', 'ibd_1_0_0.699_iter_3_combat.csv', 'ibd_1_0_0.699_iter_3_runtime.txt', 'ibd_1_0_0.699_iter_3_MMUPHin.csv', 'ibd_1_0_0.699_iter_3_ConQuR.csv', 'ibd_10_0.699_iter_3_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_3_percentile_norm.csv', 'ibd_10_0.699_iter_3_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.699_iter_3_limma.csv']
+['ibd_10_0.699_iter_3_harmony_elapsed_time.txt', 'ibd_10_0.699_iter_3_percentile_norm_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/nobc/out_1_0_0.699_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/harmony/out_1_0_0.699_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/combat/out_1_0_0.699_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/limma/out_1_0_0.699_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/MMUPHin/out_1_0_0.699_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/ConQuR/out_1_0_0.699_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/ConQuR_libsize/out_1_0_0.699_iter_4_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 4
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/percentile_norm/out_1_0_0.699_iter_4_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_4/percentile_norm
+['ibd_1_0_0.699_iter_4_combat.csv', 'ibd_1_0_0.699_iter_4_ConQuR.csv', 'ibd_1_0_0.699_iter_4_MMUPHin.csv', 'ibd_10_0.699_iter_4_percentile_norm.csv', 'ibd_1_0_0.699_iter_4_limma.csv', 'ibd_1_0_0.699_iter_4_ConQuR_libsize.csv', 'ibd_10_0.699_iter_4_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_4_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_4_runtime.txt']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.699_iter_4/
+['ibd_1_0_0.699_iter_4_combat.csv', 'ibd_1_0_0.699_iter_4_ConQuR.csv', 'ibd_1_0_0.699_iter_4_MMUPHin.csv', 'ibd_10_0.699_iter_4_percentile_norm.csv', 'ibd_1_0_0.699_iter_4_limma.csv', 'ibd_1_0_0.699_iter_4_ConQuR_libsize.csv', 'ibd_10_0.699_iter_4_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_4_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_4_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_4_runtime.txt']
+['ibd_10_0.699_iter_4_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_4_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/nobc/out_1_0_0.699_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/harmony/out_1_0_0.699_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/combat/out_1_0_0.699_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/limma/out_1_0_0.699_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/MMUPHin/out_1_0_0.699_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method ConQuR
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/ConQuR/out_1_0_0.699_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method ConQuR_libsize
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/ConQuR_libsize/out_1_0_0.699_iter_5_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.699
+iter 5
+method percentile_norm
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/percentile_norm/out_1_0_0.699_iter_5_summary.csv
+nobc
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/nobc
+harmony
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/harmony
+combat
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/combat
+limma
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/limma
+MMUPHin
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/MMUPHin
+ConQuR
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/ConQuR
+ConQuR_libsize
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/ConQuR_libsize
+percentile_norm
+/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.699_iter_5/percentile_norm
+['ibd_10_0.699_iter_5_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_5_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.699_iter_5_limma.csv', 'ibd_1_0_0.699_iter_5_ConQuR_libsize.csv', 'ibd_1_0_0.699_iter_5_MMUPHin.csv', 'ibd_1_0_0.699_iter_5_runtime.txt', 'ibd_10_0.699_iter_5_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_5_combat.csv', 'ibd_1_0_0.699_iter_5_ConQuR.csv', 'ibd_10_0.699_iter_5_percentile_norm.csv']
+runtime files
+/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723/out_1_0_0.699_iter_5/
+['ibd_10_0.699_iter_5_harmony_adjusted_count.csv', 'ibd_10_0.699_iter_5_percentile_norm_elapsed_time.txt', 'ibd_1_0_0.699_iter_5_limma.csv', 'ibd_1_0_0.699_iter_5_ConQuR_libsize.csv', 'ibd_1_0_0.699_iter_5_MMUPHin.csv', 'ibd_1_0_0.699_iter_5_runtime.txt', 'ibd_10_0.699_iter_5_harmony_elapsed_time.txt', 'ibd_1_0_0.699_iter_5_combat.csv', 'ibd_1_0_0.699_iter_5_ConQuR.csv', 'ibd_10_0.699_iter_5_percentile_norm.csv']
+['ibd_10_0.699_iter_5_percentile_norm_elapsed_time.txt', 'ibd_10_0.699_iter_5_harmony_elapsed_time.txt']
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.899
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.899_iter_1/nobc/out_1_0_0.899_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.899
+iter 1
+method harmony
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.899_iter_1/harmony/out_1_0_0.899_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.899
+iter 1
+method combat
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.899_iter_1/combat/out_1_0_0.899_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.899
+iter 1
+method limma
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.899_iter_1/limma/out_1_0_0.899_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.899
+iter 1
+method MMUPHin
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723/out_1_0_0.899_iter_1/MMUPHin/out_1_0_0.899_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.899
+iter 1
+method ConQuR
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 6 11 140 144
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.015601     0.010123  0.015601   0.001
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.011739     0.007437  0.004816   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.003063     0.002674  0.002455   0.117
+       standard  sqrt.dist=T     add=T  Pr(>F)
+batch  0.002809     0.002532  0.002809   0.059
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+[1] "Aitchinson"
+                               0
+FDR                     0.647059
+power                   0.040000
+batches_shannon_pval    0.041961
+biovar_shannon_pval     0.132564
+rf_baseline_likelihood  0.520000
+rf_average_acc          0.784444
+rf_macro_precision      0.784179
+weighted_precision      0.784777
+macro_recall            0.784544
+weighted_recall         0.784444
+macro_f1                0.784264
+weighted_f1             0.784514
+auc                     0.784544
+batch_aitch_r2          0.015601
+batch_bray_r2           0.011739
+batch_aitch_pval        0.001000
+batch_bray_pval         0.001000
+biovar_aitch_r2         0.002809
+biovar_bray_r2          0.003063
+biovar_aitch_pval       0.059000
+biovar_bray_pval        0.117000
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0.899
+iter 1
+method ConQuR_libsize
+unique biovar variables ['cond_0' 'cond_1']
+V1      1
+V2      1
+V3      1
+V4      1
+V5      1
+       ..
+V297    0
+V298    0
+V299    0
+V300    0
+V301    0
+Name: ground_truth, Length: 301, dtype: int64
+TP, FP, TN, FN 2 4 147 148
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
