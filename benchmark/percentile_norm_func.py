@@ -22,7 +22,6 @@ import time
 seps = {'tab': '\t', 'newline': '\n', 'comma': ','}
 
 ## Read data
-print('Loading data...')
 
 def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter = 'comma', output_root = '', simulate = False):
     if not simulate:

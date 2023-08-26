@@ -51,8 +51,8 @@ midas_generate_per_iter <- function(otu_original, output_root, or, cond_effect_v
   output_file_path_relab = paste0(output_root, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
   output_file_path_meta = paste0(output_root, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
   
-  if (file.exists(output_file_path_count)){
-    print(output_file_path_count)
+  if (file.exists(output_file_path_relab)){
+    print(output_file_path_relab)
     print("file exists")
     print("___")
   }
