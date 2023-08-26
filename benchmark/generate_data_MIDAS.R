@@ -211,18 +211,3 @@ batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
 output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
 scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-# output_root = '/athena/linglab/scratch/chf4012/asafca'
-# or=1
-# cond_effect_val=0.099
-# batch_effect_val=0.899
-# for(iter in c(1, 2, 3)){
-#   output_file_path_count = paste0(output_root, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-#   output_file_path_relab = paste0(output_root, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-#   output_file_path_meta = paste0(output_root, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-    
-#   midas_simulate(otu_original, n, or=1, cond_effect_val, batch_effect_val, output_file_path_count, output_file_path_relab, output_file_path_meta, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
-
-# }
-# scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=5, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
-

@@ -241,7 +241,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 start_time <- Sys.time()
                 ## check for covars
                 # print("AAAAAAA")
-                print(removeBatchEffect(t(count_data.clr), batch = batch_info))
                 # print("BBBBBB")
                 if(is.null(covar)) {
                     count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
@@ -379,7 +378,13 @@ mcsapply <- function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
 }
 
 run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods, batch_ref = "batch_0", dataset = 'batchid', covar = c("cond"), Sam_id = 'Sam_id', transpose = TRUE, count = TRUE) {
-                            output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+                            if(count == TRUE){
+                                output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+                            }
+                            else{
+                                output_file_path_count = paste0(overall_path, "/ibd_150_relab_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
+                            }
+                            # output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
                             run_methods(output_file_path_count,
                                 paste0(overall_path, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
                                 paste0(output_dir, "/out_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, "/ibd_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
@@ -393,74 +398,35 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             )
                         }
     
-# or_l = c(1, 1.25, 1.5)
-or_l = c(1)
+or_l = c(1, 1.25, 1.5)
+# or_l = c(1)
 # or_l = c(1.25, 1.5)
 # or_l = c(1.5)
 # or_l = c(1.5)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-cond_effect_val_l = c(0)
+cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# cond_effect_val_l = c(0)
 # cond_effect_val_l = c(0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0.899)
+batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# batch_effect_val_l = c(0.899)
 # cond_effect_val_l = c(0.299)
 # batch_effect_val_l = c(0.299, 0.499, 0.699, 0.899)
 
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
-scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter){   
+scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter, count = TRUE){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
       for (batch_effect_val in batch_effect_val_l) {
         if (cond_effect_val + batch_effect_val <= 1) {
-        #   for (iter in seq(1, num_iter)){
-        #     print(or)
-        #     print(cond_effect_val)
-        #     print(batch_effect_val)
-            
-            # output_file_path_count = paste0(overall_path, "/ibd_150_count_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv")
-        #     # run the methods on this
-            # run_methods(output_file_path_count,
-            #             paste0(overall_path, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
-            #             paste0(output_dir, "/ibd_150_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
-            #             dataset = 'batchid',
-            #             batch_ref = "batch_0",
-            #             covar = c("cond"),
-            #             Sam_id = 'subjectid_text',
-            #             transpose = TRUE,
-            #             count = TRUE,
-            #             used_methods = method_l,
-            # )
-
-            # mcsapply(seq(1, num_iter), function(iter) run_methods(output_file_path_count,
-            #             paste0(overall_path, "/ibd_150_meta_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".csv"),
-            #             paste0(output_dir, "/ibd_150_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter),
-            #             dataset = 'batchid',
-            #             batch_ref = "batch_0",
-            #             covar = c("cond"),
-            #             Sam_id = 'subjectid_text',
-            #             transpose = TRUE,
-            #             count = TRUE,
-            #             used_methods = method_l), 
-            #         mc.cores = 5)
             print(output_dir)
             print(or)
             print(cond_effect_val)
             print(batch_effect_val)
             print(iter)
-            # ConQuR_file = paste0(output_dir, "/out_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, "/ibd_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, "_ConQuR_libsize.csv", sep="")
-            # if (!file.exists(ConQuR_file)){
-            #     mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
-            #     mc.cores=5)
-            # }
-            # else{
-            #     print(paste(or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter))
-            #     print("Done")
-            # }
-            mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l),
+            mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l, count = count),
                 mc.cores=5)
-            # sapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l))
-            # run_methods_per_iter(1, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l)
+            # sapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l, count = count),)
+            # run_methods_per_iter(1, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l, count = count)
             print("WHAT'S HAPPENING??")
           
         }
@@ -468,15 +434,22 @@ scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l,
     }
   }
 }
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
-
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
 
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_yesrelation_080723'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 # scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
-# run_methods_per_iter(1, overall_path, output_dir, 1, 0, 0.899, used_methods = method_l)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_norelation_082623'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
