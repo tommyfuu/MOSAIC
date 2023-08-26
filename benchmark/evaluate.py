@@ -526,7 +526,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         if "Tune_ConQuR_rel" in line and "Tune_ConQuR_rel" in method_dict.keys():
             method_dict["Tune_ConQuR_rel"]["runtime"] = float(line.split(" ")[-2])
 
-    if simulate:
+    if not simulate:
         benchmarked_data_harmony_dir = benchmarked_results_dir
     else:
         benchmarked_data_harmony_dir = output_dir_path + "/harmony"
@@ -543,7 +543,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
                 lines = f.readlines()
             method_dict["harmony"]["runtime"] = float(lines[0].split(" ")[-2])
 
-    if simulate:
+    if not simulate:
         benchmarked_data_harmony_dir = benchmarked_results_dir
     else:
         benchmarked_data_harmony_dir = output_dir_path + "/percentile_norm"
@@ -595,17 +595,25 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
             print("batch", batch, "is a complete confounder")
     return
     
-def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, line = True, count_l = [True, True, False, False], marker_dict = {'nobc': 'o', "combat": 'v', "limma": '^', "MMUPHin": '<', "ConQuR": '>', "ConQuR_libsize": 's', "ConQuR_rel": 'p', "harmony":"+", "percentile_norm": "*"}):
+def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, simulate = False, sim_num_iters = 5, dimensions = (5, 5), taxa_gt = None, line = True, count_l = [True, True, False, False], marker_dict = {'nobc': 'o', "combat": 'v', "limma": '^', "MMUPHin": '<', "ConQuR": '>', "ConQuR_libsize": 's', "ConQuR_rel": 'p', "harmony":"+", "percentile_norm": "*"}):
     '''visualize the PERMANOVA batch R2 (Bray/Aitch), PERMANOVA condition R2 (Bray/Aitch), ROC-AUC and FDR/sensitivity'''
+    # global set up
     global_methods_batch_bray_r2_l_dict = {}
     global_methods_batch_aitch_r2_l_dict = {}
     global_methods_biovar_bray_r2_l_dict = {}
     global_methods_biovar_aitch_r2_l_dict = {}
+    if taxa_gt is not None:
+        global_methods_FDR_r2_l_dict = {}
+        global_methods_sensitivity_r2_l_dict = {}
     if line:
         linestyle = '-'
     else:
         linestyle = 'None'
-    for idx, output_dir in enumerate(output_dir_l):
+
+    # loop through datasets to get the stats
+    def get_stats(output_dir, taxa_gt, idx):
+        methods_batch_aitch_r2_dict = {}
+        methods_biovar_aitch_r2_dict = {}
         # get the global stats path
         files = os.listdir(output_dir)
         global_stats_path = [file for file in files if "global_benchmarking_stats" in file][0]
@@ -614,37 +622,144 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         global_stats_df = pd.read_csv(output_dir+"/"+global_stats_path, index_col=0)
 
         # get the stats of interest and visualize
-        # PERMANOVA batch R2 (Bray/Aitch)
         if count_l[idx]:
             batch_aitch_r2 = global_stats_df.loc["batch_aitch_r2"]
             methods_batch_aitch_r2_dict = batch_aitch_r2.to_dict()
             biovar_aitch_r2 = global_stats_df.loc["biovar_aitch_r2"]
             methods_biovar_aitch_r2_dict = biovar_aitch_r2.to_dict()
 
-            ## append to global dict
-            for method in methods:
-                if method not in global_methods_batch_aitch_r2_l_dict.keys():
-                    global_methods_batch_aitch_r2_l_dict[method] = []
-                global_methods_batch_aitch_r2_l_dict[method].append(methods_batch_aitch_r2_dict[method])
-                if method not in global_methods_biovar_aitch_r2_l_dict.keys():
-                    global_methods_biovar_aitch_r2_l_dict[method] = []
-                global_methods_biovar_aitch_r2_l_dict[method].append(methods_biovar_aitch_r2_dict[method])
-
         batch_bray_r2 = global_stats_df.loc["batch_bray_r2"]  
         methods_batch_bray_r2_dict = batch_bray_r2.to_dict()
         biovar_bray_r2 = global_stats_df.loc["biovar_bray_r2"]
         methods_biovar_bray_r2_dict = biovar_bray_r2.to_dict()
+        
+        if taxa_gt is not None:
+            FDR_r2 = global_stats_df.loc["FDR"]
+            methods_FDR_r2_dict = FDR_r2.to_dict()
+            sensitivity_r2 = global_stats_df.loc["power"]
+            methods_sensitivity_r2_dict = sensitivity_r2.to_dict()
+        if taxa_gt is not None:
+            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict
+        else:
+            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict
+    for idx, output_dir in enumerate(output_dir_l):
+        if not simulate:   
+            # # get the global stats path
+            # files = os.listdir(output_dir)
+            # global_stats_path = [file for file in files if "global_benchmarking_stats" in file][0]
 
-        ## append to global dict
-        for method in methods:
-            if method not in global_methods_batch_bray_r2_l_dict.keys():
-                global_methods_batch_bray_r2_l_dict[method] = []
-            global_methods_batch_bray_r2_l_dict[method].append(methods_batch_bray_r2_dict[method])
-            if method not in global_methods_biovar_bray_r2_l_dict.keys():
-                global_methods_biovar_bray_r2_l_dict[method] = []
-            global_methods_biovar_bray_r2_l_dict[method].append(methods_biovar_bray_r2_dict[method])
+            # # read the global stats df
+            # global_stats_df = pd.read_csv(output_dir+"/"+global_stats_path, index_col=0)
 
+            # # get the stats of interest and visualize
+            # if count_l[idx]:
+            #     batch_aitch_r2 = global_stats_df.loc["batch_aitch_r2"]
+            #     methods_batch_aitch_r2_dict = batch_aitch_r2.to_dict()
+            #     biovar_aitch_r2 = global_stats_df.loc["biovar_aitch_r2"]
+            #     methods_biovar_aitch_r2_dict = biovar_aitch_r2.to_dict()
+            #     if taxa_gt is not None:
+            #         FDR_r2 = global_stats_df.loc["FDR"]
+            #         methods_FDR_r2_dict = FDR_r2.to_dict()
+            #         sensitivity_r2 = global_stats_df.loc["power"]
+            #         methods_sensitivity_r2_dict = sensitivity_r2.to_dict()
 
+            #     ## append to global dict
+            #     for method in methods:
+            #         if method not in global_methods_batch_aitch_r2_l_dict.keys():
+            #             global_methods_batch_aitch_r2_l_dict[method] = []
+            #         global_methods_batch_aitch_r2_l_dict[method].append(methods_batch_aitch_r2_dict[method])
+            #         if method not in global_methods_biovar_aitch_r2_l_dict.keys():
+            #             global_methods_biovar_aitch_r2_l_dict[method] = []
+            #         global_methods_biovar_aitch_r2_l_dict[method].append(methods_biovar_aitch_r2_dict[method])
+            #         if taxa_gt is not None:
+            #             if method not in global_methods_FDR_r2_l_dict.keys():
+            #                 global_methods_FDR_r2_l_dict[method] = []
+            #             global_methods_FDR_r2_l_dict[method].append(methods_FDR_r2_dict[method])
+            #             if method not in global_methods_sensitivity_r2_l_dict.keys():
+            #                 global_methods_sensitivity_r2_l_dict[method] = []
+            #             global_methods_sensitivity_r2_l_dict[method].append(methods_sensitivity_r2_dict[method])
+            
+            # batch_bray_r2 = global_stats_df.loc["batch_bray_r2"]  
+            # methods_batch_bray_r2_dict = batch_bray_r2.to_dict()
+            # biovar_bray_r2 = global_stats_df.loc["biovar_bray_r2"]
+            # methods_biovar_bray_r2_dict = biovar_bray_r2.to_dict()
+            # if taxa_gt is not None:
+            #     FDR_r2 = global_stats_df.loc["FDR"]
+            #     methods_FDR_r2_dict = FDR_r2.to_dict()
+            #     sensitivity_r2 = global_stats_df.loc["power"]
+            #     methods_sensitivity_r2_dict = sensitivity_r2.to_dict()
+
+            if taxa_gt is not None:
+                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict = get_stats(output_dir, taxa_gt, idx)    
+            else:
+                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict = get_stats(output_dir, taxa_gt, idx)    
+            ## append to global dict
+            for method in methods:
+                if count_l[idx]:
+                    if method not in global_methods_batch_aitch_r2_l_dict.keys():
+                        global_methods_batch_aitch_r2_l_dict[method] = []
+                    global_methods_batch_aitch_r2_l_dict[method].append(methods_batch_aitch_r2_dict[method])
+                    if method not in global_methods_biovar_aitch_r2_l_dict.keys():
+                        global_methods_biovar_aitch_r2_l_dict[method] = []
+                    global_methods_biovar_aitch_r2_l_dict[method].append(methods_biovar_aitch_r2_dict[method])
+                if method not in global_methods_batch_bray_r2_l_dict.keys():
+                    global_methods_batch_bray_r2_l_dict[method] = []
+                global_methods_batch_bray_r2_l_dict[method].append(methods_batch_bray_r2_dict[method])
+                if method not in global_methods_biovar_bray_r2_l_dict.keys():
+                    global_methods_biovar_bray_r2_l_dict[method] = []
+                global_methods_biovar_bray_r2_l_dict[method].append(methods_biovar_bray_r2_dict[method])
+                if taxa_gt is not None:
+                    if method not in global_methods_FDR_r2_l_dict.keys():
+                        global_methods_FDR_r2_l_dict[method] = []
+                    global_methods_FDR_r2_l_dict[method].append(methods_FDR_r2_dict[method])
+                    if method not in global_methods_sensitivity_r2_l_dict.keys():
+                        global_methods_sensitivity_r2_l_dict[method] = []
+                    global_methods_sensitivity_r2_l_dict[method].append(methods_sensitivity_r2_dict[method])
+
+        else:
+            # in this case, for each dataset, we have a preset number of iterations
+            cross_iter_batch_aitch_r2_dict = {}
+            cross_iter_batch_bray_r2_dict = {}
+            cross_iter_biovar_aitch_r2_dict = {}
+            cross_iter_biovar_bray_r2_dict = {}
+            cross_iter_FDR_r2_dict = {}
+            cross_iter_sensitivity_r2_dict = {}
+            for iter in range(sim_num_iters):
+                if taxa_gt is not None:
+                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
+                else:
+                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
+                cross_iter_batch_aitch_r2_dict[iter] = methods_batch_aitch_r2_dict
+                cross_iter_batch_bray_r2_dict[iter] = methods_batch_bray_r2_dict
+                cross_iter_biovar_aitch_r2_dict[iter] = methods_biovar_aitch_r2_dict
+                cross_iter_biovar_bray_r2_dict[iter] = methods_biovar_bray_r2_dict
+                if taxa_gt is not None:
+                    cross_iter_FDR_r2_dict[iter] = methods_FDR_r2_dict
+                    cross_iter_sensitivity_r2_dict[iter] = methods_sensitivity_r2_dict
+
+            # calculate mean across iterations and append to global dict
+            for method in methods:
+                if count_l[idx]:
+                    if method not in global_methods_batch_aitch_r2_l_dict.keys():
+                        global_methods_batch_aitch_r2_l_dict[method] = []
+                    global_methods_batch_aitch_r2_l_dict[method].append(np.mean([cross_iter_batch_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                    if method not in global_methods_biovar_aitch_r2_l_dict.keys():
+                        global_methods_biovar_aitch_r2_l_dict[method] = []
+                    global_methods_biovar_aitch_r2_l_dict[method].append(np.mean([cross_iter_biovar_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                if method not in global_methods_batch_bray_r2_l_dict.keys():
+                    global_methods_batch_bray_r2_l_dict[method] = []
+                global_methods_batch_bray_r2_l_dict[method].append(np.mean([cross_iter_batch_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                if method not in global_methods_biovar_bray_r2_l_dict.keys():
+                    global_methods_biovar_bray_r2_l_dict[method] = []
+                global_methods_biovar_bray_r2_l_dict[method].append(np.mean([cross_iter_biovar_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                if taxa_gt is not None:
+                    if method not in global_methods_FDR_r2_l_dict.keys():
+                        global_methods_FDR_r2_l_dict[method] = []
+                    global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                    if method not in global_methods_sensitivity_r2_l_dict.keys():
+                        global_methods_sensitivity_r2_l_dict[method] = []
+                    global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                    
     print("global_methods_batch_aitch_r2_l_dict")
     print(global_methods_batch_aitch_r2_l_dict)
     print("global_methods_batch_bray_r2_l_dict")
@@ -653,7 +768,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2):
         ## plot the dictionaries in two matplotlib subplots as line plots
         plt.clf()
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(dimensions[0]*2, dimensions[1]))
         for method in methods:
             if method != highlighted_method:
                 color = 'grey'
@@ -685,11 +800,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         plt.clf()
         plt.close()
     plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict)
-    
-
-    ## different methods' batch R2
-
-
+    plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict)
+    if taxa_gt is not None:
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict)
 
 
     return
@@ -946,45 +1059,45 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # ### nobc
-# Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
 
 # ### harmony
 # # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"harmony")
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
 # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nob', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nob', "DiseaseState", 30, [], 'Sam_id')
 
 # # benchmarking other methods: 
 # ### combat (combat_seq)
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat.csv"
 # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat/autism_2_microbiomeHD_combat', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat/autism_2_microbiomeHD_combat', "DiseaseState", 30, [], 'Sam_id')
 
 # ### limma
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_limma.csv"
 # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
 
 # ### MMUPHin
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
 # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
 # data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR_libsize
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
 # data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
 
 # ### percentile_norm
 # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
 
 # ### global evaluation
 # input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
@@ -992,7 +1105,7 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # dataset_name = "autism_2_microbiomeHD"
 # # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Tune_ConQuR", "Tune_ConQuR_libsize", "percentile_norm"]
 # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path)
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
 
 # ### multi-method plot
 # # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_conqur_tune, data_mat_conqur_tune_libsize, data_mat_percentile_norm]
@@ -1016,37 +1129,37 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # ### nobc
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
 
 # ### harmony
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_harmony_adjusted_count.csv"
 # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id')
 
 # ### combat
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat.csv"
 # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_combat/cdi_3_microbiomeHD_combat', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_combat/cdi_3_microbiomeHD_combat', "DiseaseState", 30, [], 'Sam_id')
 
 # ### limma
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
 # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
 
 # ### MMUPHin
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
 # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
 # data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR_libsize
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
 # data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
 
 # ### percentile_norm
 # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv", "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
@@ -1054,7 +1167,7 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_percentile_norm/cdi_3_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_percentile_norm/cdi_3_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
 
 # #### global evaluation
 # input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
@@ -1062,7 +1175,7 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # dataset_name = "cdi_3_microbiomeHD"
 # # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "Tune_ConQuR", "Tune_ConQuR_libsize", "percentile_norm"]
 # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path)
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
 
 # #### multi-method plot
 # # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_conqur_tune, data_mat_conqur_tune_libsize, data_mat_percentile_norm]
@@ -1088,13 +1201,13 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # # ### nobc
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # # ### harmony
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_harmony_adjusted_count.csv"
 # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
 # # # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"harmony")
-# Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # # # benchmarking other methods: 
 # address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
@@ -1102,31 +1215,31 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # # ### limma
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_limma.csv"
 # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_ibd_3_CMD_limma/ibd_3_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_ibd_3_CMD_limma/ibd_3_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # # ### MMUPHin
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_MMUPHin.csv"
 # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # # ### ConQuR_rel
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR_rel.csv"
 # data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_ibd_3_CMD_ConQuR_rel/ibd_3_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id')
+# # Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_ibd_3_CMD_ConQuR_rel/ibd_3_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id')
 
 # # ### percentile_norm
 # # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD", datatype = 'relab')
 # # # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_ibd_3_CMD_percentile_norm/ibd_3_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_ibd_3_CMD_percentile_norm/ibd_3_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # #### global evaluation
 # input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
 # bio_var = "disease"
 # dataset_name = 'ibd_3_CMD'
 # methods_list = ['nobc', 'harmony', 'limma', 'MMUPHin', 'ConQuR_rel', 'percentile_norm']
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab')
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab', simulate = False)
 
 # #### multi-method plot
 # # df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_conqur_tune_rel, data_mat_percentile_norm]
@@ -1152,27 +1265,27 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # ### nobc
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_CRC_8_CMD_nobc/CRC_8_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_CRC_8_CMD_nobc/CRC_8_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # ### harmony
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_harmony_adjusted_count.csv"
 # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_CRC_8_CMD_harmony/CRC_8_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_CRC_8_CMD_harmony/CRC_8_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # ## limma
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_limma.csv"
 # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_CRC_8_CMD_limma/CRC_8_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_CRC_8_CMD_limma/CRC_8_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # ### MMUPHin
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_MMUPHin.csv"
 # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_CRC_8_CMD_MMUPHin/CRC_8_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_CRC_8_CMD_MMUPHin/CRC_8_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # ### ConQuR_rel
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_ConQuR_rel.csv"
 # data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_CRC_8_CMD_ConQuR_rel/CRC_8_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_CRC_8_CMD_ConQuR_rel/CRC_8_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 
 # # ### percentile_norm
@@ -1182,7 +1295,7 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # # # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv"
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_CRC_8_CMD_percentile_norm/CRC_8_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_CRC_8_CMD_percentile_norm/CRC_8_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # #### global evaluation
 # input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
@@ -1190,7 +1303,7 @@ overall_path = '/athena/linglab/scratch/chf4012'
 # dataset_name = 'CRC_8_CMD'
 # # methods_list = ['nobc', 'harmony', 'limma', 'MMUPHin', 'ConQuR_rel', 'Tune_ConQuR_rel', 'percentile_norm']
 # methods_list = ['nobc', 'harmony', 'limma', 'MMUPHin', 'ConQuR_rel', 'percentile_norm']
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab')
+# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab', simulate = False)
 
 # # #### multi-method plot
 # # # df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_conqur_tune_rel, data_mat_percentile_norm]
@@ -1206,17 +1319,124 @@ output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
 output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-visualize_simulation_stats('count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True)
+visualize_simulation_stats('count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False)
 
 output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 methods = ["harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
 datasets = ["ibd_3_CMD", "CRC_8_CMD"]
 output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False])
+visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
 
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_vis_small_norelation_082623'
-# methods = ["harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["ibd_3_CMD", "CRC_8_CMD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False])
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1_0_0", "out_1_0_0.099", "out_1_0_0.299", "out_1_0_0.499", "out_1_0_0.699", "out_1_0_0.899"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1_0_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
 
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1_0.099_0", "out_1_0.099_0.099", "out_1_0.099_0.299", "out_1_0.099_0.499", "out_1_0.099_0.699", "out_1_0.099_0.899"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1_0.099_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1_0.299_0", "out_1_0.299_0.099", "out_1_0.299_0.299", "out_1_0.299_0.499", "out_1_0.299_0.699"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1_0.299_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1_0.499_0", "out_1_0.499_0.099", "out_1_0.499_0.299", "out_1_0.499_0.499"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1_0.499_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1_0.699_0", "out_1_0.699_0.099", "out_1_0.699_0.299"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1_0.699_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1_0.899_0", "out_1_0.899_0.099"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1_0.899_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.25_0_0", "out_1.25_0_0.099", "out_1.25_0_0.299", "out_1.25_0_0.499", "out_1.25_0_0.699", "out_1.25_0_0.899"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.25_0_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.25_0.099_0", "out_1.25_0.099_0.099", "out_1.25_0.099_0.299", "out_1.25_0.099_0.499", "out_1.25_0.099_0.699", "out_1.25_0.099_0.899"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.25_0.099_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.25_0.299_0", "out_1.25_0.299_0.099", "out_1.25_0.299_0.299", "out_1.25_0.299_0.499", "out_1.25_0.299_0.699"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.25_0.299_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.25_0.499_0", "out_1.25_0.499_0.099", "out_1.25_0.499_0.299", "out_1.25_0.499_0.499"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.25_0.499_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.25_0.699_0", "out_1.25_0.699_0.099", "out_1.25_0.699_0.299"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.25_0.699_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.25_0.899_0", "out_1.25_0.899_0.099"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.5_0.899_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+# do the same thing for out_1.5 now
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.5_0_0", "out_1.5_0_0.099", "out_1.5_0_0.299", "out_1.5_0_0.499", "out_1.5_0_0.699", "out_1.5_0_0.899"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.5_0_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.5_0.099_0", "out_1.5_0.099_0.099", "out_1.5_0.099_0.299", "out_1.5_0.099_0.499", "out_1.5_0.099_0.699", "out_1.5_0.099_0.899"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.5_0.099_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.5_0.299_0", "out_1.5_0.299_0.099", "out_1.5_0.299_0.299", "out_1.5_0.299_0.499", "out_1.5_0.299_0.699"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.5_0.299_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.5_0.499_0", "out_1.5_0.499_0.099", "out_1.5_0.499_0.299", "out_1.5_0.499_0.499"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.5_0.499_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.5_0.699_0", "out_1.5_0.699_0.099", "out_1.5_0.699_0.299"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.5_0.699_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["out_1.5_0.899_0", "out_1.5_0.899_0.099"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('sim_1.5_0.899_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
+
+
+
+##############################################################################
