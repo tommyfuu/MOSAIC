@@ -1,6 +1,0 @@
-runtime documenting...
-combat runtime 4.33294987678528 seconds
-limma runtime 3.56775379180908 seconds
-MMUPHin runtime 3.48153471946716 seconds
-ConQuR_rel runtime 1218.34360980988 seconds
-Tune_ConQuR_rel runtime 36252.678314209 seconds

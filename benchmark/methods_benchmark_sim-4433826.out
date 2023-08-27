@@ -90,3 +90,3500 @@ function (obj, ...)
 [1] 301
 [1] "check point2"
 [1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.299_iter_1/ibd_1_0_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.299_iter_2/ibd_1_0_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.299_iter_3/ibd_1_0_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.299_iter_4/ibd_1_0_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.299_iter_5/ibd_1_0_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.499_iter_1/ibd_1_0_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.499_iter_2/ibd_1_0_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.499_iter_3/ibd_1_0_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.499_iter_4/ibd_1_0_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.499_iter_5/ibd_1_0_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.699_iter_1/ibd_1_0_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.699_iter_2/ibd_1_0_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.699_iter_3/ibd_1_0_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.699_iter_4/ibd_1_0_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.699_iter_5/ibd_1_0_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0
+[1] 0.899
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.899_iter_1/ibd_1_0_0.899_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.899_iter_2/ibd_1_0_0.899_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.899_iter_3/ibd_1_0_0.899_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.899_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.899_iter_4/ibd_1_0_0.899_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.899_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0_0.899_iter_5/ibd_1_0_0.899_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0_0.899_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.099
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0_iter_1/ibd_1_0.099_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0_iter_2/ibd_1_0.099_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0_iter_3/ibd_1_0.099_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0_iter_4/ibd_1_0.099_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0_iter_5/ibd_1_0.099_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.099
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.099_iter_1/ibd_1_0.099_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.099_iter_2/ibd_1_0.099_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.099_iter_3/ibd_1_0.099_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.099_iter_4/ibd_1_0.099_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.099_iter_5/ibd_1_0.099_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.099
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.299_iter_1/ibd_1_0.099_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.299_iter_2/ibd_1_0.099_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.299_iter_3/ibd_1_0.099_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.299_iter_4/ibd_1_0.099_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.299_iter_5/ibd_1_0.099_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.099
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.499_iter_1/ibd_1_0.099_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.499_iter_2/ibd_1_0.099_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.499_iter_3/ibd_1_0.099_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.499_iter_4/ibd_1_0.099_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.499_iter_5/ibd_1_0.099_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.099
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.699_iter_1/ibd_1_0.099_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.699_iter_2/ibd_1_0.099_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.699_iter_3/ibd_1_0.099_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.699_iter_4/ibd_1_0.099_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.699_iter_5/ibd_1_0.099_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.099
+[1] 0.899
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.899_iter_1/ibd_1_0.099_0.899_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.899_iter_2/ibd_1_0.099_0.899_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.899_iter_3/ibd_1_0.099_0.899_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.899_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.899_iter_4/ibd_1_0.099_0.899_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.899_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.099_0.899_iter_5/ibd_1_0.099_0.899_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.099_0.899_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.299
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0_iter_1/ibd_1_0.299_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0_iter_2/ibd_1_0.299_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0_iter_3/ibd_1_0.299_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0_iter_4/ibd_1_0.299_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0_iter_5/ibd_1_0.299_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] 450 450
+
+[1][1][1] 450 301 301
+
+
+[1][1][1] 301 "check point2" "check point2"
+
+
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.299
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.099_iter_1/ibd_1_0.299_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.099_iter_2/ibd_1_0.299_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.099_iter_3/ibd_1_0.299_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.099_iter_4/ibd_1_0.299_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.099_iter_5/ibd_1_0.299_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.299
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.299_iter_1/ibd_1_0.299_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.299_iter_2/ibd_1_0.299_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.299_iter_3/ibd_1_0.299_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.299_iter_4/ibd_1_0.299_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.299_iter_5/ibd_1_0.299_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1][1] "in relative abundance mode, can only use combat" "in relative abundance mode, can only use combat"
+
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.299
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.499_iter_1/ibd_1_0.299_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.499_iter_2/ibd_1_0.299_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.499_iter_3/ibd_1_0.299_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.499_iter_4/ibd_1_0.299_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.499_iter_5/ibd_1_0.299_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"[1]
+ "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.299
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.699_iter_1/ibd_1_0.299_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.699_iter_2/ibd_1_0.299_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.699_iter_3/ibd_1_0.299_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.699_iter_4/ibd_1_0.299_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.299_0.699_iter_5/ibd_1_0.299_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.299_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] 450[1]
+ "check point2"
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.499
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0_iter_1/ibd_1_0.499_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0_iter_2/ibd_1_0.499_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0_iter_3/ibd_1_0.499_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0_iter_4/ibd_1_0.499_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0_iter_5/ibd_1_0.499_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.499
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.099_iter_1/ibd_1_0.499_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.099_iter_2/ibd_1_0.499_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.099_iter_3/ibd_1_0.499_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.099_iter_4/ibd_1_0.499_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.099_iter_5/ibd_1_0.499_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.499
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.299_iter_1/ibd_1_0.499_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.299_iter_2/ibd_1_0.499_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.299_iter_3/ibd_1_0.499_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.299_iter_4/ibd_1_0.499_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.299_iter_5/ibd_1_0.499_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.499
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.499_iter_1/ibd_1_0.499_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.499_iter_2/ibd_1_0.499_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.499_iter_3/ibd_1_0.499_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.499_iter_4/ibd_1_0.499_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.499_0.499_iter_5/ibd_1_0.499_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.499_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1][1] 450 450
+
+[1][1] 301 301
+
+[1][1] "check point2" "check point2"
+
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.699
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0_iter_1/ibd_1_0.699_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0_iter_2/ibd_1_0.699_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0_iter_3/ibd_1_0.699_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0_iter_4/ibd_1_0.699_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0_iter_5/ibd_1_0.699_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.699
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.099_iter_1/ibd_1_0.699_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.099_iter_2/ibd_1_0.699_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.099_iter_3/ibd_1_0.699_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.099_iter_4/ibd_1_0.699_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.099_iter_5/ibd_1_0.699_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.699
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.299_iter_1/ibd_1_0.699_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.299_iter_2/ibd_1_0.699_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.299_iter_3/ibd_1_0.699_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.299_iter_4/ibd_1_0.699_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.699_0.299_iter_5/ibd_1_0.699_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.699_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.899
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0_iter_1/ibd_1_0.899_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0_iter_2/ibd_1_0.899_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0_iter_3/ibd_1_0.899_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0_iter_4/ibd_1_0.899_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0_iter_5/ibd_1_0.899_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1
+[1] 0.899
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0.099_iter_1/ibd_1_0.899_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0.099_iter_2/ibd_1_0.899_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0.099_iter_3/ibd_1_0.899_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0.099_iter_4/ibd_1_0.899_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1_0.899_0.099_iter_5/ibd_1_0.899_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1_0.899_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0_iter_1/ibd_1.25_0_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0_iter_2/ibd_1.25_0_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0_iter_3/ibd_1.25_0_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0_iter_4/ibd_1.25_0_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0_iter_5/ibd_1.25_0_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1][1] "in relative abundance mode, can only use combat" "in relative abundance mode, can only use combat"
+
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.099_iter_1/ibd_1.25_0_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.099_iter_2/ibd_1.25_0_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.099_iter_3/ibd_1.25_0_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.099_iter_4/ibd_1.25_0_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.099_iter_5/ibd_1.25_0_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"[1]
+ 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.299_iter_1/ibd_1.25_0_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.299_iter_2/ibd_1.25_0_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.299_iter_3/ibd_1.25_0_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.299_iter_4/ibd_1.25_0_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.299_iter_5/ibd_1.25_0_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.499_iter_1/ibd_1.25_0_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.499_iter_2/ibd_1.25_0_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.499_iter_3/ibd_1.25_0_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.499_iter_4/ibd_1.25_0_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.499_iter_5/ibd_1.25_0_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] "check point1" "check point1"
+
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.699_iter_1/ibd_1.25_0_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.699_iter_2/ibd_1.25_0_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.699_iter_3/ibd_1.25_0_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.699_iter_4/ibd_1.25_0_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.699_iter_5/ibd_1.25_0_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450[1]
+ 450
+[1] 301[1]
+ 301
+[1] "check point2"[1]
+ "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"[1]
+ "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0
+[1] 0.899
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.899_iter_1/ibd_1.25_0_0.899_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.899_iter_2/ibd_1.25_0_0.899_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.899_iter_3/ibd_1.25_0_0.899_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.899_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.899_iter_4/ibd_1.25_0_0.899_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.899_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0_0.899_iter_5/ibd_1.25_0_0.899_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0_0.899_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.099
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0_iter_1/ibd_1.25_0.099_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0_iter_2/ibd_1.25_0.099_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0_iter_3/ibd_1.25_0.099_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0_iter_4/ibd_1.25_0.099_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0_iter_5/ibd_1.25_0.099_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.099
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.099_iter_1/ibd_1.25_0.099_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.099_iter_2/ibd_1.25_0.099_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.099_iter_3/ibd_1.25_0.099_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.099_iter_4/ibd_1.25_0.099_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.099_iter_5/ibd_1.25_0.099_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1][1] "check point2" 450
+
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.099
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.299_iter_1/ibd_1.25_0.099_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.299_iter_2/ibd_1.25_0.099_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.299_iter_3/ibd_1.25_0.099_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.299_iter_4/ibd_1.25_0.099_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.299_iter_5/ibd_1.25_0.099_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.099
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.499_iter_1/ibd_1.25_0.099_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.499_iter_2/ibd_1.25_0.099_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.499_iter_3/ibd_1.25_0.099_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.499_iter_4/ibd_1.25_0.099_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.499_iter_5/ibd_1.25_0.099_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.099
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.699_iter_1/ibd_1.25_0.099_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.699_iter_2/ibd_1.25_0.099_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.699_iter_3/ibd_1.25_0.099_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.699_iter_4/ibd_1.25_0.099_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.699_iter_5/ibd_1.25_0.099_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.099
+[1] 0.899
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.899_iter_1/ibd_1.25_0.099_0.899_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.899_iter_2/ibd_1.25_0.099_0.899_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.899_iter_3/ibd_1.25_0.099_0.899_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.899_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.899_iter_4/ibd_1.25_0.099_0.899_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.899_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.099_0.899_iter_5/ibd_1.25_0.099_0.899_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.099_0.899_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.299
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0_iter_1/ibd_1.25_0.299_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0_iter_2/ibd_1.25_0.299_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0_iter_3/ibd_1.25_0.299_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0_iter_4/ibd_1.25_0.299_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0_iter_5/ibd_1.25_0.299_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.299
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.099_iter_1/ibd_1.25_0.299_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.099_iter_2/ibd_1.25_0.299_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.099_iter_3/ibd_1.25_0.299_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.099_iter_4/ibd_1.25_0.299_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.099_iter_5/ibd_1.25_0.299_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.299
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.299_iter_1/ibd_1.25_0.299_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.299_iter_2/ibd_1.25_0.299_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.299_iter_3/ibd_1.25_0.299_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.299_iter_4/ibd_1.25_0.299_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.299_iter_5/ibd_1.25_0.299_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.299
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.499_iter_1/ibd_1.25_0.299_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.499_iter_2/ibd_1.25_0.299_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.499_iter_3/ibd_1.25_0.299_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.499_iter_4/ibd_1.25_0.299_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.499_iter_5/ibd_1.25_0.299_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1][1] "in relative abundance mode, can only use combat" "in relative abundance mode, can only use combat"
+
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.299
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.699_iter_1/ibd_1.25_0.299_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.699_iter_2/ibd_1.25_0.299_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.699_iter_3/ibd_1.25_0.299_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.699_iter_4/ibd_1.25_0.299_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.299_0.699_iter_5/ibd_1.25_0.299_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.299_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.499
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0_iter_1/ibd_1.25_0.499_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0_iter_2/ibd_1.25_0.499_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0_iter_3/ibd_1.25_0.499_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0_iter_4/ibd_1.25_0.499_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0_iter_5/ibd_1.25_0.499_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.499
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.099_iter_1/ibd_1.25_0.499_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.099_iter_2/ibd_1.25_0.499_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.099_iter_3/ibd_1.25_0.499_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.099_iter_4/ibd_1.25_0.499_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.099_iter_5/ibd_1.25_0.499_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.499
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.299_iter_1/ibd_1.25_0.499_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.299_iter_2/ibd_1.25_0.499_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.299_iter_3/ibd_1.25_0.499_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.299_iter_4/ibd_1.25_0.499_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.299_iter_5/ibd_1.25_0.499_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.499
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.499_iter_1/ibd_1.25_0.499_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.499_iter_2/ibd_1.25_0.499_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.499_iter_3/ibd_1.25_0.499_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.499_iter_4/ibd_1.25_0.499_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.499_0.499_iter_5/ibd_1.25_0.499_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.499_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.699
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0_iter_1/ibd_1.25_0.699_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0_iter_2/ibd_1.25_0.699_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0_iter_3/ibd_1.25_0.699_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0_iter_4/ibd_1.25_0.699_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0_iter_5/ibd_1.25_0.699_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.699
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.099_iter_1/ibd_1.25_0.699_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.099_iter_2/ibd_1.25_0.699_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.099_iter_3/ibd_1.25_0.699_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.099_iter_4/ibd_1.25_0.699_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.099_iter_5/ibd_1.25_0.699_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1][1] 301 450
+
+[1] "check point2"
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.699
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.299_iter_1/ibd_1.25_0.699_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.299_iter_2/ibd_1.25_0.699_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.299_iter_3/ibd_1.25_0.699_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.299_iter_4/ibd_1.25_0.699_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.699_0.299_iter_5/ibd_1.25_0.699_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.699_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.899
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0_iter_1/ibd_1.25_0.899_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0_iter_2/ibd_1.25_0.899_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0_iter_3/ibd_1.25_0.899_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0_iter_4/ibd_1.25_0.899_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0_iter_5/ibd_1.25_0.899_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.25
+[1] 0.899
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0.099_iter_1/ibd_1.25_0.899_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0.099_iter_2/ibd_1.25_0.899_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0.099_iter_3/ibd_1.25_0.899_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0.099_iter_4/ibd_1.25_0.899_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.25_0.899_0.099_iter_5/ibd_1.25_0.899_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.25_0.899_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0_iter_1/ibd_1.5_0_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0_iter_2/ibd_1.5_0_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0_iter_3/ibd_1.5_0_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0_iter_4/ibd_1.5_0_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0_iter_5/ibd_1.5_0_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.099_iter_1/ibd_1.5_0_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.099_iter_2/ibd_1.5_0_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.099_iter_3/ibd_1.5_0_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.099_iter_4/ibd_1.5_0_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.099_iter_5/ibd_1.5_0_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.299_iter_1/ibd_1.5_0_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.299_iter_2/ibd_1.5_0_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.299_iter_3/ibd_1.5_0_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.299_iter_4/ibd_1.5_0_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.299_iter_5/ibd_1.5_0_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.499_iter_1/ibd_1.5_0_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.499_iter_2/ibd_1.5_0_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.499_iter_3/ibd_1.5_0_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.499_iter_4/ibd_1.5_0_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.499_iter_5/ibd_1.5_0_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.699_iter_1/ibd_1.5_0_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.699_iter_2/ibd_1.5_0_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.699_iter_3/ibd_1.5_0_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.699_iter_4/ibd_1.5_0_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.699_iter_5/ibd_1.5_0_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0
+[1] 0.899
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.899_iter_1/ibd_1.5_0_0.899_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.899_iter_2/ibd_1.5_0_0.899_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.899_iter_3/ibd_1.5_0_0.899_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.899_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.899_iter_4/ibd_1.5_0_0.899_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.899_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0_0.899_iter_5/ibd_1.5_0_0.899_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0_0.899_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 450[1]
+ 301
+[1][1] 301 "check point2"
+
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.099
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0_iter_1/ibd_1.5_0.099_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0_iter_2/ibd_1.5_0.099_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0_iter_3/ibd_1.5_0.099_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0_iter_4/ibd_1.5_0.099_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0_iter_5/ibd_1.5_0.099_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.099
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.099_iter_1/ibd_1.5_0.099_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.099_iter_2/ibd_1.5_0.099_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.099_iter_3/ibd_1.5_0.099_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.099_iter_4/ibd_1.5_0.099_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.099_iter_5/ibd_1.5_0.099_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.099
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.299_iter_1/ibd_1.5_0.099_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.299_iter_2/ibd_1.5_0.099_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.299_iter_3/ibd_1.5_0.099_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.299_iter_4/ibd_1.5_0.099_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.299_iter_5/ibd_1.5_0.099_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.099
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.499_iter_1/ibd_1.5_0.099_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.499_iter_2/ibd_1.5_0.099_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.499_iter_3/ibd_1.5_0.099_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.499_iter_4/ibd_1.5_0.099_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.499_iter_5/ibd_1.5_0.099_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1][1] "in relative abundance mode, can only use combat" "in relative abundance mode, can only use combat"
+
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.099
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.699_iter_1/ibd_1.5_0.099_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.699_iter_2/ibd_1.5_0.099_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.699_iter_3/ibd_1.5_0.099_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.699_iter_4/ibd_1.5_0.099_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.699_iter_5/ibd_1.5_0.099_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.099
+[1] 0.899
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.899_iter_1/ibd_1.5_0.099_0.899_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.899_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.899_iter_2/ibd_1.5_0.099_0.899_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.899_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.899_iter_3/ibd_1.5_0.099_0.899_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.899_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.899_iter_4/ibd_1.5_0.099_0.899_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.899_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.099_0.899_iter_5/ibd_1.5_0.099_0.899_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.099_0.899_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.299
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0_iter_1/ibd_1.5_0.299_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0_iter_2/ibd_1.5_0.299_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0_iter_3/ibd_1.5_0.299_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0_iter_4/ibd_1.5_0.299_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0_iter_5/ibd_1.5_0.299_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] 450
+[1] "check point2"
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.299
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.099_iter_1/ibd_1.5_0.299_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.099_iter_2/ibd_1.5_0.299_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.099_iter_3/ibd_1.5_0.299_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.099_iter_4/ibd_1.5_0.299_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.099_iter_5/ibd_1.5_0.299_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.299
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.299_iter_1/ibd_1.5_0.299_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.299_iter_2/ibd_1.5_0.299_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.299_iter_3/ibd_1.5_0.299_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.299_iter_4/ibd_1.5_0.299_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.299_iter_5/ibd_1.5_0.299_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1][1] 450 450
+
+[1][1] 301 301
+
+[1][1] "check point2" "check point2"
+
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.299
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.499_iter_1/ibd_1.5_0.299_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.499_iter_2/ibd_1.5_0.299_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.499_iter_3/ibd_1.5_0.299_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.499_iter_4/ibd_1.5_0.299_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.499_iter_5/ibd_1.5_0.299_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.299
+[1] 0.699
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.699_iter_1/ibd_1.5_0.299_0.699_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.699_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.699_iter_2/ibd_1.5_0.299_0.699_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.699_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.699_iter_3/ibd_1.5_0.299_0.699_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.699_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.699_iter_4/ibd_1.5_0.299_0.699_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.699_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.299_0.699_iter_5/ibd_1.5_0.299_0.699_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.299_0.699_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.499
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0_iter_1/ibd_1.5_0.499_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0_iter_2/ibd_1.5_0.499_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0_iter_3/ibd_1.5_0.499_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0_iter_4/ibd_1.5_0.499_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0_iter_5/ibd_1.5_0.499_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.499
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.099_iter_1/ibd_1.5_0.499_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.099_iter_2/ibd_1.5_0.499_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.099_iter_3/ibd_1.5_0.499_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.099_iter_4/ibd_1.5_0.499_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.099_iter_5/ibd_1.5_0.499_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.499
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.299_iter_1/ibd_1.5_0.499_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.299_iter_2/ibd_1.5_0.499_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.299_iter_3/ibd_1.5_0.499_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.299_iter_4/ibd_1.5_0.499_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.299_iter_5/ibd_1.5_0.499_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 450
+[1] 301
+[1] 301
+[1] "check point2"
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1][1] "in relative abundance mode, can only use combat" "in relative abundance mode, can only use combat"
+
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.499
+[1] 0.499
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.499_iter_1/ibd_1.5_0.499_0.499_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.499_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.499_iter_2/ibd_1.5_0.499_0.499_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.499_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.499_iter_3/ibd_1.5_0.499_0.499_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.499_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.499_iter_4/ibd_1.5_0.499_0.499_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.499_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.499_0.499_iter_5/ibd_1.5_0.499_0.499_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.499_0.499_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.699
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0_iter_1/ibd_1.5_0.699_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0_iter_2/ibd_1.5_0.699_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0_iter_3/ibd_1.5_0.699_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0_iter_4/ibd_1.5_0.699_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0_iter_5/ibd_1.5_0.699_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.699
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.099_iter_1/ibd_1.5_0.699_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.099_iter_2/ibd_1.5_0.699_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.099_iter_3/ibd_1.5_0.699_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.099_iter_4/ibd_1.5_0.699_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.099_iter_5/ibd_1.5_0.699_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.699
+[1] 0.299
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.299_iter_1/ibd_1.5_0.699_0.299_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.299_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.299_iter_2/ibd_1.5_0.699_0.299_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.299_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.299_iter_3/ibd_1.5_0.699_0.299_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.299_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.299_iter_4/ibd_1.5_0.699_0.299_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.299_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.699_0.299_iter_5/ibd_1.5_0.699_0.299_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.699_0.299_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.899
+[1] 0
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0_iter_1/ibd_1.5_0.899_0_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0_iter_2/ibd_1.5_0.899_0_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0_iter_3/ibd_1.5_0.899_0_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0_iter_4/ibd_1.5_0.899_0_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0_iter_5/ibd_1.5_0.899_0_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623"
+[1] 1.5
+[1] 0.899
+[1] 0.099
+function (obj, ...) 
+{
+    UseMethod("iter")
+}
+<bytecode: 0x55bf1056d470>
+<environment: namespace:iterators>
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0.099_iter_1/ibd_1.5_0.899_0.099_iter_1"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0.099_iter_1.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0.099_iter_2/ibd_1.5_0.899_0.099_iter_2"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0.099_iter_2.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0.099_iter_3/ibd_1.5_0.899_0.099_iter_3"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0.099_iter_3.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0.099_iter_4/ibd_1.5_0.899_0.099_iter_4"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0.099_iter_4.csv"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623/out_1.5_0.899_0.099_iter_5/ibd_1.5_0.899_0.099_iter_5"
+[1] "/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_1.5_0.899_0.099_iter_5.csv"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] "check point1"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] 450
+[1] 301
+[1] "check point2"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "in relative abundance mode, can only use combat"
+[1] "WHAT'S HAPPENING??"

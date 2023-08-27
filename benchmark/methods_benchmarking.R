@@ -352,16 +352,16 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # )
 
 
-# # CRC_8_CMD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
-# dataset = "study_name",
-# batch_ref = 'FengQ_2015',
-# covar = c("disease", "gender", "age"),
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-# )
+# CRC_8_CMD
+run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
+'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
+'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
+dataset = "study_name",
+batch_ref = 'FengQ_2015',
+covar = c("disease", "gender", "age"),
+used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
+)
 
 
 # just to speed up
