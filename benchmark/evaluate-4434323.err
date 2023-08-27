@@ -1,0 +1,15 @@
+2023-08-26 21:09:53,265 - harmonypy - INFO - Iteration 1 of 10
+2023-08-26 21:09:53,347 - harmonypy - INFO - Iteration 2 of 10
+2023-08-26 21:09:53,393 - harmonypy - INFO - Converged after 2 iterations
+2023-08-26 21:10:00,188 - harmonypy - INFO - Iteration 1 of 10
+2023-08-26 21:10:00,244 - harmonypy - INFO - Iteration 2 of 10
+2023-08-26 21:10:00,295 - harmonypy - INFO - Iteration 3 of 10
+2023-08-26 21:10:00,329 - harmonypy - INFO - Iteration 4 of 10
+2023-08-26 21:10:00,370 - harmonypy - INFO - Converged after 4 iterations
+2023-08-26 21:10:07,085 - harmonypy - INFO - Iteration 1 of 10
+2023-08-26 21:10:07,138 - harmonypy - INFO - Iteration 2 of 10
+2023-08-26 21:10:07,169 - harmonypy - INFO - Iteration 3 of 10
+2023-08-26 21:10:07,187 - harmonypy - INFO - Iteration 4 of 10
+2023-08-26 21:10:07,204 - harmonypy - INFO - Iteration 5 of 10
+2023-08-26 21:10:07,222 - harmonypy - INFO - Converged after 5 iterations
+slurmstepd: error: *** JOB 4434323 ON scu-node036 CANCELLED AT 2023-08-26T21:10:07 ***
