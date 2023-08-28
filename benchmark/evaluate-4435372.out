@@ -1,0 +1,300 @@
+conda activated?
+unique biovar variables ['CRC' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.086400     0.048927  0.086400   0.001
+gender  0.002185     0.001569  0.002185   0.001
+age     0.005180     0.003175  0.005180   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.088854     0.051651  0.027745   0.001
+gender  0.002607     0.001847  0.001364   0.001
+age     0.002968     0.002064  0.001457   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.004922     0.003106  0.001960   0.001
+gender  0.002607     0.001847  0.001364   0.001
+age     0.002968     0.002064  0.001457   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.005508     0.003366  0.005508   0.001
+gender  0.002185     0.001569  0.002185   0.002
+age     0.005180     0.003175  0.005180   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+                                   0
+batches_shannon_pval    2.246401e-36
+biovar_shannon_pval     4.901339e-02
+rf_baseline_likelihood  5.009311e-01
+rf_average_acc          6.927374e-01
+rf_macro_precision      7.090935e-01
+weighted_precision      7.092033e-01
+macro_recall            6.929964e-01
+weighted_recall         6.927374e-01
+macro_f1                6.867897e-01
+weighted_f1             6.867093e-01
+auc                     6.929964e-01
+batch_aitch_r2          8.639995e-02
+batch_bray_r2           8.885415e-02
+batch_aitch_pval        1.000000e-03
+batch_bray_pval         1.000000e-03
+biovar_aitch_r2         5.507624e-03
+biovar_bray_r2          4.922202e-03
+biovar_aitch_pval       1.000000e-03
+biovar_bray_pval        1.000000e-03
+unique biovar variables ['CRC' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.013147     0.011777  0.013147   0.001
+gender  0.002254     0.001618  0.002254   0.001
+age     0.002464     0.001739  0.002464   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.061541     0.037938  0.024209   0.001
+gender  0.002268     0.001667  0.001362   0.001
+age     0.002740     0.001998  0.001513   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.003786     0.002539  0.001850   0.001
+gender  0.002268     0.001667  0.001362   0.001
+age     0.002740     0.001998  0.001513   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.003428     0.002290  0.003428   0.001
+gender  0.002254     0.001618  0.002254   0.001
+age     0.002464     0.001739  0.002464   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+                                   0
+batches_shannon_pval    1.318045e-13
+biovar_shannon_pval     1.371108e-01
+rf_baseline_likelihood  5.009311e-01
+rf_average_acc          5.940410e-01
+rf_macro_precision      5.948490e-01
+weighted_precision      5.948662e-01
+macro_recall            5.941228e-01
+weighted_recall         5.940410e-01
+macro_f1                5.932949e-01
+weighted_f1             5.932624e-01
+auc                     5.941228e-01
+batch_aitch_r2          1.314651e-02
+batch_bray_r2           6.154086e-02
+batch_aitch_pval        1.000000e-03
+batch_bray_pval         1.000000e-03
+biovar_aitch_r2         3.428243e-03
+biovar_bray_r2          3.786468e-03
+biovar_aitch_pval       1.000000e-03
+biovar_bray_pval        1.000000e-03
+unique biovar variables ['CRC' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.062605     0.038946  0.062605   0.001
+gender  0.002995     0.002047  0.002995   0.001
+age     0.003237     0.002175  0.003237   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.262641     0.144584  0.050452   0.001
+gender  0.002627     0.001941  0.001223   0.001
+age     0.004642     0.003036  0.001568   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.003753     0.002526  0.001416   0.001
+gender  0.002627     0.001941  0.001223   0.002
+age     0.004642     0.003036  0.001568   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.003692     0.002423  0.003692   0.001
+gender  0.002995     0.002047  0.002995   0.001
+age     0.003237     0.002175  0.003237   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+                                   0
+batches_shannon_pval    1.087997e-29
+biovar_shannon_pval     4.299030e-01
+rf_baseline_likelihood  5.009311e-01
+rf_average_acc          6.461825e-01
+rf_macro_precision      6.517249e-01
+weighted_precision      6.517797e-01
+macro_recall            6.463581e-01
+weighted_recall         6.461825e-01
+macro_f1                6.430883e-01
+weighted_f1             6.430264e-01
+auc                     6.463581e-01
+batch_aitch_r2          6.260525e-02
+batch_bray_r2           2.626414e-01
+batch_aitch_pval        1.000000e-03
+batch_bray_pval         1.000000e-03
+biovar_aitch_r2         3.691985e-03
+biovar_bray_r2          3.752840e-03
+biovar_aitch_pval       1.000000e-03
+biovar_bray_pval        1.000000e-03
+unique biovar variables ['CRC' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.077038     0.044231  0.077038   0.001
+gender  0.002162     0.001558  0.002162   0.001
+age     0.005487     0.003346  0.005487   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.036322     0.023558  0.014594   0.001
+gender  0.002736     0.001908  0.001420   0.001
+age     0.003063     0.002065  0.001509   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.005233     0.003190  0.002097   0.001
+gender  0.002736     0.001908  0.001420   0.001
+age     0.003063     0.002065  0.001509   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.005417     0.003325  0.005417   0.001
+gender  0.002162     0.001558  0.002162   0.001
+age     0.005487     0.003346  0.005487   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+                                   0
+batches_shannon_pval    1.956074e-33
+biovar_shannon_pval     1.054368e-01
+rf_baseline_likelihood  5.009311e-01
+rf_average_acc          7.039106e-01
+rf_macro_precision      7.207040e-01
+weighted_precision      7.208182e-01
+macro_recall            7.041662e-01
+weighted_recall         7.039106e-01
+macro_f1                6.983359e-01
+weighted_f1             6.982596e-01
+auc                     7.041662e-01
+batch_aitch_r2          7.703814e-02
+batch_bray_r2           3.632225e-02
+batch_aitch_pval        1.000000e-03
+batch_bray_pval         1.000000e-03
+biovar_aitch_r2         5.416769e-03
+biovar_bray_r2          5.232848e-03
+biovar_aitch_pval       1.000000e-03
+biovar_bray_pval        1.000000e-03
+unique biovar variables ['CRC' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.389218     0.219719  0.389218   0.001
+gender  0.023960     0.014666  0.023960   0.001
+age     0.033200     0.018305  0.033200   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.032738     0.020489  0.012219   0.001
+gender  0.008047     0.004709  0.002478   0.001
+age     0.007919     0.004588  0.002450   0.001
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.012493     0.006974  0.003444   0.001
+gender  0.008047     0.004709  0.002478   0.001
+age     0.007919     0.004588  0.002450   0.001
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.063051     0.036268  0.063051   0.001
+gender  0.023960     0.014666  0.023960   0.001
+age     0.033200     0.018305  0.033200   0.001
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+                                   0
+batches_shannon_pval    3.457142e-10
+biovar_shannon_pval     7.373358e-05
+rf_baseline_likelihood  5.009311e-01
+rf_average_acc          9.878957e-01
+rf_macro_precision      9.881603e-01
+weighted_precision      9.881823e-01
+macro_recall            9.879182e-01
+weighted_recall         9.878957e-01
+macro_f1                9.878944e-01
+weighted_f1             9.878942e-01
+auc                     9.879182e-01
+batch_aitch_r2          3.892180e-01
+batch_bray_r2           3.273836e-02
+batch_aitch_pval        1.000000e-03
+batch_bray_pval         1.000000e-03
+biovar_aitch_r2         6.305124e-02
+biovar_bray_r2          1.249307e-02
+biovar_aitch_pval       1.000000e-03
+biovar_bray_pval        1.000000e-03
+unique biovar variables ['CRC' 'healthy']
+______________alpha_diversity_and_tests_for_batches_and_biovars______________
+______________alpha_diversity_and_tests______________
+______________alpha_diversity_and_tests______________
+[1] "Here 3"
+______________batch_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.006444     0.006480  0.006444   0.724
+gender  0.000953     0.000943  0.000953   0.304
+age     0.000869     0.000899  0.000869   0.911
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.006425     0.006474  0.006461   0.700
+gender  0.000981     0.000956  0.000963   0.230
+age     0.000889     0.000912  0.000905   0.732
+______________batch_PERMANOVA_R2_results______________
+[1] "Here 3"
+______________biovar_PERMANOVA_R2_results______________
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.000933     0.000931  0.000933   0.450
+gender  0.000981     0.000956  0.000963   0.219
+age     0.000889     0.000912  0.000905   0.711
+        standard  sqrt.dist=T     add=T  Pr(>F)
+batch   0.000925     0.000928  0.000925   0.533
+gender  0.000953     0.000943  0.000953   0.323
+age     0.000869     0.000899  0.000869   0.889
+______________biovar_PERMANOVA_R2_results______________
+[1] "Aitchinson"
+                               0
+batches_shannon_pval    0.104344
+biovar_shannon_pval     0.712052
+rf_baseline_likelihood  0.500931
+rf_average_acc          0.499069
+rf_macro_precision      0.498975
+weighted_precision      0.498977
+macro_recall            0.498984
+weighted_recall         0.499069
+macro_f1                0.497981
+weighted_f1             0.498024
+auc                     0.498984
+batch_aitch_r2          0.006444
+batch_bray_r2           0.006425
+batch_aitch_pval        0.724000
+batch_bray_pval         0.700000
+biovar_aitch_r2         0.000925
+biovar_bray_r2          0.000933
+biovar_aitch_pval       0.533000
+biovar_bray_pval        0.450000
+nobc
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD/output_CRC_8_CMD_nobc
+harmony
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD/output_CRC_8_CMD_harmony
+limma
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD/output_CRC_8_CMD_limma
+MMUPHin
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD/output_CRC_8_CMD_MMUPHin
+ConQuR_rel
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD/output_CRC_8_CMD_ConQuR_rel
+percentile_norm
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD/output_CRC_8_CMD_percentile_norm
+['CRC_8_CMD_MMUPHin.csv', 'CRC_8_CMD_combat.csv', 'CRC_8_CMD_harmony_elapsed_time.txt', 'CRC_8_CMD_ConQuR_rel.csv', 'CRC_8_CMD_percentile_norm.csv', 'CRC_8_CMD_harmony_adjusted_count.csv', 'CRC_8_CMD_limma.csv', 'CRC_8_CMD_runtime.txt', 'CRC_8_CMD_percentile_norm_elapsed_time.txt']
+runtime files
+/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD
+['CRC_8_CMD_MMUPHin.csv', 'CRC_8_CMD_combat.csv', 'CRC_8_CMD_harmony_elapsed_time.txt', 'CRC_8_CMD_ConQuR_rel.csv', 'CRC_8_CMD_percentile_norm.csv', 'CRC_8_CMD_harmony_adjusted_count.csv', 'CRC_8_CMD_limma.csv', 'CRC_8_CMD_runtime.txt', 'CRC_8_CMD_percentile_norm_elapsed_time.txt']
+['CRC_8_CMD_harmony_elapsed_time.txt', 'CRC_8_CMD_percentile_norm_elapsed_time.txt']

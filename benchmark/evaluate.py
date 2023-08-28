@@ -848,15 +848,15 @@ num_iters = 5
 IDCol = 'subjectid_text'
 # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-for odds_ratio in or_l:
-    for cond_effect_val in cond_effect_val_l:
-        for batch_effect_val in batch_effect_val_l:
-            if cond_effect_val + batch_effect_val <= 1:
-                for iter in list(range(1, num_iters+1)):
-                    print("odds_ratio", odds_ratio)
-                    print("cond_effect_val", cond_effect_val)
-                    print("batch_effect_val", batch_effect_val)
-                    print("iter", iter)
+# for odds_ratio in or_l:
+#     for cond_effect_val in cond_effect_val_l:
+#         for batch_effect_val in batch_effect_val_l:
+#             if cond_effect_val + batch_effect_val <= 1:
+#                 for iter in list(range(1, num_iters+1)):
+#                     print("odds_ratio", odds_ratio)
+#                     print("cond_effect_val", cond_effect_val)
+#                     print("batch_effect_val", batch_effect_val)
+#                     print("iter", iter)
                     ## STEP 1. GENERATE DATA FROM DATABASE
                     ### already done
                     ### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
@@ -1082,60 +1082,60 @@ for odds_ratio in or_l:
 
                     # continue
 
-                    ### STEP 3. EVALUATE ALL THE METHODS
-                    if iter == 1:
-                        pipeline = "default"
-                    else:
-                        pipeline = "scaled"
+                    # ### STEP 3. EVALUATE ALL THE METHODS
+                    # if iter == 1:
+                    #     pipeline = "default"
+                    # else:
+                    #     pipeline = "scaled"
 
-                    df_l = []
-                    metadata_l = []
+                    # df_l = []
+                    # metadata_l = []
 
-                    address_Y = overall_path+'/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_meta_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
-                    output_root = overall_path+'/simulation_data_eval_small_relab_yesrelation_082623'
-                    # check if already exists
-                    output_dir = output_root+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)
-                    if not os.path.exists(output_dir):
-                        os.makedirs(output_dir)
-                    for method in methods_list:   
-                        print("___________________________________________________________")
-                        print("odds_ratio", odds_ratio)
-                        print("cond_effect_val", cond_effect_val)
-                        print("batch_effect_val", batch_effect_val)
-                        print("iter", iter)
-                        print("method", method)                     
-                        # check if already exists
-                        if not os.path.exists(output_dir+'/'+method):
-                            os.makedirs(output_dir+'/'+method)
+                    # address_Y = overall_path+'/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_meta_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
+                    # output_root = overall_path+'/simulation_data_eval_small_relab_yesrelation_082623'
+                    # # check if already exists
+                    # output_dir = output_root+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)
+                    # if not os.path.exists(output_dir):
+                    #     os.makedirs(output_dir)
+                    # for method in methods_list:   
+                    #     print("___________________________________________________________")
+                    #     print("odds_ratio", odds_ratio)
+                    #     print("cond_effect_val", cond_effect_val)
+                    #     print("batch_effect_val", batch_effect_val)
+                    #     print("iter", iter)
+                    #     print("method", method)                     
+                    #     # check if already exists
+                    #     if not os.path.exists(output_dir+'/'+method):
+                    #         os.makedirs(output_dir+'/'+method)
                         
-                        if method == 'harmony':
-                            address_X = overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_'+  str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio) + '_'+str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_harmony_adjusted_count.csv"
-                            # address_X = overall_path+"/simulation_data_output_small_norelation_080723/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_harmony_adjusted_count.csv"
-                        elif method == 'percentile_norm':
-                            address_X = overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio) + '_'+str(cond_effect_val)+"_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_percentile_norm.csv"
-                            # address_X = overall_path+"/simulation_data_output_small_norelation_080723/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio)+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_percentile_norm.csv"
-                        elif method == 'nobc':
-                            address_X = overall_path+"/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
-                        else:
-                            address_X = overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_"+method+".csv"
-                        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-                        df_l.append(data_mat)
-                        metadata_l.append(meta_data)
+                    #     if method == 'harmony':
+                    #         address_X = overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_'+  str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio) + '_'+str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_harmony_adjusted_count.csv"
+                    #         # address_X = overall_path+"/simulation_data_output_small_norelation_080723/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_harmony_adjusted_count.csv"
+                    #     elif method == 'percentile_norm':
+                    #         address_X = overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio) + '_'+str(cond_effect_val)+"_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_percentile_norm.csv"
+                    #         # address_X = overall_path+"/simulation_data_output_small_norelation_080723/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio)+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_percentile_norm.csv"
+                    #     elif method == 'nobc':
+                    #         address_X = overall_path+"/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                    #     else:
+                    #         address_X = overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ "_"+method+".csv"
+                    #     data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+                    #     df_l.append(data_mat)
+                    #     metadata_l.append(meta_data)
 
-                        if not os.path.exists(output_dir+'/'+method+'/' + method +'_summary.csv'):
-                            Evaluate(data_mat, meta_data, 'batchid', output_dir+'/'+method+'/'+method,
-                                    "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = list(range(150)))
-                        else:
-                            print("already exists", output_dir+'/'+method+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_summary.csv')
-                    # TO FIX TOMORROW:
-                    input_frame_path = overall_path+"/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
-                    bio_var = "cond"
-                    dataset_name = "batch_0"
-                    global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/",
-                        output_dir_path = overall_path+"/simulation_data_eval_small_relab_yesrelation_082623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), simulate = True, taxa_gt = True)
+                    #     if not os.path.exists(output_dir+'/'+method+'/' + method +'_summary.csv'):
+                    #         Evaluate(data_mat, meta_data, 'batchid', output_dir+'/'+method+'/'+method,
+                    #                 "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = list(range(150)))
+                    #     else:
+                    #         print("already exists", output_dir+'/'+method+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_summary.csv')
+                    # # TO FIX TOMORROW:
+                    # input_frame_path = overall_path+"/simulation_data_MIDAS_small_yesrelation_080723/ibd_150_relab_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                    # bio_var = "cond"
+                    # dataset_name = "batch_0"
+                    # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/simulation_data_output_small_relab_yesrelation_082623/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/",
+                    #     output_dir_path = overall_path+"/simulation_data_eval_small_relab_yesrelation_082623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), simulate = True, taxa_gt = True)
 
-                    if not os.path.exists(overall_path+"/simulation_data_eval_small_relab_yesrelation_082623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+"/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'):
-                        plot_PCOA_multiple("ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), df_l, methods_list, metadata_l, used_var="batchid", output_root= overall_path+"/simulation_data_eval_small_relab_yesrelation_082623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+"/")
+                    # if not os.path.exists(overall_path+"/simulation_data_eval_small_relab_yesrelation_082623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+"/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'):
+                    #     plot_PCOA_multiple("ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), df_l, methods_list, metadata_l, used_var="batchid", output_root= overall_path+"/simulation_data_eval_small_relab_yesrelation_082623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+"/")
 
                 
 
@@ -1283,131 +1283,141 @@ for odds_ratio in or_l:
 
 
 ##############################################################################
-# # ibd_3_CMD
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD'
-# address_directory = overall_path+'/mic_bc_benchmark/data/ibd_3_CMD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
-# vars_use = ["study_name"]
-# IDCol = 'Sam_id'
+# ibd_3_CMD
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD'
+address_directory = overall_path+'/mic_bc_benchmark/data/ibd_3_CMD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
 
-# # ### nobc
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
+# ### nobc
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
 
-# # ### nobc
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# ### nobc
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
-# # ### harmony
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_harmony_adjusted_count.csv"
-# res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# # # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"harmony")
-# # Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# ### harmony
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_harmony_adjusted_count.csv"
+res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
+# # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"harmony")
+# Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
-# # # benchmarking other methods: 
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
+# # benchmarking other methods: 
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
 
-# # ### limma
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_limma.csv"
-# data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_ibd_3_CMD_limma/ibd_3_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# ### combat
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_combat.csv"
+data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_ibd_3_CMD_combat/ibd_3_CMD_combat', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
-# # ### MMUPHin
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_MMUPHin.csv"
-# data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# ### limma
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_limma.csv"
+data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_ibd_3_CMD_limma/ibd_3_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
-# # ### ConQuR_rel
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR_rel.csv"
-# data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_ibd_3_CMD_ConQuR_rel/ibd_3_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id')
+# ### MMUPHin
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_MMUPHin.csv"
+data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
-# # ### percentile_norm
-# # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD", datatype = 'relab')
-# # # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
-# data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_ibd_3_CMD_percentile_norm/ibd_3_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# ### ConQuR_rel
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR_rel.csv"
+data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_ibd_3_CMD_ConQuR_rel/ibd_3_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id')
 
-# #### global evaluation
-# input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = 'ibd_3_CMD'
-# methods_list = ['nobc', 'harmony', 'limma', 'MMUPHin', 'ConQuR_rel', 'percentile_norm']
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab', simulate = False)
+# ### percentile_norm
+# # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD", datatype = 'relab')
+# # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
+data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_ibd_3_CMD_percentile_norm/ibd_3_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+#### global evaluation
+input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
+bio_var = "disease"
+dataset_name = 'ibd_3_CMD'
+methods_list = ['nobc', 'harmony', "combat", 'limma', 'MMUPHin', 'ConQuR_rel', 'percentile_norm']
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab', simulate = False)
+
+#### multi-method plot
+# df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_conqur_tune_rel, data_mat_percentile_norm]
+# methods = ["nobc", "harmony", "limma", "MMUPhin", "ConQuR_rel", "Tune_ConQuR_rel", "percentile_norm"]
+# meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_conqur_tune_rel, meta_data_percentile_norm]
+df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
+methods = ["nobc", "harmony", "combat", "limma", "MMUPhin", "ConQuR_rel", "percentile_norm"]
+meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
+plot_PCOA_multiple('ibd_3_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = "relab")
+
+
+##############################################################################
+# CRC_8_CMD
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD'
+address_directory = overall_path+'/mic_bc_benchmark/data/CRC_8_CMD'
+output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+
+# benchmarking other methods: 
+address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv"
+
+### nobc
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_CRC_8_CMD_nobc/CRC_8_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+### harmony
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_harmony_adjusted_count.csv"
+res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_CRC_8_CMD_harmony/CRC_8_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+### combat
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_combat.csv"
+data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_CRC_8_CMD_combat/CRC_8_CMD_combat', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+## limma
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_limma.csv"
+data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_CRC_8_CMD_limma/CRC_8_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+### MMUPHin
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_MMUPHin.csv"
+data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_CRC_8_CMD_MMUPHin/CRC_8_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+### ConQuR_rel
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_ConQuR_rel.csv"
+data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_CRC_8_CMD_ConQuR_rel/CRC_8_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+
+# ### percentile_norm
+# # print("doing percentile_norm")
+# # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD")
+# # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv"
+# # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv"
+data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_CRC_8_CMD_percentile_norm/CRC_8_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+
+#### global evaluation
+input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
+bio_var = "disease"
+dataset_name = 'CRC_8_CMD'
+# methods_list = ['nobc', 'harmony', 'limma', 'MMUPHin', 'ConQuR_rel', 'Tune_ConQuR_rel', 'percentile_norm']
+methods_list = ['nobc', 'harmony', 'combat', 'limma', 'MMUPHin', 'ConQuR_rel', 'percentile_norm']
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab', simulate = False)
 
 # #### multi-method plot
 # # df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_conqur_tune_rel, data_mat_percentile_norm]
 # # methods = ["nobc", "harmony", "limma", "MMUPhin", "ConQuR_rel", "Tune_ConQuR_rel", "percentile_norm"]
 # # meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_conqur_tune_rel, meta_data_percentile_norm]
-# df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
-# methods = ["nobc", "harmony", "limma", "MMUPhin", "ConQuR_rel", "percentile_norm"]
-# meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
-# plot_PCOA_multiple('ibd_3_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = "relab")
-
-
-##############################################################################
-# # CRC_8_CMD
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD'
-# address_directory = overall_path+'/mic_bc_benchmark/data/CRC_8_CMD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
-# vars_use = ["study_name"]
-# IDCol = 'Sam_id'
-
-# # benchmarking other methods: 
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv"
-
-# ### nobc
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_CRC_8_CMD_nobc/CRC_8_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
-
-# ### harmony
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_harmony_adjusted_count.csv"
-# res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_CRC_8_CMD_harmony/CRC_8_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
-
-# ## limma
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_limma.csv"
-# data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_limma, meta_data_limma,  "study_name", output_dir_path + '/output_CRC_8_CMD_limma/CRC_8_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
-
-# ### MMUPHin
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_MMUPHin.csv"
-# data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_mmuphin, meta_data_mmuphin,  "study_name", output_dir_path + '/output_CRC_8_CMD_MMUPHin/CRC_8_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
-
-# ### ConQuR_rel
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_ConQuR_rel.csv"
-# data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_CRC_8_CMD_ConQuR_rel/CRC_8_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
-
-
-# # ### percentile_norm
-# # # print("doing percentile_norm")
-# # # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD")
-# # # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv"
-# # # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_percentile_norm.csv"
-# data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_CRC_8_CMD_percentile_norm/CRC_8_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
-
-# #### global evaluation
-# input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = 'CRC_8_CMD'
-# # methods_list = ['nobc', 'harmony', 'limma', 'MMUPHin', 'ConQuR_rel', 'Tune_ConQuR_rel', 'percentile_norm']
-# methods_list = ['nobc', 'harmony', 'limma', 'MMUPHin', 'ConQuR_rel', 'percentile_norm']
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, datatype = 'relab', simulate = False)
-
-# # #### multi-method plot
-# # # df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_conqur_tune_rel, data_mat_percentile_norm]
-# # # methods = ["nobc", "harmony", "limma", "MMUPhin", "ConQuR_rel", "Tune_ConQuR_rel", "percentile_norm"]
-# # # meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_conqur_tune_rel, meta_data_percentile_norm]
-# df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
-# methods = ["nobc", "harmony", "limma", "MMUPhin", "ConQuR_rel", "percentile_norm"]
-# meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
-# plot_PCOA_multiple('CRC_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = "relab")
+df_l = [data_mat, res_h, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
+methods = ["nobc", "harmony", "combat", "limma", "MMUPhin", "ConQuR_rel", "percentile_norm"]
+meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
+plot_PCOA_multiple('CRC_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = "relab")
 
 # ##############################################################################
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
@@ -1416,11 +1426,11 @@ for odds_ratio in or_l:
 # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
 # visualize_simulation_stats('count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False)
 
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-# methods = ["harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["ibd_3_CMD", "CRC_8_CMD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+methods = ["combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+datasets = ["ibd_3_CMD", "CRC_8_CMD"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
 
 # output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
 # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
@@ -1553,6 +1563,32 @@ for odds_ratio in or_l:
 
 
 # output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
+# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+# datasets = ["out_1.5_0_0", "out_1.5_0.099_0", "out_1.5_0.299_0", "out_1.5_0.499_0", "out_1.5_0.699_0", "out_1.5_0.899_0", "out_1.5_0_0.099", "out_1.5_0.099_0.099", "out_1.5_0.299_0.099", "out_1.5_0.499_0.099", "out_1.5_0.699_0.099", "out_1.5_0.899_0.099",
+#  "out_1.5_0_0.299", "out_1.5_0.099_0.299", "out_1.5_0.299_0.299", "out_1.5_0.499_0.299", "out_1.5_0.699_0.299", "out_1.5_0_0.499", "out_1.5_0.099_0.499", "out_1.5_0.299_0.499", "out_1.5_0.499_0.499", 
+#  "out_1.5_0_0.699", "out_1.5_0.099_0.699", "out_1.5_0.299_0.699", "out_1.5_0_0.899", "out_1.5_0.099_0.899"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10))
+
+# ##############################################################################
+# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_yesrelation_080723'
+# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+# datasets = ["out_1_0_0", "out_1_0.099_0", "out_1_0.299_0", "out_1_0.499_0", "out_1_0.699_0", "out_1_0.899_0", "out_1_0_0.099", "out_1_0.099_0.099", "out_1_0.299_0.099", "out_1_0.499_0.099", "out_1_0.699_0.099", "out_1_0.899_0.099",
+#  "out_1_0_0.299", "out_1_0.099_0.299", "out_1_0.299_0.299", "out_1_0.499_0.299", "out_1_0.699_0.299", "out_1_0_0.499", "out_1_0.099_0.499", "out_1_0.299_0.499", "out_1_0.499_0.499", 
+#  "out_1_0_0.699", "out_1_0.099_0.699", "out_1_0.299_0.699", "out_1_0_0.899", "out_1_0.099_0.899"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10))
+
+# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_yesrelation_080723'
+# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+# datasets = ["out_1.25_0_0", "out_1.25_0.099_0", "out_1.25_0.299_0", "out_1.25_0.499_0", "out_1.25_0.699_0", "out_1.25_0.899_0", "out_1.25_0_0.099", "out_1.25_0.099_0.099", "out_1.25_0.299_0.099", "out_1.25_0.499_0.099", "out_1.25_0.699_0.099", "out_1.25_0.899_0.099",
+#  "out_1.25_0_0.299", "out_1.25_0.099_0.299", "out_1.25_0.299_0.299", "out_1.25_0.499_0.299", "out_1.25_0.699_0.299", "out_1.25_0_0.499", "out_1.25_0.099_0.499", "out_1.25_0.299_0.499", "out_1.25_0.499_0.499", 
+#  "out_1.25_0_0.699", "out_1.25_0.099_0.699", "out_1.25_0.299_0.699", "out_1.25_0_0.899", "out_1.25_0.099_0.899"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10))
+
+
+# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_yesrelation_080723'
 # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 # datasets = ["out_1.5_0_0", "out_1.5_0.099_0", "out_1.5_0.299_0", "out_1.5_0.499_0", "out_1.5_0.699_0", "out_1.5_0.899_0", "out_1.5_0_0.099", "out_1.5_0.099_0.099", "out_1.5_0.299_0.099", "out_1.5_0.499_0.099", "out_1.5_0.699_0.099", "out_1.5_0.899_0.099",
 #  "out_1.5_0_0.299", "out_1.5_0.099_0.299", "out_1.5_0.299_0.299", "out_1.5_0.499_0.299", "out_1.5_0.699_0.299", "out_1.5_0_0.499", "out_1.5_0.099_0.499", "out_1.5_0.299_0.499", "out_1.5_0.499_0.499", 

@@ -60,12 +60,16 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         }
 
         print("check point2")
-        
+
         ## TODO:  potentially need preprocessing such as log and +1
         # print(count_data+1)
         count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
         # count_data.clr <- mutate_all(count_data.clr, function(x) as.numeric(as.character(x)))
-        cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
+        # cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
+        a = read_lines(sink_file_name)
+        a1 = a[!grepl('combat', a)]
+        print(a1)
+        write_lines(a1, sink_file_name)
 
         # for ConQuR
         batchid <- factor(metadata[, dataset])
@@ -217,18 +221,21 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 start_time <- Sys.time()
                 ## check for covars
                 if(is.null(covar)) {
-                    count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=NULL))
+                    # count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=NULL))
+                    count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=NULL))
                 }
                 else if(length(covar)==1){
                     covar_df = as.numeric(factor(metadata[, covar]))
-                    count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
+                    # count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
+                    count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=covar_df))
                 }
                 else{
                     covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
-                    count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
+                    # count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
+                    count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=covar_df))
                 }
                 # now normalize it back to relative abundance
-                count_data.combat <- count_data.combat/rowSums(count_data.combat)
+                # count_data.combat <- count_data.combat/rowSums(count_data.combat)
                 end_time <- Sys.time()
                 cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
                 cat('\n', file=sink_file_name, append=TRUE)
@@ -352,16 +359,16 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 # )
 
 
-# CRC_8_CMD
-run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
-'/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
-dataset = "study_name",
-batch_ref = 'FengQ_2015',
-covar = c("disease", "gender", "age"),
-used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-)
+# # CRC_8_CMD
+# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
+# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
+# dataset = "study_name",
+# batch_ref = 'FengQ_2015',
+# covar = c("disease", "gender", "age"),
+# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
+# )
 
 
 # just to speed up
@@ -453,3 +460,13 @@ scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l,
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_norelation_082623_copy'
+# method_l = c("combat")
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
+
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623'
+method_l = c("combat")
+scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)

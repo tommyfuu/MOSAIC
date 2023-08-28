@@ -10,11 +10,11 @@ weighted_recall,0.7373798076923077
 macro_f1,0.4244206157039087
 weighted_f1,0.6259183839767981
 auc,0.5
-batch_aitch_r2,0.0012460071840021281
-batch_bray_r2,0.001217441970466642
-batch_aitch_pval,0.19
-batch_bray_pval,0.398
+batch_aitch_r2,0.001246007184002128
+batch_bray_r2,0.0012174419704666418
+batch_aitch_pval,0.199
+batch_bray_pval,0.42
 biovar_aitch_r2,0.0006381658753400128
 biovar_bray_r2,0.0006528956312239649
-biovar_aitch_pval,0.185
-biovar_bray_pval,0.132
+biovar_aitch_pval,0.158
+biovar_bray_pval,0.143

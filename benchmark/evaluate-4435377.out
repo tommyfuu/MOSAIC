@@ -1,0 +1,18 @@
+conda activated?
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method nobc
+already exists /athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_yesrelation_082623/out_1_0_0_iter_1/nobc/out_1_0_0_iter_1_summary.csv
+___________________________________________________________
+odds_ratio 1
+cond_effect_val 0
+batch_effect_val 0
+iter 1
+method harmony
