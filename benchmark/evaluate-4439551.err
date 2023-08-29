@@ -1,0 +1,421 @@
+R[write to console]: Loading required package: permute
+
+R[write to console]: Loading required package: lattice
+
+R[write to console]: This is vegan 2.6-4
+
+R[write to console]: Welcome to compositions, a package for compositional data analysis.
+Find an intro with "? compositions"
+
+
+R[write to console]: 
+Attaching package: ‘compositions’
+
+
+R[write to console]: The following objects are masked from ‘package:stats’:
+
+    anova, cor, cov, dist, var
+
+
+R[write to console]: The following object is masked from ‘package:graphics’:
+
+    segments
+
+
+R[write to console]: The following objects are masked from ‘package:base’:
+
+    %*%, norm, scale, scale.default
+
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+R[write to console]: 'adonis' will be deprecated: use 'adonis2' instead
+
+Traceback (most recent call last):
+  File "evaluate.py", line 1623, in <module>
+    visualize_simulation_stats('vis_relab_norelation/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
+  File "evaluate.py", line 690, in visualize_simulation_stats
+    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
+  File "evaluate.py", line 624, in get_stats
+    files = os.listdir(output_dir)
+FileNotFoundError: [Errno 2] No such file or directory: '/athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_norelation_082623/out_1_0_0_iter_1'

@@ -12,9 +12,9 @@ weighted_f1,0.23319256548631134
 auc,0.49170915041136265
 batch_aitch_r2,0.004215510642126938
 batch_bray_r2,0.0040161454815870684
-batch_aitch_pval,0.378
-batch_bray_pval,0.496
+batch_aitch_pval,0.365
+batch_bray_pval,0.519
 biovar_aitch_r2,0.006264081550951299
 biovar_bray_r2,0.006920503660516136
-biovar_aitch_pval,0.426
+biovar_aitch_pval,0.416
 biovar_bray_pval,0.205

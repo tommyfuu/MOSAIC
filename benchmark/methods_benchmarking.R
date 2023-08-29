@@ -65,11 +65,11 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         # print(count_data+1)
         count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
         # count_data.clr <- mutate_all(count_data.clr, function(x) as.numeric(as.character(x)))
-        # cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
-        a = read_lines(sink_file_name)
-        a1 = a[!grepl('combat', a)]
-        print(a1)
-        write_lines(a1, sink_file_name)
+        cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
+        # a = read_lines(sink_file_name)
+        # a1 = a[!grepl('combat', a)]
+        # print(a1)
+        # write_lines(a1, sink_file_name)
 
         # for ConQuR
         batchid <- factor(metadata[, dataset])
@@ -95,9 +95,9 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                     count_data.combat_seq <- t(ComBat_seq(t(count_data), batch = batch_info, covar_mod = covar_df))
                 }
                 end_time <- Sys.time()
-                cat(c("combat runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat(c("combat_seq runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
                 cat('\n', file=sink_file_name, append=TRUE)
-                write.csv(count_data.combat_seq, paste(output_root, "_combat.csv", sep=""), row.names = TRUE)
+                write.csv(count_data.combat_seq, paste(output_root, "_combat_seq.csv", sep=""), row.names = TRUE)
             }
 
             ### 1.2 limma
@@ -466,7 +466,7 @@ scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l,
 # method_l = c("combat")
 # scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
 
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623'
-method_l = c("combat")
-scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623'
+# method_l = c("combat")
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
