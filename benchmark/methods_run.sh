@@ -2,7 +2,7 @@
  
 #SBATCH --partition=scu-cpu
 #SBATCH --job-name=methods_benchmark_sim
-#SBATCH --time=48:00:00
+#SBATCH --time=120:00:00
 #SBATCH --mem=10G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=10
 #SBATCH --output methods_benchmark_sim-%j.out

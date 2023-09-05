@@ -15,17 +15,17 @@ if (p==301) {
   n = nrow(otu_original) * 3 # 450 samples in this case
   # id_batch = 101:250 # these are impacting taxa instead of sample # NOTE THAT IN 0726 version still using these settings
   # id_cond = 1:150
-  id_batch = 26:275 # these are impacting taxa instead of sample
-  id_cond = 1:50
+  # id_batch = 26:275 # these are impacting taxa instead of sample
+  # id_cond = 1:50
 
 
   # get library sizes of the original dataset
   print("library sizes of the original dataset")
   libsize_l = rowSums(otu_original)
-  print(libsize_l)
+  # print(libsize_l)
   print(length(libsize_l))
   sampled_libsize_l = sample(libsize_l, n, replace = TRUE)
-  print(sampled_libsize_l)
+  # print(sampled_libsize_l)
 } 
 
 # function that turns from odds ratio to binary correlation (from ConQuR paper)
@@ -41,7 +41,34 @@ bincorr <- function(OR, p1, p2) {
   return(bincorr)
 }
 
+# ### get the 50 differentially abundant taxa ###
 print("checkpoint 1")
+# taxa_mean_abundances = colMeans(otu_original)
+# taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
+# now 
+# print(length(zp))
+
+taxa_mean_abundances = colMeans(otu_original)
+print(taxa_mean_abundances)
+taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
+print(taxa_abundances_indices_in_sorted)
+id_batch_indices = sample(c(1:301), 150)
+id_cond_indices = sample(c(1:301), 50)
+print(id_cond_indices)
+
+id_batch = match(id_batch_indices,taxa_abundances_indices_in_sorted)
+id_cond = match(id_cond_indices,taxa_abundances_indices_in_sorted)
+print(id_cond)
+### get the 50 differentially abundant taxa ###
+id = NULL
+zp = rowMeans(otu==0)
+for (tau in 0:9/10) {
+  id = c(id,order(abs(zp-tau))[1:2])
+}
+ 
+temp = zp[id]
+names(temp) = paste("taxa", id)
+names(temp) = NULL
 
 
 # function to generate from midas for each iteration
@@ -71,6 +98,22 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
     libsize_l = rep(10000,n)
   } 
 
+  ### get the 50 differentially abundant taxa for id_cond and 150 for id_batch ###
+  ## NOTE THAT THE FOLLOWING IS REPEATED FOR EACH SIMULATION ITERATION ##
+  print("checkpoint 1")
+  taxa_mean_abundances = colMeans(otu_original)
+
+  taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
+
+  id_batch_indices = sample(c(1:301), 150)
+  id_cond_indices = sample(c(1:301), 50)
+
+
+  id_batch = match(id_batch_indices,taxa_abundances_indices_in_sorted)
+  id_cond = match(id_cond_indices,taxa_abundances_indices_in_sorted)
+  
+  
+  print(length(zp))
   # check if p_batch and libsize are related
   if(batch_libsize_related == TRUE){
     print("TRUE")
@@ -209,5 +252,5 @@ cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023'
 # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
-scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
+# scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)

@@ -441,10 +441,33 @@ scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l,
     }
   }
 }
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_norelation_082823'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000)
+
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_yesrelation_082823'
+method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_relab_norelation_082823'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000, count = FALSE)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_relab_yesrelation_082823'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000, count = FALSE)
+
+############################################################################################################
+
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
+# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000)
 
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_yesrelation_080723'
