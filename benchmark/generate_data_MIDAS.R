@@ -35,40 +35,48 @@ bincorr <- function(OR, p1, p2) {
                             sqrt((-1+p1-OR*p1-p2+OR*p2)^2-4*(1-OR)*(p2-p1*p2))))
     p11_2=p2-(1/2/(1-OR)*(1-p1+OR*p1+p2-OR*p2-
                             sqrt((-1+p1-OR*p1-p2+OR*p2)^2)-4*(1-OR)*(p2-p1*p2)))
-    if (p11_1>0 && p11_1<=p1 && p11_1<p2) p11=p11_1 else p11=p11_2
+    if (p11_1>0 && p11_1<p1 && p11_1<p2) p11=p11_1 else p11=p11_2
   }
   bincorr=(p11-p1*p2)/sqrt(p1*(1-p1)*p2*(1-p2))
   return(bincorr)
 }
 
-# ### get the 50 differentially abundant taxa ###
+# ### get the 50 differentially abundant taxa for conditional effect and 250 be impacted by batch ###
 print("checkpoint 1")
 # taxa_mean_abundances = colMeans(otu_original)
 # taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
 # now 
 # print(length(zp))
+id_cond = NULL
+id_batch = 1:301
 
-taxa_mean_abundances = colMeans(otu_original)
-print(taxa_mean_abundances)
-taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
-print(taxa_abundances_indices_in_sorted)
-id_batch_indices = sample(c(1:301), 150)
-id_cond_indices = sample(c(1:301), 50)
-print(id_cond_indices)
+zp = colMeans(otu_original==0)
 
-id_batch = match(id_batch_indices,taxa_abundances_indices_in_sorted)
-id_cond = match(id_cond_indices,taxa_abundances_indices_in_sorted)
-print(id_cond)
-### get the 50 differentially abundant taxa ###
-id = NULL
-zp = rowMeans(otu==0)
-for (tau in 0:9/10) {
-  id = c(id,order(abs(zp-tau))[1:2])
+for (tau in 0:24/25) {
+  print(tau)
+  id_cond = c(id_cond,order(abs(zp-tau))[1:2])
 }
- 
-temp = zp[id]
-names(temp) = paste("taxa", id)
-names(temp) = NULL
+
+print(length(id_cond))
+print(id_cond)
+print(length(unique(id_cond)))
+
+print(length(id_batch))
+print(id_batch)
+print(length(unique(id_batch)))
+
+print("itersection")
+inter = Reduce(intersect,list(id_cond, id_batch))
+print(length(inter))
+print(inter)
+# taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
+
+# id_batch_indices = sample(c(1:301), 150)
+# id_cond_indices = sample(c(1:301), 50)
+
+
+# id_batch = match(id_batch_indices,taxa_abundances_indices_in_sorted)
+# id_cond = match(id_cond_indices,taxa_abundances_indices_in_sorted)
 
 
 # function to generate from midas for each iteration
@@ -98,19 +106,7 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
     libsize_l = rep(10000,n)
   } 
 
-  ### get the 50 differentially abundant taxa for id_cond and 150 for id_batch ###
-  ## NOTE THAT THE FOLLOWING IS REPEATED FOR EACH SIMULATION ITERATION ##
-  print("checkpoint 1")
-  taxa_mean_abundances = colMeans(otu_original)
 
-  taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
-
-  id_batch_indices = sample(c(1:301), 150)
-  id_cond_indices = sample(c(1:301), 50)
-
-
-  id_batch = match(id_batch_indices,taxa_abundances_indices_in_sorted)
-  id_cond = match(id_cond_indices,taxa_abundances_indices_in_sorted)
   
   
   print(length(zp))
@@ -248,9 +244,11 @@ scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, con
 
 
 or_l = c(1, 1.25, 1.5)
-cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023'
-# scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
+cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+output_root = '/athena/linglab/scratch/chf4012/test_out_090623'
+scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=10, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
 # output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
 # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
