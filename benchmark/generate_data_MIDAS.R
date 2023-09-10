@@ -4,28 +4,29 @@ library("bindata")
 library("MIDAS")
 library(tibble)
 
+args = commandArgs(trailingOnly=TRUE)
+print(args)
+if (length(args)==0 || length(args)>1 ) {
+  stop("There has to be exactly one argument supplied with this script for simulation runs", call.=FALSE)
+} else if (length(args)==1) {
+  # default output file
+  GLOBAL_ITER = args[1]
+}
+
 # instantiate variables
 otu_original = t(otu)
 p = ncol(otu_original)
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_080723'
 
 # making sure we are generating from the right data
 if (p==301) {
   print("p=301")
   n = nrow(otu_original) * 3 # 450 samples in this case
-  # id_batch = 101:250 # these are impacting taxa instead of sample # NOTE THAT IN 0726 version still using these settings
-  # id_cond = 1:150
-  # id_batch = 26:275 # these are impacting taxa instead of sample
-  # id_cond = 1:50
-
-
   # get library sizes of the original dataset
   print("library sizes of the original dataset")
   libsize_l = rowSums(otu_original)
   # print(libsize_l)
   print(length(libsize_l))
   sampled_libsize_l = sample(libsize_l, n, replace = TRUE)
-  # print(sampled_libsize_l)
 } 
 
 # function that turns from odds ratio to binary correlation (from ConQuR paper)
@@ -43,10 +44,6 @@ bincorr <- function(OR, p1, p2) {
 
 # ### get the 50 differentially abundant taxa for conditional effect and 250 be impacted by batch ###
 print("checkpoint 1")
-# taxa_mean_abundances = colMeans(otu_original)
-# taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
-# now 
-# print(length(zp))
 id_cond = NULL
 id_batch = 1:301
 
@@ -56,27 +53,6 @@ for (tau in 0:24/25) {
   print(tau)
   id_cond = c(id_cond,order(abs(zp-tau))[1:2])
 }
-
-print(length(id_cond))
-print(id_cond)
-print(length(unique(id_cond)))
-
-print(length(id_batch))
-print(id_batch)
-print(length(unique(id_batch)))
-
-print("itersection")
-inter = Reduce(intersect,list(id_cond, id_batch))
-print(length(inter))
-print(inter)
-# taxa_abundances_indices_in_sorted = sort(taxa_mean_abundances, index.return=TRUE)$ix
-
-# id_batch_indices = sample(c(1:301), 150)
-# id_cond_indices = sample(c(1:301), 50)
-
-
-# id_batch = match(id_batch_indices,taxa_abundances_indices_in_sorted)
-# id_cond = match(id_cond_indices,taxa_abundances_indices_in_sorted)
 
 
 # function to generate from midas for each iteration
@@ -105,9 +81,6 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
   if(is.null(libsize_l)){
     libsize_l = rep(10000,n)
   } 
-
-
-  
   
   print(length(zp))
   # check if p_batch and libsize are related
@@ -240,15 +213,34 @@ scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, con
   }
 }
 
+# generate simulated data using both set ups 08072023
+scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter, libsize_l, batch_libsize_related = FALSE){   
+  for (or in or_l) {
+    for (cond_effect_val in cond_effect_val_l) {
+      for (batch_effect_val in batch_effect_val_l) {
+        if (cond_effect_val + batch_effect_val <= 1) {
+          sink(file = paste0(output_root, "/ibd_150_id_cond_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".txt"))
+          cat(id_cond, "\n")
+          sink()
+          sink(file = paste0(output_root, "/ibd_150_id_batch_", or, "_", cond_effect_val, "_", batch_effect_val, '_iter_', iter, ".txt"))
+          cat(id_batch, "\n")
+          sink()
+
+          midas_generate_per_iter(otu_original, output_root, or, cond_effect_val, batch_effect_val, iter, libsize_l, batch_libsize_related)
+        }
+      }
+    }
+  }
+}
 
 
 
 or_l = c(1, 1.25, 1.5)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-output_root = '/athena/linglab/scratch/chf4012/test_out_090623'
-scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=10, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
+# output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
+# # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
 # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)

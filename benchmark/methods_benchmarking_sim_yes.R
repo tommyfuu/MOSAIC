@@ -35,7 +35,7 @@ source(paste0(conqur_path, "/supporting_functions.R"))
 
 run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
                         used_methods = c("combat_seq", "limma", "MMUPHin", 'conqur_libsize', "conqur")) {
-    if((!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep="")) OR (!file.exists(paste(output_root, "_ConQuR_rel.csv", sep=""))))){
+    if(!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep=""))){
 
     
         print(output_root)
@@ -416,11 +416,11 @@ or_l = c(1, 1.25, 1.5)
 # or_l = c(1.5)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
 # cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+cond_effect_val_l = c(0, 0.25, 0.5, 1)
 # cond_effect_val_l = c(0)
 # cond_effect_val_l = c(0.499, 0.699, 0.899)
 # batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+batch_effect_val_l = c(0, 0.25, 0.5, 1)
 # batch_effect_val_l = c(0.899)
 # cond_effect_val_l = c(0.299)
 # batch_effect_val_l = c(0.299, 0.499, 0.699, 0.899)
@@ -492,23 +492,23 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
 # print("Right before we run")
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_count_yesrelation_090723'
-# method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# print("Right before we run")
-# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
-
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_relab_norelation_090723'
-method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_count_yesrelation_090723'
+method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 print("Right before we run")
-scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
+scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_relab_yesrelation_090723'
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_relab_norelation_090723'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # print("Right before we run")
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
+
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_relab_yesrelation_090723'
+method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+print("Right before we run")
+scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 
 
 
