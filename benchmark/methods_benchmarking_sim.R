@@ -35,52 +35,53 @@ source(paste0(conqur_path, "/supporting_functions.R"))
 
 run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
                         used_methods = c("combat_seq", "limma", "MMUPHin", 'conqur_libsize', "conqur")) {
-    if((!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep="")) OR (!file.exists(paste(output_root, "_ConQuR_rel.csv", sep=""))))){
+    
 
     
-        print(output_root)
-        # set up file save address
-        sink_file_name = paste(output_root, "_runtime.txt", sep="")
-        print(data_mat_path)
-        output_dir = strsplit(output_root, "/")
-        output_dir = paste(output_dir[[1]][1:(length(output_dir[[1]])-1)], collapse = "/")
-        if(!dir.create(file.path(output_dir))){
-            dir.create(file.path(output_dir))
-        }
+    print(output_root)
+    # set up file save address
+    sink_file_name = paste(output_root, "_runtime.txt", sep="")
+    print(data_mat_path)
+    output_dir = strsplit(output_root, "/")
+    output_dir = paste(output_dir[[1]][1:(length(output_dir[[1]])-1)], collapse = "/")
+    if(!dir.create(file.path(output_dir))){
+        dir.create(file.path(output_dir))
+    }
 
-        # data loading <- load data_mat and meta_data, output of the preprocessing.py file
-        if(transpose == TRUE) {
-            count_data = read.table(data_mat_path, sep=",",header=T,check.names = F)
-        }
-        else {
-            count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
-        }
-        print("check point1")
+    # data loading <- load data_mat and meta_data, output of the preprocessing.py file
+    if(transpose == TRUE) {
+        count_data = read.table(data_mat_path, sep=",",header=T,check.names = F)
+    }
+    else {
+        count_data = read.table(data_mat_path, sep=",",header=T,row.names=1,check.names = F)
+    }
+    print("check point1")
 
-        metadata = as.data.frame(read_csv(meta_data_path))
+    metadata = as.data.frame(read_csv(meta_data_path))
 
-        # count the number of samples and taxa to determine whether to use 10 cores or 2
-        print(nrow(count_data))
-        print(ncol(count_data))
-        if(nrow(count_data)>300){
-            num_core = 10
-        }
-        else {
-            num_core = 2
-        }
+    # count the number of samples and taxa to determine whether to use 10 cores or 2
+    print(nrow(count_data))
+    print(ncol(count_data))
+    if(nrow(count_data)>300){
+        num_core = 10
+    }
+    else {
+        num_core = 2
+    }
 
-        print("check point2")
+    print("check point2")
 
 
-        count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
-        cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
+    count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
+    cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
 
-        # for ConQuR
-        batchid <- factor(metadata[, dataset])
-        
-        ## CASE 1. count data (combat will not work)
-        if(count == TRUE) {
-
+    # for ConQuR
+    batchid <- factor(metadata[, dataset])
+    
+    
+    ## CASE 1. count data (combat will not work)
+    if(count == TRUE) {
+        if(!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep=""))){
             ### 1.1 combat_seq (in place of combat)
             if ('combat_seq' %in% used_methods) {
                 print("in count mode, can only use combat seq")
@@ -212,12 +213,12 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 cat('\n', file=sink_file_name, append=TRUE)
                 write.csv(count_data.Tune_ConQuR_libsize$tax_final, paste(output_root, "_Tune_ConQuR_libsize.csv", sep=""), row.names = TRUE)
             }
-
         }
+    }
 
-        ## CASE 2. relative abundance data
-        else {
-
+    ## CASE 2. relative abundance data
+    else {
+        if(!file.exists(paste(output_root, "_ConQuR_rel.csv", sep=""))){
             ### 1.1 combat
             if ('combat' %in% used_methods) {
                 print("in relative abundance mode, can only use combat")
@@ -320,7 +321,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 cat('\n', file=sink_file_name, append=TRUE)
                 write.csv(count_data.Tune_ConQuR_rel$tax_final, paste(output_root, "_Tune_ConQuR_rel.csv", sep=""), row.names = TRUE)
             }
-
+        
         }
     }
     
@@ -486,11 +487,11 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
   }
 }
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_count_norelation_090723'
-# method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# print("Right before we run")
-# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
+overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_count_norelation_090723'
+method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+print("Right before we run")
+scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_count_yesrelation_090723'
@@ -511,26 +512,6 @@ scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 
 
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_norelation_082823'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_yesrelation_082823'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_norelation_082023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_relab_norelation_082823'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000, count = FALSE)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_yesrelation_082023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_relab_yesrelation_082823'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000, count = FALSE)
 
 ############################################################################################################
 
