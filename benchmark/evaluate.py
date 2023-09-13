@@ -36,6 +36,7 @@ if ARGPARSE_SWITCH:
     parser.add_argument("-o", "--option", type=int, default = 1, help='either 1 or 2, option 1: generate batch corrected results for harmony and percentile normalization along w runtime; option 2: evaluate the batch correction results; option 2: evaluate the batch correction results for multiple methods.')
     parser.add_argument("-i", "--iteration", type=int, default = 1, help='the iteration number')
     parser.add_argument("-d", "--datatype", default = 'count', help='either count or relab')
+    parser.add_argument("-r", "--related", default = 'no', help='whether the batch effect is related to library size')
 
     args = vars(parser.parse_args())
 
@@ -770,8 +771,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         plt.subplots_adjust(right=0.8)
         ax2.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
         # find parent dir of output_dir_l[0]
-        parent_dir = os.path.dirname(output_dir_l[0])
-        plt.savefig(parent_dir+"/"+output_root+"_"+stats_summary_name+".png", bbox_inches="tight")
+        plt.savefig(output_root+"_"+stats_summary_name+".png", bbox_inches="tight")
         plt.clf()
         plt.close()
     plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict)
@@ -908,7 +908,7 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, co
                             taxa_gt_path = address_XY_dir_path+'/ibd_150_id_cond_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.txt'
                             f = open(taxa_gt_path, "r")
                             taxa_gt = f.readline().split(' ')[:-1]
-                            taxa_gt = [int(taxa) for taxa in taxa_gt]
+                            taxa_gt = [int(taxa)-1 for taxa in taxa_gt]
              
                         ### STEP 3. EVALUATE ALL THE METHODS - counts, yes relation
                         
@@ -976,29 +976,43 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, co
 if ARGPARSE_SWITCH:
     GLOBAL_DATATYPE = args['datatype']
     methods_list_dict = {'count': ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"],
-                        'relab': ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel"],}
+                        'relab': ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]}
+    related = args['related']
     if args['option'] == 1:
         iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-                    address_XY_dir_path = overall_path+'/simulation_data_updated_MIDAS_norelation_090723', 
-                    output_dir_path = overall_path+f"/simulation_data_updated_output_{GLOBAL_DATATYPE}_norelation_090723", 
-                    eval_dir_path = overall_path+f"/simulation_data_updated_eval_{GLOBAL_DATATYPE}_norelation_090723",
+                    address_XY_dir_path = overall_path+f'/simulation_data_updated_MIDAS_{related}relation_090723', 
+                    output_dir_path = overall_path+f"/simulation_data_updated_output_{GLOBAL_DATATYPE}_{related}relation_090723", 
+                    eval_dir_path = overall_path+f"/simulation_data_updated_eval_{GLOBAL_DATATYPE}_{related}relation_090723",
+                    methods_list = methods_list_dict[GLOBAL_DATATYPE])
+    elif args['option'] == 2:
+        iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
+                    address_XY_dir_path = overall_path+f'/simulation_data_updated_MIDAS_{related}relation_090723', 
+                    output_dir_path = overall_path+f"/simulation_data_updated_output_{GLOBAL_DATATYPE}_{related}relation_090723", 
+                    eval_dir_path = overall_path+f"/simulation_data_updated_eval_{GLOBAL_DATATYPE}_{related}relation_090723",
                     methods_list = methods_list_dict[GLOBAL_DATATYPE])
     else:
-        iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-                    address_XY_dir_path = overall_path+'/simulation_data_updated_MIDAS_norelation_090723', 
-                    output_dir_path = overall_path+f"/simulation_data_updated_output_{GLOBAL_DATATYPE}_norelation_090723", 
-                    eval_dir_path = overall_path+f"/simulation_data_updated_eval_{GLOBAL_DATATYPE}_norelation_090723",
-                    methods_list = methods_list_dict[GLOBAL_DATATYPE])
-        # iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = 'count', iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-        #             address_XY_dir_path = overall_path+'/simulation_data_updated_MIDAS_norelation_090723', 
-        #             output_dir_path = overall_path+f"/simulation_data_updated_output_{GLOBAL_DATATYPE}_norelation_090723", 
-        #             eval_dir_path = overall_path+f"/simulation_data_updated_eval_{GLOBAL_DATATYPE}_norelation_090723",
-        #             methods_list = ["nobc"])
-        # iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = 'count', iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-        #             address_XY_dir_path = overall_path+'/test_out_091123', 
-        #             output_dir_path = overall_path+"/test_out_091123/eval_out_output_091113", 
-        #             eval_dir_path = overall_path+"/test_out_091123/eval_out_output_091113", 
-        #             methods_list = ["nobc"])
+        output_dir_path = overall_path+f"/simulation_data_updated_eval_{GLOBAL_DATATYPE}_{related}relation_090723"
+        methods = methods_list_dict[GLOBAL_DATATYPE]
+        # odds ratio == 1
+        datasets = ["out_1_0_0", "out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0_0.25", "out_1_0.25_0.25", "out_1_0.5_0.25", 
+                    "out_1_0.75_0.25", "out_1_0_0.5", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0_0.75", "out_1_0.25_0.75", "out_1_0_1"]
+        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        visualize_simulation_stats('/athena/linglab/scratch/chf4012/simulation_data_updated_eval_count_norelation_090723/line_plots/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
+
+        # odds ratio == 1.25
+        datasets = ["out_1.25_0_0", "out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0", "out_1.25_0_0.25", "out_1.25_0.25_0.25", "out_1.25_0.5_0.25",
+                    "out_1.25_0.75_0.25", "out_1.25_0_0.5", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0_0.75", "out_1.25_0.25_0.75", "out_1.25_0_1"]
+        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        visualize_simulation_stats('/athena/linglab/scratch/chf4012/simulation_data_updated_eval_count_norelation_090723/line_plots/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
+
+        # odds ratio == 1.5
+        datasets = ["out_1.5_0_0", "out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0_0.25", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
+                    "out_1.5_0.75_0.25", "out_1.5_0_0.5", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5", "out_1.5_0_0.75", "out_1.5_0.25_0.75", "out_1.5_0_1"]
+        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        visualize_simulation_stats('/athena/linglab/scratch/chf4012/simulation_data_updated_eval_count_norelation_090723/line_plots/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
 
 # IDCol = 'subjectid_text'
 # for odds_ratio in or_l:
