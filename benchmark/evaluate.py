@@ -24,7 +24,7 @@ from rpy2.robjects import pandas2ri, numpy2ri
 from rpy2.robjects.packages import importr
 from statsmodels.stats.multitest import multipletests
 
-ARGPARSE_SWITCH = True
+ARGPARSE_SWITCH = False
 
 if ARGPARSE_SWITCH:
     import argparse
@@ -485,8 +485,8 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             current_method_dict.update({"aitch_pval_biovar": aitch_pval_biovar})
         current_method_dict.update({"batch_bray_r2": bray_r2_batch})
         current_method_dict.update({"biovar_bray_r2": bray_r2_biovar})
-        current_method_dict.update({"shannon_pval": shannon_pval_batch})
-        current_method_dict.update({"shannon_pval": shannon_pval_biovar})
+        current_method_dict.update({"batch_shannon_pval": shannon_pval_batch})
+        current_method_dict.update({"biovar_shannon_pval": shannon_pval_biovar})
         current_method_dict.update({"bray_pval_batch": bray_pval_batch})
         current_method_dict.update({"bray_pval_biovar": bray_pval_biovar})
         current_method_dict.update({"rf_baseline_likelihood": baseline_likelihood})
@@ -620,6 +620,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     global_methods_batch_aitch_r2_l_dict = {}
     global_methods_biovar_bray_r2_l_dict = {}
     global_methods_biovar_aitch_r2_l_dict = {}
+    global_methods_batch_shannon_pval_l_dict = {}
+    global_methods_biovar_shannon_pval_l_dict = {}
+    global_methods_runtime_l_dict = {}
     # global_methods_auc_l_dict = {}
     # global_methods_f1_l_dict = {}
     # global_methods_precision_l_dict = {}
@@ -649,50 +652,91 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             methods_batch_aitch_r2_dict = batch_aitch_r2.to_dict()
             biovar_aitch_r2 = global_stats_df.loc["biovar_aitch_r2"]
             methods_biovar_aitch_r2_dict = biovar_aitch_r2.to_dict()
+        
 
         batch_bray_r2 = global_stats_df.loc["batch_bray_r2"]  
         methods_batch_bray_r2_dict = batch_bray_r2.to_dict()
         biovar_bray_r2 = global_stats_df.loc["biovar_bray_r2"]
         methods_biovar_bray_r2_dict = biovar_bray_r2.to_dict()
-        
+        batch_shannon_pval = global_stats_df.loc["batch_shannon_pval"]
+        methods_batch_shannon_pval_dict = batch_shannon_pval.to_dict()
+        biovar_shannon_pval = global_stats_df.loc["biovar_shannon_pval"]
+        methods_biovar_shannon_pval_dict = biovar_shannon_pval.to_dict()
+        runtime = global_stats_df.loc["runtime"]
+        methods_runtime = runtime.to_dict()
+
         if taxa_gt is not None:
             FDR_r2 = global_stats_df.loc["FDR"]
             methods_FDR_r2_dict = FDR_r2.to_dict()
             sensitivity_r2 = global_stats_df.loc["power"]
             methods_sensitivity_r2_dict = sensitivity_r2.to_dict()
+
         if taxa_gt is not None:
-            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict
+            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime
         else:
-            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict
+            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime
     for idx, output_dir in enumerate(output_dir_l):
+        print(output_dir)
         if not simulate:   
             if taxa_gt is not None:
-                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict = get_stats(output_dir, taxa_gt, idx)    
+                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
             else:
-                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict = get_stats(output_dir, taxa_gt, idx)    
+                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
             ## append to global dict
             for method in methods:
-                if count_l[idx]:
-                    if method not in global_methods_batch_aitch_r2_l_dict.keys():
-                        global_methods_batch_aitch_r2_l_dict[method] = []
-                    global_methods_batch_aitch_r2_l_dict[method].append(methods_batch_aitch_r2_dict[method])
-                    if method not in global_methods_biovar_aitch_r2_l_dict.keys():
-                        global_methods_biovar_aitch_r2_l_dict[method] = []
-                    global_methods_biovar_aitch_r2_l_dict[method].append(methods_biovar_aitch_r2_dict[method])
                 if method not in global_methods_batch_bray_r2_l_dict.keys():
-                    global_methods_batch_bray_r2_l_dict[method] = []
-                global_methods_batch_bray_r2_l_dict[method].append(methods_batch_bray_r2_dict[method])
-                if method not in global_methods_biovar_bray_r2_l_dict.keys():
-                    global_methods_biovar_bray_r2_l_dict[method] = []
-                global_methods_biovar_bray_r2_l_dict[method].append(methods_biovar_bray_r2_dict[method])
-                if taxa_gt is not None:
-                    if method not in global_methods_FDR_r2_l_dict.keys():
+                    if count_l[idx]:
+                        global_methods_batch_aitch_r2_l_dict[method] = []
+                        global_methods_biovar_aitch_r2_l_dict[method] = []
+                    if taxa_gt is not None:
                         global_methods_FDR_r2_l_dict[method] = []
-                    global_methods_FDR_r2_l_dict[method].append(methods_FDR_r2_dict[method])
-                    if method not in global_methods_sensitivity_r2_l_dict.keys():
                         global_methods_sensitivity_r2_l_dict[method] = []
+                    global_methods_batch_bray_r2_l_dict[method] = []
+                    global_methods_biovar_bray_r2_l_dict[method] = []
+                    global_methods_batch_shannon_pval_l_dict[method] = []
+                    global_methods_biovar_shannon_pval_l_dict[method] = []
+                    global_methods_runtime_l_dict[method] = []
+                                
+                if count_l[idx]:
+                    global_methods_batch_aitch_r2_l_dict[method].append(methods_batch_aitch_r2_dict[method])
+                    global_methods_biovar_aitch_r2_l_dict[method].append(methods_biovar_aitch_r2_dict[method])
+                if taxa_gt is not None:
+                    global_methods_FDR_r2_l_dict[method].append(methods_FDR_r2_dict[method])
                     global_methods_sensitivity_r2_l_dict[method].append(methods_sensitivity_r2_dict[method])
-
+                global_methods_batch_bray_r2_l_dict[method].append(methods_batch_bray_r2_dict[method])
+                global_methods_biovar_bray_r2_l_dict[method].append(methods_biovar_bray_r2_dict[method])
+                global_methods_batch_shannon_pval_l_dict[method].append(methods_batch_shannon_pval_dict[method])
+                global_methods_biovar_shannon_pval_l_dict[method].append(methods_biovar_shannon_pval_dict[method])
+                global_methods_runtime_l_dict[method].append(methods_runtime[method])
+                # # batch/biovar aitchinson (count data only)
+                # if count_l[idx]:
+                #     if method not in global_methods_batch_aitch_r2_l_dict.keys():
+                #         global_methods_batch_aitch_r2_l_dict[method] = []
+                #     global_methods_batch_aitch_r2_l_dict[method].append(methods_batch_aitch_r2_dict[method])
+                #     if method not in global_methods_biovar_aitch_r2_l_dict.keys():
+                #         global_methods_biovar_aitch_r2_l_dict[method] = []
+                #     global_methods_biovar_aitch_r2_l_dict[method].append(methods_biovar_aitch_r2_dict[method])
+                # # batch/bray bray-curtis (relab data only)
+                # if method not in global_methods_batch_bray_r2_l_dict.keys():
+                #     global_methods_batch_bray_r2_l_dict[method] = []
+                # global_methods_batch_bray_r2_l_dict[method].append(methods_batch_bray_r2_dict[method])
+                # if method not in global_methods_biovar_bray_r2_l_dict.keys():
+                #     global_methods_biovar_bray_r2_l_dict[method] = []
+                # global_methods_biovar_bray_r2_l_dict[method].append(methods_biovar_bray_r2_dict[method])
+                # # FDR/sensitivity: only for simulation data/data where gt is provided
+                # if taxa_gt is not None:
+                #     if method not in global_methods_FDR_r2_l_dict.keys():
+                #         global_methods_FDR_r2_l_dict[method] = []
+                #     global_methods_FDR_r2_l_dict[method].append(methods_FDR_r2_dict[method])
+                #     if method not in global_methods_sensitivity_r2_l_dict.keys():
+                #         global_methods_sensitivity_r2_l_dict[method] = []
+                #     global_methods_sensitivity_r2_l_dict[method].append(methods_sensitivity_r2_dict[method])
+                # # batch/biovar shannon pval
+                # if method not in global_methods_batch_shannon_pval_l_dict.keys():
+                #     global_methods_batch_shannon_pval_l_dict[method] = []
+                # global_methods_batch_shannon_pval_l_dict[method].append(methods_batch_shannon_pval[method])
+                # if method not in global_methods_biovar_shannon_pval_l_dict.keys():
+                #     global_methods_biovar_shannon_pval_l_dict[method] = []
         else:
             # in this case, for each dataset, we have a preset number of iterations
             cross_iter_batch_aitch_r2_dict = {}
@@ -701,6 +745,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             cross_iter_biovar_bray_r2_dict = {}
             cross_iter_FDR_r2_dict = {}
             cross_iter_sensitivity_r2_dict = {}
+            cross_iter_batch_shannon_pval_dict = {}
+            cross_iter_biovar_shannon_pval_dict = {}
+            cross_iter_runtime_dict = {}
             for iter in range(sim_num_iters):
                 if taxa_gt is not None:
                     methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
@@ -710,72 +757,118 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 cross_iter_batch_bray_r2_dict[iter] = methods_batch_bray_r2_dict
                 cross_iter_biovar_aitch_r2_dict[iter] = methods_biovar_aitch_r2_dict
                 cross_iter_biovar_bray_r2_dict[iter] = methods_biovar_bray_r2_dict
+                cross_iter_batch_shannon_pval_dict[iter] = methods_batch_shannon_pval_dict
+                cross_iter_biovar_shannon_pval_dict[iter] = methods_biovar_shannon_pval_dict
+                cross_iter_runtime_dict[iter] = methods_runtime
                 if taxa_gt is not None:
                     cross_iter_FDR_r2_dict[iter] = methods_FDR_r2_dict
                     cross_iter_sensitivity_r2_dict[iter] = methods_sensitivity_r2_dict
 
             # calculate mean across iterations and append to global dict
             for method in methods:
-                if count_l[idx]:
-                    if method not in global_methods_batch_aitch_r2_l_dict.keys():
+                if method not in global_methods_batch_aitch_r2_l_dict.keys():
+                    if count_l[index]:
                         global_methods_batch_aitch_r2_l_dict[method] = []
-                    global_methods_batch_aitch_r2_l_dict[method].append(np.mean([cross_iter_batch_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                    if method not in global_methods_biovar_aitch_r2_l_dict.keys():
                         global_methods_biovar_aitch_r2_l_dict[method] = []
-                    global_methods_biovar_aitch_r2_l_dict[method].append(np.mean([cross_iter_biovar_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                if method not in global_methods_batch_bray_r2_l_dict.keys():
                     global_methods_batch_bray_r2_l_dict[method] = []
-                global_methods_batch_bray_r2_l_dict[method].append(np.mean([cross_iter_batch_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                if method not in global_methods_biovar_bray_r2_l_dict.keys():
                     global_methods_biovar_bray_r2_l_dict[method] = []
-                global_methods_biovar_bray_r2_l_dict[method].append(np.mean([cross_iter_biovar_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                if taxa_gt is not None:
-                    if method not in global_methods_FDR_r2_l_dict.keys():
+                    global_methods_batch_shannon_pval_l_dict[method] = []
+                    global_methods_biovar_shannon_pval_l_dict[method] = []
+                    global_methods_runtime_l_dict[method] = []
+                    if taxa_gt is not None:
                         global_methods_FDR_r2_l_dict[method] = []
-                    global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                    if method not in global_methods_sensitivity_r2_l_dict.keys():
                         global_methods_sensitivity_r2_l_dict[method] = []
+                if count_l[idx]:
+                    global_methods_batch_aitch_r2_l_dict[method].append(np.mean([cross_iter_batch_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                    global_methods_biovar_aitch_r2_l_dict[method].append(np.mean([cross_iter_biovar_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_batch_bray_r2_l_dict[method].append(np.mean([cross_iter_batch_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_biovar_bray_r2_l_dict[method].append(np.mean([cross_iter_biovar_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_batch_shannon_pval_l_dict[method].append(np.mean([cross_iter_batch_shannon_pval_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_biovar_shannon_pval_l_dict[method].append(np.mean([cross_iter_biovar_shannon_pval_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_runtime_l_dict[method].append(np.mean([cross_iter_runtime_dict[iter][method] for iter in range(sim_num_iters)]))
+                if taxa_gt is not None:
+                    global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                    
+                # if count_l[idx]:
+                #     if method not in global_methods_batch_aitch_r2_l_dict.keys():
+                #         global_methods_batch_aitch_r2_l_dict[method] = []
+                #     global_methods_batch_aitch_r2_l_dict[method].append(np.mean([cross_iter_batch_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                #     if method not in global_methods_biovar_aitch_r2_l_dict.keys():
+                #         global_methods_biovar_aitch_r2_l_dict[method] = []
+                #     global_methods_biovar_aitch_r2_l_dict[method].append(np.mean([cross_iter_biovar_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                # if method not in global_methods_batch_bray_r2_l_dict.keys():
+                #     global_methods_batch_bray_r2_l_dict[method] = []
+                # global_methods_batch_bray_r2_l_dict[method].append(np.mean([cross_iter_batch_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                # if method not in global_methods_biovar_bray_r2_l_dict.keys():
+                #     global_methods_biovar_bray_r2_l_dict[method] = []
+                # global_methods_biovar_bray_r2_l_dict[method].append(np.mean([cross_iter_biovar_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                # if taxa_gt is not None:
+                #     if method not in global_methods_FDR_r2_l_dict.keys():
+                #         global_methods_FDR_r2_l_dict[method] = []
+                #     global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                #     if method not in global_methods_sensitivity_r2_l_dict.keys():
+                #         global_methods_sensitivity_r2_l_dict[method] = []
+                #     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+        print(global_methods_batch_bray_r2_l_dict)
+           
     print("global_methods_batch_aitch_r2_l_dict")
     print(global_methods_batch_aitch_r2_l_dict)
     print("global_methods_batch_bray_r2_l_dict")
     print(global_methods_batch_bray_r2_l_dict)
 
-    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2):
+    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}):
         ## plot the dictionaries in two matplotlib subplots as line plots
         plt.clf()
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(dimensions[0]*2, dimensions[1]))
+        if stats_dict_2 != {}:
+            fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(dimensions[0]*2, dimensions[1]))
+        else:
+            print("only one plot")
+            fig, ax1 = plt.subplots(1, 1, figsize=(dimensions[0], dimensions[1]))
         for method in methods:
             color = method_colors_dict[method]
             if method != highlighted_method:
                 alpha = 1
             else:
                 alpha = 1
-            if count_l[0] or 'FDR' in stats_summary_name:
-                ax1.plot(datasets, stats_dict_1[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
-                ax1.set_title(stats_name_l[0])
-                ax1.set_xticks(datasets)
-                # set xticks to be verticle
-                for tick in ax1.get_xticklabels():
-                    tick.set_rotation(90)
-
-            ax2.plot(datasets, stats_dict_2[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
-            ax2.set_title(stats_name_l[1])
-            ax2.set_xticks(datasets)
+            # if count_l[0] or 'FDR' in stats_summary_name:
+            ax1.plot(datasets, stats_dict_1[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+            ax1.set_title(stats_name_l[0])
+            ax1.set_xticks(datasets)
             # set xticks to be verticle
-            for tick in ax2.get_xticklabels():
+            for tick in ax1.get_xticklabels():
                 tick.set_rotation(90)
+
+            if stats_dict_2 != {}:
+                ax2.plot(datasets, stats_dict_2[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+                ax2.set_title(stats_name_l[1])
+                ax2.set_xticks(datasets)
+                # set xticks to be verticle
+                for tick in ax2.get_xticklabels():
+                    tick.set_rotation(90)
 
 
         plt.subplots_adjust(right=0.8)
-        ax2.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
+        if stats_dict_2 != {}:
+            ax2.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
+        else:
+            ax1.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
+
         # find parent dir of output_dir_l[0]
         plt.savefig(output_root+"_"+stats_summary_name+".png", bbox_inches="tight")
         plt.clf()
         plt.close()
-    plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict)
-    plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict)
+    if count_l[0]:
+        plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict)
+        plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict)
+    else:
+        plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict)
+        plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict)
+    print("_____SHANNON_____")
+    print(global_methods_batch_shannon_pval_l_dict)
+    print(global_methods_biovar_shannon_pval_l_dict)
+    plot_stats('PERMANOVA_shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict)
+    plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict)
+
     if taxa_gt is not None:
         plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict)
 
@@ -860,11 +953,12 @@ overall_path = '/athena/linglab/scratch/chf4012'
 ## simulation evaluation - MIDAS
 ## null data
 ## STEP 1. GENERATE DATA FROM DATABASE
-or_l = [1, 1.25, 1.5]
-# cond_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
-# batch_effect_val_l = [0, 0.099, 0.299, 0.499, 0.699, 0.899]
-cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+# or_l = [1, 1.25, 1.5]
+# cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+# batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+or_l = [1.5]
+cond_effect_val_l = [0.25, 0.5, 0.75, 1]
+batch_effect_val_l = [0.5, 0.75, 1]
 num_iters = 100
 
 def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, cond_effect_val_l, batch_effect_val_l, 
@@ -997,7 +1091,7 @@ if ARGPARSE_SWITCH:
         output_dir_path = overall_path+f"/simulation_data_updated_eval_{GLOBAL_DATATYPE}_{related}relation_090723"
 
         if not os.path.exists(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}'):
-            os.makedirs(eval_dir_path+'/line_plots')
+            os.makedirs(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}')
 
         methods = methods_list_dict[GLOBAL_DATATYPE]
         # odds ratio == 1
@@ -1033,13 +1127,13 @@ if ARGPARSE_SWITCH:
                     "out_1.5_0.75_0.25", "out_1.5_0_0.5", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5", "out_1.5_0_0.75", "out_1.5_0.25_0.75", "out_1.5_0_1"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+'/line_plots/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
     
         datasets = ["out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
                     "out_1.5_0.75_0.25", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5",  "out_1.5_0.25_0.75" ]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+'/line_plots/sim_1_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
 
     else:
         # simulation_data_updated_eval_count_yesrelation_090723_TEST
@@ -1391,7 +1485,7 @@ if ARGPARSE_SWITCH:
 
                 
 
-################################################################################
+# ################################################################################
 # # autism 2 microbiomeHD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/autism_2_microbiomeHD'
 # address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
@@ -1406,44 +1500,44 @@ if ARGPARSE_SWITCH:
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # ### nobc
-# Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
 
 # ### harmony
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
 # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nob', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_nob', "DiseaseState", 30, [], 'Sam_id')
 
 # # benchmarking other methods: 
 # ### combat (combat_seq)
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
 # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id')
 
 # ### limma
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_limma.csv"
 # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
 
 # ### MMUPHin
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
 # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
 # data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR_libsize
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
 # data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
 
 # ### percentile_norm
 # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
 
 # ### global evaluation
 # input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
@@ -1462,7 +1556,7 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
 # plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
 
-################################################################################
+# ###############################################################################
 # # cdi 3 microbiomeHD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/cdi_3_microbiomeHD'
 # address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
@@ -1475,37 +1569,37 @@ if ARGPARSE_SWITCH:
 # ### nobc
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
 
 # ### harmony
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_harmony_adjusted_count.csv"
 # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id')
 
 # ### combat
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
 # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id')
 
 # ### limma
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
 # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id')
 
 # ### MMUPHin
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
 # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
 # data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id')
 
 # ### ConQuR_libsize
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
 # data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id')
 
 # ### percentile_norm
 # # percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv", "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
@@ -1513,7 +1607,7 @@ if ARGPARSE_SWITCH:
 # # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_percentile_norm/cdi_3_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_percentile_norm/cdi_3_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id')
 
 # #### global evaluation
 # input_frame_path = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
@@ -1626,7 +1720,7 @@ if ARGPARSE_SWITCH:
 # ### combat
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_combat.csv"
 # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-# Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_CRC_8_CMD_combat/CRC_8_CMD_combat', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
+# # Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_CRC_8_CMD_combat/CRC_8_CMD_combat', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab')
 
 # ## limma
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD_limma.csv"
@@ -1670,18 +1764,18 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
 # plot_PCOA_multiple('CRC_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = "relab")
 
-# # ##############################################################################
+# # # ##############################################################################
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 # datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
 # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False)
+# visualize_simulation_stats('count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True])
 
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-# methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["ibd_3_CMD", "CRC_8_CMD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+datasets = ["ibd_3_CMD", "CRC_8_CMD"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
 
 # output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
 # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
