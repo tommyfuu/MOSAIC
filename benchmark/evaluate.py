@@ -24,7 +24,7 @@ from rpy2.robjects import pandas2ri, numpy2ri
 from rpy2.robjects.packages import importr
 from statsmodels.stats.multitest import multipletests
 
-ARGPARSE_SWITCH = False
+ARGPARSE_SWITCH = True
 
 if ARGPARSE_SWITCH:
     import argparse
@@ -623,10 +623,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     global_methods_batch_shannon_pval_l_dict = {}
     global_methods_biovar_shannon_pval_l_dict = {}
     global_methods_runtime_l_dict = {}
-    # global_methods_auc_l_dict = {}
-    # global_methods_f1_l_dict = {}
-    # global_methods_precision_l_dict = {}
-    # global_methods_recall_l_dict = {}
+
     if taxa_gt is not None:
         global_methods_FDR_r2_l_dict = {}
         global_methods_sensitivity_r2_l_dict = {}
@@ -645,7 +642,6 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
         # read the global stats df
         global_stats_df = pd.read_csv(output_dir+"/"+global_stats_path, index_col=0)
-
         # get the stats of interest and visualize
         if count_l[idx]:
             batch_aitch_r2 = global_stats_df.loc["batch_aitch_r2"]
@@ -750,7 +746,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             cross_iter_runtime_dict = {}
             for iter in range(sim_num_iters):
                 if taxa_gt is not None:
-                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
+                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
                 else:
                     methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
                 cross_iter_batch_aitch_r2_dict[iter] = methods_batch_aitch_r2_dict
@@ -766,8 +762,8 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
             # calculate mean across iterations and append to global dict
             for method in methods:
-                if method not in global_methods_batch_aitch_r2_l_dict.keys():
-                    if count_l[index]:
+                if method not in global_methods_batch_bray_r2_l_dict.keys():
+                    if count_l[idx]:
                         global_methods_batch_aitch_r2_l_dict[method] = []
                         global_methods_biovar_aitch_r2_l_dict[method] = []
                     global_methods_batch_bray_r2_l_dict[method] = []
@@ -789,26 +785,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 if taxa_gt is not None:
                     global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                # if count_l[idx]:
-                #     if method not in global_methods_batch_aitch_r2_l_dict.keys():
-                #         global_methods_batch_aitch_r2_l_dict[method] = []
-                #     global_methods_batch_aitch_r2_l_dict[method].append(np.mean([cross_iter_batch_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                #     if method not in global_methods_biovar_aitch_r2_l_dict.keys():
-                #         global_methods_biovar_aitch_r2_l_dict[method] = []
-                #     global_methods_biovar_aitch_r2_l_dict[method].append(np.mean([cross_iter_biovar_aitch_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                # if method not in global_methods_batch_bray_r2_l_dict.keys():
-                #     global_methods_batch_bray_r2_l_dict[method] = []
-                # global_methods_batch_bray_r2_l_dict[method].append(np.mean([cross_iter_batch_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                # if method not in global_methods_biovar_bray_r2_l_dict.keys():
-                #     global_methods_biovar_bray_r2_l_dict[method] = []
-                # global_methods_biovar_bray_r2_l_dict[method].append(np.mean([cross_iter_biovar_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                # if taxa_gt is not None:
-                #     if method not in global_methods_FDR_r2_l_dict.keys():
-                #         global_methods_FDR_r2_l_dict[method] = []
-                #     global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-                #     if method not in global_methods_sensitivity_r2_l_dict.keys():
-                #         global_methods_sensitivity_r2_l_dict[method] = []
-                #     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+
         print(global_methods_batch_bray_r2_l_dict)
            
     print("global_methods_batch_aitch_r2_l_dict")
@@ -866,7 +843,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     print("_____SHANNON_____")
     print(global_methods_batch_shannon_pval_l_dict)
     print(global_methods_biovar_shannon_pval_l_dict)
-    plot_stats('PERMANOVA_shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict)
+    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict)
     plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict)
 
     if taxa_gt is not None:
@@ -953,12 +930,12 @@ overall_path = '/athena/linglab/scratch/chf4012'
 ## simulation evaluation - MIDAS
 ## null data
 ## STEP 1. GENERATE DATA FROM DATABASE
-# or_l = [1, 1.25, 1.5]
-# cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-# batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-or_l = [1.5]
-cond_effect_val_l = [0.25, 0.5, 0.75, 1]
-batch_effect_val_l = [0.5, 0.75, 1]
+or_l = [1, 1.25, 1.5]
+cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+# or_l = [1.5]
+# cond_effect_val_l = [0.25, 0.5, 0.75, 1]
+# batch_effect_val_l = [0.5, 0.75, 1]
 num_iters = 100
 
 def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, cond_effect_val_l, batch_effect_val_l, 
@@ -1764,18 +1741,18 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
 # plot_PCOA_multiple('CRC_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = "relab")
 
-# # # ##############################################################################
+# # ##############################################################################
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 # datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
 # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
 # visualize_simulation_stats('count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True])
 
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-datasets = ["ibd_3_CMD", "CRC_8_CMD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+# datasets = ["ibd_3_CMD", "CRC_8_CMD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
 
 # output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
 # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]

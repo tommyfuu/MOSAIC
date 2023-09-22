@@ -3,9 +3,9 @@
 #SBATCH --partition=scu-cpu
 #SBATCH --array=1-100
 #SBATCH --job-name=evaluate_sim
-#SBATCH --time=24:00:00
-#SBATCH --mem=40G   # memory requested, units available: K,M,G,T
-#SBATCH --cpus-per-task=10
+#SBATCH --time=1:00:00
+#SBATCH --mem=3G   # memory requested, units available: K,M,G,T
+#SBATCH --cpus-per-task=1
 #SBATCH --output evaluate-%j.out
 #SBATCH --error evaluate-%j.err
 #SBATCH --mail-user=chf4012@med.cornell.edu
