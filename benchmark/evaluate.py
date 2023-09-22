@@ -704,35 +704,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 global_methods_batch_shannon_pval_l_dict[method].append(methods_batch_shannon_pval_dict[method])
                 global_methods_biovar_shannon_pval_l_dict[method].append(methods_biovar_shannon_pval_dict[method])
                 global_methods_runtime_l_dict[method].append(methods_runtime[method])
-                # # batch/biovar aitchinson (count data only)
-                # if count_l[idx]:
-                #     if method not in global_methods_batch_aitch_r2_l_dict.keys():
-                #         global_methods_batch_aitch_r2_l_dict[method] = []
-                #     global_methods_batch_aitch_r2_l_dict[method].append(methods_batch_aitch_r2_dict[method])
-                #     if method not in global_methods_biovar_aitch_r2_l_dict.keys():
-                #         global_methods_biovar_aitch_r2_l_dict[method] = []
-                #     global_methods_biovar_aitch_r2_l_dict[method].append(methods_biovar_aitch_r2_dict[method])
-                # # batch/bray bray-curtis (relab data only)
-                # if method not in global_methods_batch_bray_r2_l_dict.keys():
-                #     global_methods_batch_bray_r2_l_dict[method] = []
-                # global_methods_batch_bray_r2_l_dict[method].append(methods_batch_bray_r2_dict[method])
-                # if method not in global_methods_biovar_bray_r2_l_dict.keys():
-                #     global_methods_biovar_bray_r2_l_dict[method] = []
-                # global_methods_biovar_bray_r2_l_dict[method].append(methods_biovar_bray_r2_dict[method])
-                # # FDR/sensitivity: only for simulation data/data where gt is provided
-                # if taxa_gt is not None:
-                #     if method not in global_methods_FDR_r2_l_dict.keys():
-                #         global_methods_FDR_r2_l_dict[method] = []
-                #     global_methods_FDR_r2_l_dict[method].append(methods_FDR_r2_dict[method])
-                #     if method not in global_methods_sensitivity_r2_l_dict.keys():
-                #         global_methods_sensitivity_r2_l_dict[method] = []
-                #     global_methods_sensitivity_r2_l_dict[method].append(methods_sensitivity_r2_dict[method])
-                # # batch/biovar shannon pval
-                # if method not in global_methods_batch_shannon_pval_l_dict.keys():
-                #     global_methods_batch_shannon_pval_l_dict[method] = []
-                # global_methods_batch_shannon_pval_l_dict[method].append(methods_batch_shannon_pval[method])
-                # if method not in global_methods_biovar_shannon_pval_l_dict.keys():
-                #     global_methods_biovar_shannon_pval_l_dict[method] = []
+
         else:
             # in this case, for each dataset, we have a preset number of iterations
             cross_iter_batch_aitch_r2_dict = {}
@@ -810,6 +782,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             # if count_l[0] or 'FDR' in stats_summary_name:
             ax1.plot(datasets, stats_dict_1[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
             ax1.set_title(stats_name_l[0])
+            # if 'runtime' in stats_summary_name:
+            #     ax1.plot(datasets, np.log2(stats_dict_1[method]), label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+            #     ax1.set_title('log2 '+stats_name_l[0])
             ax1.set_xticks(datasets)
             # set xticks to be verticle
             for tick in ax1.get_xticklabels():
@@ -818,6 +793,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             if stats_dict_2 != {}:
                 ax2.plot(datasets, stats_dict_2[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
                 ax2.set_title(stats_name_l[1])
+                # if 'runtime' in stats_summary_name:
+                #     ax2.plot(datasets, np.log2(stats_dict_2[method]), label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+                #     ax2.set_title('log2 '+stats_name_l[1])
                 ax2.set_xticks(datasets)
                 # set xticks to be verticle
                 for tick in ax2.get_xticklabels():
