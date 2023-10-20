@@ -818,9 +818,8 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     else:
         plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict)
         plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict)
-    print("_____SHANNON_____")
-    print(global_methods_batch_shannon_pval_l_dict)
-    print(global_methods_biovar_shannon_pval_l_dict)
+    print("_____runtime_____")
+    print(global_methods_runtime_l_dict)
     plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict)
     plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict)
 

@@ -410,24 +410,7 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             )
                         }
     
-or_l = c(1, 1.25, 1.5)
-# or_l = c(1)
-# or_l = c(1.25, 1.5)
-# or_l = c(1.5)
-# or_l = c(1.5)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-# cond_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# cond_effect_val_l = c(0)
-# cond_effect_val_l = c(0.499, 0.699, 0.899)
-# batch_effect_val_l = c(0, 0.099, 0.299, 0.499, 0.699, 0.899)
-batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# batch_effect_val_l = c(0.899)
-# cond_effect_val_l = c(0.299)
-# batch_effect_val_l = c(0.299, 0.499, 0.699, 0.899)
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
 scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter, count = TRUE){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
@@ -487,60 +470,24 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
   }
 }
 
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_count_norelation_090723'
+or_l = c(1, 1.25, 1.5)
+cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+
+or_l = c(1, 1.25, 1.5)
+cond_effect_val_l = c(0.5)
+batch_effect_val_l = c(0.5)
+
+overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
 method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 print("Right before we run")
 scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_count_yesrelation_090723'
-# method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# print("Right before we run")
-# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
-overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_relab_norelation_090723'
+overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_102023'
 method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 print("Right before we run")
 scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_updated_output_relab_yesrelation_090723'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# print("Right before we run")
-# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
-
-
-
-############################################################################################################
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_norelation_080723'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 1000)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_yesrelation_080723'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_norelation_082623'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623'
-# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_norelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_norelation_082623_copy'
-# method_l = c("combat")
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)
-
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_data_MIDAS_small_yesrelation_080723'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_data_output_small_relab_yesrelation_082623'
-# method_l = c("combat")
-# scaled_midas_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, 5, count = FALSE)

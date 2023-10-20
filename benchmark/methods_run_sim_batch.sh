@@ -1,10 +1,10 @@
 #! /bin/bash -l
  
 #SBATCH --partition=scu-cpu
-#SBATCH --array=1-100
+#SBATCH --array=1-5
 #SBATCH --job-name=methods_benchmark_sim
-#SBATCH --time=72:00:00
-#SBATCH --mem=40G   # memory requested, units available: K,M,G,T
+#SBATCH --time=00:15:00
+#SBATCH --mem=3G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=10
 #SBATCH --output methods_benchmark_sim-%j.out
 #SBATCH --error methods_benchmark_sim-%j.err
