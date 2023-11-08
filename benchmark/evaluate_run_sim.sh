@@ -1,24 +1,24 @@
 #! /bin/bash -l
  
 #SBATCH --partition=scu-cpu
-#SBATCH --array=1-100
-#SBATCH --job-name=evaluate_sim
-#SBATCH --time=1:00:00
-#SBATCH --mem=3G   # memory requested, units available: K,M,G,T
-#SBATCH --cpus-per-task=1
-#SBATCH --output evaluate-%j.out
-#SBATCH --error evaluate-%j.err
+#SBATCH --array=1-1000
+#SBATCH --job-name=evalcno
+#SBATCH --time=10:00:00
+#SBATCH --mem=2G   # memory requested, units available: K,M,G,T
+#SBATCH --cpus-per-task=2
+#SBATCH --output evalcno-%j.out
+#SBATCH --error evalcno-%j.err
 #SBATCH --mail-user=chf4012@med.cornell.edu
 #SBATCH --mail-type=ALL
 
-ITER_ARRAY=( $(seq 100 ) )
+ITER_ARRAY=( $(seq 1000 ) )
 i=$SLURM_ARRAY_TASK_ID
 
 source ~/.bashrc
 mamba activate bc_benchmark
 echo "conda activated?"
-# python3 evaluate.py -o 1 -i ${ITER_ARRAY[$i-1]} -r no -d count
-python3 evaluate.py -o 2 -i ${ITER_ARRAY[$i-1]} -r no -d count
+python3 evaluate.py -o 1 -i ${ITER_ARRAY[$i-1]} -r no -d count
+python3 evaluate.py -o 2 -i ${ITER_ARRAY[$i-1]} -r no -d count -a cond_1
 # python3 evaluate.py -o 1 -i ${ITER_ARRAY[$i-1]} -r no -d relab
-python3 evaluate.py -o 2 -i ${ITER_ARRAY[$i-1]} -r no -d relab
+# python3 evaluate.py -o 2 -i ${ITER_ARRAY[$i-1]} -r no -d relab
 exit

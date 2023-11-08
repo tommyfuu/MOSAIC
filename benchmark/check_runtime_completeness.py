@@ -31,12 +31,14 @@ for iteration in range(1, 1001):
                     filename = f'{dir_path}/out_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}/ibd_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}_runtime.txt'
                     if not os.path.exists(filename):
                         # print(f'{filename} does not exist')
+                        print(f'{or_val}_{cond_effect_val}_{batch_effect_val}_{iteration} incomplete')
                         current_iteration_good = False
                         continue
                     else:
                         with open(filename, 'r') as f:
                             if not check_var in f.read():
                                 # print(f'{filename} is incomplete')
+                                print(f'{or_val}_{cond_effect_val}_{batch_effect_val}_{iteration} incomplete')
                                 current_iteration_good = False
     if not current_iteration_good:
         print(f'iteration {iteration} is incomplete')

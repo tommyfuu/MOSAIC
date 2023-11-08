@@ -150,16 +150,28 @@ class Evaluate(object):
         ### if two categories then wilcox test, three or more then kruskal-wallis test
         print("DIFF ABUND TEST")
         df = self.batch_corrected_df
-        # conduct relative abundance calculation
-        df = df.div(df.sum(axis=1), axis=0)
+        
+        # if datatype is count, conduct relative abundance calculation
+        if self.datatype == "count":
+            # check if negative value exists, if exists, first add everything with the abs(most neg)
+            if np.min(df.values) < 0:
+                df = df + np.abs(np.min(df.values))
+            df = df.div(df.sum(axis=1), axis=0)
         taxa_names = df.columns
         meta_data = self.meta_data
 
         # use the metadata to get indices of samples in each bio_var category
         bio_var_l = list(meta_data[self.bio_var].values)
+        print(bio_var_l)
         # binarize bio_var_l with biovar_binarizing_agent
         bio_var_l = [1 if i == self.binarizing_agent_biovar else 0 for i in bio_var_l]
+        print(bio_var_l)
 
+        # # first clean NAs (Combat will generate NAs)
+        # df = df.dropna(axis=1, how='any')
+        # # standardize the data
+        # scaler = StandardScaler()
+        # df = pd.DataFrame(scaler.fit_transform(df), columns=df.columns, index=df.index)
         taxa_names = df.columns
         # iterate over columns and conduct statistical test
         d = {}
@@ -178,6 +190,10 @@ class Evaluate(object):
                         # reset index
                         covar_df.index = df.index
                         data = pd.concat([data, covar_df], axis=1)
+            print(data)
+            # check if there's NA in data
+            print("NA", i, data.isnull().values.any())
+            data.to_csv("data.csv")
             # add constant to df
             data = sm.add_constant(data)
             # fit ols model
@@ -204,7 +220,7 @@ class Evaluate(object):
         #     d[f'{i}'] = model_ols.pvalues[i]
     
         # only keep columns that are taxa names (drop constant and covariates)
-        df = df[taxa_names]
+        df = self.batch_corrected_df[taxa_names]
         # transpose the batch corrected dataframe and save the p-values alongside
         df = df.T
         # save p value to df
