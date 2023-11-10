@@ -13,16 +13,17 @@ BiocManager::install("phyloseq", force=TRUE)
 
 library(dplyr)
 library(DT)
+library(mia)
 library(curatedMetagenomicData)
 
 ## to access a single study and convert to phyloseq
 brooksB2017_metaObj = sampleMetadata |>
     filter(study_name == "BrooksB_2017") |>
     select(where(~ !any(is.na(.x))))  |>
-    returnSamples("pathway_abundance", rownames = "short")
+    returnSamples("relative_abundance", rownames = "short")
 
 brooksB2017_Phyloseq <- brooksB2017_metaObj|> 
-  mia::makePhyloseqFromTreeSummarizedExperiment(abund_values="pathway_abundance")
+  mia::makePhyloseqFromTreeSummarizedExperiment(assay.type = "relative_abundance")
 brooksB2017_Phyloseq  <- prune_taxa(taxa_sums(brooksB2017_Phyloseq) >0, brooksB2017_Phyloseq)
 
 
