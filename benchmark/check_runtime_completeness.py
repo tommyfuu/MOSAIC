@@ -12,8 +12,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--dir", type=str, default="/athena/linglab/scratch/chf4012/simulation_outputs")
 parser.add_argument("-d", "--datatype", default = 'count', help='either count or relab')
 parser.add_argument("-r", "--related", default = 'no', help='whether the batch effect is related to library size')
+parser.add_argument("-v", "--verbose", default = False, help='Boolean for whether to print incomplete iterations')
 
 args = parser.parse_args()
+print(args.verbose)
 if args.datatype == 'count':
     check_var = 'ConQuR_libsize'
 else:
@@ -31,16 +33,21 @@ for iteration in range(1, 1001):
                     filename = f'{dir_path}/out_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}/ibd_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}_runtime.txt'
                     if not os.path.exists(filename):
                         # print(f'{filename} does not exist')
-                        print(f'{or_val}_{cond_effect_val}_{batch_effect_val}_{iteration} incomplete')
+                        if args.verbose:
+                            print(f'{or_val}_{cond_effect_val}_{batch_effect_val}_{iteration} incomplete')
                         current_iteration_good = False
                         continue
                     else:
                         with open(filename, 'r') as f:
                             if not check_var in f.read():
                                 # print(f'{filename} is incomplete')
-                                print(f'{or_val}_{cond_effect_val}_{batch_effect_val}_{iteration} incomplete')
+                                if args.verbose:
+                                    print(f'{or_val}_{cond_effect_val}_{batch_effect_val}_{iteration} incomplete')
+                                # print(f'{or_val}_{cond_effect_val}_{batch_effect_val}_{iteration} incomplete')
                                 current_iteration_good = False
     if not current_iteration_good:
         print(f'iteration {iteration} is incomplete')
 
 print("Done!")
+
+# command line eg python3 check_runtime_completeness.py -d relab

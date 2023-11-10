@@ -81,7 +81,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     if(count == TRUE) {
         count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
         # if ConQuR_libsize output does not exist and its runtime documented File.readlines(paste(output_root, "_runtime.txt", sep="")).any?{ |l| l['ConQuR_libsize'] }
-        if(!file.exists(paste(output_root, "_ConQuR_rel.csv", sep=""))){
+        if(!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep=""))){
             run_count = TRUE
         }
         else if (file.exists(paste(output_root, "_runtime.txt", sep="")) & length(grep('ConQuR_libsize', readLines(paste(output_root, "_runtime.txt", sep=""))))==0){
@@ -498,8 +498,13 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
   }
 }
 
-or_l = c(1, 1.25, 1.5)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# or_l = c(1, 1.25, 1.5)
+# or_l = c(1, 1.25, 1.5)
+# cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+
+or_l = c(1)
+cond_effect_val_l = c(0, 0.25)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 
 
