@@ -132,15 +132,15 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
             print("batch", batch, "is a complete confounder")
     return
 
+
 overall_path = '/athena/linglab/scratch/chf4012'
 # autism 2 microbiomeHD
 output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD'
 address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
 data_mat, meta_data = load_data_microbiomeHD(address_directory, output_dir_path)
-check_complete_confounding(meta_data, "Dataset", "DiseaseState", output_dir_path)
 
 # cdi 3 microbiomeHD
 output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/intermediate_cdi_3_microbiomeHD/cdi_3_microbiomeHD'
 address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
 data_mat, meta_data = load_data_microbiomeHD(address_directory, output_dir_path)
-check_complete_confounding(meta_data, "Dataset", "DiseaseState", output_dir_path)
+
