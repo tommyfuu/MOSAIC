@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from step0_microbiomeHD_precleaning import check_complete_confounding, preprocess
 
-def preprocess_data_phyloseq(address_directory, output_root = False, id = 'Sam_id', covar_l = []):
+def preprocess_data_phyloseq(address_directory, output_root = False, id = 'Sam_id', covar_l = [], relab = True):
     ### CuratedMetagenomicsDataset provides way more metadata in a congestible manner
     cur_dir_names = os.listdir(address_directory)
     address_X = address_directory + '/'+ [result for result in cur_dir_names if "otu_table_" in result][0]
@@ -30,7 +30,8 @@ def preprocess_data_phyloseq(address_directory, output_root = False, id = 'Sam_i
     # data_mat = data_mat.loc[(data_mat != 0).any(axis=1), :]
 
     # convert data_mat to relative abundance for each sample
-    data_mat = data_mat.div(data_mat.sum(axis=1), axis=0) # divide by row sum
+    if relab:
+        data_mat = data_mat.div(data_mat.sum(axis=1), axis=0) # divide by row sum
 
     # save stuff if needed
     if output_root != False:
@@ -53,12 +54,12 @@ def load_results_from_benchmarked_methods(address_X, address_Y):
 
 overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data'
 # autism_2_microbiomeHD
-data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_autism_2_microbiomeHD', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD', id = 'Sam_id', covar_l = [])
+data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_autism_2_microbiomeHD', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
 data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv')
 check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD')
 
 # cdi_3_microbiomeHD
-data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_cdi_3_microbiomeHD', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD', id = 'Sam_id', covar_l = [])
+data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_cdi_3_microbiomeHD', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
 data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv')
 check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD')
 

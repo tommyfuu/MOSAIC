@@ -103,7 +103,7 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
 
 class Evaluate(object):
     def __init__(
-            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar_l = [], IDCol = None, test_percent = 0.2, poslabel = '', pipeline = 'default', taxa_gt = None, datatype = "count", binarizing_agent_biovar = 'H'
+            self, batch_corrected_df, meta_data, batch_var, output_root, bio_var = False, n_pc=30, covar_l = [], IDCol = None, test_percent = 0.2, poslabel = '', pipeline = 'default', taxa_gt = None, datatype = "count", binarizing_agent_biovar = 'H', method = 'combat_seq'
     ):
         self.batch_corrected_df = batch_corrected_df
         self.meta_data = meta_data
@@ -120,6 +120,7 @@ class Evaluate(object):
         self.taxa_gt = taxa_gt # a list of taxonomy indices for ground truth positive taxa for differential abundance
         self.pipeline = pipeline # "scaled" or "default"
         self.binarizing_agent_biovar = binarizing_agent_biovar
+        self.method = method
         ## note: for pipelines
         # 1. scaled pipeline generates:
         # 1.1 _summary.csv: contains summary stats for biovar/batch aitch/bray r2 and pval + biovar/batch shannon pval
@@ -143,7 +144,6 @@ class Evaluate(object):
 
         # convert summary dict to df
         self.summary_df = pd.DataFrame.from_dict(self.short_summary_dict, orient='index')
-        print(self.summary_df)
         self.summary_df.to_csv(self.output_root+"_summary.csv")
 
     def diff_abund_test(self):
@@ -154,9 +154,8 @@ class Evaluate(object):
         # if datatype is count, conduct relative abundance calculation
         if self.datatype == "count":
             # check if negative value exists, if exists, first add everything with the abs(most neg)
-            if np.min(df.values) < 0:
-                df = df + np.abs(np.min(df.values))
-            df = df.div(df.sum(axis=1), axis=0)
+            if not self.method in ['limma', 'harmony']:
+                df = df.div(df.sum(axis=1), axis=0)
         taxa_names = df.columns
         meta_data = self.meta_data
 
@@ -165,13 +164,7 @@ class Evaluate(object):
         print(bio_var_l)
         # binarize bio_var_l with biovar_binarizing_agent
         bio_var_l = [1 if i == self.binarizing_agent_biovar else 0 for i in bio_var_l]
-        print(bio_var_l)
 
-        # # first clean NAs (Combat will generate NAs)
-        # df = df.dropna(axis=1, how='any')
-        # # standardize the data
-        # scaler = StandardScaler()
-        # df = pd.DataFrame(scaler.fit_transform(df), columns=df.columns, index=df.index)
         taxa_names = df.columns
         # iterate over columns and conduct statistical test
         d = {}
@@ -190,9 +183,6 @@ class Evaluate(object):
                         # reset index
                         covar_df.index = df.index
                         data = pd.concat([data, covar_df], axis=1)
-            print(data)
-            # check if there's NA in data
-            print("NA", i, data.isnull().values.any())
             data.to_csv("data.csv")
             # add constant to df
             data = sm.add_constant(data)
@@ -478,10 +468,6 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
         print(method)
         current_method_dict = {}
 
-        # methods_output_dir = overall_path+'/simulation_data_output_small_072623/'
-        # output_dir_path = overall_path+"/simulation_data_eval_small_072623/out_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter))
-
-
         if not simulate:
             current_dir_path = output_dir_path + "/output_" + dataset_name+"_"+method 
         else:
@@ -612,45 +598,10 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
                 method_dict["percentile_norm"]["runtime"] = float(lines[0].split(" ")[0])
     if 'nobc' in method_dict:
         method_dict['nobc']['runtime'] = 'NA'
-
-    ## TODO: add FP stuff for simulation after those calculations are done
-        
     # print into a pandas df where rows are datasets and columns and different stats
     results_df = pd.DataFrame.from_dict(method_dict, orient ='index') 
     results_df.T.to_csv(output_dir_path+"/global_benchmarking_stats_"+dataset_name+".csv")
     return pd.DataFrame.from_dict(method_dict, orient ='index') 
-
-
-def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
-    # make a pandas dataframe where rows are batches whereas columns are the bio_var options
-    # each entry is the number of samples in that batch with that bio_var option
-    # if there is a batch with only one bio_var option, then it is a complete confounder
-    print(meta_data)
-    # get the list of batches
-    batch_l = list(meta_data[batch_var])
-    # batch_l = [x for x in batch_l if str(x) != 'nan']
-    batch_l = list(np.unique(batch_l))
-
-    # get the list of bio_var options
-    bio_var_l = list(meta_data[bio_var])
-    # bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
-    bio_var_l = list(np.unique(bio_var_l))
-
-    # generate a dataframe
-    df = pd.DataFrame(columns=bio_var_l, index=batch_l)
-    print(df)
-    for batch in batch_l:
-        for bio_var_val in bio_var_l:
-            df.loc[batch, bio_var_val] = len(meta_data.loc[(meta_data[batch_var]==batch) & (meta_data[bio_var]==bio_var_val)])
-    
-    if output_root != '':
-        df.to_csv(output_root+"_complete_confounding.csv")
-    print(df)
-    # check if there is a batch with only one bio_var option
-    for batch in batch_l:
-        if len(df.loc[batch].unique())==1:
-            print("batch", batch, "is a complete confounder")
-    return
     
 def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, simulate = False, sim_num_iters = 5, dimensions = (5, 5), taxa_gt = None, line = True, count_l = [True, True, False, False], 
     marker_dict = {'nobc': 'o', "combat": 'v', "combat_seq": "D", "limma": '^', "MMUPHin": '<', "ConQuR": '>', "ConQuR_libsize": 's', "ConQuR_rel": 'p', "harmony":"+", "percentile_norm": "*"},
@@ -867,90 +818,13 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
 overall_path = '/athena/linglab/scratch/chf4012'
 
-# ## GENERATE RW DATA FOR RUNNING R METHODS + RUN ON HARMONY/PERCENTILE_NORM
-# # autism 2 microbiomeHD
-# ################################################################################
-### STEP 1. GENERATE DATA FROM DATABASE
-# address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, "Dataset", "DiseaseState", output_root)
-# ### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"autism_2_microbiomeHD_harmony")
-# percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
-
-
-# # cdi 3 microbiomeHD
-# ################################################################################
-# ### STEP 1. GENERATE DATA FROM DATABASE
-# address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD"
-# data_mat, meta_data = load_data_microbiomeHD(address_directory, output_root)
-# vars_use = ["Dataset"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, 'Dataset', "DiseaseState", output_root)
-# ### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv"
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/"+"cdi_3_microbiomeHD_harmony")
-# percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv", "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
-
-
-# # ibd_3_CMD
-# ################################################################################
-# ### STEP 1. GENERATE DATA FROM DATABASE
-# address_directory = overall_path+'/mic_bc_benchmark/data/ibd_3_CMD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD"
-# data_mat, meta_data = load_data_CMD(address_directory, output_root, covar_l=['age', 'gender'] )
-# print("ibd_3_CMD loaded")
-# vars_use = ["study_name"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, "study_name", "disease", output_root)
-# ### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv"
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"ibd_3_CMD_harmony")
-# percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv", "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
-
-# # CRC_8_CMD
-# ################################################################################
-# ### STEP 1. GENERATE DATA FROM DATABASE
-# address_directory = overall_path+'/mic_bc_benchmark/data/CRC_8_CMD'
-# output_root = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD"
-# data_mat, meta_data = load_data_CMD(address_directory, output_root, covar_l=['age', 'gender'] )
-# print("CRC_8_CMD loaded")
-# vars_use = ["study_name"]
-# IDCol = 'Sam_id'
-# check_complete_confounding(meta_data, "study_name", "disease", output_root)
-# ### STEP 2. RUNNING METHODS (FOR THE TWO RUNNING IN PYTHON)
-# address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv"
-# address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv"
-# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/"+"CRC_8_CMD_harmony")
-# percentile_norm(overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv", "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD")
-
-
-
-
 
 ## simulation evaluation - MIDAS
 ## null data
 ## STEP 1. GENERATE DATA FROM DATABASE
-# or_l = [1, 1.25, 1.5]
-# cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-# batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-# num_iters = 1000
-
 or_l = [1, 1.25, 1.5]
-cond_effect_val_l = [0.5, 0.75]
-batch_effect_val_l = [0.5, 0.75]
+cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 num_iters = 1000
 
 def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, cond_effect_val_l, batch_effect_val_l, 
@@ -999,12 +873,6 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, co
                                 f = open(taxa_gt_path, "r")
                                 taxa_gt = f.readline().split(' ')[:-1]
                                 taxa_gt = [int(taxa)-1 for taxa in taxa_gt]
-                                print("taxa_gt")
-                                print("taxa_gt")
-                                print("taxa_gt")
-                                print("taxa_gt")
-                                print("taxa_gt")
-                                print(taxa_gt)
                 
                             ### STEP 3. EVALUATE ALL THE METHODS - counts, yes relation
                             
@@ -1047,7 +915,7 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, co
 
                                 if not os.path.exists(output_dir+'/'+method+'/' + method +'_summary.csv'):
                                     Evaluate(data_mat, meta_data, 'batchid', output_dir+'/'+method+'/'+method,
-                                            "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = taxa_gt, datatype = datatype, binarizing_agent_biovar = binarizing_agent_biovar)
+                                            "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = taxa_gt, datatype = datatype, binarizing_agent_biovar = binarizing_agent_biovar, method = method)
                                 else:
                                     print("already exists", output_dir+'/'+method+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '_summary.csv')
                             
@@ -1147,7 +1015,50 @@ if ARGPARSE_SWITCH:
                     eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
                     methods_list = ['nobc'], binarizing_agent_biovar = binarizing_agent)
 
+
+
+# ## RUN ON HARMONY/PERCENTILE_NORM
+# # autism 2 microbiomeHD
+# ################################################################################
+# vars_use = ["Dataset"]
+# IDCol = 'Sam_id'
+# address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
+# address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"autism_2_microbiomeHD_harmony")
+# percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
+
+# # cdi 3 microbiomeHD
+# ################################################################################
+# vars_use = ["Dataset"]
+# IDCol = 'Sam_id'
+# address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
+# address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv"
+# data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/"+"cdi_3_microbiomeHD_harmony")
+# percentile_norm(address_X, address_Y, "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
+
+# ibd_3_CMD
 ################################################################################
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
+address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+# res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"ibd_3_CMD_harmony")
+percentile_norm(address_X, address_Y, "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
+
+# crc_8_CMD
+################################################################################
+vars_use = ["study_name"]
+IDCol = 'Sam_id'
+address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
+address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/"+"crc_8_CMD_harmony")
+percentile_norm(address_X, address_Y, "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
+
+# ################################################################################
 # # autism 2 microbiomeHD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/autism_2_microbiomeHD'
 # address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
@@ -1157,17 +1068,16 @@ if ARGPARSE_SWITCH:
 
 # address_Y = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv"
 
-# # data_mat, meta_data = load_data_microbiomeHD(address_directory)
 # # nobc
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv"
 # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
 # ### nobc
-# Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id')
+# Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id', method = 'nobc')
 
 # ### harmony
 # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
 # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-# # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id')
+# # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id', method = 'harmony')
 
 # # benchmarking other methods: 
 # ### combat (combat_seq)
@@ -1359,7 +1269,7 @@ if ARGPARSE_SWITCH:
 # plot_PCOA_multiple('ibd_3_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = "relab")
 
 
-##############################################################################
+# #############################################################################
 # # CRC_8_CMD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/CRC_8_CMD'
 # address_directory = overall_path+'/mic_bc_benchmark/data/CRC_8_CMD'
@@ -1657,3 +1567,7 @@ if ARGPARSE_SWITCH:
 #  "out_1.5_0_0.699", "out_1.5_0.099_0.699", "out_1.5_0.299_0.699", "out_1.5_0_0.899", "out_1.5_0.099_0.899"]
 # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
 # visualize_simulation_stats('vis_relab_yesrelation/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
+
+
+# python3 evaluate.py -o 1 -i 340 -r no -d relab
+# python3 evaluate.py -o 2 -i 340 -r no -d relab -a cond_1
