@@ -87,17 +87,29 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
     if datatype == 'count':
         for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
             data = np.array(batch_corrected_df)
-            data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-            data = data+np.abs(np.min(data))
-            r_used_var = meta_data_l[idx][used_var]
-            r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
+            # check if na/+-inf/huge value is in the data
+            if np.isnan(data).any() or np.isinf(data).any() or np.max(data) > 100000:
+                print("combat family explosion case, default #s and skipped")
+                data = np.zeros(data.shape)
+                r.Plot_single_PCoA(data, meta_data_l[idx][used_var], dissimilarity="Aitch", bc_method = methods[idx])
+            else:
+                data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+                data = data+np.abs(np.min(data))
+                r_used_var = meta_data_l[idx][used_var]
+                r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
     
     for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
         data = np.array(batch_corrected_df)
-        data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-        data = data+np.abs(np.min(data))
-        r_used_var = meta_data_l[idx][used_var]
-        r.Plot_single_PCoA(data, r_used_var, dissimilarity="Bray", bc_method = methods[idx])
+        if np.isnan(data).any() or np.isinf(data).any() or np.max(data) > 100000:
+            print("combat family explosion case, default #s and skipped")
+            data = np.zeros(data.shape)
+            r.Plot_single_PCoA(data, meta_data_l[idx][used_var], dissimilarity="Aitch", bc_method = methods[idx])
+
+        else:
+            data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
+            data = data+np.abs(np.min(data))
+            r_used_var = meta_data_l[idx][used_var]
+            r.Plot_single_PCoA(data, r_used_var, dissimilarity="Bray", bc_method = methods[idx])
     grdevices.dev_off()
     return
 
@@ -159,6 +171,16 @@ class Evaluate(object):
                 df = df.div(df.sum(axis=1), axis=0)
         taxa_names = df.columns
         meta_data = self.meta_data
+
+        # check if na/+-inf exists (combat weird explosion case), OR if some very large number exists (combat-seq explosion case), if so, skip the whole
+        if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
+            self.short_summary_dict["FDR"] = 0
+            self.short_summary_dict["power"] = 0
+            # fill p_val and FDR with 1
+            df["p_value"] = 1
+            df["FDR_p_value"] = 1
+            df.to_csv(self.output_root+"_diff_abund_test.csv")
+            return
 
         # use the metadata to get indices of samples in each bio_var category
         bio_var_l = list(meta_data[self.bio_var].values)
@@ -229,6 +251,20 @@ class Evaluate(object):
         return
 
     def calculate_R_sq(self):
+        # check if na/+-inf exists (combat weird explosion case), OR if some very large number exists (combat-seq explosion case), if so, skip the whole
+        df = self.batch_corrected_df
+        if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
+            self.short_summary_dict["batch_aitch_r2"] = 0
+            self.short_summary_dict["batch_bray_r2"] = 0
+            self.short_summary_dict["batch_aitch_pval"] = 0
+            self.short_summary_dict["batch_bray_pval"] = 0
+            self.short_summary_dict["biovar_aitch_r2"] = 0
+            self.short_summary_dict["biovar_bray_r2"] = 0
+            self.short_summary_dict["biovar_aitch_pval"] = 0
+            self.short_summary_dict["biovar_bray_pval"] = 0
+            print("combat family explosion case, default #s and skipped")
+            return
+            
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
@@ -296,6 +332,12 @@ class Evaluate(object):
     
     def alpha_diversity_and_tests(self, test_var):
         print("______________alpha_diversity_and_tests______________")
+
+         # check if na/+-inf exists (combat weird explosion case), OR if some very large number exists (combat-seq explosion case), if so, skip the whole
+        df = self.batch_corrected_df
+        if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
+            print("combat family explosion case, default #s and skipped")
+            return 1, None
         
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
@@ -341,8 +383,10 @@ class Evaluate(object):
 
         # save to csv
         if self.pipeline == 'default':
-            shannon_df_batch.to_csv(self.output_root+"_shannon_df_batch.csv")
-            shannon_df_biovar.to_csv(self.output_root+"_shannon_df_biovar.csv")
+            # check if dfs are none
+            if shannon_df_batch is not None:
+                shannon_df_batch.to_csv(self.output_root+"_shannon_df_batch.csv")
+                shannon_df_biovar.to_csv(self.output_root+"_shannon_df_biovar.csv")
 
         # save to summary dict
         self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval_batch
@@ -350,6 +394,21 @@ class Evaluate(object):
         return
     
     def predict_difference_RF(self):
+        # check if na/+-inf exists (combat weird explosion case), OR if some very large number exists (combat-seq explosion case), if so, skip the whole
+        df = self.batch_corrected_df
+        if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
+            self.short_summary_dict["rf_baseline_likelihood"] = 0
+            self.short_summary_dict["rf_average_acc"] = 0
+            self.short_summary_dict["rf_macro_precision"] = 0
+            self.short_summary_dict["weighted_precision"] = 0
+            self.short_summary_dict["macro_recall"] = 0
+            self.short_summary_dict["weighted_recall"] = 0
+            self.short_summary_dict["macro_f1"] = 0
+            self.short_summary_dict["weighted_f1"] = 0
+            self.short_summary_dict["auc"] = 0
+            print("combat family explosion case, default #s and skipped")
+            return
+
         # get the data
         used_x = self.batch_corrected_df.copy() # note that standard scaler is already conducted
         used_y = list(self.meta_data[self.bio_var])

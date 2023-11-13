@@ -157,29 +157,35 @@ Plot_PCoA <- function(out, TAX, factor, sub_index=NULL, dissimilarity="Bray", GU
 }
 
 Plot_single_PCoA <- function(TAX, factor, bc_method, sub_index=NULL, dissimilarity="Bray", aa=1.5){
-  # dissimilarity can be either "Bray" or "Aitch"
-  
   nfactor = length(table(factor))
-  if (is.null(sub_index)){
-    sub_index = seq(ncol(TAX))
+  # if a dataframe is all 0s, plot an empty subplot
+  if (sum(apply(TAX, 1, sum)) == 0){
+    plot(0, 0, type="n", xlab="", ylab="", main="")
   }
-  if (dissimilarity == "Aitch") {
-    temp_mat = as.matrix(TAX[, sub_index])
-    kappa = min(temp_mat[temp_mat > 0])/2
-    Z = as.matrix(clr(temp_mat+kappa))
-    MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
-    s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, csub = aa)
-  }
-  else if (dissimilarity == "Bray") {
-    index = which( apply(TAX[, sub_index], 1, sum) > 0 )
-    bc =  vegdist(TAX[index, sub_index])
-    MDS = cmdscale(bc, k=4)
-    s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, csub = aa)
-  }
+  # dissimilarity can be either "Bray" or "Aitch"
   else{
-    stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")
+    if (is.null(sub_index)){
+      sub_index = seq(ncol(TAX))
+    }
+    if (dissimilarity == "Aitch") {
+      temp_mat = as.matrix(TAX[, sub_index])
+      kappa = min(temp_mat[temp_mat > 0])/2
+      Z = as.matrix(clr(temp_mat+kappa))
+      MDS = cmdscale(vegdist(Z, method = "euclidean"), k=4)
+      s.class(MDS, fac = as.factor(factor), col = 1:nfactor, grid = F, csub = aa)
+    }
+    else if (dissimilarity == "Bray") {
+      index = which( apply(TAX[, sub_index], 1, sum) > 0 )
+      bc =  vegdist(TAX[index, sub_index])
+      MDS = cmdscale(bc, k=4)
+      s.class(MDS, fac = as.factor(factor[index]), col = 1:nfactor, grid = F, csub = aa)
+    }
+    else{
+      stop("Please use one of Bray, Aitch or GUniFrac as the dissimilarity.")
+    }
   }
 }
+
 Plot_multiple_PCoA <- function(out, TAX_l, factor, sub_index=NULL, tree=NULL, main=NULL, aa=1.5){
   # plot multiple PCOA plots on the same figure
   # TAX_l: a list of TAX

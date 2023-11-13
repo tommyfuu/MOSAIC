@@ -59,6 +59,11 @@ def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'
         current_metadata = pd.read_csv(current_metadata_path, delimiter='\t', index_col=0, encoding='ISO-8859-1')['DiseaseState'].to_frame()
         current_metadata['Dataset'] = ["_".join(subdir.split("_")[:-1])]*current_metadata.shape[0]
         print(current_metadata.shape)
+
+        # get covariates if exists
+        if covar_l != []:
+            current_covars = pd.read_csv(current_metadata_path, delimiter='\t', index_col=0, encoding='ISO-8859-1')[covar_l]
+            current_metadata = pd.concat([current_metadata, current_covars], axis=1)
         metadata_l.append(current_metadata)
 
     # intersect count data list
