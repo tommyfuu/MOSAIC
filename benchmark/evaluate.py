@@ -678,7 +678,6 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             biovar_aitch_r2 = global_stats_df.loc["biovar_aitch_r2"]
             methods_biovar_aitch_r2_dict = biovar_aitch_r2.to_dict()
         
-
         batch_bray_r2 = global_stats_df.loc["batch_bray_r2"]  
         methods_batch_bray_r2_dict = batch_bray_r2.to_dict()
         biovar_bray_r2 = global_stats_df.loc["biovar_bray_r2"]
@@ -1054,7 +1053,7 @@ if ARGPARSE_SWITCH:
 
 
 
-# ## RUN ON HARMONY/PERCENTILE_NORM
+## RUN ON HARMONY/PERCENTILE_NORM
 # # autism 2 microbiomeHD
 # ################################################################################
 # vars_use = ["Dataset"]
@@ -1095,7 +1094,7 @@ if ARGPARSE_SWITCH:
 # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/"+"crc_8_CMD_harmony")
 # percentile_norm(address_X, address_Y, "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
 
-################################################################################
+# ################################################################################
 # # autism 2 microbiomeHD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/autism_2_microbiomeHD'
 # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD'
@@ -1159,7 +1158,7 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
 # plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
 
-###############################################################################
+# ##############################################################################
 # # cdi 3 microbiomeHD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/cdi_3_microbiomeHD'
 # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD'
@@ -1341,7 +1340,7 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
 # plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/')
 
-# ##############################################################################
+##############################################################################
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 # datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
@@ -1350,227 +1349,6 @@ if ARGPARSE_SWITCH:
 
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 # methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["ibd_3_CMD", "CRC_8_CMD"]
+# datasets = ["ibd_3_CMD", "crc_8_CMD"]
 # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
 # visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0_0", "out_1_0_0.099", "out_1_0_0.299", "out_1_0_0.499", "out_1_0_0.699", "out_1_0_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_0_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0.099_0", "out_1_0.099_0.099", "out_1_0.099_0.299", "out_1_0.099_0.499", "out_1_0.099_0.699", "out_1_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_0.099_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0.299_0", "out_1_0.299_0.099", "out_1_0.299_0.299", "out_1_0.299_0.499", "out_1_0.299_0.699"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_0.299_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0.499_0", "out_1_0.499_0.099", "out_1_0.499_0.299", "out_1_0.499_0.499"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_0.499_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0.699_0", "out_1_0.699_0.099", "out_1_0.699_0.299"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_0.699_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0.899_0", "out_1_0.899_0.099"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_0.899_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0_0", "out_1.25_0_0.099", "out_1.25_0_0.299", "out_1.25_0_0.499", "out_1.25_0_0.699", "out_1.25_0_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.25_0_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0.099_0", "out_1.25_0.099_0.099", "out_1.25_0.099_0.299", "out_1.25_0.099_0.499", "out_1.25_0.099_0.699", "out_1.25_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.25_0.099_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0.299_0", "out_1.25_0.299_0.099", "out_1.25_0.299_0.299", "out_1.25_0.299_0.499", "out_1.25_0.299_0.699"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.25_0.299_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0.499_0", "out_1.25_0.499_0.099", "out_1.25_0.499_0.299", "out_1.25_0.499_0.499"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.25_0.499_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0.699_0", "out_1.25_0.699_0.099", "out_1.25_0.699_0.299"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.25_0.699_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0.899_0", "out_1.25_0.899_0.099"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_0.899_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# # do the same thing for out_1.5 now
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0_0", "out_1.5_0_0.099", "out_1.5_0_0.299", "out_1.5_0_0.499", "out_1.5_0_0.699", "out_1.5_0_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_0_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0.099_0", "out_1.5_0.099_0.099", "out_1.5_0.099_0.299", "out_1.5_0.099_0.499", "out_1.5_0.099_0.699", "out_1.5_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_0.099_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0.299_0", "out_1.5_0.299_0.099", "out_1.5_0.299_0.299", "out_1.5_0.299_0.499", "out_1.5_0.299_0.699"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_0.299_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0.499_0", "out_1.5_0.499_0.099", "out_1.5_0.499_0.299", "out_1.5_0.499_0.499"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_0.499_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0.699_0", "out_1.5_0.699_0.099", "out_1.5_0.699_0.299"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_0.699_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0.899_0", "out_1.5_0.899_0.099"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_0.899_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, sim_num_iters = 5)
-
-
-
-# ##############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0_0", "out_1_0.099_0", "out_1_0.299_0", "out_1_0.499_0", "out_1_0.699_0", "out_1_0.899_0", "out_1_0_0.099", "out_1_0.099_0.099", "out_1_0.299_0.099", "out_1_0.499_0.099", "out_1_0.699_0.099", "out_1_0.899_0.099",
-#  "out_1_0_0.299", "out_1_0.099_0.299", "out_1_0.299_0.299", "out_1_0.499_0.299", "out_1_0.699_0.299", "out_1_0_0.499", "out_1_0.099_0.499", "out_1_0.299_0.499", "out_1_0.499_0.499", 
-#  "out_1_0_0.699", "out_1_0.099_0.699", "out_1_0.299_0.699", "out_1_0_0.899", "out_1_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0_0", "out_1.25_0.099_0", "out_1.25_0.299_0", "out_1.25_0.499_0", "out_1.25_0.699_0", "out_1.25_0.899_0", "out_1.25_0_0.099", "out_1.25_0.099_0.099", "out_1.25_0.299_0.099", "out_1.25_0.499_0.099", "out_1.25_0.699_0.099", "out_1.25_0.899_0.099",
-#  "out_1.25_0_0.299", "out_1.25_0.099_0.299", "out_1.25_0.299_0.299", "out_1.25_0.499_0.299", "out_1.25_0.699_0.299", "out_1.25_0_0.499", "out_1.25_0.099_0.499", "out_1.25_0.299_0.499", "out_1.25_0.499_0.499", 
-#  "out_1.25_0_0.699", "out_1.25_0.099_0.699", "out_1.25_0.299_0.699", "out_1.25_0_0.899", "out_1.25_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_norelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0_0", "out_1.5_0.099_0", "out_1.5_0.299_0", "out_1.5_0.499_0", "out_1.5_0.699_0", "out_1.5_0.899_0", "out_1.5_0_0.099", "out_1.5_0.099_0.099", "out_1.5_0.299_0.099", "out_1.5_0.499_0.099", "out_1.5_0.699_0.099", "out_1.5_0.899_0.099",
-#  "out_1.5_0_0.299", "out_1.5_0.099_0.299", "out_1.5_0.299_0.299", "out_1.5_0.499_0.299", "out_1.5_0.699_0.299", "out_1.5_0_0.499", "out_1.5_0.099_0.499", "out_1.5_0.299_0.499", "out_1.5_0.499_0.499", 
-#  "out_1.5_0_0.699", "out_1.5_0.099_0.699", "out_1.5_0.299_0.699", "out_1.5_0_0.899", "out_1.5_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-# ##############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_yesrelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1_0_0", "out_1_0.099_0", "out_1_0.299_0", "out_1_0.499_0", "out_1_0.699_0", "out_1_0.899_0", "out_1_0_0.099", "out_1_0.099_0.099", "out_1_0.299_0.099", "out_1_0.499_0.099", "out_1_0.699_0.099", "out_1_0.899_0.099",
-#  "out_1_0_0.299", "out_1_0.099_0.299", "out_1_0.299_0.299", "out_1_0.499_0.299", "out_1_0.699_0.299", "out_1_0_0.499", "out_1_0.099_0.499", "out_1_0.299_0.499", "out_1_0.499_0.499", 
-#  "out_1_0_0.699", "out_1_0.099_0.699", "out_1_0.299_0.699", "out_1_0_0.899", "out_1_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_yesrelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.25_0_0", "out_1.25_0.099_0", "out_1.25_0.299_0", "out_1.25_0.499_0", "out_1.25_0.699_0", "out_1.25_0.899_0", "out_1.25_0_0.099", "out_1.25_0.099_0.099", "out_1.25_0.299_0.099", "out_1.25_0.499_0.099", "out_1.25_0.699_0.099", "out_1.25_0.899_0.099",
-#  "out_1.25_0_0.299", "out_1.25_0.099_0.299", "out_1.25_0.299_0.299", "out_1.25_0.499_0.299", "out_1.25_0.699_0.299", "out_1.25_0_0.499", "out_1.25_0.099_0.499", "out_1.25_0.299_0.499", "out_1.25_0.499_0.499", 
-#  "out_1.25_0_0.699", "out_1.25_0.099_0.699", "out_1.25_0.299_0.699", "out_1.25_0_0.899", "out_1.25_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_yesrelation_080723'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["out_1.5_0_0", "out_1.5_0.099_0", "out_1.5_0.299_0", "out_1.5_0.499_0", "out_1.5_0.699_0", "out_1.5_0.899_0", "out_1.5_0_0.099", "out_1.5_0.099_0.099", "out_1.5_0.299_0.099", "out_1.5_0.499_0.099", "out_1.5_0.699_0.099", "out_1.5_0.899_0.099",
-#  "out_1.5_0_0.299", "out_1.5_0.099_0.299", "out_1.5_0.299_0.299", "out_1.5_0.499_0.299", "out_1.5_0.699_0.299", "out_1.5_0_0.499", "out_1.5_0.099_0.499", "out_1.5_0.299_0.499", "out_1.5_0.499_0.499", 
-#  "out_1.5_0_0.699", "out_1.5_0.099_0.699", "out_1.5_0.299_0.699", "out_1.5_0_0.899", "out_1.5_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = [True]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-
-# ##############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_norelation_082623'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["out_1_0_0", "out_1_0.099_0", "out_1_0.299_0", "out_1_0.499_0", "out_1_0.699_0", "out_1_0.899_0", "out_1_0_0.099", "out_1_0.099_0.099", "out_1_0.299_0.099", "out_1_0.499_0.099", "out_1_0.699_0.099", "out_1_0.899_0.099",
-#  "out_1_0_0.299", "out_1_0.099_0.299", "out_1_0.299_0.299", "out_1_0.499_0.299", "out_1_0.699_0.299", "out_1_0_0.499", "out_1_0.099_0.499", "out_1_0.299_0.499", "out_1_0.499_0.499", 
-#  "out_1_0_0.699", "out_1_0.099_0.699", "out_1_0.299_0.699", "out_1_0_0.899", "out_1_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('vis_relab_norelation/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_norelation_082623'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["out_1.25_0_0", "out_1.25_0.099_0", "out_1.25_0.299_0", "out_1.25_0.499_0", "out_1.25_0.699_0", "out_1.25_0.899_0", "out_1.25_0_0.099", "out_1.25_0.099_0.099", "out_1.25_0.299_0.099", "out_1.25_0.499_0.099", "out_1.25_0.699_0.099", "out_1.25_0.899_0.099",
-#  "out_1.25_0_0.299", "out_1.25_0.099_0.299", "out_1.25_0.299_0.299", "out_1.25_0.499_0.299", "out_1.25_0.699_0.299", "out_1.25_0_0.499", "out_1.25_0.099_0.499", "out_1.25_0.299_0.499", "out_1.25_0.499_0.499", 
-#  "out_1.25_0_0.699", "out_1.25_0.099_0.699", "out_1.25_0.299_0.699", "out_1.25_0_0.899", "out_1.25_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('vis_relab_norelation/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_norelation_082623'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["out_1.5_0_0", "out_1.5_0.099_0", "out_1.5_0.299_0", "out_1.5_0.499_0", "out_1.5_0.699_0", "out_1.5_0.899_0", "out_1.5_0_0.099", "out_1.5_0.099_0.099", "out_1.5_0.299_0.099", "out_1.5_0.499_0.099", "out_1.5_0.699_0.099", "out_1.5_0.899_0.099",
-#  "out_1.5_0_0.299", "out_1.5_0.099_0.299", "out_1.5_0.299_0.299", "out_1.5_0.499_0.299", "out_1.5_0.699_0.299", "out_1.5_0_0.499", "out_1.5_0.099_0.499", "out_1.5_0.299_0.499", "out_1.5_0.499_0.499", 
-#  "out_1.5_0_0.699", "out_1.5_0.099_0.699", "out_1.5_0.299_0.699", "out_1.5_0_0.899", "out_1.5_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('vis_relab_norelation/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-# ##############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_yesrelation_082623'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["out_1_0_0", "out_1_0.099_0", "out_1_0.299_0", "out_1_0.499_0", "out_1_0.699_0", "out_1_0.899_0", "out_1_0_0.099", "out_1_0.099_0.099", "out_1_0.299_0.099", "out_1_0.499_0.099", "out_1_0.699_0.099", "out_1_0.899_0.099",
-#  "out_1_0_0.299", "out_1_0.099_0.299", "out_1_0.299_0.299", "out_1_0.499_0.299", "out_1_0.699_0.299", "out_1_0_0.499", "out_1_0.099_0.499", "out_1_0.299_0.499", "out_1_0.499_0.499", 
-#  "out_1_0_0.699", "out_1_0.099_0.699", "out_1_0.299_0.699", "out_1_0_0.899", "out_1_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('vis_relab_yesrelation/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_yesrelation_082623'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["out_1.25_0_0", "out_1.25_0.099_0", "out_1.25_0.299_0", "out_1.25_0.499_0", "out_1.25_0.699_0", "out_1.25_0.899_0", "out_1.25_0_0.099", "out_1.25_0.099_0.099", "out_1.25_0.299_0.099", "out_1.25_0.499_0.099", "out_1.25_0.699_0.099", "out_1.25_0.899_0.099",
-#  "out_1.25_0_0.299", "out_1.25_0.099_0.299", "out_1.25_0.299_0.299", "out_1.25_0.499_0.299", "out_1.25_0.699_0.299", "out_1.25_0_0.499", "out_1.25_0.099_0.499", "out_1.25_0.299_0.499", "out_1.25_0.499_0.499", 
-#  "out_1.25_0_0.699", "out_1.25_0.099_0.699", "out_1.25_0.299_0.699", "out_1.25_0_0.899", "out_1.25_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('vis_relab_yesrelation/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-
-# output_dir_path = '/athena/linglab/scratch/chf4012/simulation_data_eval_small_relab_yesrelation_082623'
-# methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["out_1.5_0_0", "out_1.5_0.099_0", "out_1.5_0.299_0", "out_1.5_0.499_0", "out_1.5_0.699_0", "out_1.5_0.899_0", "out_1.5_0_0.099", "out_1.5_0.099_0.099", "out_1.5_0.299_0.099", "out_1.5_0.499_0.099", "out_1.5_0.699_0.099", "out_1.5_0.899_0.099",
-#  "out_1.5_0_0.299", "out_1.5_0.099_0.299", "out_1.5_0.299_0.299", "out_1.5_0.499_0.299", "out_1.5_0.699_0.299", "out_1.5_0_0.499", "out_1.5_0.099_0.499", "out_1.5_0.299_0.499", "out_1.5_0.499_0.499", 
-#  "out_1.5_0_0.699", "out_1.5_0.099_0.699", "out_1.5_0.299_0.699", "out_1.5_0_0.899", "out_1.5_0.099_0.899"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('vis_relab_yesrelation/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False]*len(datasets), simulate = True, dimensions = (20, 10), taxa_gt = True)
-
-
-# python3 evaluate.py -o 1 -i 340 -r no -d relab
-# python3 evaluate.py -o 2 -i 340 -r no -d relab -a cond_1

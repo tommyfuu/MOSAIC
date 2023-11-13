@@ -236,6 +236,10 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     ## CASE 2. relative abundance data
     else {
         count_data.clr <- logratio.transfo(count_data+min(count_data[count_data>0]), logratio = 'CLR')
+        print("check whether there are NAs in count_data.clr")
+        print(sum(is.na(count_data.clr)))
+        print("check whether there are Inf in count_data.clr")
+        print(sum(is.infinite(count_data.clr)))
         if(!file.exists(paste(output_root, "_ConQuR_rel.csv", sep=""))){
             run_relab = TRUE
         }
@@ -264,6 +268,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                     count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=covar_df))
                 }
                 else{
+                    print(colnames(metadata))
                     covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
                     # count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
                     count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=covar_df))
@@ -375,6 +380,7 @@ if(option == 1){
         used_methods =  c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
     )
 } else if(option == 2){
+    print("benchmarking cdi")
     # cdi 3 microbiomeHD
     current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD'
     output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD'
@@ -382,12 +388,13 @@ if(option == 1){
         paste0(current_root, "_meta_data.csv"),
         output_root,
         dataset = "Dataset",
-        batch_ref = 'cdi_3',
+        batch_ref = 'cdi_youngster',
         covar = c("DiseaseState"),
         count = TRUE,
-        used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+        used_methods = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
     )
 } else if(option ==3){
+    print("benchmarking ibd")
     # ibd 3 CMD
     current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD'
     output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD'
@@ -396,7 +403,7 @@ if(option == 1){
         output_root,
         dataset = "study_name",
         batch_ref = 'HMP_2019_ibdmdb',
-        covar = c("disease", "gender", "age"),
+        covar = c('disease', 'gender', 'age_category'),
         used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
     )
 } else {
