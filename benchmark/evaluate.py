@@ -645,17 +645,22 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
     results_df.T.to_csv(output_dir_path+"/global_benchmarking_stats_"+dataset_name+".csv")
     return pd.DataFrame.from_dict(method_dict, orient ='index') 
     
-def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, simulate = False, sim_num_iters = 5, dimensions = (5, 5), taxa_gt = None, line = True, count_l = [True, True, False, False], 
+def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, simulate = False, sim_num_iters = 1000, dimensions = (5, 5), taxa_gt = None, line = True, count_l = [True, True, False, False], 
     marker_dict = {'nobc': 'o', "combat": 'v', "combat_seq": "D", "limma": '^', "MMUPHin": '<', "ConQuR": '>', "ConQuR_libsize": 's', "ConQuR_rel": 'p', "harmony":"+", "percentile_norm": "*"},
     method_colors_dict = {'nobc': 'black', "combat": 'red', "combat_seq": 'yellow', "limma": 'blue', "MMUPHin": 'green', "ConQuR": 'orange', "ConQuR_libsize": 'purple', "ConQuR_rel": 'pink', "harmony":"turquoise", "percentile_norm": "gray"}):
     '''visualize the PERMANOVA batch R2 (Bray/Aitch), PERMANOVA condition R2 (Bray/Aitch), ROC-AUC and FDR/sensitivity'''
     # global set up
+    print("initializing")
     global_methods_batch_bray_r2_l_dict = {}
     global_methods_batch_aitch_r2_l_dict = {}
     global_methods_biovar_bray_r2_l_dict = {}
     global_methods_biovar_aitch_r2_l_dict = {}
     global_methods_batch_shannon_pval_l_dict = {}
     global_methods_biovar_shannon_pval_l_dict = {}
+    global_methods_rf_auc_l_dict = {}
+    global_methods_rf_f1_l_dict = {}
+    global_methods_rf_precision_l_dict = {}
+    global_methods_rf_recall_l_dict = {}
     global_methods_runtime_l_dict = {}
 
     if taxa_gt is not None:
@@ -690,6 +695,14 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         batch_shannon_pval = global_stats_df.loc["batch_shannon_pval"]
         methods_batch_shannon_pval_dict = batch_shannon_pval.to_dict()
         biovar_shannon_pval = global_stats_df.loc["biovar_shannon_pval"]
+        rf_auc = global_stats_df.loc["rf_auc"]
+        methods_rf_auc_dict = rf_auc.to_dict()
+        rf_f1 = global_stats_df.loc["rf_weighted_f1"]
+        methods_rf_f1_dict = rf_f1.to_dict()
+        rf_precision = global_stats_df.loc["rf_weighted_precision"]
+        methods_rf_precision_dict = rf_precision.to_dict()
+        rf_recall = global_stats_df.loc["rf_weighted_recall"]
+        methods_rf_recall_dict = rf_recall.to_dict()
         methods_biovar_shannon_pval_dict = biovar_shannon_pval.to_dict()
         runtime = global_stats_df.loc["runtime"]
         methods_runtime = runtime.to_dict()
@@ -701,16 +714,17 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             methods_sensitivity_r2_dict = sensitivity_r2.to_dict()
 
         if taxa_gt is not None:
-            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime
+            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict, methods_runtime
         else:
-            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime
+            return methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict, methods_runtime
+    print("extracting data")
     for idx, output_dir in enumerate(output_dir_l):
-        print(output_dir)
+        print(idx)
         if not simulate:   
             if taxa_gt is not None:
-                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
+                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
             else:
-                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
+                methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
             ## append to global dict
             for method in methods:
                 if method not in global_methods_batch_bray_r2_l_dict.keys():
@@ -724,6 +738,10 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                     global_methods_biovar_bray_r2_l_dict[method] = []
                     global_methods_batch_shannon_pval_l_dict[method] = []
                     global_methods_biovar_shannon_pval_l_dict[method] = []
+                    global_methods_rf_auc_l_dict[method] = []
+                    global_methods_rf_f1_l_dict[method] = []
+                    global_methods_rf_precision_l_dict[method] = []
+                    global_methods_rf_recall_l_dict[method] = []
                     global_methods_runtime_l_dict[method] = []
                                 
                 if count_l[idx]:
@@ -736,6 +754,10 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 global_methods_biovar_bray_r2_l_dict[method].append(methods_biovar_bray_r2_dict[method])
                 global_methods_batch_shannon_pval_l_dict[method].append(methods_batch_shannon_pval_dict[method])
                 global_methods_biovar_shannon_pval_l_dict[method].append(methods_biovar_shannon_pval_dict[method])
+                global_methods_rf_auc_l_dict[method].append(methods_rf_auc_dict[method])
+                global_methods_rf_f1_l_dict[method].append(methods_rf_f1_dict[method])
+                global_methods_rf_precision_l_dict[method].append(methods_rf_precision_dict[method])
+                global_methods_rf_recall_l_dict[method].append(methods_rf_recall_dict[method])
                 global_methods_runtime_l_dict[method].append(methods_runtime[method])
 
         else:
@@ -748,18 +770,26 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             cross_iter_sensitivity_r2_dict = {}
             cross_iter_batch_shannon_pval_dict = {}
             cross_iter_biovar_shannon_pval_dict = {}
+            cross_iter_rf_auc_dict = {}
+            cross_iter_rf_f1_dict = {}
+            cross_iter_rf_precision_dict = {}
+            cross_iter_rf_recall_dict = {}
             cross_iter_runtime_dict = {}
             for iter in range(sim_num_iters):
                 if taxa_gt is not None:
-                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_runtime = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
+                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict, methods_runtime = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
                 else:
-                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
+                    methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict = get_stats(output_dir+f"_iter_{iter+1}", taxa_gt, idx)    
                 cross_iter_batch_aitch_r2_dict[iter] = methods_batch_aitch_r2_dict
                 cross_iter_batch_bray_r2_dict[iter] = methods_batch_bray_r2_dict
                 cross_iter_biovar_aitch_r2_dict[iter] = methods_biovar_aitch_r2_dict
                 cross_iter_biovar_bray_r2_dict[iter] = methods_biovar_bray_r2_dict
                 cross_iter_batch_shannon_pval_dict[iter] = methods_batch_shannon_pval_dict
                 cross_iter_biovar_shannon_pval_dict[iter] = methods_biovar_shannon_pval_dict
+                cross_iter_rf_auc_dict[iter] = methods_rf_auc_dict
+                cross_iter_rf_f1_dict[iter] = methods_rf_f1_dict
+                cross_iter_rf_precision_dict[iter] = methods_rf_precision_dict
+                cross_iter_rf_recall_dict[iter] = methods_rf_recall_dict
                 cross_iter_runtime_dict[iter] = methods_runtime
                 if taxa_gt is not None:
                     cross_iter_FDR_r2_dict[iter] = methods_FDR_r2_dict
@@ -775,6 +805,10 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                     global_methods_biovar_bray_r2_l_dict[method] = []
                     global_methods_batch_shannon_pval_l_dict[method] = []
                     global_methods_biovar_shannon_pval_l_dict[method] = []
+                    global_methods_rf_auc_l_dict[method] = []
+                    global_methods_rf_f1_l_dict[method] = []
+                    global_methods_rf_precision_l_dict[method] = []
+                    global_methods_rf_recall_l_dict[method] = []
                     global_methods_runtime_l_dict[method] = []
                     if taxa_gt is not None:
                         global_methods_FDR_r2_l_dict[method] = []
@@ -786,18 +820,16 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 global_methods_biovar_bray_r2_l_dict[method].append(np.mean([cross_iter_biovar_bray_r2_dict[iter][method] for iter in range(sim_num_iters)]))
                 global_methods_batch_shannon_pval_l_dict[method].append(np.mean([cross_iter_batch_shannon_pval_dict[iter][method] for iter in range(sim_num_iters)]))
                 global_methods_biovar_shannon_pval_l_dict[method].append(np.mean([cross_iter_biovar_shannon_pval_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_rf_auc_l_dict[method].append(np.mean([cross_iter_rf_auc_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_rf_f1_l_dict[method].append(np.mean([cross_iter_rf_f1_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_rf_precision_l_dict[method].append(np.mean([cross_iter_rf_precision_dict[iter][method] for iter in range(sim_num_iters)]))
+                global_methods_rf_recall_l_dict[method].append(np.mean([cross_iter_rf_recall_dict[iter][method] for iter in range(sim_num_iters)]))
                 global_methods_runtime_l_dict[method].append(np.mean([cross_iter_runtime_dict[iter][method] for iter in range(sim_num_iters)]))
                 if taxa_gt is not None:
                     global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
 
-        print(global_methods_batch_bray_r2_l_dict)
-           
-    print("global_methods_batch_aitch_r2_l_dict")
-    print(global_methods_batch_aitch_r2_l_dict)
-    print("global_methods_batch_bray_r2_l_dict")
-    print(global_methods_batch_bray_r2_l_dict)
-
+    print("plotting")
     def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}):
         ## plot the dictionaries in two matplotlib subplots as line plots
         plt.clf()
@@ -846,9 +878,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     else:
         plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict)
         plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict)
-    print("_____runtime_____")
-    print(global_methods_runtime_l_dict)
     plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict)
+    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict)
+    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict)
     plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict)
 
     if taxa_gt is not None:
