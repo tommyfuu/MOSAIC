@@ -79,7 +79,7 @@ These three commands result in the four subfolders in `data/cleaned_data`, each 
 
 Note that while the crc dataset started with 8 batches, after pre-cleaning, there are actually 5 datasets (batches) that participate in batch correction.
 
-## 2. benchmarking methods
+## 2. Benchmarking methods
 
 ### 2.1 For methods implemented in R
 
