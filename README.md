@@ -5,6 +5,19 @@ _Developed and maintained by_:  [Chenlian (Tom) Fu](fcl200089@outlook.com)\
 _Advised by_: Dr. Wodan Ling, Dr. Quaid Morris\
 _Affiliations_: Weill Cornell Medicine, Memorial Sloan Kettering Cancer Center
 
+## 0. Environment set up
+
+You can potentially set up the environment using conda by executing the following command:
+
+```
+conda env create -f /benchmark/final_env.yml
+```
+
+Or, you can manually install the following packages:
+
+- Python packages: pandas, numpy, matplotlib, scikit-learn, seaborn, scipy, skbio, rpy2, statsmodels
+- R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dylyr, readr, mixOmics, parallel, ade4, compositions
+
 ## 1. Functionalities
 
 This github repository stores the code for benchmarking microbiome batch correction methods, enabling readers to reproduce the analyses done in the paper as well as leveraging their own data along with the provided code to do similar analyses. Our batch correction method evaluation consists of three steps:
@@ -48,11 +61,17 @@ To this end, we collect and clean both count and relative abundance real world d
 
 ```
 cd data # enter the data directory
-python3 step0_microbiomeHD_precleaning.py # pre-clean the two microbiomeHD datasets, moving them from different batches to the same files
-Rscript step1_clean_and_prune.R # (1) loads the four datasets into phyloseq objects (2) clean and prune samples and taxa below 0.05% abundance (3) save to a folder
-python3 step2_preprocessing_summarystats.py # loads the phyloseq formatted data from step1 to save to a directory in a format easily digestible by later steps of the pipeline, along with generating a complete confounding check table
+# pre-clean the two microbiomeHD datasets, moving them from different batches to the same files
+python3 step0_microbiomeHD_precleaning.py 
+# (1) loads the four datasets into phyloseq objects (2) clean and prune samples and taxa below 0.05% abundance (3) save to a folder
+Rscript step1_clean_and_prune.R 
+# loads the phyloseq formatted data from step1 to save to a directory in a format easily digestible by later steps of the pipeline, along with generating a complete confounding check table
+python3 step2_preprocessing_summarystats.py
 ```
 
+These three commands result in the four subfolders in `data/cleaned_data`, each containing three files: the count (relative abundance) OTU data, the corresponding metadata, and the complete confounding checking table (number of samples in each biological condition in each cleaned dataset).
+
+Note that while the crc dataset started with 8 batches, after pre-cleaning, there are actually 5 datasets (batches) that participate in batch correction.
 
 (1) Code harmonicMic
 
