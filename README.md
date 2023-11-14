@@ -1,9 +1,16 @@
 # microbiome batch correction benchmarking project
-Code and partial data repository for the manuscript entitled __A comprehensive benchmark of batch correction methods in microbiome data__ by _Fu et al.. 
+Code and partial data repository for the manuscript entitled __A comprehensive benchmark of batch correction methods in microbiome data__ by _Fu et al._. 
 
 _Developed and maintained by_:  [Chenlian (Tom) Fu](fcl200089@outlook.com)\
 _Advised by_: Dr. Wodan Ling, Dr. Quaid Morris\
 _Affiliations_: Weill Cornell Medicine, Memorial Sloan Kettering Cancer Center
+
+
+This github repository stores the code for benchmarking microbiome batch correction methods, enabling readers to reproduce the analyses done in the paper as well as leveraging their own data along with the provided code to do similar analyses. Our batch correction method evaluation consists of three steps:
+- Data generation/collection
+- Running batch correction methods on datasets to generate batch corrected data
+- Evaluation of the methods
+
 
 ## 0. Environment set up
 
@@ -19,13 +26,9 @@ The above way to set up the environment might lead to deprecated versions of fil
 - R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dylyr, readr, mixOmics, parallel, ade4, compositions
 
 
-## 1. Functionalities
+## 1. Data generation/collection
 
-This github repository stores the code for benchmarking microbiome batch correction methods, enabling readers to reproduce the analyses done in the paper as well as leveraging their own data along with the provided code to do similar analyses. Our batch correction method evaluation consists of three steps:
-
-### 1.1 Data generation/collection
-
-#### 1.1.1 Simulation data generation
+### 1.1.1 Simulation data generation
 
 A comprehensive evaluation requires stringent simulation and corresponding analyses. Here, we employs [MIDAS](https://pubmed.ncbi.nlm.nih.gov/36993431/), an intuitive microbiome data simulator that recapitulates microbiome data structure without distributional assumptions while allowing users to manipulate variables of interest, in our case batch effect and conditional effect. We further edited codes to enable the simulation to include varying odds ratio (between biological signals and batch in each taxa), existing and non-existing relationship between batch effect and library size, as well as the generation of both count and relative abundance data.
 
@@ -56,7 +59,7 @@ This code chunk will generate a count and its corresponding relative abundance d
 
 To run the simulation script in scale, in the folder `benchmark/slurm_bash_scripts` there is a bash script called `run_simulate_sim.sh`, which one can model based on and move back into the `benchmark` folder for running the `generate_data_MIDAS.R` script in scale with `slurm`.
 
-#### 1.2 Real world microbiome data collection and cleaning
+### 1.2 Real world microbiome data collection and cleaning
 
 A comprehensive evaluation also requires well-collected and well-preprocessed real-world microbiome data to ensure that the theoretically excelling batch correction methods from simulation experiments work in practice to enabled biomarker and trend discovery in batch corrected datasets while removing batch effect.
 
@@ -76,9 +79,9 @@ These three commands result in the four subfolders in `data/cleaned_data`, each 
 
 Note that while the crc dataset started with 8 batches, after pre-cleaning, there are actually 5 datasets (batches) that participate in batch correction.
 
-## 3. benchmarking methods
+## 2. benchmarking methods
 
-### 3.1 For methods implemented in R
+### 2.1 For methods implemented in R
 
 For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the script `/benchmark/methods_benchmarking.R`. For example:
 
@@ -114,7 +117,7 @@ scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_
 
 To scale run simulation in slurm, one can reference file `/benchmark/slurm_bash_scripts/methods_run_sim_batch.sh` and move the revised file back to `/benchmark` before running on slurm in scale.
 
-### 3.2 For methods implemented in Python
+### 2.2 For methods implemented in Python
 
 For methods implemented in Python including `harmony, percentile_normalization`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the script `/benchmark/evaluate.py -o 1`. Note that only option `1` is for running the two methods, otherwise the script will enter evaluate mode for the step 4.
 
@@ -122,7 +125,7 @@ For the ease of running, one can uncomment section with starting with `## RUN HA
 
 Please read the argparse instructions carefully when running `evaluate.py`. To briefly explain, `-r` flag checks whether running on simulated datasets with a relationship between library size and batch effect occurence or not, with the options `yes` and `no`; `-d` flag checks dataset, with the options `count` and `relab`; `-i` option checks current running, an integer. Default options are `no`, `count`, and `1`. There also is the flag `-p` which allows you to define an overall path where data should be saved, in which you should create the folder `simulation_outputs` for ease of running.
 
-## 4. evaluation
+## 3. evaluation
 
 Comprehensive evaluation, including the following, is implemented in the script `/benchmark/evaluate.py`, using options `2, 3`.
 
@@ -131,7 +134,7 @@ Comprehensive evaluation, including the following, is implemented in the script 
 - after running the step above, one runs `python3 /benchmark/evaluate.py -o 3` for all iterations of simulation of the same type (e.g. 1000 iterations of `count` data with `no` relationship between batch effect occurence and library size, parameterized by the odds ratio, conditional effect, biological effect lists) to plot line plots to visualize the trends in data as parameters in the three lists change. For the ease of running one can uncomment the lines starting with `## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS`. For simulation, one can, for example, simply run `python3 /benchmark/evaluate.py evaluate.py -o 3 -r yes -d relab`. You might want to redefine the flag `-p` which allows you to define an overall path where data should be saved, in which you should create the folder `simulation_outputs` for ease of running.
 
 
-## 5. Additional notes
+## 4. Additional notes
 
 This project started as a class project in Dr. Wesley Tansey's class Foundation of Data Science at Memorial Sloan Kettering and Weill Cornell, and would not have been possible without the generous support of Dr. Wodan Ling, Jiuyao Lu, Dr. Quaid Morris, and Dr. Wesley Tansey. The funding support for my PhD comes from the Tri-institutional Program of Computational Biology and Medicine.
 
