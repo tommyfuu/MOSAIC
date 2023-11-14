@@ -1,5 +1,5 @@
 # load data
-load("/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/ibd_150.Rdata")
+load("./ibd_150.Rdata")
 library("bindata")
 library("MIDAS")
 library(tibble)
@@ -7,7 +7,8 @@ library(tibble)
 args = commandArgs(trailingOnly=TRUE)
 print(args)
 if (length(args)==0 || length(args)>1 ) {
-  stop("There has to be exactly one argument supplied with this script for simulation runs", call.=FALSE)
+  GLOBAL_ITER = 1
+  print("by default, we are generating the first iteration")
 } else if (length(args)==1) {
   # default output file
   GLOBAL_ITER = args[1]
@@ -98,18 +99,11 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
     print("FALSE")
     bin_corr = bincorr(or, p_cond, p_batch)
     print('OR, p_cond, p_batch, bin_corr')
-    # print(p_cond)
     print(c(or, p_cond, p_batch))
     print(length(bin_corr))
-    # print(c(or, p_cond, p_batch, bin_corr))
     cond_batchid_vec = rmvbin(n, c(p_cond, p_batch), bincorr=(1-bin_corr)*diag(2)+bin_corr)
   }
   # # turn this into bincorr with the bincorr function and document bincorr value as well
-  # bin_corr = bincorr(or, p_cond, p_batch)
-  # print('OR, p_cond, p_batch, bin_corr')
-  # print(c(or, p_cond, p_batch, bin_corr))
-  # # generate batch and condition id
-  # cond_batchid_vec = rmvbin(n, c(p_cond, p_batch), bincorr=(1-bin_corr)*diag(2)+bin_corr)
   cond = cond_batchid_vec[, 1] # find the ids of samples that are affected by condition
   batchid = cond_batchid_vec[, 2] # find the ids of samples that are affected by batch
 
@@ -235,14 +229,13 @@ scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_
 
 
 
-or_l = c(1, 1.25, 1.5)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# or_l = c(1)
-# cond_effect_val_l = c(0)
-# batch_effect_val_l = c(1)
-output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+# or_l = c(1, 1.25, 1.5)
+# cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/trial'
+# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
 
 # output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
 # # # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)

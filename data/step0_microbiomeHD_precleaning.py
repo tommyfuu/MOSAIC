@@ -16,14 +16,6 @@ def preprocess(data_mat, meta_data, IDCol, covar_l = []):
     for covar in covar_l:
         meta_data = meta_data[meta_data[covar].notna()]
     data_mat = data_mat.loc[meta_data[IDCol]]
-    # # for each covar used, remove features(OTUs) with zero variance
-    # removable_feature_names = []
-    # for covar in covar_l:
-    #     if len(meta_data[covar].unique()) == 1:
-    #         print("remove covar", covar)
-    #         removable_feature_names.extend([col_names[index] for index, col_sum in enumerate(col_sums) if col_sum==0])
-    # removable_feature_names = list(set(removable_feature_names))
-    # data_mat.drop(removable_feature_names, axis=1, inplace=True)
     # after cleaning samples, remove features with all zeros again
     col_names = list(data_mat.columns)
     col_sums = data_mat.sum(axis = 1)
@@ -90,7 +82,7 @@ def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'
 
     data_mat, meta_data = preprocess(combined_countdf, combined_metadata, id, covar_l)
 
-    # TODO: ensure that the sample ids are correctly aligned in metadata and count_table
+    # ensure that the sample ids are correctly aligned in metadata and count_table
     data_mat_ids = list(data_mat.index)
     meta_data_ids = list(meta_data.index)
     intersection_ids = list(set(meta_data_ids).intersection(data_mat_ids))
