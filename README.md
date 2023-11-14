@@ -13,10 +13,11 @@ You can potentially set up the environment using conda by executing the followin
 conda env create -f /benchmark/final_env.yml
 ```
 
-Or, you can manually install the following packages:
+The above way to set up the environment might lead to deprecated versions of files. To create a clean environment with all the necessary libraries, you can also manually install the following packages:
 
 - Python packages: pandas, numpy, matplotlib, scikit-learn, seaborn, scipy, skbio, rpy2, statsmodels
 - R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dylyr, readr, mixOmics, parallel, ade4, compositions
+
 
 ## 1. Functionalities
 
@@ -53,6 +54,8 @@ To explain the arguments above:
 
 This code chunk will generate a count and its corresponding relative abundance datasets for each paratemer combination in the three lists defined above, along with the metadata for samples (which ones in which batch) as well as metadata for taxa (which ones are ground truth perturbed biomarkers) for later experiments.
 
+To run the simulation script in scale, in the folder `benchmark/slurm_bash_scripts` there is a bash script called `run_simulate_sim.sh`, which one can model based on and move back into the `benchmark` folder for running the `generate_data_MIDAS.R` script in scale with `slurm`.
+
 #### 1.2 Real world microbiome data collection and cleaning
 
 A comprehensive evaluation also requires well-collected and well-preprocessed real-world microbiome data to ensure that the theoretically excelling batch correction methods from simulation experiments work in practice to enabled biomarker and trend discovery in batch corrected datasets while removing batch effect.
@@ -73,97 +76,67 @@ These three commands result in the four subfolders in `data/cleaned_data`, each 
 
 Note that while the crc dataset started with 8 batches, after pre-cleaning, there are actually 5 datasets (batches) that participate in batch correction.
 
-(1) Code harmonicMic
+## 3. benchmarking methods
 
- - add beta diversity to objective function # DONE -> to be improved, add local
- - add alpha diversity to objective function  # DONE -> to be improved, add local
- - account for the fact that the counts/data might be unevenly distributed between different batches and covariate # DONE
- - added an additional weight to the Y-update to make dominant features be affected more # DONE
-     In HarmonicMic, Yk is not only influenced by the updated cluster membership Rki, but also by the ratio of a respective feature’s count sum to a reference value
- - revert back to count state # DONE
+### 3.1 For methods implemented in R
 
-(2) evaluate pipeline
+For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the script `/benchmark/methods_benchmarking.R`. For example:
 
-SINGLE METHOD EVALUATION:
+```
+source('./methods_benchmarking.R')
+# autism 2 microbiomeHD
+current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD'
+output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD'
+run_methods(paste0(current_root, "_count_data.csv"),
+    paste0(current_root, "_meta_data.csv"),
+    output_root,
+    dataset = "Dataset",
+    batch_ref = 'asd_son',
+    covar = c("DiseaseState"),
+    count = TRUE,
+    used_methods =  c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+)
+```
 
- - Visualizing (PCA) batch-corrected dataset in terms of batches # DONE
- - Visualizing (PCA) batch-corrected dataset in terms of biological variables of interest # DONE
- - Evaluating whether the biological significance is retained in the top 2 principal components # DONE
- - Visualizing alpha diversity (Shannon) in terms of batches # DONE
- - Visualizing alpha diversity (Shannon) in terms of biological variables of interest # DONE
- - Visualizing beta diversity (bray-curtis) in terms of batches # DONE
- - Visualizing beta diversity (bray-curtis) in terms of biological variables of interest # DONE
+To simplify the running of methods on each of the four real-world dataset, one can simply run the following in command line.
+```
+Rscript methods_benchmarking.R 1 # 1 for autism_2_microbiomeHD, 2 for cdi_3_microbiomeHD, 3 for ibd_3_CMD, 4 for crc_8_CMD
+```
 
-MULTI-METHOD BENCHMARKING:
+To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset:
+```
+source('./methods_benchmarking_sim.R')
+overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
+method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
+```
 
- - Visualizing distance between batches (bray-curtis and Aitchson) before bc and after using different methods # TODO
-    - reference: https://www.nature.com/articles/s41467-022-33071-9#:~:text=Numerically%2C%20although%20ConQuR%20did%20not,from%205.66%25%20to%200.10%25.
-- Visualizing/tablizing p-values among batches before bc and after using different methods # TODO
-- Visualizing/tablizing p-values for alpha diversity among batches before bc and after using different methods # TODO
-- Visualizing/tablizing p-values for beta diversity among batches before bc and after using different methods # TODO
-- OMNIBUS testing for each meta analysis real datasets
-    - Figure 3 of https://genomebiology.biomedcentral.com/articles/10.1186/s13059-022-02753-4
-- Identify biomarkers/consensus biomarkers from each meta analysis real datasets to demonstrate the power of harmonicMic or one of the methods
-- Benchmark runtime 
-    - kind of done for the benchmarked methods r script, to be added for Percentile-Norm and harmony-related methods
+To scale run simulation in slurm, one can reference file `/benchmark/slurm_bash_scripts/methods_run_sim_batch.sh` and move the revised file back to `/benchmark` before running on slurm in scale.
 
-(3) Benchmarked methods for running
-- R script for # DONE-ish
-    - MMUPHin
-    - combat
-    - limma
-    - ConQuR
-- Python script for Percentile-Normalization # DONE
+### 3.2 For methods implemented in Python
 
-(3) Simulation
-- Generate simulation experiments with 2, 3, 4, 5, 8, 10 batches using SparseDOSSA (ongoing)
-- Run batch correction methods (1) and (3) on them and benchmark with (2)
+For methods implemented in Python including `harmony, percentile_normalization`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the script `/benchmark/evaluate.py -o 1`. Note that only option `1` is for running the two methods, otherwise the script will enter evaluate mode for the step 4.
 
-(4) Real datasets
-- code to preprocess microbiomeHD data format # DONE
-- code to preprocess curatedMetagenomics data format # DONE
-- fetch 2/3/4/5/6-sized metadatasets # ongoing
-- run on all methods  # ongoing
-    - individual method benchmark
-    - cross-method benchmark
+For the ease of running, one can uncomment section with starting with `## RUN HARMONY/PERCENTILE_NORM` in the script before running `python3 /benchmark/evaluate.py -o 1` to run the methods on the real-world dataset. One can scale run the methods on simulated dataset by referencing the lines containing `-o 1` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
 
-(5) biological insights/discussion
- - biological variable info retained in real world data? # todo
- - biomarker identification # todo
+Please read the argparse instructions carefully when running `evaluate.py`. To briefly explain, `-r` flag checks whether running on simulated datasets with a relationship between library size and batch effect occurence or not, with the options `yes` and `no`; `-d` flag checks dataset, with the options `count` and `relab`; `-i` option checks current running, an integer. Default options are `no`, `count`, and `1`. There also is the flag `-p` which allows you to define an overall path where data should be saved, in which you should create the folder `simulation_outputs` for ease of running.
+
+## 4. evaluation
+
+Comprehensive evaluation, including the following, is implemented in the script `/benchmark/evaluate.py`, using options `2, 3`.
+
+- when running `python3 /benchmark/evaluate.py -o 2`, the script conducts evaluation on one dataset at a time. The dataset can be a real-world dataset, or one iteration of the simulated dataset. For the ease of running, one can uncomment the lines starting with `## EVALUATE METHODS ON REAL-WORLD DATASET`. One can scale run the methods on simulated dataset by referencing the lines containing `-o 2` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
+    -  this steps conducts the actual evaluation, including R^2 of biological conditions and batches, statistical significance of differences in alpha (Shannon) diversity between different batches and biological conditions, differentially abundant taxa detection (and check with ground truth to calculate FDR and power in simulation), use the batch corrected dataset to train a simple random forest predictor to predict a pair of binary biological conditions and calculate accuracy metrics.
+- after running the step above, one runs `python3 /benchmark/evaluate.py -o 3` for all iterations of simulation of the same type (e.g. 1000 iterations of `count` data with `no` relationship between batch effect occurence and library size, parameterized by the odds ratio, conditional effect, biological effect lists) to plot line plots to visualize the trends in data as parameters in the three lists change. For the ease of running one can uncomment the lines starting with `## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS`. For simulation, one can, for example, simply run `python3 /benchmark/evaluate.py evaluate.py -o 3 -r yes -d relab`. You might want to redefine the flag `-p` which allows you to define an overall path where data should be saved, in which you should create the folder `simulation_outputs` for ease of running.
 
 
-## 1. Usage
+## 5. Additional notes
 
-### 1a. HarmonicMic usage
+This project started as a class project in Dr. Wesley Tansey's class Foundation of Data Science at Memorial Sloan Kettering and Weill Cornell, and would not have been possible without the generous support of Dr. Wodan Ling, Jiuyao Lu, Dr. Quaid Morris, and Dr. Wesley Tansey. The funding support for my PhD comes from the Tri-institutional Program of Computational Biology and Medicine.
 
-### 1b. Data benchmarking
-
-#### 1b.i Simulation data
-
-#### 1b.ii Real data
-
-#### 1b.iii Methods benchmarked
-
-#### 1b.iv PCA-based statistical testing and visualization for batch effect correction
-
-#### 1b.v Alpha-/beta- diversity based statisical testing and visualization for batch effect correction
-
-#### 1b.vi Evaluating whether biological significance is retained
-
-## 2. Replicating the results
-
-Codes for replicating the results can be found in the results directory.
-
-
-## 3. Additional notes
-
-The name of this method, harmonicMic, is a combination of [harmony](https://www.nature.com/articles/s41592-019-0619-0), the tried-and-true single-cell batch correction method I revise from, and [microbiome data](https://www.niehs.nih.gov/health/topics/science/microbiome/index.cfm); as well as inspired by the time I spent at the [One Night Stanza a cappella group](https://www.instagram.com/stanza.gram/?hl=en).
+If you have questions regarding this benchmarking project or other inquries, please reach out to me at ___chf4012@med.cornell.edu___. I hope you have a great day!
 
 Cheers,\
 Tom Fu
 
-
-To save the environment to an yml file, we can do
-```
-conda env export -p /home/fuc/anaconda3/envs/harmonicMic_env > environment.yml
-```

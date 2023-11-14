@@ -16,10 +16,11 @@ args = commandArgs(trailingOnly=TRUE)
 
 print(args)
 if (length(args)==0 || length(args)>1 ) {
-  stop("There has to be exactly one argument supplied with this script for simulation runs", call.=FALSE)
+    GLOBAL_ITER = 1
+    print("default running iteration 1")
 } else if (length(args)==1) {
-  # default output file
-  GLOBAL_ITER = args[1]
+    # default output file
+    GLOBAL_ITER = args[1]
 }
 
 ## load ConQuR
@@ -80,7 +81,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     ## CASE 1. count data (combat will not work)
     if(count == TRUE) {
         count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
-        # if ConQuR_libsize output does not exist and its runtime documented File.readlines(paste(output_root, "_runtime.txt", sep="")).any?{ |l| l['ConQuR_libsize'] }
+        print(">>>>>")
         if(!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep=""))){
             run_count = TRUE
         }
@@ -91,7 +92,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             run_count = FALSE
         }
 
-        if (run_count == TRUE){  
+        if (run_count == TRUE){           
             cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
             ### 1.1 combat_seq (in place of combat)
             if ('combat_seq' %in% used_methods) {
@@ -243,7 +244,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             run_relab = FALSE
         }
 
-        if (run_relab == TRUE){  
+        if (run_relab == TRUE){      
             cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
             ### 1.1 combat
             if ('combat' %in% used_methods) {
@@ -357,54 +358,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 }
 
 
-# autism 2 microbiomeHD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
-# dataset = "Dataset",
-# covar = c("DiseaseState"),
-# count = TRUE,
-# batch_ref = 'asd_son',
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-# )
-
-# # cdi 3 microbiomeHD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
-# dataset = "Dataset",
-# covar = c("DiseaseState"),
-# count = TRUE,
-# batch_ref = 'cdi_youngster',
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-# )
-
-# # ibd 3 CMD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
-# dataset = "study_name",
-# batch_ref = 'HMP_2019_ibdmdb',
-# covar = c("disease", "gender", "age"),
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-# )
-
-
-# # CRC_8_CMD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
-# dataset = "study_name",
-# batch_ref = 'FengQ_2015',
-# covar = c("disease", "gender", "age"),
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-# )
-
-
 # just to speed up
 # An mc-version of the sapply function.
 library(parallel)
@@ -439,6 +392,7 @@ run_methods_per_iter <- function(iter, overall_path, output_dir, or, cond_effect
                             )
                         }
     
+
 scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, num_iter, count = TRUE){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
@@ -451,8 +405,6 @@ scaled_midas_methods_bencharking <- function(output_dir, overall_path, method_l,
             print(iter)
             mcsapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l, count = count),
                 mc.cores=5)
-            # sapply(seq(1, num_iter), function(iter) run_methods_per_iter(iter, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l, count = count),)
-            # run_methods_per_iter(1, overall_path, output_dir, or, cond_effect_val, batch_effect_val, used_methods = method_l, count = count)
             print("WHAT'S HAPPENING??")
           
         }
@@ -498,26 +450,28 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
   }
 }
 
-# or_l = c(1, 1.25, 1.5)
-# or_l = c(1, 1.25, 1.5)
-# cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-
-or_l = c(1)
-cond_effect_val_l = c(0, 0.25)
+or_l = c(1, 1.25, 1.5)
+cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 
 
-overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
-method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-print("Right before we run")
-scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
-
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
+# method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_102023'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# print("Right before we run")
+# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
+# method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
+
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_102023'
+# method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 

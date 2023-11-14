@@ -39,8 +39,13 @@ if ARGPARSE_SWITCH:
     parser.add_argument("-d", "--datatype", default = 'count', help='either count or relab')
     parser.add_argument("-r", "--related", default = 'no', help='whether the batch effect is related to library size')
     parser.add_argument("-a", "--agent", default = 'H', help='binarizing agent for differential abundance evaluation')
+    parser.add_argument("-p", "--overallpath", default = '/athena/linglab/scratch/chf4012', help='overall path for data interaction and saving')
 
     args = vars(parser.parse_args())
+
+    overall_path = args['overallpath']
+    # overall_path = '/athena/linglab/scratch/chf4012'
+
 
 def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root):
     start_time = time.time()
@@ -852,7 +857,6 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
     return
 
-overall_path = '/athena/linglab/scratch/chf4012'
 
 
 ## simulation evaluation - MIDAS
@@ -1043,17 +1047,9 @@ if ARGPARSE_SWITCH:
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
         visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True)
 
-    elif args['option'] == 4:
-        # simulation_data_updated_eval_count_yesrelation_090723_TEST
-        iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-                    address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
-                    output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
-                    eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
-                    methods_list = ['nobc'], binarizing_agent_biovar = binarizing_agent)
 
 
-
-## RUN ON HARMONY/PERCENTILE_NORM
+# ## RUN HARMONY/PERCENTILE_NORM
 # # autism 2 microbiomeHD
 # ################################################################################
 # vars_use = ["Dataset"]
@@ -1094,6 +1090,10 @@ if ARGPARSE_SWITCH:
 # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/"+"crc_8_CMD_harmony")
 # percentile_norm(address_X, address_Y, "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
 
+
+
+
+# ## EVALUATE METHODS ON REAL-WORLD DATASET
 # ################################################################################
 # # autism 2 microbiomeHD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/autism_2_microbiomeHD'
@@ -1222,7 +1222,7 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
 # plot_PCOA_multiple('cdi_3_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/', datatype = 'relab')
 
-##############################################################################
+# ##############################################################################
 # # ibd_3_CMD
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD'
 # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD'
@@ -1340,7 +1340,8 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
 # plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/')
 
-##############################################################################
+# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+# ##############################################################################
 # output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 # datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]

@@ -16,7 +16,9 @@ args = commandArgs(trailingOnly=TRUE)
 
 print(args)
 if (length(args)==0 || length(args)>1 ) {
-  stop("There has to be exactly one argument supplied with this script for simulation runs", call.=FALSE)
+#   stop("There has to be exactly one argument supplied with this script for simulation runs", call.=FALSE)
+    option = 5
+    print("not running on real-world dataset")
 } else if (length(args)==1) {
   # default output file
   option= args[1]

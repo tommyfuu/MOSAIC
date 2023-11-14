@@ -357,54 +357,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 }
 
 
-# autism 2 microbiomeHD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD',
-# dataset = "Dataset",
-# covar = c("DiseaseState"),
-# count = TRUE,
-# batch_ref = 'asd_son',
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-# )
-
-# # cdi 3 microbiomeHD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/cdi_3_microbiomeHD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD',
-# dataset = "Dataset",
-# covar = c("DiseaseState"),
-# count = TRUE,
-# batch_ref = 'cdi_youngster',
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', 'Tune_ConQuR', 'Tune_ConQuR_libsize')
-# )
-
-# # ibd 3 CMD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/ibd_3_CMD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD',
-# dataset = "study_name",
-# batch_ref = 'HMP_2019_ibdmdb',
-# covar = c("disease", "gender", "age"),
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-# )
-
-
-# # CRC_8_CMD
-# run_methods('/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_count_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_data/CRC_8_CMD_meta_data.csv',
-# '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/CRC_8_CMD/CRC_8_CMD',
-# dataset = "study_name",
-# batch_ref = 'FengQ_2015',
-# covar = c("disease", "gender", "age"),
-# used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# # used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel', 'Tune_ConQuR_rel')
-# )
-
-
 # just to speed up
 # An mc-version of the sapply function.
 library(parallel)
