@@ -38,7 +38,7 @@ if ARGPARSE_SWITCH:
     parser.add_argument("-i", "--iteration", type=int, default = 1, help='the iteration number')
     parser.add_argument("-d", "--datatype", default = 'count', help='either count or relab')
     parser.add_argument("-r", "--related", default = 'no', help='whether the batch effect is related to library size')
-    parser.add_argument("-a", "--agent", default = 'H', help='binarizing agent for differential abundance evaluation')
+    parser.add_argument("-a", "--agent", default = 'cond_1', help='binarizing agent for differential abundance evaluation')
     parser.add_argument("-p", "--overallpath", default = '/athena/linglab/scratch/chf4012', help='overall path for data interaction and saving')
 
     args = vars(parser.parse_args())
@@ -81,8 +81,11 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
     # r_bio_var = meta_data[bio_var]
 
     # initial graphics
-    
-    r.pdf(output_root+dataset_name+"_multi_PCOA_both_batch.pdf", len(batch_corrected_df_l)*6, height=12)
+    if datatype == 'count':
+        height = 12
+    else:
+        height = 6
+    r.pdf(output_root+dataset_name+"_multi_PCOA_both_batch.pdf", len(batch_corrected_df_l)*6, height=height)
     if datatype == 'count':
         r.par(mfrow = robjects.IntVector([2, len(batch_corrected_df_l)]))
     else:
@@ -211,6 +214,7 @@ class Evaluate(object):
                         covar_df.index = df.index
                         data = pd.concat([data, covar_df], axis=1)
             # add constant to df
+            # print("data", list(data))
             data = sm.add_constant(data)
             # fit ols model
             model_ols = sm.OLS(bio_var_l, data, missing = 'drop').fit()
@@ -846,6 +850,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             else:
                 alpha = 1
             # if count_l[0] or 'FDR' in stats_summary_name:
+            ax1.tick_params(axis='both', which='major', labelsize=14)
+            ax1.spines["top"].set_visible(False)
+            ax1.spines["right"].set_visible(False)
             ax1.plot(datasets, stats_dict_1[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
             ax1.set_title(stats_name_l[0])
             
@@ -855,6 +862,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 tick.set_rotation(90)
 
             if stats_dict_2 != {}:
+                ax2.tick_params(axis='both', which='major', labelsize=14)
+                ax2.spines["top"].set_visible(False)
+                ax2.spines["right"].set_visible(False)
                 ax2.plot(datasets, stats_dict_2[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
                 ax2.set_title(stats_name_l[1])
                 ax2.set_xticks(datasets)
@@ -895,9 +905,13 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 ## simulation evaluation - MIDAS
 ## null data
 ## STEP 1. GENERATE DATA FROM DATABASE
-or_l = [1, 1.25, 1.5]
-cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+# or_l = [1, 1.25, 1.5]
+# cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+# batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+
+or_l = [1.25]
+cond_effect_val_l = [0.5]
+batch_effect_val_l = [0.5]
 num_iters = 1000
 
 def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, cond_effect_val_l, batch_effect_val_l, 
@@ -1343,12 +1357,12 @@ if ARGPARSE_SWITCH:
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
 # # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_ibd_3_CMD_percentile_norm/ibd_3_CMD_percentile_norm', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'percentile_norm', binarizing_agent_biovar = 'IBD')
 
-# ### global evaluation
-# input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = "ibd_3_CMD"
-# methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
+# # ### global evaluation
+# # input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
+# # bio_var = "disease"
+# # dataset_name = "ibd_3_CMD"
+# # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+# # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
 
 # ### multi-method plot
 # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
@@ -1402,29 +1416,29 @@ if ARGPARSE_SWITCH:
 # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
 # # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_crc_8_CMD_percentile_norm/crc_8_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'percentile_norm', binarizing_agent_biovar = 'adenoma')
 
-# ### global evaluation
-# input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
-# bio_var = "disease"
-# dataset_name = "crc_8_CMD"
-# methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
+# # ### global evaluation
+# # input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
+# # bio_var = "disease"
+# # dataset_name = "crc_8_CMD"
+# # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+# # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
 
 # ### multi-method plot
 # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
 # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
-# plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/')
+# plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
 
-# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-##############################################################################
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
+# # ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+# ##############################################################################
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+# datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
 
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-datasets = ["ibd_3_CMD", "crc_8_CMD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+# datasets = ["ibd_3_CMD", "crc_8_CMD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')
