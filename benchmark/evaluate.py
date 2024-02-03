@@ -24,6 +24,7 @@ from rpy2.robjects import pandas2ri, numpy2ri
 from rpy2.robjects.packages import importr
 from statsmodels.stats.multitest import multipletests
 import statsmodels.api as sm
+import matplotlib as mpl
 
 ARGPARSE_SWITCH = True
 
@@ -526,7 +527,6 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             current_dir_path = output_dir_path + '/' + method
         print(current_dir_path)
         current_dir_file_names = os.listdir(current_dir_path)
-
         # fetch stats available in the summary file: batch/biovar PERMANOVA R2 in both Aitchinson and Bray-curtis + Shannon pval
         aitch_method_perm_path = [result for result in current_dir_file_names if "_summary" in result][0]
         summary_df = pd.read_csv(current_dir_path+'/'+aitch_method_perm_path)
@@ -604,7 +604,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             method_dict["limma"]["runtime"] = float(line.split(" ")[-2])
         if "MMUPHin" in line and "MMUPHin" in method_dict.keys():
             method_dict["MMUPHin"]["runtime"] = float(line.split(" ")[-2])
-        if "ConQuR" in line and "Tune" not in line and "ConQuR" in method_dict.keys():
+        if "ConQuR" in line and "Tune" not in line and 'libsize' not in line and "ConQuR" in method_dict.keys():
             method_dict["ConQuR"]["runtime"] = float(line.split(" ")[-2])
         if "ConQuR_libsize" in line and "ConQuR_libsize" in method_dict.keys():
             method_dict["ConQuR_libsize"]["runtime"] = float(line.split(" ")[-2])
@@ -652,7 +652,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
 def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, simulate = False, sim_num_iters = 1000, dimensions = (5, 5), taxa_gt = None, line = True, count_l = [True, True, False, False], 
     marker_dict = {'nobc': 'o', "combat": 'v', "combat_seq": "D", "limma": '^', "MMUPHin": '<', "ConQuR": '>', "ConQuR_libsize": 's', "ConQuR_rel": 'p', "harmony":"+", "percentile_norm": "*"},
     method_colors_dict = {'nobc': 'black', "combat": 'red', "combat_seq": 'yellow', "limma": 'blue', "MMUPHin": 'green', "ConQuR": 'orange', "ConQuR_libsize": 'purple', "ConQuR_rel": 'pink', "harmony":"turquoise", "percentile_norm": "gray"},
-    postfix = '.png'):
+    postfix = '.png', demonstrate = False):
     '''visualize the PERMANOVA batch R2 (Bray/Aitch), PERMANOVA condition R2 (Bray/Aitch), ROC-AUC and FDR/sensitivity'''
     # global set up
     print("initializing")
@@ -835,7 +835,8 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
 
     print("plotting")
-    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png'):
+    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvalline = False):
+        mpl.rcParams['pdf.fonttype'] = 42 # ensure exported pdf has edited text
         ## plot the dictionaries in two matplotlib subplots as line plots
         plt.clf()
         if stats_dict_2 != {}:
@@ -872,32 +873,52 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 for tick in ax2.get_xticklabels():
                     tick.set_rotation(90)
 
-
         plt.subplots_adjust(right=0.8)
         if stats_dict_2 != {}:
             ax2.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
         else:
             ax1.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
 
+        # optionally set ylim
+        if ylim != []:
+            ax1.set_ylim(ylim)
+            if stats_dict_2 != {}:
+                ax2.set_ylim(ylim)
+        
+        # optionally add 0.05 significance line
+        if pvalline:
+            ax1.axhline(y=0.05, color='r', linestyle='--')
+            if stats_dict_2 != {}:
+                ax2.axhline(y=0.05, color='r', linestyle='--')
+
         # find parent dir of output_dir_l[0]
         plt.savefig(output_root+"_"+stats_summary_name+postfix, bbox_inches="tight")
         plt.clf()
         plt.close()
-    if count_l[0]:
-        plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix)
-        plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix)
-    else:
-        plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix)
-        plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix)
-    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix)
-    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix)
-    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix)
-    plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
 
+    # plot
     if taxa_gt is not None:
-        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix)
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[0, 1])
+    
+    plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
+    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1])
+    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1])
+    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True)
 
-
+    if not demonstrate:
+        if count_l[0]:
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+        else:
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+    else:
+        if count_l[0]:
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix)
+        else:
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix)        
     return
 
 
@@ -905,13 +926,11 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 ## simulation evaluation - MIDAS
 ## null data
 ## STEP 1. GENERATE DATA FROM DATABASE
-# or_l = [1, 1.25, 1.5]
-# cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-# batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+or_l = [1, 1.25, 1.5]
+cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 
-or_l = [1.25]
-cond_effect_val_l = [0.5]
-batch_effect_val_l = [0.5]
+
 num_iters = 1000
 
 def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, cond_effect_val_l, batch_effect_val_l, 
@@ -948,8 +967,17 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, co
                             res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, ["batchid"],  output_root+"/ibd_"+str(odds_ratio)+ "_" +str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) +"_harmony")
                         if not os.path.exists(output_root+"/ibd_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "_percentile_norm.csv") or os.path.getsize(output_root+"/ibd_"+str(odds_ratio)+"_"+ str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) + "_percentile_norm.csv") == 0:
                             percentile_norm(address_X, address_Y, "cond", "cond_1", "comma", output_root+"/ibd_"+str(odds_ratio)+ "_"+str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), simulate=True)
-
+                
+                        # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, ["batchid"],  output_root+"/ibd_"+str(odds_ratio)+ "_" +str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter) +"_harmony")
+                        # percentile_norm(address_X, address_Y, "cond", "cond_1", "comma", output_root+"/ibd_"+str(odds_ratio)+ "_"+str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), simulate=True)
                     elif run_or_evaluate == "evaluate":    
+                        # # global stats dataframe generation
+                        # input_frame_path = address_XY_dir_path+"/ibd_150_count_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                        # bio_var = "cond"
+                        # dataset_name = "batch_0"
+                        # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path+"/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/",
+                        #     output_dir_path = eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter), simulate = True, taxa_gt = True,
+                        #     datatype = datatype)
                         # check if the whole iteration finished
                         if not os.path.isfile(eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'):
                             if cond_effect_val == 0:
@@ -1020,6 +1048,13 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, co
                                     output_root= eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/",
                                     datatype = datatype)
                         else:
+                            # global stats dataframe generation
+                            input_frame_path = address_XY_dir_path+"/ibd_150_count_"+ str(odds_ratio)+ "_"+ str(cond_effect_val)+ "_"+ str(batch_effect_val)+ '_iter_'+ str(iter)+ ".csv"
+                            bio_var = "cond"
+                            dataset_name = "batch_0"
+                            global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path+"/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/",
+                                output_dir_path = eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter), simulate = True, taxa_gt = True,
+                                datatype = datatype)
                             print("current iteration is already done: "+str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val))
 
     return
@@ -1058,13 +1093,13 @@ if ARGPARSE_SWITCH:
                     "out_1_0.75_0.25", "out_1_0_0.5", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0_0.75", "out_1_0.25_0.75", "out_1_0_1"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
 
         datasets = ["out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0.25_0.25", "out_1_0.5_0.25", 
                     "out_1_0.75_0.25", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0.25_0.75"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
 
 
         # odds ratio == 1.25
@@ -1072,13 +1107,13 @@ if ARGPARSE_SWITCH:
                     "out_1.25_0.75_0.25", "out_1.25_0_0.5", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0_0.75", "out_1.25_0.25_0.75", "out_1.25_0_1"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
 
         datasets = ["out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0", "out_1.25_0.25_0.25", "out_1.25_0.5_0.25",
                     "out_1.25_0.75_0.25", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0.25_0.75"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
 
 
         # odds ratio == 1.5
@@ -1086,13 +1121,13 @@ if ARGPARSE_SWITCH:
                     "out_1.5_0.75_0.25", "out_1.5_0_0.5", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5", "out_1.5_0_0.75", "out_1.5_0.25_0.75", "out_1.5_0_1"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
     
         datasets = ["out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
                     "out_1.5_0.75_0.25", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5",  "out_1.5_0.25_0.75" ]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
 
     elif args['option'] == 4:
         # visualization for Supplemental Table 2: simulation for no batch effect and for no biological effects
@@ -1107,36 +1142,36 @@ if ARGPARSE_SWITCH:
         datasets = ["out_1_0_0", "out_1_0_0.25", "out_1_0_0.5", "out_1_0_0.75", "out_1_0_1"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1_no_cond_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1_no_cond_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters, demonstrate=True)
 
         datasets = ["out_1_0_0", "out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1_bo_batch_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1_no_batch_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters, demonstrate=True)
 
 
         # odds ratio == 1.25
         datasets = ["out_1.25_0_0", "out_1.25_0_0.25", "out_1.25_0_0.5", "out_1.25_0_0.75", "out_1.25_0_1"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.25_no_cond_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.25_no_cond_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters, demonstrate=True)
 
         datasets = ["out_1.25_0_0", "out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.25_bo_batch_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.25_no_batch_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters, demonstrate=True)
 
 
         # odds ratio == 1.5
         datasets = ["out_1.5_0_0", "out_1.5_0_0.25", "out_1.5_0_0.5", "out_1.5_0_0.75", "out_1.5_0_1"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.5_no_cond_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.5_no_cond_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters, demonstrate=True)
 
         datasets = ["out_1.5_0_0", "out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0"]
         output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.5_bo_batch_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf')
+        visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.5_no_batch_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters, demonstrate=True)
 
 # ## RUN HARMONY/PERCENTILE_NORM
 # # autism 2 microbiomeHD
