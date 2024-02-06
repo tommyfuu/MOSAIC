@@ -3,6 +3,7 @@ import argparse
 import os
 
 
+# or_l = [1, 1.25, 1.5]
 or_l = [1, 1.25, 1.5]
 cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
@@ -21,7 +22,7 @@ if args.datatype == 'count':
 else:
     check_var = 'ConQuR_rel'
 dir_path = f'{args.dir}/simulation_data_output_{args.datatype}_{args.related}relation_102023'
-for iteration in range(1, 1001):
+for iteration in range(800,1000):
     if iteration % 50 == 0:
         print(f'iteration {iteration}')
 
