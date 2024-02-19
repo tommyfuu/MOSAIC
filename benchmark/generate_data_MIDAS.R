@@ -117,8 +117,8 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
   current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 0, "cond_0")
   current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 1, "cond_1")
   write.csv(current_metadata, file = out_meta, row.names = FALSE)
-  print("doing its thing")
-  # print(cond)
+  print("MIDAS running...")
+
   # simulate data
   fitted = Midas.setup(otu_original, fit.beta=FALSE)
 
@@ -140,22 +140,18 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
 
   fitted_c0b0 = Midas.modify(fitted,
                             lib.size = libsize_l)
-                            # taxa.1.prop = 'same')
   fitted_c1b0 = Midas.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect)*rel10 + cond_effect*rel1_cond,
                             mean.rel.abund = (1-cond_effect)*rel0 + cond_effect*rel_cond)
-                            # taxa.1.prop = 'same')
   fitted_c0b1 = Midas.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-batch_effect)*rel10 + batch_effect*rel1_batch,
                             mean.rel.abund = (1-batch_effect)*rel0 + batch_effect*rel_batch)
-                            # taxa.1.prop = 'same')
   fitted_c1b1 = Midas.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect-batch_effect)*rel10 + cond_effect*rel1_cond + batch_effect*rel1_batch,
                             mean.rel.abund = (1-cond_effect-batch_effect)*rel0 + cond_effect*rel_cond + batch_effect*rel_batch)
-                            # taxa.1.prop = 'same')
 
 
   otu_c0b0 = Midas.sim(fitted_c0b0)$sim_count
@@ -164,7 +160,6 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
   otu_c1b1 = Midas.sim(fitted_c1b1)$sim_count
 
   otu = matrix(NA, nrow = n, ncol = p)
-  # print(cond==0&batchid==0)
   otu[cond==0&batchid==0,] = otu_c0b0[cond==0&batchid==0,] # unadjusted ones
   otu[cond==1&batchid==0,] = otu_c1b0[cond==1&batchid==0,] # ones adjuetd only for condition
   otu[cond==0&batchid==1,] = otu_c0b1[cond==0&batchid==1,] # ones adjuetd only for batch
@@ -228,22 +223,28 @@ scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_
 }
 
 
-
+## for generating the datasets with NO confounding between library size and batch effect
 or_l = c(1, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+cat("Pls enter the path of the output directory to save the data with NO confounding to. Make sure this directory already exists. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_norelation_102023 ");
+output_root <- readLines("stdin",n=1);
+cat("You entered")
+ str(output_root);
+cat( "\n" )
 scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
 
+print("all the generation for the NO confounding datasets are done.")
 
-
+## for generating the datasets with confounding between library size and batch effect
 or_l = c(1, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
+# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
+cat("Pls enter the path of the output directory to save the data WITH confounding to. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_yesrelation_102023 ");
+output_root <- readLines("stdin",n=1);
+cat("You entered")
+ str(output_root);
+cat( "\n" )
 scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
-# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
-# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
