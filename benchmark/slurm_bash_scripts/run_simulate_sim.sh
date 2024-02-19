@@ -1,7 +1,7 @@
 #! /bin/bash -l
  
 #SBATCH --partition=scu-cpu
-#SBATCH --array=1-1000
+#SBATCH --array=1-1000 
 #SBATCH --job-name=midasgen
 #SBATCH --time=72:00:00
 #SBATCH --mem=20G   # memory requested, units available: K,M,G,T

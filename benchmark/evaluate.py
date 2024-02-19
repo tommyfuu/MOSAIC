@@ -96,6 +96,8 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
     if datatype == 'count':
         for idx, batch_corrected_df in enumerate(batch_corrected_df_l):
             data = np.array(batch_corrected_df)
+            # use the first len(bio_var_l) rows
+            data = data[:len(meta_data_l[idx])]
             # check if na/+-inf/huge value is in the data
             if np.isnan(data).any() or np.isinf(data).any() or np.max(data) > 100000:
                 print("combat family explosion case, default #s and skipped")
@@ -217,6 +219,8 @@ class Evaluate(object):
             # add constant to df
             # print("data", list(data))
             data = sm.add_constant(data)
+            # use the first len(bio_var_l) rows
+            data = data.iloc[:len(bio_var_l)]
             # fit ols model
             model_ols = sm.OLS(bio_var_l, data, missing = 'drop').fit()
             # save p value to dict
@@ -278,6 +282,9 @@ class Evaluate(object):
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
+
+        # use the first len(bio_var_l) rows
+        data = data[:len(self.meta_data[self.IDCol])]
 
         # attempting rpy2
         #Must be activated
@@ -348,11 +355,12 @@ class Evaluate(object):
         if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
             print("combat family explosion case, default #s and skipped")
             return 1, None
-        
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         data = data+np.abs(np.min(data))
         ids = list(self.meta_data[self.IDCol])
+        # use the first len(bio_var_l) rows
+        data = data[:len(ids)]
         shannon_div = alpha_diversity('shannon', data, ids)
         
 
@@ -421,6 +429,8 @@ class Evaluate(object):
 
         # get the data
         used_x = self.batch_corrected_df.copy() # note that standard scaler is already conducted
+        # use the first len(bio_var_l) rows
+        used_x = used_x.iloc[:len(self.meta_data[self.IDCol])]
         used_y = list(self.meta_data[self.bio_var])
         sampld_ids = list(self.meta_data[self.IDCol])
         # Creating the Training and Test set from data
@@ -835,7 +845,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
 
     print("plotting")
-    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvalline = False):
+    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvalline = False, line=True):
         mpl.rcParams['pdf.fonttype'] = 42 # ensure exported pdf has edited text
         ## plot the dictionaries in two matplotlib subplots as line plots
         plt.clf()
@@ -854,10 +864,20 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             ax1.tick_params(axis='both', which='major', labelsize=14)
             ax1.spines["top"].set_visible(False)
             ax1.spines["right"].set_visible(False)
-            ax1.plot(datasets, stats_dict_1[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+            if line:
+                ax1.plot(datasets, stats_dict_1[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+            else:
+                dataset_to_x_dict = {datasets[i]: i for i in range(len(datasets))}
+                # jitter the xs of each point using a normal distribution
+                jitter = 0.03
+                for dataset in datasets:
+                    dataset_to_x_dict[dataset] += np.random.normal(0, jitter)
+                ax1.plot(dataset_to_x_dict.values(), stats_dict_1[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
             ax1.set_title(stats_name_l[0])
-            
-            ax1.set_xticks(datasets)
+            if len(datasets) == 2:
+                ax1.set_xticks([0, 1], datasets)
+            else:
+                ax1.set_xticks(datasets)                    
             # set xticks to be verticle
             for tick in ax1.get_xticklabels():
                 tick.set_rotation(90)
@@ -866,9 +886,20 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 ax2.tick_params(axis='both', which='major', labelsize=14)
                 ax2.spines["top"].set_visible(False)
                 ax2.spines["right"].set_visible(False)
-                ax2.plot(datasets, stats_dict_2[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+                if line:
+                    ax2.plot(datasets, stats_dict_2[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
+                else:
+                    dataset_to_x_dict = {datasets[i]: i for i in range(len(datasets))}
+                    # jitter the xs of each point using a normal distribution
+                    jitter = 0.03
+                    for dataset in datasets:
+                        dataset_to_x_dict[dataset] += np.random.normal(0, jitter)
+                    ax2.plot(dataset_to_x_dict.values(), stats_dict_2[method], label=method, color=color, alpha=alpha, marker=marker_dict[method], linestyle=linestyle)
                 ax2.set_title(stats_name_l[1])
-                ax2.set_xticks(datasets)
+                if len(datasets) == 2:
+                    ax2.set_xticks([0, 1], datasets)
+                else:
+                    ax2.set_xticks(datasets)
                 # set xticks to be verticle
                 for tick in ax2.get_xticklabels():
                     tick.set_rotation(90)
@@ -880,7 +911,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             ax1.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
 
         # optionally set ylim
-        if ylim != []:
+        if ylim != [] and line:
             ax1.set_ylim(ylim)
             if stats_dict_2 != {}:
                 ax2.set_ylim(ylim)
@@ -896,29 +927,29 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         plt.clf()
         plt.close()
 
-    # plot
+    # plot        
     if taxa_gt is not None:
-        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[0, 1])
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[0, 1], line=line)
     
     plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
-    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1])
-    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1])
-    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True)
+    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
+    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
+    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True, line=line)
 
     if not demonstrate:
         if count_l[0]:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line = True)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line)
         else:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line)
     else:
         if count_l[0]:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix)
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix)
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line)
         else:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix)
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix)        
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line)        
     return
 
 
@@ -1464,16 +1495,16 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
 # plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
 
-# # ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-# ##############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-# methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
+# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+##############################################################################
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
 
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-# methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-# datasets = ["ibd_3_CMD", "crc_8_CMD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+datasets = ["ibd_3_CMD", "crc_8_CMD"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')

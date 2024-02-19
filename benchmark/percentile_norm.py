@@ -18,6 +18,54 @@ import pandas as pd
 import argparse
 import time
 
+python3 evaluate.py -o 1 -i 101 -r yes -d count
+python3 evaluate.py -o 2 -i 101 -r yes -d count -a cond_1
+# Rscript methods_benchmarking_sim.R 1
+# Rscript methods_benchmarking_sim.R 2
+# Rscript methods_benchmarking_sim.R 3
+# Rscript methods_benchmarking_sim.R 4
+# Rscript methods_benchmarking_sim.R 5
+# Rscript methods_benchmarking_sim.R 6
+# Rscript methods_benchmarking_sim.R 7
+# Rscript methods_benchmarking_sim.R 8
+# Rscript methods_benchmarking_sim.R 9
+# Rscript methods_benchmarking_sim.R 10
+# Rscript methods_benchmarking_sim.R 11
+# Rscript methods_benchmarking_sim.R 12
+# Rscript methods_benchmarking_sim.R 13
+# Rscript methods_benchmarking_sim.R 14
+# Rscript methods_benchmarking_sim.R 15
+# Rscript methods_benchmarking_sim.R 16
+# Rscript methods_benchmarking_sim.R 17
+# Rscript methods_benchmarking_sim.R 18
+# Rscript methods_benchmarking_sim.R 19
+# Rscript methods_benchmarking_sim.R 20
+
+# Rscript generate_data_MIDAS.R 447
+# Rscript generate_data_MIDAS.R 448
+# Rscript generate_data_MIDAS.R 972
+# Rscript generate_data_MIDAS.R 971
+# Rscript generate_data_MIDAS.R 970
+# Rscript generate_data_MIDAS.R 969
+# Rscript generate_data_MIDAS.R 968
+# Rscript generate_data_MIDAS.R 967
+# Rscript generate_data_MIDAS.R 966
+# Rscript generate_data_MIDAS.R 965
+# Rscript generate_data_MIDAS.R 964
+# Rscript generate_data_MIDAS.R 963
+# Rscript generate_data_MIDAS.R 962
+# Rscript generate_data_MIDAS.R 961
+# Rscript generate_data_MIDAS.R 960
+# Rscript generate_data_MIDAS.R 959
+# Rscript generate_data_MIDAS.R 958
+# Rscript generate_data_MIDAS.R 957
+# Rscript generate_data_MIDAS.R 956
+# Rscript generate_data_MIDAS.R 955
+# Rscript generate_data_MIDAS.R 954
+# Rscript generate_data_MIDAS.R 953
+# Rscript generate_data_MIDAS.R 952
+# Rscript generate_data_MIDAS.R 951
+
 ## Input arguments
 parser = argparse.ArgumentParser(description='Script to convert case control '
     + 'OTU tables into percentiles of control samples.')

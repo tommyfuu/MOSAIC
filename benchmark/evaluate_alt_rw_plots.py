@@ -7,7 +7,7 @@ import os
 
 def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, simulate = False, sim_num_iters = 1000, dimensions = (7, 5), taxa_gt = None, count_l = [True, True, False, False], 
     marker_dict = {'autism_2_microbiomeHD': 'o', 'cdi_3_microbiomeHD': 's', 'ibd_3_CMD': 'd', 'crc_8_CMD': 'H'},
-    ds_colors_dict = {'autism_2_microbiomeHD': 'violet', 'cdi_3_microbiomeHD': 'black', 'ibd_3_CMD': 'red', 'crc_8_CMD': 'blue'},
+    ds_colors_dict = {'autism_2_microbiomeHD': 'violet', 'cdi_3_microbiomeHD': 'black', 'ibd_3_CMD': 'orange', 'crc_8_CMD': 'blue'},
     postfix = '.png', demonstrate = False):
     '''visualize the PERMANOVA batch R2 (Bray/Aitch), PERMANOVA condition R2 (Bray/Aitch), ROC-AUC and FDR/sensitivity'''
     # global set up
@@ -280,11 +280,11 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
 
 # ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
 ##############################################################################
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf')
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+# datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf')
 
 output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]

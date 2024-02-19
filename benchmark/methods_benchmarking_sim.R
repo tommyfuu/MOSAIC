@@ -450,28 +450,36 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
   }
 }
 
+# or_l = c(1, 1.25, 1.5)
 or_l = c(1, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 
+# or_l = c(1.25)
+# cond_effect_val_l = c(0.5)
+# batch_effect_val_l = c(0.5)
 
+# print("count no relation")
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
 # method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
+# print("relab no relation")
 # overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_102023'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
-# method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-# scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
+print("count yes relation")
+overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
+output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_yesrelation_102023'
+method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_102023'
+# print("relab yes relation")
+# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
+# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_yesrelation_102023'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 

@@ -1,0 +1,26 @@
+
+2024/02/06 11:09:40 ERROR : Local file system at /athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/output_relab_yes_range101_150.tar.lz4: error reading source root directory: directory not found
+Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.0s
+2024/02/06 11:09:40 ERROR : Attempt 1/3 failed with 1 errors and: directory not found
+Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Errors:                 1 (retrying may help)
+Elapsed time:         1.0sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.2s
+2024/02/06 11:09:41 ERROR : Local file system at /athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/output_relab_yes_range101_150.tar.lz4: error reading source root directory: directory not found
+Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.4s
+2024/02/06 11:09:41 ERROR : Attempt 2/3 failed with 1 errors and: directory not found
+Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Errors:                 1 (retrying may help)
+Elapsed time:         1.4sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.7s
+2024/02/06 11:09:41 ERROR : Local file system at /athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/output_relab_yes_range101_150.tar.lz4: error reading source root directory: directory not found
+Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Elapsed time:         1.7s
+2024/02/06 11:09:41 ERROR : Attempt 3/3 failed with 1 errors and: directory not found
+Transferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Errors:                 1 (retrying may help)
+Elapsed time:         1.7sTransferred:   	          0 B / 0 B, -, 0 B/s, ETA -
+Errors:                 1 (retrying may help)
+Elapsed time:         1.7s
