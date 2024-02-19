@@ -32,16 +32,16 @@ The above way to set up the environment might lead to deprecated versions of fil
 
 A comprehensive evaluation requires stringent simulation and corresponding analyses. Here, we employs [MIDAS](https://pubmed.ncbi.nlm.nih.gov/36993431/), an intuitive microbiome data simulator that recapitulates microbiome data structure without distributional assumptions while allowing users to manipulate variables of interest, in our case batch effect and conditional effect. We further edited codes to enable the simulation to include varying odds ratio (between biological signals and batch in each taxa), existing and non-existing relationship between batch effect and library size, as well as the generation of both count and relative abundance data.
 
-To reproduce one iteration of our data using MIDAS, one can do the following in command line
+To reproduce one iteration of our data using MIDAS, one can do the following in command line to generate minimally viable simulated dataset
 
 ```
 cd benchmark # enter the benchmark directory
 R # to initiate the R environment
 source('./generate_data_MIDAS.R') # load generation file
 # the odds ratio/conditional (biological) effect/batch effect you wish to generate the data for
-or_l = c(1, 1.25, 1.5)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+or_l = c(1.25)
+cond_effect_val_l = c(0.5)
+batch_effect_val_l = c(0.5)
 output_root = './trial/simulate' # please make sure the output_root exists
 # run functions
 scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, batch_libsize_related = FALSE, libsize_l=sampled_libsize_l)
@@ -56,6 +56,14 @@ To explain the arguments above:
 - `libsize_l`, a list of library_sizes for samples defined, only relevant if `batch_libsize_related == TRUE`.
 
 This code chunk will generate a count and its corresponding relative abundance datasets for each paratemer combination in the three lists defined above, along with the metadata for samples (which ones in which batch) as well as metadata for taxa (which ones are ground truth perturbed biomarkers) for later experiments.
+
+Note that you may always replace the input parameter list with a complete list so that you generate data for all parameter combinations, which might take a bit longer:
+
+```
+or_l = c(1, 1.25, 1.5)
+cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+```
 
 To run the simulation script in scale, in the folder `benchmark/slurm_bash_scripts` there is a bash script called `step0_run_simulate_sim.sh`, which one can revise to generate their own slurm bash scripts based on and move back into the `benchmark` folder for running the `generate_data_MIDAS.R` script in scale with `slurm`. Note that for running MIDAS data generation in slurm, you might need to uncomment the commented lines at the bottom of the `generate_data_MIDAS.R` script.
 
@@ -86,14 +94,14 @@ Note that while the crc dataset started with 8 batches, after pre-cleaning, ther
 For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the scripts `/benchmark/methods_benchmarking.R` for the real-world datasets and `/benchmark/methods_benchmarking_sim.R` for simulation datasets. 
 
 #### 2.1.1 Running these methods for simulation
-To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset:
+To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset for running methods and generating batch corrected datasets for the minimally viable parameter set:
 ```
 source('./methods_benchmarking_sim.R')
 overall_path = './trial/simulate'
 output_dir = './trial/simulation_data_output_count_norelation' # pls make sure this dir exists
-or_l = c(1, 1.25, 1.5)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+or_l = c(1.25)
+cond_effect_val_l = c(0.5)
+batch_effect_val_l = c(0.5)
 method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 ```
@@ -107,7 +115,7 @@ Similarly to running these methdos for simulation, you can run the methods for t
 source('./methods_benchmarking.R')
 # autism 2 microbiomeHD
 current_root = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD'
-output_root = './trial/autism_2_microbiomeHD/autism_2_microbiomeHD'
+output_root = './trial/autism_2_microbiomeHD/autism_2_microbiomeHD_methodsout'
 run_methods(paste0(current_root, "_count_data.csv"),
     paste0(current_root, "_meta_data.csv"),
     output_root,
@@ -128,11 +136,70 @@ And of course, you can run this in scale by referencing `/benchmark/slurm_bash_s
 
 ### 2.2 For methods implemented in Python
 
-For methods implemented in Python including `harmony, percentile_normalization`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the script `/benchmark/evaluate.py -o 1`. Note that only option `1` is for running the two methods, otherwise the script will enter evaluate mode for the step 4.
+#### 2.2.1 Simulation
 
-For the ease of running, one can uncomment section with starting with `## RUN HARMONY/PERCENTILE_NORM` in the script before running `python3 /benchmark/evaluate.py -o 1` to run the methods on the real-world dataset. One can scale run the methods on simulated dataset by referencing the lines containing `-o 1` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
+For methods implemented in Python including `harmony, percentile_normalization`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the script `/benchmark/evaluate.py -o 1`. Similarly to before, one can run this option in both an iterative python kernel (iPython) or through command line.
 
-Please read the argparse instructions carefully when running `evaluate.py`. To briefly explain, `-r` flag checks whether running on simulated datasets with a relationship between library size and batch effect occurence or not, with the options `yes` and `no`; `-d` flag checks dataset, with the options `count` and `relab`; `-i` option checks current running, an integer. Default options are `no`, `count`, and `1`. There also is the flag `-p` which allows you to define an overall path where data should be saved, in which you should create the folder `simulation_outputs` for ease of running.
+In iPython, once you enter the `benchmark` directory, you may do the following for simulation as a minimum viable example:
+```
+from evaluate import *
+overall_path = './trial' # pls make sure this dir exists
+or_l = [1.25]
+cond_effect_val_l = [0.5]
+batch_effect_val_l = [0.5]
+GLOBAL_DATATYPE = 'count'
+related = 'no'
+binarizing_agent_biovar = 'cond_1'
+iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = 1, or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
+                    address_XY_dir_path = './trial/simulate', 
+                    output_dir_path = './trial/simulation_data_output_count__{GLOBAL_DATATYPE}_{related}relation', 
+                    eval_dir_path = overall_path+f"/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation",
+                    methods_list = methods_list_dict[GLOBAL_DATATYPE], 
+                    binarizing_agent_biovar = binarizing_agent_biovar)
+
+```
+
+To explain the parameters, we first note that `iterative_methods_running_evaluate` is a generic wrapper function, where arguments
+- `run_or_evaluate`, a `str` type argument, should be either `run` or `evaluate`. In this case, you should use `run` because we are running the two batch correction methods implemented in python; for the later evaluation section, you use `evaluate`
+- `datatype`, a `str` type argument, should be either `count` or `relab`. 
+- `iter` is simulation iteration for data generation (default=1 without user selection).
+- `or_l, cond_effect_val_l, batch_effect_val_l`: three parameter lists to generate data for.
+- `address_XY_dir_path`, a `str` type argument denoting the path of the directory where the original (uncorrected) count/relab dataset and the corresponding metadata (Y) should be.
+- `output_dir_path`, a `str` type argument denoting the path of the directory where the batch corrected datasets after running the methods and the related statistics should be.
+- `eval_dir_path`, a `str` type argument denoting the path of the directory where the evaluation results after analyzing the characteristics of each corrected dataset should be. (Need to be defined but not super relevant for this module)
+- `methods_list`, a `list` of `str` denoting the methods whose batch corrected datasets are then evaluated. For example, it can be `["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]` for count datasets, and `["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]` for relab sets. (Need to be defined but not super relevant for this module)
+- `binarizing_agent_biovar`, a `str` type argument denoting the name of the column in the input metadata for the column of the binary biological condition variable. For the simulated dataset in our setup, it should be `cond_1`.
+
+To make it easier for streamlining, we also defined the following:
+- `related`, a `str` type argument, should be either `yes` or `no` denoting whether confounding exists or not between library size and the simulated batch effect.
+
+Alternatively, we provide a command line option, which might require you to go in and change certain codes in `evaluate.py`, but allows you a more streamlined running experience:
+
+1. Replace the parameter combination set up (line 1089-1092).
+2. Ensure that the methods run and the paths where the input files are taken and output files generated are correct (lines 1101-1106.)
+3. Run `python3 /benchmark/evaluate.py -o 1 -d relab -r yes -i 1 -a cond_1 -p /athena/linglab/scratch/chf4012`. You can easily replace `relab` with `count` (the default) or `yes` with `no` (default), 1 with other iteration numbers, and the path with the overall path where all your files are generated. For details, please check lines 38-43 of the file `evaluate.py`.
+
+For this alternative option, you can scale run with slurm by referencing the file `/benchmark/slurm_bash_scripts/step1_python_methods_run_sim.sh`, revising it, and moving it to `benchmark` folder to slurm run.
+
+#### 2.2.2 Real-world dataset
+
+For the iPython option,
+```
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+overall_path = './trial' # pls make sure this dir exists
+address_X = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv'
+address_Y = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv'
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/autism_2_microbiomeHD_methodsout/autism_2_microbiomeHD_harmony")
+percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/autism_2_microbiomeHD_methodsout/autism_2_microbiomeHD")
+```
+
+One can scale run the methods on simulated dataset by referencing the lines containing `-o 1` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
+
+
+For the ease of running, one can uncomment section with starting with `## RUN HARMONY/PERCENTILE_NORM` in the script `evaluate.py`, double-check the abovementioned arguments, before running `python3 /benchmark/evaluate.py` in the command line to run the methods on the real-world datasets. This way, one can also easily scale run in slurm by referencing the file `/benchmark/slurm_bash_scripts/step1_python_methods_run_rw.sh`, revising it, and moving it to `benchmark` folder to slurm run.
+
 
 ## 3. evaluation
 

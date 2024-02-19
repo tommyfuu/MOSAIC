@@ -45,7 +45,6 @@ if ARGPARSE_SWITCH:
     args = vars(parser.parse_args())
 
     overall_path = args['overallpath']
-    # overall_path = '/athena/linglab/scratch/chf4012'
 
 
 def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root):
@@ -957,14 +956,10 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 ## simulation evaluation - MIDAS
 ## null data
 ## STEP 1. GENERATE DATA FROM DATABASE
-or_l = [1, 1.25, 1.5]
-cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 
 
-num_iters = 1000
-
-def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, cond_effect_val_l, batch_effect_val_l, 
+def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_effect_val_l, batch_effect_val_l, 
+            iter = 1
             address_XY_dir_path = overall_path+'/simulation_data_updated_MIDAS_yesrelation_090723', 
             output_dir_path = overall_path+"/simulation_data_updated_output_count_yesrelation_090723", 
             eval_dir_path = overall_path+"/simulation_data_updated_eval_count_yesrelation_090723",
@@ -1090,7 +1085,11 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, iter, or_l, co
 
     return
 
-
+### parameter combination set-up
+or_l = [1, 1.25, 1.5]
+cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+num_iters = 1000
 
 if ARGPARSE_SWITCH:
     GLOBAL_DATATYPE = args['datatype']
@@ -1204,7 +1203,7 @@ if ARGPARSE_SWITCH:
         counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
         visualize_simulation_stats(eval_dir_path+f'/line_plots_MIDAS_demonstration_{GLOBAL_DATATYPE}_{related}/sim_1.5_no_batch_effect', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters, demonstrate=True)
 
-# ## RUN HARMONY/PERCENTILE_NORM
+# ## RUN HARMONY/PERCENTILE_NORM FOR RW
 # # autism 2 microbiomeHD
 # ################################################################################
 # vars_use = ["Dataset"]
@@ -1495,16 +1494,16 @@ if ARGPARSE_SWITCH:
 # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
 # plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
 
-# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-##############################################################################
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
+# # ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+# ##############################################################################
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+# datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
 
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-datasets = ["ibd_3_CMD", "crc_8_CMD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+# datasets = ["ibd_3_CMD", "crc_8_CMD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')
