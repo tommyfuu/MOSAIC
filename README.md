@@ -17,7 +17,7 @@ This github repository stores the code for benchmarking microbiome batch correct
 You can potentially set up the environment using conda by executing the following command:
 
 ```
-conda env create -f /benchmark/final_env.yml
+conda env create -f environment.yml
 ```
 
 The above way to set up the environment might lead to deprecated versions of files. To create a clean environment with all the necessary libraries, you can also manually install the following packages:
@@ -57,7 +57,7 @@ To explain the arguments above:
 
 This code chunk will generate a count and its corresponding relative abundance datasets for each paratemer combination in the three lists defined above, along with the metadata for samples (which ones in which batch) as well as metadata for taxa (which ones are ground truth perturbed biomarkers) for later experiments.
 
-To run the simulation script in scale, in the folder `benchmark/slurm_bash_scripts` there is a bash script called `run_simulate_sim.sh`, which one can model based on and move back into the `benchmark` folder for running the `generate_data_MIDAS.R` script in scale with `slurm`.
+To run the simulation script in scale, in the folder `benchmark/slurm_bash_scripts` there is a bash script called `step0_run_simulate_sim.sh`, which one can revise to generate their own slurm bash scripts based on and move back into the `benchmark` folder for running the `generate_data_MIDAS.R` script in scale with `slurm`. Note that for running MIDAS data generation in slurm, you might need to uncomment the commented lines at the bottom of the `generate_data_MIDAS.R` script.
 
 ### 1.2 Real world microbiome data collection and cleaning
 
