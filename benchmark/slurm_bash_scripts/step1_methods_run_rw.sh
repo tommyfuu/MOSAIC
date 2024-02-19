@@ -12,6 +12,5 @@
 source ~/.bashrc
 mamba activate bc_benchmark
 echo "conda activated?"
-# Rscript methods_benchmarking.R ${ITER_ARRAY[$i-1]}
 Rscript methods_benchmarking.R 3
 exit

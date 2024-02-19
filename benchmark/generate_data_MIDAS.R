@@ -223,28 +223,28 @@ scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_
 }
 
 
-## for generating the datasets with NO confounding between library size and batch effect
-or_l = c(1, 1.25, 1.5)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-cat("Pls enter the path of the output directory to save the data with NO confounding to. Make sure this directory already exists. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_norelation_102023 ");
-output_root <- readLines("stdin",n=1);
-cat("You entered")
- str(output_root);
-cat( "\n" )
-scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+# ## for generating the datasets with NO confounding between library size and batch effect
+# or_l = c(1, 1.25, 1.5)
+# cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# # output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+# cat("Pls enter the path of the output directory to save the data with NO confounding to. Make sure this directory already exists. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_norelation_102023 ");
+# output_root <- readLines("stdin",n=1);
+# cat("You entered")
+#  str(output_root);
+# cat( "\n" )
+# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
 
-print("all the generation for the NO confounding datasets are done.")
+# print("all the generation for the NO confounding datasets are done.")
 
-## for generating the datasets with confounding between library size and batch effect
-or_l = c(1, 1.25, 1.5)
-cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
-cat("Pls enter the path of the output directory to save the data WITH confounding to. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_yesrelation_102023 ");
-output_root <- readLines("stdin",n=1);
-cat("You entered")
- str(output_root);
-cat( "\n" )
-scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+# ## for generating the datasets with confounding between library size and batch effect
+# or_l = c(1, 1.25, 1.5)
+# cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+# # output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
+# cat("Pls enter the path of the output directory to save the data WITH confounding to. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_yesrelation_102023 ");
+# output_root <- readLines("stdin",n=1);
+# cat("You entered")
+#  str(output_root);
+# cat( "\n" )
+# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)

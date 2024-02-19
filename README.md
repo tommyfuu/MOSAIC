@@ -42,7 +42,7 @@ source('./generate_data_MIDAS.R') # load generation file
 or_l = c(1, 1.25, 1.5)
 cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-output_root = './trial' # please make sure the output_root exists
+output_root = './trial/simulate' # please make sure the output_root exists
 # run functions
 scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, batch_libsize_related = FALSE, libsize_l=sampled_libsize_l)
 ```
@@ -83,13 +83,31 @@ Note that while the crc dataset started with 8 batches, after pre-cleaning, ther
 
 ### 2.1 For methods implemented in R
 
-For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the script `/benchmark/methods_benchmarking.R`. For example:
+For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the scripts `/benchmark/methods_benchmarking.R` for the real-world datasets and `/benchmark/methods_benchmarking_sim.R` for simulation datasets. 
+
+#### 2.1.1 Running these methods for simulation
+To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset:
+```
+source('./methods_benchmarking_sim.R')
+overall_path = './trial/simulate'
+output_dir = './trial/simulation_data_output_count_norelation' # pls make sure this dir exists
+or_l = c(1, 1.25, 1.5)
+cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
+```
+
+Note that the script has been written in a way that makes it easy to call and run on different iterations of input, as long as you uncomment the last commented code chunk in the `methods_benchmarking_sim.R`. For example, running `Rscript methods_benchmarking_sim.R 10` will run iteration 10. To scale run simulation in slurm, one can reference file `/benchmark/slurm_bash_scripts/step1_methods_run_sim_batch.sh` and move the revised file back to `/benchmark` before running on slurm in scale.
+
+#### 2.1.2 Running these methods for real-world datasets
+Similarly to running these methdos for simulation, you can run the methods for the real-world dataset by calling the script like below after running `R` in the `benchmark` folder:
 
 ```
 source('./methods_benchmarking.R')
 # autism 2 microbiomeHD
-current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD'
-output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD'
+current_root = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD'
+output_root = './trial/autism_2_microbiomeHD/autism_2_microbiomeHD'
 run_methods(paste0(current_root, "_count_data.csv"),
     paste0(current_root, "_meta_data.csv"),
     output_root,
@@ -106,16 +124,7 @@ To simplify the running of methods on each of the four real-world dataset, one c
 Rscript methods_benchmarking.R 1 # 1 for autism_2_microbiomeHD, 2 for cdi_3_microbiomeHD, 3 for ibd_3_CMD, 4 for crc_8_CMD
 ```
 
-To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset:
-```
-source('./methods_benchmarking_sim.R')
-overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
-method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
-```
-
-To scale run simulation in slurm, one can reference file `/benchmark/slurm_bash_scripts/methods_run_sim_batch.sh` and move the revised file back to `/benchmark` before running on slurm in scale.
+And of course, you can run this in scale by referencing `/benchmark/slurm_bash_scripts/step1_methods_run_rw.sh` and move the revised file back to `/benchmark` for slurm runs.
 
 ### 2.2 For methods implemented in Python
 
