@@ -229,27 +229,19 @@ scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_
 
 
 
-# or_l = c(1, 1.25, 1.5)
-# cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/trial'
-# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
-
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
-# # # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-# # scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_yesrelation_090723'
-# # scaled_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter=1000, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
-# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
+or_l = c(1, 1.25, 1.5)
+cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
+scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)
 
 
-# or_l = c(1, 1.25, 1.5)
-# cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
-# scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
+
+or_l = c(1, 1.25, 1.5)
+cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
+output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
+scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = TRUE)
 
 # output_root = '/athena/linglab/scratch/chf4012/simulation_data_updated_MIDAS_norelation_090723'
 # scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, libsize_l=sampled_libsize_l, batch_libsize_related = FALSE)

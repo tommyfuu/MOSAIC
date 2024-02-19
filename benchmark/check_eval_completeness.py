@@ -18,7 +18,7 @@ print(args.verbose)
 
 
 dir_path = f'{args.dir}/simulation_data_eval_{args.datatype}_{args.related}relation_102023'
-for iteration in range(1,1000):
+for iteration in range(1,1001):
     if iteration % 50 == 0:
         print(f'iteration {iteration}')
 
