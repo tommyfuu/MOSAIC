@@ -676,6 +676,8 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     global_methods_rf_precision_l_dict = {}
     global_methods_rf_recall_l_dict = {}
     global_methods_runtime_l_dict = {}
+    global_methods_batch_shannon_pval_rejection_proportions_l_dict = {}
+    global_methods_biovar_shannon_pval_rejection_proportions_l_dict = {}
 
     if taxa_gt is not None:
         global_methods_FDR_r2_l_dict = {}
@@ -824,6 +826,8 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                     global_methods_rf_precision_l_dict[method] = []
                     global_methods_rf_recall_l_dict[method] = []
                     global_methods_runtime_l_dict[method] = []
+                    global_methods_batch_shannon_pval_rejection_proportions_l_dict[method] = []
+                    global_methods_biovar_shannon_pval_rejection_proportions_l_dict[method] = []
                     if taxa_gt is not None:
                         global_methods_FDR_r2_l_dict[method] = []
                         global_methods_sensitivity_r2_l_dict[method] = []
@@ -842,7 +846,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 if taxa_gt is not None:
                     global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
-
+                # for shannon pvals, calculate the rejection proportions for each method at each parameter combination instead
+                global_methods_batch_shannon_pval_rejection_proportions_l_dict[method].append(np.mean([(cross_iter_batch_shannon_pval_dict[iter][method] < 0.05)*1 for iter in range(sim_num_iters)]))
+                global_methods_biovar_shannon_pval_rejection_proportions_l_dict[method].append(np.mean([(cross_iter_biovar_shannon_pval_dict[iter][method] < 0.05)*1 for iter in range(sim_num_iters)]))
     print("plotting")
     def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvalline = False, line=True):
         mpl.rcParams['pdf.fonttype'] = 42 # ensure exported pdf has edited text
@@ -853,6 +859,18 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         else:
             print("only one plot")
             fig, ax1 = plt.subplots(1, 1, figsize=(dimensions[0], dimensions[1]))
+
+        # log2 case
+        if 'FDR' in stats_name_l:
+            # deep copy dictionaries
+            import copy
+            stats_dict_1_clone = copy.deepcopy(stats_dict_1)
+            stats_dict_2_clone = copy.deepcopy(stats_dict_2)
+            for method in stats_dict_1.keys():
+                # very small added to avoid log(0)
+                stats_dict_1[method] = [np.log2(x+1e-4) for x in stats_dict_1[method]]
+                if stats_dict_2 != {}:
+                    stats_dict_2[method] = [np.log2(x+1e-4) for x in stats_dict_2[method]]
         for method in methods:
             color = method_colors_dict[method]
             if method != highlighted_method:
@@ -881,6 +899,10 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             for tick in ax1.get_xticklabels():
                 tick.set_rotation(90)
 
+            if 'FDR' in stats_name_l:
+                # plot log(1e-4, 0.2, 0.4, 0.6, 0.8, 1) on y axis while keeping the original values in the legend
+                ax1.set_yticks([np.log2(1e-4), np.log2(0.2), np.log2(0.4), np.log2(0.6), np.log2(0.8), np.log2(1)], ["~0", "0.2", "0.4", "0.6", "0.8", "1"])
+
             if stats_dict_2 != {}:
                 ax2.tick_params(axis='both', which='major', labelsize=14)
                 ax2.spines["top"].set_visible(False)
@@ -902,6 +924,10 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 # set xticks to be verticle
                 for tick in ax2.get_xticklabels():
                     tick.set_rotation(90)
+
+                if 'FDR' in stats_name_l:
+                    # plot log(1e-4, 0.2, 0.4, 0.6, 0.8, 1) on y axis while keeping the original values in the legend
+                    ax2.set_yticks([np.log2(1e-4), np.log2(0.2), np.log2(0.4), np.log2(0.6), np.log2(0.8), np.log2(1)], ["~0", "0.2", "0.4", "0.6", "0.8", "1"])
 
         plt.subplots_adjust(right=0.8)
         if stats_dict_2 != {}:
@@ -928,12 +954,13 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
     # plot        
     if taxa_gt is not None:
-        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[0, 1], line=line)
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[np.log(1e-6), 0], line=line)
     
     plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
     plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
     plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
     plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True, line=line)
+    plot_stats('shannon_pval_rejection_proportions', ["PERMANOVA batch Shannon pval rejection proportion", "PERMANOVA biovar Shannon pval rejection proportion"], global_methods_batch_shannon_pval_rejection_proportions_l_dict, global_methods_biovar_shannon_pval_rejection_proportions_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True, line=line)
 
     if not demonstrate:
         if count_l[0]:
@@ -959,7 +986,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
 
 def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_effect_val_l, batch_effect_val_l, 
-            iter = 1
+            iter = 1,
             address_XY_dir_path = overall_path+'/simulation_data_updated_MIDAS_yesrelation_090723', 
             output_dir_path = overall_path+"/simulation_data_updated_output_count_yesrelation_090723", 
             eval_dir_path = overall_path+"/simulation_data_updated_eval_count_yesrelation_090723",

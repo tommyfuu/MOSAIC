@@ -203,7 +203,32 @@ For the ease of running, one can uncomment section with starting with `## RUN HA
 
 ## 3. evaluation
 
-Comprehensive evaluation, including the following, is implemented in the script `/benchmark/evaluate.py`, using options `2, 3`.
+Comprehensive evaluation, including the following, is implemented in the script `/benchmark/evaluate.py`. Similarly to the methods benchmarking, it can be wrapped and run in command line using options `2, 3` with the `iterative_methods_running_evaluate` function with `run_or_evaluate = 'evaluate'`.
+
+The evaluation section is divided into two sections: __3.1__ generating summary statistics for each simulated dataset or for each real-world dataset; and __3.2__ generating intuitive visualizations based on the summary statistics from __3.1__.
+
+### 3.1 Generating summary statistics for each simulated dataset or for each real-world dataset
+
+#### 3.1.1 Simulated datasets
+To aid your intuitive understanding, you can do the following for a minimally viable run in iPython:
+
+```
+from evaluate import *
+overall_path = './trial' # pls make sure this dir exists
+or_l = [1.25]
+cond_effect_val_l = [0.5]
+batch_effect_val_l = [0.5]
+GLOBAL_DATATYPE = 'count'
+related = 'no'
+binarizing_agent_biovar = 'cond_1'
+iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = 1, or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
+                    address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
+                    output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
+                    eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
+                    methods_list = methods_list_dict[GLOBAL_DATATYPE], binarizing_agent_biovar = binarizing_agent_biovar)
+
+
+```
 
 - when running `python3 /benchmark/evaluate.py -o 2`, the script conducts evaluation on one dataset at a time. The dataset can be a real-world dataset, or one iteration of the simulated dataset. For the ease of running, one can uncomment the lines starting with `## EVALUATE METHODS ON REAL-WORLD DATASET`. One can scale run the methods on simulated dataset by referencing the lines containing `-o 2` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
     -  this steps conducts the actual evaluation, including R^2 of biological conditions and batches, statistical significance of differences in alpha (Shannon) diversity between different batches and biological conditions, differentially abundant taxa detection (and check with ground truth to calculate FDR and power in simulation), use the batch corrected dataset to train a simple random forest predictor to predict a pair of binary biological conditions and calculate accuracy metrics.
