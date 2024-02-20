@@ -13,7 +13,21 @@ This github repository stores the code for benchmarking microbiome batch correct
 
 
 ## Table of content
-- 0. Environment set up
+- 0. [Environment set up](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#0-environment-set-up)
+- 1. [(Simulated) Data generation/ (real-world data) collection](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#1-data-generationcollection)
+    - 1.1 [Simulation data generation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#111-simulation-data-generation)
+    - 1.2 [Real world microbiome data collection and cleaning](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#12-real-world-microbiome-data-collection-and-cleaning)
+- 2. [Running/benchmarking methods](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#2-benchmarking-methods)
+    - 2.1 [For methods implemented in R](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#21-for-methods-implemented-in-r)
+        - 2.1.1 [Running these methods for simulation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#211-running-these-methods-for-simulation)
+        - 2.1.2 [Running these methods for real-world datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#212-running-these-methods-for-real-world-datasets)
+    - 2.2 [For methods implemented in Python](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#22-for-methods-implemented-in-python)
+        - 2.2.1 [Running these methods for simulation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#221-simulation)
+        - 2.2.2 [Running these methods for real-world datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#222-real-world-dataset)
+- 3. [Evaluation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#3-evaluation)
+    - 3.1 [Generating summary statistics for each simulated dataset or for each real-world dataset](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#31-generating-summary-statistics-for-each-simulated-dataset-or-for-each-real-world-dataset)
+        - 3.1.1 [Summary stats for simulated datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#311-simulated-datasets)
+        
 
 ## 0. Environment set up
 
@@ -318,6 +332,11 @@ plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var
 After generating summary statistics over 100 iterations in simulations, or across all real-world datasets, it is important to visualize in an intuitive manner to allow the users to understand what methods are better in what scenarios. Different from the other sections, this section requires users to either have run all iterations of simulations, or to have run all the real-world datasets of interest. This is because these summary plots would not make sense without all the iterations/diversity of real-world datasets.
 
 This section is made easy with the options `3` of `evaluate.py` for simulation dataset and directly running `python3 evaluate_alt_rw_plots` and for real-world datasets respectively. These generate line plots to visualize the statistics of different batch corrected methods in various simulation settings and in various real-world datasets. If you seek to run these codes, please double check the lines 1146-1193 of `evaluate.py` and lines 299-311 of `evaluate_alt_rw_plots` carefully to ensure the path of the files are correct. Note that there is a certain level of customness to the codes to ensure the generated figures are good-looking.
+
+For example, one can run the following code:
+```
+python3 evaluate.py -oo 3 -d relab -r yes
+```
 
 
 ## 4. Additional notes
