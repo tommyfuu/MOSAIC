@@ -12,6 +12,9 @@ This github repository stores the code for benchmarking microbiome batch correct
 - Evaluation of the methods
 
 
+## Table of content
+- 0. Environment set up
+
 ## 0. Environment set up
 
 You can potentially set up the environment using conda by executing the following command:
@@ -115,7 +118,7 @@ Similarly to running these methdos for simulation, you can run the methods for t
 source('./methods_benchmarking.R')
 # autism 2 microbiomeHD
 current_root = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD'
-output_root = './trial/autism_2_microbiomeHD/autism_2_microbiomeHD_methodsout'
+output_root = './trial/autism_2_microbiomeHD/rw_methods_out/autism_2_microbiomeHD'
 run_methods(paste0(current_root, "_count_data.csv"),
     paste0(current_root, "_meta_data.csv"),
     output_root,
@@ -152,7 +155,7 @@ related = 'no'
 binarizing_agent_biovar = 'cond_1'
 iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = 1, or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
                     address_XY_dir_path = './trial/simulate', 
-                    output_dir_path = './trial/simulation_data_output_count__{GLOBAL_DATATYPE}_{related}relation', 
+                    output_dir_path = f'./trial/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation', 
                     eval_dir_path = overall_path+f"/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation",
                     methods_list = methods_list_dict[GLOBAL_DATATYPE], 
                     binarizing_agent_biovar = binarizing_agent_biovar)
@@ -175,8 +178,8 @@ To make it easier for streamlining, we also defined the following:
 
 Alternatively, we provide a command line option, which might require you to go in and change certain codes in `evaluate.py`, but allows you a more streamlined running experience:
 
-1. Replace the parameter combination set up (line 1089-1092).
-2. Ensure that the methods run and the paths where the input files are taken and output files generated are correct (lines 1101-1106.)
+1. Replace the parameter combination set up (line 1119-1122).
+2. Ensure that the methods run and the paths where the input files are taken and output files generated are correct (lines 1132-1136)
 3. Run `python3 /benchmark/evaluate.py -o 1 -d relab -r yes -i 1 -a cond_1 -p /athena/linglab/scratch/chf4012`. You can easily replace `relab` with `count` (the default) or `yes` with `no` (default), 1 with other iteration numbers, and the path with the overall path where all your files are generated. For details, please check lines 38-43 of the file `evaluate.py`.
 
 For this alternative option, you can scale run with slurm by referencing the file `/benchmark/slurm_bash_scripts/step1_python_methods_run_sim.sh`, revising it, and moving it to `benchmark` folder to slurm run.
@@ -191,26 +194,29 @@ overall_path = './trial' # pls make sure this dir exists
 address_X = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv'
 address_Y = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv'
 data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/autism_2_microbiomeHD_methodsout/autism_2_microbiomeHD_harmony")
-percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/autism_2_microbiomeHD_methodsout/autism_2_microbiomeHD")
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_harmony")
+percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD")
 ```
 
 One can scale run the methods on simulated dataset by referencing the lines containing `-o 1` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
 
 
-For the ease of running, one can uncomment section with starting with `## RUN HARMONY/PERCENTILE_NORM` in the script `evaluate.py`, double-check the abovementioned arguments, before running `python3 /benchmark/evaluate.py` in the command line to run the methods on the real-world datasets. This way, one can also easily scale run in slurm by referencing the file `/benchmark/slurm_bash_scripts/step1_python_methods_run_rw.sh`, revising it, and moving it to `benchmark` folder to slurm run.
+For the ease of running, one can use option `4` in the `evaluate.py` script once they have checked to ensure all the variables and file paths are correct in lines 1196-1236.
 
 
 ## 3. evaluation
 
-Comprehensive evaluation, including the following, is implemented in the script `/benchmark/evaluate.py`. Similarly to the methods benchmarking, it can be wrapped and run in command line using options `2, 3` with the `iterative_methods_running_evaluate` function with `run_or_evaluate = 'evaluate'`.
+Comprehensive evaluation is implemented in the script `/benchmark/evaluate.py`, with partial visualizations for the real-world datasets implemented in `/benchmark/evaluate_alt_rw_plots.py`. 
+
+Similarly to the methods benchmarking, for simulation, it can be wrapped and run in command line using options `2, 3` in `/benchmark/evaluate.py` with the `iterative_methods_running_evaluate` function with `run_or_evaluate = 'evaluate'`. On the other hand, for real-world dataset, it can be wrapped and run in command line using 
+options `4, 5` in `/benchmark/evaluate.py` with the `iterative_methods_running_evaluate` function with `run_or_evaluate = 'evaluate'`. For reproducibility, the line plots for real-world evaluations are implemented in `/benchmark/evaluate_alt_rw_plots.py`.
 
 The evaluation section is divided into two sections: __3.1__ generating summary statistics for each simulated dataset or for each real-world dataset; and __3.2__ generating intuitive visualizations based on the summary statistics from __3.1__.
 
 ### 3.1 Generating summary statistics for each simulated dataset or for each real-world dataset
 
 #### 3.1.1 Simulated datasets
-To aid your intuitive understanding, you can do the following for a minimally viable run in iPython:
+To aid your intuitive understanding, you can do the following for a minimally viable run in iPython. This will generate a folder of files similar to `benchmark/trial/simulation_data_eval_count_norelation/out_1.25_0.5_0.5_iter_1`, which has output subfolders consisting of evaluation results from each method, a csv file with global summary stats, and a pdf figure for visualizing batch effect removal across all methods.
 
 ```
 from evaluate import *
@@ -222,17 +228,96 @@ GLOBAL_DATATYPE = 'count'
 related = 'no'
 binarizing_agent_biovar = 'cond_1'
 iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = 1, or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-                    address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
-                    output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
-                    eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
-                    methods_list = methods_list_dict[GLOBAL_DATATYPE], binarizing_agent_biovar = binarizing_agent_biovar)
-
+                    address_XY_dir_path = './trial/simulate', 
+                    output_dir_path = f'./trial/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation', 
+                    eval_dir_path = overall_path+f"/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation",
+                    methods_list = methods_list_dict[GLOBAL_DATATYPE], 
+                    binarizing_agent_biovar = binarizing_agent_biovar)
 
 ```
 
-- when running `python3 /benchmark/evaluate.py -o 2`, the script conducts evaluation on one dataset at a time. The dataset can be a real-world dataset, or one iteration of the simulated dataset. For the ease of running, one can uncomment the lines starting with `## EVALUATE METHODS ON REAL-WORLD DATASET`. One can scale run the methods on simulated dataset by referencing the lines containing `-o 2` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
-    -  this steps conducts the actual evaluation, including R^2 of biological conditions and batches, statistical significance of differences in alpha (Shannon) diversity between different batches and biological conditions, differentially abundant taxa detection (and check with ground truth to calculate FDR and power in simulation), use the batch corrected dataset to train a simple random forest predictor to predict a pair of binary biological conditions and calculate accuracy metrics.
-- after running the step above, one runs `python3 /benchmark/evaluate.py -o 3` for all iterations of simulation of the same type (e.g. 1000 iterations of `count` data with `no` relationship between batch effect occurence and library size, parameterized by the odds ratio, conditional effect, biological effect lists) to plot line plots to visualize the trends in data as parameters in the three lists change. For the ease of running one can uncomment the lines starting with `## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS`. For simulation, one can, for example, simply run `python3 /benchmark/evaluate.py evaluate.py -o 3 -r yes -d relab`. You might want to redefine the flag `-p` which allows you to define an overall path where data should be saved, in which you should create the folder `simulation_outputs` for ease of running.
+Alternatively, we provide a command line option, which might require you to go in and change certain codes in `evaluate.py`, but allows you a more streamlined running experience:
+
+1. Replace the parameter combination set up (line 1119-1122).
+2. Ensure that the methods run and the paths where the input files are taken and output files generated are correct (lines 1140-1144)
+3. Run `python3 /benchmark/evaluate.py -o 2 -d relab -r yes -i 1 -a cond_1 -p /athena/linglab/scratch/chf4012`. You can easily replace `relab` with `count` (the default) or `yes` with `no` (default), 1 with other iteration numbers, and the path with the overall path where all your files are generated. For details, please check lines 38-43 of the file `evaluate.py`.
+
+For this alternative option, you can scale run with slurm by referencing the file `/benchmark/slurm_bash_scripts/step2_evaluate_run_sim.sh`, revising it, and moving it to `benchmark` folder to slurm run.
+
+#### 3.1.2 Real-world dataset
+
+For the iPython option, you can do the following for a minimally viable run in iPython. This will generate a folder of files similar to `benchmark/trial/autism_2_microbiomeHD_eval`, which has output subfolders consisting of evaluation results from each method, a csv file with global summary stats, and a pdf figure for visualizing batch effect removal across all methods.
+```
+# autism 2 microbiomeHD
+output_dir_path = './trial/autism_2_microbiomeHD_eval'
+address_directory = '../data/cleaned_data/autism_2_microbiomeHD'
+vars_use = ["Dataset"]
+IDCol = 'Sam_id'
+
+address_Y = "../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv"
+
+# nobc
+address_X = "../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
+data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+### nobc
+Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id', method = 'nobc')
+
+### harmony
+address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
+res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id', method = 'harmony')
+
+# benchmarking other methods: 
+### combat (combat_seq)
+address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
+data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id', method = 'combat_seq')
+
+### limma
+address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_limma.csv"
+data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id', method = 'limma')
+
+### MMUPHin
+address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
+data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id', method = 'MMUPHin')
+
+### ConQuR
+address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
+data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR')
+
+### ConQuR_libsize
+address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
+data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR_libsize')
+
+### percentile_norm
+address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
+data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id', method = 'percentile_norm')
+
+### global evaluation
+input_frame_path = "../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
+bio_var = "DiseaseState"
+dataset_name = "autism_2_microbiomeHD"
+methods_list = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, "./trial/rw_methods_out", './trial/autism_2_microbiomeHD_eval', simulate = False)
+
+### multi-method plot
+df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_percentile_norm]
+methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPhin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
+plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
+
+```
+
+### 3.2 Generating intuitive visualizations based on the summary statistics
+
+After generating summary statistics over 100 iterations in simulations, or across all real-world datasets, it is important to visualize in an intuitive manner to allow the users to understand what methods are better in what scenarios. Different from the other sections, this section requires users to either have run all iterations of simulations, or to have run all the real-world datasets of interest. This is because these summary plots would not make sense without all the iterations/diversity of real-world datasets.
+
+This section is made easy with the options `3` of `evaluate.py` for simulation dataset and directly running `python3 evaluate_alt_rw_plots` and for real-world datasets respectively. These generate line plots to visualize the statistics of different batch corrected methods in various simulation settings and in various real-world datasets. If you seek to run these codes, please double check the lines 1146-1193 of `evaluate.py` and lines 299-311 of `evaluate_alt_rw_plots` carefully to ensure the path of the files are correct. Note that there is a certain level of customness to the codes to ensure the generated figures are good-looking.
 
 
 ## 4. Additional notes
