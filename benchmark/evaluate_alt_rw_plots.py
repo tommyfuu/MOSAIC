@@ -5,7 +5,7 @@ import matplotlib as mpl
 import os
 
 
-def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, simulate = False, sim_num_iters = 1000, dimensions = (7, 5), taxa_gt = None, count_l = [True, True, False, False], 
+def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, ylim_dict, simulate = False, sim_num_iters = 1000, dimensions = (7, 5), taxa_gt = None, count_l = [True, True, False, False], 
     marker_dict = {'autism_2_microbiomeHD': 'o', 'cdi_3_microbiomeHD': 's', 'ibd_3_CMD': 'd', 'crc_8_CMD': 'H'},
     ds_colors_dict = {'autism_2_microbiomeHD': 'violet', 'cdi_3_microbiomeHD': 'black', 'ibd_3_CMD': 'orange', 'crc_8_CMD': 'blue'},
     postfix = '.png', demonstrate = False):
@@ -187,7 +187,7 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
 
     print("plotting")
-    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvalline = False):
+    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, ylim_l = [], postfix = '.png', pvalline = False):
         mpl.rcParams['pdf.fonttype'] = 42 # ensure exported pdf has edited text
         linestyle = '-'
         ## plot the dictionaries in two matplotlib subplots as line plots
@@ -197,6 +197,19 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
         else:
             print("only one plot")
             fig, ax1 = plt.subplots(1, 1, figsize=(dimensions[0], dimensions[1]))
+
+        # log2 case
+        if 'FDR' in stats_name_l or 'runtime' in stats_name_l:
+            # deep copy dictionaries
+            import copy
+            stats_dict_1_clone = copy.deepcopy(stats_dict_1)
+            stats_dict_2_clone = copy.deepcopy(stats_dict_2)
+            for method in stats_dict_1.keys():
+                # very small added to avoid log(0)
+                stats_dict_1[method] = [np.log2(x+1e-4) for x in stats_dict_1[method]]
+                if stats_dict_2 != {}:
+                    stats_dict_2[method] = [np.log2(x+1e-4) for x in stats_dict_2[method]]
+
         # now use methods as x axis and stats as y axis, with two lines corresponding to the two datasets
         ax1.tick_params(axis='both', which='major', labelsize=14)
         if stats_dict_2 != {}:
@@ -220,6 +233,9 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
         # set xticks to be verticle
         for tick in ax1.get_xticklabels():
             tick.set_rotation(90)
+        
+        if 'runtime' in stats_name_l:
+            ax1.set_yticks([np.log2(1e-4), np.log2(10), np.log2(25), np.log2(50), np.log2(100), np.log2(200), np.log2(350), np.log2(500)], ["~0", "10", "25", "50", "100", "200", "350", "500"])
 
         if stats_dict_2 != {}:
             ax2.spines["top"].set_visible(False)
@@ -237,10 +253,10 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             ax1.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
 
         # optionally set ylim
-        if ylim != [] and 'rw' not in output_root:
-            ax1.set_ylim(ylim)
+        if ylim_l != [] and 'rw' in output_root:
+            ax1.set_ylim(ylim_l[0])
             if stats_dict_2 != {}:
-                ax2.set_ylim(ylim)
+                ax2.set_ylim(ylim_l[1])
         
         # optionally add 0.05 significance line
         if pvalline:
@@ -255,20 +271,20 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
 
     # plot
     if taxa_gt is not None:
-        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[0, 1])
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, ylim_l = ylim_dict['FDR_sensitivity'], postfix=postfix)
     
-    plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
-    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1])
-    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1])
-    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True)
+    plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, ylim_l = ylim_dict['runtime'], postfix=postfix)
+    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, ylim_l = ylim_dict['auc_f1'], postfix=postfix)
+    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, ylim_l = ylim_dict['precision_recall'], postfix=postfix)
+    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, ylim_l = ylim_dict['shannon_pval'], postfix=postfix, pvalline=True)
 
     if not demonstrate:
         if count_l[0]:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, ylim_l = ylim_dict['batch_r2'], postfix=postfix)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, ylim_l = ylim_dict['biovar_r2'], postfix=postfix)
         else:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, ylim_l = ylim_dict['batch_r2'], postfix=postfix)
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, ylim_l = ylim_dict['biovar_r2'], postfix=postfix)
     else:
         if count_l[0]:
             plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix)
@@ -278,16 +294,18 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix)        
     return
 
-# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-##############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-# methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-# datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf')
+## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+#############################################################################
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 0.9], [0.2, 0.9]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
+alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
 
 output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
 datasets = ["ibd_3_CMD", "crc_8_CMD"]
 output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf')
+ylim_dict = {'batch_r2': [[0, 0.14], [0, 0.14]], 'biovar_r2': [[0, 0.030], [0, 0.030]], 'shannon_pval': [[0, 0.1], [0, 1]], 'auc_f1': [[0.4, 1], [0.4, 1]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
+alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)

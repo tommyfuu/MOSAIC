@@ -3,7 +3,7 @@ from pathlib import Path
 import shutil
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("-o", "--option", type=int, default=1, help='1 for simulation, 2 for method running outputs, 3 for metastasis')
+parser.add_argument("-o", "--option", type=int, default=1, help='1 for simulation, 2 for method running outputs, 3 for evaluation results')
 parser.add_argument("-s", "--suboption", type=int, default=1, help='1 for compartmentalizing files, 2 for generating commands for tar and lz4, and then rclone to the cloud')
 parser.add_argument("-d", "--datatype", default = 'count', help='either count or relab')
 parser.add_argument("-r", "--related", default = 'no', help='whether the batch effect is related to library size')
@@ -82,6 +82,7 @@ elif option == 2:
             print(f'rclone copy /athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_{datatype}_{related}relation_102023_compartmentalized/output_{datatype}_{related}_range{i-50}_{i-1}.tar.lz4 box_wcmc:output_{datatype}_{related}_mic_bc_benchmark_sim_backup/ --progress')
 
 elif option == 3:
+    print("moving evaluation files")
     # 3. evaluation files    
     datatype = args.datatype
     related = args.related
@@ -90,13 +91,13 @@ elif option == 3:
 
     Path(dest_dir).mkdir(parents=True, exist_ok=True)
 
-    for i in range(101, 1051, 50):
+    for i in range(701, 1051, 50):
         current_num = i-50
         # make dest dir 
         Path(f'{dest_dir}/range{i-50}_{i-1}').mkdir(parents=True, exist_ok=True)
-        print(f'{dest_dir}/range{i-50}_{i-1}')
 
         if suboption == 1:
+            print(f'{dest_dir}/range{i-50}_{i-1}')
             while current_num < i:
                 print(current_num)
                 # copy files

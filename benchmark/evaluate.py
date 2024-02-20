@@ -861,7 +861,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             fig, ax1 = plt.subplots(1, 1, figsize=(dimensions[0], dimensions[1]))
 
         # log2 case
-        if 'FDR' in stats_name_l:
+        if 'FDR' in stats_name_l or 'runtime' in stats_name_l:
             # deep copy dictionaries
             import copy
             stats_dict_1_clone = copy.deepcopy(stats_dict_1)
@@ -903,6 +903,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 # plot log(1e-4, 0.2, 0.4, 0.6, 0.8, 1) on y axis while keeping the original values in the legend
                 ax1.set_yticks([np.log2(1e-4), np.log2(0.2), np.log2(0.4), np.log2(0.6), np.log2(0.8), np.log2(1)], ["~0", "0.2", "0.4", "0.6", "0.8", "1"])
 
+            if 'runtime' in stats_name_l:
+                ax1.set_yticks([np.log2(1e-4), np.log2(10), np.log2(25), np.log2(50), np.log2(100), np.log2(200), np.log2(350), np.log2(500)], ["~0", "10", "25", "50", "100", "200", "350", "500"])
+            
             if stats_dict_2 != {}:
                 ax2.tick_params(axis='both', which='major', labelsize=14)
                 ax2.spines["top"].set_visible(False)
