@@ -27,7 +27,8 @@ This github repository stores the code for benchmarking microbiome batch correct
 - 3. [Evaluation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#3-evaluation)
     - 3.1 [Generating summary statistics for each simulated dataset or for each real-world dataset](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#31-generating-summary-statistics-for-each-simulated-dataset-or-for-each-real-world-dataset)
         - 3.1.1 [Summary stats for simulated datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#311-simulated-datasets)
-        
+        - 3.1.2 [Summary stats for real-world datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#312-real-world-dataset)
+    - 3.2 [Generating intuitive visualizations based on the summary statistics](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#32-generating-intuitive-visualizations-based-on-the-summary-statistics)
 
 ## 0. Environment set up
 
@@ -335,7 +336,7 @@ This section is made easy with the options `3` of `evaluate.py` for simulation d
 
 For example, one can run the following code:
 ```
-python3 evaluate.py -oo 3 -d relab -r yes
+python3 evaluate.py -o 3 -d relab -r yes
 ```
 
 
