@@ -946,9 +946,13 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         
         # optionally add 0.05 significance line
         if pvalline:
-            ax1.axhline(y=0.05, color='r', linestyle='--')
+            if 'FDR' in stats_summary_name:
+                pvalline_val = np.log2(0.05)
+            else:
+                pvalline_val = 0.05
+            ax1.axhline(y=pvalline_val, color='r', linestyle='--')
             if stats_dict_2 != {}:
-                ax2.axhline(y=0.05, color='r', linestyle='--')
+                ax2.axhline(y=pvalline_val, color='r', linestyle='--')
 
         # find parent dir of output_dir_l[0]
         plt.savefig(output_root+"_"+stats_summary_name+postfix, bbox_inches="tight")
@@ -957,13 +961,14 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
     # plot        
     if taxa_gt is not None:
-        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[np.log(1e-6), 0], line=line)
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[np.log(1e-6), 0], line=line, pvalline=True)
     
     plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
     plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
     plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
-    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True, line=line)
-    plot_stats('shannon_pval_rejection_proportions', ["PERMANOVA batch Shannon pval rejection proportion", "PERMANOVA biovar Shannon pval rejection proportion"], global_methods_batch_shannon_pval_rejection_proportions_l_dict, global_methods_biovar_shannon_pval_rejection_proportions_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True, line=line)
+    # plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True, line=line)
+    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True,line=line)
+    plot_stats('shannon_pval_rejection_proportions', ["PERMANOVA batch Shannon pval rejection proportion", "PERMANOVA biovar Shannon pval rejection proportion"], global_methods_batch_shannon_pval_rejection_proportions_l_dict, global_methods_biovar_shannon_pval_rejection_proportions_l_dict, postfix=postfix, ylim=[0, 1], line=line)
 
     if not demonstrate:
         if count_l[0]:
