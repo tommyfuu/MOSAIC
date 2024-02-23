@@ -48,7 +48,7 @@ The above way to set up the environment might lead to deprecated versions of fil
 
 ### 1.1.1 Simulation data generation
 
-A comprehensive evaluation requires stringent simulation and corresponding analyses. Here, we employs [MIDAS](https://pubmed.ncbi.nlm.nih.gov/36993431/), an intuitive microbiome data simulator that recapitulates microbiome data structure without distributional assumptions while allowing users to manipulate variables of interest, in our case batch effect and conditional effect. We further edited codes to enable the simulation to include varying odds ratio (between biological signals and batch in each taxa), existing and non-existing relationship between batch effect and library size, as well as the generation of both count and relative abundance data.
+A comprehensive evaluation requires stringent simulation and corresponding analyses. Here, we employ [MIDAS](https://pubmed.ncbi.nlm.nih.gov/36993431/), an intuitive microbiome data simulator that recapitulates microbiome data structure without distributional assumptions while allowing users to manipulate variables of interest, in our case batch effect and conditional effect. We further edited codes to enable the simulation to include varying odds ratio (between biological signals and batch in each taxa), existing and non-existing relationship between batch effect and library size, as well as the generation of both count and relative abundance data.
 
 To reproduce one iteration of our data using MIDAS, one can do the following in command line to generate minimally viable simulated dataset
 
@@ -330,13 +330,18 @@ plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var
 
 ### 3.2 Generating intuitive visualizations based on the summary statistics
 
-After generating summary statistics over 100 iterations in simulations, or across all real-world datasets, it is important to visualize in an intuitive manner to allow the users to understand what methods are better in what scenarios. Different from the other sections, this section requires users to either have run all iterations of simulations, or to have run all the real-world datasets of interest. This is because these summary plots would not make sense without all the iterations/diversity of real-world datasets.
+After generating summary statistics over 1000 iterations in simulations, or across all real-world datasets, it is important to visualize in an intuitive manner to allow the users to understand what methods are better in what scenarios. Different from the other sections, this section requires users to either have run all iterations of simulations, or to have run all the real-world datasets of interest. This is because these summary plots would not make sense without all the iterations/diversity of real-world datasets.
 
 This section is made easy with the options `3` of `evaluate.py` for simulation dataset and directly running `python3 evaluate_alt_rw_plots` and for real-world datasets respectively. These generate line plots to visualize the statistics of different batch corrected methods in various simulation settings and in various real-world datasets. If you seek to run these codes, please double check the lines 1146-1193 of `evaluate.py` and lines 299-311 of `evaluate_alt_rw_plots` carefully to ensure the path of the files are correct. Note that there is a certain level of customness to the codes to ensure the generated figures are good-looking.
 
-For example, one can run the following code:
+For example, one can run the following code for simulation:
 ```
 python3 evaluate.py -o 3 -d relab -r yes
+```
+
+And the following code for the real-world data:
+```
+python3 evaluate_alt_rw_plots.py
 ```
 
 
