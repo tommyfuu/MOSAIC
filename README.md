@@ -41,7 +41,7 @@ conda env create -f environment.yml
 The above way to set up the environment might lead to deprecated versions of files. To create a clean environment with all the necessary libraries, you can also manually install the following packages:
 
 - Python packages: pandas, numpy, matplotlib, scikit-learn, seaborn, scipy, skbio, rpy2, statsmodels
-- R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dplyr, readr, mixOmics, parallel, ade4, compositions
+- R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dplyr, readr, mixOmics, parallel, ade4, compositions, cqrReg, fastDummies
 
 
 ## 1. Data generation/collection
@@ -89,19 +89,68 @@ To run the simulation script in scale, in the folder `benchmark/slurm_bash_scrip
 
 A comprehensive evaluation also requires well-collected and well-preprocessed real-world microbiome data to ensure that the theoretically excelling batch correction methods from simulation experiments work in practice to enabled biomarker and trend discovery in batch corrected datasets while removing batch effect.
 
-To this end, we collect and clean both count and relative abundance real world datasets from two databases, [MicrobiomeHD](https://zenodo.org/records/569601) and [CuratedMetagenomicsData](https://waldronlab.io/curatedMetagenomicData/) (CMD). The real world data preparation can be done by running the following code in the command line:
+To this end, we collect and clean both count and relative abundance real world datasets from two databases, [MicrobiomeHD](https://zenodo.org/records/569601) and [CuratedMetagenomicsData](https://waldronlab.io/curatedMetagenomicData/) (CMD). The real world data preparation can be done by running the following code in the command line in the data directory:
 
+- pre-clean the two microbiomeHD datasets, moving them from different batches to the same files
 ```
-cd data # enter the data directory
-# pre-clean the two microbiomeHD datasets, moving them from different batches to the same files
-python3 step0_microbiomeHD_precleaning.py 
-# (1) loads the four datasets into phyloseq objects (2) clean and prune samples and taxa below 0.05% abundance (3) save to a folder
-Rscript step1_clean_and_prune.R 
-# loads the phyloseq formatted data from step1 to save to a directory in a format easily digestible by later steps of the pipeline, along with generating a complete confounding check table
-python3 step2_preprocessing_summarystats.py
+ipython # enter interactive python mode
+> from step0_microbiomeHD_precleaning import * 
+> overall_path = '/athena/linglab/scratch/chf4012'
+> # autism 2 microbiomeHD
+> output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD'
+> address_directory = overall_path+'/mic_bc_benchmark/data/autism_2_microbiomeHD'
+> data_mat, meta_data = load_data_microbiomeHD(address_directory, output_dir_path)
+> # cdi 3 microbiomeHD
+> output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/intermediate_cdi_3_microbiomeHD/cdi_3_microbiomeHD'
+> address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
+> data_mat, meta_data = load_data_microbiomeHD(address_directory, output_dir_path
 ```
 
-These three commands result in the four subfolders in `data/cleaned_data`, each containing three files: the count (relative abundance) OTU data, the corresponding metadata, and the complete confounding checking table (number of samples in each biological condition in each cleaned dataset).
+- loads the four datasets into phyloseq objects, clean and prune samples and taxa below 0.05% abundance, and save to a folder
+```
+R # enter intractive R mode
+> source('step1_clean_and_prune.R')
+> overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/'
+> autism_phyloseq_obj <- load_phyloseq_from_merged_microbiomeHD(paste0(overall_path, 'intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv'), paste0(overall_path, 'intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv'))
+> clean_prune_save_phyloseq(autism_phyloseq_obj, 'autism_2_microbiomeHD', 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_autism_2_microbiomeHD')
+
+> cdi_phyloseq_obj <- load_phyloseq_from_merged_microbiomeHD(paste0(overall_path, 'intermediate_cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv'), paste0(overall_path, 'intermediate_cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv'))
+> clean_prune_save_phyloseq(cdi_phyloseq_obj, 'cdi_2_microbiomeHD', 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_cdi_3_microbiomeHD')
+
+> ibd_phyloseq_obj <- load_phyloseq_from_merged_CMD(c("HMP_2019_ibdmdb", "LiJ_2014", "NielsenHB_2014"), c("IBD", 'healthy'))
+> clean_prune_save_phyloseq(ibd_phyloseq_obj[[1]], ibd_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_ibd_3_CMD')
+
+> crc_phyloseq_obj <- load_phyloseq_from_merged_CMD(c("FengQ_2015", "HanniganGD_2017", "ThomasAM_2018a", "YachidaS_2019", "ZellerG_2014"), c("adenoma", "healthy"))
+> clean_prune_save_phyloseq(crc_phyloseq_obj[[1]], crc_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_crc_8_CMD')
+```
+
+- loads the phyloseq formatted data from step1 to save to a directory in a format easily digestible by later steps of the pipeline, along with generating a complete confounding check table
+```
+ipython
+> from step2_preprocessing_summarystats import *
+> overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data'
+> # autism_2_microbiomeHD
+> data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_autism_2_microbiomeHD', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
+> data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv')
+> check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD')
+
+> # cdi_3_microbiomeHD
+> data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_cdi_3_microbiomeHD', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
+> data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv')
+> check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD')
+
+> # ibd_3_CMD
+> data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_ibd_3_CMD', f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD', id = 'Sam_id', covar_l = ['disease', 'gender', 'age_category'])
+> data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv', f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv')
+> check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD')
+
+> # crc_8_CMD
+> data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_crc_8_CMD', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD', id = 'Sam_id', covar_l = [])
+> data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv')
+> check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD')
+```
+
+These three code chunks result in the four subfolders in `data/cleaned_data`, each containing three files: the count (relative abundance) OTU data, the corresponding metadata, and the complete confounding checking table (number of samples in each biological condition in each cleaned dataset).
 
 Note that while the crc dataset started with 8 batches, after pre-cleaning, there are actually 5 datasets (batches) that participate in batch correction.
 
@@ -109,7 +158,7 @@ Note that while the crc dataset started with 8 batches, after pre-cleaning, ther
 
 ### 2.1 For methods implemented in R
 
-For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the scripts `/benchmark/methods_benchmarking.R` for the real-world datasets and `/benchmark/methods_benchmarking_sim.R` for simulation datasets. 
+For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the scripts `/benchmark/methods_benchmarking.R` for the real-world datasets and `/benchmark/methods_benchmarking_sim.R` for simulation datasets. Note that before running, please edit line 27 of `methods_benchmarking_sim.R` and line 29 of `methods_benchmarking.R` to ensure that you link to the correct folder path for the folder `ConQuR` under the main source folder.
 
 #### 2.1.1 Running these methods for simulation
 To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset for running methods and generating batch corrected datasets for the minimally viable parameter set:
@@ -133,7 +182,7 @@ Similarly to running these methdos for simulation, you can run the methods for t
 source('./methods_benchmarking.R')
 # autism 2 microbiomeHD
 current_root = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD'
-output_root = './trial/autism_2_microbiomeHD/rw_methods_out/autism_2_microbiomeHD'
+output_root = './trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD'
 run_methods(paste0(current_root, "_count_data.csv"),
     paste0(current_root, "_meta_data.csv"),
     output_root,

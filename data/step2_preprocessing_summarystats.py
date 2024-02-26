@@ -58,23 +58,23 @@ def load_results_from_benchmarked_methods(address_X, address_Y):
 
     return data_mat, meta_data
 
-overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data'
-# autism_2_microbiomeHD
-data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_autism_2_microbiomeHD', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
-data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv')
-check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD')
+# overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data'
+# # autism_2_microbiomeHD
+# data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_autism_2_microbiomeHD', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
+# data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv')
+# check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD')
 
-# cdi_3_microbiomeHD
-data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_cdi_3_microbiomeHD', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
-data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv')
-check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD')
+# # cdi_3_microbiomeHD
+# data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_cdi_3_microbiomeHD', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD', id = 'Sam_id', covar_l = [], relab = False)
+# data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv')
+# check_complete_confounding(meta_data, 'Dataset', 'DiseaseState', f'{overall_path}/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD')
 
-# ibd_3_CMD
-data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_ibd_3_CMD', f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD', id = 'Sam_id', covar_l = ['disease', 'gender', 'age_category'])
-data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv', f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv')
-check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD')
+# # ibd_3_CMD
+# data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_ibd_3_CMD', f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD', id = 'Sam_id', covar_l = ['disease', 'gender', 'age_category'])
+# data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv', f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv')
+# check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD')
 
-# crc_8_CMD
-data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_crc_8_CMD', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD', id = 'Sam_id', covar_l = [])
-data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv')
-check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD')
+# # crc_8_CMD
+# data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_crc_8_CMD', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD', id = 'Sam_id', covar_l = [])
+# data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv')
+# check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD')
