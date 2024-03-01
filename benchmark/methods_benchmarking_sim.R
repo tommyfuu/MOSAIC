@@ -10,6 +10,7 @@ library(doParallel)
 library(dplyr)
 library(readr)
 library(tibble)
+library(stringr)
 library(mixOmics)
 
 args = commandArgs(trailingOnly=TRUE)
@@ -24,7 +25,8 @@ if (length(args)==0 || length(args)>1 ) {
 }
 
 ## load ConQuR
-conqur_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR'
+current_path = getwd()
+conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune.R"))
 source(paste0(conqur_path, "/ConQuR_help_functions_libsize_old.R"))
