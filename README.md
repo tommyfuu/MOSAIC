@@ -32,17 +32,26 @@ This github repository stores the code for benchmarking microbiome batch correct
 
 ## 0. Environment set up
 
-You can potentially set up the environment using conda by executing the following command:
 
-```
-conda env create -f environment.yml
-```
 
-The above way to set up the environment might lead to deprecated versions of files. To create a clean environment with all the necessary libraries, you can also manually install the following packages in a virtual environment with Python 3.8(.17) and R 4.3:
+To create a clean environment with all the necessary libraries, you can manually install the following packages in a virtual environment (conda recommended) with Python 3.8(.17) and R 4.3:
 
 - Python packages: pandas, numpy, matplotlib, scikit-learn, seaborn, scipy, scikit-bio, rpy2, statsmodels
-- R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dplyr, readr, mixOmics, parallel, ade4, compositions, cqrReg, fastDummies, coda.base
+- R packages: 
+    - Installable in conda: phyloseq, bindata, tibble, xtable, sva, limma, vegan, MMUPHin, doParallel, dplyr, readr, parallel, ade4, compositions, cqrReg, fastDummies, coda.base
+    - Have to individually download:
+        - [MIDAS](https://github.com/mengyu-he/MIDASim) 
+        - [FDboost](https://github.com/boost-R/FDboost)
+        - [mixOmics](https://bioconductor.org/packages/release/bioc/html/mixOmics.html)
 
+
+You can potentially set up the environment using conda by executing the following command to create:
+
+```
+conda env create -f env.yml
+```
+
+After this, open `R` in command line, and then indivudally install the three packages MIDAS, FDboost, and mixOmics from the respective sites linked above.
 
 ## 1. Data generation/collection
 
@@ -158,7 +167,9 @@ Note that while the crc dataset started with 8 batches, after pre-cleaning, ther
 
 ### 2.1 For methods implemented in R
 
-For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the scripts `/benchmark/methods_benchmarking.R` for the real-world datasets and `/benchmark/methods_benchmarking_sim.R` for simulation datasets. Note that before running, please edit line 27 of `methods_benchmarking_sim.R` and line 29 of `methods_benchmarking.R` to ensure that you link to the correct folder path for the folder `ConQuR` under the main source folder.
+For methods implemented in R including `combat (combat/combat-seq), limma, MMUPHin, ConQuR (ConQuR/ConQuR_libsize/ConQuR_rel)`, they can be run on a dataset along the preprocessing steps a dataset needs prior to running each of these methods using the scripts `/benchmark/methods_benchmarking.R` for the real-world datasets and `/benchmark/methods_benchmarking_sim.R` for simulation datasets. 
+
+Note that if you run into file path related errors, please check to ensure all the requested files in `methods_benchmarking_sim.R` and `methods_benchmarking.R` exist.
 
 #### 2.1.1 Running these methods for simulation
 To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset for running methods and generating batch corrected datasets for the minimally viable parameter set:
