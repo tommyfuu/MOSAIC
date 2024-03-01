@@ -850,7 +850,7 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 global_methods_batch_shannon_pval_rejection_proportions_l_dict[method].append(np.mean([(cross_iter_batch_shannon_pval_dict[iter][method] < 0.05)*1 for iter in range(sim_num_iters)]))
                 global_methods_biovar_shannon_pval_rejection_proportions_l_dict[method].append(np.mean([(cross_iter_biovar_shannon_pval_dict[iter][method] < 0.05)*1 for iter in range(sim_num_iters)]))
     print("plotting")
-    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvalline = False, line=True):
+    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvallines = [False, False], line=True):
         mpl.rcParams['pdf.fonttype'] = 42 # ensure exported pdf has edited text
         ## plot the dictionaries in two matplotlib subplots as line plots
         plt.clf()
@@ -945,13 +945,16 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 ax2.set_ylim(ylim)
         
         # optionally add 0.05 significance line
-        if pvalline:
+        print(stats_summary_name)
+        if pvallines[0]:
+            print("adding pval line for left")
             if 'FDR' in stats_summary_name:
                 pvalline_val = np.log2(0.05)
             else:
                 pvalline_val = 0.05
             ax1.axhline(y=pvalline_val, color='r', linestyle='--')
-            if stats_dict_2 != {}:
+            if stats_dict_2 != {} and pvallines[1]:
+                print("adding pval line for right")
                 ax2.axhline(y=pvalline_val, color='r', linestyle='--')
 
         # find parent dir of output_dir_l[0]
@@ -961,29 +964,29 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
     # plot        
     if taxa_gt is not None:
-        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[np.log(1e-6), 0], line=line, pvalline=True)
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[np.log(1e-6), 0], line=line, pvallines=[True, False])
     
     plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
     plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
     plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
     # plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True, line=line)
-    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvalline=True,line=line)
-    plot_stats('shannon_pval_rejection_proportions', ["PERMANOVA batch Shannon pval rejection proportion", "PERMANOVA biovar Shannon pval rejection proportion"], global_methods_batch_shannon_pval_rejection_proportions_l_dict, global_methods_biovar_shannon_pval_rejection_proportions_l_dict, postfix=postfix, ylim=[0, 1], line=line)
+    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvallines=[True, True],line=line)
+    plot_stats('shannon_pval_rejection_proportions', ["PERMANOVA batch Shannon pval rejection proportion", "PERMANOVA biovar Shannon pval rejection proportion"], global_methods_batch_shannon_pval_rejection_proportions_l_dict, global_methods_biovar_shannon_pval_rejection_proportions_l_dict, postfix=postfix, ylim=[0, 1], line=line, pvallines=[True, False])
 
     if not demonstrate:
         if count_l[0]:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line = True)
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line)
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line = True, pvallines=[True, True])
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[True, True])
         else:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line)
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line)
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[True, True])
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[True, True])
     else:
         if count_l[0]:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line)
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line)
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[True, True])
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[True, True])
         else:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line)
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line)        
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[True, True])
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[True, True])        
     return
 
 
