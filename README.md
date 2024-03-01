@@ -38,10 +38,10 @@ You can potentially set up the environment using conda by executing the followin
 conda env create -f environment.yml
 ```
 
-The above way to set up the environment might lead to deprecated versions of files. To create a clean environment with all the necessary libraries, you can also manually install the following packages:
+The above way to set up the environment might lead to deprecated versions of files. To create a clean environment with all the necessary libraries, you can also manually install the following packages in a virtual environment with Python 3.8(.17) and R 4.3:
 
 - Python packages: pandas, numpy, matplotlib, scikit-learn, seaborn, scipy, skbio, rpy2, statsmodels
-- R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dplyr, readr, mixOmics, parallel, ade4, compositions, cqrReg, fastDummies
+- R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dplyr, readr, mixOmics, parallel, ade4, compositions, cqrReg, fastDummies, coda.base
 
 
 ## 1. Data generation/collection
@@ -258,8 +258,8 @@ overall_path = './trial' # pls make sure this dir exists
 address_X = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv'
 address_Y = '../data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv'
 data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_harmony")
-percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD")
+res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony")
+percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD")
 ```
 
 One can scale run the methods on simulated dataset by referencing the lines containing `-o 1` in the slurm file `/benchmark/slurm_bash_scripts/evaluate_run_sim.sh` and scale run in slurm.
@@ -327,38 +327,38 @@ data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y
 Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id', method = 'nobc')
 
 ### harmony
-address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
+address_X = "./trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
 res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id', method = 'harmony')
 
 # benchmarking other methods: 
 ### combat (combat_seq)
-address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
+address_X = "./trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
 data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id', method = 'combat_seq')
 
 ### limma
-address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_limma.csv"
+address_X = "./trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_limma.csv"
 data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id', method = 'limma')
 
 ### MMUPHin
-address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
+address_X = "./trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
 data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id', method = 'MMUPHin')
 
 ### ConQuR
-address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
+address_X = "./trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
 data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR')
 
 ### ConQuR_libsize
-address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
+address_X = "./trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
 data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR_libsize')
 
 ### percentile_norm
-address_X = "./trial/rw_methods_out/autism_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
+address_X = "./trial/rw_methods_out/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
 data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
 Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id', method = 'percentile_norm')
 

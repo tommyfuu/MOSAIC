@@ -35,7 +35,7 @@ if ARGPARSE_SWITCH:
                 description='two options: (1) generate batch corrected results for harmony and percentile normalization along w runtime; (2) evaluate the batch correction results.',
                 epilog='Text at the bottom of help')
 
-    parser.add_argument("-o", "--option", type=int, default = 1, help='either 1 or 2, option 1: generate batch corrected results for harmony and percentile normalization along w runtime; option 2: evaluate the batch correction results; option 2: evaluate the batch correction results for multiple methods.')
+    parser.add_argument("-o", "--option", type=int, default = 10, help='either 1 or 2, option 1: generate batch corrected results for harmony and percentile normalization along w runtime; option 2: evaluate the batch correction results; option 2: evaluate the batch correction results for multiple methods.')
     parser.add_argument("-i", "--iteration", type=int, default = 1, help='the iteration number')
     parser.add_argument("-d", "--datatype", default = 'count', help='either count or relab')
     parser.add_argument("-r", "--related", default = 'no', help='whether the batch effect is related to library size')
