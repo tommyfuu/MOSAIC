@@ -27,7 +27,6 @@ if (length(args)==0 || length(args)>1 ) {
 }
 
 ## load ConQuR
-# current_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/ConQuR'
 current_path = getwd()
 conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
@@ -291,8 +290,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 batch_info <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
                 start_time <- Sys.time()
                 ## check for covars
-                # print("AAAAAAA")
-                # print("BBBBBB")
                 if(is.null(covar)) {
                     count_data.limma <- t(removeBatchEffect(t(count_data.clr), batch = batch_info))
                 }
@@ -373,8 +370,8 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 
 if(option == 1){
     # autism 2 microbiomeHD
-    current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD'
-    output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD'
+    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD")
+    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
     run_methods(paste0(current_root, "_count_data.csv"),
         paste0(current_root, "_meta_data.csv"),
         output_root,
@@ -387,8 +384,8 @@ if(option == 1){
 } else if(option == 2){
     print("benchmarking cdi")
     # cdi 3 microbiomeHD
-    current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD'
-    output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD'
+    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
+    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
     run_methods(paste0(current_root, "_count_data.csv"),
         paste0(current_root, "_meta_data.csv"),
         output_root,
@@ -401,8 +398,8 @@ if(option == 1){
 } else if(option ==3){
     print("benchmarking ibd")
     # ibd 3 CMD
-    current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD'
-    output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD'
+    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD")
+    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
     run_methods(paste0(current_root, "_count_data.csv"),
         paste0(current_root, "_meta_data.csv"),
         output_root,
@@ -411,10 +408,10 @@ if(option == 1){
         covar = c('disease', 'gender', 'age_category'),
         used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
     )
-} else {
+} else if(option ==4) {
     # crc_8_CMD
-    current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD'
-    output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD'
+    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD")
+    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
     run_methods(paste0(current_root, "_count_data.csv"),
         paste0(current_root, "_meta_data.csv"),
         output_root,
@@ -425,31 +422,4 @@ if(option == 1){
     )
 }
 
-
-
-# # ibd 3 CMD
-# current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD'
-# output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD'
-# run_methods(paste0(current_root, "_count_data.csv"),
-#     paste0(current_root, "_meta_data.csv"),
-#     output_root,
-#     dataset = "study_name",
-#     batch_ref = 'HMP_2019_ibdmdb',
-#     covar = c("disease", "gender", "age"),
-#     used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# )
-
-
-
-# # crc_8_CMD
-# current_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD'
-# output_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD'
-# run_methods(paste0(current_root, "_count_data.csv"),
-#     paste0(current_root, "_meta_data.csv"),
-#     output_root,
-#     dataset = "study_name",
-#     batch_ref = 'FengQ_2015',
-#     covar = c("disease", "gender", "age"),
-#     used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-# )
 

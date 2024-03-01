@@ -1245,7 +1245,7 @@ if ARGPARSE_SWITCH:
         ## EVALUATE METHODS ON REAL-WORLD DATASET
         ################################################################################
         # autism 2 microbiomeHD
-        output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/autism_2_microbiomeHD'
+        output_dir_path = overall_path+'/outputs/autism_2_microbiomeHD'
         address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD'
         vars_use = ["Dataset"]
         IDCol = 'Sam_id'
@@ -1309,7 +1309,7 @@ if ARGPARSE_SWITCH:
 
         ##############################################################################
         # cdi 3 microbiomeHD
-        output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/cdi_3_microbiomeHD'
+        output_dir_path = overall_path+'/mic_bc_benchmark/outputs/cdi_3_microbiomeHD'
         address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD'
         vars_use = ["Dataset"]
         IDCol = 'Sam_id'
@@ -1373,7 +1373,7 @@ if ARGPARSE_SWITCH:
 
         ##############################################################################
         # ibd_3_CMD
-        output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/ibd_3_CMD'
+        output_dir_path = overall_path+'/mic_bc_benchmark/outputs/ibd_3_CMD'
         address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD'
         vars_use = ["study_name"]
         IDCol = 'Sam_id'
@@ -1432,7 +1432,7 @@ if ARGPARSE_SWITCH:
 
         ###############################################################################
         # crc 8 CMD
-        output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/crc_8_CMD'
+        output_dir_path = overall_path+'/mic_bc_benchmark/outputs/crc_8_CMD'
         address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/crc_8_CMD'
         vars_use = ["study_name"]
         IDCol = 'Sam_id'

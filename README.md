@@ -40,7 +40,7 @@ conda env create -f environment.yml
 
 The above way to set up the environment might lead to deprecated versions of files. To create a clean environment with all the necessary libraries, you can also manually install the following packages in a virtual environment with Python 3.8(.17) and R 4.3:
 
-- Python packages: pandas, numpy, matplotlib, scikit-learn, seaborn, scipy, skbio, rpy2, statsmodels
+- Python packages: pandas, numpy, matplotlib, scikit-learn, seaborn, scipy, scikit-bio, rpy2, statsmodels
 - R packages: phyloseq, bindata, MIDAS, tibble, xtable, sva, limma, vegan, MMUPHin, FDboost, doParallel, dplyr, readr, mixOmics, parallel, ade4, compositions, cqrReg, fastDummies, coda.base
 
 
