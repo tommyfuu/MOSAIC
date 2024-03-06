@@ -235,7 +235,7 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             tick.set_rotation(90)
         
         if 'runtime' in stats_name_l:
-            ax1.set_yticks([np.log2(1e-4), np.log2(10), np.log2(25), np.log2(50), np.log2(100), np.log2(200), np.log2(350), np.log2(500)], ["~0", "10", "25", "50", "100", "200", "350", "500"])
+            ax1.set_yticks([np.log2(1e-4), np.log2(10), np.log2(25), np.log2(50), np.log2(100), np.log2(200), np.log2(350), np.log2(800), np.log2(2000)], ["~0", "10", "25", "50", "100", "200", "350", "800", "2000"])
 
         if stats_dict_2 != {}:
             ax2.spines["top"].set_visible(False)
@@ -294,18 +294,18 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix)        
     return
 
-## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-#############################################################################
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
-methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 0.9], [0.2, 0.9]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
-alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
+# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+# #############################################################################
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+# datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 0.9], [0.2, 0.9]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
+# alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
 
 output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
 datasets = ["ibd_3_CMD", "crc_8_CMD"]
 output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-ylim_dict = {'batch_r2': [[0, 0.14], [0, 0.14]], 'biovar_r2': [[0, 0.030], [0, 0.030]], 'shannon_pval': [[0, 0.1], [0, 1]], 'auc_f1': [[0.4, 1], [0.4, 1]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
+ylim_dict = {'batch_r2': [[0, 0.14], [0, 0.14]], 'biovar_r2': [[0, 0.030], [0, 0.030]], 'shannon_pval': [[0, 0.1], [0, 1]], 'auc_f1': [[0.4, 1], [0.4, 1]], 'runtime': [[np.log2(5e-5), np.log2(2500)]], 'precision_recall': [[0, 1], [0, 1]]}
 alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)
