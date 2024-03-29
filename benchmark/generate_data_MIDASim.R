@@ -1,7 +1,7 @@
 # load data
 load("./ibd_150.Rdata")
 library("bindata")
-library("MIDAS")
+library("MIDASim")
 library(tibble)
 
 args = commandArgs(trailingOnly=TRUE)
@@ -117,10 +117,10 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
   current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 0, "cond_0")
   current_metadata$cond <- replace(current_metadata$cond, current_metadata$cond == 1, "cond_1")
   write.csv(current_metadata, file = out_meta, row.names = FALSE)
-  print("MIDAS running...")
+  print("MIDASim running...")
 
   # simulate data
-  fitted = Midas.setup(otu_original, fit.beta=FALSE)
+  fitted = MIDASim.setup(otu_original, mode = 'nonparametric')
 
   perm_batch = sample(id_batch, length(id_batch))
   perm_cond = sample(id_cond, length(id_cond))
@@ -138,26 +138,30 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
   rel1_cond[id_cond] = rel1_cond[perm_cond]
 
 
-  fitted_c0b0 = Midas.modify(fitted,
-                            lib.size = libsize_l)
-  fitted_c1b0 = Midas.modify(fitted, 
+  fitted_c0b0 = MIDASim.modify(fitted,
+                            lib.size = libsize_l,
+                            SCAM = T)
+  fitted_c1b0 = MIDASim.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect)*rel10 + cond_effect*rel1_cond,
-                            mean.rel.abund = (1-cond_effect)*rel0 + cond_effect*rel_cond)
-  fitted_c0b1 = Midas.modify(fitted, 
+                            mean.rel.abund = (1-cond_effect)*rel0 + cond_effect*rel_cond,
+                            SCAM = T)
+  fitted_c0b1 = MIDASim.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-batch_effect)*rel10 + batch_effect*rel1_batch,
-                            mean.rel.abund = (1-batch_effect)*rel0 + batch_effect*rel_batch)
-  fitted_c1b1 = Midas.modify(fitted, 
+                            mean.rel.abund = (1-batch_effect)*rel0 + batch_effect*rel_batch,
+                            SCAM = T)
+  fitted_c1b1 = MIDASim.modify(fitted, 
                             lib.size = libsize_l,
                             mean.rel.abund.1 = (1-cond_effect-batch_effect)*rel10 + cond_effect*rel1_cond + batch_effect*rel1_batch,
-                            mean.rel.abund = (1-cond_effect-batch_effect)*rel0 + cond_effect*rel_cond + batch_effect*rel_batch)
+                            mean.rel.abund = (1-cond_effect-batch_effect)*rel0 + cond_effect*rel_cond + batch_effect*rel_batch,
+                            SCAM = T)
 
 
-  otu_c0b0 = Midas.sim(fitted_c0b0)$sim_count
-  otu_c1b0 = Midas.sim(fitted_c1b0)$sim_count
-  otu_c0b1 = Midas.sim(fitted_c0b1)$sim_count
-  otu_c1b1 = Midas.sim(fitted_c1b1)$sim_count
+  otu_c0b0 = MIDASim(fitted_c0b0)$sim_count
+  otu_c1b0 = MIDASim(fitted_c1b0)$sim_count
+  otu_c0b1 = MIDASim(fitted_c0b1)$sim_count
+  otu_c1b1 = MIDASim(fitted_c1b1)$sim_count
 
   otu = matrix(NA, nrow = n, ncol = p)
   otu[cond==0&batchid==0,] = otu_c0b0[cond==0&batchid==0,] # unadjusted ones

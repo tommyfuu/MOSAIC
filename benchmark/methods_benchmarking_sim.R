@@ -13,6 +13,7 @@ library(tibble)
 library(stringr)
 library(mixOmics)
 
+
 args = commandArgs(trailingOnly=TRUE)
 
 print(args)
@@ -23,6 +24,8 @@ if (length(args)==0 || length(args)>1 ) {
     # default output file
     GLOBAL_ITER = args[1]
 }
+
+set.seed(GLOBAL_ITER) 
 
 ## load ConQuR
 current_path = getwd()
@@ -452,6 +455,7 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
   }
 }
 
+
 # # uncomment these codes for scaled slurm runs
 # or_l = c(1, 1.25, 1.5)
 # cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
@@ -480,4 +484,3 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
 # output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_yesrelation_102023'
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
-

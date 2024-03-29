@@ -18,5 +18,5 @@ echo "conda activated?"
 ## AND END WITH
 ## ## EVALUATE METHODS ON REAL-WORLD DATASET
 ## IN evaluate.py before running the following
-python3 evaluate.py 
+python3 evaluate.py -o 4
 exit

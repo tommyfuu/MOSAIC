@@ -1,9 +1,9 @@
 #! /bin/bash -l
  
 #SBATCH --partition=scu-cpu
-#SBATCH --array=814
+#SBATCH --array=1-1000
 #SBATCH --job-name=rtcountno
-#SBATCH --time=05:00:00
+#SBATCH --time=10:00:00
 #SBATCH --mem=3G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=1
 #SBATCH --output rtcount_no-%j.out

@@ -1,34 +1,34 @@
-# microbiome batch correction benchmarking project
-Code and partial data repository for the manuscript entitled __A comprehensive benchmark of batch correction methods in microbiome data__ by _Fu et al._. 
+# integrating multiple microbiome datasets for pooled analyses
+Code and partial data repository for the manuscript entitled __Comprehensive Analytical Approaches for Integrating Multiple Microbiome Studies__ by _Fu et al._. 
 
 _Developed and maintained by_:  [Chenlian (Tom) Fu](fcl200089@outlook.com)\
-_Advised by_: Dr. Wodan Ling, Dr. Quaid Morris\
+_Advised by_: Dr. Wodan Ling\
 _Affiliations_: Weill Cornell Medicine, Memorial Sloan Kettering Cancer Center
 
 
-This github repository stores the code for benchmarking microbiome batch correction methods, enabling readers to reproduce the analyses done in the paper as well as leveraging their own data along with the provided code to do similar analyses. Our batch correction method evaluation consists of three steps:
+This github repository stores the code for the data integration pipeline as described in the manuscript, which includes data generation as well as the execution and evaluations of microbiome cross-study data integration methods. The goal of this repository are to enable readers to reproduce the analyses done in the paper as well as leveraging their own data along with the provided code to decide which data integration method they wish to use for their own analyses. Our pipeline consists of three steps:
 - Data generation/collection
-- Running batch correction methods on datasets to generate batch corrected data
+- Running data integration (batch correction) methods on datasets to corrected data
 - Evaluation of the methods
 
 
 ## Table of content
-- 0. [Environment set up](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#0-environment-set-up)
-- 1. [(Simulated) Data generation/ (real-world data) collection](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#1-data-generationcollection)
-    - 1.1 [Simulation data generation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#111-simulation-data-generation)
-    - 1.2 [Real world microbiome data collection and cleaning](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#12-real-world-microbiome-data-collection-and-cleaning)
-- 2. [Running/benchmarking methods](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#2-benchmarking-methods)
-    - 2.1 [For methods implemented in R](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#21-for-methods-implemented-in-r)
-        - 2.1.1 [Running these methods for simulation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#211-running-these-methods-for-simulation)
-        - 2.1.2 [Running these methods for real-world datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#212-running-these-methods-for-real-world-datasets)
-    - 2.2 [For methods implemented in Python](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#22-for-methods-implemented-in-python)
-        - 2.2.1 [Running these methods for simulation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#221-simulation)
-        - 2.2.2 [Running these methods for real-world datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#222-real-world-dataset)
-- 3. [Evaluation](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#3-evaluation)
-    - 3.1 [Generating summary statistics for each simulated dataset or for each real-world dataset](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#31-generating-summary-statistics-for-each-simulated-dataset-or-for-each-real-world-dataset)
-        - 3.1.1 [Summary stats for simulated datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#311-simulated-datasets)
-        - 3.1.2 [Summary stats for real-world datasets](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#312-real-world-dataset)
-    - 3.2 [Generating intuitive visualizations based on the summary statistics](https://github.com/tommyfuu/mic_bc_benchmark/blob/main/README.md#32-generating-intuitive-visualizations-based-on-the-summary-statistics)
+- 0. [Environment set up](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#0-environment-set-up)
+- 1. [(Simulated) Data generation/ (real-world data) collection](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#1-data-generationcollection)
+    - 1.1 [Simulation data generation](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#111-simulation-data-generation)
+    - 1.2 [Real world microbiome data collection and cleaning](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#12-real-world-microbiome-data-collection-and-cleaning)
+- 2. [Running/executing methods](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#2-benchmarking-methods)
+    - 2.1 [For methods implemented in R](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#21-for-methods-implemented-in-r)
+        - 2.1.1 [Running these methods for simulation](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#211-running-these-methods-for-simulation)
+        - 2.1.2 [Running these methods for real-world datasets](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#212-running-these-methods-for-real-world-datasets)
+    - 2.2 [For methods implemented in Python](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#22-for-methods-implemented-in-python)
+        - 2.2.1 [Running these methods for simulation](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#221-simulation)
+        - 2.2.2 [Running these methods for real-world datasets](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#222-real-world-dataset)
+- 3. [Evaluation](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#3-evaluation)
+    - 3.1 [Generating summary statistics for each simulated dataset or for each real-world dataset](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#31-generating-summary-statistics-for-each-simulated-dataset-or-for-each-real-world-dataset)
+        - 3.1.1 [Summary stats for simulated datasets](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#311-simulated-datasets)
+        - 3.1.2 [Summary stats for real-world datasets](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#312-real-world-dataset)
+    - 3.2 [Generating intuitive visualizations based on the summary statistics](https://github.com/tommyfuu/mic_data_integration/blob/main/README.md#32-generating-intuitive-visualizations-based-on-the-summary-statistics)
 
 ## 0. Environment set up
 
@@ -40,7 +40,7 @@ To create a clean environment with all the necessary libraries, you can manually
 - R packages: 
     - Installable in conda: phyloseq, bindata, tibble, xtable, sva, limma, vegan, MMUPHin, doParallel, dplyr, readr, parallel, ade4, compositions, cqrReg, fastDummies, coda.base
     - Have to individually download:
-        - [MIDAS](https://github.com/mengyu-he/MIDASim) 
+        - [MIDASim](https://github.com/mengyu-he/MIDASim) 
         - [FDboost](https://github.com/boost-R/FDboost)
         - [mixOmics](https://bioconductor.org/packages/release/bioc/html/mixOmics.html)
 
@@ -57,19 +57,19 @@ After this, open `R` in command line, and then indivudally install the three pac
 
 ### 1.1.1 Simulation data generation
 
-A comprehensive evaluation requires stringent simulation and corresponding analyses. Here, we employ [MIDAS](https://pubmed.ncbi.nlm.nih.gov/36993431/), an intuitive microbiome data simulator that recapitulates microbiome data structure without distributional assumptions while allowing users to manipulate variables of interest, in our case batch effect and conditional effect. We further edited codes to enable the simulation to include varying odds ratio (between biological signals and batch in each taxa), existing and non-existing relationship between batch effect and library size, as well as the generation of both count and relative abundance data.
+A comprehensive evaluation requires stringent simulation and corresponding analyses. Here, we employ [MIDASim](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10055388/), an intuitive microbiome data simulator that recapitulates microbiome data structure without distributional assumptions while allowing users to manipulate variables of interest, in our case batch effect (caused by multiple studies) and condition (biological) effect. We further edited codes to enable the simulation to include varying odds ratio (between biological signals and batch in each taxa), existing and non-existing relationship between batch effect and library size, as well as the generation of both count and relative abundance data.
 
 To reproduce one iteration of our data using MIDAS, one can do the following in command line to generate minimally viable simulated dataset
 
 ```
 cd benchmark # enter the benchmark directory
 R # to initiate the R environment
-source('./generate_data_MIDAS.R') # load generation file
-# the odds ratio/conditional (biological) effect/batch effect you wish to generate the data for
+source('./generate_data_MIDASim.R') # load generation file
+# the odds ratio/condition (biological) effect/batch effect you wish to generate the data for
 or_l = c(1.25)
 cond_effect_val_l = c(0.5)
 batch_effect_val_l = c(0.5)
-output_root = './trial/simulate' # please make sure the output_root exists
+output_root = './trial_new/simulate' # please make sure the output_root exists
 # run functions
 scaled_slurm_midas_data_generation(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, batch_libsize_related = FALSE, libsize_l=sampled_libsize_l)
 ```
@@ -96,11 +96,11 @@ To run the simulation script in scale, in the folder `benchmark/slurm_bash_scrip
 
 ### 1.2 Real world microbiome data collection and cleaning
 
-A comprehensive evaluation also requires well-collected and well-preprocessed real-world microbiome data to ensure that the theoretically excelling batch correction methods from simulation experiments work in practice to enabled biomarker and trend discovery in batch corrected datasets while removing batch effect.
+A comprehensive evaluation also requires well-collected and well-preprocessed real-world microbiome data to ensure that the simulation experiment results work in practice so that in the real-world datasets, biomarker and trend discovery in integrated datasets can be achieved while removing the artifact from combining multiple studies.
 
 To this end, we collect and clean both count and relative abundance real world datasets from two databases, [MicrobiomeHD](https://zenodo.org/records/569601) and [CuratedMetagenomicsData](https://waldronlab.io/curatedMetagenomicData/) (CMD). The real world data preparation can be done by running the following code in the command line in the data directory:
 
-- pre-clean the two microbiomeHD datasets, moving them from different batches to the same files
+- pre-clean the two microbiomeHD datasets, moving them from different batches (studies) to the same files
 ```
 ipython # enter interactive python mode
 > from step0_microbiomeHD_precleaning import * 
@@ -161,8 +161,6 @@ ipython
 
 These three code chunks result in the four subfolders in `data/cleaned_data`, each containing three files: the count (relative abundance) OTU data, the corresponding metadata, and the complete confounding checking table (number of samples in each biological condition in each cleaned dataset).
 
-Note that while the crc dataset started with 8 batches, after pre-cleaning, there are actually 5 datasets (batches) that participate in batch correction.
-
 ## 2. Benchmarking methods
 
 ### 2.1 For methods implemented in R
@@ -172,7 +170,7 @@ For methods implemented in R including `combat (combat/combat-seq), limma, MMUPH
 Note that if you run into file path related errors, please check to ensure all the requested files in `methods_benchmarking_sim.R` and `methods_benchmarking.R` exist.
 
 #### 2.1.1 Running these methods for simulation
-To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset for running methods and generating batch corrected datasets for the minimally viable parameter set:
+To run the methods in scale in slurm, relevant parallelization and iterative running has been set up in the script `methods_benchmarking_sim.R`. For example, one can run the following to run all data on iteration `1` of the simulated dataset for running methods and generating inntegrated datasets for the minimally viable parameter set:
 ```
 source('./methods_benchmarking_sim.R')
 overall_path = './trial/simulate'
@@ -238,18 +236,18 @@ iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DA
 ```
 
 To explain the parameters, we first note that `iterative_methods_running_evaluate` is a generic wrapper function, where arguments
-- `run_or_evaluate`, a `str` type argument, should be either `run` or `evaluate`. In this case, you should use `run` because we are running the two batch correction methods implemented in python; for the later evaluation section, you use `evaluate`
+- `run_or_evaluate`, a `str` type argument, should be either `run` or `evaluate`. In this case, you should use `run` because we are running the two data integration methods implemented in python; for the later evaluation section, you use `evaluate`
 - `datatype`, a `str` type argument, should be either `count` or `relab`. 
 - `iter` is simulation iteration for data generation (default=1 without user selection).
 - `or_l, cond_effect_val_l, batch_effect_val_l`: three parameter lists to generate data for.
 - `address_XY_dir_path`, a `str` type argument denoting the path of the directory where the original (uncorrected) count/relab dataset and the corresponding metadata (Y) should be.
-- `output_dir_path`, a `str` type argument denoting the path of the directory where the batch corrected datasets after running the methods and the related statistics should be.
+- `output_dir_path`, a `str` type argument denoting the path of the directory where the corrected/integrated datasets after running the methods and the related statistics should be.
 - `eval_dir_path`, a `str` type argument denoting the path of the directory where the evaluation results after analyzing the characteristics of each corrected dataset should be. (Need to be defined but not super relevant for this module)
-- `methods_list`, a `list` of `str` denoting the methods whose batch corrected datasets are then evaluated. For example, it can be `["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]` for count datasets, and `["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]` for relab sets. (Need to be defined but not super relevant for this module)
+- `methods_list`, a `list` of `str` denoting the methods whose integrated datasets are then evaluated. For example, it can be `["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]` for count datasets, and `["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]` for relab sets. (Need to be defined but not super relevant for this module)
 - `binarizing_agent_biovar`, a `str` type argument denoting the name of the column in the input metadata for the column of the binary biological condition variable. For the simulated dataset in our setup, it should be `cond_1`.
 
 To make it easier for streamlining, we also defined the following:
-- `related`, a `str` type argument, should be either `yes` or `no` denoting whether confounding exists or not between library size and the simulated batch effect.
+- `related`, a `str` type argument, should be either `yes` or `no` denoting whether confounding exists or not between library size and the simulated cross-study batch effect.
 
 Alternatively, we provide a command line option, which might require you to go in and change certain codes in `evaluate.py`, but allows you a more streamlined running experience:
 
@@ -291,7 +289,7 @@ The evaluation section is divided into two sections: __3.1__ generating summary 
 ### 3.1 Generating summary statistics for each simulated dataset or for each real-world dataset
 
 #### 3.1.1 Simulated datasets
-To aid your intuitive understanding, you can do the following for a minimally viable run in iPython. This will generate a folder of files similar to `benchmark/trial/simulation_data_eval_count_norelation/out_1.25_0.5_0.5_iter_1`, which has output subfolders consisting of evaluation results from each method, a csv file with global summary stats, and a pdf figure for visualizing batch effect removal across all methods.
+To aid your intuitive understanding, you can do the following for a minimally viable run in iPython. This will generate a folder of files similar to `benchmark/trial/simulation_data_eval_count_norelation/out_1.25_0.5_0.5_iter_1`, which has output subfolders consisting of evaluation results from each method, a csv file with global summary stats, and a pdf figure for visualizing cross-study bias/batch effect removal across all methods.
 
 ```
 from evaluate import *

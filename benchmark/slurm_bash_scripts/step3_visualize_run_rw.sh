@@ -1,18 +1,14 @@
 #! /bin/bash -l
  
 #SBATCH --partition=scu-cpu
-#SBATCH --array=295,874
-#SBATCH --job-name=fixryes
+#SBATCH --job-name=ev_rw
 #SBATCH --time=10:00:00
 #SBATCH --mem=5G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=2
-#SBATCH --output fixryes-%j.out
-#SBATCH --error fixryes-%j.err
+#SBATCH --output ev_rw-%j.out
+#SBATCH --error ev_rw-%j.err
 #SBATCH --mail-user=chf4012@med.cornell.edu
 #SBATCH --mail-type=ALL
-
-ITER_ARRAY=( $(seq 1000 ) )
-i=$SLURM_ARRAY_TASK_ID
 
 source ~/.bashrc
 mamba activate bc_benchmark
