@@ -51,7 +51,7 @@ You can potentially set up the environment using conda by executing the followin
 conda env create -f env.yml
 ```
 
-After this, open `R` in command line, and then indivudally install the three packages MIDAS, FDboost, and mixOmics from the respective sites linked above.
+After this, open `R` in command line, and then indivudally install the three packages MIDASim, FDboost, and mixOmics from the respective sites linked above.
 
 ## 1. Data generation/collection
 
@@ -59,7 +59,7 @@ After this, open `R` in command line, and then indivudally install the three pac
 
 A comprehensive evaluation requires stringent simulation and corresponding analyses. Here, we employ [MIDASim](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10055388/), an intuitive microbiome data simulator that recapitulates microbiome data structure without distributional assumptions while allowing users to manipulate variables of interest, in our case batch effect (caused by multiple studies) and condition (biological) effect. We further edited codes to enable the simulation to include varying odds ratio (between biological signals and batch in each taxa), existing and non-existing relationship between batch effect and library size, as well as the generation of both count and relative abundance data.
 
-To reproduce one iteration of our data using MIDAS, one can do the following in command line to generate minimally viable simulated dataset
+To reproduce one iteration of our data using MIDASim, one can do the following in command line to generate minimally viable simulated dataset
 
 ```
 cd benchmark # enter the benchmark directory
@@ -92,7 +92,7 @@ cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 ```
 
-To run the simulation script in scale, in the folder `benchmark/slurm_bash_scripts` there is a bash script called `step0_run_simulate_sim.sh`, which one can revise to generate their own slurm bash scripts based on and move back into the `benchmark` folder for running the `generate_data_MIDAS.R` script in scale with `slurm`. Note that for running MIDAS data generation in slurm, you might need to uncomment the commented lines at the bottom of the `generate_data_MIDAS.R` script.
+To run the simulation script in scale, in the folder `benchmark/slurm_bash_scripts` there is a bash script called `step0_run_simulate_sim.sh`, which one can revise to generate their own slurm bash scripts based on and move back into the `benchmark` folder for running the `generate_data_MIDASim.R` script in scale with `slurm`. Note that for running MIDASim data generation in slurm, you might need to uncomment the commented lines at the bottom of the `generate_data_MIDASim.R` script.
 
 ### 1.2 Real world microbiome data collection and cleaning
 
