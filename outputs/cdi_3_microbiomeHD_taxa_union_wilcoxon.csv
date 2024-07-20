@@ -11,26 +11,26 @@ Barnesiella,Barnesiella,True,True,True,True,True,True,False,False
 Blautia,Blautia,True,True,False,False,True,False,False,False
 Butyricicoccus,Butyricicoccus,False,False,False,True,False,True,False,False
 Butyricimonas,Butyricimonas,True,False,False,True,False,False,False,False
-Clostridium_III,Clostridium_III,True,False,False,False,True,False,False,False
-Clostridium_IV,Clostridium_IV,True,False,True,True,True,True,False,False
-Clostridium_XI,Clostridium_XI,False,False,False,True,False,False,False,False
-Clostridium_XVIII,Clostridium_XVIII,True,True,True,True,True,True,True,False
-Clostridium_XlVa,Clostridium_XlVa,False,False,False,True,False,False,False,False
-Clostridium_XlVb,Clostridium_XlVb,True,False,False,True,False,False,True,False
-Clostridium_sensu_stricto,Clostridium_sensu_stricto,False,True,False,False,False,False,False,False
+Clostridium_III,Clostridium III,True,False,False,False,True,False,False,False
+Clostridium_IV,Clostridium IV,True,False,True,True,True,True,False,False
+Clostridium_XI,Clostridium XI,False,False,False,True,False,False,False,False
+Clostridium_XVIII,Clostridium XVIII,True,True,True,True,True,True,True,False
+Clostridium_XlVa,Clostridium XlVa,False,False,False,True,False,False,False,False
+Clostridium_XlVb,Clostridium XlVb,True,False,False,True,False,False,True,False
+Clostridium_sensu_stricto,Clostridium sensu stricto,False,True,False,False,False,False,False,False
 Collinsella,Collinsella,True,True,True,True,True,True,False,False
 Coprococcus,Coprococcus,False,False,True,True,True,True,True,False
 Dialister,Dialister,False,True,False,True,False,True,True,False
 Dorea,Dorea,False,False,False,True,False,True,False,False
 Eggerthella,Eggerthella,True,False,True,True,True,True,True,False
 Enterococcus,Enterococcus,True,True,True,True,True,True,True,False
-Erysipelotrichaceae_incertae_sedis,Erysipelotrichaceae_incertae_sedis,True,True,True,True,True,True,True,False
+Erysipelotrichaceae_incertae_sedis,Erysipelotrichaceae incertae sedis,True,True,True,True,True,True,True,False
 Ethanoligenens,Ethanoligenens,True,True,True,True,True,True,False,False
 Eubacterium,Eubacterium,False,True,False,False,False,False,False,False
 Finegoldia,Finegoldia,True,False,False,True,False,False,False,False
 Flavonifractor,Flavonifractor,False,False,False,False,False,True,False,False
 Fusobacterium,Fusobacterium,True,True,True,False,True,True,False,False
-Lachnospiracea_incertae_sedis,Lachnospiracea_incertae_sedis,True,True,True,True,True,True,True,False
+Lachnospiracea_incertae_sedis,Lachnospiracea incertae sedis,True,True,True,True,True,True,True,False
 Lactobacillus,Lactobacillus,True,False,True,True,True,True,True,False
 Lactococcus,Lactococcus,True,False,False,False,True,True,True,False
 Lactonifactor,Lactonifactor,False,True,False,False,False,False,False,False
