@@ -28,7 +28,7 @@ for dataset_name in dataset_names:
         if dataset_name in ['autism_2_microbiomeHD', 'cdi_3_microbiomeHD']:
             taxa_l = [' '.join(taxa.split(delimiter)) for taxa in taxa_l]
         else:
-            taxa_l = [taxa.split(delimiter)[genus_idx].split('g__')[-1].split('__')[1] for taxa in taxa_l]
+            taxa_l = [' '.join(taxa.split(delimiter)[genus_idx].split('g__')[-1].split('__')[1].split('_'))for taxa in taxa_l]
         current_dataset_method_to_taxa_dict[method].append(taxa_l)
         current_dataset_method_to_taxa_dict[method] = dict(zip(current_dataset_method_to_taxa_dict[method][0], current_dataset_method_to_taxa_dict[method][1]))
     
