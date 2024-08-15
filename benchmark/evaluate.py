@@ -77,7 +77,11 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
     numpy2ri.activate()
     pandas2ri.activate()
     grdevices = importr('grDevices')
-    r.source('./PERMANOVA_supporting.R')
+    # check if current path has benchmark in it
+    if '/benchmark' in os.getcwd():
+        r.source('./PERMANOVA_supporting.R')
+    else:
+        r.source('./benchmark/PERMANOVA_supporting.R')
     # r_used_var = meta_data[used_var]
     # r_bio_var = meta_data[bio_var]
 
@@ -293,7 +297,17 @@ class Evaluate(object):
 
         # import r packages/functions
         r = robjects.r
-        r.source('./PERMANOVA_supporting.R')
+        if '/benchmark' in os.getcwd():
+            print("AAAA")
+            print("AAAA")
+            print("AAAA")
+            print("AAAA")
+            print("AAAA")
+            print(os.getcwd())
+            r.source('./PERMANOVA_supporting.R')
+        else:
+            r.source('./benchmark/PERMANOVA_supporting.R')
+        # r.source('./PERMANOVA_supporting.R')
         r_batch = self.meta_data[self.batch_var]
 
         if self.covar_l != False:
@@ -1141,11 +1155,16 @@ overall_path = current_path + "/../.."
 with open(f'{current_path}/../config.yml') as file:
     config_data = yaml.load(file, Loader=yaml.FullLoader)
 
+used_R_methods = list(config_data['used_R_methods'])
+used_Python_methods = list(config_data['used_Python_methods'])
+methods = used_R_methods
+methods.extend(used_Python_methods)
+
+
 if ARGPARSE_SWITCH:
     GLOBAL_DATATYPE = args['datatype']
     # methods_list_dict = {'count': ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"],
     #                     'relab': ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]}
-    methods = list(set(config_data['used_R_methods']).intersection(set(config_data['used_Python_methods'])))
     related = args['related']
     binarizing_agent_biovar = args['agent']
     if args['option'] == 1:
@@ -1229,6 +1248,48 @@ if ARGPARSE_SWITCH:
         res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}_harmony')
         percentile_norm(address_X, address_Y, condition_var, config_data['condition_value'], 'comma', f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}')
 
+    elif args['option'] == 5:
+
+        IDCol = 'Sam_id'
+        dataset_name = config_data['dataset_name']
+        if 'microbiomeHD' in dataset_name:
+            vars_use = "Dataset"
+            condition_var = "DiseaseState"
+        elif 'CMD' in dataset_name:
+            vars_use = "study_name"
+            condition_var = "disease"
+
+        address_Y = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_meta_data.csv'
+
+        methods.append('nobc')
+        print("methods: ", methods)
+        print("methods: ", methods)
+        print("methods: ", methods)
+        print("methods: ", methods)
+        print("methods: ", methods)
+        print("methods: ", methods)
+        df_l = []
+        meta_data_l = []
+        for method in methods:
+            if method == 'nobc':
+                address_X = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv'
+            elif method == 'harmony':
+                address_X = f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}_{method}_adjusted_count.csv'
+            else:
+                address_X = f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}_{method}.csv'
+
+            data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+            df_l.append(data_mat)
+            meta_data_l.append(meta_data)
+            Evaluate(data_mat, meta_data, vars_use, f'{config_data["evaluation_outputs"]}/{dataset_name}/output_{dataset_name}_{method}/{dataset_name}_{method}', condition_var, 30, IDCol=IDCol, datatype = config_data['datatype'], binarizing_agent_biovar = config_data['binarizing_agent'], method = method)
+        
+        ### global evaluation
+        input_frame_path = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv'
+        global_eval_dataframe(input_frame_path, condition_var, dataset_name, methods, f'{config_data["post_integration_outputs"]}', f'{config_data["evaluation_outputs"]}/{dataset_name}', simulate = False, datatype = config_data['datatype'])
+        
+        ### multi-method plot
+        plot_PCOA_multiple(dataset_name, df_l, methods, meta_data_l, used_var=vars_use, output_root= f'{config_data["evaluation_outputs"]}/{dataset_name}/', datatype = config_data['datatype'])
+
         
         # ## run two left-over python methods for rw datasets
         # ## RUN HARMONY/PERCENTILE_NORM FOR RW
@@ -1272,254 +1333,254 @@ if ARGPARSE_SWITCH:
         # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/"+"crc_8_CMD_harmony")
         # percentile_norm(address_X, address_Y, "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
 
-    elif args['option'] == 5:
-        # evaluate the method results on rw datasets
-        ## EVALUATE METHODS ON REAL-WORLD DATASET
-        ################################################################################
-        # autism 2 microbiomeHD
-        output_dir_path = overall_path+'/outputs/autism_2_microbiomeHD'
-        address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD'
-        vars_use = ["Dataset"]
-        IDCol = 'Sam_id'
 
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv"
+        # # evaluate the method results on rw datasets
+        # ## EVALUATE METHODS ON REAL-WORLD DATASET
+        # ################################################################################
+        # # autism 2 microbiomeHD
+        # output_dir_path = overall_path+'/outputs/autism_2_microbiomeHD'
+        # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD'
+        # vars_use = ["Dataset"]
+        # IDCol = 'Sam_id'
 
-        # nobc
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
-        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        ### nobc
-        Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id', method = 'nobc')
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv"
 
-        ### harmony
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
-        res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id', method = 'harmony')
+        # # nobc
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # ### nobc
+        # Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_nobc/autism_2_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id', method = 'nobc')
 
-        # benchmarking other methods: 
-        ### combat (combat_seq)
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
-        data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id', method = 'combat_seq')
+        # ### harmony
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_harmony_adjusted_count.csv"
+        # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_harmony/autism_2_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id', method = 'harmony')
 
-        ### limma
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_limma.csv"
-        data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id', method = 'limma')
+        # # benchmarking other methods: 
+        # ### combat (combat_seq)
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_combat_seq.csv"
+        # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_combat_seq/autism_2_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id', method = 'combat_seq')
 
-        ### MMUPHin
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
-        data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id', method = 'MMUPHin')
+        # ### limma
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_limma.csv"
+        # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_limma/autism_2_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id', method = 'limma')
 
-        ### ConQuR
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
-        data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR')
+        # ### MMUPHin
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_MMUPHin.csv"
+        # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_MMUPHin/autism_2_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id', method = 'MMUPHin')
 
-        ### ConQuR_libsize
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
-        data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR_libsize')
+        # ### ConQuR
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR.csv"
+        # data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR/autism_2_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR')
 
-        ### percentile_norm
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
-        data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id', method = 'percentile_norm')
+        # ### ConQuR_libsize
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_ConQuR_libsize.csv"
+        # data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_ConQuR_libsize/autism_2_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR_libsize')
 
-        ### global evaluation
-        input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
-        bio_var = "DiseaseState"
-        dataset_name = "autism_2_microbiomeHD"
-        methods_list = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-        global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
+        # ### percentile_norm
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD_percentile_norm.csv"
+        # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_autism_2_microbiomeHD_percentile_norm/autism_2_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id', method = 'percentile_norm')
 
-        ### multi-method plot
-        df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_percentile_norm]
-        methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPhin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-        meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
-        plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
+        # ### global evaluation
+        # input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
+        # bio_var = "DiseaseState"
+        # dataset_name = "autism_2_microbiomeHD"
+        # methods_list = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+        # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
 
-        ##############################################################################
-        # cdi 3 microbiomeHD
-        output_dir_path = overall_path+'/mic_bc_benchmark/outputs/cdi_3_microbiomeHD'
-        address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD'
-        vars_use = ["Dataset"]
-        IDCol = 'Sam_id'
+        # ### multi-method plot
+        # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_percentile_norm]
+        # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPhin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+        # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
+        # plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
 
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv"
+        # ##############################################################################
+        # # cdi 3 microbiomeHD
+        # output_dir_path = overall_path+'/mic_bc_benchmark/outputs/cdi_3_microbiomeHD'
+        # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD'
+        # vars_use = ["Dataset"]
+        # IDCol = 'Sam_id'
 
-        # nobc
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
-        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        ### nobc
-        Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id', method = 'nobc')
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv"
 
-        ### harmony
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_harmony_adjusted_count.csv"
-        res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id', method = 'harmony')
+        # # nobc
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # ### nobc
+        # Evaluate(data_mat, meta_data, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_nobc/cdi_3_microbiomeHD_nobc', "DiseaseState", 30, [], 'Sam_id', method = 'nobc')
 
-        # benchmarking other methods:
-        ### combat (combat_seq)
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
-        data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id', method = 'combat_seq')
+        # ### harmony
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_harmony_adjusted_count.csv"
+        # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(res_h, meta_data_h, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_harmony/cdi_3_microbiomeHD_harmony', "DiseaseState", 30, [], 'Sam_id', method = 'harmony')
 
-        ### limma
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
-        data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id', method = 'limma')
+        # # benchmarking other methods:
+        # ### combat (combat_seq)
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_combat_seq.csv"
+        # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_combat, meta_data_combat, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_combat_seq/cdi_3_microbiomeHD_combat_seq', "DiseaseState", 30, [], 'Sam_id', method = 'combat_seq')
 
-        ### MMUPHin
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
-        data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id', method = 'MMUPHin')
+        # ### limma
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_limma.csv"
+        # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_limma, meta_data_limma, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_limma/cdi_3_microbiomeHD_limma', "DiseaseState", 30, [], 'Sam_id', method = 'limma')
 
-        ### ConQuR
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
-        data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR')
+        # ### MMUPHin
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_MMUPHin.csv"
+        # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_mmuphin, meta_data_mmuphin, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_MMUPHin/cdi_3_microbiomeHD_MMUPHin', "DiseaseState", 30, [], 'Sam_id', method = 'MMUPHin')
 
-        ### ConQuR_libsize
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
-        data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR_libsize')
+        # ### ConQuR
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR.csv"
+        # data_mat_conqur, meta_data_conqur = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_conqur, meta_data_conqur, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR/cdi_3_microbiomeHD_ConQuR', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR')
 
-        ### percentile_norm
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
-        data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_percentile_norm/cdi_3_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id', method = 'percentile_norm')
+        # ### ConQuR_libsize
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_ConQuR_libsize.csv"
+        # data_mat_conqur_libsize, meta_data_conqur_libsize = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_conqur_libsize, meta_data_conqur_libsize, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_ConQuR_libsize/cdi_3_microbiomeHD_ConQuR_libsize', "DiseaseState", 30, [], 'Sam_id', method = 'ConQuR_libsize')
 
-        ### global evaluation
-        input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
-        bio_var = "DiseaseState"
-        dataset_name = "cdi_3_microbiomeHD"
-        methods_list = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-        global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
+        # ### percentile_norm
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD_percentile_norm.csv"
+        # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, 'Dataset', output_dir_path + '/output_cdi_3_microbiomeHD_percentile_norm/cdi_3_microbiomeHD_percentile_norm', "DiseaseState", 30, [], 'Sam_id', method = 'percentile_norm')
 
-        ### multi-method plot
-        df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_percentile_norm]
-        methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPhin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-        meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
-        plot_PCOA_multiple('cdi_3_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
+        # ### global evaluation
+        # input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
+        # bio_var = "DiseaseState"
+        # dataset_name = "cdi_3_microbiomeHD"
+        # methods_list = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+        # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
 
-        ##############################################################################
-        # ibd_3_CMD
-        output_dir_path = overall_path+'/mic_bc_benchmark/outputs/ibd_3_CMD'
-        address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD'
-        vars_use = ["study_name"]
-        IDCol = 'Sam_id'
+        # ### multi-method plot
+        # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur, data_mat_conqur_libsize, data_mat_percentile_norm]
+        # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPhin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+        # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
+        # plot_PCOA_multiple('cdi_3_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
 
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv"
+        # ##############################################################################
+        # # ibd_3_CMD
+        # output_dir_path = overall_path+'/mic_bc_benchmark/outputs/ibd_3_CMD'
+        # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD'
+        # vars_use = ["study_name"]
+        # IDCol = 'Sam_id'
 
-        # nobc
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
-        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        ### nobc
-        Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'nobc', binarizing_agent_biovar = 'IBD')
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv"
 
-        ### harmony
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_harmony_adjusted_count.csv"
-        res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'harmony', binarizing_agent_biovar = 'IBD')
+        # # nobc
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # ### nobc
+        # Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_ibd_3_CMD_nobc/ibd_3_CMD_nobc', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'nobc', binarizing_agent_biovar = 'IBD')
 
-        # benchmarking other methods:
-        ### combat
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_combat.csv"
-        data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_ibd_3_CMD_combat/ibd_3_CMD_combat', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'combat', binarizing_agent_biovar = 'IBD')
+        # ### harmony
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_harmony_adjusted_count.csv"
+        # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_ibd_3_CMD_harmony/ibd_3_CMD_harmony', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'harmony', binarizing_agent_biovar = 'IBD')
 
-        ### limma
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_limma.csv"
-        data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_limma, meta_data_limma, "study_name", output_dir_path + '/output_ibd_3_CMD_limma/ibd_3_CMD_limma', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'limma', binarizing_agent_biovar = 'IBD')
+        # # benchmarking other methods:
+        # ### combat
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_combat.csv"
+        # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_ibd_3_CMD_combat/ibd_3_CMD_combat', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'combat', binarizing_agent_biovar = 'IBD')
 
-        ### MMUPHin
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_MMUPHin.csv"
-        data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_mmuphin, meta_data_mmuphin, "study_name", output_dir_path + '/output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'MMUPHin', binarizing_agent_biovar = 'IBD')
+        # ### limma
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_limma.csv"
+        # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_limma, meta_data_limma, "study_name", output_dir_path + '/output_ibd_3_CMD_limma/ibd_3_CMD_limma', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'limma', binarizing_agent_biovar = 'IBD')
 
-        ### ConQuR_rel
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR_rel.csv"
-        data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_ibd_3_CMD_ConQuR_rel/ibd_3_CMD_ConQuR_rel', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'ConQuR', binarizing_agent_biovar = 'IBD')
+        # ### MMUPHin
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_MMUPHin.csv"
+        # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_mmuphin, meta_data_mmuphin, "study_name", output_dir_path + '/output_ibd_3_CMD_MMUPHin/ibd_3_CMD_MMUPHin', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'MMUPHin', binarizing_agent_biovar = 'IBD')
 
-        ### percentile_norm
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
-        data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_ibd_3_CMD_percentile_norm/ibd_3_CMD_percentile_norm', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'percentile_norm', binarizing_agent_biovar = 'IBD')
+        # ### ConQuR_rel
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_ConQuR_rel.csv"
+        # data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_ibd_3_CMD_ConQuR_rel/ibd_3_CMD_ConQuR_rel', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'ConQuR', binarizing_agent_biovar = 'IBD')
 
-        ### global evaluation
-        input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
-        bio_var = "disease"
-        dataset_name = "ibd_3_CMD"
-        methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-        global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
+        # ### percentile_norm
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD_percentile_norm.csv"
+        # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_ibd_3_CMD_percentile_norm/ibd_3_CMD_percentile_norm', "disease", 30, ['gender', 'age_category'], 'Sam_id', datatype = 'relab', method = 'percentile_norm', binarizing_agent_biovar = 'IBD')
 
-        ### multi-method plot
-        df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
-        methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-        meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
-        plot_PCOA_multiple('ibd_3_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
+        # ### global evaluation
+        # input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
+        # bio_var = "disease"
+        # dataset_name = "ibd_3_CMD"
+        # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+        # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
 
-        ###############################################################################
-        # crc 8 CMD
-        output_dir_path = overall_path+'/mic_bc_benchmark/outputs/crc_8_CMD'
-        address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/crc_8_CMD'
-        vars_use = ["study_name"]
-        IDCol = 'Sam_id'
+        # ### multi-method plot
+        # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
+        # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+        # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
+        # plot_PCOA_multiple('ibd_3_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
 
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv"
+        # ###############################################################################
+        # # crc 8 CMD
+        # output_dir_path = overall_path+'/mic_bc_benchmark/outputs/crc_8_CMD'
+        # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/crc_8_CMD'
+        # vars_use = ["study_name"]
+        # IDCol = 'Sam_id'
 
-        # nobc
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
-        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        ### nobc
-        Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_crc_8_CMD_nobc/crc_8_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'nobc', binarizing_agent_biovar = 'adenoma')
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv"
 
-        ### harmony
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_harmony_adjusted_count.csv"
-        res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_crc_8_CMD_harmony/crc_8_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'harmony', binarizing_agent_biovar = 'adenoma')
+        # # nobc
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # ### nobc
+        # Evaluate(data_mat, meta_data, "study_name", output_dir_path + '/output_crc_8_CMD_nobc/crc_8_CMD_nobc', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'nobc', binarizing_agent_biovar = 'adenoma')
 
-        # benchmarking other methods:
-        ### combat
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_combat.csv"
-        data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_crc_8_CMD_combat/crc_8_CMD_combat', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'combat', binarizing_agent_biovar = 'adenoma')
+        # ### harmony
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_harmony_adjusted_count.csv"
+        # res_h, meta_data_h = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(res_h, meta_data_h, "study_name", output_dir_path + '/output_crc_8_CMD_harmony/crc_8_CMD_harmony', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'harmony', binarizing_agent_biovar = 'adenoma')
 
-        ### limma
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_limma.csv"
-        data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_limma, meta_data_limma, "study_name", output_dir_path + '/output_crc_8_CMD_limma/crc_8_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'limma', binarizing_agent_biovar = 'adenoma')
+        # # benchmarking other methods:
+        # ### combat
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_combat.csv"
+        # data_mat_combat, meta_data_combat = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_combat, meta_data_combat, "study_name", output_dir_path + '/output_crc_8_CMD_combat/crc_8_CMD_combat', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'combat', binarizing_agent_biovar = 'adenoma')
 
-        ### MMUPHin
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_MMUPHin.csv"
-        data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_mmuphin, meta_data_mmuphin, "study_name", output_dir_path + '/output_crc_8_CMD_MMUPHin/crc_8_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'MMUPHin', binarizing_agent_biovar = 'adenoma')
+        # ### limma
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_limma.csv"
+        # data_mat_limma, meta_data_limma = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_limma, meta_data_limma, "study_name", output_dir_path + '/output_crc_8_CMD_limma/crc_8_CMD_limma', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'limma', binarizing_agent_biovar = 'adenoma')
 
-        ### ConQuR
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_ConQuR_rel.csv"
-        data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_crc_8_CMD_ConQuR_rel/crc_8_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'ConQuR', binarizing_agent_biovar = 'adenoma')
+        # ### MMUPHin
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_MMUPHin.csv"
+        # data_mat_mmuphin, meta_data_mmuphin = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_mmuphin, meta_data_mmuphin, "study_name", output_dir_path + '/output_crc_8_CMD_MMUPHin/crc_8_CMD_MMUPHin', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'MMUPHin', binarizing_agent_biovar = 'adenoma')
 
-        ### percentile_norm
-        address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_percentile_norm.csv"
-        data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
-        Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_crc_8_CMD_percentile_norm/crc_8_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'percentile_norm', binarizing_agent_biovar = 'adenoma')
+        # ### ConQuR
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_ConQuR_rel.csv"
+        # data_mat_conqur_rel, meta_data_conqur_rel = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_conqur_rel, meta_data_conqur_rel, "study_name", output_dir_path + '/output_crc_8_CMD_ConQuR_rel/crc_8_CMD_ConQuR_rel', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'ConQuR', binarizing_agent_biovar = 'adenoma')
 
-        ### global evaluation
-        input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
-        bio_var = "disease"
-        dataset_name = "crc_8_CMD"
-        methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-        global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
+        # ### percentile_norm
+        # address_X = overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD_percentile_norm.csv"
+        # data_mat_percentile_norm, meta_data_percentile_norm = load_results_from_benchmarked_methods(address_X, address_Y)
+        # Evaluate(data_mat_percentile_norm, meta_data_percentile_norm, "study_name", output_dir_path + '/output_crc_8_CMD_percentile_norm/crc_8_CMD_percentile_norm', "disease", 30, ['gender', 'age'], 'Sam_id', datatype = 'relab', method = 'percentile_norm', binarizing_agent_biovar = 'adenoma')
 
-        ### multi-method plot
-        df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
-        methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-        meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
-        plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
+        # ### global evaluation
+        # input_frame_path = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
+        # bio_var = "disease"
+        # dataset_name = "crc_8_CMD"
+        # methods_list = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+        # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results", output_dir_path, simulate = False)
+
+        # ### multi-method plot
+        # df_l = [data_mat, res_h, data_mat_combat, data_mat_limma, data_mat_mmuphin, data_mat_conqur_rel, data_mat_percentile_norm]
+        # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+        # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
+        # plot_PCOA_multiple('crc_8_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
 
 # # ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
 # ##############################################################################

@@ -11,6 +11,7 @@ src = config['src']
 post_integration_results = config['post_integration_outputs']
 used_R_methods = config['used_R_methods']
 used_python_methods = config['used_Python_methods']
+evaluation_outputs = config['evaluation_outputs']
 
 rule preprocess:
     '''If MicrobiomeHD or CMD, load and preprocess data; if simulate, simulate data.'''
@@ -38,4 +39,12 @@ rule integrate:
         shell('Rscript ./benchmark/methods_benchmarking.R')
         shell('python3 ./benchmark/evaluate.py -o 4')
             
-    
+rule evaluate:
+    '''Evaluate the integrated data.'''
+    output:
+        out_summary = f'{evaluation_outputs}/{dataset_name}/global_benchmarking_stats_{dataset_name}.csv',
+        out_vis = f'{evaluation_outputs}/{dataset_name}/{dataset_name}_multi_PCOA_both_batch.pdf'
+    run:
+        shell('python3 ./benchmark/evaluate.py -o 5')
+
+        
