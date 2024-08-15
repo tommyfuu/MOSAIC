@@ -1,4 +1,4 @@
-import os
+import os, sys
 import pandas as pd
 import numpy as np
 
@@ -151,10 +151,11 @@ source_dir = args.source_dir
 batch_var = args.batch_var
 condition_var = args.condition_var
 
+os.chdir(sys.path[0])
 
 # load covar_l from yaml file
 import yaml
-with open(f'./config.yml') as file:
+with open(f'../config.yml') as file:
     covar_l = yaml.load(file, Loader=yaml.FullLoader)['COVAR_L']
 
 # mkdir cleaned_data if not exists

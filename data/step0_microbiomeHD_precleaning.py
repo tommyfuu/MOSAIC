@@ -125,7 +125,6 @@ source_dir = args.source_dir
 
 source_dir_path = f'{source_dir}/{dataset_name}'
 output_dir_path = f'{source_dir}/intermediate_{dataset_name}/{dataset_name}'
-output_dir_path = f'{source_dir}/intermediate_{dataset_name}_trial/{dataset_name}'
 
 # make output_dir_path if it does not exist
 if not os.path.exists(output_dir_path):

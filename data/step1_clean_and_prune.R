@@ -98,8 +98,19 @@ clean_prune_save_phyloseq <- function (phyloseq_dataset, out_str, libsize_thresh
 # crc_phyloseq_obj <- load_phyloseq_from_merged_CMD(c("FengQ_2015", "HanniganGD_2017", "ThomasAM_2018a", "YachidaS_2019", "ZellerG_2014"), c("adenoma", "healthy"))
 # clean_prune_save_phyloseq(crc_phyloseq_obj[[1]], crc_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_crc_8_CMD')
 
+# find the path to this Rscript
+
+## set working directory to the location of this Rscript
+
+
 library(yaml)
-config_object <- yaml.load_file('./config.yml')
+current_path = getwd()
+if (grepl("/data", current_path)){
+    config_object <- yaml.load_file('../config.yml')
+} else{
+    config_object <- yaml.load_file('./config.yml')
+}
+# config_object <- yaml.load_file('./config.yml')
 src_path <- config_object$src
 libsize_threshold <- config_object$RW_LIBSIZE_THRESHOLD
 relab_threshold <- config_object$RW_RELAB_THRESHOLD
@@ -111,7 +122,7 @@ print(libsize_threshold)
 print(relab_threshold)
 
 # mkdir
-output_dir <- paste0(src_path, '/pruned_', study_name, '_trial')
+output_dir <- paste0(src_path, '/pruned_', study_name)
 dir.create(output_dir, showWarnings = FALSE)
 
 if(dataset_type == 'microbiomeHD'){

@@ -5,34 +5,29 @@ from pathlib import Path
 
 configfile: "./config.yml"
 
-# if config['rules_to_run'] == 'all':
+# global params
+dataset_name = config['dataset_name']
+src = config['src']
 
-rule preprocess_or_simulate:
+rule preprocess:
     '''If MicrobiomeHD or CMD, load and preprocess data; if simulate, simulate data.'''
-    input:
-        if config['data_type'] == 'microbiomeHD':
-            src = config['src']
-        elif config['data_type'] == 'CMD':
-            src = ''
-        elif config['data_type'] == 'simulate':
-            src = ''
-        else:
-            raise ValueError('data_type must be MicrobiomeHD, CMD, or simulate')
     output:
-        if config['data_type'] in ['MicrobiomeHD', 'CMD']:
-            dataset_name = config['dataset_name']
+        # out_count = f'{src}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv',
+        # out_metadata = f'{src}/cleaned_data/{dataset_name}/{dataset_name}_metadata.csv',
+        out_check = f'{src}/cleaned_data/{dataset_name}/{dataset_name}_complete_confounding.csv'
     run:
-        if config['data_type'] == 'MicrobiomeHD':
-           shell('python3 ./data/step0_microbiomeHD_precleaning.py -s {input.src} -d {output.dataset_name}')
-           shell('Rscript ./data/step1_clean_and_prune.R microbiomeHD {output.dataset_name}')
-           shell('python3 data/step2_preprocessing_summarystats.py -d {output.dataset_name}')
-        elif config['data_type'] == 'CMD':
-           shell('Rscript ./data/step1_clean_and_prune.R CMD {output.dataset_name}')
-           shell('python3 data/step2_preprocessing_summarystats.py -d {output.dataset_name} -b study_name -c disease')
+        if 'microbiomeHD' in config['dataset_name']:
+           shell('python3 ./data/step0_microbiomeHD_precleaning.py -s {src} -d {dataset_name}')
+           shell('Rscript ./data/step1_clean_and_prune.R microbiomeHD {dataset_name}')
+           shell('python3 data/step2_preprocessing_summarystats.py -d {dataset_name}')
+           shell('echo {output.out_check}')
+        elif 'CMD' in config['dataset_name']:
+           shell('Rscript ./data/step1_clean_and_prune.R CMD {dataset_name}')
+           shell('python3 data/step2_preprocessing_summarystats.py -d {dataset_name} -b study_name -c disease')
         # elif config['data_type'] == 'CMD':
-        #     'python scripts/preprocess_CMD.py {input.src} {output.dataset_name}'
+        #     'python scripts/preprocess_CMD.py {src} {dataset_name}'
         # elif config['data_type'] == 'simulate':
-        #     'python scripts/simulate_data.py {output.dataset_name}'
+        #     'python scripts/simulate_data.py {dataset_name}'
 
             
     

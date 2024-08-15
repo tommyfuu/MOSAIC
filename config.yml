@@ -19,5 +19,5 @@ COVAR_L: []
 datatype: 'count'
 # it has to be 'count' or 'relab'
 
-rules_to_run: 'all' 
-# one of the following: 'all', 'preprocess_or_simulate', 'data_integration', 'evaluation', 'visualization'
+rules_to_run: 'all_rw' 
+# one of the following: 'all_rw', 'all_simulated', 'preprocess', 'simulate', 'data_integration', 'evaluation', 'visualization'
