@@ -102,36 +102,6 @@ def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'
     return data_mat, meta_data
 
 
-def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
-    # make a pandas dataframe where rows are batches whereas columns are the bio_var options
-    # each entry is the number of samples in that batch with that bio_var option
-    # if there is a batch with only one bio_var option, then it is a complete confounder
-    print(meta_data)
-    # get the list of batches
-    batch_l = list(meta_data[batch_var])
-    # batch_l = [x for x in batch_l if str(x) != 'nan']
-    batch_l = list(np.unique(batch_l))
-
-    # get the list of bio_var options
-    bio_var_l = list(meta_data[bio_var])
-    # bio_var_l = [x for x in bio_var_l if str(x) != 'nan']
-    bio_var_l = list(np.unique(bio_var_l))
-
-    # generate a dataframe
-    df = pd.DataFrame(columns=bio_var_l, index=batch_l)
-    for batch in batch_l:
-        for bio_var_val in bio_var_l:
-            df.loc[batch, bio_var_val] = len(meta_data.loc[(meta_data[batch_var]==batch) & (meta_data[bio_var]==bio_var_val)])
-    
-    if output_root != '':
-        df.to_csv(output_root+"_complete_confounding.csv")
-    print(df)
-    # check if there is a batch with only one bio_var option
-    for batch in batch_l:
-        if len(df.loc[batch].unique())==1:
-            print("batch", batch, "is a complete confounder")
-    return
-
 
 # overall_path = '/athena/linglab/scratch/chf4012'
 # # autism 2 microbiomeHD
@@ -144,7 +114,6 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
 # address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
 # data_mat, meta_data = load_data_microbiomeHD(address_directory, output_dir_path)
 
-# write an argparse that takes in the dataset name and the source/output directory where the data was from and will be saved after preprocessing
 import argparse
 parser = argparse.ArgumentParser(description='Preprocess microbiomeHD datasets')
 parser.add_argument('-d', '--dataset_name', type=str, default='autism_2_microbiomeHD', help='Name of the dataset')

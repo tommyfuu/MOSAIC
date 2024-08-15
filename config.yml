@@ -12,6 +12,10 @@ CMD_conditions: ['IBD', 'healthy']
 RW_LIBSIZE_THRESHOLD: 0.05
 RW_RELAB_THRESHOLD: 0.05
 
+COVAR_L: []
+# list of covariates to be used in the final stage of data cleaning/complete confounding calculations + data saving
+# in our case, only ['disease', 'gender', 'age_category'] for CMD/IBD datasets are used, otherwise all empty
+
 datatype: 'count'
 # it has to be 'count' or 'relab'
 
