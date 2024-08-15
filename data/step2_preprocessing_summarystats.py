@@ -156,12 +156,15 @@ os.chdir(sys.path[0])
 # load covar_l from yaml file
 import yaml
 with open(f'../config.yml') as file:
-    covar_l = yaml.load(file, Loader=yaml.FullLoader)['COVAR_L']
+    config_file = yaml.load(file, Loader=yaml.FullLoader)
+    
+covar_l = config_file['COVAR_L']
+relab = config_file['datatype']
 
 # mkdir cleaned_data if not exists
 if not os.path.exists(f'{source_dir}/cleaned_data/{dataset_name}'):
     os.makedirs(f'{source_dir}/cleaned_data/{dataset_name}')
 
-data_mat, meta_data = preprocess_data_phyloseq(f'{source_dir}/pruned_{dataset_name}', f'{source_dir}/cleaned_data/{dataset_name}/{dataset_name}', id = 'Sam_id', covar_l = covar_l, relab = False)
+data_mat, meta_data = preprocess_data_phyloseq(f'{source_dir}/pruned_{dataset_name}', f'{source_dir}/cleaned_data/{dataset_name}/{dataset_name}', id = 'Sam_id', covar_l = covar_l, relab = relab)
 data_mat, meta_data = load_results_from_benchmarked_methods(f'{source_dir}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv', f'{source_dir}/cleaned_data/{dataset_name}/{dataset_name}_meta_data.csv')
 check_complete_confounding(meta_data, batch_var, condition_var, f'{source_dir}/cleaned_data/{dataset_name}/{dataset_name}')

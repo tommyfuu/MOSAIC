@@ -62,7 +62,6 @@ load_phyloseq_from_merged_CMD <- function (list_of_studies, list_of_conditions){
         returnSamples("relative_abundance") |>
         makePhyloseqFromTreeSummarizedExperiment(assay.type = "relative_abundance")
 
-    print(sample_data(current_phylo_obj))
     return (list(current_phylo_obj, study_l_str))
 }
 

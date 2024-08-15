@@ -25,6 +25,7 @@ from rpy2.robjects.packages import importr
 from statsmodels.stats.multitest import multipletests
 import statsmodels.api as sm
 import matplotlib as mpl
+import sys, yaml
 
 ARGPARSE_SWITCH = True
 
@@ -1133,10 +1134,18 @@ or_l = [1, 1.25, 1.5]
 cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 
+# get current path
+current_path = os.path.dirname(os.path.abspath(__file__))
+print("current_path", current_path)
+overall_path = current_path + "/../.."
+with open(f'{current_path}/../config.yml') as file:
+    config_data = yaml.load(file, Loader=yaml.FullLoader)
+
 if ARGPARSE_SWITCH:
     GLOBAL_DATATYPE = args['datatype']
-    methods_list_dict = {'count': ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"],
-                        'relab': ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]}
+    # methods_list_dict = {'count': ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"],
+    #                     'relab': ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]}
+    methods = list(set(config_data['used_R_methods']).intersection(set(config_data['used_Python_methods'])))
     related = args['related']
     binarizing_agent_biovar = args['agent']
     if args['option'] == 1:
@@ -1145,7 +1154,7 @@ if ARGPARSE_SWITCH:
                     address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
                     output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
                     eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
-                    methods_list = methods_list_dict[GLOBAL_DATATYPE], binarizing_agent_biovar = binarizing_agent_biovar)
+                    methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
         print("DONEEEEEE")
     elif args['option'] == 2:
         # run simulation evaluation
@@ -1153,7 +1162,7 @@ if ARGPARSE_SWITCH:
                     address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
                     output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
                     eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
-                    methods_list = methods_list_dict[GLOBAL_DATATYPE], binarizing_agent_biovar = binarizing_agent_biovar)
+                    methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
     elif args['option'] == 3:
         # visualize simulation stats
         eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023"
@@ -1162,7 +1171,7 @@ if ARGPARSE_SWITCH:
         if not os.path.exists(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}'):
             os.makedirs(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}')
 
-        methods = methods_list_dict[GLOBAL_DATATYPE]
+        # methods = methods_list_dict[GLOBAL_DATATYPE]
         # odds ratio == 1
         datasets = ["out_1_0_0", "out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0_0.25", "out_1_0.25_0.25", "out_1_0.5_0.25", 
                     "out_1_0.75_0.25", "out_1_0_0.5", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0_0.75", "out_1_0.25_0.75", "out_1_0_1"]
@@ -1205,47 +1214,63 @@ if ARGPARSE_SWITCH:
         visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
 
     elif args['option'] == 4:
-        ## run two left-over python methods for rw datasets
-        ## RUN HARMONY/PERCENTILE_NORM FOR RW
-        # autism 2 microbiomeHD
-        ################################################################################
-        vars_use = ["Dataset"]
         IDCol = 'Sam_id'
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv"
+        dataset_name = config_data['dataset_name']
+        if 'microbiomeHD' in dataset_name:
+            vars_use = ["Dataset"]
+            condition_var = "DiseaseState"
+        elif 'CMD' in dataset_name:
+            vars_use = ["study_name"]
+            condition_var = "disease"
+        
+        address_X = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv'
+        address_Y = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_meta_data.csv'
         data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"autism_2_microbiomeHD_harmony")
-        percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
+        res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}_harmony')
+        percentile_norm(address_X, address_Y, condition_var, config_data['condition_value'], 'comma', f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}')
 
-        # cdi 3 microbiomeHD
-        ################################################################################
-        vars_use = ["Dataset"]
-        IDCol = 'Sam_id'
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv"
-        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/"+"cdi_3_microbiomeHD_harmony")
-        percentile_norm(address_X, address_Y, "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
+        
+        # ## run two left-over python methods for rw datasets
+        # ## RUN HARMONY/PERCENTILE_NORM FOR RW
+        # # autism 2 microbiomeHD
+        # ################################################################################
+        # vars_use = ["Dataset"]
+        # IDCol = 'Sam_id'
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/"+"autism_2_microbiomeHD_harmony")
+        # percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
 
-        # ibd_3_CMD
-        ################################################################################
-        vars_use = ["study_name"]
-        IDCol = 'Sam_id'
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv"
-        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"ibd_3_CMD_harmony")
-        percentile_norm(address_X, address_Y, "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
+        # # cdi 3 microbiomeHD
+        # ################################################################################
+        # vars_use = ["Dataset"]
+        # IDCol = 'Sam_id'
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/"+"cdi_3_microbiomeHD_harmony")
+        # percentile_norm(address_X, address_Y, "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
 
-        # crc_8_CMD
-        ################################################################################
-        vars_use = ["study_name"]
-        IDCol = 'Sam_id'
-        address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
-        address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv"
-        data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
-        res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/"+"crc_8_CMD_harmony")
-        percentile_norm(address_X, address_Y, "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
+        # # ibd_3_CMD
+        # ################################################################################
+        # vars_use = ["study_name"]
+        # IDCol = 'Sam_id'
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/"+"ibd_3_CMD_harmony")
+        # percentile_norm(address_X, address_Y, "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
+
+        # # crc_8_CMD
+        # ################################################################################
+        # vars_use = ["study_name"]
+        # IDCol = 'Sam_id'
+        # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
+        # address_Y = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv"
+        # data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
+        # res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/"+"crc_8_CMD_harmony")
+        # percentile_norm(address_X, address_Y, "disease", "CRC", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
 
     elif args['option'] == 5:
         # evaluate the method results on rw datasets

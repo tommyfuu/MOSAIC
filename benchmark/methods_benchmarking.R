@@ -15,20 +15,28 @@ library(mixOmics)
 
 args = commandArgs(trailingOnly=TRUE)
 
-print(args)
-if (length(args)==0 || length(args)>1 ) {
-#   stop("There has to be exactly one argument supplied with this script for simulation runs", call.=FALSE)
-    option = 5
-    print("not running on real-world dataset")
-} else if (length(args)==1) {
-  # default output file
-  option= args[1]
-  print(option)
-}
+# if (length(args)==1)
+# print(args)
+# if (length(args)==0 || length(args)>1 ) {
+# #   stop("There has to be exactly one argument supplied with this script for simulation runs", call.=FALSE)
+#     option = 5
+#     print("not running on real-world dataset")
+# } else if (length(args)==1) {
+#   # default output file
+#   option= args[1]
+#   print(option)
+# }
 
 ## load ConQuR
 current_path = getwd()
-conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
+print("currnet path")
+print(current_path)
+if(grepl("mic_bc_benchmark/benchmark", current_path)){
+    conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
+} else {
+    conqur_path = str_replace(current_path, "mic_bc_benchmark", "mic_bc_benchmark/ConQuR")
+}
+# conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune.R"))
 source(paste0(conqur_path, "/ConQuR_help_functions_libsize_old.R"))
@@ -36,6 +44,58 @@ source(paste0(conqur_path, "/ConQuR_main_tune_libsize_old.R"))
 source(paste0(conqur_path, "/ConQuR_help_functions_rel.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune_rel.R"))
 source(paste0(conqur_path, "/supporting_functions.R"))
+
+check_metadata <- function(data, variables, no_missing = TRUE) {
+  # If variables are NULL return NULL (as in the case of no provided covariates)
+  if(is.null(variables)) return(NULL)
+
+  # Variables must all be present in data (i.e. in the column names)
+  variables_absent <- setdiff(variables, colnames(data))
+  if(length(variables_absent) > 0) {
+    stop("Following variable(s) not present in data:\n",
+         paste(variables_absent, collapse = ","))
+  }
+
+  # Variables should not have missing values
+  variables_missing <- vapply(variables,
+                              function(variable) {
+                                any(is.na(data[[variable]]))
+                              },
+                              TRUE)
+  if(any(variables_missing) & no_missing) {
+    stop("Following variable(s) in data have missing values:\n",
+         paste(variables[variables_missing], collapse = ","))
+  }
+
+  return(data[, variables, drop = FALSE])
+}
+
+check_batch <- function(x, min_n_batch = 2) {
+  # First ensure batch variable is a factor
+  if(!is.factor(x)) {
+    warning("Batch variable is not a factor as provided and will be converted ",
+            "to one.")
+    x <- as.factor(x)
+  }
+
+  # Check min number of batches is satisfied
+  if(nlevels(x) < min_n_batch)
+    stop("Must have at least ", min_n_batch, " batches!")
+
+  return(x)
+}
+
+construct_design <- function(data, with_intercept = TRUE) {
+  # Returns NULL if data is NULL. This happens if the covariate data frame is
+  # NULL (when no covariates are provided)
+  if(is.null(data)) return(NULL)
+  
+  # Construct the matrix using all variables in data 
+  if(with_intercept)
+    model.matrix(~ ., data = data)
+  else
+    model.matrix(~ . - 1, data = data)
+}
 
 
 run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, dataset = "Dataset", covar = NULL, controlled = FALSE, Sam_id = 'Sam_id', transpose = FALSE, count = FALSE, 
@@ -157,6 +217,16 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 row.names(metadata_mupphin) <- metadata[[Sam_id]]
                 feature_abd = as.data.frame(t(feature_abd))
                 colnames(feature_abd) <- rownames(metadata_mupphin)
+                print(metadata_mupphin)
+                print("batch_ref")
+                print(batch_ref)
+                df_batch = check_metadata(metadata, dataset)
+                batchmod <- construct_design(data = df_batch, with_intercept = FALSE)
+                print(batchmod)
+                var_batch <- check_batch(df_batch[[dataset]], min_n_batch = 2)
+                n_batch <- nlevels(x = var_batch)
+                print(n_batch)
+                print(ncol(batchmod))
                 start_time <- Sys.time()
                 fit_adjust_batch <- adjust_batch(feature_abd = feature_abd,
                                         batch = dataset,
@@ -165,9 +235,9 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                                         control = list(verbose = FALSE))
                 count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
                 end_time <- Sys.time()
-                cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-                cat('\n', file=sink_file_name, append=TRUE)
-                write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
+                # cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                # cat('\n', file=sink_file_name, append=TRUE)
+                # write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
             }
             
             ### 1.4 ConQuR (count version) - simple
@@ -253,7 +323,8 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         else {
             run_relab = FALSE
         }
-
+        print("run_relab")
+        print(run_relab)
         if (run_relab == TRUE){  
             cat("runtime documenting...\n", file=sink_file_name, append=FALSE)
             ### 1.1 combat
@@ -274,6 +345,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 else{
                     print(colnames(metadata))
                     covar_df = apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
+                    print(covar_df)
                     # count_data.combat <- t(ComBat(t(count_data*100), batch = batch_info, par.prior=FALSE, mod=covar_df))
                     count_data.combat <- t(ComBat(t(count_data.clr), batch = batch_info, par.prior=FALSE, mod=covar_df))
                 }
@@ -368,58 +440,109 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 
 
 
-if(option == 1){
-    # autism 2 microbiomeHD
-    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD")
-    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
-    run_methods(paste0(current_root, "_count_data.csv"),
-        paste0(current_root, "_meta_data.csv"),
-        output_root,
-        dataset = "Dataset",
-        batch_ref = 'asd_son',
-        covar = c("DiseaseState"),
-        count = TRUE,
-        used_methods =  c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-    )
-} else if(option == 2){
-    print("benchmarking cdi")
-    # cdi 3 microbiomeHD
-    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
-    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
-    run_methods(paste0(current_root, "_count_data.csv"),
-        paste0(current_root, "_meta_data.csv"),
-        output_root,
-        dataset = "Dataset",
-        batch_ref = 'cdi_youngster',
-        covar = c("DiseaseState"),
-        count = TRUE,
-        used_methods = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
-    )
-} else if(option ==3){
-    print("benchmarking ibd")
-    # ibd 3 CMD
-    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD")
-    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
-    run_methods(paste0(current_root, "_count_data.csv"),
-        paste0(current_root, "_meta_data.csv"),
-        output_root,
-        dataset = "study_name",
-        batch_ref = 'HMP_2019_ibdmdb',
-        covar = c('disease', 'gender', 'age_category'),
-        used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-    )
-} else if(option ==4) {
-    # crc_8_CMD
-    current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD")
-    output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
-    run_methods(paste0(current_root, "_count_data.csv"),
-        paste0(current_root, "_meta_data.csv"),
-        output_root,
-        dataset = "study_name",
-        batch_ref = 'FengQ_2015',
-        covar = c("disease", "gender", "age"),
-        used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
-    )
+# if(option == 1){
+#     # autism 2 microbiomeHD
+#     current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD")
+#     # output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
+#     output_root = '/athena/linglab/scratch/chf4012/ConQuR_L_data/small_simulations/aaa'
+#     run_methods(paste0(current_root, "_count_data.csv"),
+#         paste0(current_root, "_meta_data.csv"),
+#         output_root,
+#         dataset = "Dataset",
+#         batch_ref = 'asd_son',
+#         covar = c("DiseaseState"),
+#         count = TRUE,
+#         # used_methods =  c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+#         used_methods =  c("MMUPHin")
+#     )
+# } else if(option == 2){
+#     print("benchmarking cdi")
+#     # cdi 3 microbiomeHD
+#     current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
+#     output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
+#     run_methods(paste0(current_root, "_count_data.csv"),
+#         paste0(current_root, "_meta_data.csv"),
+#         output_root,
+#         dataset = "Dataset",
+#         batch_ref = 'cdi_youngster',
+#         covar = c("DiseaseState"),
+#         count = TRUE,
+#         used_methods = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
+#     )
+# } else if(option ==3){
+#     print("benchmarking ibd")
+#     # ibd 3 CMD
+#     current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD")
+#     output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
+#     run_methods(paste0(current_root, "_count_data.csv"),
+#         paste0(current_root, "_meta_data.csv"),
+#         output_root,
+#         dataset = "study_name",
+#         batch_ref = 'HMP_2019_ibdmdb',
+#         covar = c('disease', 'gender', 'age_category'),
+#         used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+#     )
+# } else if(option ==4) {
+#     # crc_8_CMD
+#     current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD")
+#     output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/crc_8_CMD/crc_8_CMD")
+    # run_methods(paste0(current_root, "_count_data.csv"),
+    #     paste0(current_root, "_meta_data.csv"),
+    #     output_root,
+    #     dataset = "study_name",
+    #     batch_ref = 'FengQ_2015',
+    #     covar = c("disease", "gender", "age"),
+    #     used_methods = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
+    # )
+# }
+
+
+library(yaml)
+current_path = getwd()
+if (grepl("/benchmark", current_path)){
+    config_object <- yaml.load_file('../config.yml')
+} else{
+    config_object <- yaml.load_file('./config.yml')
 }
 
+dataset_name <- config_object$dataset_name
+batch_ref <- config_object$batch_ref
+covar <- config_object$covar
+used_methods <- config_object$used_R_methods
+current_root <- paste0(config_object$src, '/cleaned_data/', dataset_name, '/', dataset_name)
+output_root <- paste0(config_object$post_integration_outputs, '/', dataset_name, '/', dataset_name)
 
+# mkdir if this dir or its parent dir does not exist
+if(!dir.exists(paste0(config_object$post_integration_outputs, '/', dataset_name, '/'))){
+    print(paste0(config_object$post_integration_outputs, '/', dataset_name, '/'))
+    dir.create(paste0(config_object$post_integration_outputs, '/', dataset_name, '/'))
+}
+
+if(config_object$datatype=='count'){
+    count = TRUE
+} else {
+    count = FALSE
+}
+print(used_methods)
+
+if (grepl('microbiomeHD', dataset_name)){
+    run_methods(paste0(current_root, "_count_data.csv"),
+        paste0(current_root, "_meta_data.csv"),
+        output_root,
+        dataset = "Dataset",
+        batch_ref = batch_ref,
+        covar = covar,
+        count = count,
+        used_methods =  used_methods
+    )
+} else if (grepl('CMD', dataset_name)){
+    run_methods(paste0(current_root, "_count_data.csv"),
+        paste0(current_root, "_meta_data.csv"),
+        output_root,
+        dataset = "study_name",
+        batch_ref = batch_ref,
+        covar = covar,
+        count = count,
+        used_methods = used_methods
+    )
+}
