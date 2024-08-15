@@ -2,38 +2,40 @@
 rules_to_run: 'all_rw' 
 # one of the following: 'all_rw', 'all_simulated', 'preprocess', 'simulate', 'data_integration', 'evaluation', 'visualization'
 
-# data_source: 'microbiomeHD'
-data_source: 'CMD'
+data_source: 'microbiomeHD'
 # it has to be 'microbiomeHD', 'CMD', or 'MIDASim'
 
 src: './data'
 
-dataset_name: 'ibd_3_CMD'
+dataset_name: 'autism_2_microbiomeHD'
 # for MicrobiomeHD, the dataset_name is the name of the folder in the data folder where all the MicrobiomeHD datasets downloaded has to be saved
 
-datatype: 'relab'
+datatype: 'count'
 # it has to be 'count' or 'relab'
 
 ### PREPROCESSING PHASE ###
-CMD_datasets: ["HMP_2019_ibdmdb", "LiJ_2014", "NielsenHB_2014"]
-CMD_conditions: ['IBD', 'healthy']
-
 RW_LIBSIZE_THRESHOLD: 0.05
 RW_RELAB_THRESHOLD: 0.05
-
-COVAR_L: ['disease', 'gender', 'age_category']
+COVAR_L: []
 # list of covariates to be used in the final stage of data cleaning/complete confounding calculations + data saving
 # in our case, only ['disease', 'gender', 'age_category'] for CMD/IBD datasets are used, otherwise all empty
 
 ### BENCHMARK PHASE ###
 post_integration_outputs: './benchmark/benchmarked_results'
-used_R_methods: ["combat", "limma", "MMUPHin", 'ConQuR_rel']
+used_R_methods: ["combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize']
 used_Python_methods: ['harmony', "percentile_norm"]
-batch_ref: 'HMP_2019_ibdmdb'
-covar: ["disease", "gender", "age_category"] # make sure that this column does not have NAs for every patient!
-condition_value: 'IBD'
+batch_ref: 'asd_son'
+covar: ['DiseaseState']
+condition_value: 'ASD'
+
+# post_integration_outputs: './benchmark/benchmarked_results'
+# used_R_methods: ["combat", "limma", "MMUPHin", 'ConQuR_rel']
+# used_Python_methods: ['harmony', "percentile_norm"]
+# batch_ref: 'HMP_2019_ibdmdb'
+# covar: ["disease", "gender", "age_category"] # make sure that this column does not have NAs for every patient!
+# condition_value: 'IBD'
 
 ### EVALUATION PHASE ###
 evaluation_outputs: './outputs'
-binarizing_agent: 'IBD' # for two microbiomeHD datasets or 'IBD' for ibd or 'adenoma' for the CRC dataset
+binarizing_agent: 'H' # for two microbiomeHD datasets or 'IBD' for ibd or 'adenoma' for the CRC dataset
 

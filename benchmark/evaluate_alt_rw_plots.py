@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import os
-
+import yaml
 
 def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, ylim_dict, simulate = False, sim_num_iters = 1000, dimensions = (7, 5), taxa_gt = None, count_l = [True, True, False, False], 
     marker_dict = {'autism_2_microbiomeHD': 'o', 'cdi_3_microbiomeHD': 's', 'ibd_3_CMD': 'd', 'crc_8_CMD': 'H'},
@@ -303,9 +303,34 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
 # ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 0.9], [0.2, 0.9]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
 # alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
 
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+# datasets = ["ibd_3_CMD", "crc_8_CMD"]
+# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# ylim_dict = {'batch_r2': [[0, 0.14], [0, 0.14]], 'biovar_r2': [[0, 0.030], [0, 0.030]], 'shannon_pval': [[0, 0.1], [0, 1]], 'auc_f1': [[0.4, 1], [0.4, 1]], 'runtime': [[np.log2(5e-5), np.log2(2500)]], 'precision_recall': [[0, 1], [0, 1]]}
+# alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)
+
+current_path = os.path.dirname(os.path.abspath(__file__))
+print("current_path", current_path)
+overall_path = current_path + "/../.."
+with open(f'{current_path}/../config.yml') as file:
+    config_data = yaml.load(file, Loader=yaml.FullLoader)
+# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+##############################################################################
+# create dir if not exists
+if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots'):
+    os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots')
+if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw'):
+    os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw')
+if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw'):
+    os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw')
+methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+output_dir_l = [config_data['evaluation_outputs']+'/'+dataset for dataset in datasets]
+ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 0.9], [0.2, 0.9]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
+alt_visualize_simulation_stats(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
+
 methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
 datasets = ["ibd_3_CMD", "crc_8_CMD"]
-output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-ylim_dict = {'batch_r2': [[0, 0.14], [0, 0.14]], 'biovar_r2': [[0, 0.030], [0, 0.030]], 'shannon_pval': [[0, 0.1], [0, 1]], 'auc_f1': [[0.4, 1], [0.4, 1]], 'runtime': [[np.log2(5e-5), np.log2(2500)]], 'precision_recall': [[0, 1], [0, 1]]}
-alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)
+output_dir_l = [config_data['evaluation_outputs']+'/'+dataset for dataset in datasets]
+alt_visualize_simulation_stats(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)

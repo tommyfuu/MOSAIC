@@ -3,7 +3,7 @@ import warnings
 from pathlib import Path
 
 
-configfile: "./config_autism.yml"
+configfile: "./config.yml"
 
 # global params
 dataset_name = config['dataset_name']
