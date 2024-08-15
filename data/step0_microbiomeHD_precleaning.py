@@ -144,3 +144,22 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
 # address_directory = overall_path+'/mic_bc_benchmark/data/cdi_3_microbiomeHD'
 # data_mat, meta_data = load_data_microbiomeHD(address_directory, output_dir_path)
 
+# write an argparse that takes in the dataset name and the source/output directory where the data was from and will be saved after preprocessing
+import argparse
+parser = argparse.ArgumentParser(description='Preprocess microbiomeHD datasets')
+parser.add_argument('-d', '--dataset_name', type=str, default='autism_2_microbiomeHD', help='Name of the dataset')
+parser.add_argument('-s', '--source_dir', type=str, default='/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/', help='Directory where the dataset is stored')
+
+args = parser.parse_args()
+dataset_name = args.dataset_name
+source_dir = args.source_dir
+
+source_dir_path = f'{source_dir}/{dataset_name}'
+output_dir_path = f'{source_dir}/intermediate_{dataset_name}/{dataset_name}'
+output_dir_path = f'{source_dir}/intermediate_{dataset_name}_trial/{dataset_name}'
+
+# make output_dir_path if it does not exist
+if not os.path.exists(output_dir_path):
+    os.makedirs(output_dir_path)
+    
+data_mat, meta_data = load_data_microbiomeHD(source_dir_path, output_dir_path)

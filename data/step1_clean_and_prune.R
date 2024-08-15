@@ -4,6 +4,19 @@ library(mia)
 library(phyloseq)
 library(curatedMetagenomicData)
 
+# do argparse for R that takes in overall_path, study_name, libsize_threshold, and relab_threshold
+args <- commandArgs(trailingOnly = TRUE)
+print(args)
+if (length(args) == 2) {
+    dataset_type <- args[1] # either 'microbiomeHD' or 'CMD'
+    study_name <- args[2]
+} else {
+    print("Usage: Rscript step1_clean_and_prune.R overall_path study_name")
+    quit()
+}
+
+
+
 
 load_phyloseq_from_merged_microbiomeHD <- function (otu_mat_path, meta_data_path){
     # data loading
@@ -71,6 +84,7 @@ clean_prune_save_phyloseq <- function (phyloseq_dataset, out_str, libsize_thresh
     return(phyloseq_dataset)
 }
 
+
 # overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/'
 # autism_phyloseq_obj <- load_phyloseq_from_merged_microbiomeHD(paste0(overall_path, 'intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv'), paste0(overall_path, 'intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv'))
 # clean_prune_save_phyloseq(autism_phyloseq_obj, 'autism_2_microbiomeHD', 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_autism_2_microbiomeHD')
@@ -84,3 +98,32 @@ clean_prune_save_phyloseq <- function (phyloseq_dataset, out_str, libsize_thresh
 # crc_phyloseq_obj <- load_phyloseq_from_merged_CMD(c("FengQ_2015", "HanniganGD_2017", "ThomasAM_2018a", "YachidaS_2019", "ZellerG_2014"), c("adenoma", "healthy"))
 # clean_prune_save_phyloseq(crc_phyloseq_obj[[1]], crc_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_crc_8_CMD')
 
+library(yaml)
+config_object <- yaml.load_file('./config.yml')
+src_path <- config_object$src
+libsize_threshold <- config_object$RW_LIBSIZE_THRESHOLD
+relab_threshold <- config_object$RW_RELAB_THRESHOLD
+
+# make sure they are numeric
+libsize_threshold <- as.numeric(libsize_threshold)
+relab_threshold <- as.numeric(relab_threshold)
+print(libsize_threshold)
+print(relab_threshold)
+
+# mkdir
+output_dir <- paste0(src_path, '/pruned_', study_name, '_trial')
+dir.create(output_dir, showWarnings = FALSE)
+
+if(dataset_type == 'microbiomeHD'){
+    phyloseq_obj <- load_phyloseq_from_merged_microbiomeHD(paste0(src_path, '/intermediate_', study_name, '/', study_name, '_count_data.csv'), paste0(src_path, '/intermediate_', study_name, '/', study_name, '_meta_data.csv'))
+    clean_prune_save_phyloseq(phyloseq_obj, study_name, libsize_threshold, relab_threshold, save = TRUE, save_to = output_dir)
+} else if(dataset_type == 'CMD'){
+    study_list <- config_object$CMD_datasets
+    condition_list <- config_object$CMD_conditions
+    phyloseq_obj <- load_phyloseq_from_merged_CMD(list_of_studies = study_list, list_of_conditions = condition_list)
+    clean_prune_save_phyloseq(phyloseq_obj[[1]], phyloseq_obj[[2]], libsize_threshold, relab_threshold, save = TRUE, save_to = output_dir)
+
+} else {
+    print("dataset_type must be either 'microbiomeHD' or 'CMD'")
+    quit()
+}

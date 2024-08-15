@@ -1,0 +1,19 @@
+data_source: 'microbiomeHD'
+# it has to be 'microbiomeHD', 'CMD', or 'MIDASim'
+
+src: './data'
+
+dataset_name: 'autism_2_microbiomeHD'
+# for MicrobiomeHD, the dataset_name is the name of the folder in the data folder where all the MicrobiomeHD datasets downloaded has to be saved
+
+CMD_datasets: ["HMP_2019_ibdmdb", "LiJ_2014", "NielsenHB_2014"]
+CMD_conditions: ['IBD', 'healthy']
+
+RW_LIBSIZE_THRESHOLD: 0.05
+RW_RELAB_THRESHOLD: 0.05
+
+datatype: 'count'
+# it has to be 'count' or 'relab'
+
+rules_to_run: 'all' 
+# one of the following: 'all', 'preprocess_or_simulate', 'data_integration', 'evaluation', 'visualization'
