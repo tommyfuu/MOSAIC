@@ -217,9 +217,6 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 row.names(metadata_mupphin) <- metadata[[Sam_id]]
                 feature_abd = as.data.frame(t(feature_abd))
                 colnames(feature_abd) <- rownames(metadata_mupphin)
-                print(metadata_mupphin)
-                print("batch_ref")
-                print(batch_ref)
                 df_batch = check_metadata(metadata, dataset)
                 batchmod <- construct_design(data = df_batch, with_intercept = FALSE)
                 print(batchmod)
@@ -235,9 +232,9 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                                         control = list(verbose = FALSE))
                 count_data.MMUPHin <- t(fit_adjust_batch$feature_abd_adj)                        
                 end_time <- Sys.time()
-                # cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
-                # cat('\n', file=sink_file_name, append=TRUE)
-                # write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
+                cat(c("MMUPHin runtime", toString(difftime(end_time, start_time, unit="secs")), "seconds"), file=sink_file_name, append=TRUE)
+                cat('\n', file=sink_file_name, append=TRUE)
+                write.csv(count_data.MMUPHin, paste(output_root, "_MMUPHin.csv", sep=""), row.names = TRUE)
             }
             
             ### 1.4 ConQuR (count version) - simple

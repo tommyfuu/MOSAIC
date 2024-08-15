@@ -159,7 +159,11 @@ with open(f'../config.yml') as file:
     config_file = yaml.load(file, Loader=yaml.FullLoader)
     
 covar_l = config_file['COVAR_L']
-relab = config_file['datatype']
+datatype = config_file['datatype']
+if datatype == 'relab':
+    relab = True
+else:
+    relab = False
 
 # mkdir cleaned_data if not exists
 if not os.path.exists(f'{source_dir}/cleaned_data/{dataset_name}'):
