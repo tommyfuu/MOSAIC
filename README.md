@@ -23,6 +23,7 @@ Firstly, please install all conda-installable packages via our environment yaml 
 
 ```
 conda env create -f env.yml
+conda activate mic_data_integration
 ```
 
 After this, open `R` in command line, and then indivudally install the three packages MIDASim, FDboost, and mixOmics from the respective sites linked above. This is necessary as these packages are not yet in the conda ecosystem. Instructions for installing these packages are as follows:
