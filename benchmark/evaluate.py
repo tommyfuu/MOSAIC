@@ -1178,19 +1178,32 @@ if ARGPARSE_SWITCH:
     related = args['related']
     binarizing_agent_biovar = args['agent']
     if args['option'] == 1:
+        # # run two python methods on the simulation data 
+        # iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
+        #             address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
+        #             output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
+        #             eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
+        #             methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
         # run two python methods on the simulation data 
+        # read sim_output_root from config file
+        sim_output_root = config_data['sim_output_root']
         iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-                    address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
-                    output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
-                    eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
+                    address_XY_dir_path = sim_output_root+f'/simulate', 
+                    output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}relation', 
+                    eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}relation',
                     methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
         print("DONEEEEEE")
     elif args['option'] == 2:
         # run simulation evaluation
+        # iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
+        #             address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
+        #             output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
+        #             eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
+        #             methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
         iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-                    address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
-                    output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
-                    eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
+                    address_XY_dir_path = sim_output_root+f'/simulate', 
+                    output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}relation', 
+                    eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}relation',
                     methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
     elif args['option'] == 3:
         # visualize simulation stats

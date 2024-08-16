@@ -1,5 +1,12 @@
 # load data
-load("./ibd_150.Rdata")
+current_path = getwd()
+if (grepl("/benchmark", current_path)){
+    load("./ibd_150.Rdata")
+} else{
+    load("./benchmark/ibd_150.Rdata")
+}
+
+
 library("bindata")
 library("MIDASim")
 library(tibble)

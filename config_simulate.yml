@@ -13,12 +13,16 @@ dataset_name: 'autism_2_microbiomeHD'
 datatype: 'count'
 # it has to be 'count' or 'relab'
 
-output_root: './trial_simulation'
+sim_output_root: './trial_simulation'
 
 ### SIMULATION PHASE ###
-or_l: [1, 1.25, 1.5]
-cond_effect_val_l: [0, 0.25, 0.5, 0.75, 1]
-batch_effect_val_l: [0, 0.25, 0.5, 0.75, 1]
+# or_l: [1, 1.25, 1.5]
+# cond_effect_val_l: [0, 0.25, 0.5, 0.75, 1]
+# batch_effect_val_l: [0, 0.25, 0.5, 0.75, 1]
+or_l: [1.25]
+cond_effect_val_l: [0.5]
+batch_effect_val_l: [0.5]
+iter: 1
 
 # list of covariates to be used in the final stage of data cleaning/complete confounding calculations + data saving
 # in our case, only ['disease', 'gender', 'age_category'] for CMD/IBD datasets are used, otherwise all empty
