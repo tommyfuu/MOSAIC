@@ -1,4 +1,4 @@
-# MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline 
+# MOSAIC <img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.png" width="25" height="25"> : MicrobiOme Studies Analytical Integration and Correction pipeline 
 Code and partial data repository for the manuscript entitled __MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline__ by _Fu et al._. 
 
 
