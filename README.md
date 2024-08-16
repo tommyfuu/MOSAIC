@@ -1,4 +1,4 @@
-# integrating multiple microbiome datasets for pooled analyses
+# MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline
 Code and partial data repository for the manuscript entitled __MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline__ by _Fu et al._. 
 
 _Developed and maintained by_:  [Chenlian (Tom) Fu](fcl200089@outlook.com)\
