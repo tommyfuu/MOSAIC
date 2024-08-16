@@ -1,10 +1,9 @@
-<<<<<<< HEAD
-# MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline
-Code and partial data repository for the manuscript entitled __MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline__ by _Fu et al._. 
+# MOSAIC <img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.jpeg" width="25" height="25"> : a pipeline for MicrobiOme Studies Analytical Integration and Correction
+Repository for the manuscript entitled __MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline__ by _Fu et al._. 
 
-
-<img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.png" width="250" height="250">
-
+<p align="center">
+  <img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.jpeg" width="500" height="500">
+</p>
 (Logo generated with [Google Gemini](https://gemini.google.com/app))
 
 _Developed and maintained by_:  [Chenlian (Tom) Fu](fcl200089@outlook.com)\
@@ -24,6 +23,7 @@ Firstly, please install all conda-installable packages via our environment yaml 
 
 ```
 conda env create -f env.yml
+conda activate mic_data_integration
 ```
 
 After this, open `R` in command line, and then indivudally install the three packages MIDASim, FDboost, and mixOmics from the respective sites linked above. This is necessary as these packages are not yet in the conda ecosystem. Instructions for installing these packages are as follows:
