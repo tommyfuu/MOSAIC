@@ -29,7 +29,13 @@ set.seed(GLOBAL_ITER)
 
 ## load ConQuR
 current_path = getwd()
-conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
+print("currnet path")
+print(current_path)
+if(grepl("mic_bc_benchmark/benchmark", current_path)){
+    conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
+} else {
+    conqur_path = str_replace(current_path, "mic_bc_benchmark", "mic_bc_benchmark/ConQuR")
+}
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune.R"))
 source(paste0(conqur_path, "/ConQuR_help_functions_libsize_old.R"))

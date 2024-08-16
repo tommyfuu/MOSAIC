@@ -21,7 +21,8 @@ COVAR_L: []
 # in our case, only ['disease', 'gender', 'age_category'] for CMD/IBD datasets are used, otherwise all empty
 
 ### BENCHMARK PHASE ###
-post_integration_outputs: './benchmark/benchmarked_results'
+# post_integration_outputs: './benchmark/benchmarked_results'
+post_integration_outputs: './trial_rw_microbiomeHD/benchmarked_results'
 used_R_methods: ["combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize']
 used_Python_methods: ['harmony', "percentile_norm"]
 batch_ref: 'asd_son'
@@ -36,6 +37,7 @@ condition_value: 'ASD'
 # condition_value: 'IBD'
 
 ### EVALUATION PHASE ###
-evaluation_outputs: './outputs'
+# evaluation_outputs: './outputs'
+evaluation_outputs: './trial_rw_microbiomeHD/outputs'
 binarizing_agent: 'H' # for two microbiomeHD datasets or 'IBD' for ibd or 'adenoma' for the CRC dataset
 

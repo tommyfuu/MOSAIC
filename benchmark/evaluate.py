@@ -1143,10 +1143,10 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
 
     return
 
-### parameter combination set-up
-or_l = [1, 1.25, 1.5]
-cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
-batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+# ### parameter combination set-up
+# or_l = [1, 1.25, 1.5]
+# cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
+# batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 
 # get current path
 current_path = os.path.dirname(os.path.abspath(__file__))
@@ -1165,11 +1165,6 @@ with open(f'{current_path}/../Snakefile') as file:
 with open(f'{current_path}/../{config_path}') as file:
     config_data = yaml.load(file, Loader=yaml.FullLoader)
 
-used_R_methods = list(config_data['used_R_methods'])
-used_Python_methods = list(config_data['used_Python_methods'])
-methods = used_R_methods
-methods.extend(used_Python_methods)
-
 
 if ARGPARSE_SWITCH:
     GLOBAL_DATATYPE = args['datatype']
@@ -1178,84 +1173,49 @@ if ARGPARSE_SWITCH:
     related = args['related']
     binarizing_agent_biovar = args['agent']
     if args['option'] == 1:
-        # # run two python methods on the simulation data 
-        # iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-        #             address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
-        #             output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
-        #             eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
-        #             methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
         # run two python methods on the simulation data 
+        if GLOBAL_DATATYPE == 'count':
+            used_R_methods = list(config_data['used_R_methods_count'])
+        else:
+            used_R_methods = list(config_data['used_R_methods_relab'])
+        used_Python_methods = list(config_data['used_Python_methods'])
+        methods = used_R_methods
+        methods.extend(used_Python_methods)
+        or_l = config_data['or_l']
+        cond_effect_val_l = config_data['cond_effect_val_l']
+        batch_effect_val_l = config_data['batch_effect_val_l']
         # read sim_output_root from config file
         sim_output_root = config_data['sim_output_root']
         iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
                     address_XY_dir_path = sim_output_root+f'/simulate', 
-                    output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}relation', 
-                    eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}relation',
+                    output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}_relation', 
+                    eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}_relation',
                     methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
         print("DONEEEEEE")
     elif args['option'] == 2:
         # run simulation evaluation
-        # iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-        #             address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
-        #             output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
-        #             eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023",
-        #             methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
+        if GLOBAL_DATATYPE == 'count':
+            used_R_methods = list(config_data['used_R_methods_count'])
+        else:
+            used_R_methods = list(config_data['used_R_methods_relab'])
+        used_Python_methods = list(config_data['used_Python_methods'])
+        methods = used_R_methods
+        methods.extend(used_Python_methods)
+        or_l = config_data['or_l']
+        cond_effect_val_l = config_data['cond_effect_val_l']
+        batch_effect_val_l = config_data['batch_effect_val_l']
+        sim_output_root = config_data['sim_output_root']
         iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
                     address_XY_dir_path = sim_output_root+f'/simulate', 
-                    output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}relation', 
-                    eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}relation',
+                    output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}_relation', 
+                    eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}_relation',
                     methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
     elif args['option'] == 3:
-        # visualize simulation stats
-        eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023"
-        output_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023"
-
-        if not os.path.exists(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}'):
-            os.makedirs(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}')
-
-        # methods = methods_list_dict[GLOBAL_DATATYPE]
-        # odds ratio == 1
-        datasets = ["out_1_0_0", "out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0_0.25", "out_1_0.25_0.25", "out_1_0.5_0.25", 
-                    "out_1_0.75_0.25", "out_1_0_0.5", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0_0.75", "out_1_0.25_0.75", "out_1_0_1"]
-        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
-
-        datasets = ["out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0.25_0.25", "out_1_0.5_0.25", 
-                    "out_1_0.75_0.25", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0.25_0.75"]
-        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
-
-
-        # odds ratio == 1.25
-        datasets = ["out_1.25_0_0", "out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0", "out_1.25_0_0.25", "out_1.25_0.25_0.25", "out_1.25_0.5_0.25",
-                    "out_1.25_0.75_0.25", "out_1.25_0_0.5", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0_0.75", "out_1.25_0.25_0.75", "out_1.25_0_1"]
-        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
-
-        datasets = ["out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0", "out_1.25_0.25_0.25", "out_1.25_0.5_0.25",
-                    "out_1.25_0.75_0.25", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0.25_0.75"]
-        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
-
-
-        # odds ratio == 1.5
-        datasets = ["out_1.5_0_0", "out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0_0.25", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
-                    "out_1.5_0.75_0.25", "out_1.5_0_0.5", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5", "out_1.5_0_0.75", "out_1.5_0.25_0.75", "out_1.5_0_1"]
-        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
-    
-        datasets = ["out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
-                    "out_1.5_0.75_0.25", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5",  "out_1.5_0.25_0.75" ]
-        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-        counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
-
-    elif args['option'] == 4:
+        # run rw python methods
+        used_R_methods = list(config_data['used_R_methods'])
+        used_Python_methods = list(config_data['used_Python_methods'])
+        methods = used_R_methods
+        methods.extend(used_Python_methods)
         IDCol = 'Sam_id'
         dataset_name = config_data['dataset_name']
         if 'microbiomeHD' in dataset_name:
@@ -1271,8 +1231,12 @@ if ARGPARSE_SWITCH:
         res_h, meta_data_h = generate_harmony_results(data_mat, meta_data, IDCol, vars_use, f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}_harmony')
         percentile_norm(address_X, address_Y, condition_var, config_data['condition_value'], 'comma', f'{config_data["post_integration_outputs"]}/{dataset_name}/{dataset_name}')
 
-    elif args['option'] == 5:
-
+    elif args['option'] == 4:
+        # run rw evaluations
+        used_R_methods = list(config_data['used_R_methods'])
+        used_Python_methods = list(config_data['used_Python_methods'])
+        methods = used_R_methods
+        methods.extend(used_Python_methods)
         IDCol = 'Sam_id'
         dataset_name = config_data['dataset_name']
         if 'microbiomeHD' in dataset_name:
@@ -1312,6 +1276,57 @@ if ARGPARSE_SWITCH:
         
         ### multi-method plot
         plot_PCOA_multiple(dataset_name, df_l, methods, meta_data_l, used_var=vars_use, output_root= f'{config_data["evaluation_outputs"]}/{dataset_name}/', datatype = config_data['datatype'])
+
+        # elif args['option'] == 3:
+        # print("This is not part of the pipeline")
+        # # visualize simulation stats
+        # eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023"
+        # output_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023"
+
+        # if not os.path.exists(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}'):
+        #     os.makedirs(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}')
+
+        # # methods = methods_list_dict[GLOBAL_DATATYPE]
+        # # odds ratio == 1
+        # datasets = ["out_1_0_0", "out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0_0.25", "out_1_0.25_0.25", "out_1_0.5_0.25", 
+        #             "out_1_0.75_0.25", "out_1_0_0.5", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0_0.75", "out_1_0.25_0.75", "out_1_0_1"]
+        # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        # counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        # visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
+
+        # datasets = ["out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0.25_0.25", "out_1_0.5_0.25", 
+        #             "out_1_0.75_0.25", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0.25_0.75"]
+        # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        # counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        # visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
+
+
+        # # odds ratio == 1.25
+        # datasets = ["out_1.25_0_0", "out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0", "out_1.25_0_0.25", "out_1.25_0.25_0.25", "out_1.25_0.5_0.25",
+        #             "out_1.25_0.75_0.25", "out_1.25_0_0.5", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0_0.75", "out_1.25_0.25_0.75", "out_1.25_0_1"]
+        # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        # counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        # visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
+
+        # datasets = ["out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0", "out_1.25_0.25_0.25", "out_1.25_0.5_0.25",
+        #             "out_1.25_0.75_0.25", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0.25_0.75"]
+        # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        # counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        # visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.25_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
+
+
+        # # odds ratio == 1.5
+        # datasets = ["out_1.5_0_0", "out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0_0.25", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
+        #             "out_1.5_0.75_0.25", "out_1.5_0_0.5", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5", "out_1.5_0_0.75", "out_1.5_0.25_0.75", "out_1.5_0_1"]
+        # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        # counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        # visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
+    
+        # datasets = ["out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
+        #             "out_1.5_0.75_0.25", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5",  "out_1.5_0.25_0.75" ]
+        # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        # counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        # visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1.5_all_bio_alwaysbio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
 
                 # ## run two left-over python methods for rw datasets
         # ## RUN HARMONY/PERCENTILE_NORM FOR RW
