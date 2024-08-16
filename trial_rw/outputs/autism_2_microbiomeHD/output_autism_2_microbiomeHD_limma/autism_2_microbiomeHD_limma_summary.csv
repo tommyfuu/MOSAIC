@@ -16,5 +16,5 @@ batch_aitch_pval,0.001
 batch_bray_pval,0.001
 biovar_aitch_r2,0.007763412870881023
 biovar_bray_r2,0.006454301055225685
-biovar_aitch_pval,0.418
-biovar_bray_pval,0.682
+biovar_aitch_pval,0.407
+biovar_bray_pval,0.696
