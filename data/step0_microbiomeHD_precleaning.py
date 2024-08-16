@@ -102,6 +102,74 @@ def load_data_microbiomeHD(address_directory, output_root = False, id = 'Sam_id'
     return data_mat, meta_data
 
 
+def load_data_custom(address_directory, output_root = False, id = 'Sam_id', covar_l = []):
+    ### note that due to the complexity of metadata, the current microbiomeHD loading does 
+    ### not take into account the covariates other than batches and diseaseStates
+    ### so default vars_use will just be Dataset
+    subdir_names = os.listdir(address_directory)
+    count_data_l = []
+    intersect_taxa = []
+    metadata_l = []
+    for subdir in subdir_names:
+        ## 1. get the otu table part
+        # get the otu file
+        subdir_path = address_directory + '/' + subdir
+        # find any file name that ends with 'count_data.csv'
+        current_files_names = os.listdir(subdir_path)
+        current_dbotu_count_data_path = [result for result in current_files_names if "count_data.csv" in result][0]
+        current_dbotu_count_data = pd.read_csv(subdir_path+'/'+current_dbotu_count_data_path, index_col=0)
+        print(current_dbotu_count_data.shape)
+                
+        # save dataframe and feature list
+        count_data_l.append(current_dbotu_count_data)
+        
+        if intersect_taxa == []:
+            intersect_taxa = current_taxa
+        else:
+            intersect_taxa = list(set(intersect_taxa).intersection(current_taxa))
+
+        ## 2. get the metadata
+        # get the metadata file
+        current_metadata_path = [result for result in current_files_names if "meta_data.csv" in result][0]
+        current_metadata = pd.read_csv(subdir_path+'/'+current_metadata_path, index_col=0)
+
+        # get covariates if exists
+        if covar_l != []:
+            current_covars = pd.read_csv(current_metadata_path, delimiter='\t', index_col=0, encoding='ISO-8859-1')[covar_l]
+            current_metadata = pd.concat([current_metadata, current_covars], axis=1)
+        metadata_l.append(current_metadata)
+
+    # intersect count data list
+    intersect_count_data_l = [count_data[count_data.index.isin(intersect_taxa)] for count_data in count_data_l]
+
+    # generate results
+    combined_countdf = pd.concat(intersect_count_data_l, axis=1)
+    combined_countdf = combined_countdf.dropna().T
+    combined_metadata = pd.concat(metadata_l)
+    combined_metadata[id] = list(combined_metadata.index) # the default IDCol for microbiomeHD will be Sam_id
+
+    data_mat, meta_data = preprocess(combined_countdf, combined_metadata, id, covar_l)
+
+    # ensure that the sample ids are correctly aligned in metadata and count_table
+    data_mat_ids = list(data_mat.index)
+    meta_data_ids = list(meta_data.index)
+    intersection_ids = list(set(meta_data_ids).intersection(data_mat_ids))
+
+    # drop rows where indexes are not overlapping
+    data_mat_non_intersecting = [id for id in data_mat_ids if id not in intersection_ids]
+    data_mat = data_mat.drop(data_mat_non_intersecting)
+    meta_data_non_intersecting = [id for id in meta_data_ids if id not in intersection_ids]
+    meta_data = meta_data.drop(meta_data_non_intersecting)
+    data_mat = data_mat.reindex(intersection_ids)
+    meta_data = meta_data.reindex(intersection_ids)
+
+    # save stuff if needed
+    if output_root != False:
+        data_mat.to_csv(output_root+"_count_data.csv")
+        meta_data.to_csv(output_root+"_meta_data.csv", index=False)
+    return data_mat, meta_data
+
+
 
 # overall_path = '/athena/linglab/scratch/chf4012'
 # # autism 2 microbiomeHD
@@ -129,5 +197,9 @@ output_dir_path = f'{source_dir}/intermediate_{dataset_name}/{dataset_name}'
 # make output_dir_path if it does not exist
 if not os.path.exists(output_dir_path):
     os.makedirs(output_dir_path)
-    
-data_mat, meta_data = load_data_microbiomeHD(source_dir_path, output_dir_path)
+
+if 'microbiomeHD' in dataset_name:
+    data_mat, meta_data = load_data_microbiomeHD(source_dir_path, output_dir_path)
+else:
+    data_mat, meta_data = load_data_custom(source_dir_path, output_dir_path)
+# data_mat, meta_data = load_data_microbiomeHD(source_dir_path, output_dir_path)

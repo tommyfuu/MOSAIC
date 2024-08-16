@@ -68,7 +68,7 @@ load_phyloseq_from_merged_CMD <- function (list_of_studies, list_of_conditions){
 clean_prune_save_phyloseq <- function (phyloseq_dataset, out_str, libsize_threshold, relab_threshold, save = FALSE, save_to = NULL){
     # sample-wise cleaning: remove samples with less than 0.05% libsize_threshold percentile
     print(phyloseq_dataset)
-    libsize_threshold_num = quantile(sample_sums(phyloseq_dataset), 0.05)
+    libsize_threshold_num = quantile(sample_sums(phyloseq_dataset), libsize_threshold)
     phyloseq_dataset <- prune_samples(sample_sums(phyloseq_dataset) > libsize_threshold_num, phyloseq_dataset)
     print(phyloseq_dataset)
     # taxon-wise cleaning: remove taxa with less than relab_threshold relative abundance

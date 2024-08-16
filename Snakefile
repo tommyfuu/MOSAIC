@@ -42,6 +42,11 @@ rule preprocess:
         elif 'CMD' in config['dataset_name']:
            shell('Rscript ./data/step1_clean_and_prune.R CMD {dataset_name}')
            shell('python3 data/step2_preprocessing_summarystats.py -d {dataset_name} -b study_name -c disease')
+        else:
+            shell('python3 ./data/step0_microbiomeHD_precleaning.py -s {src} -d {dataset_name}')
+           shell('Rscript ./data/step1_clean_and_prune.R microbiomeHD {dataset_name}')
+           shell('python3 data/step2_preprocessing_summarystats.py -d {dataset_name}')
+           shell('echo {output.out_check}')
 
 rule integrate:
     '''Integrate data with benchmarking methods.'''

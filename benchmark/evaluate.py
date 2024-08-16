@@ -738,10 +738,10 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
         runtime = global_stats_df.loc["runtime"]
         methods_runtime = runtime.to_dict()
 
-        if 'count' in output_dir_path and 'out_1.5_0.25_0.75' in output_dir:
-            # if combat_seq runtime is nan, print
-            if np.isnan(methods_runtime['combat_seq']):
-                print(iter, "combat_seq runtime is nan")
+        # if 'count' in output_dir_path and 'out_1.5_0.25_0.75' in output_dir:
+        #     # if combat_seq runtime is nan, print
+        #     if np.isnan(methods_runtime['combat_seq']):
+        #         print(iter, "combat_seq runtime is nan")
             # print(iter, "combat_seq and MMUPHin runtime", methods_runtime['combat_seq'], methods_runtime['MMUPHin'])
 
         if taxa_gt is not None:
@@ -1290,8 +1290,7 @@ if ARGPARSE_SWITCH:
         ### multi-method plot
         plot_PCOA_multiple(dataset_name, df_l, methods, meta_data_l, used_var=vars_use, output_root= f'{config_data["evaluation_outputs"]}/{dataset_name}/', datatype = config_data['datatype'])
 
-        
-        # ## run two left-over python methods for rw datasets
+                # ## run two left-over python methods for rw datasets
         # ## RUN HARMONY/PERCENTILE_NORM FOR RW
         # # autism 2 microbiomeHD
         # ################################################################################
