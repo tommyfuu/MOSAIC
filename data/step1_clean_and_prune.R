@@ -105,11 +105,31 @@ clean_prune_save_phyloseq <- function (phyloseq_dataset, out_str, libsize_thresh
 library(yaml)
 current_path = getwd()
 if (grepl("/data", current_path)){
-    config_object <- yaml.load_file('../config.yml')
+    Snakefile_path <- "../Snakefile"
 } else{
-    config_object <- yaml.load_file('./config.yml')
+    Snakefile_path <- "./Snakefile"
 }
-# config_object <- yaml.load_file('./config.yml')
+
+conn <- file(Snakefile_path,open="r")
+linn <-readLines(conn)
+for (i in 1:length(linn)){
+    if (grepl("configfile", linn[i])){
+        configfile_path = strsplit(linn[i], " ")[[1]][2]
+        configfile_path = gsub("'", "", configfile_path)
+        configfile_path = gsub("\"", "", configfile_path)
+        break
+    }
+}
+# close connection
+close(conn)
+
+if (grepl("/benchmark", current_path)){
+    config_object <- yaml.load_file(paste0("../", configfile_path))
+} else{
+    config_object <- yaml.load_file(configfile_path)
+}
+
+
 src_path <- config_object$src
 libsize_threshold <- config_object$RW_LIBSIZE_THRESHOLD
 relab_threshold <- config_object$RW_RELAB_THRESHOLD

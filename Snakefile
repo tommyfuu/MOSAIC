@@ -48,6 +48,10 @@ rule preprocess:
            shell('python3 data/step2_preprocessing_summarystats.py -d {dataset_name}')
            shell('echo {output.out_check}')
 
+rule simulate:
+    '''If simulate, simulate data.'''
+    
+
 rule integrate:
     '''Integrate data with benchmarking methods.'''
     input:

@@ -1152,7 +1152,17 @@ batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 current_path = os.path.dirname(os.path.abspath(__file__))
 print("current_path", current_path)
 overall_path = current_path + "/../.."
-with open(f'{current_path}/../config.yml') as file:
+
+# read from Snakefile line by line
+with open(f'{current_path}/../Snakefile') as file:
+    lines = file.readlines()
+    for line in lines:
+        if "configfile" in line:
+            config_path = line.split(': ')[1].strip().replace('"', '').replace("'", '')
+            break
+
+# with open(f'{current_path}/../config.yml') as file:
+with open(f'{current_path}/../{config_path}') as file:
     config_data = yaml.load(file, Loader=yaml.FullLoader)
 
 used_R_methods = list(config_data['used_R_methods'])

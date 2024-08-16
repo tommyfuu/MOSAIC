@@ -497,10 +497,31 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 library(yaml)
 current_path = getwd()
 if (grepl("/benchmark", current_path)){
-    config_object <- yaml.load_file('../config.yml')
+    Snakefile_path <- "../Snakefile"
 } else{
-    config_object <- yaml.load_file('./config.yml')
+    Snakefile_path <- "./Snakefile"
 }
+
+conn <- file(Snakefile_path,open="r")
+linn <-readLines(conn)
+for (i in 1:length(linn)){
+    if (grepl("configfile", linn[i])){
+        configfile_path = strsplit(linn[i], " ")[[1]][2]
+        configfile_path = gsub("'", "", configfile_path)
+        configfile_path = gsub("\"", "", configfile_path)
+        break
+    }
+}
+# close connection
+close(conn)
+
+if (grepl("/benchmark", current_path)){
+    config_object <- yaml.load_file(paste0("../", configfile_path))
+} else{
+    config_object <- yaml.load_file(configfile_path)
+}
+
+# config_object <- yaml.load_file(configfile_path)
 
 dataset_name <- config_object$dataset_name
 batch_ref <- config_object$batch_ref
