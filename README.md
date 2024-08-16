@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 # MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline
 Code and partial data repository for the manuscript entitled __MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline__ by _Fu et al._. 
+
+
+<img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.png" width="250" height="250">
+
+(Logo generated with [Google Gemini](https://gemini.google.com/app))
 
 _Developed and maintained by_:  [Chenlian (Tom) Fu](fcl200089@outlook.com)\
 _Advised by_: Dr. Wodan Ling\
