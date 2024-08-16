@@ -38,7 +38,7 @@ output_root <- config_object$sim_output_root
 GLOBAL_ITER <- config_object$iter
 
 output_root_simulate <- paste0(output_root, "/simulate")
-dir.create(output_root_simulate, showWarnings = FALSE)
+dir.create(output_root_simulate, showWarnings = FALSE, recursive = TRUE)
 
 # generate data
 scaled_slurm_midas_data_generation(output_root_simulate, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter=GLOBAL_ITER, batch_libsize_related = FALSE, libsize_l=sampled_libsize_l)

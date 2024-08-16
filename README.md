@@ -43,7 +43,7 @@ After this, open `R` in command line, and then indivudally install the three pac
 __MOSAIC__ has built-in support for microbiome datasets coming from two highly used databases, namely [CuratedMetagenomicData](https://waldronlab.io/curatedMetagenomicData/) (referred to as CMD from now on) and [MicrobiomeHD](https://zenodo.org/records/1146764). To use any of these two databases, please refer to `config.yml` for a MicrobiomeHD example or `./additional_ymls/config_IBD.yml` for a CMD example. To use data from any other databases or custom-made datasets, please have a folder in which there are subfolders of datasets to be integrated; in each subfolder, there should be a (taxon rows * sample columns with taxons as index and sample names as column names) file that ends with `count_data.csv` and another ending with `meta_data.csv` (where each row is a sample with their meta data), serving as OTU_table and meta data respectively. The user can then revise the `config.yml` accordingly, making sure that the `dataset_name` item does not have `'microbiomeHD'` nor `'CMD'` in it.
 
 Brief explanations on the entries in the yml file:
-- `rules_to_run`: currently supports 'all_rw', 'preprocess', 'integrate', 'evaluation' for real-world datasets. While the rest are pretty self-apparent in meanings, 'all_rw' simply means to run the whole pipeline in the order of preprocessing, data integration, and evaluation.
+- `rules_to_run`: currently supports 'all_rw', 'preprocess', 'integrate_rw', 'evaluation_rw' for real-world datasets. While the rest are pretty self-apparent in meanings, 'all_rw' simply means to run the whole pipeline in the order of preprocessing, data integration, and evaluation.
 - `data_source`: please specify if you are using 'microbiomeHD', 'CMD', or 'custom' for real-world datasets.
 - `src`: path where the source real-world data is stored for MicrobiomeHD and custom data, as well as where all the preprocessed data will be stored after that step under the `cleaned_data` subfolder of `src`.
 - `dataset_name`: the name of your dataset. Please end your dataset name with the database source your data is from: 'microbiomeHD', 'CMD', or 'custom'.
@@ -60,7 +60,7 @@ Brief explanations on the entries in the yml file:
 - `evaluation_outputs`: the path of directory where the evaluation outputs and summary statistics will be saved.
 - `binarizing_agent`: for the given condition variable, such as `'disease'`, please specify the condition value based on which all the samples will be binarized into patients with this `disease==binarizing_agent` vs samples that do not have this agent condition for all evaluations.
 
-After this yml file is configured, please make sure the line `configfile: "./config.yml"` in the `Snakefile` is changed into the path of your custom configuration yml file. Then you can run the pipeline with Snakemake in command line:
+After this yml file is configured, please make sure the line `configfile: "./config.yml"` (or the name of your custom yaml file) in the `Snakefile` is changed into the path of your custom configuration yml file. Please make sure this is at the first line of the Snakefile. Then you can run the pipeline with Snakemake in command line:
 
 ```
 # make sure you are at the path where the Snakefile is located
@@ -68,14 +68,36 @@ conda activate mic_data_integration
 snakemake -c1 --latency-wait 5
 ```
 
-If you wish to run each of the three steps separately, you may run:
+This command will run the pipeline, or whichever step you wish it to run, given that this steps has all the necessary inputs.
+
+## 3. Running the pipeline on simulated datasets
+
+Runnig __MOSAIC__ has a built-in module for generating simulated datasets using the recently published microbiome data simulator [MIDASim](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-024-01822-z) using the publicly available [HMP-IBD data](https://bioconductor.org/packages/devel/data/experiment/vignettes/HMP2Data/inst/doc/hmp2data.html). This is also the data we used to simulate data for the manuscript. To simulate data and run the benchmark and evaluation pipeline on the simulated data, please refer to `config_simulate.yml` for an example, and revise the variables according to your own file structure.
+
+Brief explanations on the entries in the yml file:
+- `rules_to_run`: currently supports 'all_simulated', 'simulate', 'integrate_simulated', 'evaluation_rw' for real-world datasets. While the rest are pretty self-apparent in meanings, 'all_rw' simply means to run the whole pipeline in the order of preprocessing, data integration, and evaluation.
+- `data_source`: please specify as 'MIDASim' for simulated data.
+- `sim_output_root`: path where all the simulated data, integrated datasets, and evaluation outputs will be saved as its 'simulate', 'benchmark', and 'eval' subfolders.
+- `or_l`: list of odds ratios.
+- `cond_effect_val_l`: list of condition effect strengths.
+- `batch_effect_val_l`: list of batch effect strengths.
+- `iter`: current simulation iteration; for each iteration, the pipeline will need to be rerun.
+- `used_R_methods_count`: a list of implemented R methods for count data integration; all options for count data include `["combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize']`. For simulated data both count and relab data will be available. If you don't wish to evaluate on count-based datasets, please leave this as an empty list `[]`.
+- `used_R_methods_relab`: a list of implemented R methods for relative abundance data integration; all options for count data include `["combat", "limma", "MMUPHin", 'ConQuR_rel']`. For simulated data both count and relab data will be available. If you don't wish to evaluate on relab-based datasets, please leave this as an empty list `[]`.
+- `used_Python_methods`: : the list of implemented Python methods for data integration; all options for both count and relab data include `['harmony', "percentile_norm"]`. Can also leave this as blank list.
+- `binarizing_agent`: for simulation, it should always be the default, 'cond_1'.
+
+After this yml file is configured, please make sure the line `configfile: "./config_simulate.yml"` (or the name of your custom yaml file) in the `Snakefile` is changed into the path of your custom configuration yml file. Please make sure this is at the first line of the Snakefile. Then you can run the pipeline with Snakemake in command line:
 
 ```
-snakemake -R preprocess -c1 --latency-wait 5 # preprocess can be replaced with integrate or evaluation
+# make sure you are at the path where the Snakefile is located
+conda activate mic_data_integration
+snakemake -c1 --latency-wait 5
 ```
 
+This command will run the pipeline, or whichever step you wish it to run, given that this steps has all the necessary inputs.
 
-#### Acknowledgements
+## 4. Acknowledgements
 This project started as a class project in Dr. Wesley Tansey's class Foundation of Data Science at Memorial Sloan Kettering and Weill Cornell, and would not have been possible without the generous support of Dr. Wodan Ling, Jiuyao Lu, Dr. Quaid Morris, and Dr. Wesley Tansey. The funding support for my PhD comes from the Tri-institutional Program of Computational Biology and Medicine.
 
 If you have questions regarding this benchmarking project or other inquries, please reach out to me at ___chf4012@med.cornell.edu___. I hope you have a great day!

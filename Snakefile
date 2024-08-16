@@ -1,4 +1,4 @@
-configfile: "./config_simulate.yml"
+configfile: "./config.yml"
 # make sure this is the first line in the Snakefile
 
 import os
@@ -7,11 +7,7 @@ from pathlib import Path
 
 
 # global params
-dataset_name = config['dataset_name']
-src = config['src']
-post_integration_results = config['post_integration_outputs']
 used_python_methods = config['used_Python_methods']
-evaluation_outputs = config['evaluation_outputs']
 if 'sim_output_root' in config:
     sim_output_root = config['sim_output_root']
     or_l = config['or_l']
@@ -22,6 +18,10 @@ if 'sim_output_root' in config:
     used_R_methods_relab = config['used_R_methods_relab']
 else:
     used_R_methods = config['used_R_methods']
+    dataset_name = config['dataset_name']
+    src = config['src']
+    evaluation_outputs = config['evaluation_outputs']
+    post_integration_results = config['post_integration_outputs']
 
 
 # rule all

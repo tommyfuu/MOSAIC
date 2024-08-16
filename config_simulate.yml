@@ -5,14 +5,6 @@ rules_to_run: 'all_simulated'
 data_source: 'MIDASim'
 # it has to be 'microbiomeHD', 'CMD', or 'MIDASim'
 
-src: './data'
-
-dataset_name: 'autism_2_microbiomeHD'
-# for MicrobiomeHD, the dataset_name is the name of the folder in the data folder where all the MicrobiomeHD datasets downloaded has to be saved
-
-datatype: 'count'
-# it has to be 'count' or 'relab'
-
 sim_output_root: './trial_simulation'
 
 ### SIMULATION PHASE ###
@@ -28,24 +20,13 @@ iter: 1
 # in our case, only ['disease', 'gender', 'age_category'] for CMD/IBD datasets are used, otherwise all empty
 
 ### BENCHMARK PHASE ###
-post_integration_outputs: './benchmark/benchmarked_results'
 # used_R_methods_count: ["combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize']
 used_R_methods_count: ["combat_seq", "limma", "MMUPHin"]
 # used_R_methods_relab: ["combat", "limma", "MMUPHin", 'ConQuR_rel']
 used_R_methods_relab: ["combat", "limma", "MMUPHin"]
 used_Python_methods: ['harmony', "percentile_norm"]
-batch_ref: 'asd_son'
-covar: ['DiseaseState']
-condition_value: 'ASD'
 
-# post_integration_outputs: './benchmark/benchmarked_results'
-# used_R_methods: ["combat", "limma", "MMUPHin", 'ConQuR_rel']
-# used_Python_methods: ['harmony', "percentile_norm"]
-# batch_ref: 'HMP_2019_ibdmdb'
-# covar: ["disease", "gender", "age_category"] # make sure that this column does not have NAs for every patient!
-# condition_value: 'IBD'
 
 ### EVALUATION PHASE ###
-evaluation_outputs: './outputs'
-binarizing_agent: 'H' # for two microbiomeHD datasets or 'IBD' for ibd or 'adenoma' for the CRC dataset
+binarizing_agent: 'cond_1' # for two microbiomeHD datasets or 'IBD' for ibd or 'adenoma' for the CRC dataset
 
