@@ -3,8 +3,13 @@ Repository for the manuscript entitled __MOSAIC: MicrobiOme Studies Analytical I
 
 <p align="center">
   <img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.jpeg" width="500" height="500">
-  (Logo generated with [Google Gemini](https://gemini.google.com/app))
 </p>
+
+
+
+(Logo generated with [Google Gemini](https://gemini.google.com/app))
+
+
 
 _Developed and maintained by_:  [Chenlian (Tom) Fu](fcl200089@outlook.com)\
 _Advised by_: Dr. Wodan Ling\
