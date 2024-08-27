@@ -109,7 +109,11 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
                 r.Plot_single_PCoA(data, meta_data_l[idx][used_var], dissimilarity="Aitch", bc_method = methods[idx])
             else:
                 data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-                data = data+np.abs(np.min(data))
+                if self.method in ['combat', 'limma']:
+                    # set all negative values to 0
+                    data = np.where(data<0, 0, data)
+                elif self.method == 'harmony':
+                    data = data+np.abs(np.min(data))
                 r_used_var = meta_data_l[idx][used_var]
                 r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
     
@@ -122,7 +126,11 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
 
         else:
             data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-            data = data+np.abs(np.min(data))
+            if self.method in ['combat', 'limma']:
+                # set all negative values to 0
+                data = np.where(data<0, 0, data)
+            elif self.method == 'harmony':
+                data = data+np.abs(np.min(data))
             r_used_var = meta_data_l[idx][used_var]
             r.Plot_single_PCoA(data, r_used_var, dissimilarity="Bray", bc_method = methods[idx])
     grdevices.dev_off()
@@ -181,7 +189,6 @@ class Evaluate(object):
         
         # if datatype is count, conduct relative abundance calculation
         if self.datatype == "count":
-            # check if negative value exists, if exists, first add everything with the abs(most neg)
             if not self.method in ['limma', 'harmony']:
                 df = df.div(df.sum(axis=1), axis=0)
         taxa_names = df.columns
@@ -285,7 +292,11 @@ class Evaluate(object):
             
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-        data = data+np.abs(np.min(data))
+        if self.method in ['combat', 'limma']:
+            # set all negative values to 0
+            data = np.where(data<0, 0, data)
+        elif self.method == 'harmony':
+            data = data+np.abs(np.min(data))
 
         # use the first len(bio_var_l) rows
         data = data[:len(self.meta_data[self.IDCol])]
@@ -371,7 +382,11 @@ class Evaluate(object):
             return 1, None
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-        data = data+np.abs(np.min(data))
+        if self.method in ['combat', 'limma']:
+            # set all negative values to 0
+            data = np.where(data<0, 0, data)
+        elif self.method == 'harmony':
+            data = data+np.abs(np.min(data))
         ids = list(self.meta_data[self.IDCol])
         # use the first len(bio_var_l) rows
         data = data[:len(ids)]
