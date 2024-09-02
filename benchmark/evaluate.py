@@ -1295,6 +1295,9 @@ if ARGPARSE_SWITCH:
         df_l = []
         meta_data_l = []
 
+        # create dir if non-existent
+        if not os.path.exists(f'{config_data["evaluation_outputs"]}/{dataset_name}'):
+            os.makedirs(f'{config_data["evaluation_outputs"]}/{dataset_name}')
         # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"],
         # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
         for method in methods:
