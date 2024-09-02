@@ -109,10 +109,10 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
                 r.Plot_single_PCoA(data, meta_data_l[idx][used_var], dissimilarity="Aitch", bc_method = methods[idx])
             else:
                 data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-                if self.method in ['combat', 'limma']:
+                if methods[idx] in ['combat', 'limma']:
                     # set all negative values to 0
                     data = np.where(data<0, 0, data)
-                elif self.method == 'harmony':
+                elif methods[idx] == 'harmony':
                     data = data+np.abs(np.min(data))
                 r_used_var = meta_data_l[idx][used_var]
                 r.Plot_single_PCoA(data, r_used_var, dissimilarity="Aitch", bc_method = methods[idx])
@@ -126,10 +126,10 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
 
         else:
             data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
-            if self.method in ['combat', 'limma']:
+            if methods[idx] in ['combat', 'limma']:
                 # set all negative values to 0
                 data = np.where(data<0, 0, data)
-            elif self.method == 'harmony':
+            elif methods[idx] == 'harmony':
                 data = data+np.abs(np.min(data))
             r_used_var = meta_data_l[idx][used_var]
             r.Plot_single_PCoA(data, r_used_var, dissimilarity="Bray", bc_method = methods[idx])
@@ -289,7 +289,7 @@ class Evaluate(object):
             self.short_summary_dict["biovar_bray_pval"] = 0
             print("combat family explosion case, default #s and skipped")
             return
-            
+                    
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         if self.method in ['combat', 'limma']:
@@ -298,8 +298,22 @@ class Evaluate(object):
         elif self.method == 'harmony':
             data = data+np.abs(np.min(data))
 
+
         # use the first len(bio_var_l) rows
         data = data[:len(self.meta_data[self.IDCol])]
+        # print("DATADATA", data)
+        # # save data as csv
+        # pd.DataFrame(data).to_csv("ACSCAV1.csv")
+
+        if self.method == 'combat' and self.binarizing_agent_biovar == 'IBD':
+            # check to find samples with all zeros 
+            all_zero_samples = [i for i in range(len(data)) if np.sum(data[i]) == 0]
+            print(all_zero_samples)
+            # and add 1e-10 to them
+            for i in all_zero_samples:
+                data[i] = data[i] + 1e-10
+
+        # pd.DataFrame(data).to_csv("ACSCAV2.csv")
 
         # attempting rpy2
         #Must be activated
@@ -309,12 +323,6 @@ class Evaluate(object):
         # import r packages/functions
         r = robjects.r
         if '/benchmark' in os.getcwd():
-            print("AAAA")
-            print("AAAA")
-            print("AAAA")
-            print("AAAA")
-            print("AAAA")
-            print(os.getcwd())
             r.source('./PERMANOVA_supporting.R')
         else:
             r.source('./benchmark/PERMANOVA_supporting.R')
@@ -369,6 +377,7 @@ class Evaluate(object):
             r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Bray", main="Bray-Curtis")
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Aitch", main="Aitchinson")
             r.Plot_PCoA(self.output_root+'_biovar', data, r_bio_var, dissimilarity="Bray", main="Bray-Curtis")
+
         return
 
     
@@ -387,10 +396,22 @@ class Evaluate(object):
             data = np.where(data<0, 0, data)
         elif self.method == 'harmony':
             data = data+np.abs(np.min(data))
+
+        if self.method == 'combat':
+            # check to find samples with all zeros 
+            all_zero_samples = [i for i in range(len(data)) if np.sum(data[i]) == 0]
+            # and add 1e-10 to them
+            for i in all_zero_samples:
+                data[i] = data[i] + 1e-10
+
+            
         ids = list(self.meta_data[self.IDCol])
         # use the first len(bio_var_l) rows
         data = data[:len(ids)]
+        print("DATA")
+        print(data)
         shannon_div = alpha_diversity('shannon', data, ids)
+        print(shannon_div)
         
 
         # visualize and save
@@ -1176,7 +1197,7 @@ with open(f'{current_path}/../Snakefile') as file:
             config_path = line.split(': ')[1].strip().replace('"', '').replace("'", '')
             break
 
-# with open(f'{current_path}/../config.yml') as file:
+print("config path", f'{current_path}/../{config_path}')
 with open(f'{current_path}/../{config_path}') as file:
     config_data = yaml.load(file, Loader=yaml.FullLoader)
 
@@ -1250,7 +1271,8 @@ if ARGPARSE_SWITCH:
         # run rw evaluations
         used_R_methods = list(config_data['used_R_methods'])
         used_Python_methods = list(config_data['used_Python_methods'])
-        methods = used_R_methods
+        methods = ['nobc']
+        methods.extend(used_R_methods)
         methods.extend(used_Python_methods)
         IDCol = 'Sam_id'
         dataset_name = config_data['dataset_name']
@@ -1263,7 +1285,6 @@ if ARGPARSE_SWITCH:
 
         address_Y = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_meta_data.csv'
 
-        methods.append('nobc')
         print("methods: ", methods)
         print("methods: ", methods)
         print("methods: ", methods)
@@ -1272,7 +1293,15 @@ if ARGPARSE_SWITCH:
         print("methods: ", methods)
         df_l = []
         meta_data_l = []
+
+        # create dir if non-existent
+        if not os.path.exists(f'{config_data["evaluation_outputs"]}/{dataset_name}'):
+            os.makedirs(f'{config_data["evaluation_outputs"]}/{dataset_name}')
+        # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"],
+        # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
         for method in methods:
+            # check if already exists
+                            
             if method == 'nobc':
                 address_X = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv'
             elif method == 'harmony':
@@ -1283,31 +1312,73 @@ if ARGPARSE_SWITCH:
             data_mat, meta_data = load_results_from_benchmarked_methods(address_X, address_Y)
             df_l.append(data_mat)
             meta_data_l.append(meta_data)
-            Evaluate(data_mat, meta_data, vars_use, f'{config_data["evaluation_outputs"]}/{dataset_name}/output_{dataset_name}_{method}/{dataset_name}_{method}', condition_var, 30, IDCol=IDCol, datatype = config_data['datatype'], binarizing_agent_biovar = config_data['binarizing_agent'], method = method)
+            if not os.path.exists(f'{config_data["evaluation_outputs"]}/{dataset_name}/output_{dataset_name}_{method}/{dataset_name}_{method}_summary.csv'):
+                Evaluate(data_mat, meta_data, vars_use, f'{config_data["evaluation_outputs"]}/{dataset_name}/output_{dataset_name}_{method}/{dataset_name}_{method}', condition_var, 30, IDCol=IDCol, datatype = config_data['datatype'], binarizing_agent_biovar = config_data['binarizing_agent'], method = method)
         
         ### global evaluation
         input_frame_path = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv'
         global_eval_dataframe(input_frame_path, condition_var, dataset_name, methods, f'{config_data["post_integration_outputs"]}', f'{config_data["evaluation_outputs"]}/{dataset_name}', simulate = False, datatype = config_data['datatype'])
-        
+ 
         ### multi-method plot
         plot_PCOA_multiple(dataset_name, df_l, methods, meta_data_l, used_var=vars_use, output_root= f'{config_data["evaluation_outputs"]}/{dataset_name}/', datatype = config_data['datatype'])
 
-        # elif args['option'] == 3:
-        # print("This is not part of the pipeline")
-        # # visualize simulation stats
-        # eval_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023"
-        # output_dir_path = overall_path+f"/simulation_outputs/simulation_data_eval_{GLOBAL_DATATYPE}_{related}relation_102023"
+    elif args['option'] == 5:
+        print("This is not part of the pipeline")
 
+        overall_path = '/athena/linglab/scratch/chf4012/'
+        output_dir_path = overall_path+f"/simulation_outputs/082924check/simulation_data_eval_new_{GLOBAL_DATATYPE}_{related}relation_102023"
+        eval_dir_path = overall_path+f"/simulation_outputs/082924check/simulation_data_eval_new_{GLOBAL_DATATYPE}_{related}relation_102023"
+
+        # # visualize simulation stats
         # if not os.path.exists(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}'):
         #     os.makedirs(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}')
 
-        # # methods = methods_list_dict[GLOBAL_DATATYPE]
-        # # odds ratio == 1
-        # datasets = ["out_1_0_0", "out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0_0.25", "out_1_0.25_0.25", "out_1_0.5_0.25", 
-        #             "out_1_0.75_0.25", "out_1_0_0.5", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0_0.75", "out_1_0.25_0.75", "out_1_0_1"]
-        # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-        # counts_l = [GLOBAL_DATATYPE=='count']*len(datasets)
-        # visualize_simulation_stats(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = counts_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=num_iters)
+        # if GLOBAL_DATATYPE == 'count':
+        #     used_R_methods = list(config_data['used_R_methods_count'])
+        # else:
+        #     used_R_methods = list(config_data['used_R_methods_relab'])
+        # used_Python_methods = list(config_data['used_Python_methods'])
+        # methods = used_R_methods
+        # methods.extend(used_Python_methods)
+        if GLOBAL_DATATYPE == 'count':
+            methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
+        else:
+            methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+
+        # # mkdir
+        # if not os.path.exists(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/'):
+        #     os.makedirs(eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/', exist_ok=True)
+        # print("output_dir_path", output_dir_path)
+
+        # line_plot_path = eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}/'
+        line_plot_path = f'/athena/linglab/scratch/chf4012/simulation_outputs/082924check/line_plots_090224/line_plots_{GLOBAL_DATATYPE}_{related}/'
+        # mkdir
+        if not os.path.exists(f'/athena/linglab/scratch/chf4012/simulation_outputs/082924check/line_plots_090224/line_plots_{GLOBAL_DATATYPE}_{related}/'):
+            os.makedirs(f'/athena/linglab/scratch/chf4012/simulation_outputs/082924check/line_plots_090224/line_plots_{GLOBAL_DATATYPE}_{related}/', exist_ok=True)
+
+        # methods = methods_list_dict[GLOBAL_DATATYPE]
+        # odds ratio == 1
+        datasets = ["out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0.25_0.25", "out_1_0.5_0.25", 
+                    "out_1_0.75_0.25", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0.25_0.75"]
+        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        datatype_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        visualize_simulation_stats(f'{line_plot_path}/sim_1_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = datatype_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=1000)
+
+        # odds ratio == 1.25
+        datasets = ["out_1.25_0.25_0", "out_1.25_0.5_0", "out_1.25_0.75_0", "out_1.25_1_0", "out_1.25_0.25_0.25", "out_1.25_0.5_0.25",
+                    "out_1.25_0.75_0.25", "out_1.25_0.25_0.5", "out_1.25_0.5_0.5", "out_1.25_0.25_0.75"]
+        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        datatype_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        visualize_simulation_stats(f'{line_plot_path}/sim_1.25_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = datatype_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=1000)
+
+        # odds ratio == 1.5
+        datasets = ["out_1.5_0.25_0", "out_1.5_0.5_0", "out_1.5_0.75_0", "out_1.5_1_0", "out_1.5_0.25_0.25", "out_1.5_0.5_0.25",
+                    "out_1.5_0.75_0.25", "out_1.5_0.25_0.5", "out_1.5_0.5_0.5", "out_1.5_0.25_0.75"]
+        output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+        datatype_l = [GLOBAL_DATATYPE=='count']*len(datasets)
+        visualize_simulation_stats(f'{line_plot_path}/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = datatype_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=1000)
+        
+
 
         # datasets = ["out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0.25_0.25", "out_1_0.5_0.25", 
         #             "out_1_0.75_0.25", "out_1_0.25_0.5", "out_1_0.5_0.5", "out_1_0.25_0.75"]
