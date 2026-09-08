@@ -4,10 +4,22 @@ import pandas as pd
 import matplotlib as mpl
 import os
 import yaml
+import argparse
 
-def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, ylim_dict, simulate = False, sim_num_iters = 1000, dimensions = (7, 5), taxa_gt = None, count_l = [True, True, False, False], 
-    marker_dict = {'autism_2_microbiomeHD': 'o', 'cdi_3_microbiomeHD': 's', 'ibd_3_CMD': 'd', 'crc_8_CMD': 'H'},
-    ds_colors_dict = {'autism_2_microbiomeHD': 'violet', 'cdi_3_microbiomeHD': 'black', 'ibd_3_CMD': 'orange', 'crc_8_CMD': 'blue'},
+parser = argparse.ArgumentParser(description='real-world batch correction evaluation plots')
+parser.add_argument("--succinct", action="store_true", default=False, help='drop bat/ruv3/svd from the methods list and write plots to a separate rw_data_alt_plots_succinct folder instead of rw_data_alt_plots')
+args = parser.parse_args()
+
+SUCCINCT_DROP_METHODS = {"bat", "ruv3", "svd"}
+
+def apply_succinct(methods_list):
+    if args.succinct:
+        return [m for m in methods_list if m not in SUCCINCT_DROP_METHODS]
+    return methods_list
+
+def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, ylim_dict, simulate = False, sim_num_iters = 1000, dimensions = (7, 5), taxa_gt = None, count_l = [True, True, False, False],
+    marker_dict = {'autism_2_microbiomeHD': 'o', 'cdi_3_microbiomeHD': 's', 'ibd_3_CMD': 'd', 'crc_8_CMD': 'H', 'crc_11_CMD': 'H'},
+    ds_colors_dict = {'autism_2_microbiomeHD': 'violet', 'cdi_3_microbiomeHD': 'black', 'ibd_3_CMD': 'orange', 'crc_8_CMD': 'blue', 'crc_11_CMD': 'blue'},
     postfix = '.png', demonstrate = False):
     '''visualize the PERMANOVA batch R2 (Bray/Aitch), PERMANOVA condition R2 (Bray/Aitch), ROC-AUC and FDR/sensitivity'''
     # global set up
@@ -294,55 +306,64 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix)        
     return
 
-# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-# #############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+#############################################################################
+# reads from trial_rw/outputs (kept current by benchmark/step_rw_refresh_rf.sh),
+# not the frozen Sept-2024 snapshot in trial_rw/outputs_final.
+output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/trial_rw/outputs'
+rw_plots_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/trial_rw/rw_data_alt_plots' + ('_succinct' if args.succinct else '')
+os.makedirs(rw_plots_root, exist_ok=True)
+
+methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "ruv3", "bmc", "bat", "rbe", "svd", "percentile_norm", "debiasm"]
+methods = apply_succinct(methods)
+datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 1], [0.2, 1]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
+alt_visualize_simulation_stats(rw_plots_root+'/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
+
+# crc_8_CMD's output dir was renamed to crc_8_CMD_deprecated -- crc_11_CMD is
+# its replacement (also given a debiasm run so all plotted methods have data
+# for every dataset).
+methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "ruv3", "bmc", "bat", "rbe", "svd", "percentile_norm", "debiasm"]
+methods = apply_succinct(methods)
+datasets = ["ibd_3_CMD", "crc_11_CMD"]
+output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+ylim_dict = {'batch_r2': [[0, 0.14], [0, 0.14]], 'biovar_r2': [[0, 0.030], [0, 0.030]], 'shannon_pval': [[0, 0.1], [0, 1]], 'auc_f1': [[0.4, 1], [0.4, 1]], 'runtime': [[np.log2(5e-5), np.log2(2500)]], 'precision_recall': [[0, 1], [0, 1]]}
+alt_visualize_simulation_stats(rw_plots_root+'/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)
+
+# current_path = os.path.dirname(os.path.abspath(__file__))
+# print("current_path", current_path)
+# overall_path = current_path + "/../.."
+# # with open(f'{current_path}/../config.yml') as file:
+# #     config_data = yaml.load(file, Loader=yaml.FullLoader)
+# # read from Snakefile line by line
+# with open(f'{current_path}/../Snakefile') as file:
+#     lines = file.readlines()
+#     for line in lines:
+#         if "configfile" in line:
+#             config_path = line.split(': ')[1].strip().replace('"', '').replace("'", '')
+#             break
+
+# # with open(f'{current_path}/../config.yml') as file:
+# with open(f'{current_path}/../{config_path}') as file:
+#     config_data = yaml.load(file, Loader=yaml.FullLoader)
+    
+# # ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
+# ##############################################################################
+# # create dir if not exists
+# if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots'):
+#     os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots')
+# if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw'):
+#     os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw')
+# if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw'):
+#     os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw')
 # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 # datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
+# output_dir_l = [config_data['evaluation_outputs']+'/'+dataset for dataset in datasets]
 # ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 0.9], [0.2, 0.9]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
-# alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
+# alt_visualize_simulation_stats(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
 
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
 # methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
 # datasets = ["ibd_3_CMD", "crc_8_CMD"]
-# output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# ylim_dict = {'batch_r2': [[0, 0.14], [0, 0.14]], 'biovar_r2': [[0, 0.030], [0, 0.030]], 'shannon_pval': [[0, 0.1], [0, 1]], 'auc_f1': [[0.4, 1], [0.4, 1]], 'runtime': [[np.log2(5e-5), np.log2(2500)]], 'precision_recall': [[0, 1], [0, 1]]}
-# alt_visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_alt_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)
-
-current_path = os.path.dirname(os.path.abspath(__file__))
-print("current_path", current_path)
-overall_path = current_path + "/../.."
-# with open(f'{current_path}/../config.yml') as file:
-#     config_data = yaml.load(file, Loader=yaml.FullLoader)
-# read from Snakefile line by line
-with open(f'{current_path}/../Snakefile') as file:
-    lines = file.readlines()
-    for line in lines:
-        if "configfile" in line:
-            config_path = line.split(': ')[1].strip().replace('"', '').replace("'", '')
-            break
-
-# with open(f'{current_path}/../config.yml') as file:
-with open(f'{current_path}/../{config_path}') as file:
-    config_data = yaml.load(file, Loader=yaml.FullLoader)
-    
-# ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-##############################################################################
-# create dir if not exists
-if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots'):
-    os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots')
-if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw'):
-    os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw')
-if not os.path.exists(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw'):
-    os.makedirs(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw')
-methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
-datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
-output_dir_l = [config_data['evaluation_outputs']+'/'+dataset for dataset in datasets]
-ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 0.9], [0.2, 0.9]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
-alt_visualize_simulation_stats(f'{config_data["evaluation_outputs"]}/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
-
-methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
-datasets = ["ibd_3_CMD", "crc_8_CMD"]
-output_dir_l = [config_data['evaluation_outputs']+'/'+dataset for dataset in datasets]
-alt_visualize_simulation_stats(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)
+# output_dir_l = [config_data['evaluation_outputs']+'/'+dataset for dataset in datasets]
+# alt_visualize_simulation_stats(f'{config_data["evaluation_outputs"]}/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", count_l = [False, False], simulate = False, postfix = '.pdf', ylim_dict = ylim_dict)

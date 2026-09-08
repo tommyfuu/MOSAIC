@@ -1,4 +1,14 @@
-configfile: "./config.yml"
+configfile: "./config_simulate_052626.yml"
+# configfile: "./config_simulate_052626.yml"
+# configfile: "./config_wml.yml"
+# configfile: "./config_CRC_wml.yml"
+# configfile: "./config_wml.yml"
+# configfile: "./config_simulate_052626.yml"
+# configfile: "./config_IBD.yml"
+# configfile: "./config_IBD.yml"
+# configfile: "./config.yml"
+# configfile: "./config_simulate_check.yml"
+# configfile: "./config_IBD.yml"
 # make sure this is the first line in the Snakefile
 
 import os

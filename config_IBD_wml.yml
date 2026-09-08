@@ -1,0 +1,33 @@
+### GLOBAL VARS ###
+rules_to_run: 'all_rw'
+
+data_source: 'CMD'
+
+src: './data'
+
+dataset_name: 'ibd_3_CMD'
+
+datatype: 'relab'
+
+### PREPROCESSING PHASE ###
+CMD_datasets: ["HMP_2019_ibdmdb", "LiJ_2014", "NielsenHB_2014"]
+CMD_conditions: ['IBD', 'healthy']
+
+RW_LIBSIZE_THRESHOLD: 0.05
+RW_RELAB_THRESHOLD: 0.05
+
+COVAR_L: ['disease', 'gender', 'age_category']
+
+### BENCHMARK PHASE ###
+post_integration_outputs: './trial_rw/benchmarked_results'
+post_integration_outputs_nocovar: './trial_rw/benchmarked_results_nocovar'
+run_nocovar_for_rf: True
+used_R_methods: ["combat", "limma", "MMUPHin", 'ConQuR_rel', "bmc", "bat", "rbe", "svd", "ruv3"]
+used_Python_methods: ['harmony', "percentile_norm", "debiasm"]
+batch_ref: 'HMP_2019_ibdmdb'
+covar: ["disease", "gender", "age_category"]
+condition_value: 'IBD'
+
+### EVALUATION PHASE ###
+evaluation_outputs: './trial_rw/outputs'
+binarizing_agent: 'IBD'

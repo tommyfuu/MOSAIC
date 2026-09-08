@@ -37,6 +37,14 @@ After this, open `R` in command line, and then indivudally install the three pac
 - [FDboost](https://github.com/boost-R/FDboost)
 - [mixOmics](https://bioconductor.org/packages/release/bioc/html/mixOmics.html)
 
+**Optional: DEBIAS-M** (`debiasm`) is supported as a Python batch correction method but is not installed by default because it requires PyTorch (~2.4 GB of dependencies). To use it, install it separately after activating the environment:
+
+```bash
+pip install DEBIAS-M
+```
+
+Then add `"debiasm"` to `used_Python_methods` in your `config.yml`. If DEBIAS-M is not installed and not listed in `used_Python_methods`, it will not be imported or called.
+
 
 ## 2. Running the pipeline on real-world datasets
 
@@ -53,7 +61,7 @@ Brief explanations on the entries in the yml file:
 - `COVAR_L`: if not empty, this list of covariates will be checked against the metadata to remove samples that have any NAs for each of the included covariates.
 - `post_integration_outputs`: the path of directory where the data after data integration/batch correction method is applied is saved.
 - `used_R_methods`: the list of implemented R methods for data integration; all options for count data include `["combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize']`, all options for relab data include `["combat", "limma", "MMUPHin", 'ConQuR_rel']`.
-- `used_Python_methods`: : the list of implemented Python methods for data integration; all optionsfor both count and relab data include `['harmony', "percentile_norm"]`.
+- `used_Python_methods`: the list of implemented Python methods for data integration; all options for both count and relab data include `['harmony', "percentile_norm"]`. `"debiasm"` is also supported but requires a separate `pip install DEBIAS-M` first (see Environment set-up above).
 - `batch_ref`: reference batch name in data integration necessary for some methods.
 - `covar`: a list of covariates to be considered for biological signal retainment in data integration. The first element of the list should be the condition variable of interest, such as `'disease'`.
 - `condition_value`: positive value for the condition of interest.

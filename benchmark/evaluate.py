@@ -1197,6 +1197,7 @@ with open(f'{current_path}/../Snakefile') as file:
             config_path = line.split(': ')[1].strip().replace('"', '').replace("'", '')
             break
 
+# with open(f'{current_path}/../config.yml') as file:
 print("config path", f'{current_path}/../{config_path}')
 with open(f'{current_path}/../{config_path}') as file:
     config_data = yaml.load(file, Loader=yaml.FullLoader)
@@ -1240,11 +1241,17 @@ if ARGPARSE_SWITCH:
         or_l = config_data['or_l']
         cond_effect_val_l = config_data['cond_effect_val_l']
         batch_effect_val_l = config_data['batch_effect_val_l']
-        sim_output_root = config_data['sim_output_root']
+        # sim_output_root = config_data['sim_output_root']
+        # iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
+        #             address_XY_dir_path = sim_output_root+f'/simulate', 
+        #             output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}_relation', 
+        #             eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}_relation',
+        #             methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
+        overall_path = '/athena/linglab/scratch/chf4012/'
         iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l, 
-                    address_XY_dir_path = sim_output_root+f'/simulate', 
-                    output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}_relation', 
-                    eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}_relation',
+                    address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023', 
+                    output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023", 
+                    eval_dir_path = overall_path+f"/simulation_outputs/082924check/simulation_data_eval_new_{GLOBAL_DATATYPE}_{related}relation_102023",
                     methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
     elif args['option'] == 3:
         # run rw python methods
@@ -1294,11 +1301,8 @@ if ARGPARSE_SWITCH:
         df_l = []
         meta_data_l = []
 
-        # create dir if non-existent
-        if not os.path.exists(f'{config_data["evaluation_outputs"]}/{dataset_name}'):
-            os.makedirs(f'{config_data["evaluation_outputs"]}/{dataset_name}')
         # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"],
-        # methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
+        methods = ["nobc", "harmony", "combat", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
         for method in methods:
             # check if already exists
                             
@@ -1318,7 +1322,7 @@ if ARGPARSE_SWITCH:
         ### global evaluation
         input_frame_path = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv'
         global_eval_dataframe(input_frame_path, condition_var, dataset_name, methods, f'{config_data["post_integration_outputs"]}', f'{config_data["evaluation_outputs"]}/{dataset_name}', simulate = False, datatype = config_data['datatype'])
- 
+        
         ### multi-method plot
         plot_PCOA_multiple(dataset_name, df_l, methods, meta_data_l, used_var=vars_use, output_root= f'{config_data["evaluation_outputs"]}/{dataset_name}/', datatype = config_data['datatype'])
 

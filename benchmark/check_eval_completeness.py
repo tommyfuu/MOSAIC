@@ -20,8 +20,8 @@ print(args.verbose)
 # dir_path = f'{args.dir}/simulation_data_eval_{args.datatype}_{args.related}relation_102023'
 dir_path = args.dir
 
-
-for iteration in range(1,51):
+# count no iterations to fix: 1 (forgot to run)
+for iteration in range(1, 1001):
     if iteration % 50 == 0:
         print(f'iteration {iteration}')
 
@@ -31,6 +31,8 @@ for iteration in range(1,51):
             for batch_effect_val in batch_effect_val_l:
                 if cond_effect_val+batch_effect_val <= 1:
                     filename = f'{dir_path}/out_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}/ibd_150_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}_multi_PCOA_both_batch.pdf'
+                    # /athena/linglab/scratch/chf4012/simulation_outputs/082924check/simulation_data_eval_new_count_norelation_102023/out_1_0_0_iter_2/ibd_150_1_0_0_iter_2_multi_PCOA_both_batch.pdf
+                    # filename = f'{dir_path}/out_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}/ibd_150_{or_val}_{cond_effect_val}_{batch_effect_val}_iter_{iteration}_multi_PCOA_both_batch.pdf'
                     if not os.path.exists(filename):
                         # print(f'{filename} does not exist')
                         if args.verbose:

@@ -24,7 +24,7 @@ iter: 1
 used_R_methods_count: ["combat_seq", "limma", "MMUPHin"]
 # used_R_methods_relab: ["combat", "limma", "MMUPHin", 'ConQuR_rel']
 used_R_methods_relab: ["combat", "limma", "MMUPHin"]
-used_Python_methods: ['harmony', "percentile_norm"]
+used_Python_methods: ['harmony', "percentile_norm", "debiasm"]
 
 
 ### EVALUATION PHASE ###

@@ -1,0 +1,34 @@
+### GLOBAL VARS ###
+rules_to_run: 'all_rw'
+
+data_source: 'microbiomeHD'
+
+src: './data'
+
+dataset_name: 'cdi_3_microbiomeHD'
+# original, unfiltered cdi_3_microbiomeHD (4-class DiseaseState: H/CDI/nonCDI/postFMT_CDI).
+# Fresh regeneration at a clean output path -- the existing trial_rw/benchmarked_results/
+# cdi_3_microbiomeHD/ directory has leftover files from more than one prior run mixed
+# together (stray "runtime copy.txt", and a ruv3 output that silently fell back to
+# uncorrected data after an SVD failure).
+
+datatype: 'count'
+
+### PREPROCESSING PHASE ###
+RW_LIBSIZE_THRESHOLD: 0.05
+RW_RELAB_THRESHOLD: 0.05
+COVAR_L: []
+
+### BENCHMARK PHASE ###
+post_integration_outputs: './trial_rw/benchmarked_results_rerun'
+post_integration_outputs_nocovar: './trial_rw/benchmarked_results_rerun_nocovar'
+run_nocovar_for_rf: True
+used_R_methods: ["combat_seq", "limma", "MMUPHin"]
+used_Python_methods: ['harmony', "percentile_norm", "debiasm"]
+batch_ref: 'cdi_youngster'
+covar: ['DiseaseState']
+condition_value: 'CDI'
+
+### EVALUATION PHASE ###
+evaluation_outputs: './trial_rw/outputs_rerun'
+binarizing_agent: 'H'
