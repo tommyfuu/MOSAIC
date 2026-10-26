@@ -505,7 +505,7 @@ if (grepl("/benchmark", current_path)){
 conn <- file(Snakefile_path,open="r")
 linn <-readLines(conn)
 for (i in 1:length(linn)){
-    if (grepl("configfile", linn[i])){
+    if (grepl("^configfile", trimws(linn[i]))){
         configfile_path = strsplit(linn[i], " ")[[1]][2]
         configfile_path = gsub("'", "", configfile_path)
         configfile_path = gsub("\"", "", configfile_path)

@@ -1,0 +1,29 @@
+### GLOBAL VARS ###
+rules_to_run: 'all_rw'
+
+data_source: 'microbiomeHD'
+
+src: './data'
+
+dataset_name: 'autism_2_microbiomeHD'
+
+datatype: 'count'
+
+### PREPROCESSING PHASE ###
+RW_LIBSIZE_THRESHOLD: 0.05
+RW_RELAB_THRESHOLD: 0.05
+COVAR_L: []
+
+### BENCHMARK PHASE ###
+post_integration_outputs: './trial_rw/benchmarked_results'
+post_integration_outputs_nocovar: './trial_rw/benchmarked_results_nocovar'
+run_nocovar_for_rf: True
+used_R_methods: ["ruv3", "combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', "bmc", "bat", "rbe", "svd"]
+used_Python_methods: ['harmony', "percentile_norm", "debiasm"]
+batch_ref: 'asd_son'
+covar: ['DiseaseState']
+condition_value: 'ASD'
+
+### EVALUATION PHASE ###
+evaluation_outputs: './trial_rw/outputs'
+binarizing_agent: 'H'

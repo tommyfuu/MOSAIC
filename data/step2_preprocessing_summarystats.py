@@ -1,6 +1,7 @@
 import os, sys
 import pandas as pd
 import numpy as np
+import yaml
 
 def preprocess(data_mat, meta_data, IDCol, covar_l = []):
     # remove samples with all zeros
@@ -133,10 +134,17 @@ def check_complete_confounding(meta_data, batch_var, bio_var, output_root = ''):
 # data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv', f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD_meta_data.csv')
 # check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/ibd_3_CMD/ibd_3_CMD')
 
-# # crc_8_CMD
+# # crc_8_CMD (adenoma vs healthy — replaced by crc_11_CMD)
 # data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_crc_8_CMD', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD', id = 'Sam_id', covar_l = [])
 # data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv', f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD_meta_data.csv')
 # check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/crc_8_CMD/crc_8_CMD')
+
+# crc_11_CMD (CRC vs healthy, 11 studies)
+overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data'
+os.makedirs(f'{overall_path}/cleaned_data/crc_11_CMD', exist_ok=True)
+data_mat, meta_data = preprocess_data_phyloseq(f'{overall_path}/pruned_crc_11_CMD', f'{overall_path}/cleaned_data/crc_11_CMD/crc_11_CMD', id = 'Sam_id', covar_l = ['disease', 'gender', 'age_category'])
+data_mat, meta_data = load_results_from_benchmarked_methods(f'{overall_path}/cleaned_data/crc_11_CMD/crc_11_CMD_count_data.csv', f'{overall_path}/cleaned_data/crc_11_CMD/crc_11_CMD_meta_data.csv')
+check_complete_confounding(meta_data, "study_name", "disease", f'{overall_path}/cleaned_data/crc_11_CMD/crc_11_CMD')
 
 import argparse
 parser = argparse.ArgumentParser(description='Calculating summary stats for real-world microbiome datasets')
@@ -170,8 +178,10 @@ with open(f'{current_path}/../Snakefile') as file:
 with open(f'{current_path}/../{config_path}') as file:
     config_data = yaml.load(file, Loader=yaml.FullLoader)
     
-covar_l = config_file['COVAR_L']
-datatype = config_file['datatype']
+# covar_l = config_file['COVAR_L']
+# datatype = config_file['datatype']
+covar_l = config_data['COVAR_L']
+datatype = config_data['datatype']
 if datatype == 'relab':
     relab = True
 else:

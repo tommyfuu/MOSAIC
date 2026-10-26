@@ -1,0 +1,33 @@
+### GLOBAL VARS ###
+rules_to_run: 'all_rw'
+
+data_source: 'CMD'
+
+src: './data'
+
+dataset_name: 'crc_11_CMD'
+
+datatype: 'relab'
+
+### PREPROCESSING PHASE ###
+CMD_datasets: ["FengQ_2015", "GuptaA_2019", "HanniganGD_2017", "ThomasAM_2018a", "ThomasAM_2018b", "ThomasAM_2019_c", "VogtmannE_2016", "WirbelJ_2018", "YachidaS_2019", "YuJ_2015", "ZellerG_2014"]
+CMD_conditions: ['CRC', 'healthy']
+
+RW_LIBSIZE_THRESHOLD: 0.05
+RW_RELAB_THRESHOLD: 0.05
+
+COVAR_L: ['disease', 'gender', 'age_category']
+
+### BENCHMARK PHASE ###
+post_integration_outputs: './benchmark/benchmarked_results'
+post_integration_outputs_nocovar: './benchmark/benchmarked_results_nocovar'
+run_nocovar_for_rf: False
+used_R_methods: ["combat", "limma", "MMUPHin", 'ConQuR_rel', "ruv3", "bmc", "bat", "rbe", "svd"]
+used_Python_methods: ['harmony', "percentile_norm"]
+batch_ref: 'YachidaS_2019'
+covar: ["disease", "gender", "age_category"]
+condition_value: 'CRC'
+
+### EVALUATION PHASE ###
+evaluation_outputs: './outputs'
+binarizing_agent: 'CRC'

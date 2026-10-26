@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# SLURM / logs
+*.out
+*.err
+nohup.out
+logs/*
+!logs/slurm/
+logs/slurm/*
+!logs/slurm/.gitkeep
+
+*.log
+
+# Jupyter / Snakemake / editor
+.ipynb_checkpoints/
+.snakemake/
+.claude/
+
+# Generated result data (inputs under data/cleaned_data/ are NOT ignored)
+/outputs/
+/trial_rw/
+/trial_simulation/
+/trial_simulation_old/
+/benchmark/benchmarked_results/
+/benchmark/benchmarked_results_nocovar/
+/benchmark/condsweep_50iter_preliminary/
+/benchmark/scan_tmp/
+/benchmark/archive/debug_artifacts_oct2026/
+/benchmark/*.png
+/benchmark/*.csv
+/benchmark/*.txt
+
+# MMUPHin diagnostic plot written on every run
+adjust_batch_diagnostic.pdf

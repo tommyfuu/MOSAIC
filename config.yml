@@ -23,8 +23,9 @@ COVAR_L: []
 ### BENCHMARK PHASE ###
 # post_integration_outputs: './benchmark/benchmarked_results'
 post_integration_outputs: './trial_rw/benchmarked_results'
-used_R_methods: ["combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize']
-used_Python_methods: ['harmony', "percentile_norm"]
+used_R_methods: ["ruv3", "combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize', "bmc", "bat", "rbe", "svd"]
+used_Python_methods: ['harmony', "percentile_norm", "debiasm"]
+# optional: remove "debiasm" from used_Python_methods if DEBIAS-M is not installed (requires: pip install DEBIAS-M)
 batch_ref: 'asd_son'
 covar: ['DiseaseState']
 condition_value: 'ASD'

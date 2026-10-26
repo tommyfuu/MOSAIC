@@ -1,0 +1,34 @@
+### GLOBAL VARS ###
+rules_to_run: 'all_simulated' 
+# one of the following: 'all_rw', 'all_simulated', 'preprocess', 'simulate', 'data_integration', 'evaluation', 'visualization'
+
+data_source: 'MIDASim'
+# it has to be 'microbiomeHD', 'CMD', or 'MIDASim'
+
+sim_output_root: './trial_simulation'
+
+### SIMULATION PHASE ###
+# or_l: [1, 1.25, 1.5]
+or_l: [1.25]
+# cond_effect_val_l: [0, 0.25, 0.5, 0.75, 1]
+cond_effect_val_l: [0, 0.25, 0.5, 0.75, 1]
+batch_effect_val_l: [0, 0.25, 0.5, 0.75, 1]
+# or_l: [1.25]
+# cond_effect_val_l: [0.5]
+# batch_effect_val_l: [0.5]
+# iter: 1
+
+# list of covariates to be used in the final stage of data cleaning/complete confounding calculations + data saving
+# in our case, only ['disease', 'gender', 'age_category'] for CMD/IBD datasets are used, otherwise all empty
+
+### BENCHMARK PHASE ###
+used_R_methods_count: ["nobc", "combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize']
+# used_R_methods_count: ["combat_seq", "limma", "MMUPHin"]
+used_R_methods_relab: ["nobc", "combat", "limma", "MMUPHin", 'ConQuR_rel']
+# used_R_methods_relab: ["combat", "limma", "MMUPHin"]
+used_Python_methods: ['harmony', "percentile_norm", "debiasm"]
+
+
+### EVALUATION PHASE ###
+binarizing_agent: 'cond_1' # for two microbiomeHD datasets or 'IBD' for ibd or 'adenoma' for the CRC dataset
+
