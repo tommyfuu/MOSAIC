@@ -1,0 +1,186 @@
+# MOSAIC simulation workflow: simulate -> integrate (R and Python strategies) -> evaluate -> summarize, for any
+# simulation scenario in config_simulation_scenarios.yml (main grid, condition-effect sweep, and the ablations:
+# sample size, batch effects on a subset of taxa, zero inflation, batch / condition imbalance).
+#
+#   snakemake -s Snakefile_simulation --cores 4                                    # scenarios in run_scenarios
+#   snakemake -s Snakefile_simulation --cores 4 --config run_scenarios=[zeroinf90] iterations=5
+#   bash run_simulation_workflow.sh [--config ...]                                  # one SLURM job per step
+#
+# Each replicate i of a scenario is simulated with random seed i. Steps write flag files in
+# <output_root>/<scenario>/.flags/, so an interrupted run resumes where it stopped.
+
+configfile: "config_simulation_scenarios.yml"
+
+import os
+import sys
+
+sys.path.insert(0, workflow.basedir)
+from paths import SIM_OUTPUT_ROOT
+
+BENCH = os.path.join(workflow.basedir, "benchmark")
+ROOT = config.get("output_root") or os.path.join(SIM_OUTPUT_ROOT, "mosaic_scenarios")
+N_ITER = int(config["iterations"])
+DATATYPES = config["datatypes"] if isinstance(config["datatypes"], list) else [config["datatypes"]]
+RUN = config["run_scenarios"] if isinstance(config["run_scenarios"], list) else [config["run_scenarios"]]
+for s in RUN:
+    if s not in config["scenarios"]:
+        raise ValueError(f"run_scenarios: unknown scenario '{s}' (defined: {', '.join(config['scenarios'])})")
+
+wildcard_constraints:
+    scenario = "[A-Za-z0-9_]+",
+    iter = "[0-9]+",
+    dt = "count|relab"
+
+
+def P(scenario):
+    """Scenario parameters: the defaults with the scenario's overrides."""
+    return {**config["defaults"], **(config["scenarios"][scenario] or {})}
+
+
+def fmt(v):
+    v = float(v)
+    return str(int(v)) if v.is_integer() else repr(v)
+
+
+def lst(x):
+    return ",".join(fmt(v) for v in (x if isinstance(x, list) else [x]))
+
+
+def n_settings(scenario):
+    p = P(scenario)
+    return sum(1 for o in p["or_l"] for c in p["cond_effect_val_l"] for b in p["batch_effect_val_l"] if c + b <= 1)
+
+
+def grid_args(scenario):
+    p = P(scenario)
+    return f"--or_l={lst(p['or_l'])} --cond_effect_val_l={lst(p['cond_effect_val_l'])} --batch_effect_val_l={lst(p['batch_effect_val_l'])}"
+
+
+def py_grid_args(scenario):
+    p = P(scenario)
+    return f"--or-l {lst(p['or_l'])} --cond-l {lst(p['cond_effect_val_l'])} --batch-l {lst(p['batch_effect_val_l'])}"
+
+
+def d(scenario, *parts):
+    return os.path.join(ROOT, scenario, *parts)
+
+
+# ablations = scenarios with the baseline's single setting (OR 1, condition 0.5, batch 0.5 by default), compared
+# with `baseline` in the ablation figures (Figure 3 style)
+def _grid(s):
+    p = P(s)
+    return (tuple(map(float, p["or_l"])), tuple(map(float, p["cond_effect_val_l"])), tuple(map(float, p["batch_effect_val_l"])))
+
+
+ABLATIONS = [s for s in RUN if s != "baseline" and _grid(s) == _grid("baseline")]
+
+
+rule all:
+    input:
+        expand(os.path.join(ROOT, "{scenario}", "summary_{dt}.csv"), scenario=RUN, dt=DATATYPES),
+        expand(os.path.join(ROOT, "ablation_figures_{dt}", "summary_mean_ci.csv"), dt=DATATYPES)
+            if "baseline" in RUN and ABLATIONS else []
+
+
+rule simulate:
+    output:
+        touch(os.path.join(ROOT, "{scenario}", ".flags", "simulate_{iter}.done"))
+    params:
+        sim_args = lambda w: (
+            f"--out={d(w.scenario, 'data')} --iter={w.iter} --n_samples={P(w.scenario)['n_samples']} "
+            f"--resample_libsize={str(P(w.scenario)['resample_libsize']).lower()} "
+            f"--p_cond={fmt(P(w.scenario)['p_cond'])} --p_batch={fmt(P(w.scenario)['p_batch'])} "
+            f"--batch_libsize_related={str(P(w.scenario)['batch_libsize_related']).lower()} "
+            f"--batch_taxa_fraction={fmt(P(w.scenario)['batch_taxa_fraction'])} {grid_args(w.scenario)}"),
+        zero = lambda w: (f"&& python3 apply_zero_inflation.py --data-dir {d(w.scenario, 'data')} --iter {w.iter} "
+                          f"--target {P(w.scenario)['zero_fraction']}") if P(w.scenario)["zero_fraction"] else ""
+    threads: 1
+    resources:
+        mem_mb = 6000,
+        runtime = lambda w: 15 + 5 * n_settings(w.scenario)
+    shell:
+        "cd {BENCH} && Rscript simulate_scenario.R {params.sim_args} {params.zero}"
+
+
+rule integrate_r:
+    input:
+        os.path.join(ROOT, "{scenario}", ".flags", "simulate_{iter}.done")
+    output:
+        touch(os.path.join(ROOT, "{scenario}", ".flags", "integrate_r_{dt}_{iter}.done"))
+    params:
+        args = lambda w: (f"--data={d(w.scenario, 'data')} --out={d(w.scenario, 'output_' + w.dt)} --iter={w.iter} "
+                          f"--datatype={w.dt} --methods={','.join(config['used_R_methods_' + w.dt])} {grid_args(w.scenario)}")
+    threads: 10
+    resources:
+        mem_mb = 20000,
+        runtime = lambda w: 30 + 40 * n_settings(w.scenario)
+    shell:
+        "cd {BENCH} && Rscript run_sim_methods.R {params.args}"
+
+
+rule integrate_python:
+    input:
+        os.path.join(ROOT, "{scenario}", ".flags", "simulate_{iter}.done")
+    output:
+        touch(os.path.join(ROOT, "{scenario}", ".flags", "integrate_python_{dt}_{iter}.done"))
+    params:
+        args = lambda w: (f"--config config_simulation_scenarios.yml -o 16 -i {w.iter} -d {w.dt} "
+                          f"--data-dir {d(w.scenario, 'data')} --output-dir {d(w.scenario, 'output_' + w.dt)} {py_grid_args(w.scenario)}")
+    threads: 1
+    resources:
+        mem_mb = 10000,
+        runtime = lambda w: 20 + 15 * n_settings(w.scenario)
+    shell:
+        "cd {BENCH} && python3 evaluate.py {params.args}"
+
+
+rule evaluate:
+    input:
+        os.path.join(ROOT, "{scenario}", ".flags", "integrate_r_{dt}_{iter}.done"),
+        os.path.join(ROOT, "{scenario}", ".flags", "integrate_python_{dt}_{iter}.done")
+    output:
+        touch(os.path.join(ROOT, "{scenario}", ".flags", "evaluate_{dt}_{iter}.done"))
+    params:
+        args = lambda w: (f"--config config_simulation_scenarios.yml -o 17 -i {w.iter} -d {w.dt} "
+                          f"--data-dir {d(w.scenario, 'data')} --output-dir {d(w.scenario, 'output_' + w.dt)} "
+                          f"--eval-dir {d(w.scenario, 'eval_' + w.dt)} {py_grid_args(w.scenario)}")
+    threads: 1
+    resources:
+        mem_mb = 10000,
+        runtime = lambda w: 30 + 60 * n_settings(w.scenario)
+    shell:
+        # regular evaluation, then the leakage-free random forest pass (writes the _nocovar summaries)
+        "cd {BENCH} && python3 evaluate.py {params.args} && python3 evaluate.py {params.args} --rerun-rf"
+
+
+rule summarize:
+    input:
+        lambda w: expand(os.path.join(ROOT, w.scenario, ".flags", f"evaluate_{w.dt}_{{iter}}.done"), iter=range(1, N_ITER + 1))
+    output:
+        summary = os.path.join(ROOT, "{scenario}", "summary_{dt}.csv"),
+        values = os.path.join(ROOT, "{scenario}", "values_{dt}.csv")
+    params:
+        args = lambda w: f"--eval-dir {d(w.scenario, 'eval_' + w.dt)} {py_grid_args(w.scenario)} --n-iter {N_ITER}"
+    threads: 1
+    resources:
+        mem_mb = 8000,
+        runtime = 60
+    shell:
+        "cd {BENCH} && python3 aggregate_scenario.py {params.args} --values {output.values} --summary {output.summary}"
+
+
+rule ablation_figures:
+    """Fig 3-style plots: each ablation vs the baseline, per metric and method (benchmark/ablation_vis.py)."""
+    input:
+        expand(os.path.join(ROOT, "{scenario}", "summary_{{dt}}.csv"), scenario=["baseline"] + ABLATIONS)
+    output:
+        os.path.join(ROOT, "ablation_figures_{dt}", "summary_mean_ci.csv")
+    params:
+        args = lambda w: (f"-i {N_ITER} -d {w.dt} --root {ROOT} --setups {','.join(ABLATIONS)} "
+                          f"--out {os.path.join(ROOT, 'ablation_figures_' + w.dt)}")
+    threads: 1
+    resources:
+        mem_mb = 8000,
+        runtime = 120
+    shell:
+        "cd {BENCH} && python3 ablation_vis.py {params.args}"

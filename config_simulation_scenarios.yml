@@ -1,0 +1,84 @@
+# Simulation scenarios for the MOSAIC simulation workflow (Snakefile_simulation).
+#
+# Every scenario is the baseline design below with some parameters overridden. A scenario simulates each
+# (OR, condition effect, batch effect) combination in its grid with condition effect + batch effect <= 1,
+# for `iterations` replicates, then runs the integration strategies and the evaluation on each replicate,
+# and writes a summary of all metrics (mean, 95% CI, SD, 2.5/97.5 percentiles over replicates).
+#
+# Run:   snakemake -s Snakefile_simulation --cores 4                      (scenarios in run_scenarios)
+#        snakemake -s Snakefile_simulation --config run_scenarios=[zeroinf90] iterations=10 --cores 4
+#        bash run_simulation_workflow.sh                                  (same, on SLURM)
+# Outputs: <output_root>/<scenario>/
+#            data/                  simulated count + relative abundance tables, metadata, true condition/batch taxa
+#            output_<datatype>/     integrated data (strategies may use the condition as a covariate)
+#            output_<datatype>_nocovar/  integrated data without the condition covariate (for leakage-free prediction)
+#            eval_<datatype>/       per-replicate evaluation (global_benchmarking_stats[_nocovar]_batch_0.csv)
+#            summary_<datatype>.csv per-setting summary over replicates; values_<datatype>.csv per replicate
+
+# where scenario folders are written; null = <sim_output_root in paths.yml>/mosaic_scenarios
+output_root: null
+iterations: 1000            # replicates per setting (replicate i uses random seed i)
+datatypes: [count]          # count and/or relab (relative abundance tables are simulated alongside counts)
+run_scenarios: [baseline, n150, halftaxa, zeroinf90, batchfrac10, condfrac10, condsweep]
+
+# integration strategies (same keys as the other configs; evaluate.py reads them from here with --config)
+used_R_methods_count: ["combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "ruv3", "bmc", "bat", "rbe", "svd"]
+used_R_methods_relab: ["combat", "limma", "MMUPHin", "ConQuR_rel", "ruv3", "bmc", "bat", "rbe", "svd"]
+used_Python_methods: ["harmony", "percentile_norm", "debiasm"]
+binarizing_agent: 'cond_1'
+
+# Baseline design (Figure 3 baseline). Parameters:
+#   n_samples              number of simulated samples
+#   resample_libsize       true: library sizes drawn with replacement from the 150 template samples;
+#                          false: the 150 template library sizes are used as they are (requires n_samples = 150)
+#   p_cond, p_batch        proportion of samples in condition 1 / batch 1
+#   or_l                   odds ratios between condition and batch membership (1 = independent)
+#   cond_effect_val_l      condition effect sizes s_C; batch_effect_val_l: batch effect sizes s_B
+#   batch_libsize_related  true: batch membership depends on library size (batch-library size confounding)
+#   batch_taxa_fraction    fraction of the 301 taxa affected by batch, chosen evenly across zero-inflation ranks
+#   zero_fraction          null, or a target overall fraction of zero counts reached by zeroing the smallest
+#                          non-zero counts (never a sample's largest count)
+defaults:
+  n_samples: 450
+  resample_libsize: true
+  p_cond: 0.5
+  p_batch: 0.5
+  or_l: [1]
+  cond_effect_val_l: [0.5]
+  batch_effect_val_l: [0.5]
+  batch_libsize_related: false
+  batch_taxa_fraction: 1.0
+  zero_fraction: null
+
+scenarios:
+  # main simulation grid (Figure 2a-c, Supplemental Figures 1-4)
+  main_grid_no_libsize_confounding:
+    or_l: [1, 1.25, 1.5]
+    cond_effect_val_l: [0.25, 0.5, 0.75, 1]
+    batch_effect_val_l: [0, 0.25, 0.5, 0.75]
+  main_grid_libsize_confounded:
+    or_l: [1, 1.25, 1.5]
+    cond_effect_val_l: [0.25, 0.5, 0.75, 1]
+    batch_effect_val_l: [0, 0.25, 0.5, 0.75]
+    batch_libsize_related: true
+  # condition-effect sweep (Figure 2d)
+  condsweep:
+    cond_effect_val_l: [0.005, 0.01, 0.02, 0.05, 0.1]
+    batch_effect_val_l: [0.5]
+  # ablations (Figure 3), each changing one factor of the baseline
+  baseline: {}
+  n150:
+    n_samples: 150
+    resample_libsize: false
+  halftaxa:
+    batch_taxa_fraction: 0.5
+  zeroinf75: {zero_fraction: 0.75}
+  zeroinf80: {zero_fraction: 0.80}
+  zeroinf85: {zero_fraction: 0.85}
+  zeroinf90: {zero_fraction: 0.90}
+  batchfrac40: {p_batch: 0.4}
+  batchfrac20: {p_batch: 0.2}
+  batchfrac10: {p_batch: 0.1}
+  condfrac40: {p_cond: 0.4}
+  condfrac20: {p_cond: 0.2}
+  condfrac10: {p_cond: 0.1}
