@@ -25,6 +25,8 @@ from statsmodels.stats.multitest import multipletests
 import statsmodels.api as sm
 import matplotlib as mpl
 import sys, yaml
+sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from paths import REPO_ROOT, SIM_OUTPUT_ROOT, BENCH_DIR, DATA_DIR
 
 ARGPARSE_SWITCH = True
 
@@ -35,22 +37,36 @@ if ARGPARSE_SWITCH:
                 description='two options: (1) generate batch corrected results for harmony and percentile normalization along w runtime; (2) evaluate the batch correction results.',
                 epilog='Text at the bottom of help')
 
-    parser.add_argument("-o", "--option", type=int, default = 10, help='either 1 or 2, option 1: generate batch corrected results for harmony and percentile normalization along w runtime; option 2: evaluate the batch correction results; option 2: evaluate the batch correction results for multiple methods.')
+    parser.add_argument("-o", "--option", type=int, default = 10, help='1: sim Python methods, 2: sim evaluation, 3: rw Python methods, 4: rw evaluation, 5: sim line plots, 6: ablation Python methods, 7: ablation evaluation, 8: ablation plots, 9: condsweep plots, 13/14/15: zero-inflation ablation Python methods / evaluation / plots, 16/17: path-driven scenario Python methods / evaluation (Snakefile_simulation)')
     parser.add_argument("-i", "--iteration", type=int, default = 1, help='the iteration number')
     parser.add_argument("-d", "--datatype", default = 'count', help='either count or relab')
     parser.add_argument("-r", "--related", default = 'no', help='whether the batch effect is related to library size')
     parser.add_argument("-a", "--agent", default = 'cond_1', help='binarizing agent for differential abundance evaluation')
-    parser.add_argument("-p", "--overallpath", default = '/athena/linglab/scratch/chf4012', help='overall path for data interaction and saving')
+    parser.add_argument("-p", "--overallpath", default = os.path.dirname(SIM_OUTPUT_ROOT), help='overall path for data interaction and saving')
     parser.add_argument("--rerun-rf", action="store_true", default=False, help='re-run only RF evaluation with leakage-free approach, preserving all other existing metrics')
-    parser.add_argument("--refresh-rf", action="store_true", default=False, help='re-run only RF evaluation on the existing (regular, non-nocovar) batch-corrected data, preserving all other existing metrics -- use to pick up a predict_difference_RF() fix without a full re-evaluate')
-    parser.add_argument("--config", default=None, help='override the config path normally parsed from the Snakefile configfile: line -- use this to run against a specific config (e.g. an rw dataset config) without touching the Snakefile, which other concurrently-running jobs read fresh on every process start')
-    parser.add_argument("--succinct", action="store_true", default=False, help='for plotting options (4, 5, 8), drop bat/ruv3/svd from the methods list so plots only show the remaining methods')
+    parser.add_argument("--refresh-rf", action="store_true", default=False, help='re-run only RF evaluation on the regular (covar-guided) batch-corrected data, keeping other metrics')
+    parser.add_argument("--config", default=None, help='config yml path (relative to the repo root); defaults to the configfile: line in the Snakefile')
+    parser.add_argument("--succinct", action="store_true", default=False, help='for plotting options (4, 5, 8, 9), drop bat/ruv3/svd/rbe/bmc from the plots')
+    parser.add_argument("--dodge-ci", action="store_true", default=False, help='simulation plots: spread methods sideways within each setup and add 95%% CI error bars (written to a separate _dodgeci folder)')
+    parser.add_argument("--highlight-ci", action="store_true", default=False, help='simulation plots: keep the line plots, add an interval only for the best method per setup (written to a separate _hl<ci-type> folder)')
+    parser.add_argument("--ci-type", default='ci', choices=['ci', 'spread'], help='interval for --dodge-ci / --highlight-ci: ci = 95%% CI of the mean, spread = 2.5-97.5 percentile across iterations')
+    parser.add_argument("--scenario", default=None, help='options 13/14: run a named ablation scenario (count_<scenario>/ folder, e.g. batchfrac20) instead of the zero-inflation levels')
+    parser.add_argument("--zeroinf-level", type=int, default=None, choices=[75, 80, 85, 90], help='options 13/14: run one zero-inflation level only')
+    parser.add_argument("--condsweep-or", type=float, default=1.25, help='options 6/7: odds ratio of the condsweep data to use (default 1.25)')
+    parser.add_argument("--condsweep-only", action="store_true", default=False, help='options 6/7: run only the condsweep block (skip the other ablation scenarios)')
+    parser.add_argument("--condsweep-relation", default='both', choices=['no_relation', 'yes_relation', 'both'], help='options 6/7: run the condsweep block for one relation type only')
+    parser.add_argument("--data-dir", default=None, help='options 16/17: folder with the simulated tables of a scenario (Snakefile_simulation)')
+    parser.add_argument("--output-dir", default=None, help='options 16/17: folder with the integrated data (the _nocovar folder is <output-dir>_nocovar)')
+    parser.add_argument("--eval-dir", default=None, help='option 17: folder for the evaluation outputs')
+    parser.add_argument("--or-l", default='1', help='options 16/17: comma-separated odds ratios of the scenario grid')
+    parser.add_argument("--cond-l", default='0.5', help='options 16/17: comma-separated condition effects of the scenario grid')
+    parser.add_argument("--batch-l", default='0.5', help='options 16/17: comma-separated batch effects of the scenario grid')
 
     args = vars(parser.parse_args())
 
     overall_path = args['overallpath']
 
-SUCCINCT_DROP_METHODS = {"bat", "ruv3", "svd"}
+SUCCINCT_DROP_METHODS = {"bat", "ruv3", "svd", "rbe", "bmc"}
 
 def apply_succinct(methods):
     if args.get('succinct', False):
@@ -58,6 +74,31 @@ def apply_succinct(methods):
     return methods
 
 SUCCINCT_SUFFIX = "_succinct" if args.get('succinct', False) else ""
+DODGE_CI = args.get('dodge_ci', False)
+HIGHLIGHT_CI = args.get('highlight_ci', False)
+CI_TYPE = args.get('ci_type', 'ci')
+PLOT_SUFFIX = SUCCINCT_SUFFIX + (("_dodgeci" if CI_TYPE == 'ci' else "_dodgespread") if DODGE_CI else "") + \
+              (("_hlci" if CI_TYPE == 'ci' else "_hlspread") if HIGHLIGHT_CI else "")
+
+# --highlight-ci: which method counts as best at each setup (nobc is never chosen)
+HIGHLIGHT_RULE = {'FDR': 'closest to 0.05', 'sensitivity': 'highest', 'rf_auc': 'highest', 'rf_f1': 'highest',
+                  'rf_precision': 'highest', 'rf_recall': 'highest', 'batch_aitch': 'lowest', 'batch_bray': 'lowest',
+                  'runtime': 'lowest', 'biovar_aitch': 'closest to nobc', 'biovar_bray': 'closest to nobc',
+                  'batch_shannon_rej': 'lowest', 'biovar_shannon_rej': 'highest'}
+
+
+def best_method_at(key, means, j):
+    # means: method -> list of per-setup means; returns the best method at setup j under HIGHLIGHT_RULE[key]
+    rule = HIGHLIGHT_RULE.get(key)
+    mus = {m: v[j] for m, v in means.items() if m != 'nobc' and not np.isnan(v[j])}
+    if rule is None or not mus:
+        return None
+    if rule == 'highest':
+        return max(mus, key=mus.get)
+    if rule == 'lowest':
+        return min(mus, key=mus.get)
+    target = 0.05 if rule == 'closest to 0.05' else means['nobc'][j]
+    return min(mus, key=lambda m: abs(mus[m] - target))
 
 
 def generate_harmony_results(data_mat, meta_data, IDCol, vars_use, output_root):
@@ -111,7 +152,6 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
     numpy2ri.activate()
     pandas2ri.activate()
     grdevices = importr('grDevices')
-    # check if current path has benchmark in it
     if '/benchmark' in os.getcwd():
         r.source('./PERMANOVA_supporting.R')
     else:
@@ -144,7 +184,6 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
             else:
                 data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
                 if methods[idx] in ['combat', 'limma', 'ruv3', 'bmc', 'bat', 'rbe', 'svd']:
-                    # set all negative values to 0
                     data = np.where(data<0, 0, data)
                 elif methods[idx] in ['harmony', 'debiasm']:
                     data = data+np.abs(np.min(data))
@@ -161,7 +200,6 @@ def plot_PCOA_multiple(dataset_name, batch_corrected_df_l, methods, meta_data_l,
         else:
             data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
             if methods[idx] in ['combat', 'limma', 'ruv3', 'bmc', 'bat', 'rbe', 'svd']:
-                # set all negative values to 0
                 data = np.where(data<0, 0, data)
             elif methods[idx] in ['harmony', 'debiasm']:
                 data = data+np.abs(np.min(data))
@@ -198,11 +236,11 @@ class Evaluate(object):
         self.binarizing_agent_biovar = binarizing_agent_biovar
         self.method = method
         print("Current method", self.method)
-        ## note: for pipelines
-        # 1. scaled pipeline generates:
+        # outputs per pipeline
+        # 1. scaled pipeline:
         # 1.1 _summary.csv: contains summary stats for biovar/batch aitch/bray r2 and pval + biovar/batch shannon pval
         # 1.2  _diff_abund_test.csv: contains diff abund test results for biovar/batch concatenated to taxa level data
-        # 2. default pipeline additionally generates,
+        # 2. default pipeline, in addition:
         # 2.1 4* PCoA_Aitch/Bray.pdf: PCoA plots for Aitch/Bray dissimilarity
         # 2.2 5* _rf_fold_k_roc.pdf: ROC plots for concatenated 5F CV prediction of biovar states
         # 2.3 2* _shannon_df_batch/biovar.pdf: Shannon diversity indices with groupings for batch/biovar
@@ -213,12 +251,12 @@ class Evaluate(object):
             os.makedirs(directory_path)
 
         if rf_only:
-            # load existing summary to preserve all non-RF metrics
+            # keep the non-RF metrics from the existing summary
             existing_summary_path = self.output_root + "_summary.csv"
             if os.path.exists(existing_summary_path):
                 existing_df = pd.read_csv(existing_summary_path, index_col=0)
                 self.short_summary_dict = existing_df['0'].to_dict()
-            # re-run only RF with leakage-free data
+            # rerun RF only, on the leakage-free data
             self.predict_difference_RF()
         else:
             # full evaluation
@@ -232,22 +270,22 @@ class Evaluate(object):
         self.summary_df.to_csv(self.output_root+f"_summary{self.suffix}.csv")
 
     def diff_abund_test(self):
-        ### if two categories then wilcox test, three or more then kruskal-wallis test
+        # per-taxon OLS of the binarized condition on abundance (plus covariates)
         print("DIFF ABUND TEST")
         df = self.batch_corrected_df
         
         # if datatype is count, conduct relative abundance calculation
         if self.datatype == "count":
-            if not self.method in ['limma', 'harmony', 'debiasm']:
+            # CLR-space outputs (ruv3/bmc/bat/rbe/svd) have negative values and row sums ~0, so they are tested as is
+            if not self.method in ['limma', 'harmony', 'debiasm'] and df.values.min() >= 0:
                 df = df.div(df.sum(axis=1), axis=0)
         taxa_names = df.columns
         meta_data = self.meta_data
 
-        # check if na/+-inf exists (combat weird explosion case), OR if some very large number exists (combat-seq explosion case), if so, skip the whole
+        # NaN/inf (ComBat blow-up) or huge values (ComBat-seq blow-up): skip and record defaults
         if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
             self.short_summary_dict["FDR"] = 0
             self.short_summary_dict["power"] = 0
-            # fill p_val and FDR with 1
             df["p_value"] = 1
             df["FDR_p_value"] = 1
             df.to_csv(self.output_root+"_diff_abund_test.csv")
@@ -262,28 +300,21 @@ class Evaluate(object):
         # iterate over columns and conduct statistical test
         d = {}
         for idx, i in enumerate(taxa_names):
-            # get the data for the current taxa
             data = df[i]
             # add covariates to df if exists
             if self.covar_l != []:
                 for covar in self.covar_l:
-                    # if not numerical, one-hot encode numerically and concat
+                    # one-hot encode categorical covariates
                     if meta_data[covar].dtype == 'object':
-                        # one-hot encode
                         covar_df = pd.get_dummies(meta_data[covar])
-                        # convert True/False to 1/0
                         covar_df = covar_df.astype(int)
-                        # reset index
                         covar_df.index = df.index
                         data = pd.concat([data, covar_df], axis=1)
-            # add constant to df
             # print("data", list(data))
             data = sm.add_constant(data)
             # use the first len(bio_var_l) rows
             data = data.iloc[:len(bio_var_l)]
-            # fit ols model
             model_ols = sm.OLS(bio_var_l, data, missing = 'drop').fit()
-            # save p value to dict
             d[f'{i}'] = model_ols.pvalues[i]
 
         # print(d)
@@ -291,17 +322,13 @@ class Evaluate(object):
         df = self.batch_corrected_df[taxa_names]
         # transpose the batch corrected dataframe and save the p-values alongside
         df = df.T
-        # save p value to df
         df["p_value"] = df.index.map(d)
-        # replace nan p_value with 1
         df["p_value"] = df["p_value"].fillna(1)
 
-        # add FDR corrected p-values
         df["FDR_p_value"] = multipletests(df['p_value'].values, method='fdr_bh')[1]
-        ### if we know the ground truth, so we can calculate the stats such as FDR, TPR, FPR, sensitivity, etc
+        # with ground-truth taxa, compute FDR and power
         if self.taxa_gt is not None:
             df["ground_truth"] = [1 if i in self.taxa_gt else 0 for i, taxa in enumerate(taxa_names)]
-            # calculate stats
             TP = len(df[(df["ground_truth"] == 1) & (df["FDR_p_value"] < 0.05)])
             print(df["ground_truth"])
             FP = len(df[(df["ground_truth"] == 0) & (df["FDR_p_value"] < 0.05)])
@@ -309,7 +336,6 @@ class Evaluate(object):
             FN = len(df[(df["ground_truth"] == 1) & (df["FDR_p_value"] >= 0.05)])
             print("TP, FP, TN, FN", TP, FP, TN, FN)
 
-            # calculate stats
             if TP+FP == 0:
                 self.short_summary_dict["FDR"] = 0
             else:
@@ -320,12 +346,11 @@ class Evaluate(object):
                 self.short_summary_dict["power"] = TP/(TP+FN)
 
 
-        # save the dataframe
         df.to_csv(self.output_root+"_diff_abund_test.csv")
         return
 
     def calculate_R_sq(self):
-        # check if na/+-inf exists (combat weird explosion case), OR if some very large number exists (combat-seq explosion case), if so, skip the whole
+        # NaN/inf (ComBat blow-up) or huge values (ComBat-seq blow-up): skip and record defaults
         df = self.batch_corrected_df
         if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
             self.short_summary_dict["batch_aitch_r2"] = 0
@@ -342,7 +367,6 @@ class Evaluate(object):
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         if self.method in ['combat', 'limma', 'ruv3', 'bmc', 'bat', 'rbe', 'svd']:
-            # set all negative values to 0
             data = np.where(data<0, 0, data)
         elif self.method in ['harmony', 'debiasm']:
             data = data+np.abs(np.min(data))
@@ -358,12 +382,10 @@ class Evaluate(object):
 
         # pd.DataFrame(data).to_csv("ACSCAV2.csv")
 
-        # attempting rpy2
-        #Must be activated
+        # rpy2 converters must be active before calling R
         pandas2ri.activate()
         numpy2ri.activate()
 
-        # import r packages/functions
         r = robjects.r
         if '/benchmark' in os.getcwd():
             r.source('./PERMANOVA_supporting.R')
@@ -391,7 +413,7 @@ class Evaluate(object):
         self.short_summary_dict["batch_bray_r2"] = bray_curtis_permanova_df.loc["batch", "standard"]
         self.short_summary_dict["batch_aitch_pval"] = aitchinson_permanova_df.loc["batch", 'Pr(>F)']
         self.short_summary_dict["batch_bray_pval"] = bray_curtis_permanova_df.loc["batch", 'Pr(>F)']
-        # calculate the equivalent stats but for biological variable
+        # same PERMANOVA for the biological variable
         r_bio_var = self.meta_data[self.bio_var]
         if self.covar_l != []:
             r_covariate = self.meta_data[self.covar_l]
@@ -413,7 +435,7 @@ class Evaluate(object):
         self.short_summary_dict["biovar_aitch_pval"] = aitchinson_permanova_df.loc["batch", 'Pr(>F)']
         self.short_summary_dict["biovar_bray_pval"] = bray_curtis_permanova_df.loc["batch", 'Pr(>F)']
 
-        # try plotting stuff
+        # PCoA plots
         if self.pipeline == "default":
             if self.datatype == "count":
                 r.Plot_PCoA(self.output_root+'_batch', data, r_batch, dissimilarity="Aitch", main="Aitchinson")
@@ -427,7 +449,7 @@ class Evaluate(object):
     def alpha_diversity_and_tests(self, test_var):
         print("______________alpha_diversity_and_tests______________")
 
-         # check if na/+-inf exists (combat weird explosion case), OR if some very large number exists (combat-seq explosion case), if so, skip the whole
+        # NaN/inf (ComBat blow-up) or huge values (ComBat-seq blow-up): skip
         df = self.batch_corrected_df
         if df.isnull().values.any() or np.isinf(df.values).any() or np.max(df.values) > 100000:
             print("combat family explosion case, default #s and skipped")
@@ -435,7 +457,6 @@ class Evaluate(object):
         data = np.array(self.batch_corrected_df)
         data = np.where(data<np.percentile(data.flatten(), 0.01), 0, data)
         if self.method in ['combat', 'limma', 'ruv3', 'bmc', 'bat', 'rbe', 'svd']:
-            # set all negative values to 0
             data = np.where(data<0, 0, data)
         elif self.method in ['harmony', 'debiasm']:
             data = data+np.abs(np.min(data))
@@ -488,14 +509,11 @@ class Evaluate(object):
         shannon_global_pval_batch, shannon_df_batch = self.alpha_diversity_and_tests(self.batch_var)
         shannon_global_pval_biovar, shannon_df_biovar = self.alpha_diversity_and_tests(self.bio_var)
 
-        # save to csv
         if self.pipeline == 'default':
-            # check if dfs are none
             if shannon_df_batch is not None:
                 shannon_df_batch.to_csv(self.output_root+"_shannon_df_batch.csv")
                 shannon_df_biovar.to_csv(self.output_root+"_shannon_df_biovar.csv")
 
-        # save to summary dict
         self.short_summary_dict["batches_shannon_pval"] = shannon_global_pval_batch
         self.short_summary_dict["biovar_shannon_pval"] = shannon_global_pval_biovar
         return
@@ -516,13 +534,11 @@ class Evaluate(object):
             print("combat family explosion case, default #s and skipped")
             return
 
-        # get the data (nocovar version if available, else covar-guided)
         used_x = df.copy()
         # use the first len(bio_var_l) rows
         used_x = used_x.iloc[:len(self.meta_data[self.IDCol])]
         used_y = list(self.meta_data[self.bio_var])
         sampld_ids = list(self.meta_data[self.IDCol])
-        # Creating the Training and Test set from data
         # X_train, X_test, y_train, y_test = train_test_split(used_x, used_y, test_size = self.test_percent, random_state = self.rng)
         kf = KFold(n_splits=5, random_state=self.rng, shuffle = True)# Define the split - into n_splits folds 
         kf.get_n_splits(used_x, used_y) # returns the number of splitting iterations in the cross-validator
@@ -551,14 +567,14 @@ class Evaluate(object):
         IDs_concat = []
         for i, (train_index, test_index) in enumerate(kf.split(used_x, used_y)):
             if use_debiasm_within_fold:
-                # fit DEBIAS-M on training fold only, apply to both — leakage-free
+                # fit DEBIAS-M on the training fold only and apply it to both folds (no leakage)
                 X_tr_raw = raw_x.iloc[train_index].values
                 X_te_raw = raw_x.iloc[test_index].values
                 X_tr_wb = np.hstack((batch_codes[train_index][:, np.newaxis], X_tr_raw))
                 X_te_wb = np.hstack((batch_codes[test_index][:, np.newaxis], X_te_raw))
                 dmc = DebiasMClassifier(x_val=X_te_wb)
                 if len(np.unique(y_binary[train_index])) < 2:
-                    # degenerate fold — fall back to raw features
+                    # single-class training fold: fall back to raw features
                     X_train = pd.DataFrame(X_tr_raw, columns=used_x.columns)
                     X_test  = pd.DataFrame(X_te_raw, columns=used_x.columns)
                 else:
@@ -568,7 +584,6 @@ class Evaluate(object):
                 y_train = [used_y[idx] for idx in train_index]
                 y_test  = [used_y[idx] for idx in test_index]
             else:
-                # get training and testing data
                 X_train = used_x.loc[train_index]
                 y_train = [used_y[idx] for idx in train_index]
                 X_test = used_x.loc[test_index]
@@ -579,15 +594,13 @@ class Evaluate(object):
             clf.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
             y_pred_prob = clf.predict_proba(X_test)
-            # probability of the positive class, for a proper score-based AUC
-            # (predict()-based hard labels collapse AUC to ~balanced accuracy)
+            # use positive-class probabilities for AUC
             if self.binarizing_agent_biovar in clf.classes_:
                 pos_idx = list(clf.classes_).index(self.binarizing_agent_biovar)
                 y_pred_pos_prob = y_pred_prob[:, pos_idx]
             else:
                 y_pred_pos_prob = np.zeros(len(test_index))
 
-            # save to concatenated list
             y_test_concat.extend(y_test)
             y_pred_concat.extend(y_pred)
             y_pred_prob_concat.extend(y_pred_pos_prob)
@@ -607,7 +620,6 @@ class Evaluate(object):
             auc = 0.5
         else:
             auc = roc_auc_score(y_test_binary_for_auc, y_pred_prob_concat)
-        # find the most common element in y_test_concat
         most_common_element = max(set(y_test_concat), key = y_test_concat.count)
         baseline_likelihood = y_test_concat.count(most_common_element)/len(y_test_concat)
 
@@ -621,8 +633,7 @@ class Evaluate(object):
         self.short_summary_dict["weighted_f1"] = weighted_f1
         self.short_summary_dict["auc"] = auc
 
-        # for each fold, also plot the roc plot
-        # one hot encode y_test and y_pred
+        # ROC plot from the last fold, using 0/1 labels
         y_test_zeroone = np.where(np.array(y_test) == most_common_element, 1, 0)
         y_pred_zeroone = np.where(np.array(y_pred) == most_common_element, 1, 0)
             
@@ -646,10 +657,8 @@ class Evaluate(object):
         
 
 def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, methods_output_dir, output_dir_path = ".", taxa_gt = None, simulate = False, datatype = "count", summary_suffix = ""):
-    # fetch dimension (number of samples and number of features)
     data_mat = pd.read_csv(input_frame_path, index_col=0)
 
-    # rest of the stats
     method_dict = {}
     for method in methods_list:
         print(method)
@@ -664,7 +673,6 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             print(f"Skipping {method}: eval directory not found, method may not have been evaluated yet")
             continue
         current_dir_file_names = os.listdir(current_dir_path)
-        # fetch stats available in the summary file
         summary_files = [result for result in current_dir_file_names if result.endswith(f"_summary{summary_suffix}.csv")]
         if not summary_files:
             print(f"Skipping {method}: eval directory exists but no summary file found (may have failed)")
@@ -757,13 +765,8 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
             method_dict["ConQuR_rel"]["runtime"] = float(line.split(" ")[-2])
         if "Tune_ConQuR_rel" in line and "Tune_ConQuR_rel" in method_dict.keys():
             method_dict["Tune_ConQuR_rel"]["runtime"] = float(line.split(" ")[-2])
-        # runtime.txt for these 5 methods has repeatedly shown up with
-        # concurrent-write corruption (duplicated/interleaved/truncated
-        # "<method> runtime" fragments on the same line, e.g.
-        # "bmc runtime 0.018 secondsbmc runtime"). Extract the first clean
-        # "<method> runtime <number> seconds" match instead of indexing by
-        # position, and skip the line (leaving runtime unset -> NaN in the
-        # output, not a crash) if no clean match is found.
+        # runtime.txt lines for these methods can be corrupted by concurrent writes;
+        # take the first clean "<method> runtime <x> seconds" match, otherwise leave NaN.
         for kw in ("ruv3", "bmc", "bat", "rbe", "svd"):
             if line.strip().startswith(kw + " runtime") and kw in method_dict.keys():
                 m = re.match(kw + r" runtime\s+([0-9.]+)\s+seconds", line.strip())
@@ -807,7 +810,7 @@ def global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list,
 
     if 'nobc' in method_dict:
         method_dict['nobc']['runtime'] = 'NA'
-    # print into a pandas df where rows are datasets and columns and different stats
+    # rows are methods, columns are stats (saved transposed)
     results_df = pd.DataFrame.from_dict(method_dict, orient ='index') 
     results_df.T.to_csv(output_dir_path+f"/global_benchmarking_stats{summary_suffix}_"+dataset_name+".csv")
     return pd.DataFrame.from_dict(method_dict, orient ='index') 
@@ -845,11 +848,9 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
     def get_stats(output_dir, taxa_gt, idx):
         methods_batch_aitch_r2_dict = {}
         methods_biovar_aitch_r2_dict = {}
-        # get the global stats path
         files = os.listdir(output_dir)
         global_stats_path = [file for file in files if f"global_benchmarking_stats{summary_suffix}_" in file][0]
 
-        # read the global stats df
         global_stats_df = pd.read_csv(output_dir+"/"+global_stats_path, index_col=0)
         # get the stats of interest and visualize
         if count_l[idx]:
@@ -919,6 +920,29 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 import sys; sys.exit(0)
 
     print("extracting data")
+    from collections import defaultdict
+    ci_store = defaultdict(lambda: defaultdict(list))  # metric -> method -> 95% CI half-widths per setup (simulate only)
+    pi_store = defaultdict(lambda: defaultdict(list))  # metric -> method -> (2.5, 97.5) percentiles across iterations per setup
+
+    def _ci(vals, binary=False):
+        v = np.asarray(vals, dtype=float)
+        v = v[~np.isnan(v)]
+        if len(v) < 2:
+            return np.nan
+        if binary:
+            p = v.mean()
+            return 1.96 * np.sqrt(p * (1 - p) / len(v))
+        return stats.t.ppf(0.975, len(v) - 1) * v.std(ddof=1) / np.sqrt(len(v))
+
+    def _store(key, method, vals, binary=False):
+        ci_store[key][method].append(_ci(vals, binary=binary))
+        v = np.asarray(vals, dtype=float)
+        if binary or np.isnan(v).all():  # a 0/1 spread is uninformative; use the CI of the proportion instead
+            mu = np.nanmean(v) if not np.isnan(v).all() else np.nan
+            pi_store[key][method].append((mu - ci_store[key][method][-1], mu + ci_store[key][method][-1]))
+        else:
+            pi_store[key][method].append(tuple(np.nanpercentile(v, [2.5, 97.5])))
+
     for idx, output_dir in enumerate(output_dir_l):
         print(idx)
         if not simulate:   
@@ -1031,13 +1055,31 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 if taxa_gt is not None:
                     global_methods_FDR_r2_l_dict[method].append(np.mean([cross_iter_FDR_r2_dict[iter][method] for iter in range(sim_num_iters)]))
                     global_methods_sensitivity_r2_l_dict[method].append(np.mean([cross_iter_sensitivity_r2_dict[iter][method] for iter in range(sim_num_iters)]))
+                its = range(sim_num_iters)
+                if count_l[idx]:
+                    _store('batch_aitch', method, [cross_iter_batch_aitch_r2_dict[i][method] for i in its])
+                    _store('biovar_aitch', method, [cross_iter_biovar_aitch_r2_dict[i][method] for i in its])
+                _store('batch_bray', method, [cross_iter_batch_bray_r2_dict[i][method] for i in its])
+                _store('biovar_bray', method, [cross_iter_biovar_bray_r2_dict[i][method] for i in its])
+                _store('batch_shannon', method, [cross_iter_batch_shannon_pval_dict[i][method] for i in its])
+                _store('biovar_shannon', method, [cross_iter_biovar_shannon_pval_dict[i][method] for i in its])
+                _store('rf_auc', method, [cross_iter_rf_auc_dict[i][method] for i in its])
+                _store('rf_f1', method, [cross_iter_rf_f1_dict[i][method] for i in its])
+                _store('rf_precision', method, [cross_iter_rf_precision_dict[i][method] for i in its])
+                _store('rf_recall', method, [cross_iter_rf_recall_dict[i][method] for i in its])
+                _store('runtime', method, [cross_iter_runtime_dict[i][method] for i in its])
+                _store('batch_shannon_rej', method, [(cross_iter_batch_shannon_pval_dict[i][method] < 0.05) * 1 for i in its], binary=True)
+                _store('biovar_shannon_rej', method, [(cross_iter_biovar_shannon_pval_dict[i][method] < 0.05) * 1 for i in its], binary=True)
+                if taxa_gt is not None:
+                    _store('FDR', method, [cross_iter_FDR_r2_dict[i][method] for i in its])
+                    _store('sensitivity', method, [cross_iter_sensitivity_r2_dict[i][method] for i in its])
                 # for shannon pvals, calculate the rejection proportions for each method at each parameter combination instead
                 global_methods_batch_shannon_pval_rejection_proportions_l_dict[method].append(np.mean([(cross_iter_batch_shannon_pval_dict[iter][method] < 0.05)*1 for iter in range(sim_num_iters)]))
                 global_methods_biovar_shannon_pval_rejection_proportions_l_dict[method].append(np.mean([(cross_iter_biovar_shannon_pval_dict[iter][method] < 0.05)*1 for iter in range(sim_num_iters)]))
     print("plotting")
-    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvallines = [False, False], line=True, log_scale=True):
-        mpl.rcParams['pdf.fonttype'] = 42 # ensure exported pdf has edited text
-        ## plot the dictionaries in two matplotlib subplots as line plots
+    def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, postfix = '.png', ylim=[], pvallines = [False, False], line=True, log_scale=True, ci_keys=(None, None)):
+        mpl.rcParams['pdf.fonttype'] = 42 # keep text editable in exported pdfs
+        # one or two subplots, one line per method
         plt.clf()
         if stats_dict_2 != {}:
             fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(dimensions[0]*2, dimensions[1]))
@@ -1045,18 +1087,57 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
             print("only one plot")
             fig, ax1 = plt.subplots(1, 1, figsize=(dimensions[0], dimensions[1]))
 
-        # log2 case -- operate on copies so the caller's dicts (which may be reused
-        # for a subsequent non-log-scale plot of the same data) are left untouched
+        # log2 case: work on copies, since the caller may reuse these dicts for a linear-scale plot
         import copy
         stats_dict_1 = copy.deepcopy(stats_dict_1)
         stats_dict_2 = copy.deepcopy(stats_dict_2)
-        if log_scale and ('FDR' in stats_name_l or 'runtime' in stats_name_l):
+        raw_dicts = (copy.deepcopy(stats_dict_1), copy.deepcopy(stats_dict_2))  # untransformed means, for --highlight-ci
+        use_dodge = DODGE_CI and simulate and ci_keys[0] in ci_store
+        if use_dodge:
+            is_log = log_scale and ('FDR' in stats_name_l or 'runtime' in stats_name_l)
+            xs_base = np.arange(len(datasets))
+            offs = np.linspace(-0.3, 0.3, len(methods)) if len(methods) > 1 else [0]
+            for ax_i, (sd, key) in enumerate(zip([stats_dict_1, stats_dict_2], ci_keys)):
+                if sd == {} or key not in ci_store:
+                    continue
+                ax = ax1 if ax_i == 0 else ax2
+                for mi, method in enumerate(methods):
+                    mu = np.asarray(sd[method], dtype=float)
+                    ci = np.asarray(ci_store[key][method], dtype=float)
+                    x = xs_base + offs[mi]
+                    if CI_TYPE == 'spread':
+                        lo, hi = np.asarray(pi_store[key][method], dtype=float).T
+                    else:
+                        lo, hi = mu - ci, mu + ci
+                    if is_log:
+                        lo = np.log2(np.clip(lo, 0, None) + 1e-4); hi = np.log2(hi + 1e-4); mu = np.log2(mu + 1e-4)
+                    yerr = [np.clip(mu - lo, 0, None), np.clip(hi - mu, 0, None)]
+                    ax.errorbar(x, mu, yerr=yerr, color=method_colors_dict[method], marker=marker_dict[method], ms=4,
+                                linestyle=linestyle, lw=1, capsize=1.5, elinewidth=0.8, label=method)
+                ax.set_xticks(range(len(datasets)), datasets)
+                for tick in ax.get_xticklabels():
+                    tick.set_rotation(90)
+                for j in range(len(datasets) - 1):
+                    ax.axvline(j + 0.5, color='lightgray', lw=0.5, zorder=0)
+                ax.set_title(stats_name_l[ax_i])
+                ax.tick_params(axis='both', which='major', labelsize=14)
+                ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
+                if is_log and 'FDR' in stats_name_l:
+                    ax.set_yticks([np.log2(1e-4), np.log2(0.2), np.log2(0.4), np.log2(0.6), np.log2(0.8), np.log2(1)], ["~0", "0.2", "0.4", "0.6", "0.8", "1"])
+                if is_log and 'runtime' in stats_name_l:
+                    ax.set_yticks([np.log2(1e-4), np.log2(10), np.log2(25), np.log2(50), np.log2(100), np.log2(200), np.log2(350), np.log2(500)], ["~0", "10", "25", "50", "100", "200", "350", "500"])
+            stats_dict_1_plot, stats_dict_2_plot = stats_dict_1, stats_dict_2
+            if is_log:
+                stats_dict_1 = {m: [np.log2(x + 1e-4) for x in v] for m, v in stats_dict_1.items()}
+                if stats_dict_2 != {}:
+                    stats_dict_2 = {m: [np.log2(x + 1e-4) for x in v] for m, v in stats_dict_2.items()}
+        if not use_dodge and log_scale and ('FDR' in stats_name_l or 'runtime' in stats_name_l):
             for method in stats_dict_1.keys():
                 # very small added to avoid log(0)
                 stats_dict_1[method] = [np.log2(x+1e-4) for x in stats_dict_1[method]]
                 if stats_dict_2 != {}:
                     stats_dict_2[method] = [np.log2(x+1e-4) for x in stats_dict_2[method]]
-        for method in methods:
+        for method in (methods if not use_dodge else []):
             color = method_colors_dict[method]
             if method != highlighted_method:
                 alpha = 1
@@ -1082,7 +1163,6 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 ax1.set_xticks(datasets)
             else:
                 ax1.set_xticks(range(len(datasets)), datasets)
-            # set xticks to be verticle
             for tick in ax1.get_xticklabels():
                 tick.set_rotation(90)
 
@@ -1113,7 +1193,6 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                     ax2.set_xticks(datasets)
                 else:
                     ax2.set_xticks(range(len(datasets)), datasets)
-                # set xticks to be verticle
                 for tick in ax2.get_xticklabels():
                     tick.set_rotation(90)
 
@@ -1129,6 +1208,12 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
 
         # optionally set ylim
         if ylim != [] and line:
+            if 'R2' in stats_summary_name:
+                # raise the shared upper limit when a method exceeds it (e.g. debiasm biovar R2 on relab)
+                vals = np.array([v for d in (stats_dict_1, stats_dict_2) for m in methods if m in d for v in np.ravel(d[m])], dtype=float)
+                if vals.size and np.nanmax(vals) > ylim[1]:
+                    step = 10 ** np.floor(np.log10(np.nanmax(vals))) / 2
+                    ylim = [ylim[0], float(np.ceil(np.nanmax(vals) * 1.05 / step) * step)]
             ax1.set_ylim(ylim)
             if stats_dict_2 != {}:
                 ax2.set_ylim(ylim)
@@ -1146,36 +1231,57 @@ def visualize_simulation_stats(output_root, output_dir_l, datasets, methods, hig
                 print("adding pval line for right")
                 ax2.axhline(y=pvalline_val, color='r', linestyle='--')
 
-        # find parent dir of output_dir_l[0]
+        if HIGHLIGHT_CI and simulate and not use_dodge and line:
+            is_log = log_scale and ('FDR' in stats_name_l or 'runtime' in stats_name_l)
+            tf = (lambda v: np.log2(np.clip(v, 0, None) + 1e-4)) if is_log else (lambda v: v)
+            for ax_i, (raw, key) in enumerate(zip(raw_dicts, ci_keys)):
+                if raw == {} or key not in ci_store:
+                    continue
+                ax = ax1 if ax_i == 0 else ax2
+                for j in range(len(datasets)):
+                    m = best_method_at(key, raw, j)
+                    if m is None:
+                        continue
+                    mu = raw[m][j]
+                    if CI_TYPE == 'spread':
+                        lo, hi = pi_store[key][m][j]
+                    else:
+                        lo, hi = mu - ci_store[key][m][j], mu + ci_store[key][m][j]
+                    y, ylo, yhi = tf(mu), tf(lo), tf(hi)
+                    ax.errorbar(j, y, yerr=[[max(y - ylo, 0)], [max(yhi - y, 0)]], color=method_colors_dict[m], marker=marker_dict[m],
+                                ms=9, mec='black', mew=0.8, capsize=5, elinewidth=2.2, capthick=1.6, zorder=5)
+                    ax.annotate(m, (j, yhi), textcoords='offset points', xytext=(0, 4), ha='center', fontsize=8, color=method_colors_dict[m])
+                interval = '95% CI of the mean' if CI_TYPE == 'ci' else '2.5-97.5 percentile across iterations'
+                ax.set_title(f"{stats_name_l[ax_i]}\nbar: best method per setup ({HIGHLIGHT_RULE.get(key, '-')}), {interval}", fontsize=11)
+
         plt.savefig(output_root+"_"+stats_summary_name+postfix, bbox_inches="tight")
         plt.clf()
         plt.close()
 
-    # plot        
     if taxa_gt is not None:
-        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[np.log(1e-6), 0], line=line, pvallines=[True, False])
-        plot_stats('FDR_sensitivity_linear', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[0, 1], line=line, pvallines=[True, False], log_scale=False)
+        plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[np.log(1e-6), 0], line=line, pvallines=[True, False], ci_keys=('FDR', 'sensitivity'))
+        plot_stats('FDR_sensitivity_linear', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, postfix=postfix, ylim=[0, 1], line=line, pvallines=[True, False], log_scale=False, ci_keys=('FDR', 'sensitivity'))
     
-    plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix)
-    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
-    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1], line=line)
-    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvallines=[True, True],line=line)
-    plot_stats('shannon_pval_rejection_proportions', ["PERMANOVA batch Shannon pval rejection proportion", "PERMANOVA biovar Shannon pval rejection proportion"], global_methods_batch_shannon_pval_rejection_proportions_l_dict, global_methods_biovar_shannon_pval_rejection_proportions_l_dict, postfix=postfix, ylim=[0, 1], line=line, pvallines=[True, False])
+    plot_stats('runtime', ["runtime"], global_methods_runtime_l_dict, postfix=postfix, ci_keys=('runtime', None))
+    plot_stats('auc and weighted f1', ["auc", "weighted f1"], global_methods_rf_auc_l_dict, global_methods_rf_f1_l_dict, postfix=postfix, ylim=[0.4, 1], line=line, ci_keys=('rf_auc', 'rf_f1'))
+    plot_stats('weighted precision and weighted recall', ["weighted precision", "weighted recall"], global_methods_rf_precision_l_dict, global_methods_rf_recall_l_dict, postfix=postfix, ylim=[0.4, 1], line=line, ci_keys=('rf_precision', 'rf_recall'))
+    plot_stats('shannon_pval', ["PERMANOVA batch Shannon pval", "PERMANOVA biovar Shannon pval"], global_methods_batch_shannon_pval_l_dict, global_methods_biovar_shannon_pval_l_dict, postfix=postfix, ylim=[0, 1], pvallines=[True, True],line=line, ci_keys=('batch_shannon', 'biovar_shannon'))
+    plot_stats('shannon_pval_rejection_proportions', ["PERMANOVA batch Shannon pval rejection proportion", "PERMANOVA biovar Shannon pval rejection proportion"], global_methods_batch_shannon_pval_rejection_proportions_l_dict, global_methods_biovar_shannon_pval_rejection_proportions_l_dict, postfix=postfix, ylim=[0, 1], line=line, pvallines=[True, False], ci_keys=('batch_shannon_rej', 'biovar_shannon_rej'))
 
     if not demonstrate:
         if count_l[0]:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line = True, pvallines=[False, False])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[False, False])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line = True, pvallines=[False, False], ci_keys=('batch_aitch', 'batch_bray'))
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[False, False], ci_keys=('biovar_aitch', 'biovar_bray'))
         else:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[False, False])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[False, False])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[False, False], ci_keys=('batch_bray', None))
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, ylim=[0, 0.3], line=line, pvallines=[False, False], ci_keys=('biovar_bray', None))
     else:
         if count_l[0]:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Aitchinson)", "PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_aitch_r2_l_dict, global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False], ci_keys=('batch_aitch', 'batch_bray'))
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Aitchinson)", "PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_aitch_r2_l_dict, global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False], ci_keys=('biovar_aitch', 'biovar_bray'))
         else:
-            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False])
-            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False])
+            plot_stats('PERMANOVA_batch_R2', ["PERMANOVA batch R2 (Bray-Curtis)"], global_methods_batch_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False], ci_keys=('batch_bray', None))
+            plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix, line=line, pvallines=[False, False], ci_keys=('biovar_bray', None))
     return
 
 
@@ -1235,14 +1341,11 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                         # global_eval_dataframe(input_frame_path, bio_var, dataset_name, methods_list, output_dir_path+"/out_" + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/",
                         #     output_dir_path = eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter), simulate = True, taxa_gt = True,
                         #     datatype = datatype)
-                        # check if all method eval directories exist (covers new methods added later)
-                        # old gate was PDF existence — kept below for reference:
+                        # done only if every method has a summary (so methods added later still run)
+                        # old gate was PDF existence, kept for reference:
                         # if not os.path.isfile(eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'):
                         output_dir = eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)
-                        # --refresh-rf forces an RF-only re-run regardless of what already
-                        # exists, so never let the "all done" shortcut skip the method loop
-                        # in that mode -- otherwise combos whose (no)covar summaries already
-                        # existed before the fix would silently never get refreshed.
+                        # --refresh-rf always re-runs the method loop, even if all summaries exist.
                         all_methods_done = (not args.get('refresh_rf', False)) and all(
                             os.path.exists(output_dir+'/'+m+'/'+m+f'_summary{eval_suffix}.csv') for m in methods_list)
                         pcoa_pdf_path = eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter) + "/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'
@@ -1307,24 +1410,14 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                                 else:
                                     did_something = False
                                     if refresh_rf_sim:
-                                        # force-refresh RF-only metrics (e.g. after a predict_difference_RF()
-                                        # fix) on the existing regular batch-corrected data, preserving all
-                                        # other already-computed metrics (PERMANOVA, shannon, diff_abund_test).
+                                        # recompute RF metrics only, keeping the other existing metrics
                                         Evaluate(data_mat, meta_data, 'batchid', output_dir+'/'+method+'/'+method,
                                                 "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = taxa_gt, datatype = datatype, binarizing_agent_biovar = binarizing_agent_biovar, method = method, rf_data_mat = None, raw_data_mat = raw_dm_sim, rf_only = True, suffix = "")
                                         did_something = True
                                     if rerun_rf_sim and (refresh_rf_sim or not os.path.exists(summary_path_sim_suffix)):
-                                        # nocovar batch-corrected data for leakage-free RF -- create if
-                                        # missing, or force-refresh alongside the regular one above when
-                                        # refresh_rf_sim is set (both need the same predict_difference_RF()
-                                        # fix picked up).
+                                        # nocovar data for leakage-free RF: create if missing, or refresh with --refresh-rf
                                         if method not in ['nobc', 'harmony', 'percentile_norm', 'debiasm']:
-                                            # main simulation runs (.../simulation_data_output_count_norelation_102023)
-                                            # keep the '_102023' substitution; ablation scenario runs
-                                            # (.../output_count_{scenario}, no '_102023' in the path) use a
-                                            # plain '_nocovar' suffix instead -- the substitution above was a
-                                            # silent no-op for those paths, so it fell back to reading the
-                                            # regular (covar-guided) data for "nocovar" RF.
+                                            # main-grid runs use a _nocovar_102023 suffix; ablation scenario runs use _nocovar
                                             if '_102023' in output_dir_path:
                                                 nocovar_output_dir_path = output_dir_path.replace(
                                                     '_102023', '_nocovar_102023')
@@ -1337,7 +1430,7 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                                             Evaluate(data_mat, meta_data, 'batchid', output_dir+'/'+method+'/'+method,
                                                     "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = taxa_gt, datatype = datatype, binarizing_agent_biovar = binarizing_agent_biovar, method = method, rf_data_mat = rf_dm_sim, raw_data_mat = raw_dm_sim, rf_only = True, suffix = eval_suffix)
                                         else:
-                                            # excluded methods don't use condition covariate — nocovar RF = regular RF, just copy
+                                            # these methods take no condition covariate, so the nocovar RF equals the regular RF: copy it
                                             import shutil
                                             shutil.copy2(summary_path_sim, summary_path_sim_suffix)
                                             rf_ev = output_dir+'/'+method+'/'+method+'_cond_rf_evaluate.csv'
@@ -1351,7 +1444,7 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                         else:
                             print("all methods done: "+str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val))
 
-                        # always regenerate global stats CSV (fast — just reads summary CSVs)
+                        # always regenerate the global stats CSV (cheap, only reads summary CSVs)
                         # skip if no methods have been evaluated (e.g. nocovar pass for a combo with no nocovar data)
                         any_summary = any(
                             os.path.exists(output_dir+'/'+m+'/'+m+f'_summary{eval_suffix}.csv')
@@ -1364,12 +1457,7 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                                 output_dir_path = output_dir, simulate = True, taxa_gt = True,
                                 datatype = datatype, summary_suffix = eval_suffix)
 
-                        # --refresh-rf combined with --rerun-rf sets eval_suffix to "_nocovar"
-                        # (eval_suffix only reflects --rerun-rf), so the regenerate-aggregate
-                        # call above only ever rebuilds the nocovar aggregate. Also rebuild the
-                        # regular (no-suffix) aggregate here so it picks up the regular
-                        # per-method summary refresh done above (suffix="") -- otherwise the
-                        # non-nocovar plots keep reading stale aggregate stats.
+                        # with --refresh-rf, also rebuild the regular (non-nocovar) aggregate
                         if eval_suffix != "" and args.get('refresh_rf', False):
                             any_summary_regular = any(
                                 os.path.exists(output_dir+'/'+m+'/'+m+'_summary.csv')
@@ -1380,11 +1468,14 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                                     output_dir_path = output_dir, simulate = True, taxa_gt = True,
                                     datatype = datatype, summary_suffix = "")
 
-                        # generate PCOA plot only for keep iters (every 50th) and only when df_l was just built
+                        # PCoA plots only every 50th iteration; skip if the distance matrix is degenerate
                         if keep_pcoa and df_l:
-                            plot_PCOA_multiple("ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), df_l, methods_list, metadata_l, used_var="batchid",
-                                output_root=output_dir+"/",
-                                datatype = datatype)
+                            try:
+                                plot_PCOA_multiple("ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), df_l, methods_list, metadata_l, used_var="batchid",
+                                    output_root=output_dir+"/",
+                                    datatype = datatype)
+                            except Exception as e:
+                                print(f"WARNING: PCoA plot failed for iter {iter} (cond={cond_effect_val}) -- skipping plot, keeping metrics: {e}")
 
     return
 
@@ -1393,7 +1484,6 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
 # cond_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 # batch_effect_val_l = [0, 0.25, 0.5, 0.75, 1]
 
-# get current path
 current_path = os.path.dirname(os.path.abspath(__file__))
 print("current_path", current_path)
 overall_path = current_path + "/../.."
@@ -1433,7 +1523,6 @@ if ARGPARSE_SWITCH:
         or_l = config_data['or_l']
         cond_effect_val_l = config_data['cond_effect_val_l']
         batch_effect_val_l = config_data['batch_effect_val_l']
-        # read sim_output_root from config file
         sim_output_root = config_data['sim_output_root']
         # original path construction (for trial_simulation structure):
         # iterative_methods_running_evaluate(run_or_evaluate = 'run', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l,
@@ -1464,11 +1553,10 @@ if ARGPARSE_SWITCH:
         #             output_dir_path = sim_output_root+f'/benchmark/{GLOBAL_DATATYPE}_{related}_relation', 
         #             eval_dir_path = sim_output_root+f'/eval/{GLOBAL_DATATYPE}_{related}_relation',
         #             methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar)
-        overall_path = '/athena/linglab/scratch/chf4012/'
         iterative_methods_running_evaluate(run_or_evaluate = 'evaluate', datatype = GLOBAL_DATATYPE, iter = int(args['iteration']), or_l = or_l, cond_effect_val_l = cond_effect_val_l, batch_effect_val_l = batch_effect_val_l,
-                    address_XY_dir_path = overall_path+f'/simulation_outputs/simulation_data_MIDAS_1000_{related}relation_102023',
-                    output_dir_path = overall_path+f"/simulation_outputs/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023",
-                    eval_dir_path = overall_path+f"/simulation_outputs/082924check/simulation_data_eval_new_{GLOBAL_DATATYPE}_{related}relation_102023",
+                    address_XY_dir_path = SIM_OUTPUT_ROOT+f'/simulation_data_MIDAS_1000_{related}relation_102023',
+                    output_dir_path = SIM_OUTPUT_ROOT+f"/simulation_data_output_{GLOBAL_DATATYPE}_{related}relation_102023",
+                    eval_dir_path = SIM_OUTPUT_ROOT+f"/082924check/simulation_data_eval_new_{GLOBAL_DATATYPE}_{related}relation_102023",
                     methods_list = methods, binarizing_agent_biovar = binarizing_agent_biovar,
                     eval_suffix = "_nocovar" if args.get('rerun_rf', False) else "")
     elif args['option'] == 3:
@@ -1560,14 +1648,15 @@ if ARGPARSE_SWITCH:
         
         ### global evaluation
         input_frame_path = f'{config_data["src"]}/cleaned_data/{dataset_name}/{dataset_name}_count_data.csv'
-        global_eval_dataframe(input_frame_path, condition_var, dataset_name, methods, f'{config_data["post_integration_outputs"]}', f'{config_data["evaluation_outputs"]}/{dataset_name}', simulate = False, datatype = config_data['datatype'], summary_suffix = SUCCINCT_SUFFIX)
+        if not args.get('succinct', False):  # succinct only changes the plotted methods; the full global stats cover all of them
+            global_eval_dataframe(input_frame_path, condition_var, dataset_name, methods, f'{config_data["post_integration_outputs"]}', f'{config_data["evaluation_outputs"]}/{dataset_name}', simulate = False, datatype = config_data['datatype'])
 
         ### multi-method plot
         plot_PCOA_multiple(dataset_name, df_l, methods, meta_data_l, used_var=vars_use, output_root= f'{config_data["evaluation_outputs"]}/{dataset_name}/', datatype = config_data['datatype'], filename_suffix = SUCCINCT_SUFFIX)
 
     elif args['option'] == 5:
-        # Generate summary line plots across iterations for simulation evaluation results.
-        # Usage: python evaluate_fixed_052626.py -o 5 -d <count|relab> -r <no|yes> -i <num_iters>
+        # Simulation line plots, averaged across iterations.
+        # Usage: python evaluate.py -o 5 -d <count|relab> -r <no|yes> -i <num_iters>
         # -i controls how many iterations to aggregate (default 1000; pass 100 for partial runs)
         # Add --rerun-rf to plot from nocovar summaries (_summary_nocovar.csv)
         sim_num_iters = int(args['iteration']) if args['iteration'] != 1 else 1000
@@ -1587,7 +1676,7 @@ if ARGPARSE_SWITCH:
         methods = ['nobc'] + used_R_methods + used_Python_methods  # nobc first, matches option 2
         methods = apply_succinct(methods)
 
-        line_plot_path = eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}_{sim_num_iters}iters{summary_suffix}{SUCCINCT_SUFFIX}'
+        line_plot_path = eval_dir_path+f'/line_plots_{GLOBAL_DATATYPE}_{related}_{sim_num_iters}iters{summary_suffix}{PLOT_SUFFIX}'
         os.makedirs(line_plot_path, exist_ok=True)
 
         # odds ratio == 1
@@ -1612,18 +1701,12 @@ if ARGPARSE_SWITCH:
         visualize_simulation_stats(f'{line_plot_path}/sim_1.5_all_bio', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, count_l = datatype_l, simulate = True, dimensions = (20, 10), taxa_gt = True, postfix = '.pdf', sim_num_iters=sim_num_iters, summary_suffix=summary_suffix)
 
     elif args['option'] == 6:
-        # Run Python methods (harmony, percentile_norm, debiasm) on new reviewer-response
-        # simulation scenarios generated by generate_data_MIDASim_052626.R.
-        # Output folders match the R script (methods_benchmarking_sim_052626.R) exactly.
-        # Usage: python evaluate_fixed_052626.py -o 6 -i <iter> -d <count|relab>
-        #
-        # Scenarios covered:
-        #   1. n150 — no relation only, OR in {1,1.25}, cond=0.5, batch=0.5
-        #   2. halftaxa  — OR in {1,1.25}, cond=0.5, batch=0.5
-        #   3. batchfrac40 — OR in {1,1.25}, cond=0.5, batch=0.5
-        #   4. condfrac40  — OR in {1,1.25}, cond=0.5, batch=0.5
+        # Python methods (harmony, percentile_norm, debiasm) on the reviewer-response ablation
+        # scenarios from generate_data_MIDASim_052626.R. Output folders match methods_benchmarking_sim_052626.R.
+        # Usage: python evaluate.py -o 6 -i <iter> -d <count|relab>
+        # Scenarios (OR in {1,1.25}, cond=0.5, batch=0.5): n150 (no relation only), halftaxa, batchfrac40, condfrac40
 
-        base = '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626'
+        base = os.path.join(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626')
         iter_num = int(args['iteration'])
 
         py_methods = ["harmony", "percentile_norm", "debiasm"]
@@ -1633,63 +1716,95 @@ if ARGPARSE_SWITCH:
         cond_single   = [0.5]
         batch_single  = [0.5]
 
-        # ── Scenario 1: n150 — no relation only ──────────────────────────────
-        print("=== Scenario 1: n150 no relation ===")
-        iterative_methods_running_evaluate(
+        if not args.get('condsweep_only', False):
+            # Scenario 1: n150, no relation only
+            print("=== Scenario 1: n150 no relation ===")
+            iterative_methods_running_evaluate(
+                run_or_evaluate  = 'run',
+                datatype         = GLOBAL_DATATYPE,
+                iter             = iter_num,
+                or_l             = or_one,
+                cond_effect_val_l  = cond_single,
+                batch_effect_val_l = batch_single,
+                address_XY_dir_path = base + '/count_n150_no_relation',
+                output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_n150_no_relation',
+                eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_n150_no_relation',
+                methods_list        = py_methods)
+
+            # Scenario 2: half taxa
+            print("=== Scenario 2: halftaxa ===")
+            iterative_methods_running_evaluate(
+                run_or_evaluate  = 'run',
+                datatype         = GLOBAL_DATATYPE,
+                iter             = iter_num,
+                or_l             = or_one,
+                cond_effect_val_l  = cond_single,
+                batch_effect_val_l = batch_single,
+                address_XY_dir_path = base + '/count_halftaxa',
+                output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_halftaxa',
+                eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_halftaxa',
+                methods_list        = py_methods)
+
+            # Scenario 3: 40% patients with batch effect
+            print("=== Scenario 3: batchfrac40 ===")
+            iterative_methods_running_evaluate(
+                run_or_evaluate  = 'run',
+                datatype         = GLOBAL_DATATYPE,
+                iter             = iter_num,
+                or_l             = or_one,
+                cond_effect_val_l  = cond_single,
+                batch_effect_val_l = batch_single,
+                address_XY_dir_path = base + '/count_batchfrac40',
+                output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_batchfrac40',
+                eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_batchfrac40',
+                methods_list        = py_methods)
+
+            # Scenario 4: 40% patients with condition effect
+            print("=== Scenario 4: condfrac40 ===")
+            iterative_methods_running_evaluate(
+                run_or_evaluate  = 'run',
+                datatype         = GLOBAL_DATATYPE,
+                iter             = iter_num,
+                or_l             = or_one,
+                cond_effect_val_l  = cond_single,
+                batch_effect_val_l = batch_single,
+                address_XY_dir_path = base + '/count_condfrac40',
+                output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_condfrac40',
+                eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_condfrac40',
+                methods_list        = py_methods)
+
+        # Scenario 5: condsweep, cond_effect in {0.005,0.01,0.02,0.05,0.1} at OR=1.25, batch=0.5, no/yes relation
+        or_condsweep  = [args['condsweep_or'] if args['condsweep_or'] != 1 else 1]
+        cond_sweep    = [0.005, 0.01, 0.02, 0.05, 0.1]
+        batch_single2 = [0.5]
+
+        print("=== Scenario 5: condsweep no-relation ===")
+        if args['condsweep_relation'] in ('both', 'no_relation'): iterative_methods_running_evaluate(
             run_or_evaluate  = 'run',
             datatype         = GLOBAL_DATATYPE,
             iter             = iter_num,
-            or_l             = or_one,
-            cond_effect_val_l  = cond_single,
-            batch_effect_val_l = batch_single,
-            address_XY_dir_path = base + '/count_n150_no_relation',
-            output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_n150_no_relation',
-            eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_n150_no_relation',
+            or_l             = or_condsweep,
+            cond_effect_val_l  = cond_sweep,
+            batch_effect_val_l = batch_single2,
+            address_XY_dir_path = base + '/count_condsweep_no_relation',
+            output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_condsweep_no_relation',
+            eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_condsweep_no_relation',
             methods_list        = py_methods)
 
-        # ── Scenario 2: half taxa ─────────────────────────────────────────────
-        print("=== Scenario 2: halftaxa ===")
-        iterative_methods_running_evaluate(
+        print("=== Scenario 5: condsweep yes-relation ===")
+        if args['condsweep_relation'] in ('both', 'yes_relation'): iterative_methods_running_evaluate(
             run_or_evaluate  = 'run',
             datatype         = GLOBAL_DATATYPE,
             iter             = iter_num,
-            or_l             = or_one,
-            cond_effect_val_l  = cond_single,
-            batch_effect_val_l = batch_single,
-            address_XY_dir_path = base + '/count_halftaxa',
-            output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_halftaxa',
-            eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_halftaxa',
+            or_l             = or_condsweep,
+            cond_effect_val_l  = cond_sweep,
+            batch_effect_val_l = batch_single2,
+            address_XY_dir_path = base + '/count_condsweep_yes_relation',
+            output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_condsweep_yes_relation',
+            eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_condsweep_yes_relation',
             methods_list        = py_methods)
 
-        # ── Scenario 3: 40% patients with batch effect ────────────────────────
-        print("=== Scenario 3: batchfrac40 ===")
-        iterative_methods_running_evaluate(
-            run_or_evaluate  = 'run',
-            datatype         = GLOBAL_DATATYPE,
-            iter             = iter_num,
-            or_l             = or_one,
-            cond_effect_val_l  = cond_single,
-            batch_effect_val_l = batch_single,
-            address_XY_dir_path = base + '/count_batchfrac40',
-            output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_batchfrac40',
-            eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_batchfrac40',
-            methods_list        = py_methods)
-
-        # ── Scenario 4: 40% patients with condition effect ────────────────────
-        print("=== Scenario 4: condfrac40 ===")
-        iterative_methods_running_evaluate(
-            run_or_evaluate  = 'run',
-            datatype         = GLOBAL_DATATYPE,
-            iter             = iter_num,
-            or_l             = or_one,
-            cond_effect_val_l  = cond_single,
-            batch_effect_val_l = batch_single,
-            address_XY_dir_path = base + '/count_condfrac40',
-            output_dir_path     = base + f'/output_{GLOBAL_DATATYPE}_condfrac40',
-            eval_dir_path       = base + f'/eval_{GLOBAL_DATATYPE}_condfrac40',
-            methods_list        = py_methods)
-
-        print("DONE — all new scenarios complete for this iteration.")
+        print("DONE - all new scenarios complete for this iteration.")
 
 
         # datasets = ["out_1_0.25_0", "out_1_0.5_0", "out_1_0.75_0", "out_1_1_0", "out_1_0.25_0.25", "out_1_0.5_0.25", 
@@ -1729,7 +1844,6 @@ if ARGPARSE_SWITCH:
                 # ## run two left-over python methods for rw datasets
         # ## RUN HARMONY/PERCENTILE_NORM FOR RW
         # # autism 2 microbiomeHD
-        # ################################################################################
         # vars_use = ["Dataset"]
         # IDCol = 'Sam_id'
         # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv"
@@ -1739,7 +1853,6 @@ if ARGPARSE_SWITCH:
         # percentile_norm(address_X, address_Y, "DiseaseState", "ASD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
 
         # # cdi 3 microbiomeHD
-        # ################################################################################
         # vars_use = ["Dataset"]
         # IDCol = 'Sam_id'
         # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv"
@@ -1749,7 +1862,6 @@ if ARGPARSE_SWITCH:
         # percentile_norm(address_X, address_Y, "DiseaseState", "CDI", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/cdi_3_microbiomeHD/cdi_3_microbiomeHD")
 
         # # ibd_3_CMD
-        # ################################################################################
         # vars_use = ["study_name"]
         # IDCol = 'Sam_id'
         # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD/ibd_3_CMD_count_data.csv"
@@ -1759,7 +1871,6 @@ if ARGPARSE_SWITCH:
         # percentile_norm(address_X, address_Y, "disease", "IBD", "comma", overall_path+"/mic_bc_benchmark/benchmark/benchmarked_results/ibd_3_CMD/ibd_3_CMD")
 
         # # crc_8_CMD
-        # ################################################################################
         # vars_use = ["study_name"]
         # IDCol = 'Sam_id'
         # address_X = overall_path+"/mic_bc_benchmark/data/cleaned_data/crc_8_CMD/crc_8_CMD_count_data.csv"
@@ -1771,7 +1882,6 @@ if ARGPARSE_SWITCH:
 
         # # evaluate the method results on rw datasets
         # ## EVALUATE METHODS ON REAL-WORLD DATASET
-        # ################################################################################
         # # autism 2 microbiomeHD
         # output_dir_path = overall_path+'/outputs/autism_2_microbiomeHD'
         # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD'
@@ -1835,7 +1945,6 @@ if ARGPARSE_SWITCH:
         # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
         # plot_PCOA_multiple('autism_2_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
 
-        # ##############################################################################
         # # cdi 3 microbiomeHD
         # output_dir_path = overall_path+'/mic_bc_benchmark/outputs/cdi_3_microbiomeHD'
         # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/cdi_3_microbiomeHD'
@@ -1899,7 +2008,6 @@ if ARGPARSE_SWITCH:
         # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur, meta_data_conqur_libsize, meta_data_percentile_norm]
         # plot_PCOA_multiple('cdi_3_microbiomeHD', df_l, methods, meta_data_l, used_var="Dataset", output_root= output_dir_path + '/')
 
-        # ##############################################################################
         # # ibd_3_CMD
         # output_dir_path = overall_path+'/mic_bc_benchmark/outputs/ibd_3_CMD'
         # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/ibd_3_CMD'
@@ -1958,7 +2066,6 @@ if ARGPARSE_SWITCH:
         # meta_data_l = [meta_data, meta_data_h, meta_data_combat, meta_data_limma, meta_data_mmuphin, meta_data_conqur_rel, meta_data_percentile_norm]
         # plot_PCOA_multiple('ibd_3_CMD', df_l, methods, meta_data_l, used_var="study_name", output_root= output_dir_path + '/', datatype = 'relab')
 
-        # ###############################################################################
         # # crc 8 CMD
         # output_dir_path = overall_path+'/mic_bc_benchmark/outputs/crc_8_CMD'
         # address_directory = overall_path+'/mic_bc_benchmark/data/cleaned_data/crc_8_CMD'
@@ -2019,20 +2126,20 @@ if ARGPARSE_SWITCH:
 
     elif args['option'] == 7:
         # Evaluate ablation scenarios (n150, halftaxa, batchfrac40, condfrac40).
-        # Count-only — Python methods were only run for count, not relab.
-        # Usage: python evaluate_fixed_052626.py -o 7 -i <iter>
+        # Count only: the Python methods were not run on relab for these.
+        # Usage: python evaluate.py -o 7 -i <iter>
         #        Add --rerun-rf to produce _summary_nocovar.csv / _rf_evaluate_nocovar.csv
         used_R_methods = list(config_data['used_R_methods_count'])
         used_Python_methods = list(config_data['used_Python_methods'])
         methods = ['nobc'] + used_R_methods + used_Python_methods
         iter_num = int(args['iteration'])
-        base = '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626'
+        base = os.path.join(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626')
         or_single    = [1]
         cond_single  = [0.5]
         batch_single = [0.5]
         suffix = "_nocovar" if args.get('rerun_rf', False) else ""
 
-        for scenario in ['n150_no_relation', 'halftaxa', 'batchfrac40', 'condfrac40']:
+        for scenario in ([] if args.get('condsweep_only', False) else ['n150_no_relation', 'halftaxa', 'batchfrac40', 'condfrac40']):
             print(f"=== Ablation eval: {scenario} ===")
             iterative_methods_running_evaluate(
                 run_or_evaluate        = 'evaluate',
@@ -2048,11 +2155,37 @@ if ARGPARSE_SWITCH:
                 binarizing_agent_biovar= 'cond_1',
                 eval_suffix            = suffix)
 
-        print("DONE — ablation eval complete for this iteration.")
+        # condsweep supports count and relab (via -d); scenarios 1-4 above are count only
+        print("=== Ablation eval: condsweep ===")
+        if GLOBAL_DATATYPE == 'count':
+            cs_R_methods = list(config_data['used_R_methods_count'])
+        else:
+            cs_R_methods = list(config_data['used_R_methods_relab'])
+        cs_methods    = ['nobc'] + cs_R_methods + used_Python_methods
+        or_condsweep  = [args['condsweep_or'] if args['condsweep_or'] != 1 else 1]
+        cond_sweep    = [0.005, 0.01, 0.02, 0.05, 0.1]
+        batch_single2 = [0.5]
+        cs_relations = ['no_relation', 'yes_relation'] if args['condsweep_relation'] == 'both' else [args['condsweep_relation']]
+        for relation in cs_relations:
+            iterative_methods_running_evaluate(
+                run_or_evaluate        = 'evaluate',
+                datatype               = GLOBAL_DATATYPE,
+                iter                   = iter_num,
+                or_l                   = or_condsweep,
+                cond_effect_val_l      = cond_sweep,
+                batch_effect_val_l     = batch_single2,
+                address_XY_dir_path    = base + f'/count_condsweep_{relation}',
+                output_dir_path        = base + f'/output_{GLOBAL_DATATYPE}_condsweep_{relation}',
+                eval_dir_path          = base + f'/eval_{GLOBAL_DATATYPE}_condsweep_{relation}',
+                methods_list           = cs_methods,
+                binarizing_agent_biovar= 'cond_1',
+                eval_suffix            = suffix)
+
+        print("DONE - ablation eval complete for this iteration.")
 
     elif args['option'] == 8:
         # Visualize ablation scenarios vs original comparable setup (OR=1, cond=0.5, batch=0.5, count, no_relation).
-        # Usage: python evaluate_fixed_052626.py -o 8 -i <num_iters>
+        # Usage: python evaluate.py -o 8 -i <num_iters>
         #        Add --rerun-rf to plot from nocovar summaries
         sim_num_iters = int(args['iteration']) if args['iteration'] != 1 else 1000
         summary_suffix = "_nocovar" if args.get('rerun_rf', False) else ""
@@ -2062,20 +2195,21 @@ if ARGPARSE_SWITCH:
         methods = ['nobc'] + used_R_methods + used_Python_methods
         methods = apply_succinct(methods)
 
-        orig_base  = '/athena/linglab/scratch/chf4012/simulation_outputs/082924check'
-        abl_base   = '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626'
+        orig_base  = os.path.join(SIM_OUTPUT_ROOT, '082924check')
+        abl_base   = os.path.join(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626')
 
-        datasets = ['original', 'n150', 'halftaxa', 'batchfrac40', 'condfrac40']
+        datasets = ['original', 'n150', 'halftaxa', 'batchfrac40', 'condfrac40', 'zeroinf90']
         output_dir_l = [
             orig_base + '/simulation_data_eval_new_count_norelation_102023/out_1_0.5_0.5',
             abl_base  + '/eval_count_n150_no_relation/out_1_0.5_0.5',
             abl_base  + '/eval_count_halftaxa/out_1_0.5_0.5',
             abl_base  + '/eval_count_batchfrac40/out_1_0.5_0.5',
             abl_base  + '/eval_count_condfrac40/out_1_0.5_0.5',
+            abl_base  + '/eval_count_zeroinf90/out_1_0.5_0.5',
         ]
         count_l = [True] * len(datasets)
 
-        plot_dir = abl_base + f'/ablation_comparison{summary_suffix}{SUCCINCT_SUFFIX}'
+        plot_dir = abl_base + f'/ablation_comparison{summary_suffix}{PLOT_SUFFIX}'
         os.makedirs(plot_dir, exist_ok=True)
 
         visualize_simulation_stats(
@@ -2090,18 +2224,124 @@ if ARGPARSE_SWITCH:
             postfix='.pdf',
             summary_suffix=summary_suffix)
 
-        print(f"DONE — ablation comparison plots saved to {plot_dir}/")
+        print(f"DONE - ablation comparison plots saved to {plot_dir}/")
+
+    elif args['option'] in (13, 14):
+        # Zero-inflation / named ablation scenarios (no relation, OR=1, cond=0.5, batch=0.5; data from generate_zeroinf_ablation.py
+        # or the scenario generators). -d relab uses the relab tables in the same count_<scenario>/ folder.
+        # Usage: python evaluate.py -o 13 -i <iter> [--scenario <name>] [-d relab]   (Python methods)
+        #        python evaluate.py -o 14 -i <iter> [--scenario <name>] [-d relab]   (evaluation; add --rerun-rf for the nocovar RF pass)
+        base = os.path.join(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626')
+        used_Python_methods = list(config_data['used_Python_methods'])
+        methods = ['nobc'] + list(config_data[f'used_R_methods_{GLOBAL_DATATYPE}']) + used_Python_methods
+        if args.get('scenario'):
+            scen_l = [args['scenario']]
+        else:
+            scen_l = [f'zeroinf{l}' for l in ([args['zeroinf_level']] if args.get('zeroinf_level') else [75, 80, 85, 90])]
+        for scen in scen_l:
+            print(f"=== scenario {scen} ===")
+            iterative_methods_running_evaluate(
+                run_or_evaluate = 'run' if args['option'] == 13 else 'evaluate',
+                datatype = GLOBAL_DATATYPE,
+                iter = int(args['iteration']),
+                or_l = [1], cond_effect_val_l = [0.5], batch_effect_val_l = [0.5],
+                address_XY_dir_path = base + f'/count_{scen}',
+                output_dir_path = base + f'/output_{GLOBAL_DATATYPE}_{scen}',
+                eval_dir_path = base + f'/eval_{GLOBAL_DATATYPE}_{scen}',
+                methods_list = used_Python_methods if args['option'] == 13 else methods,
+                binarizing_agent_biovar = 'cond_1',
+                eval_suffix = "_nocovar" if args.get('rerun_rf', False) else "")
+        print("DONE - zero-inflation ablation for this iteration.")
+    elif args['option'] in (16, 17):
+        # Path-driven simulation scenario (Snakefile_simulation): 16 = Python strategies, 17 = evaluation
+        # (add --rerun-rf for the leakage-free random forest pass, which writes the _nocovar summaries).
+        # Usage: python evaluate.py --config config_simulation_scenarios.yml -o 16|17 -i <iter> -d count|relab
+        #          --data-dir <dir> --output-dir <dir> [--eval-dir <dir>] --or-l 1 --cond-l 0.5 --batch-l 0.5
+        def _vals(x):  # match the R file names: 1 -> '1', 0.5 -> '0.5'
+            return [int(float(v)) if float(v).is_integer() else float(v) for v in str(x).split(',')]
+        if not args.get('data_dir') or not args.get('output_dir') or (args['option'] == 17 and not args.get('eval_dir')):
+            raise SystemExit('options 16/17 need --data-dir and --output-dir (and --eval-dir for 17)')
+        used_Python_methods = list(config_data['used_Python_methods'])
+        methods = ['nobc'] + list(config_data[f'used_R_methods_{GLOBAL_DATATYPE}']) + used_Python_methods
+        iterative_methods_running_evaluate(
+            run_or_evaluate = 'run' if args['option'] == 16 else 'evaluate',
+            datatype = GLOBAL_DATATYPE,
+            iter = int(args['iteration']),
+            or_l = _vals(args['or_l']), cond_effect_val_l = _vals(args['cond_l']), batch_effect_val_l = _vals(args['batch_l']),
+            address_XY_dir_path = args['data_dir'],
+            output_dir_path = args['output_dir'],
+            eval_dir_path = args['eval_dir'] or '',
+            methods_list = used_Python_methods if args['option'] == 16 else methods,
+            binarizing_agent_biovar = config_data.get('binarizing_agent', 'cond_1'),
+            eval_suffix = "_nocovar" if args.get('rerun_rf', False) else "")
+        print(f"DONE - option {args['option']} for iteration {args['iteration']}")
+    elif args['option'] == 15:
+        # Zero-inflation ablation plots: original data (zero fraction ~0.70) vs raised zero fractions.
+        # Usage: python evaluate.py -o 15 -i <num_iters> [--rerun-rf] [--succinct]
+        sim_num_iters = int(args['iteration']) if args['iteration'] != 1 else 1000
+        summary_suffix = "_nocovar" if args.get('rerun_rf', False) else ""
+        methods = apply_succinct(['nobc'] + list(config_data['used_R_methods_count']) + list(config_data['used_Python_methods']))
+        base = os.path.join(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626')
+        datasets = ['zero_0.70', 'zero_0.75', 'zero_0.80', 'zero_0.85', 'zero_0.90']
+        output_dir_l = [os.path.join(SIM_OUTPUT_ROOT, '082924check', 'simulation_data_eval_new_count_norelation_102023', 'out_1_0.5_0.5')] + \
+                       [base + f'/eval_count_zeroinf{level}/out_1_0.5_0.5' for level in [75, 80, 85, 90]]
+        plot_dir = base + f'/zeroinf_comparison_{sim_num_iters}iters{summary_suffix}{PLOT_SUFFIX}'
+        os.makedirs(plot_dir, exist_ok=True)
+        visualize_simulation_stats(plot_dir + '/zeroinf', output_dir_l, datasets, methods, highlighted_method='ConQuR',
+            line=True, count_l=[True] * len(datasets), simulate=True, taxa_gt=True, sim_num_iters=sim_num_iters,
+            postfix='.pdf', summary_suffix=summary_suffix)
+        print(f"DONE - zero-inflation plots saved to {plot_dir}/")
+    elif args['option'] == 9:
+        # Condsweep line plots (cond_effect on the x-axis), one -d/-r combo per call.
+        # Usage: python evaluate.py -o 9 -d <count|relab> -r <no|yes> -i <num_iters>
+        #        Add --rerun-rf to plot nocovar summaries; --succinct to drop bat/ruv3/svd/rbe/bmc
+        sim_num_iters = int(args['iteration']) if args['iteration'] != 1 else 50
+        summary_suffix = "_nocovar" if args.get('rerun_rf', False) else ""
+
+        if GLOBAL_DATATYPE == 'count':
+            used_R_methods = list(config_data['used_R_methods_count'])
+        else:
+            used_R_methods = list(config_data['used_R_methods_relab'])
+        used_Python_methods = list(config_data['used_Python_methods'])
+        methods = ['nobc'] + used_R_methods + used_Python_methods
+        methods = apply_succinct(methods)
+
+        scen_base = os.path.join(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626')
+        relation_dir = 'no_relation' if related == 'no' else 'yes_relation'
+        eval_dir_path = scen_base + f'/eval_{GLOBAL_DATATYPE}_condsweep_{relation_dir}'
+
+        cond_sweep = [0.005, 0.01, 0.02, 0.05, 0.1]
+        datasets = [f"out_1.25_{c}_0.5" for c in cond_sweep]
+        output_dir_l = [eval_dir_path + '/' + dataset for dataset in datasets]
+        datatype_l = [GLOBAL_DATATYPE == 'count'] * len(datasets)
+
+        line_plot_path = eval_dir_path + f'/line_plots_condsweep_{sim_num_iters}iters{summary_suffix}{PLOT_SUFFIX}'
+        os.makedirs(line_plot_path, exist_ok=True)
+
+        visualize_simulation_stats(
+            f'{line_plot_path}/condsweep_all_bio',
+            output_dir_l, datasets, methods,
+            highlighted_method='ConQuR',
+            line=True,
+            count_l=datatype_l,
+            simulate=True,
+            dimensions=(20, 10),
+            taxa_gt=True,
+            postfix='.pdf',
+            sim_num_iters=sim_num_iters,
+            summary_suffix=summary_suffix)
+
+        print(f"DONE - condsweep native plots saved to {line_plot_path}/")
 
 # # ## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-# ##############################################################################
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# output_dir_path = os.path.join(REPO_ROOT, 'outputs')
 # methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "percentile_norm"]
 # datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
 # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
+# visualize_simulation_stats(os.path.join(REPO_ROOT, 'outputs/rw_data_plots/count_rw'), output_dir_l, datasets, methods, highlighted_method = "ConQuR", line = True, simulate = False, count_l = [True, True], postfix = '.pdf')
 
-# output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs'
+# output_dir_path = os.path.join(REPO_ROOT, 'outputs')
 # methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "percentile_norm"]
 # datasets = ["ibd_3_CMD", "crc_8_CMD"]
 # output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
-# visualize_simulation_stats('/athena/linglab/scratch/chf4012/mic_bc_benchmark/outputs/rw_data_plots/relab_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')
+# visualize_simulation_stats(os.path.join(REPO_ROOT, 'outputs/rw_data_plots/relab_rw'), output_dir_l, datasets, methods, highlighted_method = "ConQuR_rel", line = True, count_l = [False, False], simulate = False, postfix = '.pdf')

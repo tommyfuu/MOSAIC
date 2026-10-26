@@ -6,8 +6,8 @@
 #SBATCH --time=8:00:00
 #SBATCH --mem=20G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=10
-#SBATCH --output midasgen-%j.out
-#SBATCH --error midasgen-%j.err
+#SBATCH --output ../logs/slurm/midasgen-%j.out
+#SBATCH --error ../logs/slurm/midasgen-%j.err
 
 
 source ~/.bashrc

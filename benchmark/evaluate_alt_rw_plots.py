@@ -5,12 +5,15 @@ import matplotlib as mpl
 import os
 import yaml
 import argparse
+import sys
+sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from paths import REPO_ROOT
 
 parser = argparse.ArgumentParser(description='real-world batch correction evaluation plots')
-parser.add_argument("--succinct", action="store_true", default=False, help='drop bat/ruv3/svd from the methods list and write plots to a separate rw_data_alt_plots_succinct folder instead of rw_data_alt_plots')
+parser.add_argument("--succinct", action="store_true", default=False, help='drop bat/ruv3/svd/rbe/bmc from the methods list and write plots to a separate rw_data_alt_plots_succinct folder instead of rw_data_alt_plots')
 args = parser.parse_args()
 
-SUCCINCT_DROP_METHODS = {"bat", "ruv3", "svd"}
+SUCCINCT_DROP_METHODS = {"bat", "ruv3", "svd", "rbe", "bmc"}
 
 def apply_succinct(methods_list):
     if args.succinct:
@@ -18,11 +21,10 @@ def apply_succinct(methods_list):
     return methods_list
 
 def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods, highlighted_method, ylim_dict, simulate = False, sim_num_iters = 1000, dimensions = (7, 5), taxa_gt = None, count_l = [True, True, False, False],
-    marker_dict = {'autism_2_microbiomeHD': 'o', 'cdi_3_microbiomeHD': 's', 'ibd_3_CMD': 'd', 'crc_8_CMD': 'H', 'crc_11_CMD': 'H'},
-    ds_colors_dict = {'autism_2_microbiomeHD': 'violet', 'cdi_3_microbiomeHD': 'black', 'ibd_3_CMD': 'orange', 'crc_8_CMD': 'blue', 'crc_11_CMD': 'blue'},
+    marker_dict = {'autism_2_microbiomeHD': 'o', 'cdi_3_microbiomeHD': 's', 'cdi_3_microbiomeHD_clean': 's', 'ibd_3_CMD': 'd', 'crc_8_CMD': 'H', 'crc_11_CMD': 'H'},
+    ds_colors_dict = {'autism_2_microbiomeHD': 'violet', 'cdi_3_microbiomeHD': 'black', 'cdi_3_microbiomeHD_clean': 'black', 'ibd_3_CMD': 'orange', 'crc_8_CMD': 'blue', 'crc_11_CMD': 'blue'},
     postfix = '.png', demonstrate = False):
     '''visualize the PERMANOVA batch R2 (Bray/Aitch), PERMANOVA condition R2 (Bray/Aitch), ROC-AUC and FDR/sensitivity'''
-    # global set up
     print("initializing")
     global_methods_batch_bray_r2_l_dict = {}
     global_methods_batch_aitch_r2_l_dict = {}
@@ -40,17 +42,13 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
         global_methods_FDR_r2_l_dict = {}
         global_methods_sensitivity_r2_l_dict = {}
 
-    # loop through datasets to get the stats
     def get_stats(output_dir, taxa_gt, idx):
         methods_batch_aitch_r2_dict = {}
         methods_biovar_aitch_r2_dict = {}
-        # get the global stats path
         files = os.listdir(output_dir)
         global_stats_path = [file for file in files if "global_benchmarking_stats" in file][0]
 
-        # read the global stats df
         global_stats_df = pd.read_csv(output_dir+"/"+global_stats_path, index_col=0)
-        # get the stats of interest and visualize
         if count_l[idx]:
             batch_aitch_r2 = global_stats_df.loc["batch_aitch_r2"]
             methods_batch_aitch_r2_dict = batch_aitch_r2.to_dict()
@@ -94,7 +92,6 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
                 methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_FDR_r2_dict, methods_sensitivity_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
             else:
                 methods_batch_aitch_r2_dict, methods_batch_bray_r2_dict, methods_biovar_aitch_r2_dict, methods_biovar_bray_r2_dict, methods_batch_shannon_pval_dict, methods_biovar_shannon_pval_dict, methods_rf_auc_dict, methods_rf_f1_dict, methods_rf_precision_dict, methods_rf_recall_dict, methods_runtime = get_stats(output_dir, taxa_gt, idx)    
-            ## append to global dict
             for method in methods:
                 if method not in global_methods_batch_bray_r2_l_dict.keys():
                     if count_l[idx]:
@@ -130,7 +127,7 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
                 global_methods_runtime_l_dict[method].append(methods_runtime[method])
 
         else:
-            # in this case, for each dataset, we have a preset number of iterations
+            # simulated data: average each dataset over its sim_num_iters iterations
             cross_iter_batch_aitch_r2_dict = {}
             cross_iter_batch_bray_r2_dict = {}
             cross_iter_biovar_aitch_r2_dict = {}
@@ -164,7 +161,6 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
                     cross_iter_FDR_r2_dict[iter] = methods_FDR_r2_dict
                     cross_iter_sensitivity_r2_dict[iter] = methods_sensitivity_r2_dict
 
-            # calculate mean across iterations and append to global dict
             for method in methods:
                 if method not in global_methods_batch_bray_r2_l_dict.keys():
                     if count_l[idx]:
@@ -200,9 +196,8 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
 
     print("plotting")
     def plot_stats(stats_summary_name, stats_name_l, stats_dict_1, stats_dict_2 = {}, ylim_l = [], postfix = '.png', pvalline = False):
-        mpl.rcParams['pdf.fonttype'] = 42 # ensure exported pdf has edited text
+        mpl.rcParams['pdf.fonttype'] = 42 # TrueType, so PDF text stays editable
         linestyle = '-'
-        ## plot the dictionaries in two matplotlib subplots as line plots
         plt.clf()
         if stats_dict_2 != {}:
             fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(dimensions[0]*2, dimensions[1]))
@@ -210,19 +205,18 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             print("only one plot")
             fig, ax1 = plt.subplots(1, 1, figsize=(dimensions[0], dimensions[1]))
 
-        # log2 case
+        # FDR and runtime are plotted on a log2 scale
         if 'FDR' in stats_name_l or 'runtime' in stats_name_l:
-            # deep copy dictionaries
             import copy
             stats_dict_1_clone = copy.deepcopy(stats_dict_1)
             stats_dict_2_clone = copy.deepcopy(stats_dict_2)
             for method in stats_dict_1.keys():
-                # very small added to avoid log(0)
+                # small offset to avoid log(0)
                 stats_dict_1[method] = [np.log2(x+1e-4) for x in stats_dict_1[method]]
                 if stats_dict_2 != {}:
                     stats_dict_2[method] = [np.log2(x+1e-4) for x in stats_dict_2[method]]
 
-        # now use methods as x axis and stats as y axis, with two lines corresponding to the two datasets
+        # x = method, y = stat, one line per dataset
         ax1.tick_params(axis='both', which='major', labelsize=14)
         if stats_dict_2 != {}:
             ax2.tick_params(axis='both', which='major', labelsize=14)
@@ -233,7 +227,6 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             if stats_dict_2 != {}:
                 current_ds_stats_dict_2 = {method: stats_dict_2[method][datasets.index(dataset)] for method in methods}
 
-            # plot the line for each dataset
             ax1.plot(current_ds_stats_dict_1.keys(), current_ds_stats_dict_1.values(),label=dataset, color=color, marker=marker, linestyle=linestyle)
             if stats_dict_2 != {}:
                 ax2.plot(current_ds_stats_dict_2.keys(), current_ds_stats_dict_2.values(),label=dataset, color=color, marker=marker, linestyle=linestyle)
@@ -242,7 +235,6 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
         ax1.spines["right"].set_visible(False)
         ax1.set_title(stats_name_l[0])
         ax1.set_xticks(methods)
-        # set xticks to be verticle
         for tick in ax1.get_xticklabels():
             tick.set_rotation(90)
         
@@ -254,7 +246,6 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             ax2.spines["right"].set_visible(False)
             ax2.set_title(stats_name_l[1])
             ax2.set_xticks(methods)
-            # set xticks to be verticle
             for tick in ax2.get_xticklabels():
                 tick.set_rotation(90)
 
@@ -264,24 +255,31 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
         else:
             ax1.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", borderaxespad=0)
 
-        # optionally set ylim
         if ylim_l != [] and 'rw' in output_root:
+            if 'R2' in stats_summary_name:
+                # raise the upper limit when a method exceeds it; panels that share a limit keep sharing it
+                vals = np.array([v for d in (stats_dict_1, stats_dict_2) for m in methods if m in d for v in np.ravel(d[m])], dtype=float)
+                mx = np.nanmax(vals) if vals.size else np.nan
+                if np.isfinite(mx) and mx > min(hi for lo, hi in ylim_l):
+                    step = 10 ** np.floor(np.log10(mx)) / 2
+                    top = float(np.ceil(mx * 1.05 / step) * step)
+                    if ylim_l[0][1] == ylim_l[-1][1]:
+                        ylim_l = [[lo, max(hi, top)] for lo, hi in ylim_l]
+                    else:
+                        ylim_l = [[lo, top if mx > hi else hi] for lo, hi in ylim_l]
             ax1.set_ylim(ylim_l[0])
             if stats_dict_2 != {}:
                 ax2.set_ylim(ylim_l[1])
         
-        # optionally add 0.05 significance line
         if pvalline:
             ax1.axhline(y=0.05, color='r', linestyle='--')
             if stats_dict_2 != {}:
                 ax2.axhline(y=0.05, color='r', linestyle='--')
 
-        # find parent dir of output_dir_l[0]
         plt.savefig(output_root+"_"+stats_summary_name+postfix, bbox_inches="tight")
         plt.clf()
         plt.close()
 
-    # plot
     if taxa_gt is not None:
         plot_stats('FDR_sensitivity', ["FDR", "Sensitivity"], global_methods_FDR_r2_l_dict, global_methods_sensitivity_r2_l_dict, ylim_l = ylim_dict['FDR_sensitivity'], postfix=postfix)
     
@@ -306,24 +304,21 @@ def alt_visualize_simulation_stats(output_root, output_dir_l, datasets, methods,
             plot_stats('PERMANOVA_biovar_R2', ["PERMANOVA biovar R2 (Bray-Curtis)"], global_methods_biovar_bray_r2_l_dict, postfix=postfix)        
     return
 
-## VISUALIZE LINE PLOTS FOR 2 COUNT-TYPE RW DATASETS and 2 RELAB-TYPE RW DATASETS
-#############################################################################
-# reads from trial_rw/outputs (kept current by benchmark/step_rw_refresh_rf.sh),
-# not the frozen Sept-2024 snapshot in trial_rw/outputs_final.
-output_dir_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/trial_rw/outputs'
-rw_plots_root = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/trial_rw/rw_data_alt_plots' + ('_succinct' if args.succinct else '')
+# Line plots for the 2 count and 2 relative abundance real-world datasets.
+# Reads from trial_rw/outputs (the evaluation_outputs of the *_wml / cdi_clean configs)
+output_dir_path = os.path.join(REPO_ROOT, 'trial_rw', 'outputs')
+rw_plots_root = os.path.join(REPO_ROOT, 'trial_rw', 'rw_data_alt_plots') + ('_succinct' if args.succinct else '')
 os.makedirs(rw_plots_root, exist_ok=True)
 
 methods = ["nobc", "harmony", "combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize", "ruv3", "bmc", "bat", "rbe", "svd", "percentile_norm", "debiasm"]
 methods = apply_succinct(methods)
-datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD"]
+datasets = ["autism_2_microbiomeHD", "cdi_3_microbiomeHD_clean"]
 output_dir_l = [output_dir_path+'/'+dataset for dataset in datasets]
 ylim_dict = {'batch_r2': [[0, 0.35], [0, 0.35]], 'biovar_r2': [[0, 0.2], [0, 0.2]], 'shannon_pval': [[0, 1], [0, 1]], 'auc_f1': [[0.2, 1], [0.2, 1]], 'runtime': [[np.log2(5e-5), np.log2(500)]], 'precision_recall': [[0, 1], [0, 1]]}
 alt_visualize_simulation_stats(rw_plots_root+'/count_rw', output_dir_l, datasets, methods, highlighted_method = "ConQuR",  simulate = False, count_l = [True, True], postfix = '.pdf', ylim_dict = ylim_dict)
 
-# crc_8_CMD's output dir was renamed to crc_8_CMD_deprecated -- crc_11_CMD is
-# its replacement (also given a debiasm run so all plotted methods have data
-# for every dataset).
+# crc_8_CMD's output dir was renamed to crc_8_CMD_deprecated; crc_11_CMD replaces
+# it (it also has a debiasm run, so every plotted method has data for both datasets).
 methods = ["nobc", "combat", "harmony", "limma", "MMUPHin", "ConQuR_rel", "ruv3", "bmc", "bat", "rbe", "svd", "percentile_norm", "debiasm"]
 methods = apply_succinct(methods)
 datasets = ["ibd_3_CMD", "crc_11_CMD"]

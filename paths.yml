@@ -1,0 +1,7 @@
+# Machine-specific locations. Edit this file when running the pipeline somewhere else.
+# Read by paths.py (Python) and paths.R (R). Environment variables with the same name in
+# upper case (e.g. SIM_OUTPUT_ROOT) take precedence over the values below.
+# The repository location itself is detected automatically.
+
+# where simulated data, batch-corrected simulation data and simulation evaluations are written
+sim_output_root: /athena/linglab/scratch/chf4012/simulation_outputs

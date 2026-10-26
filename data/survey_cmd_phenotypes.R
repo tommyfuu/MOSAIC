@@ -1,3 +1,4 @@
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 library(curatedMetagenomicData)
 library(dplyr)
 
@@ -64,6 +65,5 @@ cat("\n=== Full table (all diseases, sorted by n_studies) ===\n")
 full_df <- do.call(rbind, results) %>% arrange(desc(n_studies), desc(total_samples))
 print(full_df, row.names = FALSE)
 
-# Save to file
-write.csv(results_df, "/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cmd_phenotype_survey.csv", row.names = FALSE)
-cat("\nSaved to /athena/linglab/scratch/chf4012/mic_bc_benchmark/data/cmd_phenotype_survey.csv\n")
+write.csv(results_df, file.path(REPO_ROOT, "data/cmd_phenotype_survey.csv"), row.names = FALSE)
+cat("\nSaved to data/cmd_phenotype_survey.csv\n")

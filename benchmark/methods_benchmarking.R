@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 library(xtable) # table
 # library(mixOmics)
 library(sva) # ComBat
@@ -31,11 +32,7 @@ args = commandArgs(trailingOnly=TRUE)
 current_path = getwd()
 print("currnet path")
 print(current_path)
-if(grepl("mic_bc_benchmark/benchmark", current_path)){
-    conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
-} else {
-    conqur_path = str_replace(current_path, "mic_bc_benchmark", "mic_bc_benchmark/ConQuR")
-}
+conqur_path <- file.path(REPO_ROOT, "ConQuR")
 # conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune.R"))
@@ -71,7 +68,7 @@ check_metadata <- function(data, variables, no_missing = TRUE) {
 }
 
 check_batch <- function(x, min_n_batch = 2) {
-  # First ensure batch variable is a factor
+  # Batch variable must be a factor
   if(!is.factor(x)) {
     warning("Batch variable is not a factor as provided and will be converted ",
             "to one.")
@@ -113,7 +110,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         dir.create(file.path(output_dir))
     }
 
-    # data loading <- load data_mat and meta_data, output of the preprocessing.py file
+    # load data_mat and meta_data (outputs of preprocessing.py)
     if(transpose == TRUE) {
         count_data = read.table(data_mat_path, sep=",",header=T,check.names = F)
     }
@@ -145,7 +142,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     ## CASE 1. count data (combat will not work)
     if(count == TRUE) {
         count_data.clr <- logratio.transfo(count_data+1, logratio = 'CLR')
-        # if ConQuR_libsize output does not exist and its runtime documented File.readlines(paste(output_root, "_runtime.txt", sep="")).any?{ |l| l['ConQuR_libsize'] }
+        # rerun if the ConQuR_libsize output is missing or its runtime was never logged
         if(!file.exists(paste(output_root, "_ConQuR_libsize.csv", sep=""))){
             run_count = TRUE
         }
@@ -441,7 +438,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 #     # autism 2 microbiomeHD
 #     current_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/data/cleaned_data/autism_2_microbiomeHD/autism_2_microbiomeHD")
 #     # output_root = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")
-#     output_root = '/athena/linglab/scratch/chf4012/ConQuR_L_data/small_simulations/aaa'
+#     output_root = '<output_dir>'
 #     run_methods(paste0(current_root, "_count_data.csv"),
 #         paste0(current_root, "_meta_data.csv"),
 #         output_root,

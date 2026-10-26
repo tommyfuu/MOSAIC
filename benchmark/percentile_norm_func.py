@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """
-This script converts an input OTU table with cases and controls into
-percentiles of control samples.
+Convert an OTU table with cases and controls into percentiles of the control samples.
 """
 __author__ = "Sean Gibbons and Claire Duvallet; edited by Tom Fu to fit our datatypes"
 __copyright__ = "Copyright 2017"
@@ -21,15 +20,12 @@ import time
 # Passing through \n doesn't work...
 seps = {'tab': '\t', 'newline': '\n', 'comma': ','}
 
-## Read data
-
 def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter = 'comma', output_root = '', simulate = False):
     if not simulate:
         df = pd.read_csv(input_file, sep=seps[delimiter], header=0, index_col=0)
     else:
         df = pd.read_csv(input_file, sep=seps[delimiter])
 
-    # documenting time elapsed
     import time
     start = time.time()
 
@@ -39,7 +35,6 @@ def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter =
     df_rand = pd.DataFrame(np.random.uniform(0.0,10**-9,size=(df.shape[0],df.shape[1])),index=df.index,columns=df.columns)
     df[pd.isnull(df)] = df_rand[pd.isnull(df)]
 
-    # Get numpy array
     x = df.values
 
     # get case info
@@ -86,16 +81,17 @@ def percentile_norm(input_file, meta_file, diseaseName, diseaseCase, delimiter =
     end = time.time()
     print(end - start)
 
-    # write the time elapsed to a separate file
     with open(output_root + "_percentile_norm_elapsed_time.txt", "w") as f:
         f.write(str(end - start))
 
     ## Put back into dataframe and write to file
     norm_df = pd.DataFrame(data=norm_x, columns=df.columns, index=all_samples)
+    # Restore input row order before downstream code pairs rows with metadata.
+    norm_df = norm_df.loc[df.index]
     norm_df.to_csv(output_root+ "_percentile_norm.csv")
 
     print('Percentile-normalized data written to {}'.format(output_root))
     return
 
-# overall_path = "/athena/linglab/scratch/chf4012/mic_bc_benchmark"
+# overall_path = REPO_ROOT
 # percentile_norm(overall_path+"/benchmark/benchmarked_data/autism_2_microbiomeHD_count_data.csv", overall_path+"/benchmark/benchmarked_data/autism_2_microbiomeHD_meta_data.csv", "DiseaseState", "ASD", "comma", overall_path+"/benchmark/benchmarked_results/autism_2_microbiomeHD/autism_2_microbiomeHD")

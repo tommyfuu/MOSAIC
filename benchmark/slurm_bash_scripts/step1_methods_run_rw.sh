@@ -5,8 +5,8 @@
 #SBATCH --time=9:00:00
 #SBATCH --mem=20G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=10
-#SBATCH --output rwmeth-%j.out
-#SBATCH --error rwmeth-%j.err
+#SBATCH --output ../logs/slurm/rwmeth-%j.out
+#SBATCH --error ../logs/slurm/rwmeth-%j.err
 #SBATCH --mail-user=chf4012@med.cornell.edu
 # ITER_ARRAY=( $(seq 5 ) )
 source ~/.bashrc

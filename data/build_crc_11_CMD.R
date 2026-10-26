@@ -1,10 +1,11 @@
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 library(dplyr)
 library(mia)
 library(phyloseq)
 library(curatedMetagenomicData)
 library(yaml)
 
-src <- '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data'
+src <- file.path(REPO_ROOT, 'data')
 dataset_name <- 'crc_11_CMD'
 output_dir <- paste0(src, '/pruned_', dataset_name)
 dir.create(output_dir, showWarnings = FALSE)

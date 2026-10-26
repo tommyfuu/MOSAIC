@@ -1,4 +1,5 @@
 # load data
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 current_path = getwd()
 if (grepl("/benchmark", current_path)){
     load("./ibd_150.Rdata")
@@ -25,7 +26,7 @@ if (length(args)==0 || length(args)>1 ) {
 otu_original = t(otu)
 p = ncol(otu_original)
 
-# making sure we are generating from the right data
+# check that we are generating from the right data
 if (p==301) {
   print("p=301")
   n = nrow(otu_original) * 3 # 450 samples in this case
@@ -172,9 +173,9 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
 
   otu = matrix(NA, nrow = n, ncol = p)
   otu[cond==0&batchid==0,] = otu_c0b0[cond==0&batchid==0,] # unadjusted ones
-  otu[cond==1&batchid==0,] = otu_c1b0[cond==1&batchid==0,] # ones adjuetd only for condition
-  otu[cond==0&batchid==1,] = otu_c0b1[cond==0&batchid==1,] # ones adjuetd only for batch
-  otu[cond==1&batchid==1,] = otu_c1b1[cond==1&batchid==1,] # ones adjuetd for both condition and batch (correlated by the coefficient)
+  otu[cond==1&batchid==0,] = otu_c1b0[cond==1&batchid==0,] # adjusted only for condition
+  otu[cond==0&batchid==1,] = otu_c0b1[cond==0&batchid==1,] # adjusted only for batch
+  otu[cond==1&batchid==1,] = otu_c1b1[cond==1&batchid==1,] # adjusted for both condition and batch (correlated by the coefficient)
 
   # save otu
   write.csv(otu, file = out_count, row.names = FALSE)
@@ -185,8 +186,7 @@ midas_simulate <- function(otu_original, n, or, cond_effect, batch_effect, out_c
 print("checkpoint 2")
 
 
-# just to speed up
-# An mc-version of the sapply function.
+# parallel version of sapply (via mclapply)
 library(parallel)
 mcsapply <- function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
   FUN <- match.fun(FUN)
@@ -199,7 +199,7 @@ mcsapply <- function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
 }
 
 
-# generate simulated data using both set ups 08072023
+# generate simulated data for the full grid, iterations in parallel (08072023)
 scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, num_iter, libsize_l, batch_libsize_related = FALSE){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
@@ -213,7 +213,7 @@ scaled_midas_data_generation <- function(output_root, otu_original, n, or_l, con
   }
 }
 
-# generate simulated data using both set ups 08072023
+# same, one iteration per Slurm job (08072023)
 scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_l, cond_effect_val_l, batch_effect_val_l, iter, libsize_l, batch_libsize_related = FALSE){   
   for (or in or_l) {
     for (cond_effect_val in cond_effect_val_l) {
@@ -238,8 +238,8 @@ scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_
 # or_l = c(1, 1.25, 1.5)
 # cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 # batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# # output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-# cat("Pls enter the path of the output directory to save the data with NO confounding to. Make sure this directory already exists. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_norelation_102023 ");
+# # output_root = file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_norelation_102023')
+# cat("Pls enter the path of the output directory to save the data with NO confounding to. Make sure this directory already exists. Example: <SIM_OUTPUT_ROOT>/simulation_data_MIDAS_1000_norelation_102023 ");
 # output_root <- readLines("stdin",n=1);
 # cat("You entered")
 #  str(output_root);
@@ -252,8 +252,8 @@ scaled_slurm_midas_data_generation <- function(output_root, otu_original, n, or_
 # or_l = c(1, 1.25, 1.5)
 # cond_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 # batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
-# # output_root = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
-# cat("Pls enter the path of the output directory to save the data WITH confounding to. Example: /athena/linglab/scratch/chf4012/simulation_outputs_datacleaning/simulation_data_MIDAS_1000_yesrelation_102023 ");
+# # output_root = file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_yesrelation_102023')
+# cat("Pls enter the path of the output directory to save the data WITH confounding to. Example: <SIM_OUTPUT_ROOT>/simulation_data_MIDAS_1000_yesrelation_102023 ");
 # output_root <- readLines("stdin",n=1);
 # cat("You entered")
 #  str(output_root);

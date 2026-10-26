@@ -141,6 +141,8 @@ print(end - start)
 
 ## Put back into dataframe and write to file
 norm_df = pd.DataFrame(data=norm_x, columns=df.columns, index=all_samples)
+# Restore input row order before downstream code pairs rows with metadata.
+norm_df = norm_df.loc[df.index]
 norm_df.to_csv(args.o)
 
 print('Percentile-normalized data written to {}'.format(args.o))

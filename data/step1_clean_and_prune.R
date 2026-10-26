@@ -1,10 +1,11 @@
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 library(dplyr)
 library(readr)
 library(mia)
 library(phyloseq)
 library(curatedMetagenomicData)
 
-# do argparse for R that takes in overall_path, study_name, libsize_threshold, and relab_threshold
+# args: dataset_type, study_name (thresholds come from the config)
 args <- commandArgs(trailingOnly = TRUE)
 print(args)
 if (length(args) == 2) {
@@ -38,7 +39,7 @@ load_phyloseq_from_merged_microbiomeHD <- function (otu_mat_path, meta_data_path
     # get otu_mat for cleaned taxa_mat
     cleaned_otu_mat <- otu_mat[rownames(cleaned_taxa_mat), ]
 
-    # reasigns the rownames of otu_mat as sp+number
+    # rename rows of otu_mat to sp<number>
     rownames(cleaned_otu_mat) <- paste0('sp', 1:nrow(cleaned_otu_mat))
 
     # load metadata
@@ -66,7 +67,7 @@ load_phyloseq_from_merged_CMD <- function (list_of_studies, list_of_conditions){
 }
 
 clean_prune_save_phyloseq <- function (phyloseq_dataset, out_str, libsize_threshold, relab_threshold, save = FALSE, save_to = NULL){
-    # sample-wise cleaning: remove samples with less than 0.05% libsize_threshold percentile
+    # sample-wise cleaning: drop samples at or below the libsize_threshold quantile of library size
     print(phyloseq_dataset)
     libsize_threshold_num = quantile(sample_sums(phyloseq_dataset), libsize_threshold)
     phyloseq_dataset <- prune_samples(sample_sums(phyloseq_dataset) > libsize_threshold_num, phyloseq_dataset)
@@ -84,18 +85,18 @@ clean_prune_save_phyloseq <- function (phyloseq_dataset, out_str, libsize_thresh
 }
 
 
-# overall_path = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/'
+# overall_path = file.path(REPO_ROOT, 'data/')
 # autism_phyloseq_obj <- load_phyloseq_from_merged_microbiomeHD(paste0(overall_path, 'intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD_count_data.csv'), paste0(overall_path, 'intermediate_autism_2_microbiomeHD/autism_2_microbiomeHD_meta_data.csv'))
-# clean_prune_save_phyloseq(autism_phyloseq_obj, 'autism_2_microbiomeHD', 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_autism_2_microbiomeHD')
+# clean_prune_save_phyloseq(autism_phyloseq_obj, 'autism_2_microbiomeHD', 0.05, 0.05, save = TRUE, save_to = file.path(REPO_ROOT, 'data/pruned_autism_2_microbiomeHD'))
 
 # cdi_phyloseq_obj <- load_phyloseq_from_merged_microbiomeHD(paste0(overall_path, 'intermediate_cdi_3_microbiomeHD/cdi_3_microbiomeHD_count_data.csv'), paste0(overall_path, 'intermediate_cdi_3_microbiomeHD/cdi_3_microbiomeHD_meta_data.csv'))
-# clean_prune_save_phyloseq(cdi_phyloseq_obj, 'cdi_2_microbiomeHD', 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_cdi_3_microbiomeHD')
+# clean_prune_save_phyloseq(cdi_phyloseq_obj, 'cdi_2_microbiomeHD', 0.05, 0.05, save = TRUE, save_to = file.path(REPO_ROOT, 'data/pruned_cdi_3_microbiomeHD'))
 
 # ibd_phyloseq_obj <- load_phyloseq_from_merged_CMD(c("HMP_2019_ibdmdb", "LiJ_2014", "NielsenHB_2014"), c("IBD", 'healthy'))
-# clean_prune_save_phyloseq(ibd_phyloseq_obj[[1]], ibd_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_ibd_3_CMD')
+# clean_prune_save_phyloseq(ibd_phyloseq_obj[[1]], ibd_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = file.path(REPO_ROOT, 'data/pruned_ibd_3_CMD'))
 
 # crc_phyloseq_obj <- load_phyloseq_from_merged_CMD(c("FengQ_2015", "HanniganGD_2017", "ThomasAM_2018a", "YachidaS_2019", "ZellerG_2014"), c("adenoma", "healthy"))
-# clean_prune_save_phyloseq(crc_phyloseq_obj[[1]], crc_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = '/athena/linglab/scratch/chf4012/mic_bc_benchmark/data/pruned_crc_8_CMD')
+# clean_prune_save_phyloseq(crc_phyloseq_obj[[1]], crc_phyloseq_obj[[2]], 0.05, 0.05, save = TRUE, save_to = file.path(REPO_ROOT, 'data/pruned_crc_8_CMD'))
 
 # find the path to this Rscript
 
@@ -134,7 +135,7 @@ src_path <- config_object$src
 libsize_threshold <- config_object$RW_LIBSIZE_THRESHOLD
 relab_threshold <- config_object$RW_RELAB_THRESHOLD
 
-# make sure they are numeric
+# coerce to numeric (yaml may give strings)
 libsize_threshold <- as.numeric(libsize_threshold)
 relab_threshold <- as.numeric(relab_threshold)
 print(libsize_threshold)

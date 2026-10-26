@@ -6,8 +6,8 @@
 #SBATCH --time=10:00:00
 #SBATCH --mem=5G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=2
-#SBATCH --output ev_sim-%j.out
-#SBATCH --error ev_sim-%j.err
+#SBATCH --output ../logs/slurm/ev_sim-%j.out
+#SBATCH --error ../logs/slurm/ev_sim-%j.err
 #SBATCH --mail-user=chf4012@med.cornell.edu
 #SBATCH --mail-type=ALL
 
@@ -17,8 +17,8 @@ i=$SLURM_ARRAY_TASK_ID
 source ~/.bashrc
 mamba activate mic_data_integration
 echo "conda activated?"
-python3 evaluate.py -o 3 -i ${ITER_ARRAY[$i-1]} -r no -d count -a cond_1
-python3 evaluate.py -o 3 -i ${ITER_ARRAY[$i-1]} -r no -d relab -a cond_1
-python3 evaluate.py -o 3 -i ${ITER_ARRAY[$i-1]} -r yes -d count -a cond_1
-python3 evaluate.py -o 3 -i ${ITER_ARRAY[$i-1]} -r yes -d relab -a cond_1
+python3 archive/evaluate_legacy_pre052626.py -o 3 -i ${ITER_ARRAY[$i-1]} -r no -d count -a cond_1
+python3 archive/evaluate_legacy_pre052626.py -o 3 -i ${ITER_ARRAY[$i-1]} -r no -d relab -a cond_1
+python3 archive/evaluate_legacy_pre052626.py -o 3 -i ${ITER_ARRAY[$i-1]} -r yes -d count -a cond_1
+python3 archive/evaluate_legacy_pre052626.py -o 3 -i ${ITER_ARRAY[$i-1]} -r yes -d relab -a cond_1
 exit

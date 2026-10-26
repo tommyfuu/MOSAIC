@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 library(xtable) # table
 # library(mixOmics)
 library(sva) # ComBat
@@ -19,11 +20,7 @@ args = commandArgs(trailingOnly=TRUE)
 current_path = getwd()
 print("currnet path")
 print(current_path)
-if(grepl("mic_bc_benchmark/benchmark", current_path)){
-    conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
-} else {
-    conqur_path = str_replace(current_path, "mic_bc_benchmark", "mic_bc_benchmark/ConQuR")
-}
+conqur_path <- file.path(REPO_ROOT, "ConQuR")
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune.R"))
 source(paste0(conqur_path, "/ConQuR_help_functions_libsize_old.R"))
@@ -108,9 +105,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
     # for ConQuR
     batchid <- factor(metadata[, dataset])
 
-    # -------------------------------------------------------------------------
-    # Helper: build covar_df from metadata (used by multiple methods)
-    # -------------------------------------------------------------------------
+    # covar_df from metadata (used by several methods)
     make_covar_df <- function() {
         if (is.null(covar)) return(NULL)
         if (length(covar) == 1) {
@@ -119,13 +114,10 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             apply(metadata[, covar], 2, function(x) as.numeric(factor(x)))
         }
     }
-    # define globally so ConQuR/MMUPHin etc. always have it (NULL when covar=NULL)
+    # defined here so ConQuR/MMUPHin etc. always see it (NULL when covar=NULL)
     covar_df <- make_covar_df()
 
-    # -------------------------------------------------------------------------
-    # Helper: determine whether a given block still needs to run.
-    # Returns TRUE if any method in `methods_to_check` is absent from runtime.txt.
-    # -------------------------------------------------------------------------
+    # TRUE if any method in `methods_to_check` is missing from runtime.txt
     needs_run <- function(methods_to_check) {
         if (length(methods_to_check) == 0) return(FALSE)
         rtf <- paste0(output_root, "_runtime.txt")
@@ -286,15 +278,11 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 write.csv(count_data.Tune_ConQuR_libsize$tax_final, paste(output_root, "_Tune_ConQuR_libsize.csv", sep=""), row.names = TRUE)
             }
 
-            # ----------------------------------------------------------------
-            # NEW METHODS (count case)  -- implementations follow MBECS v1.3.1
-            # ----------------------------------------------------------------
+            # Added methods (count case), following MBECS v1.3.1
 
             ### 1.8 ruv3 (RUV-III via ruv::RUVIII; mirrors mbecRUV3 in MBECS)
-            # Negative controls: features non-significant in LM(feature ~ covariates)
-            # at p > 0.05 (pseudo-negatives when no known controls are supplied).
-            # Replicate structure: uses metadata$replicate when technical replicates
-            # exist; falls back to biological-condition pseudo-replicates otherwise.
+            # Negative controls: features with p > 0.05 in lm(feature ~ covariates).
+            # Replicates: metadata$replicate if present, else condition pseudo-replicates.
             if ('ruv3' %in% used_methods && !file.exists(paste0(output_root, "_ruv3.csv"))) {
                 if (!requireNamespace("ruv", quietly = TRUE)) {
                     warning("ruv package not installed; skipping ruv3. Install with: install.packages('ruv')")
@@ -358,8 +346,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             }
 
             ### 1.9 bmc (Batch Mean Centering; mirrors mbecBMC in MBECS)
-            # Centers each batch to zero mean per feature using scale(center=TRUE,
-            # scale=FALSE). No global mean is added back (MBECS convention).
+            # Centers each batch per feature; no global mean added back (MBECS convention).
             if ('bmc' %in% used_methods && !file.exists(paste0(output_root, "_bmc.csv"))) {
                 start_time <- Sys.time()
                 count_data.bmc <- as.matrix(count_data.clr)
@@ -380,8 +367,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             }
 
             ### 1.10 bat (ComBat on CLR; mirrors mbecBat in MBECS)
-            # Applies sva::ComBat (non-parametric) to CLR-transformed counts.
-            # Distinct from combat_seq which uses ComBat_seq on raw counts.
+            # Non-parametric sva::ComBat on CLR (combat_seq runs on raw counts instead).
             if ('bat' %in% used_methods && !file.exists(paste0(output_root, "_bat.csv"))) {
                 start_time <- Sys.time()
                 if (is.null(covar)) {
@@ -411,9 +397,8 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             }
 
             ### 1.11 rbe (removeBatchEffect on CLR; mirrors mbecRBE in MBECS)
-            # Uses limma::removeBatchEffect on CLR data with an explicit intercept
-            # design when no covariates are present, and model.matrix(~covar) otherwise.
-            # Differs from the 'limma' block above in design matrix construction.
+            # Same as the 'limma' block except for the design: intercept-only when
+            # there are no covariates, model.matrix(~covar) otherwise.
             if ('rbe' %in% used_methods && !file.exists(paste0(output_root, "_rbe.csv"))) {
                 batch_info_rbe <- as.factor(setNames(as.character(metadata[, dataset]), metadata[[Sam_id]]))
                 start_time <- Sys.time()
@@ -435,9 +420,8 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
             }
 
             ### 1.12 svd (deflate first PC of CLR cross-product; mirrors mbecSVD in MBECS)
-            # Centers and scales features, computes the p×p cross-product matrix,
-            # runs SVD, deflates the dominant singular component (assumed = batch),
-            # then rescales back to original mean and SD.
+            # Standardize features, SVD of the p x p cross-product, remove the first
+            # component (assumed to be batch), then restore the original mean and SD.
             if ('svd' %in% used_methods && !file.exists(paste0(output_root, "_svd.csv"))) {
                 start_time <- Sys.time()
                 Y_svd      <- as.matrix(count_data.clr)
@@ -578,10 +562,8 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
                 write.csv(count_data.Tune_ConQuR_rel$tax_final, paste(output_root, "_Tune_ConQuR_rel.csv", sep=""), row.names = TRUE)
             }
 
-            # ----------------------------------------------------------------
-            # NEW METHODS (relab case)  -- implementations follow MBECS v1.3.1
-            # All CLR-based methods return CLR-space output (same as combat / limma).
-            # ----------------------------------------------------------------
+            # Added methods (relab case), following MBECS v1.3.1.
+            # Output stays in CLR space, as for combat / limma.
 
             ### 2.6 ruv3 (RUV-III on CLR; returns CLR-space output)
             if ('ruv3' %in% used_methods && !file.exists(paste0(output_root, "_ruv3.csv"))) {
@@ -810,9 +792,8 @@ if (grepl('microbiomeHD', dataset_name)){
     )
 }
 
-# ── Nocovar second pass for leakage-free RF evaluation ──────────────────────
-# Runs only when run_nocovar_for_rf: True in config (wml configs).
-# Identical to the main run but with covar = NULL, saving to a separate folder.
+# Second pass with covar = NULL for leakage-free RF evaluation, written to a
+# separate folder. Only runs when run_nocovar_for_rf: True in the config.
 if (!is.null(config_object$run_nocovar_for_rf) && isTRUE(config_object$run_nocovar_for_rf)) {
     nocovar_output_root <- paste0(config_object$post_integration_outputs_nocovar, '/', dataset_name, '/', dataset_name)
     if (!dir.exists(paste0(config_object$post_integration_outputs_nocovar, '/', dataset_name, '/'))) {

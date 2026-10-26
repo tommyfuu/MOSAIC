@@ -2,12 +2,9 @@ import os
 import pandas as pd
 import numpy as np
 
-# Build a CDI-vs-Healthy-only variant of cdi_3_microbiomeHD (drops nonCDI and postFMT_CDI
-# samples, which are complete confounders of study/batch -- see cdi_3_microbiomeHD_complete_confounding.csv:
-# nonCDI is 100% cdi_schubert and postFMT_CDI is 100% cdi_youngster).
-#
-# NOTE: does not import step2_preprocessing_summarystats.py -- that module has unguarded
-# top-level side effects (it regenerates crc_11_CMD and a default dataset on import).
+# CDI vs Healthy subset of cdi_3_microbiomeHD: nonCDI and postFMT_CDI are each confined to a
+# single study (complete confounding with batch), so they are dropped.
+# step2_preprocessing_summarystats.py is not imported because it runs preprocessing on import.
 
 
 def preprocess(data_mat, meta_data, IDCol, covar_l=[]):

@@ -1,11 +1,10 @@
 #!/usr/bin/env Rscript
 # methods_benchmarking_sim_052626.R
 #
-# Simulation benchmarking — extends methods_benchmarking_sim.R with the five
-# new CLR-based methods (ruv3, bmc, bat, rbe, svd) from
-# methods_benchmarking_fixed_052626.R.  Per-method CSV skip guards and a
-# robust needs_run() check allow partially-completed runs to resume cleanly.
+# Simulation benchmarking including the CLR-based methods (ruv3, bmc, bat, rbe, svd).
+# Methods whose output CSV already exists are skipped, so interrupted runs can resume.
 
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 library(xtable)
 library(sva)
 library(limma)
@@ -28,14 +27,10 @@ GLOBAL_ITER <- if (length(args) == 1) as.integer(args[1]) else {
 }
 set.seed(GLOBAL_ITER)
 
-# ── ConQuR ──────────────────────────────────────────────────────────────────
+# ConQuR
 current_path <- getwd()
 print("current path"); print(current_path)
-if (grepl("mic_bc_benchmark/benchmark", current_path)) {
-    conqur_path <- str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
-} else {
-    conqur_path <- str_replace(current_path, "mic_bc_benchmark", "mic_bc_benchmark/ConQuR")
-}
+conqur_path <- file.path(REPO_ROOT, "ConQuR")
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune.R"))
 source(paste0(conqur_path, "/ConQuR_help_functions_libsize_old.R"))
@@ -44,9 +39,7 @@ source(paste0(conqur_path, "/ConQuR_help_functions_rel.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune_rel.R"))
 source(paste0(conqur_path, "/supporting_functions.R"))
 
-# ============================================================
-# MAIN BENCHMARKING FUNCTION
-# ============================================================
+# Main benchmarking function
 run_methods <- function(data_mat_path, meta_data_path, output_root,
                         batch_ref, dataset = "batchid", covar = c("cond"),
                         Sam_id = "Sam_id", transpose = TRUE, count = TRUE,
@@ -57,11 +50,11 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
     print(output_root)
     sink_file_name <- paste0(output_root, "_runtime.txt")
 
-    # ensure output directory exists
+    # create output directory if needed
     output_dir <- paste(head(strsplit(output_root, "/")[[1]], -1), collapse = "/")
     if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
 
-    # ── load data ──
+    # load data
     count_data <- if (transpose) {
         read.table(data_mat_path, sep = ",", header = TRUE, check.names = FALSE)
     } else {
@@ -86,16 +79,14 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
         !all(sapply(methods_to_check, function(m) any(grepl(m, lines))))
     }
 
-    # helper: write runtime header only once
+    # write runtime header only once
     ensure_header <- function() {
         if (!file.exists(sink_file_name) ||
             !any(grepl("runtime documenting", readLines(sink_file_name))))
             cat("runtime documenting...\n", file = sink_file_name, append = TRUE)
     }
 
-    # ================================================================
-    ## CASE 1 — count data
-    # ================================================================
+    ## CASE 1 - count data
     if (count) {
         count_data.clr <- logratio.transfo(count_data + 1, logratio = "CLR")
 
@@ -103,7 +94,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
                                     "ConQuR", "ConQuR_libsize",
                                     "Tune_ConQuR", "Tune_ConQuR_libsize",
                                     "bmc", "bat", "rbe", "svd")
-        # ruv3 intentionally excluded: it runs unconditionally below (file-check only)
+        # ruv3 is not in this list: it runs below based only on whether its CSV exists
         count_methods_to_check <- intersect(used_methods, count_methods_all)
 
         if (needs_run(count_methods_to_check)) {
@@ -224,8 +215,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
                            paste0(output_root, "_Tune_ConQuR_libsize.csv"), row.names = TRUE)
             }
 
-            # ── NEW METHODS (count) — CLR in, inverse-CLR out ────────────────
-            # Note: ruv3 runs unconditionally after this block (file-check only)
+            # Added methods (count): CLR in, inverse-CLR out. ruv3 runs after this block.
 
             ### 1.9 bmc
             if ("bmc" %in% used_methods &&
@@ -305,7 +295,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
             print("already done")
         }
 
-        # ── ruv3 (count) — runs unconditionally; only skipped if CSV exists or ruv absent ──
+        # ruv3 (count): skipped only if its CSV exists or ruv is not installed
         if ("ruv3" %in% used_methods && !file.exists(paste0(output_root, "_ruv3.csv"))) {
             if (!requireNamespace("ruv", quietly = TRUE)) {
                 warning("ruv not installed; skipping ruv3.")
@@ -361,9 +351,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
             }
         }
 
-    # ================================================================
-    ## CASE 2 — relative abundance data
-    # ================================================================
+    ## CASE 2 - relative abundance data
     } else {
         count_data.clr <- logratio.transfo(count_data + min(count_data[count_data > 0]),
                                             logratio = "CLR")
@@ -372,7 +360,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
 
         relab_methods_all      <- c("combat", "limma", "MMUPHin", "ConQuR_rel",
                                     "Tune_ConQuR_rel", "bmc", "bat", "rbe", "svd")
-        # ruv3 intentionally excluded: it runs unconditionally below (file-check only)
+        # ruv3 is not in this list: it runs below based only on whether its CSV exists
         relab_methods_to_check <- intersect(used_methods, relab_methods_all)
 
         if (needs_run(relab_methods_to_check)) {
@@ -459,8 +447,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
                            paste0(output_root, "_Tune_ConQuR_rel.csv"), row.names = TRUE)
             }
 
-            # ── NEW METHODS (relab) — CLR in, CLR-space out ──────────────────
-            # Note: ruv3 runs unconditionally after this block (file-check only)
+            # Added methods (relab): CLR in, CLR out. ruv3 runs after this block.
 
             ### 2.7 bmc
             if ("bmc" %in% used_methods &&
@@ -537,7 +524,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
             print("already done")
         }
 
-        # ── ruv3 (relab) — runs unconditionally; only skipped if CSV exists or ruv absent ──
+        # ruv3 (relab): skipped only if its CSV exists or ruv is not installed
         if ("ruv3" %in% used_methods && !file.exists(paste0(output_root, "_ruv3.csv"))) {
             if (!requireNamespace("ruv", quietly = TRUE)) {
                 warning("ruv not installed; skipping ruv3.")
@@ -595,9 +582,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root,
     }
 }
 
-# ============================================================
-# HELPERS
-# ============================================================
+# Helpers
 mcsapply <- function(X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
     FUN    <- match.fun(FUN)
     answer <- parallel::mclapply(X = X, FUN = FUN, ...)
@@ -607,7 +592,7 @@ mcsapply <- function(X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
     else answer
 }
 
-# ── Slurm runner (one iteration per job) ────────────────────────────────────
+# Slurm runner (one iteration per job)
 # covar: pass c("cond") for standard run, NULL for nocovar/ML-safe run
 scaled_slurm_methods_benchmarking <- function(output_dir, overall_path,
                                                method_l, or_l,
@@ -644,7 +629,7 @@ scaled_slurm_methods_benchmarking <- function(output_dir, overall_path,
     }
 }
 
-# ── Parallel runner (all iterations in one call) ─────────────────────────────
+# Parallel runner (all iterations in one call)
 scaled_midas_methods_benchmarking <- function(output_dir, overall_path,
                                                method_l, or_l,
                                                cond_effect_val_l, batch_effect_val_l,
@@ -664,10 +649,7 @@ scaled_midas_methods_benchmarking <- function(output_dir, overall_path,
     }
 }
 
-# ============================================================
-# PARAMETER GRIDS AND RUN CALLS
-# Uncomment the block(s) you want to run.
-# ============================================================
+# Parameter grids and run calls (uncomment the blocks to run)
 
 or_l               <- c(1, 1.25, 1.5)
 cond_effect_val_l  <- c(0, 0.25, 0.5, 0.75, 1)
@@ -683,92 +665,91 @@ count_methods <- c("combat_seq", "limma", "MMUPHin", "ConQuR", "ConQuR_libsize",
 relab_methods <- c("combat", "limma", "MMUPHin", "ConQuR_rel",
                     "ruv3", "bmc", "bat", "rbe", "svd")
 
-# # ── Original scenarios ───────────────────────────────────────────────────────
+# # Original scenarios
 # print("count no relation")
 # scaled_slurm_methods_benchmarking(
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023',
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023',
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_count_norelation_102023'),
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_norelation_102023'),
 #     count_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
 # print("relab no relation")
 # scaled_slurm_methods_benchmarking(
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_102023',
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023',
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_relab_norelation_102023'),
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_norelation_102023'),
 #     relab_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 
 # print("count yes relation")
 # scaled_slurm_methods_benchmarking(
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_yesrelation_102023',
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023',
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_count_yesrelation_102023'),
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_yesrelation_102023'),
 #     count_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
 # print("relab yes relation")
 # scaled_slurm_methods_benchmarking(
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_yesrelation_102023',
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023',
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_relab_yesrelation_102023'),
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_yesrelation_102023'),
 #     relab_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 
-# ── Original scenarios — nocovar pass for ML-safe RF (covar=NULL) ─────────────
-# Outputs go to _nocovar directories; main covar-guided outputs are untouched.
-print("count no relation — nocovar")
+# Original scenarios, nocovar pass (covar=NULL) for leakage-free RF; writes to _nocovar dirs
+print("count no relation - nocovar")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_nocovar_102023',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023',
+    file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_count_norelation_nocovar_102023'),
+    file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_norelation_102023'),
     count_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE, covar = NULL)
 
-print("relab no relation — nocovar")
+print("relab no relation - nocovar")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_nocovar_102023',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023',
+    file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_relab_norelation_nocovar_102023'),
+    file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_norelation_102023'),
     relab_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE, covar = NULL)
 #
-# print("count yes relation — nocovar")
+# print("count yes relation - nocovar")
 # scaled_slurm_methods_benchmarking(
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_yesrelation_nocovar_102023',
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023',
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_count_yesrelation_nocovar_102023'),
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_yesrelation_102023'),
 #     count_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE, covar = NULL)
 #
-# print("relab yes relation — nocovar")
+# print("relab yes relation - nocovar")
 # scaled_slurm_methods_benchmarking(
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_yesrelation_nocovar_102023',
-#     '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023',
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_relab_yesrelation_nocovar_102023'),
+#     file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_yesrelation_102023'),
 #     relab_methods, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE, covar = NULL)
 
-# ── Scenario 2: half taxa, OR=1, cond=0.5, batch=0.5 ────────────────────────
+# Scenario 2: half taxa, OR=1, cond=0.5, batch=0.5
 print("count halftaxa")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/output_count_halftaxa',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/count_halftaxa',
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/output_count_halftaxa'),
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/count_halftaxa'),
     count_methods, or_one, cond_single, batch_single, GLOBAL_ITER, count = TRUE)
 
-print("count halftaxa — nocovar")
+print("count halftaxa - nocovar")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/output_count_halftaxa_nocovar',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/count_halftaxa',
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/output_count_halftaxa_nocovar'),
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/count_halftaxa'),
     count_methods, or_one, cond_single, batch_single, GLOBAL_ITER, count = TRUE, covar = NULL)
 
-# ── Scenario 3: 40% batch, OR=1, cond=0.5, batch=0.5 ────────────────────────
+# Scenario 3: 40% batch, OR=1, cond=0.5, batch=0.5
 print("count batchfrac40")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/output_count_batchfrac40',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/count_batchfrac40',
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/output_count_batchfrac40'),
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/count_batchfrac40'),
     count_methods, or_one, cond_single, batch_single, GLOBAL_ITER, count = TRUE)
 
-print("count batchfrac40 — nocovar")
+print("count batchfrac40 - nocovar")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/output_count_batchfrac40_nocovar',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/count_batchfrac40',
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/output_count_batchfrac40_nocovar'),
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/count_batchfrac40'),
     count_methods, or_one, cond_single, batch_single, GLOBAL_ITER, count = TRUE, covar = NULL)
 
-# ── Scenario 4: 40% cond, OR=1, cond=0.5, batch=0.5 ─────────────────────────
+# Scenario 4: 40% cond, OR=1, cond=0.5, batch=0.5
 print("count condfrac40")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/output_count_condfrac40',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/count_condfrac40',
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/output_count_condfrac40'),
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/count_condfrac40'),
     count_methods, or_one, cond_single, batch_single, GLOBAL_ITER, count = TRUE)
 
-print("count condfrac40 — nocovar")
+print("count condfrac40 - nocovar")
 scaled_slurm_methods_benchmarking(
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/output_count_condfrac40_nocovar',
-    '/athena/linglab/scratch/chf4012/simulation_outputs/scenarios_simulation_data_052626/count_condfrac40',
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/output_count_condfrac40_nocovar'),
+    file.path(SIM_OUTPUT_ROOT, 'scenarios_simulation_data_052626/count_condfrac40'),
     count_methods, or_one, cond_single, batch_single, GLOBAL_ITER, count = TRUE, covar = NULL)

@@ -1,0 +1,17 @@
+"disease","n_studies","n_disease_samples","n_healthy_samples","total_samples"
+"CRC",11,625,624,1249
+"T2D",7,889,578,1467
+"IBD",6,1699,808,2507
+"adenoma",5,159,365,524
+"IGT",3,265,319,584
+"hypertension",3,169,71,240
+"T1D",3,86,120,206
+"pneumonia",2,7,797,804
+"respiratoryinf",2,17,657,674
+"CDI",2,108,194,302
+"STH",2,108,91,199
+"hepatitis",2,4,135,139
+"acute_diarrhoea",2,56,18,74
+"CRC;hypertension",2,20,30,50
+"adenoma;hypertension",2,12,30,42
+"T2D;adenoma",2,2,30,32

@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
 library(xtable) # table
 # library(mixOmics)
 library(sva) # ComBat
@@ -31,11 +32,7 @@ set.seed(GLOBAL_ITER)
 current_path = getwd()
 print("currnet path")
 print(current_path)
-if(grepl("mic_bc_benchmark/benchmark", current_path)){
-    conqur_path = str_replace(current_path, "mic_bc_benchmark/benchmark", "mic_bc_benchmark/ConQuR")
-} else {
-    conqur_path = str_replace(current_path, "mic_bc_benchmark", "mic_bc_benchmark/ConQuR")
-}
+conqur_path <- file.path(REPO_ROOT, "ConQuR")
 source(paste0(conqur_path, "/ConQuR_help_functions.R"))
 source(paste0(conqur_path, "/ConQuR_main_tune.R"))
 source(paste0(conqur_path, "/ConQuR_help_functions_libsize_old.R"))
@@ -60,7 +57,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
         dir.create(file.path(output_dir))
     }
 
-    # data loading <- load data_mat and meta_data, output of the preprocessing.py file
+    # load data_mat and meta_data (outputs of preprocessing.py)
     if(transpose == TRUE) {
         count_data = read.table(data_mat_path, sep=",",header=T,check.names = F)
     }
@@ -369,8 +366,7 @@ run_methods <- function(data_mat_path, meta_data_path, output_root, batch_ref, d
 }
 
 
-# just to speed up
-# An mc-version of the sapply function.
+# parallel version of sapply (via mclapply)
 library(parallel)
 mcsapply <- function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) {
   FUN <- match.fun(FUN)
@@ -468,25 +464,25 @@ scaled_slurm_methods_bencharking <- function(output_dir, overall_path, method_l,
 # batch_effect_val_l = c(0, 0.25, 0.5, 0.75, 1)
 
 # print("count no relation")
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_norelation_102023'
+# overall_path = file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_norelation_102023')
+# output_dir = file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_count_norelation_102023')
 # method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
 # print("relab no relation")
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_norelation_102023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_norelation_102023'
+# overall_path = file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_norelation_102023')
+# output_dir = file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_relab_norelation_102023')
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)
 
 # print("count yes relation")
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_count_yesrelation_102023'
+# overall_path = file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_yesrelation_102023')
+# output_dir = file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_count_yesrelation_102023')
 # method_l = c("combat_seq", "limma", "MMUPHin", 'ConQuR', 'ConQuR_libsize')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = TRUE)
 
 # print("relab yes relation")
-# overall_path = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_MIDAS_1000_yesrelation_102023'
-# output_dir = '/athena/linglab/scratch/chf4012/simulation_outputs/simulation_data_output_relab_yesrelation_102023'
+# overall_path = file.path(SIM_OUTPUT_ROOT, 'simulation_data_MIDAS_1000_yesrelation_102023')
+# output_dir = file.path(SIM_OUTPUT_ROOT, 'simulation_data_output_relab_yesrelation_102023')
 # method_l = c("combat", "limma", "MMUPHin", 'ConQuR_rel')
 # scaled_slurm_methods_bencharking(output_dir, overall_path, method_l, or_l, cond_effect_val_l, batch_effect_val_l, GLOBAL_ITER, count = FALSE)

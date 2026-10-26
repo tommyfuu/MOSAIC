@@ -6,8 +6,8 @@
 #SBATCH --time=10:00:00
 #SBATCH --mem=3G   # memory requested, units available: K,M,G,T
 #SBATCH --cpus-per-task=1
-#SBATCH --output rtcount_no-%j.out
-#SBATCH --error rtcount_no-%j.err
+#SBATCH --output ../logs/slurm/rtcount_no-%j.out
+#SBATCH --error ../logs/slurm/rtcount_no-%j.err
 #SBATCH --mail-user=chf4012@med.cornell.edu
 #SBATCH --mail-type=ALL
 
