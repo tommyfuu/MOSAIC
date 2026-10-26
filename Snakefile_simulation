@@ -170,17 +170,21 @@ rule summarize:
 
 
 rule ablation_figures:
-    """Fig 3-style plots: each ablation vs the baseline, per metric and method (benchmark/ablation_vis.py)."""
+    """Each ablation vs the baseline: per-metric plots and summary (figures/ablation_vis.py), then the Figure 3 layout
+    (figures/fig3_ablation_plots.py)."""
     input:
         expand(os.path.join(ROOT, "{scenario}", "summary_{{dt}}.csv"), scenario=["baseline"] + ABLATIONS)
     output:
         os.path.join(ROOT, "ablation_figures_{dt}", "summary_mean_ci.csv")
     params:
         args = lambda w: (f"-i {N_ITER} -d {w.dt} --root {ROOT} --setups {','.join(ABLATIONS)} "
-                          f"--out {os.path.join(ROOT, 'ablation_figures_' + w.dt)}")
+                          f"--out {os.path.join(ROOT, 'ablation_figures_' + w.dt)}"),
+        out = lambda w: os.path.join(ROOT, "ablation_figures_" + w.dt),
+        setups = ",".join(ABLATIONS)
     threads: 1
     resources:
         mem_mb = 8000,
         runtime = 120
     shell:
-        "cd {BENCH} && python3 ablation_vis.py {params.args}"
+        "cd {BENCH} && python3 figures/ablation_vis.py {params.args} && python3 figures/fig3_ablation_plots.py "
+        "{params.out}/summary_mean_ci.csv {params.out} --setups {params.setups} --datatype {wildcards.dt}"

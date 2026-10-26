@@ -5,7 +5,7 @@ Usage: python3 fig2_style_aggregate.py <count|relab> <no|yes> <1|1.25|1.5> <out_
 import os, sys
 import numpy as np, pandas as pd
 from scipy import stats
-sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # repository root
 from paths import SIM_OUTPUT_ROOT
 
 dt, rel, OR, out = sys.argv[1:5]

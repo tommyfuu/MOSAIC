@@ -24,8 +24,6 @@ import pandas as pd
 from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch
 
-AGG, OUT = sys.argv[1:3]
-os.makedirs(OUT, exist_ok=True)
 
 FONT_DIR = '/athena/linglab/scratch/chf4012/tools/fonts_arial_dl/x'  # Arial from Microsoft core fonts (arial32.exe)
 for f in ('Arial.TTF', 'Arialbd.TTF'):
@@ -190,11 +188,14 @@ def make(dt, rel, OR, ml_sweep=False, name=None):
     print(name)
 
 
-MAIN = '--main' in sys.argv  # main Figure 2 only: count, OR 1, no confounding, panel d from the OR 1 condition sweep
-if MAIN:
-    make('count', 'no', '1', ml_sweep=True, name='Figure2_count_OR1_no_libsize_confounding_condsweepML.pdf')
-for dt in ([] if MAIN else ('count', 'relab')):
-    for rel in ('no', 'yes'):
-        for OR in ('1', '1.25', '1.5'):
-            if os.path.exists(f'{AGG}/grid_{dt}_{rel}_OR{OR}.csv'):
-                make(dt, rel, OR)
+if __name__ == '__main__':
+    AGG, OUT = sys.argv[1:3]
+    os.makedirs(OUT, exist_ok=True)
+    MAIN = '--main' in sys.argv  # main Figure 2 only: count, OR 1, no confounding, panel d from the OR 1 condition sweep
+    if MAIN:
+        make('count', 'no', '1', ml_sweep=True, name='Figure2_count_OR1_no_libsize_confounding_condsweepML.pdf')
+    for dt in ([] if MAIN else ('count', 'relab')):
+        for rel in ('no', 'yes'):
+            for OR in ('1', '1.25', '1.5'):
+                if os.path.exists(f'{AGG}/grid_{dt}_{rel}_OR{OR}.csv'):
+                    make(dt, rel, OR)

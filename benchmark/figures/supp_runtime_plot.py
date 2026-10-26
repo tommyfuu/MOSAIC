@@ -18,7 +18,7 @@ import pandas as pd
 from matplotlib.lines import Line2D
 from matplotlib.ticker import FixedLocator, NullLocator
 
-sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))  # repository root
 from paths import REPO_ROOT
 
 AGG, OUT = sys.argv[1:3]
