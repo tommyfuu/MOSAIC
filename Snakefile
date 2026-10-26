@@ -1,4 +1,7 @@
 configfile: "./config_simulate_052626.yml"
+# Single-dataset interface. The full simulation and real-world studies were run with the SLURM
+# scripts in benchmark/ (see README.md). For simulations (main grid, condition-effect sweep,
+# ablations) use Snakefile_simulation; the simulation rules below are kept for reference only.
 # configfile: "./config_simulate_052626.yml"
 # configfile: "./config_wml.yml"
 # configfile: "./config_CRC_wml.yml"
@@ -7,9 +10,9 @@ configfile: "./config_simulate_052626.yml"
 # configfile: "./config_IBD.yml"
 # configfile: "./config_IBD.yml"
 # configfile: "./config.yml"
-# configfile: "./config_simulate_check.yml"
+# configfile: "./additional_ymls/archive/config_simulate_check.yml"
 # configfile: "./config_IBD.yml"
-# make sure this is the first line in the Snakefile
+# The active configfile must stay on line 1: several benchmark/ scripts read the config path from there.
 
 import os
 import warnings
@@ -101,7 +104,7 @@ elif config['rules_to_run'] == 'evaluate_simulated':
 # rules
 if config['rules_to_run'] in ['all_simulated', 'simulate', 'integrate_simulated']:
     rule simulate:
-        '''If simulate, simulate data.'''
+        '''Simulate data.'''
         output:
             out_count = f'{sim_output_root}/simulate/ibd_150_count_{or_l[-1]}_{cond_effect_val_l[-1]}_{batch_effect_val_l[-1]}_iter_{iteration}.csv',
             out_relab = f'{sim_output_root}/simulate/ibd_150_relab_{or_l[-1]}_{cond_effect_val_l[-1]}_{batch_effect_val_l[-1]}_iter_{iteration}.csv',

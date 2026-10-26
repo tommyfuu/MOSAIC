@@ -198,7 +198,7 @@ summarizes each scenario over replicates (`benchmark/aggregate_scenario.py`). Ou
 <scenario>/summary_<datatype>.csv    mean, 95% CI, SD, median, 2.5/97.5 percentiles per setting x method x metric
 <scenario>/values_<datatype>.csv     all metrics per replicate
 ablation_figures_<datatype>/         when `baseline` and ablations are run: each ablation vs the baseline per
-                                     metric and method (Figure 3 style, benchmark/ablation_vis.py --root)
+                                     metric and method, and Figure 3 (benchmark/figures/)
 ```
 
 Steps leave flag files in `<scenario>/.flags/`, so an interrupted run resumes where it stopped. The
@@ -208,6 +208,12 @@ software versions (see `benchmark/tests/test_simulation_workflow.sh`).
 
 The older single-iteration Snakemake rules for simulations in `Snakefile` (`rules_to_run: all_simulated`) are
 kept for reference only; use `Snakefile_simulation` instead.
+
+## 3a. Manuscript figures (`benchmark/figures/`)
+
+The scripts that build Figures 2-3 and Supplemental Figures 1-5 from the evaluation results are in
+`benchmark/figures/`; `benchmark/figures/README.md` lists which script makes which figure. The website in `docs/`
+(GitHub Pages) has a how-to-run guide and a vignette that follows one simulated dataset to each figure.
 
 ## 4. PubTator literature check (`pubtator/`)
 
