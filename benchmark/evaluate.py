@@ -44,6 +44,7 @@ if ARGPARSE_SWITCH:
     parser.add_argument("-a", "--agent", default = 'cond_1', help='binarizing agent for differential abundance evaluation')
     parser.add_argument("-p", "--overallpath", default = os.path.dirname(SIM_OUTPUT_ROOT), help='overall path for data interaction and saving')
     parser.add_argument("--rerun-rf", action="store_true", default=False, help='re-run only RF evaluation with leakage-free approach, preserving all other existing metrics')
+    parser.add_argument("--refresh-debiasm-rf", action="store_true", default=False, help='simulation evaluation: recompute only DEBIAS-M random forest metrics (within-fold refit on the uncorrected data); use with --rerun-rf to also update the _nocovar summaries')
     parser.add_argument("--refresh-rf", action="store_true", default=False, help='re-run only RF evaluation on the regular (covar-guided) batch-corrected data, keeping other metrics')
     parser.add_argument("--config", default=None, help='config yml path (relative to the repo root); defaults to the configfile: line in the Snakefile')
     parser.add_argument("--succinct", action="store_true", default=False, help='for plotting options (4, 5, 8, 9), drop bat/ruv3/svd/rbe/bmc from the plots')
@@ -1346,7 +1347,8 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                         # if not os.path.isfile(eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)+"/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'):
                         output_dir = eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter)
                         # --refresh-rf always re-runs the method loop, even if all summaries exist.
-                        all_methods_done = (not args.get('refresh_rf', False)) and all(
+                        refresh_dm = args.get('refresh_debiasm_rf', False)
+                        all_methods_done = (not args.get('refresh_rf', False)) and (not refresh_dm) and all(
                             os.path.exists(output_dir+'/'+m+'/'+m+f'_summary{eval_suffix}.csv') for m in methods_list)
                         pcoa_pdf_path = eval_dir_path+'/out_' + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val)+ '_iter_' + str(iter) + "/ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter)+'_multi_PCOA_both_batch.pdf'
                         keep_pcoa = (iter % 50 == 1)  # keep iters 1, 51, 101, ...
@@ -1377,6 +1379,8 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
 
                             # evaluate individual methods (summary.csv guard skips already-done ones)
                             for method in methods_list:
+                                if refresh_dm and method != 'debiasm':
+                                    continue  # --refresh-debiasm-rf: only DEBIAS-M is recomputed
                                 print("method", method)
                                 if not os.path.exists(output_dir+'/'+method):
                                     os.makedirs(output_dir+'/'+method)
@@ -1402,19 +1406,23 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                                 summary_path_sim_suffix = output_dir+'/'+method+'/' + method +f'_summary{eval_suffix}.csv'
                                 rerun_rf_sim = args.get('rerun_rf', False)
                                 refresh_rf_sim = args.get('refresh_rf', False)
-                                # raw count data for within-fold DEBIAS-M in simulation
-                                raw_dm_sim = data_mat if method == 'debiasm' else None
+                                # within-fold DEBIAS-M is refit on the uncorrected table of this replicate (the input of the
+                                # full-data fit), not on the full-data DEBIAS-M output, which already used every sample's label
+                                raw_dm_sim = None
+                                if method == 'debiasm':
+                                    raw_path = address_XY_dir_path + ('/ibd_150_count_' if datatype == 'count' else '/ibd_150_relab_') + str(odds_ratio) + '_' + str(cond_effect_val) + '_' + str(batch_effect_val) + '_iter_' + str(iter) + '.csv'
+                                    raw_dm_sim, _ = load_results_from_benchmarked_methods(raw_path, address_Y)
                                 if not os.path.exists(summary_path_sim):
                                     Evaluate(data_mat, meta_data, 'batchid', output_dir+'/'+method+'/'+method,
                                             "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = taxa_gt, datatype = datatype, binarizing_agent_biovar = binarizing_agent_biovar, method = method, rf_data_mat = None, raw_data_mat = raw_dm_sim)
                                 else:
                                     did_something = False
-                                    if refresh_rf_sim:
+                                    if refresh_rf_sim or refresh_dm:
                                         # recompute RF metrics only, keeping the other existing metrics
                                         Evaluate(data_mat, meta_data, 'batchid', output_dir+'/'+method+'/'+method,
                                                 "cond", 30, IDCol=IDCol, pipeline = pipeline, taxa_gt = taxa_gt, datatype = datatype, binarizing_agent_biovar = binarizing_agent_biovar, method = method, rf_data_mat = None, raw_data_mat = raw_dm_sim, rf_only = True, suffix = "")
                                         did_something = True
-                                    if rerun_rf_sim and (refresh_rf_sim or not os.path.exists(summary_path_sim_suffix)):
+                                    if rerun_rf_sim and (refresh_rf_sim or refresh_dm or not os.path.exists(summary_path_sim_suffix)):
                                         # nocovar data for leakage-free RF: create if missing, or refresh with --refresh-rf
                                         if method not in ['nobc', 'harmony', 'percentile_norm', 'debiasm']:
                                             # main-grid runs use a _nocovar_102023 suffix; ablation scenario runs use _nocovar
@@ -1458,7 +1466,7 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                                 datatype = datatype, summary_suffix = eval_suffix)
 
                         # with --refresh-rf, also rebuild the regular (non-nocovar) aggregate
-                        if eval_suffix != "" and args.get('refresh_rf', False):
+                        if eval_suffix != "" and (args.get('refresh_rf', False) or args.get('refresh_debiasm_rf', False)):
                             any_summary_regular = any(
                                 os.path.exists(output_dir+'/'+m+'/'+m+'_summary.csv')
                                 for m in methods_list)
@@ -1469,7 +1477,7 @@ def iterative_methods_running_evaluate(run_or_evaluate, datatype, or_l, cond_eff
                                     datatype = datatype, summary_suffix = "")
 
                         # PCoA plots only every 50th iteration; skip if the distance matrix is degenerate
-                        if keep_pcoa and df_l:
+                        if keep_pcoa and df_l and not refresh_dm:
                             try:
                                 plot_PCOA_multiple("ibd_150_"+str(odds_ratio) + "_" + str(cond_effect_val) + "_" + str(batch_effect_val) + "_iter_" + str(iter), df_l, methods_list, metadata_l, used_var="batchid",
                                     output_root=output_dir+"/",
