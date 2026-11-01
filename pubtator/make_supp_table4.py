@@ -3,7 +3,8 @@ in the layout of SuppTable4.pubtator_merged_outputs_110624.xlsx, with live Excel
 
 Needs openpyxl (not in the pipeline conda envs: pip install openpyxl).
 Usage: python3 make_supp_table4.py [--succinct]   (--succinct drops bat/ruv3/svd/rbe/bmc)
-Inputs: trial_rw/outputs/{dataset}_taxa_union_wilcoxon.csv and trial_rw/outputs/pubtator_keyterms/{dataset}__{term}.csv
+Inputs: trial_rw/outputs/{dataset}_taxa_union_wilcoxon.csv and trial_rw/outputs/pubtator_keyterms/{dataset}__{term}.csv,
+with the key terms read from each dataset's config YAML (key_terms.py)
 """
 import os
 import sys
@@ -14,6 +15,7 @@ from openpyxl.utils import get_column_letter as col
 
 sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from paths import REPO_ROOT
+from key_terms import key_terms, slug
 
 IN = os.path.join(REPO_ROOT, 'trial_rw', 'outputs')
 SUCCINCT = '--succinct' in sys.argv  # drop the methods left out of the succinct plots
@@ -26,19 +28,11 @@ COUNT_METHODS = ['nobc', 'harmony', 'combat_seq', 'limma', 'MMUPHin', 'ConQuR', 
 RELAB_METHODS = ['nobc', 'harmony', 'combat', 'limma', 'MMUPHin', 'ConQuR_rel', 'percentile_norm',
                  'debiasm', 'ruv3', 'bmc', 'bat', 'rbe', 'svd']
 SHEETS = [
-    ('autism', 'autism_2_microbiomeHD', COUNT_METHODS,
-     ['autism', 'autism spectrum disorders', 'gut-brain axis', 'neurological disorders', 'nervous systems']),
-    ('cdi', 'cdi_3_microbiomeHD_clean', COUNT_METHODS,
-     ['Clostridioides difficile', 'diarrhea', 'antibiotics', 'toxins', 'infection']),
-    ('ibd', 'ibd_3_CMD', RELAB_METHODS,
-     ['inflammatory bowel disease', "Crohn's disease", 'ulcerative colitis', 'abdominal pain', 'intestinal inflammation']),
-    ('crc', 'crc_11_CMD', RELAB_METHODS,
-     ['colon cancer', 'colorectal cancer', 'tumorigenesis', 'rectal bleeding', 'MSI subtype']),
+    ('autism', 'autism_2_microbiomeHD', COUNT_METHODS),
+    ('cdi', 'cdi_3_microbiomeHD_clean', COUNT_METHODS),
+    ('ibd', 'ibd_3_CMD', RELAB_METHODS),
+    ('crc', 'crc_11_CMD', RELAB_METHODS),
 ]
-
-
-def slug(term):
-    return ''.join(ch for ch in term.replace(' ', '_') if ch.isalnum() or ch in '_-')
 
 
 wb = Workbook()
@@ -52,7 +46,9 @@ for line in [
 ]:
     main.append([line])
 
-for sheet, ds, methods, terms in SHEETS:
+for sheet, ds, methods in SHEETS:
+    terms = key_terms(ds)
+    k = len(terms)
     union = pd.read_csv(f'{IN}/{ds}_taxa_union_wilcoxon.csv', index_col=0)
     methods = [m for m in methods if m in union.columns and not (SUCCINCT and m in SUCCINCT_DROP)]
     union = union[union[methods].astype(bool).any(axis=1)]  # taxa significant in at least one listed method
@@ -63,20 +59,22 @@ for sheet, ds, methods, terms in SHEETS:
     ws = wb.create_sheet(sheet)
     m0, nm = 3, len(methods)                      # method booleans start at column C
     c_gt0, c_ge10 = m0 + nm, m0 + nm + 1
-    t0 = m0 + nm + 2                              # 5 term columns
-    c_sr = t0 + 5
+    t0 = m0 + nm + 2                              # k term columns
+    c_sr = t0 + k
     k0 = c_sr + 1                                 # per-method strongly-relevant indicators
     header = [None, 'cleaned_taxa'] + methods + ['#terms with >0 hit', f'#terms with {TEN} hit'] + terms + \
              ['strongly relevant'] + [f'{m}_count' for m in methods]
     ws.append(header)
     for i, (raw, row) in enumerate(union.iterrows(), start=2):
-        tr = f'{col(t0)}{i}:{col(t0 + 4)}{i}'
+        tr = f'{col(t0)}{i}:{col(t0 + k - 1)}{i}'
         K, L = f'{col(c_gt0)}{i}', f'{col(c_ge10)}{i}'
+        # default rule (key_terms.strongly_relevant): with 5 terms, all 5 >0 or >=3 with >=10; with more, only the latter
+        rel_any, rel_ge = (f'OR({K}=5, {L}>=3)', f'OR({K}>=5, {L}>=3)') if k == 5 else (f'{L}>=3', f'{L}>=3')
         vals = [raw, row['cleaned_taxa']] + [bool(row[m]) for m in methods] + \
                [f'=COUNTIF({tr}, ">0")', f'=COUNTIF({tr}, "{TEN}")'] + \
                [counts[t].get(row['cleaned_taxa']) for t in terms] + \
-               [f'=IF(OR({K}=5, {L}>=3), 1, 0)'] + \
-               [f'=IF(AND({col(m0 + j)}{i}=TRUE, OR({K}>=5, {L}>=3)), 1, 0)' for j in range(nm)]
+               [f'=IF({rel_any}, 1, 0)'] + \
+               [f'=IF(AND({col(m0 + j)}{i}=TRUE, {rel_ge}), 1, 0)' for j in range(nm)]
         ws.append(vals)
     last = len(union) + 1
     ws.append([None] * (k0 - 1) + [f'=SUM({col(k0 + j)}2:{col(k0 + j)}{last})' for j in range(nm)])

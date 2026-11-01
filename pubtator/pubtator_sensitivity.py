@@ -1,7 +1,8 @@
 """Sensitivity analysis of the PubTator "strongly relevant taxa" evaluation (Supplemental Tables 3-4).
 
-Two kinds of variation of the default rule (a taxon is strongly relevant if it has >=1 publication for all five
-key terms, or >=10 publications for at least three of them):
+Two kinds of variation of the default rule (with five key terms, a taxon is strongly relevant if it has >=1
+publication for all five, or >=10 publications for at least three of them; with more than five, only the second
+criterion is used; see key_terms.py):
   1. thresholds: stricter/looser count cutoffs and number of terms;
   2. popularity normalization: each key-term count divided by the taxon's total PubTator publication count
      (searched alone, {dataset}_taxon_total.csv), i.e. the share of the taxon's literature that mentions the term,
@@ -14,9 +15,9 @@ Writes to trial_rw/outputs/pubtator_keyterms/sensitivity/:
     sensitivity_long.csv          rule x dataset x method counts and proportions
     sensitivity_rank_agreement.csv Spearman rho vs. the default rule, per dataset and rule
     method_popularity.csv         median / mean log10 publication count of each method's significant taxa
-Run after run_pubtator_keyterms.sh (needs the five {dataset}__{term}.csv files and {dataset}_taxon_total.csv).
+Run after run_pubtator_keyterms.sh (needs a {dataset}__{term}.csv file per key term in the dataset's config YAML,
+and {dataset}_taxon_total.csv).
 """
-import glob
 import os
 import sys
 
@@ -26,12 +27,14 @@ from scipy.stats import spearmanr
 
 sys.path.insert(1, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from paths import REPO_ROOT
+from key_terms import key_terms, slug, strongly_relevant
 
 IN = os.path.join(REPO_ROOT, 'trial_rw', 'outputs')
 KT = os.path.join(IN, 'pubtator_keyterms')
 OUT = os.path.join(KT, 'sensitivity')
 os.makedirs(OUT, exist_ok=True)
-DATASETS = ['autism_2_microbiomeHD', 'cdi_3_microbiomeHD_clean', 'ibd_3_CMD', 'crc_11_CMD']
+# datasets to process: given on the command line, or the four real-world datasets of the manuscript
+DATASETS = sys.argv[1:] or ['autism_2_microbiomeHD', 'cdi_3_microbiomeHD_clean', 'ibd_3_CMD', 'crc_11_CMD']
 # strategies shown in the main figures only (same set as SUCCINCT_DROP_METHODS in benchmark/evaluate.py);
 # taxa found only by the dropped strategies are left out of the union
 DROP_METHODS = {'bat', 'rbe', 'bmc', 'ruv3', 'svd'}
@@ -41,11 +44,14 @@ def n_terms(x, cut):
     return (x >= cut).sum(axis=1)
 
 
-# rule name -> function(counts table C [taxa x 5 terms], fraction table F) -> boolean Series
-RULES = {
-    'default (all 5 >=1, or >=3 terms >=10)': lambda C, F: (n_terms(C, 1) == 5) | (n_terms(C, 10) >= 3),
-    'all 5 terms >=1': lambda C, F: n_terms(C, 1) == 5,
-    'all 5 terms >=5': lambda C, F: n_terms(C, 5) == 5,
+def make_rules(k):
+    """Rule name -> function(counts table C [taxa x k terms], fraction table F) -> boolean Series. The first rule
+    is the default; with k = 5 the names and rules are those of the manuscript."""
+    default = 'default (all 5 >=1, or >=3 terms >=10)' if k == 5 else 'default (>=3 terms >=10)'
+    return {
+    default: lambda C, F: strongly_relevant(n_terms(C, 1), n_terms(C, 10), k),
+    f'all {k} terms >=1': lambda C, F: n_terms(C, 1) == k,
+    f'all {k} terms >=5': lambda C, F: n_terms(C, 5) == k,
     '>=2 terms >=10': lambda C, F: n_terms(C, 10) >= 2,
     '>=3 terms >=10': lambda C, F: n_terms(C, 10) >= 3,
     '>=4 terms >=10': lambda C, F: n_terms(C, 10) >= 4,
@@ -55,22 +61,23 @@ RULES = {
     'popularity-normalized: >=3 terms >=5% of taxon pubs': lambda C, F: n_terms(F, 0.05) >= 3,
     'popularity-normalized: >=3 terms >=10% of taxon pubs': lambda C, F: n_terms(F, 0.10) >= 3,
     'popularity-normalized: >=1 term >=10% of taxon pubs': lambda C, F: n_terms(F, 0.10) >= 1,
-}
-DEFAULT = next(iter(RULES))
+    }
 
 long_rows, pop_rows, rank_rows = [], [], []
 for ds in DATASETS:
     union = pd.read_csv(f'{IN}/{ds}_taxa_union_wilcoxon.csv', index_col=0)
     methods = [c for c in union.columns if c != 'cleaned_taxa' and c not in DROP_METHODS]
     union = union[union[methods].astype(bool).any(axis=1)][['cleaned_taxa'] + methods]
-    term_files = sorted(glob.glob(f'{KT}/{ds}__*.csv'))
-    if len(term_files) != 5:
-        print(f'{ds}: expected 5 key-term files, found {len(term_files)}; skipping')
-        continue
+    terms = sorted(key_terms(ds), key=slug)  # same column order as the earlier sorted file listing
+    RULES = make_rules(len(terms))
+    DEFAULT = next(iter(RULES))
     C = pd.DataFrame(index=union.index)
-    for f in term_files:
+    for term in terms:
+        f = f'{KT}/{ds}__{slug(term)}.csv'
+        if not os.path.exists(f):
+            raise SystemExit(f'{ds}: missing {os.path.basename(f)}; run run_pubtator_keyterms.sh first')
         t = pd.read_csv(f)
-        C[t['condition'].iloc[0]] = union['cleaned_taxa'].map(dict(zip(t['search_term'], t['pubtator_count'])))
+        C[term] = union['cleaned_taxa'].map(dict(zip(t['search_term'], t['pubtator_count'])))
     C = C.astype(float)
     tot_f = f'{KT}/{ds}_taxon_total.csv'
     if os.path.exists(tot_f):

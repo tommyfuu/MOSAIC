@@ -27,3 +27,14 @@ condition_value: 'ASD'
 ### EVALUATION PHASE ###
 evaluation_outputs: './trial_rw/outputs'
 binarizing_agent: 'H'
+
+### PUBTATOR LITERATURE CHECK ###
+# clinical key terms searched with each significant taxon (pubtator/); at least five terms are required.
+# With five terms, a taxon is strongly relevant if all five return >=1 publication or at least three return >=10;
+# with more than five, only the second criterion (at least three terms with >=10 publications) is used.
+pubtator_key_terms:
+  - "autism"
+  - "autism spectrum disorders"
+  - "gut-brain axis"
+  - "neurological disorders"
+  - "nervous systems"
