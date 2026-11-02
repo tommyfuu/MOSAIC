@@ -195,6 +195,8 @@ bash run_simulation_workflow.sh                                        <span cla
       <div class="tablebox"><table>
         <thead><tr><th>Setting</th><th>Meaning</th><th>Default</th></tr></thead>
         <tbody>
+          <tr><td><code>template</code></td><td>your own count table to simulate from (samples as rows, taxa as columns, e.g. <code>data/cleaned_data/&lt;dataset&gt;/&lt;dataset&gt;_count_data.csv</code>); filtered by <code>template_min_libsize</code> and <code>template_min_prevalence</code></td><td>null (IBDMDB, 150 &times; 301)</td></tr>
+          <tr><td><code>n_condition_taxa</code></td><td>number of condition-associated taxa</td><td>50</td></tr>
           <tr><td><code>n_samples</code></td><td>number of samples</td><td>450</td></tr>
           <tr><td><code>p_cond</code>, <code>p_batch</code></td><td>share of samples in condition 1 / batch 1</td><td>0.5</td></tr>
           <tr><td><code>or_l</code></td><td>odds ratio between condition and batch</td><td>[1]</td></tr>

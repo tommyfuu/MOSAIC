@@ -222,10 +222,11 @@ The scripts that build Figures 2-3 and Supplemental Figures 1-5 from the evaluat
 ## 4. PubTator literature check (`pubtator/`)
 
 As a check on the real-world differential abundance results, each significant taxon is searched in
-PubTator3 together with five clinical key terms per disease. A taxon is "strongly relevant" if it has
-at least 1 publication for all five terms, or at least 10 publications for three of them; the number of
-strongly relevant taxa per method gives Supplemental Table 3, and the per-taxon counts Supplemental
-Table 4. See `pubtator/README.md` for the steps.
+PubTator3 together with clinical key terms per disease (at least five, listed under `pubtator_key_terms` in
+the dataset's config). A taxon is "strongly relevant" if it has at least 1 publication for all five terms, or
+at least 10 publications for three of them; the number of strongly relevant taxa per method gives
+Supplemental Table 3, the per-taxon counts Supplemental Table 5, and the sensitivity analysis Supplemental
+Table 6. See `pubtator/README.md` for the steps.
 
 ## License
 
