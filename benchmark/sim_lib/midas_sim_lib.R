@@ -26,16 +26,40 @@ bincorr <- function(OR, p1, p2) {
     (p11 - p1*p2) / sqrt(p1*(1-p1)*p2*(1-p2))
 }
 
-# 50 condition taxa: the two taxa closest to each of 25 evenly spaced zero proportions
-condition_taxa <- function(otu_original) {
+# condition taxa (default 50): the two taxa closest to each of n_cond / 2 evenly spaced zero proportions
+condition_taxa <- function(otu_original, n_cond = 50) {
+    if (n_cond %% 2 != 0 || n_cond < 2) stop("n_condition_taxa must be an even number >= 2")
+    if (n_cond > ncol(otu_original)) stop("n_condition_taxa (", n_cond, ") exceeds the number of template taxa (",
+                                          ncol(otu_original), ")")
     zp <- colMeans(otu_original == 0)
+    n_levels <- n_cond / 2
     id_cond <- NULL
-    for (tau in 0:24/25) id_cond <- c(id_cond, order(abs(zp - tau))[1:2])
+    for (tau in 0:(n_levels - 1) / n_levels) id_cond <- c(id_cond, order(abs(zp - tau))[1:2])
+    if (anyDuplicated(id_cond)) warning("some condition taxa were selected at more than one zero proportion; ",
+                                        length(unique(id_cond)), " distinct condition taxa")
     id_cond
 }
 
+# user-supplied template: count table with samples as rows and taxa as columns (first column: sample IDs).
+# Samples with library size < min_libsize and taxa present in < min_prevalence of samples are removed, as for
+# the IBDMDB template.
+read_template <- function(path, min_libsize = 2000, min_prevalence = 0.05) {
+    x <- read.csv(path, row.names = 1, check.names = FALSE)
+    x <- as.matrix(x)
+    if (!is.numeric(x) || any(is.na(x)) || any(x < 0) || any(abs(x - round(x)) > 1e-8))
+        stop("template must be a table of non-negative integer counts (samples x taxa): ", path)
+    x <- round(x)
+    n0 <- dim(x)
+    x <- x[rowSums(x) >= min_libsize, , drop = FALSE]
+    x <- x[, colMeans(x > 0) >= min_prevalence & colSums(x) > 0, drop = FALSE]
+    print(paste0("template ", basename(path), ": ", n0[1], " x ", n0[2], " -> ", nrow(x), " samples x ", ncol(x),
+                 " taxa (library size >= ", min_libsize, ", prevalence >= ", min_prevalence, ")"))
+    if (nrow(x) < 10 || ncol(x) < 10) stop("template has too few samples or taxa after filtering")
+    x
+}
+
 # batch taxa: a fraction of all taxa, spread evenly across zero-proportion ranks (fraction 1 = all taxa;
-# fraction 0.5 = every other taxon, i.e. 151 of 301)
+# fraction 0.5 = every other taxon, e.g. 151 of the 301 IBDMDB genera)
 batch_taxa <- function(otu_original, fraction = 1) {
     p <- ncol(otu_original)
     if (fraction >= 1) return(1:p)

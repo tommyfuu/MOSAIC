@@ -4,8 +4,12 @@
 #
 # Usage: Rscript simulate_scenario.R --out=<dir> --iter=<i> [--n_samples=450] [--resample_libsize=true]
 #          [--p_cond=0.5] [--p_batch=0.5] [--or_l=1] [--cond_effect_val_l=0.5] [--batch_effect_val_l=0.5]
-#          [--batch_libsize_related=false] [--batch_taxa_fraction=1]
-# Lists are comma-separated. Replicate i uses set.seed(i) before drawing library sizes, as in
+#          [--batch_libsize_related=false] [--batch_taxa_fraction=1] [--n_condition_taxa=50]
+#          [--template=<counts.csv>] [--template_min_libsize=2000] [--template_min_prevalence=0.05]
+# Lists are comma-separated. Without --template, the IBDMDB template (ibd_150.Rdata; 150 samples x 301 genera)
+# is used. A user template is a count table with samples as rows and taxa as columns (first column: sample IDs),
+# e.g. data/cleaned_data/<dataset>/<dataset>_count_data.csv; samples with library size below
+# --template_min_libsize and taxa present in fewer than --template_min_prevalence of samples are removed. Replicate i uses set.seed(i) before drawing library sizes, as in
 # generate_data_MIDASim_imbalance.R.
 
 source(Find(file.exists, c("paths.R", "../paths.R", "../../paths.R")))
@@ -36,11 +40,18 @@ cond_l    <- num_list(get("cond_effect_val_l", "0.5"))
 batch_l   <- num_list(get("batch_effect_val_l", "0.5"))
 libsize_related <- as_bool(get("batch_libsize_related", "false"))
 batch_frac <- as.numeric(get("batch_taxa_fraction", "1"))
+n_cond_taxa <- as.integer(get("n_condition_taxa", "50"))
+template  <- get("template", "")
 if (is.null(out_dir) || is.na(iter)) stop("--out and --iter are required")
 
-load(file.path(BENCH_DIR, "ibd_150.Rdata"))   # template: `otu` (taxa x samples), IBDMDB genus level
-otu_original <- t(otu)
-stopifnot(ncol(otu_original) == 301)
+if (template == "" || tolower(template) %in% c("null", "none", "ibdmdb")) {
+    load(file.path(BENCH_DIR, "ibd_150.Rdata"))   # template: `otu` (taxa x samples), IBDMDB genus level
+    otu_original <- t(otu)
+    stopifnot(ncol(otu_original) == 301)
+} else {
+    otu_original <- read_template(template, as.numeric(get("template_min_libsize", "2000")),
+                                  as.numeric(get("template_min_prevalence", "0.05")))
+}
 libsize_orig <- rowSums(otu_original)
 
 set.seed(iter)
@@ -50,7 +61,7 @@ if (resample) {
     if (n_samples != length(libsize_orig)) stop("resample_libsize = false requires n_samples = ", length(libsize_orig))
     libsize_l <- libsize_orig
 }
-id_cond  <- condition_taxa(otu_original)
+id_cond  <- condition_taxa(otu_original, n_cond_taxa)
 id_batch <- batch_taxa(otu_original, batch_frac)
 print(paste("iter", iter, "| n", n_samples, "| resample", resample, "| p_cond", p_cond, "| p_batch", p_batch,
             "| OR", paste(or_l, collapse = ","), "| cond", paste(cond_l, collapse = ","),

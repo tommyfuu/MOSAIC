@@ -61,6 +61,20 @@ def py_grid_args(scenario):
     return f"--or-l {lst(p['or_l'])} --cond-l {lst(p['cond_effect_val_l'])} --batch-l {lst(p['batch_effect_val_l'])}"
 
 
+def template_args(scenario):
+    """Template options for simulate_scenario.R; nothing (the IBDMDB template) unless `template` is set."""
+    p = P(scenario)
+    t = p.get("template")
+    if not t:
+        return ""
+    t = t if os.path.isabs(t) else os.path.join(workflow.basedir, t)
+    if not os.path.exists(t):
+        raise ValueError(f"scenario '{scenario}': template not found: {t}")
+    return (f" --template='{t}' --template_min_libsize={fmt(p.get('template_min_libsize', 2000))}"
+            f" --template_min_prevalence={fmt(p.get('template_min_prevalence', 0.05))}"
+            f" --n_condition_taxa={int(p.get('n_condition_taxa', 50))}")
+
+
 def d(scenario, *parts):
     return os.path.join(ROOT, scenario, *parts)
 
@@ -91,7 +105,8 @@ rule simulate:
             f"--resample_libsize={str(P(w.scenario)['resample_libsize']).lower()} "
             f"--p_cond={fmt(P(w.scenario)['p_cond'])} --p_batch={fmt(P(w.scenario)['p_batch'])} "
             f"--batch_libsize_related={str(P(w.scenario)['batch_libsize_related']).lower()} "
-            f"--batch_taxa_fraction={fmt(P(w.scenario)['batch_taxa_fraction'])} {grid_args(w.scenario)}"),
+            f"--batch_taxa_fraction={fmt(P(w.scenario)['batch_taxa_fraction'])} {grid_args(w.scenario)}"
+            f"{template_args(w.scenario)}"),
         zero = lambda w: (f"&& python3 apply_zero_inflation.py --data-dir {d(w.scenario, 'data')} --iter {w.iter} "
                           f"--target {P(w.scenario)['zero_fraction']}") if P(w.scenario)["zero_fraction"] else ""
     threads: 1
