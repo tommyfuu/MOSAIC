@@ -18,7 +18,7 @@ ranks = pd.read_csv(f'{D}/sensitivity_rank_agreement.csv')
 pop = pd.read_csv(f'{D}/method_popularity.csv')
 SHORT = {'autism_2_microbiomeHD': 'autism', 'cdi_3_microbiomeHD_clean': 'cdi', 'ibd_3_CMD': 'ibd', 'crc_11_CMD': 'crc'}
 readme = pd.DataFrame({'note': [
-    'Sensitivity of the "strongly relevant taxa" evaluation (Supplemental Tables 3-4) to the relevance rule.',
+    'Sensitivity of the "strongly relevant taxa" evaluation (Supplemental Tables 3 and 5) to the relevance rule.',
     'Default rule: >=1 publication for all five key terms, or >=10 publications for at least three of them.',
     'Strategies: those shown in the main figures (original data, ComBat-seq/ComBat, limma, MMUPHin, ConQuR, ConQuR-libsize/ConQuR-rel, Harmony, Percentile Normalization, DEBIAS-M); taxa found only by other strategies are excluded.',
     'Threshold rules vary the publication cutoffs and the number of key terms required.',

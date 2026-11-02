@@ -1,4 +1,4 @@
-"""Sensitivity analysis of the PubTator "strongly relevant taxa" evaluation (Supplemental Tables 3-4).
+"""Sensitivity analysis of the PubTator "strongly relevant taxa" evaluation (Supplemental Tables 3, 5 and 6).
 
 Two kinds of variation of the default rule (with five key terms, a taxon is strongly relevant if it has >=1
 publication for all five, or >=10 publications for at least three of them; with more than five, only the second

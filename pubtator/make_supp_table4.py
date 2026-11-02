@@ -1,4 +1,4 @@
-"""Write Supplemental Table 4 (PubTator key-term counts per significant taxon) as an Excel workbook,
+"""Write Supplemental Table 5 (PubTator key-term counts per significant taxon) as an Excel workbook,
 in the layout of SuppTable4.pubtator_merged_outputs_110624.xlsx, with live Excel formulas.
 
 Needs openpyxl (not in the pipeline conda envs: pip install openpyxl).
@@ -39,7 +39,7 @@ wb = Workbook()
 main = wb.active
 main.title = 'Main'
 for line in [
-    'Supplemental Table 4. Number of publications returned when searching each differentially abundant taxon along with a pre-defined clinical key term.',
+    'Supplemental Table 5. Number of publications returned when searching each differentially abundant taxon along with a pre-defined clinical key term.',
     'For each real-world disease data, all significant taxa identified via differential abundance test in at least one of the pre-integration (nobc) or post-integration datasets are included to be searched with the pre-defined terms. The dataset (strategy) a taxon comes from is noted to the left of each subsheet.',
     'For each taxon, we also calculate the number of clinical terms that return at least 1 or at least 10 publications when searched with the taxon. Taxa that have at least 5 such 1-publication terms or at least 3 such 10-publication terms are "strongly-relevant taxa", as defined in Methods.',
     'To use this approach to evaluate integration strategies, we also calculate the total number of strongly-relevant taxa identified post each integration strategy as a proxy to examine the ability of each strategy in conserving true biological signals.',

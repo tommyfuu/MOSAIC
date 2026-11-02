@@ -1,4 +1,4 @@
-# PubTator literature check (Supplemental Tables 3-4)
+# PubTator literature check (Supplemental Tables 3, 5 and 6)
 
 Run from `pubtator/`, after the real-world evaluations (`trial_rw/outputs`) are up to date:
 
@@ -10,7 +10,7 @@ Run from `pubtator/`, after the real-world evaluations (`trial_rw/outputs`) are 
    Sequential, ~1 h for ~1,000 taxa (PubTator3 allows ~3 requests/sec); rerunning resumes from existing files.
 3. `python3 pubtator_relevance_tables.py [dataset ...]`: strongly relevant taxa per method (`strongly_relevant_counts_by_method.csv`,
    Supp Table 3) and per taxon (`{dataset}_taxa_relevance.csv`).
-4. `python3 make_supp_table4.py [--succinct]`: Supp Table 4 as an Excel workbook with live formulas
+4. `python3 make_supp_table4.py [--succinct]`: Supp Table 5 as an Excel workbook with live formulas
    (`SuppTable4_pubtator_keyterms[_succinct].xlsx`); `--succinct` drops bat/ruv3/svd/rbe/bmc. Needs `openpyxl`.
 5. `python3 pubtator_sensitivity.py [dataset ...]`: sensitivity of the strongly-relevant rule to the publication thresholds and to
    normalization by taxon popularity (total publications per taxon, `{dataset}_taxon_total.csv`); writes
