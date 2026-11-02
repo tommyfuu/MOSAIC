@@ -1,6 +1,10 @@
 # MOSAIC <img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.jpeg" width="25" height="25"> : a pipeline for MicrobiOme Studies Analytical Integration and Correction
 Repository for the manuscript entitled __MOSAIC: MicrobiOme Studies Analytical Integration and Correction pipeline__ by _Fu et al._. 
 
+- User guide can be found [here](https://tommyfuu.github.io/MOSAIC/).
+- Vignette for result reproduction can be found [here](https://tommyfuu.github.io/MOSAIC/vignette.html).
+
+  
 <p align="center">
   <img src="https://github.com/tommyfuu/MOSAIC/blob/main/logo/MOSAIC_logo.jpeg" width="500" height="500">
 </p>
